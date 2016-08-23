@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ReqRequerimiento" table="req_requerimiento">
+    <indexes>
+      <index name="IDX_AFDAE327A52AB836" columns="id_requerimiento_padre"/>
+      <index name="IDX_AFDAE327DDC7A485" columns="id_area_trabajo"/>
+      <index name="IDX_AFDAE3273B74E832" columns="id_estado_requerimiento"/>
+      <index name="IDX_AFDAE327C2163A3E" columns="id_solucion_requerimiento"/>
+      <index name="IDX_AFDAE327CDEEECD8" columns="id_tipo_trabajo"/>
+      <index name="IDX_AFDAE327D8A5832B" columns="id_user_reg"/>
+      <index name="IDX_AFDAE327AC39DE56" columns="id_user_mod"/>
+      <index name="IDX_AFDAE32769953885" columns="id_empleado_asignado"/>
+      <index name="IDX_AFDAE327592B0EA1" columns="id_empleado_registra"/>
+      <index name="IDX_AFDAE327166585C9" columns="id_asigna_requerimiento"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="titulo" type="string" column="titulo" length="255" nullable="false"/>
+    <field name="fechaCreacion" type="datetime" column="fecha_creacion" nullable="false"/>
+    <field name="fechaUltimaEdicion" type="datetime" column="fecha_ultima_edicion" nullable="true"/>
+    <field name="fechaHoraInicio" type="datetime" column="fecha_hora_inicio" nullable="false"/>
+    <field name="fechaHoraFin" type="datetime" column="fecha_hora_fin" nullable="false"/>
+    <field name="repetirPor" type="smallint" column="repetir_por" nullable="true"/>
+    <field name="diaCompleto" type="boolean" column="dia_completo" nullable="true"/>
+    <field name="color" type="string" column="color" length="15" nullable="true"/>
+    <field name="trabajoRequerido" type="text" column="trabajo_requerido" nullable="false"/>
+    <field name="idEquipoSolicitud" type="bigint" column="id_equipo_solicitud" nullable="true"/>
+    <field name="idEmpleadoSolicita" type="smallint" column="id_empleado_solicita" nullable="true"/>
+    <field name="idServicioSolicita" type="smallint" column="id_servicio_solicita" nullable="true"/>
+    <field name="descripcionRequerimiento" type="text" column="descripcion_requerimiento" nullable="true"/>
+    <field name="solucion" type="text" column="solucion" nullable="true"/>
+    <field name="fechaAsignacion" type="datetime" column="fecha_asignacion" nullable="true"/>
+    <many-to-one field="idUserMod" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_user_mod" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleadoAsignado" target-entity="ReqEmpleado">
+      <join-columns>
+        <join-column name="id_empleado_asignado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleadoRegistra" target-entity="ReqEmpleado">
+      <join-columns>
+        <join-column name="id_empleado_registra" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAsignaRequerimiento" target-entity="ReqEmpleado">
+      <join-columns>
+        <join-column name="id_asigna_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUserReg" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTipoTrabajo" target-entity="ReqCtlTipoTrabajo">
+      <join-columns>
+        <join-column name="id_tipo_trabajo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAreaTrabajo" target-entity="ReqCtlAreaTrabajo">
+      <join-columns>
+        <join-column name="id_area_trabajo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstadoRequerimiento" target-entity="ReqCtlEstadoRequerimiento">
+      <join-columns>
+        <join-column name="id_estado_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSolucionRequerimiento" target-entity="ReqCtlSolucionRequerimiento">
+      <join-columns>
+        <join-column name="id_solucion_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idRequerimientoPadre" target-entity="ReqRequerimiento">
+      <join-columns>
+        <join-column name="id_requerimiento_padre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

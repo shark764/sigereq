@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ReqAreaServicioAtencion" table="req_area_servicio_atencion">
+    <indexes>
+      <index name="IDX_FDA1E1E0DC0A4806" columns="id_servicio_atencion"/>
+      <index name="IDX_FDA1E1E088863BBD" columns="id_servicio_externo"/>
+      <index name="IDX_FDA1E1E044A2C069" columns="id_area_atencion"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_req_area_servicio_atencion" columns="id_area_atencion,id_servicio_atencion,id_servicio_externo"/>
+    </unique-constraints>
+    <id name="id" type="smallint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="idAreaAtencion" target-entity="ReqCtlAreaAtencion">
+      <join-columns>
+        <join-column name="id_area_atencion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idServicioExterno" target-entity="ReqCtlServicioExterno">
+      <join-columns>
+        <join-column name="id_servicio_externo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idServicioAtencion" target-entity="ReqCtlServicioAtencion">
+      <join-columns>
+        <join-column name="id_servicio_atencion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
