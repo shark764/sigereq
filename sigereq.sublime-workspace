@@ -1,0 +1,441 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"expl_",
+				"expl_id_userReg"
+			],
+			[
+				"exp",
+				"expl"
+			],
+			[
+				"exm_",
+				"exm_id_atencion"
+			],
+			[
+				"id_m",
+				"id_material"
+			],
+			[
+				"big",
+				"bigint"
+			],
+			[
+				"bi",
+				"bigserial"
+			],
+			[
+				"ryx",
+				"ryx_ctl_modo_obtencion_estudio"
+			],
+			[
+				"ry",
+				"ryx_ctl_modo_obtencion_estudio"
+			],
+			[
+				"img",
+				"img_estudio_serie"
+			],
+			[
+				"pr",
+				"PRIMARY"
+			],
+			[
+				"nu",
+				"NULL"
+			],
+			[
+				"no",
+				"NOT"
+			],
+			[
+				"de",
+				"DEFAULT"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/EntityRyx/ImgCtlMaterial.php",
+			"settings":
+			{
+				"buffer_size": 2829,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+			"settings":
+			{
+				"buffer_size": 5860,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/farid/NetBeansProjects/sigereq",
+		"/home/farid/NetBeansProjects/sigereq/src",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle"
+	],
+	"file_history":
+	[
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Entity/ImgBloqueoAgenda.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlCargoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTipoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTipoTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqEmpleadoAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlMarcaEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlModeloEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlServicioExterno.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlSolucionRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTipoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/.travis.yml",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgSolicitudEstudioAdmin/prc_pry_list_v2.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/public/css/simagd-extend-bootstrap3.css",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/views/CRUD/simagd_edit_modal.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Repository/ProyeccionRepository.php",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/views/simagd_base_edit.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Admin/ImgSolicitudEstudioAdmin.php",
+		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Resources/views/CRUD/simagd_base_edit.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/vendor/sonata-project/admin-bundle/Resources/views/CRUD/base_edit_form.html.twig",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/simagd_base_edit.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgCitaAdmin/cit_agenda.js",
+		"/home/farid/NetBeansProjects/minsalsiaps/app/config/routing.yml",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/css/agenda.css",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgCitaAdmin/cit_list_v2.js",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgSolicitudEstudioComplementarioAdmin/solcmpl_list_v2.js",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgCitaAdmin/cit_listarCitas_v2.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/public/js/Admin.js",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgCitaAdmin/cit_agenda.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgCtlProyeccionAdmin/expl_list_v3.html.twig",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgLecturaAdmin/lct_list_v2.html.twig",
+		"/home/farid/NetBeansProjects/ULTIMATE_SQL_SCRIPTS/only_tables/study.sql",
+		"/home/farid/NetBeansProjects/ULTIMATE_SQL_SCRIPTS/simagdigital/simagdigital_ryx_img__schema_only__VERSION_1.sql",
+		"/home/farid/NetBeansProjects/ULTIMATE_SQL_SCRIPTS/simagdigital/simagdigital_ryx_img__data_only__VERSION_1.sql",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgCitaAdmin/cit_agenda.js",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Controller/ImgCitaAdminController.php",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Controller/ImgBloqueoAgendaAdminController.php",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgCitaAdmin/cit_popover_contentwrapper.html.twig",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgCitaAdmin/cit_event_contentwrapper.html.twig",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/css/simagd-table.css",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgCitaAdmin/cit_pendientesCita.js",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgLecturaAdmin/lct_estudiosLectura_theme.html.twig",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Controller/ImgSolicitudEstudioAdminController.php",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImagenologiaDigitalAdmin/simagd_busquedaPaciente.html.twig",
+		"/home/farid/NetBeansProjects/ULTIMATE_SQL_SCRIPTS/only_tables/prz.sql",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgCitaAdmin/cit_listarPacientesSinCita_v2.js",
+		"/home/farid/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/farid/.config/sublime-text-3/Packages/User/SQL.sublime-settings",
+		"/home/farid/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/farid/NetBeansProjects/ULTIMATE_SQL_SCRIPTS/only_tables/img_ctl_preparacion_estudio.sql",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Resources/public/js/simagd_filter_bstable_config.js",
+		"/home/farid/NetBeansProjects/ULTIMATE_SQL_SCRIPTS/only_tables/ryx_solicitud_estudio.sql",
+		"/home/farid/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/farid/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/farid/NetBeansProjects/worksimagdigital/src/Minsal/SimagdBundle/Repository/yeah.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"loop.last",
+			"resultsPerColumn",
+			"city",
+			"cities",
+			"button",
+			"ryx_procedimiento_radiologico_realizado",
+			"procedimiento_radiologico_realizado",
+			"table-non-top-boderless",
+			"-5px",
+			"fc_formitem_buscarFecha",
+			"ryx_estudio_paciente",
+			"  ",
+			"    ",
+			"   | ",
+			"                     | not null                                                     | plain          | ",
+			"                        |                                                              | extended       | ",
+			"text",
+			"    | text                        |                                                               | extended       | ",
+			"                     | not null                                                      | plain          | ",
+			"-- ",
+			",",
+			"ctrl+shift+c",
+			"ctrl+shift+d",
+			"ctrl+d",
+			"  ",
+			"   ",
+			"	  ",
+			"| timestamp without time zone |                                                               | plain          | ",
+			"| text                        |                                                               | extended       | ",
+			"| text                        | not null                                                      | extended       | ",
+			"| text                        |                                                               | extended       | ",
+			"      | text                        | not null                                                      | extended       | ",
+			"\n    ",
+			"text",
+			"img_serie_instancia",
+			"img_estudio_serie",
+			"img_estudio_pendiente_lectura",
+			"img_estudio_paciente",
+			"id_establecimiento_solicitud",
+			"idx_ryx_ryx_",
+			"idx_",
+			"id bigint NOT NULL,",
+			"                ",
+			"         | ",
+			"img",
+			"img_",
+			"img_solicitud_estudio",
+			"img_",
+			"img_solicitud_estudio_proyeccion",
+			"img_",
+			"idx_"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"loop.last",
+			"RESULTS_PER_COLUMN",
+			"result",
+			"results",
+			"btn_toolbar_insert_date",
+			"non-top-bordered-table",
+			"-0.4em",
+			"fc_heading_formitem_buscarFecha",
+			"ryx_estudio_por_imagenes",
+			" ",
+			",",
+			"/*text*/",
+			"text,",
+			",",
+			"-- ,",
+			"",
+			",",
+			" ",
+			"",
+			"ryx_serie_instancia",
+			"ryx_estudio_serie",
+			"ryx_estudio_pendiente_lectura",
+			"ryx_estudio_paciente",
+			"id_establecimiento_solicita",
+			"idx_ryx_",
+			"id bigserial NOT NULL,",
+			" ",
+			"ryx_",
+			"ryx_solicitud_estudio",
+			"ryx_solicitud_estudio_proyeccion",
+			"idx_ryx_"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/EntityRyx/ImgCtlMaterial.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1962,
+								1962
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 766.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1710.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "sigereq.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 271.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
