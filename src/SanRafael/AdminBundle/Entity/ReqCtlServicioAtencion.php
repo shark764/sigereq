@@ -1,6 +1,6 @@
 <?php
 
-namespace SanRafael\RequerimientosBundle\Entity;
+namespace SanRafael\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqCtlServicioAtencion
  *
  * @ORM\Table(name="req_ctl_servicio_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_servicio_atencion", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_AC47A494C5DC305D", columns={"id_atencion_padre"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\ServicioAtencionRepository")
+ * @ORM\Entity
  */
 class ReqCtlServicioAtencion
 {
@@ -39,21 +39,12 @@ class ReqCtlServicioAtencion
     /**
      * @var \ReqCtlServicioAtencion
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlServicioAtencion", inversedBy="atencionServiciosAtencion")
+     * @ORM\ManyToOne(targetEntity="ReqCtlServicioAtencion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_atencion_padre", referencedColumnName="id")
      * })
      */
     private $idAtencionPadre;
 
-    /**
-     * @ORM\OneToMany(targetEntity="ReqCtlServicioAtencion", mappedBy="idAtencionPadre", cascade={"all"}, orphanRemoval=true)
-     */
-    private $atencionServiciosAtencion;
-
-    public function __toString()
-    {
-        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
-    }
 
 }

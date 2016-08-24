@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqCtlEquipo
  *
- * @ORM\Table(name="req_ctl_equipo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_equipo", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_2DD770B369953885", columns={"id_empleado_asignado"}), @ORM\Index(name="IDX_2DD770B366D95F61", columns={"id_modelo_equipo"}), @ORM\Index(name="IDX_2DD770B3493768E4", columns={"id_tipo_equipo"}), @ORM\Index(name="IDX_2DD770B3AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_2DD770B3D8A5832B", columns={"id_user_reg"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\EquipoRepository")
+ * @ORM\Table(name="req_ctl_equipo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_equipo", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_2DD770B3493768E4", columns={"id_tipo_equipo"}), @ORM\Index(name="IDX_2DD770B366D95F61", columns={"id_modelo_equipo"}), @ORM\Index(name="IDX_2DD770B3D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_2DD770B3AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_2DD770B369953885", columns={"id_empleado_asignado"})})
+ * @ORM\Entity
  */
 class ReqCtlEquipo
 {
@@ -72,21 +72,14 @@ class ReqCtlEquipo
     private $idServicioAsignado;
 
     /**
-     * @var string
+     * @var \ReqCtlTipoEquipo
      *
-     * @ORM\Column(name="serie", type="string", length=16, nullable=true)
-     */
-    private $serie;
-
-    /**
-     * @var \ReqEmpleado
-     *
-     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\ManyToOne(targetEntity="ReqCtlTipoEquipo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_empleado_asignado", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_tipo_equipo", referencedColumnName="id")
      * })
      */
-    private $idEmpleadoAsignado;
+    private $idTipoEquipo;
 
     /**
      * @var \ReqCtlModeloEquipo
@@ -99,19 +92,19 @@ class ReqCtlEquipo
     private $idModeloEquipo;
 
     /**
-     * @var \ReqCtlTipoEquipo
+     * @var \FosUserUser
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlTipoEquipo")
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_tipo_equipo", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
      * })
      */
-    private $idTipoEquipo;
+    private $idUserReg;
 
     /**
-     * @var \Application\Sonata\UserBundle\Entity\User
+     * @var \FosUserUser
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_mod", referencedColumnName="id")
      * })
@@ -119,14 +112,14 @@ class ReqCtlEquipo
     private $idUserMod;
 
     /**
-     * @var \Application\Sonata\UserBundle\Entity\User
+     * @var \ReqEmpleado
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_empleado_asignado", referencedColumnName="id")
      * })
      */
-    private $idUserReg;
+    private $idEmpleadoAsignado;
 
     public function __toString()
     {

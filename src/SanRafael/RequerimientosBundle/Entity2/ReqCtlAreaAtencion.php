@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqCtlAreaAtencion
  *
  * @ORM\Table(name="req_ctl_area_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_area_atencion", columns={"codigo"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\AreaAtencionRepository")
+ * @ORM\Entity
  */
 class ReqCtlAreaAtencion
 {

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqRequerimiento
  *
- * @ORM\Table(name="req_requerimiento", indexes={@ORM\Index(name="IDX_AFDAE327DDC7A485", columns={"id_area_trabajo"}), @ORM\Index(name="IDX_AFDAE327166585C9", columns={"id_asigna_requerimiento"}), @ORM\Index(name="IDX_AFDAE32769953885", columns={"id_empleado_asignado"}), @ORM\Index(name="IDX_AFDAE327592B0EA1", columns={"id_empleado_registra"}), @ORM\Index(name="IDX_AFDAE3273B74E832", columns={"id_estado_requerimiento"}), @ORM\Index(name="IDX_AFDAE327A52AB836", columns={"id_requerimiento_padre"}), @ORM\Index(name="IDX_AFDAE327C2163A3E", columns={"id_solucion_requerimiento"}), @ORM\Index(name="IDX_AFDAE327CDEEECD8", columns={"id_tipo_trabajo"}), @ORM\Index(name="IDX_AFDAE327AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_AFDAE327D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="req_requerimiento", indexes={@ORM\Index(name="IDX_AFDAE327A52AB836", columns={"id_requerimiento_padre"}), @ORM\Index(name="IDX_AFDAE327DDC7A485", columns={"id_area_trabajo"}), @ORM\Index(name="IDX_AFDAE3273B74E832", columns={"id_estado_requerimiento"}), @ORM\Index(name="IDX_AFDAE327C2163A3E", columns={"id_solucion_requerimiento"}), @ORM\Index(name="IDX_AFDAE327CDEEECD8", columns={"id_tipo_trabajo"}), @ORM\Index(name="IDX_AFDAE327D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_AFDAE327AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_AFDAE32769953885", columns={"id_empleado_asignado"}), @ORM\Index(name="IDX_AFDAE327592B0EA1", columns={"id_empleado_registra"})})
  * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\RequerimientoRepository")
  */
 class ReqRequerimiento
@@ -121,11 +121,14 @@ class ReqRequerimiento
     private $solucion;
 
     /**
-     * @var \DateTime
+     * @var \ReqRequerimiento
      *
-     * @ORM\Column(name="fecha_asignacion", type="datetime", nullable=true)
+     * @ORM\ManyToOne(targetEntity="ReqRequerimiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_requerimiento_padre", referencedColumnName="id")
+     * })
      */
-    private $fechaAsignacion;
+    private $idRequerimientoPadre;
 
     /**
      * @var \ReqCtlAreaTrabajo
@@ -138,36 +141,6 @@ class ReqRequerimiento
     private $idAreaTrabajo;
 
     /**
-     * @var \ReqEmpleado
-     *
-     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_asigna_requerimiento", referencedColumnName="id")
-     * })
-     */
-    private $idAsignaRequerimiento;
-
-    /**
-     * @var \ReqEmpleado
-     *
-     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_empleado_asignado", referencedColumnName="id")
-     * })
-     */
-    private $idEmpleadoAsignado;
-
-    /**
-     * @var \ReqEmpleado
-     *
-     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_empleado_registra", referencedColumnName="id")
-     * })
-     */
-    private $idEmpleadoRegistra;
-
-    /**
      * @var \ReqCtlEstadoRequerimiento
      *
      * @ORM\ManyToOne(targetEntity="ReqCtlEstadoRequerimiento")
@@ -176,16 +149,6 @@ class ReqRequerimiento
      * })
      */
     private $idEstadoRequerimiento;
-
-    /**
-     * @var \ReqRequerimiento
-     *
-     * @ORM\ManyToOne(targetEntity="ReqRequerimiento")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_requerimiento_padre", referencedColumnName="id")
-     * })
-     */
-    private $idRequerimientoPadre;
 
     /**
      * @var \ReqCtlSolucionRequerimiento
@@ -208,9 +171,19 @@ class ReqRequerimiento
     private $idTipoTrabajo;
 
     /**
-     * @var \Application\Sonata\UserBundle\Entity\User
+     * @var \FosUserUser
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
+     * })
+     */
+    private $idUserReg;
+
+    /**
+     * @var \FosUserUser
+     *
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_mod", referencedColumnName="id")
      * })
@@ -218,14 +191,24 @@ class ReqRequerimiento
     private $idUserMod;
 
     /**
-     * @var \Application\Sonata\UserBundle\Entity\User
+     * @var \ReqEmpleado
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_empleado_asignado", referencedColumnName="id")
      * })
      */
-    private $idUserReg;
+    private $idEmpleadoAsignado;
+
+    /**
+     * @var \ReqEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_empleado_registra", referencedColumnName="id")
+     * })
+     */
+    private $idEmpleadoRegistra;
 
     public function __toString()
     {

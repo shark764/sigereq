@@ -39,17 +39,12 @@ class ReqCtlAreaTrabajo
     /**
      * @var \ReqCtlAreaTrabajo
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlAreaTrabajo", inversedBy="areaSubareasTrabajo")
+     * @ORM\ManyToOne(targetEntity="ReqCtlAreaTrabajo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_area_padre", referencedColumnName="id")
      * })
      */
     private $idAreaPadre;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ReqCtlAreaTrabajo", mappedBy="idAreaPadre", cascade={"all"}, orphanRemoval=true)
-     */
-    private $areaSubareasTrabajo;
 
     public function __toString()
     {

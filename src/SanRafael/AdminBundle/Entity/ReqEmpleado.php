@@ -1,6 +1,6 @@
 <?php
 
-namespace SanRafael\RequerimientosBundle\Entity;
+namespace SanRafael\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqEmpleado
  *
  * @ORM\Table(name="req_empleado", indexes={@ORM\Index(name="IDX_9ABCE3444F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_9ABCE3447D36E8FB", columns={"id_jefe_inmediato"}), @ORM\Index(name="IDX_9ABCE344B13434FE", columns={"id_tipo_empleado"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\EmpleadoRepository")
+ * @ORM\Entity
  */
 class ReqEmpleado
 {
@@ -101,9 +101,5 @@ class ReqEmpleado
      */
     private $idTipoEmpleado;
 
-    public function __toString()
-    {
-        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
-    }
 
 }

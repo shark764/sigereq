@@ -2,11 +2,11 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="ReqCtlEquipo" table="req_ctl_equipo">
     <indexes>
-      <index name="IDX_2DD770B3493768E4" columns="id_tipo_equipo"/>
-      <index name="IDX_2DD770B366D95F61" columns="id_modelo_equipo"/>
-      <index name="IDX_2DD770B3D8A5832B" columns="id_user_reg"/>
-      <index name="IDX_2DD770B3AC39DE56" columns="id_user_mod"/>
       <index name="IDX_2DD770B369953885" columns="id_empleado_asignado"/>
+      <index name="IDX_2DD770B366D95F61" columns="id_modelo_equipo"/>
+      <index name="IDX_2DD770B3493768E4" columns="id_tipo_equipo"/>
+      <index name="IDX_2DD770B3AC39DE56" columns="id_user_mod"/>
+      <index name="IDX_2DD770B3D8A5832B" columns="id_user_reg"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="idx_req_codigo_equipo" columns="codigo"/>
@@ -21,9 +21,10 @@
     <field name="fechaAdquisicion" type="datetime" column="fecha_adquisicion" nullable="true"/>
     <field name="fechaDespacho" type="datetime" column="fecha_despacho" nullable="true"/>
     <field name="idServicioAsignado" type="smallint" column="id_servicio_asignado" nullable="true"/>
-    <many-to-one field="idEmpleadoAsignado" target-entity="ReqEmpleado">
+    <field name="serie" type="string" column="serie" length="16" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser">
       <join-columns>
-        <join-column name="id_empleado_asignado" referenced-column-name="id"/>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idUserMod" target-entity="FosUserUser">
@@ -31,9 +32,9 @@
         <join-column name="id_user_mod" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idUserReg" target-entity="FosUserUser">
+    <many-to-one field="idTipoEquipo" target-entity="ReqCtlTipoEquipo">
       <join-columns>
-        <join-column name="id_user_reg" referenced-column-name="id"/>
+        <join-column name="id_tipo_equipo" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idModeloEquipo" target-entity="ReqCtlModeloEquipo">
@@ -41,9 +42,9 @@
         <join-column name="id_modelo_equipo" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idTipoEquipo" target-entity="ReqCtlTipoEquipo">
+    <many-to-one field="idEmpleadoAsignado" target-entity="ReqEmpleado">
       <join-columns>
-        <join-column name="id_tipo_equipo" referenced-column-name="id"/>
+        <join-column name="id_empleado_asignado" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

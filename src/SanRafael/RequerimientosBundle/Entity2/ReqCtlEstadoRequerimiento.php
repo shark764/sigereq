@@ -39,17 +39,12 @@ class ReqCtlEstadoRequerimiento
     /**
      * @var \ReqCtlEstadoRequerimiento
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlEstadoRequerimiento", inversedBy="estadoSubestadosRequerimiento")
+     * @ORM\ManyToOne(targetEntity="ReqCtlEstadoRequerimiento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_estado_padre", referencedColumnName="id")
      * })
      */
     private $idEstadoPadre;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ReqCtlEstadoRequerimiento", mappedBy="idEstadoPadre", cascade={"all"}, orphanRemoval=true)
-     */
-    private $estadoSubestadosRequerimiento;
 
     public function __toString()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SanRafael\RequerimientosBundle\Entity;
+namespace SanRafael\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqCtlAreaAtencion
  *
  * @ORM\Table(name="req_ctl_area_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_area_atencion", columns={"codigo"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\AreaAtencionRepository")
+ * @ORM\Entity
  */
 class ReqCtlAreaAtencion
 {
@@ -36,9 +36,5 @@ class ReqCtlAreaAtencion
      */
     private $codigo;
 
-    public function __toString()
-    {
-        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
-    }
 
 }

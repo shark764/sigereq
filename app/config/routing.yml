@@ -1,3 +1,8 @@
+san_rafael_admin:
+    resource: "@SanRafaelAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 san_rafael_requerimientos:
     resource: "@SanRafaelRequerimientosBundle/Controller/"
     type:     annotation

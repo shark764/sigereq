@@ -39,6 +39,7 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new SanRafael\RequerimientosBundle\SanRafaelRequerimientosBundle(),
+            new SanRafael\AdminBundle\SanRafaelAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

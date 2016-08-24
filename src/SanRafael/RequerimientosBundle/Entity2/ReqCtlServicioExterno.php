@@ -5,12 +5,12 @@ namespace SanRafael\RequerimientosBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ReqCtlAreaAtencion
+ * ReqCtlServicioExterno
  *
- * @ORM\Table(name="req_ctl_area_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_area_atencion", columns={"codigo"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\AreaAtencionRepository")
+ * @ORM\Table(name="req_ctl_servicio_externo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_servicio_externo", columns={"codigo"})})
+ * @ORM\Entity
  */
-class ReqCtlAreaAtencion
+class ReqCtlServicioExterno
 {
     /**
      * @var integer
@@ -18,14 +18,14 @@ class ReqCtlAreaAtencion
      * @ORM\Column(name="id", type="smallint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="req_ctl_area_atencion_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="req_ctl_servicio_externo_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
      */
     private $nombre;
 

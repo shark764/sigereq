@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqEmpleado
  *
- * @ORM\Table(name="req_empleado", indexes={@ORM\Index(name="IDX_9ABCE3444F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_9ABCE3447D36E8FB", columns={"id_jefe_inmediato"}), @ORM\Index(name="IDX_9ABCE344B13434FE", columns={"id_tipo_empleado"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\EmpleadoRepository")
+ * @ORM\Table(name="req_empleado", indexes={@ORM\Index(name="IDX_9ABCE344B13434FE", columns={"id_tipo_empleado"}), @ORM\Index(name="IDX_9ABCE3444F664059", columns={"id_cargo_empleado"})})
+ * @ORM\Entity
  */
 class ReqEmpleado
 {
@@ -72,26 +72,6 @@ class ReqEmpleado
     private $fechaNacimiento;
 
     /**
-     * @var \ReqCtlCargoEmpleado
-     *
-     * @ORM\ManyToOne(targetEntity="ReqCtlCargoEmpleado")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_cargo_empleado", referencedColumnName="id")
-     * })
-     */
-    private $idCargoEmpleado;
-
-    /**
-     * @var \ReqEmpleado
-     *
-     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_jefe_inmediato", referencedColumnName="id")
-     * })
-     */
-    private $idJefeInmediato;
-
-    /**
      * @var \ReqCtlTipoEmpleado
      *
      * @ORM\ManyToOne(targetEntity="ReqCtlTipoEmpleado")
@@ -100,6 +80,16 @@ class ReqEmpleado
      * })
      */
     private $idTipoEmpleado;
+
+    /**
+     * @var \ReqCtlCargoEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="ReqCtlCargoEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_cargo_empleado", referencedColumnName="id")
+     * })
+     */
+    private $idCargoEmpleado;
 
     public function __toString()
     {

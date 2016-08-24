@@ -1,6 +1,6 @@
 <?php
 
-namespace SanRafael\RequerimientosBundle\Entity;
+namespace SanRafael\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -52,9 +52,5 @@ class ReqAreaServicioAtencion
      */
     private $idServicioExterno;
 
-    public function __toString()
-    {
-        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
-    }
 
 }

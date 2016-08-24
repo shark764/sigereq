@@ -46,17 +46,12 @@ class ReqCtlMarcaEquipo
     /**
      * @var \ReqCtlMarcaEquipo
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlMarcaEquipo", inversedBy="grupoMarcasEquipo")
+     * @ORM\ManyToOne(targetEntity="ReqCtlMarcaEquipo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_marca_grupo", referencedColumnName="id")
      * })
      */
     private $idMarcaGrupo;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ReqCtlMarcaEquipo", mappedBy="idMarcaGrupo", cascade={"all"}, orphanRemoval=true)
-     */
-    private $grupoMarcasEquipo;
 
     public function __toString()
     {

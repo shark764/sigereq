@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqCtlModeloEquipo
  *
- * @ORM\Table(name="req_ctl_modelo_equipo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_modelo_equipo", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_CE079FB15463B414", columns={"id_marca_equipo"}), @ORM\Index(name="IDX_CE079FB1AE7383F0", columns={"id_modelo_grupo"})})
+ * @ORM\Table(name="req_ctl_modelo_equipo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_modelo_equipo", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_CE079FB1AE7383F0", columns={"id_modelo_grupo"}), @ORM\Index(name="IDX_CE079FB15463B414", columns={"id_marca_equipo"})})
  * @ORM\Entity
  */
 class ReqCtlModeloEquipo
@@ -44,6 +44,16 @@ class ReqCtlModeloEquipo
     private $caracteristicas;
 
     /**
+     * @var \ReqCtlModeloEquipo
+     *
+     * @ORM\ManyToOne(targetEntity="ReqCtlModeloEquipo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_modelo_grupo", referencedColumnName="id")
+     * })
+     */
+    private $idModeloGrupo;
+
+    /**
      * @var \ReqCtlMarcaEquipo
      *
      * @ORM\ManyToOne(targetEntity="ReqCtlMarcaEquipo")
@@ -52,21 +62,6 @@ class ReqCtlModeloEquipo
      * })
      */
     private $idMarcaEquipo;
-
-    /**
-     * @var \ReqCtlModeloEquipo
-     *
-     * @ORM\ManyToOne(targetEntity="ReqCtlModeloEquipo", inversedBy="grupoModelosEquipo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_modelo_grupo", referencedColumnName="id")
-     * })
-     */
-    private $idModeloGrupo;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ReqCtlModeloEquipo", mappedBy="idModeloGrupo", cascade={"all"}, orphanRemoval=true)
-     */
-    private $grupoModelosEquipo;
 
     public function __toString()
     {
