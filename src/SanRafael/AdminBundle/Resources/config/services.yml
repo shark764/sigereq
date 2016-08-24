@@ -1,0 +1,12 @@
+services:
+    san_rafael_admin.admin.req_empleado:
+        class: SanRafael\AdminBundle\Admin\ReqEmpleadoAdmin
+        arguments: [~, SanRafael\AdminBundle\Entity\ReqEmpleado, SanRafaelAdminBundle:ReqEmpleadoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqEmpleado}
+
+    san_rafael_admin.admin.req_empleado_area_servicio_atencion:
+        class: SanRafael\AdminBundle\Admin\ReqEmpleadoAreaServicioAtencionAdmin
+        arguments: [~, SanRafael\AdminBundle\Entity\ReqEmpleadoAreaServicioAtencion, SanRafaelAdminBundle:ReqEmpleadoAreaServicioAtencionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqEmpleadoAreaServicioAtencion}

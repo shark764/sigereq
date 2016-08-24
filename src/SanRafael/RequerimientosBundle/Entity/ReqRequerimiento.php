@@ -241,7 +241,7 @@ class ReqRequerimiento
 
     public function __toString()
     {
-        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
+        return $this->titulo ? mb_strtoupper(trim($this->titulo), 'utf-8') . ' | ' . $this->fechaHoraInicio->format('Y-m-d H:i:s A') : '';
     }
 
     /**
@@ -249,6 +249,10 @@ class ReqRequerimiento
      */
     public function __construct()
     {
+        $this->fechaCreacion = new \DateTime('now');
+        $this->fechaAsignacion = new \DateTime('now');
+        $this->fechaRecibido = new \DateTime('now');
+        $this->fechaHoraInicio = new \DateTime('now');
         $this->requerimientoSubsecuentes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

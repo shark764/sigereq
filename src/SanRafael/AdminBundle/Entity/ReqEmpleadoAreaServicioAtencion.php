@@ -49,5 +49,88 @@ class ReqEmpleadoAreaServicioAtencion
      */
     private $idAreaServicioAtencion;
 
+    public function __toString()
+    {
+        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
+    }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set habilitado
+     *
+     * @param boolean $habilitado
+     * @return ReqEmpleadoAreaServicioAtencion
+     */
+    public function setHabilitado($habilitado)
+    {
+        $this->habilitado = $habilitado;
+
+        return $this;
+    }
+
+    /**
+     * Get habilitado
+     *
+     * @return boolean 
+     */
+    public function getHabilitado()
+    {
+        return $this->habilitado;
+    }
+
+    /**
+     * Set idEmpleado
+     *
+     * @param \SanRafael\AdminBundle\Entity\ReqEmpleado $idEmpleado
+     * @return ReqEmpleadoAreaServicioAtencion
+     */
+    public function setIdEmpleado(\SanRafael\AdminBundle\Entity\ReqEmpleado $idEmpleado = null)
+    {
+        $this->idEmpleado = $idEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Get idEmpleado
+     *
+     * @return \SanRafael\AdminBundle\Entity\ReqEmpleado 
+     */
+    public function getIdEmpleado()
+    {
+        return $this->idEmpleado;
+    }
+
+    /**
+     * Set idAreaServicioAtencion
+     *
+     * @param \SanRafael\AdminBundle\Entity\ReqAreaServicioAtencion $idAreaServicioAtencion
+     * @return ReqEmpleadoAreaServicioAtencion
+     */
+    public function setIdAreaServicioAtencion(\SanRafael\AdminBundle\Entity\ReqAreaServicioAtencion $idAreaServicioAtencion = null)
+    {
+        $this->idAreaServicioAtencion = $idAreaServicioAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Get idAreaServicioAtencion
+     *
+     * @return \SanRafael\AdminBundle\Entity\ReqAreaServicioAtencion 
+     */
+    public function getIdAreaServicioAtencion()
+    {
+        return $this->idAreaServicioAtencion;
+    }
 }

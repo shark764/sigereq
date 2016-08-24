@@ -9,6 +9,7 @@ imports:
     - { resource: bundles/sonata_core.yml }
     - { resource: bundles/sonata_formatter.yml }
     - { resource: bundles/sonata_user.yml }
+    - { resource: @SanRafaelRequerimientosBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~
