@@ -84,7 +84,7 @@ class ReqEmpleado
     /**
      * @var \ReqEmpleado
      *
-     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado", inversedBy="empleadoSubordinados")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_jefe_inmediato", referencedColumnName="id")
      * })
@@ -100,6 +100,11 @@ class ReqEmpleado
      * })
      */
     private $idTipoEmpleado;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ReqEmpleado", mappedBy="idJefeInmediato", cascade={"all"}, orphanRemoval=true)
+     */
+    private $empleadoSubordinados;
 
     public function __toString()
     {

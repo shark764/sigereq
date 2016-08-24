@@ -39,12 +39,17 @@ class ReqCtlSolucionRequerimiento
     /**
      * @var \ReqCtlSolucionRequerimiento
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlSolucionRequerimiento")
+     * @ORM\ManyToOne(targetEntity="ReqCtlSolucionRequerimiento", inversedBy="solucionSolucionesRequerimiento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_solucion_padre", referencedColumnName="id")
      * })
      */
     private $idSolucionPadre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ReqCtlSolucionRequerimiento", mappedBy="idSolucionPadre", cascade={"all"}, orphanRemoval=true)
+     */
+    private $solucionSolucionesRequerimiento;
 
     public function __toString()
     {

@@ -31,6 +31,7 @@
     <field name="descripcionRequerimiento" type="text" column="descripcion_requerimiento" nullable="true"/>
     <field name="solucion" type="text" column="solucion" nullable="true"/>
     <field name="fechaAsignacion" type="datetime" column="fecha_asignacion" nullable="true"/>
+    <field name="fechaRecibido" type="datetime" column="fecha_recibido" nullable="true"/>
     <many-to-one field="idSolucionRequerimiento" target-entity="ReqCtlSolucionRequerimiento">
       <join-columns>
         <join-column name="id_solucion_requerimiento" referenced-column-name="id"/>

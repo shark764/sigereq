@@ -320,7 +320,8 @@ CREATE TABLE req_ctl_equipo (
     fecha_despacho timestamp without time zone,
     id_user_reg integer NOT NULL,
     id_user_mod integer,
-    id_servicio_asignado smallint
+    id_servicio_asignado smallint,
+    serie character varying(16)
 );
 
 
@@ -770,7 +771,8 @@ CREATE TABLE req_requerimiento (
     descripcion_requerimiento text,
     solucion text,
     fecha_asignacion timestamp without time zone,
-    id_asigna_requerimiento integer
+    id_asigna_requerimiento integer,
+    fecha_recibido timestamp without time zone
 );
 
 
@@ -920,6 +922,8 @@ ALTER TABLE ONLY req_requerimiento ALTER COLUMN id SET DEFAULT nextval('req_requ
 -- Data for Name: fos_user_group; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY fos_user_group (id, name, roles) FROM stdin;
+\.
 
 
 --
@@ -933,26 +937,33 @@ SELECT pg_catalog.setval('fos_user_group_id_seq', 1, false);
 -- Data for Name: fos_user_user; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-INSERT INTO fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code) VALUES (1, 'admin', 'admin', 'farid.hdz.64@gmail.com', 'farid.hdz.64@gmail.com', true, 'qe8kcle04sgw0oo48w8ssko80cgcccc', 'G5pGA/C+RRlnARla0DX3jmEL+KsEv+8vscuTFXyeyk9Zn7qNKi8U4FGZh+KSFuIYTImRllOYrcVKcdH7IFeceA==', NULL, false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', false, NULL, '2016-08-10 13:59:30', '2016-08-10 13:59:30', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL);
+COPY fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code) FROM stdin;
+1	admin	admin	farid.hdz.64@gmail.com	farid.hdz.64@gmail.com	t	qe8kcle04sgw0oo48w8ssko80cgcccc	G5pGA/C+RRlnARla0DX3jmEL+KsEv+8vscuTFXyeyk9Zn7qNKi8U4FGZh+KSFuIYTImRllOYrcVKcdH7IFeceA==	\N	f	f	\N	\N	\N	a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}	f	\N	2016-08-10 13:59:30	2016-08-10 13:59:30	\N	\N	\N	\N	\N	u	\N	\N	\N	\N	\N	null	\N	\N	null	\N	\N	null	\N	\N
+4	adminrequest	adminrequest	admin.request@gmail.com	admin.request@gmail.com	t	3vl8bdxfucqog88gwsoswg4cg048ckg	pn5P8d7TkK9/TOb4Sn85Bdr6pRw+3fwPIM3lFbnm9lbNpMp1ykFMiVb0XMwMX6jCE/up5b3Yj+Q/SLSfK1++tQ==	\N	f	f	\N	\N	\N	a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}	f	\N	2016-08-24 01:03:31	2016-08-24 01:03:31	\N	\N	\N	\N	\N	u	\N	\N	\N	\N	\N	null	\N	\N	null	\N	\N	null	\N	\N
+\.
 
 
 --
 -- Data for Name: fos_user_user_group; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY fos_user_user_group (user_id, group_id) FROM stdin;
+\.
 
 
 --
 -- Name: fos_user_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('fos_user_user_id_seq', 1, true);
+SELECT pg_catalog.setval('fos_user_user_id_seq', 4, true);
 
 
 --
 -- Data for Name: req_area_servicio_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_area_servicio_atencion (id, id_area_atencion, id_servicio_atencion, id_servicio_externo) FROM stdin;
+\.
 
 
 --
@@ -966,6 +977,8 @@ SELECT pg_catalog.setval('req_area_servicio_atencion_id_seq', 1, false);
 -- Data for Name: req_ctl_area_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_area_atencion (id, nombre, codigo) FROM stdin;
+\.
 
 
 --
@@ -979,20 +992,22 @@ SELECT pg_catalog.setval('req_ctl_area_atencion_id_seq', 1, false);
 -- Data for Name: req_ctl_area_trabajo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (3, 'Soporte Técnico', 'SPT', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (4, 'Soporte Técnico en Equipos Informáticos', 'SPQ', 3);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (5, 'Soporte Técnico en Sistemas Informáticos', 'SPS', 3);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (6, 'Ofimática', 'OFM', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (7, 'Comunicaciones de Datos', 'RCD', 2);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (8, 'Redes de Datos', 'RDT', 2);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (2, 'Redes y Comunicaciones de Datos', 'RDD', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (9, 'Seguridad Informática', 'SGI', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (10, 'Mantenimiento de Equipos Informáticos', 'MNT', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (11, 'Virus Informáticos', 'SVR', 9);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (12, 'Administrativo', 'ADM', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (1, 'Sistemas Informáticos', 'SIT', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (14, 'Desarrollo de Sistemas Informáticos', 'DSI', 1);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (15, 'Actualización de Sistemas Informáticos', 'ASI', 1);
+COPY req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) FROM stdin;
+3	Soporte Técnico	SPT	\N
+4	Soporte Técnico en Equipos Informáticos	SPQ	3
+5	Soporte Técnico en Sistemas Informáticos	SPS	3
+6	Ofimática	OFM	\N
+7	Comunicaciones de Datos	RCD	2
+8	Redes de Datos	RDT	2
+2	Redes y Comunicaciones de Datos	RDD	\N
+9	Seguridad Informática	SGI	\N
+10	Mantenimiento de Equipos Informáticos	MNT	\N
+11	Virus Informáticos	SVR	9
+12	Administrativo	ADM	\N
+1	Sistemas Informáticos	SIT	\N
+14	Desarrollo de Sistemas Informáticos	DSI	1
+15	Actualización de Sistemas Informáticos	ASI	1
+\.
 
 
 --
@@ -1006,6 +1021,8 @@ SELECT pg_catalog.setval('req_ctl_area_trabajo_id_seq', 15, true);
 -- Data for Name: req_ctl_cargo_empleado; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_cargo_empleado (id, nombre, codigo) FROM stdin;
+\.
 
 
 --
@@ -1019,6 +1036,8 @@ SELECT pg_catalog.setval('req_ctl_cargo_empleado_id_seq', 1, false);
 -- Data for Name: req_ctl_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_equipo (id, nombre, codigo, numero_inventario, id_empleado_asignado, id_tipo_equipo, id_modelo_equipo, caracteristicas, fecha_adquisicion, fecha_despacho, id_user_reg, id_user_mod, id_servicio_asignado, serie) FROM stdin;
+\.
 
 
 --
@@ -1032,6 +1051,8 @@ SELECT pg_catalog.setval('req_ctl_equipo_id_seq', 1, false);
 -- Data for Name: req_ctl_estado_requerimiento; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_estado_requerimiento (id, nombre, codigo, id_estado_padre) FROM stdin;
+\.
 
 
 --
@@ -1045,6 +1066,8 @@ SELECT pg_catalog.setval('req_ctl_estado_requerimiento_id_seq', 1, false);
 -- Data for Name: req_ctl_marca_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_marca_equipo (id, nombre, codigo, id_marca_grupo, caracteristicas) FROM stdin;
+\.
 
 
 --
@@ -1058,6 +1081,8 @@ SELECT pg_catalog.setval('req_ctl_marca_equipo_id_seq', 1, false);
 -- Data for Name: req_ctl_modelo_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_modelo_equipo (id, nombre, codigo, id_modelo_grupo, id_marca_equipo, caracteristicas) FROM stdin;
+\.
 
 
 --
@@ -1071,6 +1096,8 @@ SELECT pg_catalog.setval('req_ctl_modelo_equipo_id_seq', 1, false);
 -- Data for Name: req_ctl_servicio_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre) FROM stdin;
+\.
 
 
 --
@@ -1084,6 +1111,8 @@ SELECT pg_catalog.setval('req_ctl_servicio_atencion_id_seq', 1, false);
 -- Data for Name: req_ctl_servicio_externo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_servicio_externo (id, nombre, codigo) FROM stdin;
+\.
 
 
 --
@@ -1097,6 +1126,8 @@ SELECT pg_catalog.setval('req_ctl_servicio_externo_id_seq', 1, false);
 -- Data for Name: req_ctl_solucion_requerimiento; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre) FROM stdin;
+\.
 
 
 --
@@ -1110,6 +1141,8 @@ SELECT pg_catalog.setval('req_ctl_solucion_requerimiento_id_seq', 1, false);
 -- Data for Name: req_ctl_tipo_empleado; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_tipo_empleado (id, nombre, codigo) FROM stdin;
+\.
 
 
 --
@@ -1123,6 +1156,8 @@ SELECT pg_catalog.setval('req_ctl_tipo_empleado_id_seq', 1, false);
 -- Data for Name: req_ctl_tipo_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_ctl_tipo_equipo (id, nombre, codigo, id_tipo_padre, caracteristicas) FROM stdin;
+\.
 
 
 --
@@ -1136,8 +1171,10 @@ SELECT pg_catalog.setval('req_ctl_tipo_equipo_id_seq', 1, false);
 -- Data for Name: req_ctl_tipo_trabajo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-INSERT INTO req_ctl_tipo_trabajo (id, nombre, codigo) VALUES (1, 'Trabajo Correctivo       ', 'C');
-INSERT INTO req_ctl_tipo_trabajo (id, nombre, codigo) VALUES (2, 'Trabajo Preventivo       ', 'P');
+COPY req_ctl_tipo_trabajo (id, nombre, codigo) FROM stdin;
+1	Trabajo Correctivo       	C
+2	Trabajo Preventivo       	P
+\.
 
 
 --
@@ -1151,12 +1188,16 @@ SELECT pg_catalog.setval('req_ctl_tipo_trabajo_id_seq', 2, true);
 -- Data for Name: req_empleado; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_empleado (id, nombre, apellido, id_tipo_empleado, id_cargo_empleado, habilitado, correo_electronico, telefono_casa, telefono_celular, fecha_nacimiento, id_jefe_inmediato) FROM stdin;
+\.
 
 
 --
 -- Data for Name: req_empleado_area_servicio_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_empleado_area_servicio_atencion (id, id_area_servicio_atencion, id_empleado, habilitado) FROM stdin;
+\.
 
 
 --
@@ -1177,6 +1218,8 @@ SELECT pg_catalog.setval('req_empleado_id_seq', 1, false);
 -- Data for Name: req_requerimiento; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+COPY req_requerimiento (id, titulo, fecha_creacion, fecha_ultima_edicion, fecha_hora_inicio, fecha_hora_fin, repetir_por, dia_completo, color, id_requerimiento_padre, trabajo_requerido, id_equipo_solicitud, id_empleado_registra, id_empleado_asignado, id_area_trabajo, id_estado_requerimiento, id_tipo_trabajo, id_solucion_requerimiento, id_empleado_solicita, id_servicio_solicita, id_user_reg, id_user_mod, descripcion_requerimiento, solucion, fecha_asignacion, id_asigna_requerimiento, fecha_recibido) FROM stdin;
+\.
 
 
 --

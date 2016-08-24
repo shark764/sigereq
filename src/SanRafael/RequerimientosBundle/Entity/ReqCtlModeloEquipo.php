@@ -46,7 +46,7 @@ class ReqCtlModeloEquipo
     /**
      * @var \ReqCtlMarcaEquipo
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlMarcaEquipo")
+     * @ORM\ManyToOne(targetEntity="ReqCtlMarcaEquipo", inversedBy="marcaModelosEquipo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_marca_equipo", referencedColumnName="id")
      * })

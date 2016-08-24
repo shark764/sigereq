@@ -128,6 +128,13 @@ class ReqRequerimiento
     private $fechaAsignacion;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_recibido", type="datetime", nullable=true)
+     */
+    private $fechaRecibido;
+
+    /**
      * @var \ReqCtlAreaTrabajo
      *
      * @ORM\ManyToOne(targetEntity="ReqCtlAreaTrabajo")
@@ -180,7 +187,7 @@ class ReqRequerimiento
     /**
      * @var \ReqRequerimiento
      *
-     * @ORM\ManyToOne(targetEntity="ReqRequerimiento")
+     * @ORM\ManyToOne(targetEntity="ReqRequerimiento", inversedBy="requerimientoSubsecuentes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_requerimiento_padre", referencedColumnName="id")
      * })
@@ -226,6 +233,11 @@ class ReqRequerimiento
      * })
      */
     private $idUserReg;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ReqRequerimiento", mappedBy="idRequerimientoPadre", cascade={"all"}, orphanRemoval=true)
+     */
+    private $requerimientoSubsecuentes;
 
     public function __toString()
     {

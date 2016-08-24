@@ -58,6 +58,11 @@ class ReqCtlMarcaEquipo
      */
     private $grupoMarcasEquipo;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqCtlModeloEquipo", mappedBy="idMarcaEquipo", cascade={"all"}, orphanRemoval=true)
+     */
+    private $marcaModelosEquipo;
+
     public function __toString()
     {
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
