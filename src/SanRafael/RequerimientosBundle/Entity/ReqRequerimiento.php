@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqRequerimiento
  *
- * @ORM\Table(name="req_requerimiento", indexes={@ORM\Index(name="IDX_AFDAE327DDC7A485", columns={"id_area_trabajo"}), @ORM\Index(name="IDX_AFDAE327166585C9", columns={"id_asigna_requerimiento"}), @ORM\Index(name="IDX_AFDAE32769953885", columns={"id_empleado_asignado"}), @ORM\Index(name="IDX_AFDAE327592B0EA1", columns={"id_empleado_registra"}), @ORM\Index(name="IDX_AFDAE3273B74E832", columns={"id_estado_requerimiento"}), @ORM\Index(name="IDX_AFDAE327A52AB836", columns={"id_requerimiento_padre"}), @ORM\Index(name="IDX_AFDAE327C2163A3E", columns={"id_solucion_requerimiento"}), @ORM\Index(name="IDX_AFDAE327CDEEECD8", columns={"id_tipo_trabajo"}), @ORM\Index(name="IDX_AFDAE327AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_AFDAE327D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="req_requerimiento", indexes={@ORM\Index(name="IDX_AFDAE327DDC7A485", columns={"id_area_trabajo"}), @ORM\Index(name="IDX_AFDAE327166585C9", columns={"id_asigna_requerimiento"}), @ORM\Index(name="IDX_AFDAE32769953885", columns={"id_empleado_asignado"}), @ORM\Index(name="IDX_AFDAE327592B0EA1", columns={"id_empleado_registra"}), @ORM\Index(name="IDX_AFDAE3273B74E832", columns={"id_estado_requerimiento"}), @ORM\Index(name="IDX_AFDAE327A52AB836", columns={"id_requerimiento_padre"}), @ORM\Index(name="IDX_AFDAE327C2163A3E", columns={"id_solucion_requerimiento"}), @ORM\Index(name="IDX_AFDAE327CDEEECD8", columns={"id_tipo_trabajo"}), @ORM\Index(name="IDX_AFDAE327AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_AFDAE327D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_AFDAE3272737BBE4", columns={"id_trabajo_requerido"})})
  * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\RequerimientoRepository")
  */
 class ReqRequerimiento
@@ -81,9 +81,9 @@ class ReqRequerimiento
     /**
      * @var string
      *
-     * @ORM\Column(name="trabajo_requerido", type="text", nullable=false)
+     * @ORM\Column(name="descripcion", type="text", nullable=false)
      */
-    private $trabajoRequerido;
+    private $descripcion;
 
     /**
      * @var integer
@@ -233,6 +233,16 @@ class ReqRequerimiento
      * })
      */
     private $idUserReg;
+
+    /**
+     * @var \ReqCtlTrabajoRequerido
+     *
+     * @ORM\ManyToOne(targetEntity="ReqCtlTrabajoRequerido")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_trabajo_requerido", referencedColumnName="id")
+     * })
+     */
+    private $idTrabajoRequerido;
 
     /**
      * @ORM\OneToMany(targetEntity="ReqRequerimiento", mappedBy="idRequerimientoPadre", cascade={"all"}, orphanRemoval=true)
@@ -451,26 +461,26 @@ class ReqRequerimiento
     }
 
     /**
-     * Set trabajoRequerido
+     * Set descripcion
      *
-     * @param string $trabajoRequerido
+     * @param string $descripcion
      * @return ReqRequerimiento
      */
-    public function setTrabajoRequerido($trabajoRequerido)
+    public function setDescripcion($descripcion)
     {
-        $this->trabajoRequerido = $trabajoRequerido;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
 
     /**
-     * Get trabajoRequerido
+     * Get descripcion
      *
      * @return string 
      */
-    public function getTrabajoRequerido()
+    public function getDescripcion()
     {
-        return $this->trabajoRequerido;
+        return $this->descripcion;
     }
 
     /**
@@ -862,6 +872,29 @@ class ReqRequerimiento
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idTrabajoRequerido
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequerido
+     * @return ReqRequerimiento
+     */
+    public function setIdTrabajoRequerido(\SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequerido = null)
+    {
+        $this->idTrabajoRequerido = $idTrabajoRequerido;
+
+        return $this;
+    }
+
+    /**
+     * Get idTrabajoRequerido
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido 
+     */
+    public function getIdTrabajoRequerido()
+    {
+        return $this->idTrabajoRequerido;
     }
 
     /**

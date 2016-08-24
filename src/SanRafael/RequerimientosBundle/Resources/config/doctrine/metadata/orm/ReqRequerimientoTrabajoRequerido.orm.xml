@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ReqRequerimientoTrabajoRequerido" table="req_requerimiento_trabajo_requerido">
+    <indexes>
+      <index name="IDX_CEE38221EAC1F577" columns="id_requerimiento"/>
+      <index name="IDX_CEE382212737BBE4" columns="id_trabajo_requerido"/>
+      <index name="IDX_CEE38221E8234E65" columns="id_soluciona_requerimiento"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_req_requerimiento_trabajo_requerido" columns="id_requerimiento,id_trabajo_requerido"/>
+    </unique-constraints>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaInicio" type="datetime" column="fecha_inicio" nullable="true"/>
+    <field name="fechaFin" type="datetime" column="fecha_fin" nullable="true"/>
+    <field name="descripcion" type="text" column="descripcion" nullable="true"/>
+    <field name="solucion" type="text" column="solucion" nullable="true"/>
+    <field name="comentarios" type="string" column="comentarios" length="255" nullable="true"/>
+    <many-to-one field="idSolucionaRequerimiento" target-entity="ReqEmpleado">
+      <join-columns>
+        <join-column name="id_soluciona_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTrabajoRequerido" target-entity="ReqCtlTrabajoRequerido">
+      <join-columns>
+        <join-column name="id_trabajo_requerido" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idRequerimiento" target-entity="ReqRequerimiento">
+      <join-columns>
+        <join-column name="id_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

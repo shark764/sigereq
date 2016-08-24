@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqCtlSolucionRequerimiento
  *
  * @ORM\Table(name="req_ctl_solucion_requerimiento", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_solucion_requerimiento", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_A204D7AB1B0A8FB", columns={"id_solucion_padre"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\SolucionRequerimientoRepository")
  */
 class ReqCtlSolucionRequerimiento
 {
