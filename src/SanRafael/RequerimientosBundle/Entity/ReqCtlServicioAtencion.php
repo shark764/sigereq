@@ -56,4 +56,123 @@ class ReqCtlServicioAtencion
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->atencionServiciosAtencion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return ReqCtlServicioAtencion
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     * @return ReqCtlServicioAtencion
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string 
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set idAtencionPadre
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $idAtencionPadre
+     * @return ReqCtlServicioAtencion
+     */
+    public function setIdAtencionPadre(\SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $idAtencionPadre = null)
+    {
+        $this->idAtencionPadre = $idAtencionPadre;
+
+        return $this;
+    }
+
+    /**
+     * Get idAtencionPadre
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion 
+     */
+    public function getIdAtencionPadre()
+    {
+        return $this->idAtencionPadre;
+    }
+
+    /**
+     * Add atencionServiciosAtencion
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $atencionServiciosAtencion
+     * @return ReqCtlServicioAtencion
+     */
+    public function addAtencionServiciosAtencion(\SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $atencionServiciosAtencion)
+    {
+        $this->atencionServiciosAtencion[] = $atencionServiciosAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Remove atencionServiciosAtencion
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $atencionServiciosAtencion
+     */
+    public function removeAtencionServiciosAtencion(\SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $atencionServiciosAtencion)
+    {
+        $this->atencionServiciosAtencion->removeElement($atencionServiciosAtencion);
+    }
+
+    /**
+     * Get atencionServiciosAtencion
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAtencionServiciosAtencion()
+    {
+        return $this->atencionServiciosAtencion;
+    }
 }

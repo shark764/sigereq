@@ -73,4 +73,169 @@ class ReqCtlModeloEquipo
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->grupoModelosEquipo = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return ReqCtlModeloEquipo
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     * @return ReqCtlModeloEquipo
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string 
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set caracteristicas
+     *
+     * @param string $caracteristicas
+     * @return ReqCtlModeloEquipo
+     */
+    public function setCaracteristicas($caracteristicas)
+    {
+        $this->caracteristicas = $caracteristicas;
+
+        return $this;
+    }
+
+    /**
+     * Get caracteristicas
+     *
+     * @return string 
+     */
+    public function getCaracteristicas()
+    {
+        return $this->caracteristicas;
+    }
+
+    /**
+     * Set idMarcaEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlMarcaEquipo $idMarcaEquipo
+     * @return ReqCtlModeloEquipo
+     */
+    public function setIdMarcaEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlMarcaEquipo $idMarcaEquipo = null)
+    {
+        $this->idMarcaEquipo = $idMarcaEquipo;
+
+        return $this;
+    }
+
+    /**
+     * Get idMarcaEquipo
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlMarcaEquipo 
+     */
+    public function getIdMarcaEquipo()
+    {
+        return $this->idMarcaEquipo;
+    }
+
+    /**
+     * Set idModeloGrupo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $idModeloGrupo
+     * @return ReqCtlModeloEquipo
+     */
+    public function setIdModeloGrupo(\SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $idModeloGrupo = null)
+    {
+        $this->idModeloGrupo = $idModeloGrupo;
+
+        return $this;
+    }
+
+    /**
+     * Get idModeloGrupo
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo 
+     */
+    public function getIdModeloGrupo()
+    {
+        return $this->idModeloGrupo;
+    }
+
+    /**
+     * Add grupoModelosEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $grupoModelosEquipo
+     * @return ReqCtlModeloEquipo
+     */
+    public function addGrupoModelosEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $grupoModelosEquipo)
+    {
+        $this->grupoModelosEquipo[] = $grupoModelosEquipo;
+
+        return $this;
+    }
+
+    /**
+     * Remove grupoModelosEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $grupoModelosEquipo
+     */
+    public function removeGrupoModelosEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $grupoModelosEquipo)
+    {
+        $this->grupoModelosEquipo->removeElement($grupoModelosEquipo);
+    }
+
+    /**
+     * Get grupoModelosEquipo
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGrupoModelosEquipo()
+    {
+        return $this->grupoModelosEquipo;
+    }
 }

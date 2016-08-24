@@ -57,4 +57,83 @@ class ReqAreaServicioAtencion
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idAreaAtencion
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlAreaAtencion $idAreaAtencion
+     * @return ReqAreaServicioAtencion
+     */
+    public function setIdAreaAtencion(\SanRafael\RequerimientosBundle\Entity\ReqCtlAreaAtencion $idAreaAtencion = null)
+    {
+        $this->idAreaAtencion = $idAreaAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Get idAreaAtencion
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlAreaAtencion 
+     */
+    public function getIdAreaAtencion()
+    {
+        return $this->idAreaAtencion;
+    }
+
+    /**
+     * Set idServicioAtencion
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $idServicioAtencion
+     * @return ReqAreaServicioAtencion
+     */
+    public function setIdServicioAtencion(\SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion $idServicioAtencion = null)
+    {
+        $this->idServicioAtencion = $idServicioAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Get idServicioAtencion
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioAtencion 
+     */
+    public function getIdServicioAtencion()
+    {
+        return $this->idServicioAtencion;
+    }
+
+    /**
+     * Set idServicioExterno
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioExterno $idServicioExterno
+     * @return ReqAreaServicioAtencion
+     */
+    public function setIdServicioExterno(\SanRafael\RequerimientosBundle\Entity\ReqCtlServicioExterno $idServicioExterno = null)
+    {
+        $this->idServicioExterno = $idServicioExterno;
+
+        return $this;
+    }
+
+    /**
+     * Get idServicioExterno
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlServicioExterno 
+     */
+    public function getIdServicioExterno()
+    {
+        return $this->idServicioExterno;
+    }
 }

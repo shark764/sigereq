@@ -63,4 +63,146 @@ class ReqCtlTipoEquipo
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tipoSubtiposEquipo = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return ReqCtlTipoEquipo
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     * @return ReqCtlTipoEquipo
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string 
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set caracteristicas
+     *
+     * @param string $caracteristicas
+     * @return ReqCtlTipoEquipo
+     */
+    public function setCaracteristicas($caracteristicas)
+    {
+        $this->caracteristicas = $caracteristicas;
+
+        return $this;
+    }
+
+    /**
+     * Get caracteristicas
+     *
+     * @return string 
+     */
+    public function getCaracteristicas()
+    {
+        return $this->caracteristicas;
+    }
+
+    /**
+     * Set idTipoPadre
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $idTipoPadre
+     * @return ReqCtlTipoEquipo
+     */
+    public function setIdTipoPadre(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $idTipoPadre = null)
+    {
+        $this->idTipoPadre = $idTipoPadre;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoPadre
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo 
+     */
+    public function getIdTipoPadre()
+    {
+        return $this->idTipoPadre;
+    }
+
+    /**
+     * Add tipoSubtiposEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $tipoSubtiposEquipo
+     * @return ReqCtlTipoEquipo
+     */
+    public function addTipoSubtiposEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $tipoSubtiposEquipo)
+    {
+        $this->tipoSubtiposEquipo[] = $tipoSubtiposEquipo;
+
+        return $this;
+    }
+
+    /**
+     * Remove tipoSubtiposEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $tipoSubtiposEquipo
+     */
+    public function removeTipoSubtiposEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $tipoSubtiposEquipo)
+    {
+        $this->tipoSubtiposEquipo->removeElement($tipoSubtiposEquipo);
+    }
+
+    /**
+     * Get tipoSubtiposEquipo
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTipoSubtiposEquipo()
+    {
+        return $this->tipoSubtiposEquipo;
+    }
 }

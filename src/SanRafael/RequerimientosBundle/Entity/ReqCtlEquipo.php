@@ -133,4 +133,313 @@ class ReqCtlEquipo
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return ReqCtlEquipo
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     * @return ReqCtlEquipo
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string 
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set numeroInventario
+     *
+     * @param string $numeroInventario
+     * @return ReqCtlEquipo
+     */
+    public function setNumeroInventario($numeroInventario)
+    {
+        $this->numeroInventario = $numeroInventario;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroInventario
+     *
+     * @return string 
+     */
+    public function getNumeroInventario()
+    {
+        return $this->numeroInventario;
+    }
+
+    /**
+     * Set caracteristicas
+     *
+     * @param string $caracteristicas
+     * @return ReqCtlEquipo
+     */
+    public function setCaracteristicas($caracteristicas)
+    {
+        $this->caracteristicas = $caracteristicas;
+
+        return $this;
+    }
+
+    /**
+     * Get caracteristicas
+     *
+     * @return string 
+     */
+    public function getCaracteristicas()
+    {
+        return $this->caracteristicas;
+    }
+
+    /**
+     * Set fechaAdquisicion
+     *
+     * @param \DateTime $fechaAdquisicion
+     * @return ReqCtlEquipo
+     */
+    public function setFechaAdquisicion($fechaAdquisicion)
+    {
+        $this->fechaAdquisicion = $fechaAdquisicion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaAdquisicion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaAdquisicion()
+    {
+        return $this->fechaAdquisicion;
+    }
+
+    /**
+     * Set fechaDespacho
+     *
+     * @param \DateTime $fechaDespacho
+     * @return ReqCtlEquipo
+     */
+    public function setFechaDespacho($fechaDespacho)
+    {
+        $this->fechaDespacho = $fechaDespacho;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaDespacho
+     *
+     * @return \DateTime 
+     */
+    public function getFechaDespacho()
+    {
+        return $this->fechaDespacho;
+    }
+
+    /**
+     * Set idServicioAsignado
+     *
+     * @param integer $idServicioAsignado
+     * @return ReqCtlEquipo
+     */
+    public function setIdServicioAsignado($idServicioAsignado)
+    {
+        $this->idServicioAsignado = $idServicioAsignado;
+
+        return $this;
+    }
+
+    /**
+     * Get idServicioAsignado
+     *
+     * @return integer 
+     */
+    public function getIdServicioAsignado()
+    {
+        return $this->idServicioAsignado;
+    }
+
+    /**
+     * Set serie
+     *
+     * @param string $serie
+     * @return ReqCtlEquipo
+     */
+    public function setSerie($serie)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return string 
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * Set idEmpleadoAsignado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idEmpleadoAsignado
+     * @return ReqCtlEquipo
+     */
+    public function setIdEmpleadoAsignado(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idEmpleadoAsignado = null)
+    {
+        $this->idEmpleadoAsignado = $idEmpleadoAsignado;
+
+        return $this;
+    }
+
+    /**
+     * Get idEmpleadoAsignado
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqEmpleado 
+     */
+    public function getIdEmpleadoAsignado()
+    {
+        return $this->idEmpleadoAsignado;
+    }
+
+    /**
+     * Set idModeloEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $idModeloEquipo
+     * @return ReqCtlEquipo
+     */
+    public function setIdModeloEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo $idModeloEquipo = null)
+    {
+        $this->idModeloEquipo = $idModeloEquipo;
+
+        return $this;
+    }
+
+    /**
+     * Get idModeloEquipo
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlModeloEquipo 
+     */
+    public function getIdModeloEquipo()
+    {
+        return $this->idModeloEquipo;
+    }
+
+    /**
+     * Set idTipoEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $idTipoEquipo
+     * @return ReqCtlEquipo
+     */
+    public function setIdTipoEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo $idTipoEquipo = null)
+    {
+        $this->idTipoEquipo = $idTipoEquipo;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoEquipo
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEquipo 
+     */
+    public function getIdTipoEquipo()
+    {
+        return $this->idTipoEquipo;
+    }
+
+    /**
+     * Set idUserMod
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserMod
+     * @return ReqCtlEquipo
+     */
+    public function setIdUserMod(\Application\Sonata\UserBundle\Entity\User $idUserMod = null)
+    {
+        $this->idUserMod = $idUserMod;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserMod
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getIdUserMod()
+    {
+        return $this->idUserMod;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     * @return ReqCtlEquipo
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
 }

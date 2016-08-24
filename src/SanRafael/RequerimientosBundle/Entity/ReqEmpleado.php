@@ -111,4 +111,284 @@ class ReqEmpleado
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->empleadoSubordinados = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return ReqEmpleado
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set apellido
+     *
+     * @param string $apellido
+     * @return ReqEmpleado
+     */
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    /**
+     * Get apellido
+     *
+     * @return string 
+     */
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
+    /**
+     * Set habilitado
+     *
+     * @param boolean $habilitado
+     * @return ReqEmpleado
+     */
+    public function setHabilitado($habilitado)
+    {
+        $this->habilitado = $habilitado;
+
+        return $this;
+    }
+
+    /**
+     * Get habilitado
+     *
+     * @return boolean 
+     */
+    public function getHabilitado()
+    {
+        return $this->habilitado;
+    }
+
+    /**
+     * Set correoElectronico
+     *
+     * @param string $correoElectronico
+     * @return ReqEmpleado
+     */
+    public function setCorreoElectronico($correoElectronico)
+    {
+        $this->correoElectronico = $correoElectronico;
+
+        return $this;
+    }
+
+    /**
+     * Get correoElectronico
+     *
+     * @return string 
+     */
+    public function getCorreoElectronico()
+    {
+        return $this->correoElectronico;
+    }
+
+    /**
+     * Set telefonoCasa
+     *
+     * @param string $telefonoCasa
+     * @return ReqEmpleado
+     */
+    public function setTelefonoCasa($telefonoCasa)
+    {
+        $this->telefonoCasa = $telefonoCasa;
+
+        return $this;
+    }
+
+    /**
+     * Get telefonoCasa
+     *
+     * @return string 
+     */
+    public function getTelefonoCasa()
+    {
+        return $this->telefonoCasa;
+    }
+
+    /**
+     * Set telefonoCelular
+     *
+     * @param string $telefonoCelular
+     * @return ReqEmpleado
+     */
+    public function setTelefonoCelular($telefonoCelular)
+    {
+        $this->telefonoCelular = $telefonoCelular;
+
+        return $this;
+    }
+
+    /**
+     * Get telefonoCelular
+     *
+     * @return string 
+     */
+    public function getTelefonoCelular()
+    {
+        return $this->telefonoCelular;
+    }
+
+    /**
+     * Set fechaNacimiento
+     *
+     * @param \DateTime $fechaNacimiento
+     * @return ReqEmpleado
+     */
+    public function setFechaNacimiento($fechaNacimiento)
+    {
+        $this->fechaNacimiento = $fechaNacimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaNacimiento
+     *
+     * @return \DateTime 
+     */
+    public function getFechaNacimiento()
+    {
+        return $this->fechaNacimiento;
+    }
+
+    /**
+     * Set idCargoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlCargoEmpleado $idCargoEmpleado
+     * @return ReqEmpleado
+     */
+    public function setIdCargoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqCtlCargoEmpleado $idCargoEmpleado = null)
+    {
+        $this->idCargoEmpleado = $idCargoEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Get idCargoEmpleado
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlCargoEmpleado 
+     */
+    public function getIdCargoEmpleado()
+    {
+        return $this->idCargoEmpleado;
+    }
+
+    /**
+     * Set idJefeInmediato
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idJefeInmediato
+     * @return ReqEmpleado
+     */
+    public function setIdJefeInmediato(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idJefeInmediato = null)
+    {
+        $this->idJefeInmediato = $idJefeInmediato;
+
+        return $this;
+    }
+
+    /**
+     * Get idJefeInmediato
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqEmpleado 
+     */
+    public function getIdJefeInmediato()
+    {
+        return $this->idJefeInmediato;
+    }
+
+    /**
+     * Set idTipoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEmpleado $idTipoEmpleado
+     * @return ReqEmpleado
+     */
+    public function setIdTipoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEmpleado $idTipoEmpleado = null)
+    {
+        $this->idTipoEmpleado = $idTipoEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoEmpleado
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoEmpleado 
+     */
+    public function getIdTipoEmpleado()
+    {
+        return $this->idTipoEmpleado;
+    }
+
+    /**
+     * Add empleadoSubordinados
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $empleadoSubordinados
+     * @return ReqEmpleado
+     */
+    public function addEmpleadoSubordinado(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $empleadoSubordinados)
+    {
+        $this->empleadoSubordinados[] = $empleadoSubordinados;
+
+        return $this;
+    }
+
+    /**
+     * Remove empleadoSubordinados
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $empleadoSubordinados
+     */
+    public function removeEmpleadoSubordinado(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $empleadoSubordinados)
+    {
+        $this->empleadoSubordinados->removeElement($empleadoSubordinados);
+    }
+
+    /**
+     * Get empleadoSubordinados
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEmpleadoSubordinados()
+    {
+        return $this->empleadoSubordinados;
+    }
 }

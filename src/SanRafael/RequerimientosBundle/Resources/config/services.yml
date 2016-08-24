@@ -1,0 +1,6 @@
+services:
+    san_rafael_requerimientos.admin.req_ctl_equipo:
+        class: SanRafael\RequerimientosBundle\Admin\ReqCtlEquipoAdmin
+        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo, SanRafaelRequerimientosBundle:ReqCtlEquipoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlEquipo}
