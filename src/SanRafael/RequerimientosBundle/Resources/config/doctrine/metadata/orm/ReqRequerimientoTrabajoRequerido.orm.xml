@@ -3,8 +3,17 @@
   <entity name="ReqRequerimientoTrabajoRequerido" table="req_requerimiento_trabajo_requerido">
     <indexes>
       <index name="IDX_CEE38221EAC1F577" columns="id_requerimiento"/>
-      <index name="IDX_CEE382212737BBE4" columns="id_trabajo_requerido"/>
+      <index name="IDX_CEE38221C2163A3E" columns="id_solucion_requerimiento"/>
       <index name="IDX_CEE38221E8234E65" columns="id_soluciona_requerimiento"/>
+      <index name="IDX_CEE382212737BBE4" columns="id_trabajo_requerido"/>
+      <index name="IDX_CEE38221DDC7A485" columns="id_area_trabajo"/>
+      <index name="IDX_CEE38221166585C9" columns="id_asigna_requerimiento"/>
+      <index name="IDX_CEE3822169953885" columns="id_empleado_asignado"/>
+      <index name="IDX_CEE382213B74E832" columns="id_estado_requerimiento"/>
+      <index name="IDX_CEE38221D8A5832B" columns="id_user_reg"/>
+      <index name="IDX_CEE38221AC39DE56" columns="id_user_mod"/>
+      <index name="IDX_CEE38221CDEEECD8" columns="id_tipo_trabajo"/>
+      <index name="IDX_CEE38221592B0EA1" columns="id_empleado_registra"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="idx_req_requerimiento_trabajo_requerido" columns="id_requerimiento,id_trabajo_requerido"/>
@@ -13,6 +22,12 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="req_requerimiento_trabajo_requerido_id_seq" allocation-size="1" initial-value="1"/>
     </id>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="false">
+      <options>
+        <option name="default">(now())::timestamp(0) without time zone</option>
+      </options>
+    </field>
+    <field name="fechaHoraMod" type="datetime" column="fecha_hora_mod" nullable="true"/>
     <field name="fechaInicio" type="datetime" column="fecha_inicio" nullable="true"/>
     <field name="fechaFin" type="datetime" column="fecha_fin" nullable="true"/>
     <field name="descripcion" type="text" column="descripcion" nullable="true">
@@ -30,6 +45,51 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="idEquipoSolicitud" type="bigint" column="id_equipo_solicitud" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstadoRequerimiento" target-entity="ReqCtlEstadoRequerimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_estado_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUserMod" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_mod" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTipoTrabajo" target-entity="ReqCtlTipoTrabajo" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_tipo_trabajo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleadoRegistra" target-entity="ReqEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_empleado_registra" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleadoAsignado" target-entity="ReqEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_empleado_asignado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAsignaRequerimiento" target-entity="ReqEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_asigna_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSolucionRequerimiento" target-entity="ReqCtlSolucionRequerimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_solucion_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idSolucionaRequerimiento" target-entity="ReqEmpleado" fetch="LAZY">
       <join-columns>
         <join-column name="id_soluciona_requerimiento" referenced-column-name="id"/>
@@ -38,6 +98,11 @@
     <many-to-one field="idTrabajoRequerido" target-entity="ReqCtlTrabajoRequerido" fetch="LAZY">
       <join-columns>
         <join-column name="id_trabajo_requerido" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAreaTrabajo" target-entity="ReqCtlAreaTrabajo" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_area_trabajo" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idRequerimiento" target-entity="ReqRequerimiento" fetch="LAZY">
