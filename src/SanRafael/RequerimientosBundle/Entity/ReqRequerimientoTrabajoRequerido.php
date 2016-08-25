@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqRequerimientoTrabajoRequerido
  *
- * @ORM\Table(name="req_requerimiento_trabajo_requerido", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_requerimiento_trabajo_requerido", columns={"id_requerimiento", "id_trabajo_requerido"})}, indexes={@ORM\Index(name="IDX_CEE38221EAC1F577", columns={"id_requerimiento"}), @ORM\Index(name="IDX_CEE382212737BBE4", columns={"id_trabajo_requerido"}), @ORM\Index(name="IDX_CEE38221E8234E65", columns={"id_soluciona_requerimiento"})})
+ * @ORM\Table(name="req_requerimiento_trabajo_requerido", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_requerimiento_trabajo_requerido", columns={"id_requerimiento", "id_trabajo_requerido"})}, indexes={@ORM\Index(name="IDX_CEE38221CB86146E", columns={"id_equipo_solicitud"}), @ORM\Index(name="IDX_CEE38221EAC1F577", columns={"id_requerimiento"}), @ORM\Index(name="IDX_CEE38221E8234E65", columns={"id_soluciona_requerimiento"}), @ORM\Index(name="IDX_CEE38221166585C9", columns={"id_asigna_requerimiento"}), @ORM\Index(name="IDX_CEE3822169953885", columns={"id_empleado_asignado"}), @ORM\Index(name="IDX_CEE38221D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_CEE38221AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_CEE38221592B0EA1", columns={"id_empleado_registra"}), @ORM\Index(name="IDX_CEE38221CDEEECD8", columns={"id_tipo_trabajo"}), @ORM\Index(name="IDX_CEE382212737BBE4", columns={"id_trabajo_requerido"}), @ORM\Index(name="IDX_CEE38221DDC7A485", columns={"id_area_trabajo"}), @ORM\Index(name="IDX_CEE38221C2163A3E", columns={"id_solucion_requerimiento"}), @ORM\Index(name="IDX_CEE382213B74E832", columns={"id_estado_requerimiento"})})
  * @ORM\Entity
  */
 class ReqRequerimientoTrabajoRequerido
@@ -21,6 +21,20 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\SequenceGenerator(sequenceName="req_requerimiento_trabajo_requerido_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=false)
+     */
+    private $fechaHoraReg = '(now())::timestamp(0) without time zone';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
+     */
+    private $fechaHoraMod;
 
     /**
      * @var \DateTime
@@ -58,6 +72,16 @@ class ReqRequerimientoTrabajoRequerido
     private $comentarios;
 
     /**
+     * @var \ReqCtlEquipo
+     *
+     * @ORM\ManyToOne(targetEntity="ReqCtlEquipo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_equipo_solicitud", referencedColumnName="id")
+     * })
+     */
+    private $idEquipoSolicitud;
+
+    /**
      * @var \ReqRequerimiento
      *
      * @ORM\ManyToOne(targetEntity="ReqRequerimiento")
@@ -66,6 +90,76 @@ class ReqRequerimientoTrabajoRequerido
      * })
      */
     private $idRequerimiento;
+
+    /**
+     * @var \ReqEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_soluciona_requerimiento", referencedColumnName="id")
+     * })
+     */
+    private $idSolucionaRequerimiento;
+
+    /**
+     * @var \ReqEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_asigna_requerimiento", referencedColumnName="id")
+     * })
+     */
+    private $idAsignaRequerimiento;
+
+    /**
+     * @var \ReqEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_empleado_asignado", referencedColumnName="id")
+     * })
+     */
+    private $idEmpleadoAsignado;
+
+    /**
+     * @var \FosUserUser
+     *
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
+     * })
+     */
+    private $idUserReg;
+
+    /**
+     * @var \FosUserUser
+     *
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user_mod", referencedColumnName="id")
+     * })
+     */
+    private $idUserMod;
+
+    /**
+     * @var \ReqEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_empleado_registra", referencedColumnName="id")
+     * })
+     */
+    private $idEmpleadoRegistra;
+
+    /**
+     * @var \ReqCtlTipoTrabajo
+     *
+     * @ORM\ManyToOne(targetEntity="ReqCtlTipoTrabajo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_trabajo", referencedColumnName="id")
+     * })
+     */
+    private $idTipoTrabajo;
 
     /**
      * @var \ReqCtlTrabajoRequerido
@@ -78,216 +172,35 @@ class ReqRequerimientoTrabajoRequerido
     private $idTrabajoRequerido;
 
     /**
-     * @var \ReqEmpleado
+     * @var \ReqCtlAreaTrabajo
      *
-     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\ManyToOne(targetEntity="ReqCtlAreaTrabajo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_soluciona_requerimiento", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_area_trabajo", referencedColumnName="id")
      * })
      */
-    private $idSolucionaRequerimiento;
-
-
+    private $idAreaTrabajo;
 
     /**
-     * Get id
+     * @var \ReqCtlSolucionRequerimiento
      *
-     * @return integer
+     * @ORM\ManyToOne(targetEntity="ReqCtlSolucionRequerimiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_solucion_requerimiento", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $idSolucionRequerimiento;
 
     /**
-     * Set fechaInicio
+     * @var \ReqCtlEstadoRequerimiento
      *
-     * @param \DateTime $fechaInicio
-     *
-     * @return ReqRequerimientoTrabajoRequerido
+     * @ORM\ManyToOne(targetEntity="ReqCtlEstadoRequerimiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estado_requerimiento", referencedColumnName="id")
+     * })
      */
-    public function setFechaInicio($fechaInicio)
-    {
-        $this->fechaInicio = $fechaInicio;
+    private $idEstadoRequerimiento;
 
-        return $this;
-    }
 
-    /**
-     * Get fechaInicio
-     *
-     * @return \DateTime
-     */
-    public function getFechaInicio()
-    {
-        return $this->fechaInicio;
-    }
-
-    /**
-     * Set fechaFin
-     *
-     * @param \DateTime $fechaFin
-     *
-     * @return ReqRequerimientoTrabajoRequerido
-     */
-    public function setFechaFin($fechaFin)
-    {
-        $this->fechaFin = $fechaFin;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaFin
-     *
-     * @return \DateTime
-     */
-    public function getFechaFin()
-    {
-        return $this->fechaFin;
-    }
-
-    /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     *
-     * @return ReqRequerimientoTrabajoRequerido
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcion
-     *
-     * @return string
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
-    }
-
-    /**
-     * Set solucion
-     *
-     * @param string $solucion
-     *
-     * @return ReqRequerimientoTrabajoRequerido
-     */
-    public function setSolucion($solucion)
-    {
-        $this->solucion = $solucion;
-
-        return $this;
-    }
-
-    /**
-     * Get solucion
-     *
-     * @return string
-     */
-    public function getSolucion()
-    {
-        return $this->solucion;
-    }
-
-    /**
-     * Set comentarios
-     *
-     * @param string $comentarios
-     *
-     * @return ReqRequerimientoTrabajoRequerido
-     */
-    public function setComentarios($comentarios)
-    {
-        $this->comentarios = $comentarios;
-
-        return $this;
-    }
-
-    /**
-     * Get comentarios
-     *
-     * @return string
-     */
-    public function getComentarios()
-    {
-        return $this->comentarios;
-    }
-
-    /**
-     * Set idRequerimiento
-     *
-     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimiento $idRequerimiento
-     *
-     * @return ReqRequerimientoTrabajoRequerido
-     */
-    public function setIdRequerimiento(\SanRafael\RequerimientosBundle\Entity\ReqRequerimiento $idRequerimiento = null)
-    {
-        $this->idRequerimiento = $idRequerimiento;
-
-        return $this;
-    }
-
-    /**
-     * Get idRequerimiento
-     *
-     * @return \SanRafael\RequerimientosBundle\Entity\ReqRequerimiento
-     */
-    public function getIdRequerimiento()
-    {
-        return $this->idRequerimiento;
-    }
-
-    /**
-     * Set idTrabajoRequerido
-     *
-     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequerido
-     *
-     * @return ReqRequerimientoTrabajoRequerido
-     */
-    public function setIdTrabajoRequerido(\SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequerido = null)
-    {
-        $this->idTrabajoRequerido = $idTrabajoRequerido;
-
-        return $this;
-    }
-
-    /**
-     * Get idTrabajoRequerido
-     *
-     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido
-     */
-    public function getIdTrabajoRequerido()
-    {
-        return $this->idTrabajoRequerido;
-    }
-
-    /**
-     * Set idSolucionaRequerimiento
-     *
-     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idSolucionaRequerimiento
-     *
-     * @return ReqRequerimientoTrabajoRequerido
-     */
-    public function setIdSolucionaRequerimiento(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idSolucionaRequerimiento = null)
-    {
-        $this->idSolucionaRequerimiento = $idSolucionaRequerimiento;
-
-        return $this;
-    }
-
-    /**
-     * Get idSolucionaRequerimiento
-     *
-     * @return \SanRafael\RequerimientosBundle\Entity\ReqEmpleado
-     */
-    public function getIdSolucionaRequerimiento()
-    {
-        return $this->idSolucionaRequerimiento;
-    }
 }
+

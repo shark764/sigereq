@@ -7,7 +7,7 @@
     <unique-constraints>
       <unique-constraint name="idx_req_codigo_tipo_servicio" columns="codigo"/>
     </unique-constraints>
-    <id name="id" type="integer" column="id">
+    <id name="id" type="smallint" column="id">
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="req_ctl_tipo_servicio_id_seq" allocation-size="1" initial-value="1"/>
     </id>

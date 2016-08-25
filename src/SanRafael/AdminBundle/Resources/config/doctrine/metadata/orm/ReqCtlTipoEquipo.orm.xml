@@ -14,12 +14,13 @@
     <field name="nombre" type="string" column="nombre" length="75" nullable="false">
       <options>
         <option name="fixed"/>
+        <option name="default">Computadora de escritorio</option>
       </options>
     </field>
     <field name="codigo" type="string" column="codigo" length="3" nullable="false">
       <options>
         <option name="fixed">1</option>
-        <option name="default">Computadora de escritorio</option>
+        <option name="default">DKT</option>
       </options>
     </field>
     <field name="caracteristicas" type="text" column="caracteristicas" nullable="true">

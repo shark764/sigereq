@@ -1,9 +1,9 @@
 services:
-    san_rafael_requerimientos.admin.req_ctl_equipo:
-        class: SanRafael\RequerimientosBundle\Admin\ReqCtlEquipoAdmin
-        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo, SanRafaelRequerimientosBundle:ReqCtlEquipoAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlEquipo}
+#    san_rafael_requerimientos.admin.req_ctl_equipo:
+#        class: SanRafael\RequerimientosBundle\Admin\ReqCtlEquipoAdmin
+#        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo, SanRafaelRequerimientosBundle:ReqCtlEquipoAdmin]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlEquipo}
 
 #    san_rafael_requerimientos.admin.req_requerimiento:
 #        class: SanRafael\RequerimientosBundle\Admin\ReqRequerimientoAdmin
@@ -11,11 +11,11 @@ services:
 #        tags:
 #            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqRequerimiento}
 
-    san_rafael_requerimientos.admin.req_ctl_area_trabajo:
-        class: SanRafael\RequerimientosBundle\Admin\ReqCtlAreaTrabajoAdmin
-        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlAreaTrabajo, SanRafaelRequerimientosBundle:ReqCtlAreaTrabajoAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlAreaTrabajo}
+#    san_rafael_requerimientos.admin.req_ctl_area_trabajo:
+#        class: SanRafael\RequerimientosBundle\Admin\ReqCtlAreaTrabajoAdmin
+#        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlAreaTrabajo, SanRafaelRequerimientosBundle:ReqCtlAreaTrabajoAdmin]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlAreaTrabajo}
 
     san_rafael_requerimientos.admin.req_ctl_marca_equipo:
         class: SanRafael\RequerimientosBundle\Admin\ReqCtlMarcaEquipoAdmin
@@ -64,3 +64,21 @@ services:
         arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqRequerimiento, SanRafaelRequerimientosBundle:ReqRequerimientoAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: ReqRequerimiento}
+
+    san_rafael_requerimientos.admin.req_ctl_area_trabajo:
+        class: SanRafael\RequerimientosBundle\Admin\ReqCtlAreaTrabajoAdmin
+        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlAreaTrabajo, SanRafaelRequerimientosBundle:ReqCtlAreaTrabajoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlAreaTrabajo}
+
+#    san_rafael_requerimientos.admin.req_ctl_equipo:
+#        class: SanRafael\RequerimientosBundle\Admin\ReqCtlEquipoAdmin
+#        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo, SanRafaelRequerimientosBundle:ReqCtlEquipoAdmin]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlEquipo}
+
+    san_rafael_requerimientos.admin.req_ctl_equipo:
+        class: SanRafael\RequerimientosBundle\Admin\ReqCtlEquipoAdmin
+        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo, SanRafaelRequerimientosBundle:ReqCtlEquipoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlEquipo}
