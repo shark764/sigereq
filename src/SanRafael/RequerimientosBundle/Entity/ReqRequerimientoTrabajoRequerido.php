@@ -88,4 +88,206 @@ class ReqRequerimientoTrabajoRequerido
     private $idSolucionaRequerimiento;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaInicio
+     *
+     * @param \DateTime $fechaInicio
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setFechaInicio($fechaInicio)
+    {
+        $this->fechaInicio = $fechaInicio;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaInicio
+     *
+     * @return \DateTime
+     */
+    public function getFechaInicio()
+    {
+        return $this->fechaInicio;
+    }
+
+    /**
+     * Set fechaFin
+     *
+     * @param \DateTime $fechaFin
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setFechaFin($fechaFin)
+    {
+        $this->fechaFin = $fechaFin;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaFin
+     *
+     * @return \DateTime
+     */
+    public function getFechaFin()
+    {
+        return $this->fechaFin;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set solucion
+     *
+     * @param string $solucion
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setSolucion($solucion)
+    {
+        $this->solucion = $solucion;
+
+        return $this;
+    }
+
+    /**
+     * Get solucion
+     *
+     * @return string
+     */
+    public function getSolucion()
+    {
+        return $this->solucion;
+    }
+
+    /**
+     * Set comentarios
+     *
+     * @param string $comentarios
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setComentarios($comentarios)
+    {
+        $this->comentarios = $comentarios;
+
+        return $this;
+    }
+
+    /**
+     * Get comentarios
+     *
+     * @return string
+     */
+    public function getComentarios()
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * Set idRequerimiento
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimiento $idRequerimiento
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setIdRequerimiento(\SanRafael\RequerimientosBundle\Entity\ReqRequerimiento $idRequerimiento = null)
+    {
+        $this->idRequerimiento = $idRequerimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get idRequerimiento
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqRequerimiento
+     */
+    public function getIdRequerimiento()
+    {
+        return $this->idRequerimiento;
+    }
+
+    /**
+     * Set idTrabajoRequerido
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequerido
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setIdTrabajoRequerido(\SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequerido = null)
+    {
+        $this->idTrabajoRequerido = $idTrabajoRequerido;
+
+        return $this;
+    }
+
+    /**
+     * Get idTrabajoRequerido
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido
+     */
+    public function getIdTrabajoRequerido()
+    {
+        return $this->idTrabajoRequerido;
+    }
+
+    /**
+     * Set idSolucionaRequerimiento
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idSolucionaRequerimiento
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function setIdSolucionaRequerimiento(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idSolucionaRequerimiento = null)
+    {
+        $this->idSolucionaRequerimiento = $idSolucionaRequerimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get idSolucionaRequerimiento
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqEmpleado
+     */
+    public function getIdSolucionaRequerimiento()
+    {
+        return $this->idSolucionaRequerimiento;
+    }
 }

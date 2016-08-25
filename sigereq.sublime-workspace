@@ -87,6 +87,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgLecturaAdmin.php",
+			"settings":
+			{
+				"buffer_size": 54457,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 5650,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaTrabajoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 1576,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+			"settings":
+			{
+				"buffer_size": 22592,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -122,17 +154,23 @@
 	[
 		"/home/farid/NetBeansProjects/sigereq",
 		"/home/farid/NetBeansProjects/sigereq/app/config",
+		"/home/farid/NetBeansProjects/sigereq/app/config/bundles",
 		"/home/farid/NetBeansProjects/sigereq/src",
 		"/home/farid/NetBeansProjects/sigereq/src/Application/Sonata",
 		"/home/farid/NetBeansProjects/sigereq/src/Application/Sonata/UserBundle",
-		"/home/farid/NetBeansProjects/sigereq/src/Application/Sonata/UserBundle/Resources",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle"
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin"
 	],
 	"file_history":
 	[
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimientoTrabajoRequerido.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/app/config/config.yml",
+		"/home/farid/NetBeansProjects/minsalsiaps/composer.json",
+		"/home/farid/NetBeansProjects/sigereq/composer.json",
+		"/home/farid/NetBeansProjects/sigereq/app/AppKernel.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimientoTrabajoRequerido.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqEmpleado.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqEmpleadoAreaServicioAtencion.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTrabajoRequerido.php",
@@ -140,10 +178,8 @@
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Controller/ImgCitaAdminController.php",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Entity/ImgCita.php",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Controller/ImgBloqueoAgendaAdminController.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgLecturaAdmin.php",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgCtlProyeccionAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/app/config/config.yml",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/EntityRyx/ImgCtlMaterial.php",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Entity/ImgBloqueoAgenda.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlCargoEmpleado.php",
@@ -217,6 +253,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"fecha_ultima_edicion",
+			"fecha_creacion",
+			"fechaUltimaEdicion",
+			"FechaUltimaEdicion",
+			"FechaCreacion",
+			"fechaCreacion",
 			"FosUserUser",
 			"loop.last",
 			"resultsPerColumn",
@@ -276,6 +318,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"fecha_hora_mod",
+			"fecha_hora_reg",
+			"fechaHoraMod",
+			"FechaHoraMod",
+			"FechaHoraReg",
+			"fechaHoraReg",
 			"Application\\Sonata\\UserBundle\\Entity\\User",
 			"loop.last",
 			"RESULTS_PER_COLUMN",
@@ -318,8 +366,129 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgLecturaAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 54457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16277,
+								16277
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5204.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5650,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5168,
+								5168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1665.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaTrabajoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1576,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								778,
+								778
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22592,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1874,
+								1874
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 14027.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],

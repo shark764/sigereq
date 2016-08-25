@@ -9,10 +9,19 @@
     </unique-constraints>
     <id name="id" type="smallint" column="id">
       <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="req_ctl_servicio_atencion_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="nombre" type="string" column="nombre" length="100" nullable="false"/>
-    <field name="codigo" type="string" column="codigo" nullable="true"/>
-    <many-to-one field="idAtencionPadre" target-entity="ReqCtlServicioAtencion">
+    <field name="nombre" type="string" column="nombre" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="6" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <many-to-one field="idAtencionPadre" target-entity="ReqCtlServicioAtencion" fetch="LAZY">
       <join-columns>
         <join-column name="id_atencion_padre" referenced-column-name="id"/>
       </join-columns>

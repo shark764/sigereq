@@ -11,44 +11,73 @@
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="req_empleado_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="nombre" type="string" column="nombre" length="50" nullable="false"/>
-    <field name="apellido" type="string" column="apellido" length="50" nullable="false"/>
-    <field name="habilitado" type="boolean" column="habilitado" nullable="true"/>
-    <field name="correoElectronico" type="string" column="correo_electronico" length="100" nullable="true"/>
-    <field name="telefonoCasa" type="string" column="telefono_casa" nullable="true"/>
-    <field name="telefonoCelular" type="string" column="telefono_celular" nullable="true"/>
+    <field name="nombre" type="string" column="nombre" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellido" type="string" column="apellido" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="habilitado" type="boolean" column="habilitado" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="correoElectronico" type="string" column="correo_electronico" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telefonoCasa" type="string" column="telefono_casa" length="10" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="telefonoCelular" type="string" column="telefono_celular" length="10" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
     <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="true"/>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
     <field name="fechaHoraMod" type="datetime" column="fecha_hora_mod" nullable="true"/>
     <field name="horaNacimiento" type="time" column="hora_nacimiento" nullable="true"/>
-    <field name="sexo" type="boolean" column="sexo" nullable="true"/>
-    <many-to-one field="idUserMod" target-entity="FosUserUser">
+    <field name="sexo" type="boolean" column="sexo" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="idUserMod" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_mod" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idAreaServicioAtencion" target-entity="ReqAreaServicioAtencion">
+    <many-to-one field="idAreaServicioAtencion" target-entity="ReqAreaServicioAtencion" fetch="LAZY">
       <join-columns>
         <join-column name="id_area_servicio_atencion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idUserReg" target-entity="FosUserUser">
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idTipoEmpleado" target-entity="ReqCtlTipoEmpleado">
+    <many-to-one field="idTipoEmpleado" target-entity="ReqCtlTipoEmpleado" fetch="LAZY">
       <join-columns>
         <join-column name="id_tipo_empleado" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idJefeInmediato" target-entity="ReqEmpleado">
+    <many-to-one field="idJefeInmediato" target-entity="ReqEmpleado" fetch="LAZY">
       <join-columns>
         <join-column name="id_jefe_inmediato" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idCargoEmpleado" target-entity="ReqCtlCargoEmpleado">
+    <many-to-one field="idCargoEmpleado" target-entity="ReqCtlCargoEmpleado" fetch="LAZY">
       <join-columns>
         <join-column name="id_cargo_empleado" referenced-column-name="id"/>
       </join-columns>

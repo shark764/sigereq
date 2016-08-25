@@ -10,14 +10,19 @@
     </unique-constraints>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="req_empleado_area_servicio_atencion_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="habilitado" type="boolean" column="habilitado" nullable="true"/>
-    <many-to-one field="idAreaServicioAtencion" target-entity="ReqAreaServicioAtencion">
+    <field name="habilitado" type="boolean" column="habilitado" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="idAreaServicioAtencion" target-entity="ReqAreaServicioAtencion" fetch="LAZY">
       <join-columns>
         <join-column name="id_area_servicio_atencion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idEmpleado" target-entity="ReqEmpleado">
+    <many-to-one field="idEmpleado" target-entity="ReqEmpleado" fetch="LAZY">
       <join-columns>
         <join-column name="id_empleado" referenced-column-name="id"/>
       </join-columns>

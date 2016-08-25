@@ -6,8 +6,17 @@
     </unique-constraints>
     <id name="id" type="smallint" column="id">
       <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="req_ctl_area_atencion_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="nombre" type="string" column="nombre" length="50" nullable="false"/>
-    <field name="codigo" type="string" column="codigo" nullable="true"/>
+    <field name="nombre" type="string" column="nombre" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="3" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

@@ -5,11 +5,11 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: ReqCtlEquipo}
 
-    san_rafael_requerimientos.admin.req_requerimiento:
-        class: SanRafael\RequerimientosBundle\Admin\ReqRequerimientoAdmin
-        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqRequerimiento, SanRafaelRequerimientosBundle:ReqRequerimientoAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqRequerimiento}
+#    san_rafael_requerimientos.admin.req_requerimiento:
+#        class: SanRafael\RequerimientosBundle\Admin\ReqRequerimientoAdmin
+#        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqRequerimiento, SanRafaelRequerimientosBundle:ReqRequerimientoAdmin]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqRequerimiento}
 
     san_rafael_requerimientos.admin.req_ctl_area_trabajo:
         class: SanRafael\RequerimientosBundle\Admin\ReqCtlAreaTrabajoAdmin
@@ -52,3 +52,15 @@ services:
         arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqEmpleadoAreaServicioAtencion, SanRafaelRequerimientosBundle:ReqEmpleadoAreaServicioAtencionAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: ReqEmpleadoAreaServicioAtencion}
+
+#    san_rafael_requerimientos.admin.req_requerimiento:
+#        class: SanRafael\RequerimientosBundle\Admin\ReqRequerimientoAdmin
+#        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqRequerimiento, SanRafaelRequerimientosBundle:ReqRequerimientoAdmin]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqRequerimiento}
+
+    san_rafael_requerimientos.admin.req_requerimiento:
+        class: SanRafael\RequerimientosBundle\Admin\ReqRequerimientoAdmin
+        arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqRequerimiento, SanRafaelRequerimientosBundle:ReqRequerimientoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ReqRequerimiento}

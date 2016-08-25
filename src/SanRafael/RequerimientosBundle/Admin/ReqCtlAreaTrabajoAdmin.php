@@ -29,6 +29,7 @@ class ReqCtlAreaTrabajoAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('idAreaPadre')
             ->add('nombre')
             ->add('codigo')
             ->add('_action', 'actions', array(

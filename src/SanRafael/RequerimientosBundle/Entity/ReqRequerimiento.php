@@ -32,16 +32,16 @@ class ReqRequerimiento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_creacion", type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=false)
      */
-    private $fechaCreacion = '(now())::timestamp(0) without time zone';
+    private $fechaHoraReg = '(now())::timestamp(0) without time zone';
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ultima_edicion", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
      */
-    private $fechaUltimaEdicion;
+    private $fechaHoraMod;
 
     /**
      * @var \DateTime
@@ -133,6 +133,13 @@ class ReqRequerimiento
      * @ORM\Column(name="fecha_recibido", type="datetime", nullable=true)
      */
     private $fechaRecibido;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_digitacion", type="datetime", nullable=true)
+     */
+    private $fechaDigitacion;
 
     /**
      * @var \ReqCtlAreaTrabajo
@@ -259,7 +266,7 @@ class ReqRequerimiento
      */
     public function __construct()
     {
-        $this->fechaCreacion = new \DateTime('now');
+        $this->fechaHoraReg = new \DateTime('now');
         $this->fechaAsignacion = new \DateTime('now');
         $this->fechaRecibido = new \DateTime('now');
         $this->fechaHoraInicio = new \DateTime('now');
@@ -300,49 +307,49 @@ class ReqRequerimiento
     }
 
     /**
-     * Set fechaCreacion
+     * Set fechaHoraReg
      *
-     * @param \DateTime $fechaCreacion
+     * @param \DateTime $fechaHoraReg
      * @return ReqRequerimiento
      */
-    public function setFechaCreacion($fechaCreacion)
+    public function setFechaHoraReg($fechaHoraReg)
     {
-        $this->fechaCreacion = $fechaCreacion;
+        $this->fechaHoraReg = $fechaHoraReg;
 
         return $this;
     }
 
     /**
-     * Get fechaCreacion
+     * Get fechaHoraReg
      *
      * @return \DateTime 
      */
-    public function getFechaCreacion()
+    public function getFechaHoraReg()
     {
-        return $this->fechaCreacion;
+        return $this->fechaHoraReg;
     }
 
     /**
-     * Set fechaUltimaEdicion
+     * Set fechaHoraMod
      *
-     * @param \DateTime $fechaUltimaEdicion
+     * @param \DateTime $fechaHoraMod
      * @return ReqRequerimiento
      */
-    public function setFechaUltimaEdicion($fechaUltimaEdicion)
+    public function setFechaHoraMod($fechaHoraMod)
     {
-        $this->fechaUltimaEdicion = $fechaUltimaEdicion;
+        $this->fechaHoraMod = $fechaHoraMod;
 
         return $this;
     }
 
     /**
-     * Get fechaUltimaEdicion
+     * Get fechaHoraMod
      *
      * @return \DateTime 
      */
-    public function getFechaUltimaEdicion()
+    public function getFechaHoraMod()
     {
-        return $this->fechaUltimaEdicion;
+        return $this->fechaHoraMod;
     }
 
     /**
@@ -928,5 +935,29 @@ class ReqRequerimiento
     public function getRequerimientoSubsecuentes()
     {
         return $this->requerimientoSubsecuentes;
+    }
+
+    /**
+     * Set fechaDigitacion
+     *
+     * @param \DateTime $fechaDigitacion
+     *
+     * @return ReqRequerimiento
+     */
+    public function setFechaDigitacion($fechaDigitacion)
+    {
+        $this->fechaDigitacion = $fechaDigitacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaDigitacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaDigitacion()
+    {
+        return $this->fechaDigitacion;
     }
 }

@@ -54,4 +54,86 @@ class ReqEmpleadoAreaServicioAtencion
         return $this->idEmpleado ? $this->idEmpleado . ' | ' . $this->idAreaServicioAtencion : '';
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set habilitado
+     *
+     * @param boolean $habilitado
+     *
+     * @return ReqEmpleadoAreaServicioAtencion
+     */
+    public function setHabilitado($habilitado)
+    {
+        $this->habilitado = $habilitado;
+
+        return $this;
+    }
+
+    /**
+     * Get habilitado
+     *
+     * @return boolean
+     */
+    public function getHabilitado()
+    {
+        return $this->habilitado;
+    }
+
+    /**
+     * Set idEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idEmpleado
+     *
+     * @return ReqEmpleadoAreaServicioAtencion
+     */
+    public function setIdEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idEmpleado = null)
+    {
+        $this->idEmpleado = $idEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Get idEmpleado
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqEmpleado
+     */
+    public function getIdEmpleado()
+    {
+        return $this->idEmpleado;
+    }
+
+    /**
+     * Set idAreaServicioAtencion
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion $idAreaServicioAtencion
+     *
+     * @return ReqEmpleadoAreaServicioAtencion
+     */
+    public function setIdAreaServicioAtencion(\SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion $idAreaServicioAtencion = null)
+    {
+        $this->idAreaServicioAtencion = $idAreaServicioAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Get idAreaServicioAtencion
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion
+     */
+    public function getIdAreaServicioAtencion()
+    {
+        return $this->idAreaServicioAtencion;
+    }
 }

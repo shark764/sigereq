@@ -11,18 +11,19 @@
     </unique-constraints>
     <id name="id" type="smallint" column="id">
       <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="req_area_servicio_atencion_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <many-to-one field="idServicioExterno" target-entity="ReqCtlServicioExterno">
+    <many-to-one field="idServicioExterno" target-entity="ReqCtlServicioExterno" fetch="LAZY">
       <join-columns>
         <join-column name="id_servicio_externo" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idServicioAtencion" target-entity="ReqCtlServicioAtencion">
+    <many-to-one field="idServicioAtencion" target-entity="ReqCtlServicioAtencion" fetch="LAZY">
       <join-columns>
         <join-column name="id_servicio_atencion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idAreaAtencion" target-entity="ReqCtlAreaAtencion">
+    <many-to-one field="idAreaAtencion" target-entity="ReqCtlAreaAtencion" fetch="LAZY">
       <join-columns>
         <join-column name="id_area_atencion" referenced-column-name="id"/>
       </join-columns>

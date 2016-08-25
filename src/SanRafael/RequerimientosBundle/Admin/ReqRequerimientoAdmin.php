@@ -18,14 +18,15 @@ class ReqRequerimientoAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('titulo')
-            ->add('fechaCreacion')
-            ->add('fechaUltimaEdicion')
+            ->add('fechaDigitacion')
+            /*->add('fechaHoraReg')*/
+            /*->add('fechaHoraMod')*/
             ->add('fechaHoraInicio')
             ->add('fechaHoraFin')
             ->add('repetirPor')
             ->add('diaCompleto')
             ->add('color')
-            ->add('trabajoRequerido')
+            ->add('descripcion')
             ->add('idEquipoSolicitud')
             ->add('idEmpleadoSolicita')
             ->add('idServicioSolicita')
@@ -44,14 +45,15 @@ class ReqRequerimientoAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('titulo')
-            ->add('fechaCreacion')
-            ->add('fechaUltimaEdicion')
+            ->add('fechaDigitacion')
+            /*->add('fechaHoraReg')*/
+            /*->add('fechaHoraMod')*/
             ->add('fechaHoraInicio')
             ->add('fechaHoraFin')
             ->add('repetirPor')
             ->add('diaCompleto')
             ->add('color')
-            ->add('trabajoRequerido')
+            ->add('descripcion')
             ->add('idEquipoSolicitud')
             ->add('idEmpleadoSolicita')
             ->add('idServicioSolicita')
@@ -75,16 +77,40 @@ class ReqRequerimientoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('titulo')
-            ->add('fechaCreacion')
-            ->add('fechaUltimaEdicion')
+            /*->add('id')*/
+            ->add('titulo', null, array(
+                                        'label' => 'Título / Nombre',
+                                        'label_attr' => array('class' => 'input-sm'),
+                                        'help' => 'Nombre que describe al trabajo solicitado / realizado',
+                                        'attr' => array(/*'maxlength' => '10',*/
+                                                        'placeholder' => 'Correlativo para transcripción',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                        'class' => 'form-control input-sm',
+
+                                                        'data-add-input-addon' => 'true',
+                                                        'data-add-input-addon-class' => 'primary-v3',
+                                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-cog',
+                                            
+                                                        'data-fv-stringlength' => 'true',
+                                                        'data-fv-stringlength-min' => '5',
+                                                        'data-fv-stringlength-max' => '255',
+                                                        'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                                        'data-fv-regexp' => 'true',
+                                                        'data-fv-regexp-regexp' => '^[a-zA-ZüÜñÑáéíóúÁÉÍÓÚ0-9¿!¡;,:\.\?#@()_-\s]+$',
+                                                        'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                                        )
+            ))
+            ->add('fechaDigitacion')
+            /*->add('fechaHoraReg')*/
+            /*->add('fechaHoraMod')*/
             ->add('fechaHoraInicio')
             ->add('fechaHoraFin')
             ->add('repetirPor')
             ->add('diaCompleto')
             ->add('color')
-            ->add('trabajoRequerido')
+            ->add('descripcion')
             ->add('idEquipoSolicitud')
             ->add('idEmpleadoSolicita')
             ->add('idServicioSolicita')
@@ -103,14 +129,15 @@ class ReqRequerimientoAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('titulo')
-            ->add('fechaCreacion')
-            ->add('fechaUltimaEdicion')
+            ->add('fechaDigitacion')
+            /*->add('fechaHoraReg')*/
+            /*->add('fechaHoraMod')*/
             ->add('fechaHoraInicio')
             ->add('fechaHoraFin')
             ->add('repetirPor')
             ->add('diaCompleto')
             ->add('color')
-            ->add('trabajoRequerido')
+            ->add('descripcion')
             ->add('idEquipoSolicitud')
             ->add('idEmpleadoSolicita')
             ->add('idServicioSolicita')

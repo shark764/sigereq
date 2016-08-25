@@ -61,4 +61,110 @@ class ReqCtlTrabajoRequerido
         return $this->requerimiento ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->requerimiento), 'utf-8') : '';
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set requerimiento
+     *
+     * @param string $requerimiento
+     *
+     * @return ReqCtlTrabajoRequerido
+     */
+    public function setRequerimiento($requerimiento)
+    {
+        $this->requerimiento = $requerimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get requerimiento
+     *
+     * @return string
+     */
+    public function getRequerimiento()
+    {
+        return $this->requerimiento;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return ReqCtlTrabajoRequerido
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set idAreaTrabajo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlAreaTrabajo $idAreaTrabajo
+     *
+     * @return ReqCtlTrabajoRequerido
+     */
+    public function setIdAreaTrabajo(\SanRafael\RequerimientosBundle\Entity\ReqCtlAreaTrabajo $idAreaTrabajo = null)
+    {
+        $this->idAreaTrabajo = $idAreaTrabajo;
+
+        return $this;
+    }
+
+    /**
+     * Get idAreaTrabajo
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlAreaTrabajo
+     */
+    public function getIdAreaTrabajo()
+    {
+        return $this->idAreaTrabajo;
+    }
+
+    /**
+     * Set idTrabajoRequeridoPadre
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequeridoPadre
+     *
+     * @return ReqCtlTrabajoRequerido
+     */
+    public function setIdTrabajoRequeridoPadre(\SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido $idTrabajoRequeridoPadre = null)
+    {
+        $this->idTrabajoRequeridoPadre = $idTrabajoRequeridoPadre;
+
+        return $this;
+    }
+
+    /**
+     * Get idTrabajoRequeridoPadre
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido
+     */
+    public function getIdTrabajoRequeridoPadre()
+    {
+        return $this->idTrabajoRequeridoPadre;
+    }
 }

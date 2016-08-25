@@ -6,8 +6,19 @@
     </unique-constraints>
     <id name="id" type="smallint" column="id">
       <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="req_ctl_cargo_empleado_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="nombre" type="string" column="nombre" length="150" nullable="false"/>
-    <field name="codigo" type="string" column="codigo" nullable="false"/>
+    <field name="nombre" type="string" column="nombre" length="150" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">Director de Hospital</option>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="3" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default">DHP</option>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>
