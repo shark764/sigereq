@@ -18,7 +18,7 @@
         <option name="default">Dell OptiPlex 9020</option>
       </options>
     </field>
-    <field name="codigo" type="string" column="codigo" length="10" nullable="false">
+    <field name="codigo" type="string" column="codigo" length="15" nullable="false">
       <options>
         <option name="fixed">1</option>
         <option name="default">dlloptx9020</option>
