@@ -2,6 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="ReqAreaServicioAtencion" table="req_area_servicio_atencion">
     <indexes>
+      <index name="IDX_FDA1E1E0477882F9" columns="id_jefe_departamento"/>
       <index name="IDX_FDA1E1E044A2C069" columns="id_area_atencion"/>
       <index name="IDX_FDA1E1E0DC0A4806" columns="id_servicio_atencion"/>
       <index name="IDX_FDA1E1E088863BBD" columns="id_servicio_externo"/>
@@ -32,6 +33,11 @@
     <many-to-one field="idAreaAtencion" target-entity="ReqCtlAreaAtencion" fetch="LAZY">
       <join-columns>
         <join-column name="id_area_atencion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idJefeDepartamento" target-entity="ReqEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_jefe_departamento" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>
