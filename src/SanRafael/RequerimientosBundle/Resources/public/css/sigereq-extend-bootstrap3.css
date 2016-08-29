@@ -1,0 +1,1416 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-06-2016, 11:45:02 AM
+    Author     : farid
+*/
+
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of primary-v3
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.primary-v3 .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #2a5469 !important;
+  border-color: #2a5469 !important;
+}
+
+.panel-primary-v3 {
+  border-color: #2a5469 !important;
+}
+
+.panel-primary-v3 > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #2a5469 !important;
+  border-color: #2a5469 !important;
+}
+/*
+.panel-primary-v3 {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-primary-v3 {
+  border-top-color: #2a5469 !important;
+}
+
+.btn .btn-primary-v3 {
+  background-color: #2a5469 !important;
+  border-color: #1b4154 !important;
+  transition: all .5s !important;
+}
+
+.btn-primary-v3 {
+  color: rgb(255, 255, 255) !important;
+  background-color: #2a5469 !important;
+  border-color: #1b4154 !important;
+}
+
+.btn.btn-primary-v3:hover,
+.btn.btn-primary-v3:active,
+.btn.btn-primary-v3.hover {
+  background-color: #124057 !important;
+}
+
+.btn-primary-v3:hover,
+.btn-primary-v3:focus,
+.btn-primary-v3:active,
+.btn-primary-v3.active,
+.open .dropdown-toggle.btn-primary-v3 {
+  color: #fff !important;
+  background-color: #124057 !important;
+  border-color: #053c57 !important;
+}
+
+.btn-link-primary-v3 {
+  color: #2a5469 !important;
+}
+
+.btn-link-primary-v3:focus, .btn-link-primary-v3:hover {
+    color: #153647 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-v3,
+.editable-empty-v3:hover,
+.editable-empty-v3:focus{
+  font-style: normal !important;
+  color: #2a5469 !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-primary-v3 {
+  color: #2a5469 !important;
+}
+
+.label-primary-v3 {
+    background-color: #2a5469;
+}
+
+a.anchor-primary-v3 {
+    color: #2a5469 !important;
+    text-decoration: none !important;
+}
+a.anchor-primary-v3 {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-primary-v3 .badge {
+    color: #2a5469;
+    background-color: white;
+}
+
+.badge.badge-primary-v3 {
+    color: #2a5469;
+    background-color: white;
+}
+
+.badge.badge-primary-v3.badge-inverse {
+    color: white;
+    background-color: #2a5469;
+}
+
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of success-v3
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.success-v3 .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #16677d !important;
+  border-color: #16677d !important;
+}
+
+.panel-success-v3 {
+  border-color: #16677d !important;
+}
+
+.panel-success-v3 > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #16677d !important;
+  border-color: #16677d !important;
+}
+/*
+.panel-success-v3 {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-success-v3 {
+  border-top-color: #16677d !important;
+}
+
+.btn .btn-success-v3 {
+  background-color: #16677d !important;
+  border-color: #1b4154 !important;
+  transition: all .5s !important;
+}
+
+.btn-success-v3 {
+  color: rgb(255, 255, 255) !important;
+  background-color: #16677d !important;
+  border-color: #1b4154 !important;
+}
+
+.btn.btn-success-v3:hover,
+.btn.btn-success-v3:active,
+.btn.btn-success-v3.hover {
+  background-color: #124057 !important;
+}
+
+.btn-success-v3:hover,
+.btn-success-v3:focus,
+.btn-success-v3:active,
+.btn-success-v3.active,
+.open .dropdown-toggle.btn-success-v3 {
+  color: #fff !important;
+  background-color: #124057 !important;
+  border-color: #053c57 !important;
+}
+
+.btn-link-success-v3 {
+  color: #16677d !important;
+}
+
+.btn-link-success-v3:focus, .btn-link-success-v3:hover {
+    color: #094c61 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-success-v3,
+.editable-empty-success-v3:hover,
+.editable-empty-success-v3:focus{
+  font-style: normal !important;
+  color: #16677d !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-success-v3 {
+  color: #16677d !important;
+}
+
+.label-success-v3 {
+    background-color: #16677d;
+}
+
+a.anchor-success-v3 {
+    color: #16677d !important;
+    text-decoration: none !important;
+}
+a.anchor-success-v3 {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-success-v3 .badge {
+    color: #16677d !important;
+    background-color: white !important;
+}
+
+.badge.badge-success-v3 {
+    color: #16677d !important;
+    background-color: white !important;
+}
+
+.badge.badge-success-v3.badge-inverse {
+    color: white !important;
+    background-color: #16677d !important;
+}
+
+.has-success .form-control-feedback {
+    color: #16677d !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of primary-v4
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.primary-v4 .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #183f52 !important;
+  border-color: #183f52 !important;
+}
+
+.panel-primary-v4 {
+  border-color: #183f52 !important;
+}
+
+.panel-primary-v4 > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #183f52 !important;
+  border-color: #183f52 !important;
+}
+/*
+.panel-primary-v4 {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-primary-v4 {
+  border-top-color: #183f52 !important;
+}
+
+.btn .btn-primary-v4 {
+  background-color: #183f52 !important;
+  border-color: #193746 !important;
+  transition: all .5s !important;
+}
+
+.btn-primary-v4 {
+  color: rgb(255, 255, 255) !important;
+  background-color: #183f52 !important;
+  border-color: #193746 !important;
+}
+
+.btn.btn-primary-v4:hover,
+.btn.btn-primary-v4:active,
+.btn.btn-primary-v4.hover {
+  background-color: #123140 !important;
+}
+
+.btn-primary-v4:hover,
+.btn-primary-v4:focus,
+.btn-primary-v4:active,
+.btn-primary-v4.active,
+.open .dropdown-toggle.btn-primary-v4 {
+  color: #fff !important;
+  background-color: #123140 !important;
+  border-color: #0b2d3f !important;
+}
+
+.btn-link-primary-v4 {
+  color: #183f52 !important;
+}
+
+.btn-link-primary-v4:focus, .btn-link-primary-v4:hover {
+    color: #183646 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-primary-v4,
+.editable-empty-primary-v4:hover,
+.editable-empty-primary-v4:focus{
+  font-style: normal !important;
+  color: #183f52 !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-primary-v4 {
+  color: #183f52 !important;
+}
+
+.label-primary-v4 {
+    background-color: #183f52;
+}
+
+a.anchor-primary-v4 {
+    color: #183f52 !important;
+    text-decoration: none !important;
+}
+a.anchor-primary-v4 {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-primary-v4 .badge {
+    color: #183f52 !important;
+    background-color: white !important;
+}
+
+.badge.badge-primary-v4 {
+    color: #183f52 !important;
+    background-color: white !important;
+}
+
+.badge.badge-primary-v4.badge-inverse {
+    color: white !important;
+    background-color: #183f52 !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of success-v4
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.success-v4 .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #1b93a5 !important;
+  border-color: #1b93a5 !important;
+}
+
+.panel-success-v4 {
+  border-color: #1b93a5 !important;
+}
+
+.panel-success-v4 > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #1b93a5 !important;
+  border-color: #1b93a5 !important;
+}
+/*
+.panel-success-v4 {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-success-v4 {
+  border-top-color: #1b93a5 !important;
+}
+
+.btn .btn-success-v4 {
+  background-color: #1b93a5 !important;
+  border-color: #0a7e90 !important;
+  transition: all .5s !important;
+}
+
+.btn-success-v4 {
+  color: rgb(255, 255, 255) !important;
+  background-color: #1b93a5 !important;
+  border-color: #0a7e90 !important;
+}
+
+.btn.btn-success-v4:hover,
+.btn.btn-success-v4:active,
+.btn.btn-success-v4.hover {
+  background-color: #1a6975 !important;
+}
+
+.btn-success-v4:hover,
+.btn-success-v4:focus,
+.btn-success-v4:active,
+.btn-success-v4.active,
+.open .dropdown-toggle.btn-success-v4 {
+  color: #fff !important;
+  background-color: #1a6975 !important;
+  border-color: #0e545f !important;
+}
+
+.btn-link-success-v4 {
+  color: #1b93a5 !important;
+}
+
+.btn-link-success-v4:focus, .btn-link-success-v4:hover {
+    color: #0e7b8b !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-success-v4,
+.editable-empty-success-v4:hover,
+.editable-empty-success-v4:focus{
+  font-style: normal !important;
+  color: #1b93a5 !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-success-v4 {
+  color: #1b93a5 !important;
+}
+
+.label-success-v4 {
+    background-color: #1b93a5;
+}
+
+a.anchor-success-v4 {
+    color: #1b93a5 !important;
+    text-decoration: none !important;
+}
+a.anchor-success-v4 {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-success-v4 .badge {
+    color: #1b93a5 !important;
+    background-color: white !important;
+}
+
+.badge.badge-success-v4 {
+    color: #1b93a5 !important;
+    background-color: white !important;
+}
+
+.badge.badge-success-v4.badge-inverse {
+    color: white !important;
+    background-color: #1b93a5 !important;
+}
+
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of dcm4chee-highlightable-even
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.dcm4chee-highlightable-even .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #446666 !important;
+  border-color: #446666 !important;
+}
+
+.panel-dcm4chee-highlightable-even {
+  border-color: #446666 !important;
+}
+
+.panel-dcm4chee-highlightable-even > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #446666 !important;
+  border-color: #446666 !important;
+}
+/*
+.panel-dcm4chee-highlightable-even {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-dcm4chee-highlightable-even {
+  border-top-color: #446666 !important;
+}
+
+.btn .btn-dcm4chee-highlightable-even {
+  background-color: #446666 !important;
+  border-color: #365b5b !important;
+  transition: all .5s !important;
+}
+
+.btn-dcm4chee-highlightable-even {
+  color: rgb(255, 255, 255) !important;
+  background-color: #446666 !important;
+  border-color: #365b5b !important;
+}
+
+.btn.btn-dcm4chee-highlightable-even:hover,
+.btn.btn-dcm4chee-highlightable-even:active,
+.btn.btn-dcm4chee-highlightable-even.hover {
+  background-color: #336666 !important;
+}
+
+.btn-dcm4chee-highlightable-even:hover,
+.btn-dcm4chee-highlightable-even:focus,
+.btn-dcm4chee-highlightable-even:active,
+.btn-dcm4chee-highlightable-even.active,
+.open .dropdown-toggle.btn-dcm4chee-highlightable-even {
+  color: #fff !important;
+  background-color: #336666 !important;
+  border-color: #1f5858 !important;
+}
+
+.btn-link-dcm4chee-highlightable-even {
+  color: #446666 !important;
+}
+
+.btn-link-dcm4chee-highlightable-even:focus,
+.btn-link-dcm4chee-highlightable-even:hover {
+    color: #436969 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-dcm4chee-highlightable-even,
+.editable-empty-dcm4chee-highlightable-even:hover,
+.editable-empty-dcm4chee-highlightable-even:focus{
+  font-style: normal !important;
+  color: #446666 !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-dcm4chee-highlightable-even {
+  color: #446666 !important;
+}
+
+.label-dcm4chee-highlightable-even {
+    background-color: #446666;
+}
+
+a.anchor-dcm4chee-highlightable-even {
+    color: #446666 !important;
+    text-decoration: none !important;
+}
+a.anchor-dcm4chee-highlightable-even {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-dcm4chee-highlightable-even .badge {
+    color: #446666 !important;
+    background-color: white !important;
+}
+
+.badge.badge-dcm4chee-highlightable-even {
+    color: #446666 !important;
+    background-color: white !important;
+}
+
+.badge.badge-dcm4chee-highlightable-even.badge-inverse {
+    color: white !important;
+    background-color: #446666 !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of medicine-green-v2
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.medicine-green-v2 .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #00695c !important;
+  border-color: #00695c !important;
+}
+
+.panel-medicine-green-v2 {
+  border-color: #00695c !important;
+}
+
+.panel-medicine-green-v2 > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #00695c !important;
+  border-color: #00695c !important;
+}
+/*
+.panel-medicine-green-v2 {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-medicine-green-v2 {
+  border-top-color: #00695c !important;
+}
+
+.btn .btn-medicine-green-v2 {
+  background-color: #00695c !important;
+  border-color: #006666 !important;
+  transition: all .5s !important;
+}
+
+.btn-medicine-green-v2 {
+  color: rgb(255, 255, 255) !important;
+  background-color: #00695c !important;
+  border-color: #006666 !important;
+}
+
+.btn.btn-medicine-green-v2:hover,
+.btn.btn-medicine-green-v2:active,
+.btn.btn-medicine-green-v2.hover {
+  background-color: #024d45 !important;
+}
+
+.btn-medicine-green-v2:hover,
+.btn-medicine-green-v2:focus,
+.btn-medicine-green-v2:active,
+.btn-medicine-green-v2.active,
+.open .dropdown-toggle.btn-medicine-green-v2 {
+  color: #fff !important;
+  background-color: #024d45 !important;
+  border-color: #003c36 !important;
+}
+
+.btn-link-medicine-green-v2 {
+  color: #00695c !important;
+}
+
+.btn-link-medicine-green-v2:focus, .btn-link-medicine-green-v2:hover {
+    color: #0a5049 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-medicine-green-v2,
+.editable-empty-medicine-green-v2:hover,
+.editable-empty-medicine-green-v2:focus{
+  font-style: normal !important;
+  color: #00695c !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-medicine-green-v2 {
+  color: #00695c !important;
+}
+
+.label-medicine-green-v2 {
+    background-color: #00695c;
+}
+
+a.anchor-medicine-green-v2 {
+    color: #00695c !important;
+    text-decoration: none !important;
+}
+a.anchor-medicine-green-v2 {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-medicine-green-v2 .badge {
+    color: #00695c !important;
+    background-color: white !important;
+}
+
+.badge.badge-medicine-green-v2 {
+    color: #00695c !important;
+    background-color: white !important;
+}
+
+.badge.badge-medicine-green-v2.badge-inverse {
+    color: white !important;
+    background-color: #00695c !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of medicine-green-dark-v2
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.medicine-green-dark-v2 .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #006666 !important;
+  border-color: #006666 !important;
+}
+
+.panel-medicine-green-dark-v2 {
+  border-color: #006666 !important;
+}
+
+.panel-medicine-green-dark-v2 > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #006666 !important;
+  border-color: #006666 !important;
+}
+/*
+.panel-medicine-green-dark-v2 {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-medicine-green-dark-v2 {
+  border-top-color: #006666 !important;
+}
+
+.btn .btn-medicine-green-dark-v2 {
+  background-color: #006666 !important;
+  border-color: #015e5e !important;
+  transition: all .5s !important;
+}
+
+.btn-medicine-green-dark-v2 {
+  color: rgb(255, 255, 255) !important;
+  background-color: #006666 !important;
+  border-color: #015e5e !important;
+}
+
+.btn.btn-medicine-green-dark-v2:hover,
+.btn.btn-medicine-green-dark-v2:active,
+.btn.btn-medicine-green-dark-v2.hover {
+  background-color: #005252 !important;
+}
+
+.btn-medicine-green-dark-v2:hover,
+.btn-medicine-green-dark-v2:focus,
+.btn-medicine-green-dark-v2:active,
+.btn-medicine-green-dark-v2.active,
+.open .dropdown-toggle.btn-medicine-green-dark-v2 {
+  color: #fff !important;
+  background-color: #005252 !important;
+  border-color: #015252 !important;
+}
+
+.btn-link-medicine-green-dark-v2 {
+  color: #006666 !important;
+}
+
+.btn-link-medicine-green-dark-v2:focus, .btn-link-medicine-green-dark-v2:hover {
+    color: #015c5c !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-medicine-green-dark-v2,
+.editable-empty-medicine-green-dark-v2:hover,
+.editable-empty-medicine-green-dark-v2:focus{
+  font-style: normal !important;
+  color: #006666 !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-medicine-green-dark-v2 {
+  color: #006666 !important;
+}
+
+.label-medicine-green-dark-v2 {
+    background-color: #006666;
+}
+
+a.anchor-medicine-green-dark-v2 {
+    color: #006666 !important;
+    text-decoration: none !important;
+}
+a.anchor-medicine-green-dark-v2 {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-medicine-green-dark-v2 .badge {
+    color: #006666 !important;
+    background-color: white !important;
+}
+
+.badge.badge-medicine-green-dark-v2 {
+    color: #006666 !important;
+    background-color: white !important;
+}
+
+.badge.badge-medicine-green-dark-v2.badge-inverse {
+    color: white !important;
+    background-color: #006666 !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of ckan-api-masthead
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.ckan-api-masthead .input-group-addon {
+  color: rgb(255, 255, 255) !important;
+  background-color: #005d7a !important;
+  border-color: #005d7a !important;
+}
+
+.panel-ckan-api-masthead {
+  border-color: #005d7a !important;
+}
+
+.panel-ckan-api-masthead > .panel-heading {
+  color: rgb(255, 255, 255) !important;
+  background-color: #005d7a !important;
+  border-color: #005d7a !important;
+}
+/*
+.panel-ckan-api-masthead {
+  border-color: #e5e5e5 !important;
+}
+*/
+.box.box-ckan-api-masthead {
+  border-top-color: #005d7a !important;
+}
+
+.btn .btn-ckan-api-masthead {
+  background-color: #005d7a !important;
+  border-color: #044d64 !important;
+  transition: all .5s !important;
+}
+
+.btn-ckan-api-masthead {
+  color: rgb(255, 255, 255) !important;
+  background-color: #005d7a !important;
+  border-color: #044d64 !important;
+}
+
+.btn.btn-ckan-api-masthead:hover,
+.btn.btn-ckan-api-masthead:active,
+.btn.btn-ckan-api-masthead.hover {
+  background-color: #01475c !important;
+}
+
+.btn-ckan-api-masthead:hover,
+.btn-ckan-api-masthead:focus,
+.btn-ckan-api-masthead:active,
+.btn-ckan-api-masthead.active,
+.open .dropdown-toggle.btn-ckan-api-masthead {
+  color: #fff !important;
+  background-color: #01475c !important;
+  border-color: #013d50 !important;
+}
+
+.btn-link-ckan-api-masthead {
+  color: #005d7a !important;
+}
+
+.btn-link-ckan-api-masthead:focus, .btn-link-ckan-api-masthead:hover {
+    color: #044c62 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-ckan-api-masthead,
+.editable-empty-ckan-api-masthead:hover,
+.editable-empty-ckan-api-masthead:focus{
+  font-style: normal !important;
+  color: #005d7a !important;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+
+.text-ckan-api-masthead {
+  color: #005d7a !important;
+}
+
+.label-ckan-api-masthead {
+    background-color: #005d7a;
+}
+
+a.anchor-ckan-api-masthead {
+    color: #005d7a !important;
+    text-decoration: none !important;
+}
+a.anchor-ckan-api-masthead {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-ckan-api-masthead .badge {
+    color: #005d7a !important;
+    background-color: white !important;
+}
+
+.badge.badge-ckan-api-masthead {
+    color: #005d7a !important;
+    background-color: white !important;
+}
+
+.badge.badge-ckan-api-masthead.badge-inverse {
+    color: white !important;
+    background-color: #005d7a !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of camry-cosmic-gray-mica
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.camry-cosmic-gray-mica .input-group-addon {
+    color: rgb(255, 255, 255) !important;
+    background-color: #062438 !important;
+    border-color: #062438 !important;
+}
+
+.panel-camry-cosmic-gray-mica {
+    border-color: #062438 !important;
+}
+
+.panel-camry-cosmic-gray-mica > .panel-heading {
+    color: rgb(255, 255, 255) !important;
+    background-color: #062438 !important;
+    border-color: #062438 !important;
+}
+/*
+ . *panel-camry-cosmic-gray-mica {
+ border-color: #e5e5e5 !important;
+ }
+ */
+.box.box-camry-cosmic-gray-mica {
+    border-top-color: #062438 !important;
+}
+
+.btn .btn-camry-cosmic-gray-mica {
+    background-color: #062438 !important;
+    border-color: #061f30 !important;
+    transition: all .5s !important;
+}
+
+.btn-camry-cosmic-gray-mica {
+    color: rgb(255, 255, 255) !important;
+    background-color: #062438 !important;
+    border-color: #061f30 !important;
+}
+
+.btn.btn-camry-cosmic-gray-mica:hover,
+.btn.btn-camry-cosmic-gray-mica:active,
+.btn.btn-camry-cosmic-gray-mica.hover {
+    background-color: #09304a !important;
+}
+
+.btn-camry-cosmic-gray-mica:hover,
+.btn-camry-cosmic-gray-mica:focus,
+.btn-camry-cosmic-gray-mica:active,
+.btn-camry-cosmic-gray-mica.active,
+.open .dropdown-toggle.btn-camry-cosmic-gray-mica {
+    color: #fff !important;
+    background-color: #09304a !important;
+    border-color: #072940 !important;
+}
+
+.btn-link-camry-cosmic-gray-mica {
+    color: #062438 !important;
+}
+
+.btn-link-camry-cosmic-gray-mica:focus, .btn-link-camry-cosmic-gray-mica:hover {
+    color: #0a2b40 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-camry-cosmic-gray-mica,
+.editable-empty-camry-cosmic-gray-mica:hover,
+.editable-empty-camry-cosmic-gray-mica:focus{
+    font-style: normal !important;
+    color: #062438 !important;
+    /* border-bottom: none; */
+    text-decoration: none;
+}
+
+.text-camry-cosmic-gray-mica {
+    color: #062438 !important;
+}
+
+.label-camry-cosmic-gray-mica {
+    background-color: #062438;
+}
+
+a.anchor-camry-cosmic-gray-mica {
+    color: #062438 !important;
+    text-decoration: none !important;
+}
+a.anchor-camry-cosmic-gray-mica {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-camry-cosmic-gray-mica .badge {
+    color: #062438 !important;
+    background-color: white !important;
+}
+
+.badge.badge-camry-cosmic-gray-mica {
+    color: #062438 !important;
+    background-color: white !important;
+}
+
+.badge.badge-camry-cosmic-gray-mica.badge-inverse {
+    color: white !important;
+    background-color: #062438 !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of camry-parisian-night-pearl
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.camry-parisian-night-pearl .input-group-addon {
+    color: rgb(255, 255, 255) !important;
+    background-color: #102740 !important;
+    border-color: #102740 !important;
+}
+
+.panel-camry-parisian-night-pearl {
+    border-color: #102740 !important;
+}
+
+.panel-camry-parisian-night-pearl > .panel-heading {
+    color: rgb(255, 255, 255) !important;
+    background-color: #102740 !important;
+    border-color: #102740 !important;
+}
+/*
+ * . *panel-camry-parisian-night-pearl {
+ * border-color: #e5e5e5 !important;
+ * }
+ */
+.box.box-camry-parisian-night-pearl {
+    border-top-color: #102740 !important;
+}
+
+.btn .btn-camry-parisian-night-pearl {
+    background-color: #102740 !important;
+    border-color: #061f30 !important;
+    transition: all .5s !important;
+}
+
+.btn-camry-parisian-night-pearl {
+    color: rgb(255, 255, 255) !important;
+    background-color: #102740 !important;
+    border-color: #061f30 !important;
+}
+
+.btn.btn-camry-parisian-night-pearl:hover,
+.btn.btn-camry-parisian-night-pearl:active,
+.btn.btn-camry-parisian-night-pearl.hover {
+    background-color: #09304a !important;
+}
+
+.btn-camry-parisian-night-pearl:hover,
+.btn-camry-parisian-night-pearl:focus,
+.btn-camry-parisian-night-pearl:active,
+.btn-camry-parisian-night-pearl.active,
+.open .dropdown-toggle.btn-camry-parisian-night-pearl {
+    color: #fff !important;
+    background-color: #09304a !important;
+    border-color: #072940 !important;
+}
+
+.btn-link-camry-parisian-night-pearl {
+    color: #102740 !important;
+}
+
+.btn-link-camry-parisian-night-pearl:focus, .btn-link-camry-parisian-night-pearl:hover {
+    color: #0a2b40 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-camry-parisian-night-pearl,
+.editable-empty-camry-parisian-night-pearl:hover,
+.editable-empty-camry-parisian-night-pearl:focus{
+    font-style: normal !important;
+    color: #102740 !important;
+    /* border-bottom: none; */
+    text-decoration: none;
+}
+
+.text-camry-parisian-night-pearl {
+    color: #102740 !important;
+}
+
+.label-camry-parisian-night-pearl {
+    background-color: #102740;
+}
+
+a.anchor-camry-parisian-night-pearl {
+    color: #102740 !important;
+    text-decoration: none !important;
+}
+a.anchor-camry-parisian-night-pearl {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-camry-parisian-night-pearl .badge {
+    color: #102740 !important;
+    background-color: white !important;
+}
+
+.badge.badge-camry-parisian-night-pearl {
+    color: #102740 !important;
+    background-color: white !important;
+}
+
+.badge.badge-camry-parisian-night-pearl.badge-inverse {
+    color: white !important;
+    background-color: #102740 !important;
+}
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of camry-celestial-silver-metallic
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+.camry-celestial-silver-metallic .input-group-addon {
+    color: rgb(255, 255, 255) !important;
+    background-color: #828387 !important;
+    border-color: #828387 !important;
+}
+
+.panel-camry-celestial-silver-metallic {
+    border-color: #828387 !important;
+}
+
+.panel-camry-celestial-silver-metallic > .panel-heading {
+    color: rgb(255, 255, 255) !important;
+    background-color: #828387 !important;
+    border-color: #828387 !important;
+}
+/*
+ * . *panel-camry-celestial-silver-metallic {
+ * border-color: #e5e5e5 !important;
+ * }
+ */
+.box.box-camry-celestial-silver-metallic {
+    border-top-color: #828387 !important;
+}
+
+.btn .btn-camry-celestial-silver-metallic {
+    background-color: #828387 !important;
+    border-color: #061f30 !important;
+    transition: all .5s !important;
+}
+
+.btn-camry-celestial-silver-metallic {
+    color: rgb(255, 255, 255) !important;
+    background-color: #828387 !important;
+    border-color: #061f30 !important;
+}
+
+.btn.btn-camry-celestial-silver-metallic:hover,
+.btn.btn-camry-celestial-silver-metallic:active,
+.btn.btn-camry-celestial-silver-metallic.hover {
+    background-color: #09304a !important;
+}
+
+.btn-camry-celestial-silver-metallic:hover,
+.btn-camry-celestial-silver-metallic:focus,
+.btn-camry-celestial-silver-metallic:active,
+.btn-camry-celestial-silver-metallic.active,
+.open .dropdown-toggle.btn-camry-celestial-silver-metallic {
+    color: #fff !important;
+    background-color: #09304a !important;
+    border-color: #072940 !important;
+}
+
+.btn-link-camry-celestial-silver-metallic {
+    color: #828387 !important;
+}
+
+.btn-link-camry-celestial-silver-metallic:focus, .btn-link-camry-celestial-silver-metallic:hover {
+    color: #0a2b40 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+.editable-empty-camry-celestial-silver-metallic,
+.editable-empty-camry-celestial-silver-metallic:hover,
+.editable-empty-camry-celestial-silver-metallic:focus{
+    font-style: normal !important;
+    color: #828387 !important;
+    /* border-bottom: none; */
+    text-decoration: none;
+}
+
+.text-camry-celestial-silver-metallic {
+    color: #828387 !important;
+}
+
+.label-camry-celestial-silver-metallic {
+    background-color: #828387;
+}
+
+a.anchor-camry-celestial-silver-metallic {
+    color: #828387 !important;
+    text-decoration: none !important;
+}
+a.anchor-camry-celestial-silver-metallic {
+    background: 0 0 !important;
+    background-image: initial !important;
+    background-position-x: 0px !important;
+    background-position-y: 0px !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+.label-camry-celestial-silver-metallic .badge {
+    color: #828387 !important;
+    background-color: white !important;
+}
+
+.badge.badge-camry-celestial-silver-metallic {
+    color: #828387 !important;
+    background-color: white !important;
+}
+
+.badge.badge-camry-celestial-silver-metallic.badge-inverse {
+    color: white !important;
+    background-color: #828387 !important;
+}
+
+
+/*
+ * progress-bar styles
+ */
+.progress-bar-primary-v3 {
+    background-color: #2a5469;
+}
+.progress-bar-success-v3 {
+    background-color: #16677d;
+}
+.progress-bar-primary-v4 {
+    background-color: #183f52;
+}
+.progress-bar-success-v4 {
+    background-color: #1b93a5;
+}
+
+.alert-success {
+  background-color: #dcf1f5 !important;
+  border-color: #abc9cf !important;
+  color: #065d6f !important;
+}
+
+.form-horizontal .control-label.label_form_sm.label_check {
+  text-align: left;
+}
+
+
+
+/*
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * CAMBIAR EL COLOR DE LOS PILLS, HACERLO COMO PRIMARY|SUCCESS-V3
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ * ******************************************************************************
+ */
+
+
+
+/*
+ * *************************************************************************************************************************************************
+ * Definition of success-v5
+ * *************************************************************************************************************************************************
+ */
+/*009999
+006666
+003333*/
+/*
+ * *************************************************************************************************************************************************
+ * Definition of primary-v5
+ * *************************************************************************************************************************************************
+ */
+/* 001933 */
+
+
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of ckan-api-account-masthead
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+background: #003647 url("../../../base/images/bg.png")
+
+
+
+
+/*
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ * Definition of ckan-api-account-masthead
+ * *************************************************************************************************************************************************
+ * *************************************************************************************************************************************************
+ */
+background: #014751 url("../../../base/images/bg.png")
+014751

@@ -72,6 +72,20 @@ class ReqCtlEquipo
     private $serie;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=false)
+     */
+    private $fechaHoraReg = '(now())::timestamp(0) without time zone';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
+     */
+    private $fechaHoraMod;
+
+    /**
      * @var \ReqAreaServicioAtencion
      *
      * @ORM\ManyToOne(targetEntity="ReqAreaServicioAtencion")
@@ -145,7 +159,17 @@ class ReqCtlEquipo
     {
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
-    
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fechaHoraReg = new \DateTime('now');
+        $this->fechaAdquisicion = new \DateTime('now');
+        $this->fechaDespacho = new \DateTime('now');
+    }
+
 
     /**
      * Get id
@@ -323,6 +347,54 @@ class ReqCtlEquipo
     public function getSerie()
     {
         return $this->serie;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return ReqCtlEquipo
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set fechaHoraMod
+     *
+     * @param \DateTime $fechaHoraMod
+     *
+     * @return ReqCtlEquipo
+     */
+    public function setFechaHoraMod($fechaHoraMod)
+    {
+        $this->fechaHoraMod = $fechaHoraMod;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraMod
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraMod()
+    {
+        return $this->fechaHoraMod;
     }
 
     /**

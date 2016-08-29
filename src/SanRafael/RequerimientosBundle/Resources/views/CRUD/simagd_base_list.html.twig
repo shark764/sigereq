@@ -1,0 +1,126 @@
+{# empty Twig template #}
+
+{# /** SIMAGD LIST TEMPLATE, extiende de CRUD:base_list **/ #}
+
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+{% set _messageCurrentTemplate   = '<i class="fa fa-th-list"></i> Listado de registros' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {# sigereq-styles #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-form-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-extend-bootstrap3.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-table.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# Bootstrap 
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />#}
+    
+    {# jquery-ui 
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/jquery-ui-1.12.0.custom/jquery-ui.theme.min.css') }}" type="text/css" rel="stylesheet" />#}
+    
+    {# jquery-ui-timepicker 
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/jquery-ui-timepicker-addon.css') }}" type="text/css" rel="stylesheet" />#}
+    
+    {# iCheck 
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/icheck-1.x/skins/minimal/aero.css') }}" type="text/css" rel="stylesheet" />#}
+    
+    {# ckeditor 
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-ckeditor.css') }}" type="text/css" rel="stylesheet" />#}
+    
+    {# toastmessage #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/akquinet-jquery-toastmessage-plugin-6f5d7bf/src/main/resources/css/jquery.toastmessage.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# bootstrap-modal #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/css/bootstrap-modal-bs3patch.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/css/bootstrap-modal.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+
+    {# select2-es #}
+    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
+    
+    {# iCheck 
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/icheck-1.x/icheck.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_form_configuration.js') }}" ></script>#}
+    
+    {# jquery-ui #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/jquery-ui-1.12.0.custom/jquery-ui.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_highlight_error_ui.js') }}" ></script>
+    
+    {# jquery-ui-timepicker -- sigereq-datetimepicker #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/jquery-ui-timepicker-addon.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_datetimepicker_configuration.js') }}" ></script>
+    
+    {# toastmessage #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/akquinet-jquery-toastmessage-plugin-6f5d7bf/src/main/javascript/jquery.toastmessage.js') }}" ></script>
+    
+    {# bootstrap-modal #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/js/bootstrap-modalmanager.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/js/bootstrap-modal.js') }}" ></script>
+    
+    {# CRUD-sigereq-functions #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_list_view_configuration.js') }}" ></script>
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {% block sonata_page_content_nav %}
+{#        {% if _tab_menu is not empty or _actions is not empty %}#}
+            <nav class="navbar navbar-default" role="navigation">
+                {% block tab_menu_navbar_header %}
+                    <div class="navbar-header nav-sigereq-right-list">
+                        {% block sigereq_form_navbar_brand_title %}
+                            <span class="navbar-brand"><span class="label label-primary-v2"> {{ _messageCurrentTemplate|raw }} </span></span>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+                <div class="container-fluid">
+                    <div class="navbar-left">
+                        {% if _tab_menu is not empty %}
+                            {{ _tab_menu|raw }}
+                        {% endif %}
+                    </div>
+
+                    {#{% if action is defined and action == 'list' and admin.listModes|length > 1 %}
+                        <div class="nav navbar-right btn-group">
+                            {% for mode, settings in admin.listModes %}
+                                <a href="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({_list_mode: mode})) }}" class="btn btn-default navbar-btn btn-sm{% if admin.getListMode() == mode %} active{% endif %}"><i class="{{ settings.class }}"></i></a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}#}
+
+                    {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
+                        <ul class="nav navbar-nav navbar-right ul-sigereq-right">
+                            <li class="dropdown sonata-actions">
+                                <ul class="list-inline" role="menu">
+                                    {{ _actions|raw }}
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </nav>
+{#        {% endif %}#}
+    {% endblock sonata_page_content_nav %}
+
+{% endblock sonata_page_content_header %}
+    
+{% block content %}
+    
+    {% block notice %}
+        {% include 'SanRafaelRequerimientosBundle::sigereq_flash_notice.html.twig' %}
+    {% endblock notice %}
+    
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block table_body %}
+    <tbody>
+        {% include admin.getTemplate('outer_list_rows_list') %}
+    </tbody>
+{% endblock %}

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqEmpleadoAreaServicioAtencion
  *
  * @ORM\Table(name="req_empleado_area_servicio_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_empleado_area_servicio_atencion", columns={"id_area_servicio_atencion", "id_empleado"})}, indexes={@ORM\Index(name="IDX_93EFA453F6BCBD1", columns={"id_area_servicio_atencion"}), @ORM\Index(name="IDX_93EFA453890253C7", columns={"id_empleado"})})
- * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\EmpleadoAreaServicioAtencionRepository")
+ * @ORM\Entity
  */
 class ReqEmpleadoAreaServicioAtencion
 {
@@ -48,12 +48,12 @@ class ReqEmpleadoAreaServicioAtencion
      * })
      */
     private $idEmpleado;
-
+    
     public function __toString()
     {
         return $this->idEmpleado ? $this->idEmpleado . ' | ' . $this->idAreaServicioAtencion : '';
     }
-    
+
 
     /**
      * Get id

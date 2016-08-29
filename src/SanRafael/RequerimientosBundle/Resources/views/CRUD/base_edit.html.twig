@@ -1,0 +1,88 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends base_template %}
+
+{% block title %}
+    {% if admin.id(object) is not null %}
+        {{ "title_edit"|trans({'%name%': admin.toString(object)|truncate(15) }, 'SonataAdminBundle') }}
+    {% else %}
+        {{ "title_create"|trans({}, 'SonataAdminBundle') }}
+    {% endif %}
+{% endblock%}
+
+{% block navbar_title %}
+    {{ block('title') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {#
+        /*
+         * stylesheets minimized with Assetic
+         */
+    #}
+    {% stylesheets
+        'bundles/sanrafaelrequerimientos/css/sigereq-styles.css'
+        'bundles/sanrafaelrequerimientos/css/sigereq-form-styles.css'
+        'bundles/sanrafaelrequerimientos/css/sigereq-extend-bootstrap3.css'
+        'bundles/sanrafaelrequerimientos/css/sigereq-table.css'
+        
+        'bundles/sanrafaelrequerimientos/css/typeahead.css'
+        
+        output="bundles/sanrafaelrequerimientos/compiled/css/bundle_stylesheets.css" %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        {#'bundles/sanrafaelrequerimientos/css/select2-bootstrap.css'#}
+    {% endstylesheets %}
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        window.GLOBAL_ADMIN_CONFIG = {
+            ADMIN_UNIQID_TOKEN: '{{ admin.uniqId }}',
+            CURRENT_ACTION_FORM: {% if action is defined %}'{{ action }}'{% else %}'create'{% endif %},
+            OBJECT_ID: {% if admin.id(object) is not null %}{{ object.id }}{% else %}false{% endif %},
+            IS_OBJECT_ALLOW_TO_SWITCH: false,
+            ID_USERLOGGED: {{ app.user.getId()|escape('js') }},
+            {#ID_USERLOGGED_EMPLOYEE: {% if app.user.getIdEmpleado() is not null %}{{ app.user.getIdEmpleado().getId()|escape('js') }}{% else %}false{% endif %},
+            COD_USERLOGGED_EMPLOYEE: {% if app.user.getIdEmpleado() is not null %}'{{ app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo()|escape('js') }}'{% else %}false{% endif %},
+            ID_USERLOGGED_ESTAB: {% if app.user.getIdEstablecimiento() is not null %}{{ app.user.getIdEstablecimiento().getId()|escape('js') }}{% else %}false{% endif %}#}
+        };
+        window.GLOBAL_BUNDLE_CONFIG = {
+            IS_USERLOGGED_ADMIN: {% if is_granted('ROLE_ADMIN') %}true{% else %}false{% endif %},
+            {#IS_USERLOGGED_RADX: {% if is_granted('ROLE_MINSAL_SIMAGD_ADMIN_IMG_LECTURA_CREATE') and (app.user.getIdEmpleado() is not null and app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo() == 'MRY') %}true{% else %}false{% endif %},
+            IS_USERLOGGED_PRCMED: {% if is_granted('ROLE_MINSAL_SIMAGD_ADMIN_IMG_SOLICITUD_ESTUDIO_CREATE') and (app.user.getIdEmpleado() is not null and app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo() == 'MED') %}true{% else %}false{% endif %}#}
+        };
+        window.console.log(jQuery.extend(true, {}, window.GLOBAL_ADMIN_CONFIG, window.GLOBAL_BUNDLE_CONFIG));
+    </script>
+
+    {# select2-es #}
+    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
+{% endblock %}
+
+{% block actions %}
+    <li>{% include 'SonataAdminBundle:Button:show_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:acl_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>
+{% endblock %}
+
+{% block tab_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active', 'template': admin_pool.getTemplate('tab_menu_template')}, 'twig') }}{% endblock %}
+
+{% use 'SanRafaelRequerimientosBundle:CRUD:base_edit_form.html.twig' with form as parentForm %}
+{% import "SanRafaelRequerimientosBundle:CRUD:base_edit_form_macro.html.twig" as form_helper %}
+
+{% block form %}
+    {{ block('parentForm') }}
+{% endblock %}

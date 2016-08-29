@@ -1,0 +1,182 @@
+{# empty Twig template #}
+
+{% extends 'SanRafaelRequerimientosBundle::sigereq_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {# Bootstrap #}
+    {#<link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet" />#}
+    
+    {# Twitter Typeahead #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/typeahead.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# bootstrap-table #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+    
+    {# formValidation #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/formvalidation-master/dist/css/formValidation.min.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# bootstrap-X-editable #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css') }}" type="text/css" rel="stylesheet" media="screen" />
+    
+    {# bootstrap-switch #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+	window.GLOBAL_ADMIN_CONFIG = {
+	    ID_USERLOGGED: {{ app.user.getId()|escape('js') }},
+	    ID_USERLOGGED_EMPLOYEE: {% if app.user.getIdEmpleado() is not null %}{{ app.user.getIdEmpleado().getId()|escape('js') }}{% else %}false{% endif %},
+	    COD_USERLOGGED_EMPLOYEE: {% if app.user.getIdEmpleado() is not null %}'{{ app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo()|escape('js') }}'{% else %}false{% endif %},
+	    ID_USERLOGGED_ESTAB: {% if app.user.getIdEstablecimiento() is not null %}{{ app.user.getIdEstablecimiento().getId()|escape('js') }}{% else %}false{% endif %}
+	};
+	window.GLOBAL_BUNDLE_CONFIG = {
+	    IS_USERLOGGED_ADMIN: {% if is_granted('ROLE_ADMIN') %}true{% else %}false{% endif %},
+	    IS_USERLOGGED_RADX: {% if is_granted('ROLE_MINSAL_SIMAGD_ADMIN_IMG_LECTURA_CREATE') and (app.user.getIdEmpleado() is not null and app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo() == 'MRY') %}true{% else %}false{% endif %},
+	    IS_USERLOGGED_PRCMED: {% if is_granted('ROLE_MINSAL_SIMAGD_ADMIN_IMG_SOLICITUD_ESTUDIO_CREATE') and (app.user.getIdEmpleado() is not null and app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo() == 'MED') %}true{% else %}false{% endif %}
+	};
+	window.console.log(jQuery.extend(true, {}, window.GLOBAL_ADMIN_CONFIG, window.GLOBAL_BUNDLE_CONFIG));
+    </script>
+    
+    {# Bootstrap #}
+    {#<script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}" ></script>#}
+
+    {# jquery-formparams #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/jquery.formparams.min.js') }}" ></script>
+
+    {# jquery-maskedinput #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/jquery.mask.min.js') }}" ></script>
+    
+    {# Simagd extend jQuery #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_jQueryCustomFunctions.js') }}" ></script>
+    
+    {# Twitter Typeahead #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/typeahead.js-master/dist/typeahead.bundle.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/typeahead.js-master/dist/bloodhound.js') }}" ></script>
+    
+    {# bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
+    {# data format for bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_data_bsTable_formatter.js') }}" ></script>
+    {# filters for bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_filter_bstable_configuration.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_explocal_navbarFilter_configuration.js') }}" ></script>
+    
+    {# Simagd Custom Scripts #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_personal_formplugin.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_list_view_configuration_v2.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_init_formplugin.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_form_configuration_v2.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_configuration_alert.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_setterObject_modalData.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_select2_custom_formatter.js') }}" ></script>
+    
+    {# formValidation #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/formvalidation-master/dist/js/formValidation.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/formvalidation-master/dist/js/framework/bootstrap.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/formvalidation-master/dist/js/language/es_ES.js') }}" ></script>
+    
+    {# bootstrap-X-editable #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js') }}" ></script>
+    
+    {# bootstrap-switch #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-switch-master/dist/js/bootstrap-switch.min.js') }}" ></script>
+{% endblock %}
+    
+{% block sonata_admin_content -%}
+    
+    {% block sigereq_navbar_menu_list %}
+	<nav class="navbar navbar-default">
+	    <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		    </button>
+		    <span class="navbar-brand"><span class="label label-primary-v4">
+			{% block sigereq_navbar_menu_label %}
+			    <i class="fa fa-th-list"></i> Listado de registros
+			{% endblock %}
+		    </span></span>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <ul class="nav navbar-nav">
+			{% block sigereq_navbar_left_nav %}
+			    {# add custom items #}
+			{% endblock %}
+		    </ul>
+		    {% block sigereq_navbar_middle_nav %}
+			{# add custom items, you can add a form #}
+		    {% endblock %}
+		    <ul class="nav navbar-nav navbar-right">
+			{% block sigereq_navbar_right_nav %}
+			    {# add custom items #}
+			{% endblock %}
+		    </ul>
+		</div><!-- /.navbar-collapse -->
+	    </div><!-- /.container-fluid -->
+	</nav>
+    {% endblock %}
+    
+    {% block sigereq_bs_alert %}
+	{% block sigereq_inserted_alert %}
+	    <div class="sigereq-response-bs-alert" aria-hidden="true">
+		<div class="alert alert-success alert-dismissable" id="sigereq-added-response-bs-alert" style="display: none;">
+		    <button type="button" class="close" data-dismiss="alert">x</button>
+		    <span>
+			<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+			<strong>Finalizado! &nbsp; </strong> El registro ha sido insertado con éxito.
+                        <div style="display:block; opacity: 0.6;" class="xmessage"></div>
+		    </span>
+		</div>
+	    </div>
+	{% endblock %}
+	{% block sigereq_edited_alert %}
+	    <div class="sigereq-response-bs-alert" aria-hidden="true">
+		<div class="alert alert-info alert-dismissable" id="sigereq-edited-response-bs-alert" style="display: none;">
+		    <button type="button" class="close" data-dismiss="alert">x</button>
+		    <span>
+			<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+			<strong>Finalizado! &nbsp; </strong> El registro ha sido modificado con éxito.
+                        <div style="display:block; opacity: 0.6;" class="xmessage"></div>
+		    </span>
+		</div>
+	    </div>
+	{% endblock %}
+	{% block sigereq_error_alert %}
+	    <div class="sigereq-response-bs-alert" aria-hidden="true">
+		<div class="alert alert-danger alert-dismissable" id="sigereq-error-response-bs-alert" style="display: none;">
+		    <button type="button" class="close" data-dismiss="alert">x</button>
+		    <span>
+			<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+			<strong>Error! &nbsp; </strong> Fallo la operación realizada.
+                        <div style="display:block; opacity: 0.6;" class="xmessage"></div>
+		    </span>
+		</div>
+	    </div>
+	{% endblock %}
+	{% block sigereq_warning_alert %}
+	    <div class="sigereq-response-bs-alert" aria-hidden="true">
+		<div class="alert alert-warning alert-dismissable" id="sigereq-warning-response-bs-alert" style="display: none;">
+		    <button type="button" class="close" data-dismiss="alert">x</button>
+		    <span>
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			<strong>Advertencia! &nbsp; </strong> La operación no finalizó correctamente.
+                        <div style="display:block; opacity: 0.6;" class="xmessage"></div>
+		    </span>
+		</div>
+	    </div>
+	{% endblock %}
+    {% endblock %}
+    
+{% endblock %}

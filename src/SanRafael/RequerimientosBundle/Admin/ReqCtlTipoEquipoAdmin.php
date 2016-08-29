@@ -7,9 +7,23 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class ReqCtlTipoEquipoAdmin extends Admin
 {
+    protected $baseRouteName    = 'sigereq_tipo_equipo';
+    protected $baseRoutePattern = 'catalogo/tipo-equipo';
+    
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        // $collection->remove('delete');
+        $collection->add('create', 'crear');
+        $collection->add('edit', 'editar');
+        $collection->add('list', 'listar');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

@@ -1,0 +1,170 @@
+{# empty Twig template #}
+
+{% extends 'SonataAdminBundle:CRUD:base_show.html.twig' %}
+
+{% set _messageCurrentTemplate   = '<i class="fa fa-laptop"></i> <i class="fa fa-eye"></i> Consulta de registro' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {# sigereq-styles #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-form-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-extend-bootstrap3.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/css/sigereq-table.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# jquery-ui #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/jquery-ui-1.12.0.custom/jquery-ui.theme.min.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# toastmessage #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/akquinet-jquery-toastmessage-plugin-6f5d7bf/src/main/resources/css/jquery.toastmessage.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# bootstrap-modal #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/css/bootstrap-modal-bs3patch.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/css/bootstrap-modal.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# bootstrap-vertical-tabs #}
+    <link href="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-vertical-tabs-1.2.1/bootstrap.vertical-tabs.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/js/sigereq_form_configuration.js') }}" ></script>
+    
+    {# jquery-ui #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/jquery-ui-1.12.0.custom/jquery-ui.min.js') }}" ></script>
+    
+    {# toastmessage #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/akquinet-jquery-toastmessage-plugin-6f5d7bf/src/main/javascript/jquery.toastmessage.js') }}" ></script>
+    
+    {# bootstrap-modal #}
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/js/bootstrap-modalmanager.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/sanrafaelrequerimientos/plugin/bootstrap-modal-master/js/bootstrap-modal.js') }}" ></script>
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {% block sonata_page_content_nav %}
+        {% if _tab_menu is not empty or _actions is not empty %}
+            <nav class="navbar navbar-default" role="navigation">
+                {% block tab_menu_navbar_header %}
+                    <div class="navbar-header nav-sigereq-right">
+                        {% block sigereq_form_navbar_brand_title %}
+                            <span class="navbar-brand"><span class="label label-primary-v2"> {{ _messageCurrentTemplate|truncate(150)|raw }} </span></span>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+                <div class="container-fluid">
+                    <div class="navbar-left">
+                        {% if _tab_menu is not empty %}
+                            {{ _tab_menu|raw }}
+                        {% endif %}
+                    </div>
+
+                    {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
+                        <ul class="nav navbar-nav navbar-right ul-sigereq-right">
+                            <li class="dropdown sonata-actions">
+                                <ul class="list-inline" role="menu">
+                                    {{ _actions|raw }}
+                                    <li>
+                                        <a class="btn btn-primary-v2" data-toggle="modal" href="#" id="btn-ver-sigereq-modal-info-support" data-target="#sigereq-modal-info-support">
+                                            <i class="glyphicon glyphicon-info-sign"></i> Información
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </nav>
+        {% endif %}
+    {% endblock sonata_page_content_nav %}
+
+{% endblock sonata_page_content_header %}
+    
+{% block content %}
+    
+    {% block notice %}
+        {% include 'SanRafaelRequerimientosBundle::sigereq_flash_notice.html.twig' %}
+    {% endblock notice %}
+    
+    {{ parent() }}
+    
+    {% block sigereq_info_support %}
+
+        <div id="sigereq-modal-info-support" class="modal container fade justify-bootstrap-div-container" role="dialog" tabindex="-1" style="display: none;" data-backdrop="static" data-keyboard="false">
+            <div class="modal-content panel-success-v3">
+                <div class="modal-header panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> <i class="fa fa-times"></i> </button>
+                    <h4 class="modal-title"><i class="fa fa-desktop"></i> <strong>Imagenología</strong> - Cuadro informativo</h4>
+                </div>
+                
+                <div class="modal-body" >
+
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-random"></i> Información de registros </h3>
+                        </div>
+
+                        <div class="panel-body" >
+
+                            {% block custom_entity_support %}
+
+                                <div id="custom-entity-content-body"> {# Bloque a reemplazar para información en boostrap-modal #} </div>
+
+                            {% endblock %}
+
+                        </div>{# body #}
+
+                    </div><!-- /.modal-content -->
+
+                </div>{# body #}
+
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary-v2"> <i class="fa fa-times"></i> Cerrar </button>
+                </div>
+
+            </div><!-- /.modal-content -->
+
+        </div>{# modal #}
+
+    {% endblock %}
+    
+{% endblock %}
+
+{% block show %}
+    <div class="sonata-ba-view">
+
+        {{ sonata_block_render_event('sonata.admin.show.top', { 'admin': admin, 'object': object }) }}
+
+        {% for name, view_group in admin.showgroups %}
+            <div class="panel panel-primary">
+                {% if name %}
+                    {% block show_title %}
+                        <div class="panel-heading">
+                            {{ admin.trans(name) }}
+                        </div>
+                    {% endblock %}
+                {% endif %}
+                
+                <table class="table table-condensed">
+                    <tbody>
+                        {% for field_name in view_group.fields %}
+                            {% block show_field %}
+                                <tr class="sonata-ba-view-container sigereq-show-view-row">
+                                    {% if elements[field_name] is defined %}
+                                        {{ elements[field_name]|render_view_element(object) }}
+                                    {% endif %}
+                                </tr>
+                            {% endblock %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+
+        {{ sonata_block_render_event('sonata.admin.show.bottom', { 'admin': admin, 'object': object }) }}
+
+    </div>
+{% endblock %}

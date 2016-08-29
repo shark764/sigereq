@@ -1,8 +1,8 @@
 sonata_admin:
     security:
         handler: sonata.admin.security.handler.role
-    title:       Sistema X
-    title_logo:  /bundles/applicationcore/images/escudo.png
+    title:       Sistema de Requerimientos
+    title_logo:  /bundles/sanrafaelrequerimientos/images/pc_error.png
     templates:
         # default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig
@@ -19,3 +19,6 @@ sonata_admin:
         blocks:
             # display a dashboard block
             - { position: left, type: sonata.admin.block.admin_list }
+    options:
+        form_type: horizontal
+        html5_validate: false

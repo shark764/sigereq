@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqAreaServicioAtencion
  *
- * @ORM\Table(name="req_area_servicio_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_modalidad_area_servicio_atencion", columns={"id_area_atencion", "id_servicio_atencion", "id_servicio_externo", "id_modalidad_atencion"})}, indexes={@ORM\Index(name="IDX_FDA1E1E044A2C069", columns={"id_area_atencion"}), @ORM\Index(name="IDX_FDA1E1E0DC0A4806", columns={"id_servicio_atencion"}), @ORM\Index(name="IDX_FDA1E1E088863BBD", columns={"id_servicio_externo"}), @ORM\Index(name="IDX_FDA1E1E0EF8B2BB4", columns={"id_modalidad_atencion"})})
+ * @ORM\Table(name="req_area_servicio_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_modalidad_area_servicio_atencion", columns={"id_area_atencion", "id_servicio_atencion", "id_servicio_externo", "id_modalidad_atencion"})}, indexes={@ORM\Index(name="IDX_FDA1E1E0477882F9", columns={"id_jefe_departamento"}), @ORM\Index(name="IDX_FDA1E1E044A2C069", columns={"id_area_atencion"}), @ORM\Index(name="IDX_FDA1E1E0DC0A4806", columns={"id_servicio_atencion"}), @ORM\Index(name="IDX_FDA1E1E088863BBD", columns={"id_servicio_externo"}), @ORM\Index(name="IDX_FDA1E1E0EF8B2BB4", columns={"id_modalidad_atencion"})})
  * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\AreaServicioAtencionRepository")
  */
 class ReqAreaServicioAtencion
@@ -21,6 +21,16 @@ class ReqAreaServicioAtencion
      * @ORM\SequenceGenerator(sequenceName="req_area_servicio_atencion_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
+
+    /**
+     * @var \ReqEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="ReqEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_jefe_departamento", referencedColumnName="id")
+     * })
+     */
+    private $idJefeDepartamento;
 
     /**
      * @var \ReqCtlAreaAtencion
@@ -80,7 +90,7 @@ class ReqAreaServicioAtencion
         }
         return $this->idServicioAtencion ? mb_strtoupper(trim($this->idAreaAtencion), 'utf-8') . ' - ' . mb_strtoupper(trim($this->idServicioAtencion), 'utf-8') . ' | ' . strtoupper(trim($this->idModalidadAtencion)) : '';
     }
-    
+
     /**
      * Constructor
      */
@@ -98,6 +108,30 @@ class ReqAreaServicioAtencion
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set idJefeDepartamento
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idJefeDepartamento
+     *
+     * @return ReqAreaServicioAtencion
+     */
+    public function setIdJefeDepartamento(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idJefeDepartamento = null)
+    {
+        $this->idJefeDepartamento = $idJefeDepartamento;
+
+        return $this;
+    }
+
+    /**
+     * Get idJefeDepartamento
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqEmpleado
+     */
+    public function getIdJefeDepartamento()
+    {
+        return $this->idJefeDepartamento;
     }
 
     /**

@@ -105,7 +105,8 @@ CREATE TABLE fos_user_user (
     gplus_name character varying(255) DEFAULT NULL::character varying,
     gplus_data text,
     token character varying(255) DEFAULT NULL::character varying,
-    two_step_code character varying(255) DEFAULT NULL::character varying
+    two_step_code character varying(255) DEFAULT NULL::character varying,
+    id_empleado integer
 );
 
 
@@ -173,7 +174,9 @@ CREATE TABLE req_area_servicio_atencion (
     id smallint NOT NULL,
     id_area_atencion smallint NOT NULL,
     id_servicio_atencion smallint NOT NULL,
-    id_servicio_externo smallint NOT NULL
+    id_servicio_externo smallint NOT NULL,
+    id_modalidad_atencion smallint NOT NULL,
+    id_jefe_departamento integer
 );
 
 
@@ -321,7 +324,10 @@ CREATE TABLE req_ctl_equipo (
     id_user_reg integer NOT NULL,
     id_user_mod integer,
     id_servicio_asignado smallint,
-    serie character varying(16)
+    serie character varying(16),
+    id_estado_equipo smallint,
+    fecha_hora_reg timestamp without time zone DEFAULT (now())::timestamp(0) without time zone NOT NULL,
+    fecha_hora_mod timestamp without time zone
 );
 
 
@@ -346,6 +352,40 @@ ALTER TABLE public.req_ctl_equipo_id_seq OWNER TO request;
 --
 
 ALTER SEQUENCE req_ctl_equipo_id_seq OWNED BY req_ctl_equipo.id;
+
+
+--
+-- Name: req_ctl_estado_equipo; Type: TABLE; Schema: public; Owner: request; Tablespace: 
+--
+
+CREATE TABLE req_ctl_estado_equipo (
+    id smallint NOT NULL,
+    nombre character varying(75) DEFAULT 'Equipo se encuentra funcionando correctamente'::character varying NOT NULL,
+    codigo character(3) DEFAULT 'FNC'::bpchar
+);
+
+
+ALTER TABLE public.req_ctl_estado_equipo OWNER TO request;
+
+--
+-- Name: req_ctl_estado_equipo_id_seq; Type: SEQUENCE; Schema: public; Owner: request
+--
+
+CREATE SEQUENCE req_ctl_estado_equipo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.req_ctl_estado_equipo_id_seq OWNER TO request;
+
+--
+-- Name: req_ctl_estado_equipo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: request
+--
+
+ALTER SEQUENCE req_ctl_estado_equipo_id_seq OWNED BY req_ctl_estado_equipo.id;
 
 
 --
@@ -388,7 +428,7 @@ ALTER SEQUENCE req_ctl_estado_requerimiento_id_seq OWNED BY req_ctl_estado_reque
 --
 
 CREATE TABLE req_ctl_marca_equipo (
-    id integer NOT NULL,
+    id smallint NOT NULL,
     nombre character varying(50) DEFAULT 'DELL'::character varying NOT NULL,
     codigo character(3) DEFAULT 'DLL'::bpchar NOT NULL,
     id_marca_grupo smallint,
@@ -420,13 +460,47 @@ ALTER SEQUENCE req_ctl_marca_equipo_id_seq OWNED BY req_ctl_marca_equipo.id;
 
 
 --
+-- Name: req_ctl_modalidad_atencion; Type: TABLE; Schema: public; Owner: request; Tablespace: 
+--
+
+CREATE TABLE req_ctl_modalidad_atencion (
+    id smallint NOT NULL,
+    nombre character(25) NOT NULL,
+    codigo character(6) NOT NULL
+);
+
+
+ALTER TABLE public.req_ctl_modalidad_atencion OWNER TO request;
+
+--
+-- Name: req_ctl_modalidad_atencion_id_seq; Type: SEQUENCE; Schema: public; Owner: request
+--
+
+CREATE SEQUENCE req_ctl_modalidad_atencion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.req_ctl_modalidad_atencion_id_seq OWNER TO request;
+
+--
+-- Name: req_ctl_modalidad_atencion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: request
+--
+
+ALTER SEQUENCE req_ctl_modalidad_atencion_id_seq OWNED BY req_ctl_modalidad_atencion.id;
+
+
+--
 -- Name: req_ctl_modelo_equipo; Type: TABLE; Schema: public; Owner: request; Tablespace: 
 --
 
 CREATE TABLE req_ctl_modelo_equipo (
-    id integer NOT NULL,
+    id smallint NOT NULL,
     nombre character varying(75) DEFAULT 'Dell OptiPlex 9020'::character varying NOT NULL,
-    codigo character(10) DEFAULT 'dlloptx9020'::bpchar NOT NULL,
+    codigo character(15) DEFAULT 'dlloptx9020'::bpchar NOT NULL,
     id_modelo_grupo smallint,
     id_marca_equipo smallint NOT NULL,
     caracteristicas text
@@ -464,7 +538,8 @@ CREATE TABLE req_ctl_servicio_atencion (
     id smallint NOT NULL,
     nombre character varying(100) NOT NULL,
     codigo character(6),
-    id_atencion_padre integer
+    id_atencion_padre integer,
+    id_tipo_servicio smallint NOT NULL
 );
 
 
@@ -523,6 +598,40 @@ ALTER TABLE public.req_ctl_servicio_externo_id_seq OWNER TO request;
 --
 
 ALTER SEQUENCE req_ctl_servicio_externo_id_seq OWNED BY req_ctl_servicio_externo.id;
+
+
+--
+-- Name: req_ctl_sexo; Type: TABLE; Schema: public; Owner: request; Tablespace: 
+--
+
+CREATE TABLE req_ctl_sexo (
+    id smallint NOT NULL,
+    sexo character(15) DEFAULT 'Masculino'::bpchar NOT NULL,
+    codigo character(1) DEFAULT 'M'::bpchar NOT NULL
+);
+
+
+ALTER TABLE public.req_ctl_sexo OWNER TO request;
+
+--
+-- Name: req_ctl_sexo_id_seq; Type: SEQUENCE; Schema: public; Owner: request
+--
+
+CREATE SEQUENCE req_ctl_sexo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.req_ctl_sexo_id_seq OWNER TO request;
+
+--
+-- Name: req_ctl_sexo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: request
+--
+
+ALTER SEQUENCE req_ctl_sexo_id_seq OWNED BY req_ctl_sexo.id;
 
 
 --
@@ -599,9 +708,9 @@ ALTER SEQUENCE req_ctl_tipo_empleado_id_seq OWNED BY req_ctl_tipo_empleado.id;
 --
 
 CREATE TABLE req_ctl_tipo_equipo (
-    id integer NOT NULL,
-    nombre character varying(75) NOT NULL,
-    codigo character(3) DEFAULT 'Computadora de escritorio'::bpchar NOT NULL,
+    id smallint NOT NULL,
+    nombre character varying(75) DEFAULT 'Computadora de escritorio'::character varying NOT NULL,
+    codigo character(3) DEFAULT 'DKT'::bpchar NOT NULL,
     id_tipo_padre smallint,
     caracteristicas text
 );
@@ -628,6 +737,41 @@ ALTER TABLE public.req_ctl_tipo_equipo_id_seq OWNER TO request;
 --
 
 ALTER SEQUENCE req_ctl_tipo_equipo_id_seq OWNED BY req_ctl_tipo_equipo.id;
+
+
+--
+-- Name: req_ctl_tipo_servicio; Type: TABLE; Schema: public; Owner: request; Tablespace: 
+--
+
+CREATE TABLE req_ctl_tipo_servicio (
+    id smallint NOT NULL,
+    nombre character varying(100) DEFAULT 'División Administrativa'::character varying,
+    codigo character(3) DEFAULT 'ADM'::bpchar,
+    id_tipo_padre smallint
+);
+
+
+ALTER TABLE public.req_ctl_tipo_servicio OWNER TO request;
+
+--
+-- Name: req_ctl_tipo_servicio_id_seq; Type: SEQUENCE; Schema: public; Owner: request
+--
+
+CREATE SEQUENCE req_ctl_tipo_servicio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.req_ctl_tipo_servicio_id_seq OWNER TO request;
+
+--
+-- Name: req_ctl_tipo_servicio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: request
+--
+
+ALTER SEQUENCE req_ctl_tipo_servicio_id_seq OWNED BY req_ctl_tipo_servicio.id;
 
 
 --
@@ -665,6 +809,42 @@ ALTER SEQUENCE req_ctl_tipo_trabajo_id_seq OWNED BY req_ctl_tipo_trabajo.id;
 
 
 --
+-- Name: req_ctl_trabajo_requerido; Type: TABLE; Schema: public; Owner: request; Tablespace: 
+--
+
+CREATE TABLE req_ctl_trabajo_requerido (
+    id smallint NOT NULL,
+    requerimiento character varying(255) DEFAULT 'Asignación de equipo de cómputo'::character varying NOT NULL,
+    codigo character(6) DEFAULT '000000'::bpchar,
+    id_area_trabajo smallint NOT NULL,
+    id_trabajo_requerido_padre smallint
+);
+
+
+ALTER TABLE public.req_ctl_trabajo_requerido OWNER TO request;
+
+--
+-- Name: req_ctl_trabajo_requerido_id_seq; Type: SEQUENCE; Schema: public; Owner: request
+--
+
+CREATE SEQUENCE req_ctl_trabajo_requerido_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.req_ctl_trabajo_requerido_id_seq OWNER TO request;
+
+--
+-- Name: req_ctl_trabajo_requerido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: request
+--
+
+ALTER SEQUENCE req_ctl_trabajo_requerido_id_seq OWNED BY req_ctl_trabajo_requerido.id;
+
+
+--
 -- Name: req_empleado; Type: TABLE; Schema: public; Owner: request; Tablespace: 
 --
 
@@ -678,8 +858,19 @@ CREATE TABLE req_empleado (
     correo_electronico character varying(100),
     telefono_casa character(10),
     telefono_celular character(10),
-    fecha_nacimiento timestamp without time zone,
-    id_jefe_inmediato integer
+    fecha_nacimiento date,
+    id_jefe_inmediato integer,
+    fecha_hora_reg timestamp without time zone,
+    fecha_hora_mod timestamp without time zone,
+    hora_nacimiento time without time zone,
+    id_user_reg integer NOT NULL,
+    id_user_mod integer,
+    id_area_servicio_atencion smallint,
+    id_sexo smallint NOT NULL,
+    correo_institucional character varying(100),
+    fecha_contratacion timestamp without time zone,
+    fecha_inicia_labores timestamp without time zone,
+    fecha_finaliza_labores timestamp without time zone
 );
 
 
@@ -691,7 +882,7 @@ ALTER TABLE public.req_empleado OWNER TO request;
 
 CREATE TABLE req_empleado_area_servicio_atencion (
     id integer NOT NULL,
-    id_area_servicio_atencion integer NOT NULL,
+    id_area_servicio_atencion smallint NOT NULL,
     id_empleado integer NOT NULL,
     habilitado boolean DEFAULT true
 );
@@ -748,15 +939,15 @@ ALTER SEQUENCE req_empleado_id_seq OWNED BY req_empleado.id;
 CREATE TABLE req_requerimiento (
     id bigint NOT NULL,
     titulo character varying(255) NOT NULL,
-    fecha_creacion timestamp without time zone DEFAULT (now())::timestamp(0) without time zone NOT NULL,
-    fecha_ultima_edicion timestamp without time zone,
+    fecha_hora_reg timestamp without time zone DEFAULT (now())::timestamp(0) without time zone NOT NULL,
+    fecha_hora_mod timestamp without time zone,
     fecha_hora_inicio timestamp without time zone NOT NULL,
     fecha_hora_fin timestamp without time zone NOT NULL,
     repetir_por smallint DEFAULT 0,
     dia_completo boolean DEFAULT false,
     color character varying(15) DEFAULT '#2a5469'::character varying,
     id_requerimiento_padre bigint,
-    trabajo_requerido text NOT NULL,
+    descripcion text NOT NULL,
     id_equipo_solicitud bigint,
     id_empleado_registra smallint NOT NULL,
     id_empleado_asignado smallint,
@@ -772,7 +963,9 @@ CREATE TABLE req_requerimiento (
     solucion text,
     fecha_asignacion timestamp without time zone,
     id_asigna_requerimiento integer,
-    fecha_recibido timestamp without time zone
+    fecha_recibido timestamp without time zone,
+    id_trabajo_requerido smallint,
+    fecha_digitacion timestamp without time zone
 );
 
 
@@ -797,6 +990,58 @@ ALTER TABLE public.req_requerimiento_id_seq OWNER TO request;
 --
 
 ALTER SEQUENCE req_requerimiento_id_seq OWNED BY req_requerimiento.id;
+
+
+--
+-- Name: req_requerimiento_trabajo_requerido; Type: TABLE; Schema: public; Owner: request; Tablespace: 
+--
+
+CREATE TABLE req_requerimiento_trabajo_requerido (
+    id bigint NOT NULL,
+    id_requerimiento bigint NOT NULL,
+    id_trabajo_requerido smallint NOT NULL,
+    fecha_hora_reg timestamp without time zone DEFAULT (now())::timestamp(0) without time zone NOT NULL,
+    fecha_hora_mod timestamp without time zone,
+    fecha_inicio timestamp without time zone,
+    fecha_fin timestamp without time zone,
+    descripcion text,
+    solucion text,
+    comentarios character varying(255),
+    id_soluciona_requerimiento integer NOT NULL,
+    id_solucion_requerimiento smallint,
+    id_equipo_solicitud bigint,
+    id_empleado_registra smallint NOT NULL,
+    id_empleado_asignado smallint,
+    id_area_trabajo smallint NOT NULL,
+    id_estado_requerimiento smallint,
+    id_tipo_trabajo smallint,
+    id_asigna_requerimiento integer,
+    id_user_reg integer NOT NULL,
+    id_user_mod integer
+);
+
+
+ALTER TABLE public.req_requerimiento_trabajo_requerido OWNER TO request;
+
+--
+-- Name: req_requerimiento_trabajo_requerido_id_seq; Type: SEQUENCE; Schema: public; Owner: request
+--
+
+CREATE SEQUENCE req_requerimiento_trabajo_requerido_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.req_requerimiento_trabajo_requerido_id_seq OWNER TO request;
+
+--
+-- Name: req_requerimiento_trabajo_requerido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: request
+--
+
+ALTER SEQUENCE req_requerimiento_trabajo_requerido_id_seq OWNED BY req_requerimiento_trabajo_requerido.id;
 
 
 --
@@ -838,6 +1083,13 @@ ALTER TABLE ONLY req_ctl_equipo ALTER COLUMN id SET DEFAULT nextval('req_ctl_equ
 -- Name: id; Type: DEFAULT; Schema: public; Owner: request
 --
 
+ALTER TABLE ONLY req_ctl_estado_equipo ALTER COLUMN id SET DEFAULT nextval('req_ctl_estado_equipo_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: request
+--
+
 ALTER TABLE ONLY req_ctl_estado_requerimiento ALTER COLUMN id SET DEFAULT nextval('req_ctl_estado_requerimiento_id_seq'::regclass);
 
 
@@ -846,6 +1098,13 @@ ALTER TABLE ONLY req_ctl_estado_requerimiento ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY req_ctl_marca_equipo ALTER COLUMN id SET DEFAULT nextval('req_ctl_marca_equipo_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_modalidad_atencion ALTER COLUMN id SET DEFAULT nextval('req_ctl_modalidad_atencion_id_seq'::regclass);
 
 
 --
@@ -873,6 +1132,13 @@ ALTER TABLE ONLY req_ctl_servicio_externo ALTER COLUMN id SET DEFAULT nextval('r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: request
 --
 
+ALTER TABLE ONLY req_ctl_sexo ALTER COLUMN id SET DEFAULT nextval('req_ctl_sexo_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: request
+--
+
 ALTER TABLE ONLY req_ctl_solucion_requerimiento ALTER COLUMN id SET DEFAULT nextval('req_ctl_solucion_requerimiento_id_seq'::regclass);
 
 
@@ -894,7 +1160,21 @@ ALTER TABLE ONLY req_ctl_tipo_equipo ALTER COLUMN id SET DEFAULT nextval('req_ct
 -- Name: id; Type: DEFAULT; Schema: public; Owner: request
 --
 
+ALTER TABLE ONLY req_ctl_tipo_servicio ALTER COLUMN id SET DEFAULT nextval('req_ctl_tipo_servicio_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: request
+--
+
 ALTER TABLE ONLY req_ctl_tipo_trabajo ALTER COLUMN id SET DEFAULT nextval('req_ctl_tipo_trabajo_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_trabajo_requerido ALTER COLUMN id SET DEFAULT nextval('req_ctl_trabajo_requerido_id_seq'::regclass);
 
 
 --
@@ -919,11 +1199,16 @@ ALTER TABLE ONLY req_requerimiento ALTER COLUMN id SET DEFAULT nextval('req_requ
 
 
 --
+-- Name: id; Type: DEFAULT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido ALTER COLUMN id SET DEFAULT nextval('req_requerimiento_trabajo_requerido_id_seq'::regclass);
+
+
+--
 -- Data for Name: fos_user_group; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY fos_user_group (id, name, roles) FROM stdin;
-\.
 
 
 --
@@ -937,18 +1222,14 @@ SELECT pg_catalog.setval('fos_user_group_id_seq', 1, false);
 -- Data for Name: fos_user_user; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code) FROM stdin;
-1	admin	admin	farid.hdz.64@gmail.com	farid.hdz.64@gmail.com	t	qe8kcle04sgw0oo48w8ssko80cgcccc	G5pGA/C+RRlnARla0DX3jmEL+KsEv+8vscuTFXyeyk9Zn7qNKi8U4FGZh+KSFuIYTImRllOYrcVKcdH7IFeceA==	\N	f	f	\N	\N	\N	a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}	f	\N	2016-08-10 13:59:30	2016-08-10 13:59:30	\N	\N	\N	\N	\N	u	\N	\N	\N	\N	\N	null	\N	\N	null	\N	\N	null	\N	\N
-4	adminrequest	adminrequest	admin.request@gmail.com	admin.request@gmail.com	t	3vl8bdxfucqog88gwsoswg4cg048ckg	pn5P8d7TkK9/TOb4Sn85Bdr6pRw+3fwPIM3lFbnm9lbNpMp1ykFMiVb0XMwMX6jCE/up5b3Yj+Q/SLSfK1++tQ==	\N	f	f	\N	\N	\N	a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}	f	\N	2016-08-24 01:03:31	2016-08-24 01:03:31	\N	\N	\N	\N	\N	u	\N	\N	\N	\N	\N	null	\N	\N	null	\N	\N	null	\N	\N
-\.
+INSERT INTO fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code, id_empleado) VALUES (1, 'admin', 'admin', 'farid.hdz.64@gmail.com', 'farid.hdz.64@gmail.com', false, 'qe8kcle04sgw0oo48w8ssko80cgcccc', 'G5pGA/C+RRlnARla0DX3jmEL+KsEv+8vscuTFXyeyk9Zn7qNKi8U4FGZh+KSFuIYTImRllOYrcVKcdH7IFeceA==', NULL, false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', false, NULL, '2016-08-10 13:59:30', '2016-08-26 11:58:31', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, NULL);
+INSERT INTO fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code, id_empleado) VALUES (4, 'adminrequest', 'adminrequest', 'admin.request@gmail.com', 'admin.request@gmail.com', true, '3vl8bdxfucqog88gwsoswg4cg048ckg', 'pn5P8d7TkK9/TOb4Sn85Bdr6pRw+3fwPIM3lFbnm9lbNpMp1ykFMiVb0XMwMX6jCE/up5b3Yj+Q/SLSfK1++tQ==', '2016-08-29 14:45:41', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', false, NULL, '2016-08-24 01:03:31', '2016-08-29 14:45:41', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, NULL);
 
 
 --
 -- Data for Name: fos_user_user_group; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY fos_user_user_group (user_id, group_id) FROM stdin;
-\.
 
 
 --
@@ -962,8 +1243,6 @@ SELECT pg_catalog.setval('fos_user_user_id_seq', 4, true);
 -- Data for Name: req_area_servicio_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_area_servicio_atencion (id, id_area_atencion, id_servicio_atencion, id_servicio_externo) FROM stdin;
-\.
 
 
 --
@@ -977,8 +1256,6 @@ SELECT pg_catalog.setval('req_area_servicio_atencion_id_seq', 1, false);
 -- Data for Name: req_ctl_area_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_area_atencion (id, nombre, codigo) FROM stdin;
-\.
 
 
 --
@@ -992,22 +1269,20 @@ SELECT pg_catalog.setval('req_ctl_area_atencion_id_seq', 1, false);
 -- Data for Name: req_ctl_area_trabajo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) FROM stdin;
-3	Soporte Técnico	SPT	\N
-4	Soporte Técnico en Equipos Informáticos	SPQ	3
-5	Soporte Técnico en Sistemas Informáticos	SPS	3
-6	Ofimática	OFM	\N
-7	Comunicaciones de Datos	RCD	2
-8	Redes de Datos	RDT	2
-2	Redes y Comunicaciones de Datos	RDD	\N
-9	Seguridad Informática	SGI	\N
-10	Mantenimiento de Equipos Informáticos	MNT	\N
-11	Virus Informáticos	SVR	9
-12	Administrativo	ADM	\N
-1	Sistemas Informáticos	SIT	\N
-14	Desarrollo de Sistemas Informáticos	DSI	1
-15	Actualización de Sistemas Informáticos	ASI	1
-\.
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (3, 'Soporte Técnico', 'SPT', NULL);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (4, 'Soporte Técnico en Equipos Informáticos', 'SPQ', 3);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (5, 'Soporte Técnico en Sistemas Informáticos', 'SPS', 3);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (6, 'Ofimática', 'OFM', NULL);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (7, 'Comunicaciones de Datos', 'RCD', 2);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (8, 'Redes de Datos', 'RDT', 2);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (2, 'Redes y Comunicaciones de Datos', 'RDD', NULL);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (9, 'Seguridad Informática', 'SGI', NULL);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (10, 'Mantenimiento de Equipos Informáticos', 'MNT', NULL);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (11, 'Virus Informáticos', 'SVR', 9);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (12, 'Administrativo', 'ADM', NULL);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (1, 'Sistemas Informáticos', 'SIT', NULL);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (14, 'Desarrollo de Sistemas Informáticos', 'DSI', 1);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (15, 'Actualización de Sistemas Informáticos', 'ASI', 1);
 
 
 --
@@ -1021,38 +1296,50 @@ SELECT pg_catalog.setval('req_ctl_area_trabajo_id_seq', 15, true);
 -- Data for Name: req_ctl_cargo_empleado; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_cargo_empleado (id, nombre, codigo) FROM stdin;
-\.
+INSERT INTO req_ctl_cargo_empleado (id, nombre, codigo) VALUES (1, 'Director de Hospital', 'DHP');
 
 
 --
 -- Name: req_ctl_cargo_empleado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_cargo_empleado_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_cargo_empleado_id_seq', 1, true);
 
 
 --
 -- Data for Name: req_ctl_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_equipo (id, nombre, codigo, numero_inventario, id_empleado_asignado, id_tipo_equipo, id_modelo_equipo, caracteristicas, fecha_adquisicion, fecha_despacho, id_user_reg, id_user_mod, id_servicio_asignado, serie) FROM stdin;
-\.
+INSERT INTO req_ctl_equipo (id, nombre, codigo, numero_inventario, id_empleado_asignado, id_tipo_equipo, id_modelo_equipo, caracteristicas, fecha_adquisicion, fecha_despacho, id_user_reg, id_user_mod, id_servicio_asignado, serie, id_estado_equipo, fecha_hora_reg, fecha_hora_mod) VALUES (4, 'PC Dell Optiplex 9020 de prestaciones altas', '000000    ', NULL, NULL, 1, 2, NULL, '2016-08-28 20:38:00', '2016-08-28 20:38:00', 4, 4, NULL, NULL, 1, '2016-08-28 20:41:12', '2016-08-28 20:42:07');
+INSERT INTO req_ctl_equipo (id, nombre, codigo, numero_inventario, id_empleado_asignado, id_tipo_equipo, id_modelo_equipo, caracteristicas, fecha_adquisicion, fecha_despacho, id_user_reg, id_user_mod, id_servicio_asignado, serie, id_estado_equipo, fecha_hora_reg, fecha_hora_mod) VALUES (3, 'PC Dell Optiplex 9020 de prestaciones medias', '0000001   ', NULL, NULL, 1, 2, NULL, '2016-08-28 19:00:00', '2016-08-28 19:00:00', 4, 4, NULL, '09GH89983333309I', 1, '2016-08-28 19:02:26', '2016-08-28 21:28:50');
+INSERT INTO req_ctl_equipo (id, nombre, codigo, numero_inventario, id_empleado_asignado, id_tipo_equipo, id_modelo_equipo, caracteristicas, fecha_adquisicion, fecha_despacho, id_user_reg, id_user_mod, id_servicio_asignado, serie, id_estado_equipo, fecha_hora_reg, fecha_hora_mod) VALUES (6, 'ups', '0000025   ', NULL, NULL, 1, 2, NULL, '2016-08-29 10:50:00', '2016-08-29 10:50:00', 4, NULL, NULL, NULL, 1, '2016-08-29 10:51:57', NULL);
 
 
 --
 -- Name: req_ctl_equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_equipo_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_equipo_id_seq', 6, true);
+
+
+--
+-- Data for Name: req_ctl_estado_equipo; Type: TABLE DATA; Schema: public; Owner: request
+--
+
+INSERT INTO req_ctl_estado_equipo (id, nombre, codigo) VALUES (1, 'Equipo se encuentra funcionando correctamente', 'FNC');
+
+
+--
+-- Name: req_ctl_estado_equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
+--
+
+SELECT pg_catalog.setval('req_ctl_estado_equipo_id_seq', 1, true);
 
 
 --
 -- Data for Name: req_ctl_estado_requerimiento; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_estado_requerimiento (id, nombre, codigo, id_estado_padre) FROM stdin;
-\.
 
 
 --
@@ -1066,38 +1353,47 @@ SELECT pg_catalog.setval('req_ctl_estado_requerimiento_id_seq', 1, false);
 -- Data for Name: req_ctl_marca_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_marca_equipo (id, nombre, codigo, id_marca_grupo, caracteristicas) FROM stdin;
-\.
+INSERT INTO req_ctl_marca_equipo (id, nombre, codigo, id_marca_grupo, caracteristicas) VALUES (1, 'DELL', 'DLL', NULL, NULL);
 
 
 --
 -- Name: req_ctl_marca_equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_marca_equipo_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_marca_equipo_id_seq', 1, true);
+
+
+--
+-- Data for Name: req_ctl_modalidad_atencion; Type: TABLE DATA; Schema: public; Owner: request
+--
+
+
+
+--
+-- Name: req_ctl_modalidad_atencion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
+--
+
+SELECT pg_catalog.setval('req_ctl_modalidad_atencion_id_seq', 1, false);
 
 
 --
 -- Data for Name: req_ctl_modelo_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_modelo_equipo (id, nombre, codigo, id_modelo_grupo, id_marca_equipo, caracteristicas) FROM stdin;
-\.
+INSERT INTO req_ctl_modelo_equipo (id, nombre, codigo, id_modelo_grupo, id_marca_equipo, caracteristicas) VALUES (2, 'Dell OptiPlex 9020', 'dlloptx9020    ', NULL, 1, NULL);
 
 
 --
 -- Name: req_ctl_modelo_equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_modelo_equipo_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_modelo_equipo_id_seq', 2, true);
 
 
 --
 -- Data for Name: req_ctl_servicio_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre) FROM stdin;
-\.
 
 
 --
@@ -1111,8 +1407,6 @@ SELECT pg_catalog.setval('req_ctl_servicio_atencion_id_seq', 1, false);
 -- Data for Name: req_ctl_servicio_externo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_servicio_externo (id, nombre, codigo) FROM stdin;
-\.
 
 
 --
@@ -1123,58 +1417,83 @@ SELECT pg_catalog.setval('req_ctl_servicio_externo_id_seq', 1, false);
 
 
 --
+-- Data for Name: req_ctl_sexo; Type: TABLE DATA; Schema: public; Owner: request
+--
+
+INSERT INTO req_ctl_sexo (id, sexo, codigo) VALUES (1, 'Masculino      ', 'M');
+INSERT INTO req_ctl_sexo (id, sexo, codigo) VALUES (2, 'Femenino       ', 'F');
+INSERT INTO req_ctl_sexo (id, sexo, codigo) VALUES (3, 'Otros          ', 'O');
+
+
+--
+-- Name: req_ctl_sexo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
+--
+
+SELECT pg_catalog.setval('req_ctl_sexo_id_seq', 3, true);
+
+
+--
 -- Data for Name: req_ctl_solucion_requerimiento; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre) FROM stdin;
-\.
+INSERT INTO req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre) VALUES (1, 'Se cambio antivirus', 'ANT', NULL);
 
 
 --
 -- Name: req_ctl_solucion_requerimiento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_solucion_requerimiento_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_solucion_requerimiento_id_seq', 1, true);
 
 
 --
 -- Data for Name: req_ctl_tipo_empleado; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_tipo_empleado (id, nombre, codigo) FROM stdin;
-\.
+INSERT INTO req_ctl_tipo_empleado (id, nombre, codigo) VALUES (1, 'Médico de Consulta General/de Especialidad', 'MED');
 
 
 --
 -- Name: req_ctl_tipo_empleado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_tipo_empleado_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_tipo_empleado_id_seq', 1, true);
 
 
 --
 -- Data for Name: req_ctl_tipo_equipo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_tipo_equipo (id, nombre, codigo, id_tipo_padre, caracteristicas) FROM stdin;
-\.
+INSERT INTO req_ctl_tipo_equipo (id, nombre, codigo, id_tipo_padre, caracteristicas) VALUES (1, 'Computadora de escritorio', 'DKT', NULL, NULL);
 
 
 --
 -- Name: req_ctl_tipo_equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_tipo_equipo_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_tipo_equipo_id_seq', 1, true);
+
+
+--
+-- Data for Name: req_ctl_tipo_servicio; Type: TABLE DATA; Schema: public; Owner: request
+--
+
+INSERT INTO req_ctl_tipo_servicio (id, nombre, codigo, id_tipo_padre) VALUES (1, 'División Administrativa', 'ADM', NULL);
+
+
+--
+-- Name: req_ctl_tipo_servicio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
+--
+
+SELECT pg_catalog.setval('req_ctl_tipo_servicio_id_seq', 1, true);
 
 
 --
 -- Data for Name: req_ctl_tipo_trabajo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_ctl_tipo_trabajo (id, nombre, codigo) FROM stdin;
-1	Trabajo Correctivo       	C
-2	Trabajo Preventivo       	P
-\.
+INSERT INTO req_ctl_tipo_trabajo (id, nombre, codigo) VALUES (1, 'Trabajo Correctivo       ', 'C');
+INSERT INTO req_ctl_tipo_trabajo (id, nombre, codigo) VALUES (2, 'Trabajo Preventivo       ', 'P');
 
 
 --
@@ -1185,19 +1504,28 @@ SELECT pg_catalog.setval('req_ctl_tipo_trabajo_id_seq', 2, true);
 
 
 --
+-- Data for Name: req_ctl_trabajo_requerido; Type: TABLE DATA; Schema: public; Owner: request
+--
+
+
+
+--
+-- Name: req_ctl_trabajo_requerido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
+--
+
+SELECT pg_catalog.setval('req_ctl_trabajo_requerido_id_seq', 1, false);
+
+
+--
 -- Data for Name: req_empleado; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_empleado (id, nombre, apellido, id_tipo_empleado, id_cargo_empleado, habilitado, correo_electronico, telefono_casa, telefono_celular, fecha_nacimiento, id_jefe_inmediato) FROM stdin;
-\.
 
 
 --
 -- Data for Name: req_empleado_area_servicio_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_empleado_area_servicio_atencion (id, id_area_servicio_atencion, id_empleado, habilitado) FROM stdin;
-\.
 
 
 --
@@ -1218,8 +1546,6 @@ SELECT pg_catalog.setval('req_empleado_id_seq', 1, false);
 -- Data for Name: req_requerimiento; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-COPY req_requerimiento (id, titulo, fecha_creacion, fecha_ultima_edicion, fecha_hora_inicio, fecha_hora_fin, repetir_por, dia_completo, color, id_requerimiento_padre, trabajo_requerido, id_equipo_solicitud, id_empleado_registra, id_empleado_asignado, id_area_trabajo, id_estado_requerimiento, id_tipo_trabajo, id_solucion_requerimiento, id_empleado_solicita, id_servicio_solicita, id_user_reg, id_user_mod, descripcion_requerimiento, solucion, fecha_asignacion, id_asigna_requerimiento, fecha_recibido) FROM stdin;
-\.
 
 
 --
@@ -1227,6 +1553,19 @@ COPY req_requerimiento (id, titulo, fecha_creacion, fecha_ultima_edicion, fecha_
 --
 
 SELECT pg_catalog.setval('req_requerimiento_id_seq', 1, false);
+
+
+--
+-- Data for Name: req_requerimiento_trabajo_requerido; Type: TABLE DATA; Schema: public; Owner: request
+--
+
+
+
+--
+-- Name: req_requerimiento_trabajo_requerido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
+--
+
+SELECT pg_catalog.setval('req_requerimiento_trabajo_requerido_id_seq', 1, false);
 
 
 --
@@ -1262,14 +1601,6 @@ ALTER TABLE ONLY req_ctl_area_atencion
 
 
 --
--- Name: idx_req_area_servicio_atencion; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
---
-
-ALTER TABLE ONLY req_area_servicio_atencion
-    ADD CONSTRAINT idx_req_area_servicio_atencion UNIQUE (id_area_atencion, id_servicio_atencion, id_servicio_externo);
-
-
---
 -- Name: idx_req_codigo_area_trabajo; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
@@ -1294,6 +1625,14 @@ ALTER TABLE ONLY req_ctl_equipo
 
 
 --
+-- Name: idx_req_codigo_estado_equipo; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_estado_equipo
+    ADD CONSTRAINT idx_req_codigo_estado_equipo UNIQUE (codigo);
+
+
+--
 -- Name: idx_req_codigo_estado_requerimiento; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
@@ -1307,6 +1646,14 @@ ALTER TABLE ONLY req_ctl_estado_requerimiento
 
 ALTER TABLE ONLY req_ctl_marca_equipo
     ADD CONSTRAINT idx_req_codigo_marca_equipo UNIQUE (codigo);
+
+
+--
+-- Name: idx_req_codigo_modalidad_atencion; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_modalidad_atencion
+    ADD CONSTRAINT idx_req_codigo_modalidad_atencion UNIQUE (codigo);
 
 
 --
@@ -1334,6 +1681,14 @@ ALTER TABLE ONLY req_ctl_servicio_externo
 
 
 --
+-- Name: idx_req_codigo_sexo; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_sexo
+    ADD CONSTRAINT idx_req_codigo_sexo UNIQUE (codigo);
+
+
+--
 -- Name: idx_req_codigo_solucion_requerimiento; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
@@ -1358,6 +1713,14 @@ ALTER TABLE ONLY req_ctl_tipo_equipo
 
 
 --
+-- Name: idx_req_codigo_tipo_servicio; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_tipo_servicio
+    ADD CONSTRAINT idx_req_codigo_tipo_servicio UNIQUE (codigo);
+
+
+--
 -- Name: idx_req_codigo_tipo_trabajo; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
@@ -1366,11 +1729,35 @@ ALTER TABLE ONLY req_ctl_tipo_trabajo
 
 
 --
+-- Name: idx_req_codigo_trabajo_requerido; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_trabajo_requerido
+    ADD CONSTRAINT idx_req_codigo_trabajo_requerido UNIQUE (codigo);
+
+
+--
 -- Name: idx_req_empleado_area_servicio_atencion; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
 ALTER TABLE ONLY req_empleado_area_servicio_atencion
     ADD CONSTRAINT idx_req_empleado_area_servicio_atencion UNIQUE (id_area_servicio_atencion, id_empleado);
+
+
+--
+-- Name: idx_req_modalidad_area_servicio_atencion; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_area_servicio_atencion
+    ADD CONSTRAINT idx_req_modalidad_area_servicio_atencion UNIQUE (id_area_atencion, id_servicio_atencion, id_servicio_externo, id_modalidad_atencion);
+
+
+--
+-- Name: idx_req_requerimiento_trabajo_requerido; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT idx_req_requerimiento_trabajo_requerido UNIQUE (id_requerimiento, id_trabajo_requerido);
 
 
 --
@@ -1414,6 +1801,14 @@ ALTER TABLE ONLY req_ctl_equipo
 
 
 --
+-- Name: pk_req_ctl_estado_equipo; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_estado_equipo
+    ADD CONSTRAINT pk_req_ctl_estado_equipo PRIMARY KEY (id);
+
+
+--
 -- Name: pk_req_ctl_estado_requerimiento; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
@@ -1427,6 +1822,14 @@ ALTER TABLE ONLY req_ctl_estado_requerimiento
 
 ALTER TABLE ONLY req_ctl_marca_equipo
     ADD CONSTRAINT pk_req_ctl_marca_equipo PRIMARY KEY (id);
+
+
+--
+-- Name: pk_req_ctl_modalidad_atencion; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_modalidad_atencion
+    ADD CONSTRAINT pk_req_ctl_modalidad_atencion PRIMARY KEY (id);
 
 
 --
@@ -1454,6 +1857,14 @@ ALTER TABLE ONLY req_ctl_servicio_externo
 
 
 --
+-- Name: pk_req_ctl_sexo; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_sexo
+    ADD CONSTRAINT pk_req_ctl_sexo PRIMARY KEY (id);
+
+
+--
 -- Name: pk_req_ctl_solucion_requerimiento; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
@@ -1478,11 +1889,27 @@ ALTER TABLE ONLY req_ctl_tipo_equipo
 
 
 --
+-- Name: pk_req_ctl_tipo_servicio; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_tipo_servicio
+    ADD CONSTRAINT pk_req_ctl_tipo_servicio PRIMARY KEY (id);
+
+
+--
 -- Name: pk_req_ctl_tipo_trabajo; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
 --
 
 ALTER TABLE ONLY req_ctl_tipo_trabajo
     ADD CONSTRAINT pk_req_ctl_tipo_trabajo PRIMARY KEY (id);
+
+
+--
+-- Name: pk_req_ctl_trabajo_requerido; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_ctl_trabajo_requerido
+    ADD CONSTRAINT pk_req_ctl_trabajo_requerido PRIMARY KEY (id);
 
 
 --
@@ -1507,6 +1934,14 @@ ALTER TABLE ONLY req_empleado_area_servicio_atencion
 
 ALTER TABLE ONLY req_requerimiento
     ADD CONSTRAINT pk_req_requerimiento PRIMARY KEY (id);
+
+
+--
+-- Name: pk_req_requerimiento_trabajo_requerido; Type: CONSTRAINT; Schema: public; Owner: request; Tablespace: 
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT pk_req_requerimiento_trabajo_requerido PRIMARY KEY (id);
 
 
 --
@@ -1561,6 +1996,14 @@ ALTER TABLE ONLY req_ctl_area_trabajo
 
 
 --
+-- Name: fk_area_servicio_atencion_empleado; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_empleado
+    ADD CONSTRAINT fk_area_servicio_atencion_empleado FOREIGN KEY (id_area_servicio_atencion) REFERENCES req_area_servicio_atencion(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_area_trabajo_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
@@ -1569,11 +2012,35 @@ ALTER TABLE ONLY req_requerimiento
 
 
 --
+-- Name: fk_area_trabajo_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_area_trabajo_requerimiento_trabajo_requerido FOREIGN KEY (id_area_trabajo) REFERENCES req_ctl_area_trabajo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_area_trabajo_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_trabajo_requerido
+    ADD CONSTRAINT fk_area_trabajo_trabajo_requerido FOREIGN KEY (id_area_trabajo) REFERENCES req_ctl_area_trabajo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_asigna_requerimiento_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
 ALTER TABLE ONLY req_requerimiento
     ADD CONSTRAINT fk_asigna_requerimiento_requerimiento FOREIGN KEY (id_asigna_requerimiento) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_asigna_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_asigna_requerimiento_trabajo_requerido FOREIGN KEY (id_asigna_requerimiento) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --
@@ -1625,6 +2092,14 @@ ALTER TABLE ONLY req_requerimiento
 
 
 --
+-- Name: fk_empleado_asignado_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_empleado_asignado_requerimiento_trabajo_requerido FOREIGN KEY (id_empleado_asignado) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_empleado_empleado_area_servicio_atencion; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
@@ -1641,6 +2116,54 @@ ALTER TABLE ONLY req_requerimiento
 
 
 --
+-- Name: fk_empleado_registra_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_empleado_registra_requerimiento_trabajo_requerido FOREIGN KEY (id_empleado_registra) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_empleado_solicita_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento
+    ADD CONSTRAINT fk_empleado_solicita_requerimiento FOREIGN KEY (id_empleado_solicita) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_empleado_user_user; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY fos_user_user
+    ADD CONSTRAINT fk_empleado_user_user FOREIGN KEY (id_empleado) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_equipo_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_equipo_requerimiento_trabajo_requerido FOREIGN KEY (id_equipo_solicitud) REFERENCES req_ctl_equipo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_equipo_solicitud_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento
+    ADD CONSTRAINT fk_equipo_solicitud_requerimiento FOREIGN KEY (id_equipo_solicitud) REFERENCES req_ctl_equipo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_estado_equipo_equipo; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_equipo
+    ADD CONSTRAINT fk_estado_equipo_equipo FOREIGN KEY (id_estado_equipo) REFERENCES req_ctl_estado_equipo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_estado_padre_estado_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
@@ -1654,6 +2177,22 @@ ALTER TABLE ONLY req_ctl_estado_requerimiento
 
 ALTER TABLE ONLY req_requerimiento
     ADD CONSTRAINT fk_estado_requerimiento_requerimiento FOREIGN KEY (id_estado_requerimiento) REFERENCES req_ctl_estado_requerimiento(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_estado_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_estado_requerimiento_trabajo_requerido FOREIGN KEY (id_estado_requerimiento) REFERENCES req_ctl_estado_requerimiento(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_jefe_departamento_area_servicio_atencion; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_area_servicio_atencion
+    ADD CONSTRAINT fk_jefe_departamento_area_servicio_atencion FOREIGN KEY (id_jefe_departamento) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --
@@ -1681,6 +2220,14 @@ ALTER TABLE ONLY req_ctl_marca_equipo
 
 
 --
+-- Name: fk_modalidad_atencion_area_servicio_atencion; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_area_servicio_atencion
+    ADD CONSTRAINT fk_modalidad_atencion_area_servicio_atencion FOREIGN KEY (id_modalidad_atencion) REFERENCES req_ctl_modalidad_atencion(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_modelo_equipo_equipo; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
@@ -1702,6 +2249,22 @@ ALTER TABLE ONLY req_ctl_modelo_equipo
 
 ALTER TABLE ONLY req_requerimiento
     ADD CONSTRAINT fk_requerimiento_padre_requerimiento FOREIGN KEY (id_requerimiento_padre) REFERENCES req_requerimiento(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_requerimiento_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_requerimiento_requerimiento_trabajo_requerido FOREIGN KEY (id_requerimiento) REFERENCES req_requerimiento(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_servicio_asignado_equipo; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_equipo
+    ADD CONSTRAINT fk_servicio_asignado_equipo FOREIGN KEY (id_servicio_asignado) REFERENCES req_area_servicio_atencion(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --
@@ -1729,6 +2292,22 @@ ALTER TABLE ONLY req_area_servicio_atencion
 
 
 --
+-- Name: fk_servicio_solicita_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento
+    ADD CONSTRAINT fk_servicio_solicita_requerimiento FOREIGN KEY (id_servicio_solicita) REFERENCES req_area_servicio_atencion(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_sexo_empleado; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_empleado
+    ADD CONSTRAINT fk_sexo_empleado FOREIGN KEY (id_sexo) REFERENCES req_ctl_sexo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_solucion_padre_solucion_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
@@ -1742,6 +2321,22 @@ ALTER TABLE ONLY req_ctl_solucion_requerimiento
 
 ALTER TABLE ONLY req_requerimiento
     ADD CONSTRAINT fk_solucion_requerimiento_requerimiento FOREIGN KEY (id_solucion_requerimiento) REFERENCES req_ctl_solucion_requerimiento(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_solucion_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_solucion_requerimiento_trabajo_requerido FOREIGN KEY (id_solucion_requerimiento) REFERENCES req_ctl_solucion_requerimiento(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_soluciona_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_soluciona_requerimiento_trabajo_requerido FOREIGN KEY (id_soluciona_requerimiento) REFERENCES req_empleado(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --
@@ -1769,11 +2364,67 @@ ALTER TABLE ONLY req_ctl_tipo_equipo
 
 
 --
+-- Name: fk_tipo_padre_tipo_servicio; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_tipo_servicio
+    ADD CONSTRAINT fk_tipo_padre_tipo_servicio FOREIGN KEY (id_tipo_padre) REFERENCES req_ctl_tipo_servicio(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_tipo_servicio_servicio_atencion; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_servicio_atencion
+    ADD CONSTRAINT fk_tipo_servicio_servicio_atencion FOREIGN KEY (id_tipo_servicio) REFERENCES req_ctl_tipo_servicio(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_tipo_trabajo_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
 ALTER TABLE ONLY req_requerimiento
     ADD CONSTRAINT fk_tipo_trabajo_requerimiento FOREIGN KEY (id_tipo_trabajo) REFERENCES req_ctl_tipo_trabajo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_tipo_trabajo_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_tipo_trabajo_requerimiento_trabajo_requerido FOREIGN KEY (id_tipo_trabajo) REFERENCES req_ctl_tipo_trabajo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_trabajo_requerido_padre_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_trabajo_requerido
+    ADD CONSTRAINT fk_trabajo_requerido_padre_trabajo_requerido FOREIGN KEY (id_trabajo_requerido_padre) REFERENCES req_ctl_trabajo_requerido(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_trabajo_requerido_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento
+    ADD CONSTRAINT fk_trabajo_requerido_requerimiento FOREIGN KEY (id_trabajo_requerido) REFERENCES req_ctl_trabajo_requerido(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_trabajo_requerido_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_trabajo_requerido_requerimiento_trabajo_requerido FOREIGN KEY (id_trabajo_requerido) REFERENCES req_ctl_trabajo_requerido(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_user_mod_empleado; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_empleado
+    ADD CONSTRAINT fk_user_mod_empleado FOREIGN KEY (id_user_mod) REFERENCES fos_user_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --
@@ -1793,6 +2444,22 @@ ALTER TABLE ONLY req_requerimiento
 
 
 --
+-- Name: fk_user_mod_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_user_mod_requerimiento_trabajo_requerido FOREIGN KEY (id_user_mod) REFERENCES fos_user_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_user_reg_empleado; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_empleado
+    ADD CONSTRAINT fk_user_reg_empleado FOREIGN KEY (id_user_reg) REFERENCES fos_user_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
 -- Name: fk_user_reg_equipo; Type: FK CONSTRAINT; Schema: public; Owner: request
 --
 
@@ -1806,6 +2473,14 @@ ALTER TABLE ONLY req_ctl_equipo
 
 ALTER TABLE ONLY req_requerimiento
     ADD CONSTRAINT fk_user_reg_requerimiento FOREIGN KEY (id_user_reg) REFERENCES fos_user_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_user_reg_requerimiento_trabajo_requerido; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_requerimiento_trabajo_requerido
+    ADD CONSTRAINT fk_user_reg_requerimiento_trabajo_requerido FOREIGN KEY (id_user_reg) REFERENCES fos_user_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --

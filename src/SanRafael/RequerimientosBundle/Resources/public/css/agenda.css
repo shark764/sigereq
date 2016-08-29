@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05-28-2015, 08:19:52 AM
+    Author     : dtic
+*/
+
+#external-events {
+        text-align: left;
+}
+
+#external-events h4 {
+        font-size: 16px;
+        margin-top: 0;
+        padding-top: 1em;
+}
+
+#external-events .fc-event {
+        margin: 10px 0;
+        cursor: pointer;
+}
+
+#external-events p {
+        margin: 1.5em 0;
+        font-size: 11px;
+        color: #666;
+}
+
+#external-events p input {
+        margin: 0;
+        vertical-align: middle;
+}
+
+
+/*.panel-heading .badge {
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: 6px;
+  top: -12px;
+  right: 3px;
+  line-height: 16px;
+  height: 16px;
+  padding: 0 5px;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.panel-heading .badge {
+  background: #dc0d17;
+  border-color: #dc0d17;
+  background-image: -webkit-linear-gradient(top, #fa3c45, #dc0d17);
+  background-image: -moz-linear-gradient(top, #fa3c45, #dc0d17);
+  background-image: -o-linear-gradient(top, #fa3c45, #dc0d17);
+  background-image: linear-gradient(to bottom, #fa3c45, #dc0d17);
+}*/
+
+/*.fc-day-number {
+    background-color: #DCF2F6 !important;
+    opacity: .4;
+}*/
+
+.select2-default {
+  color: #9d9d9d !important;
+}
+
+/** custom day calendar color */
+.sigereq_ac_checked_date {
+  background-color: #e7faff !important;
+}
+
+.fc .fc-center h2 {
+  font-size: 18px !important;
+}

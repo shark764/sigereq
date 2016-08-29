@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqEmpleado
  *
- * @ORM\Table(name="req_empleado", indexes={@ORM\Index(name="IDX_9ABCE3447D36E8FB", columns={"id_jefe_inmediato"}), @ORM\Index(name="IDX_9ABCE344D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_9ABCE344AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_9ABCE344F6BCBD1", columns={"id_area_servicio_atencion"}), @ORM\Index(name="IDX_9ABCE3444F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_9ABCE344B13434FE", columns={"id_tipo_empleado"})})
+ * @ORM\Table(name="req_empleado", indexes={@ORM\Index(name="IDX_9ABCE344A7194A90", columns={"id_sexo"}), @ORM\Index(name="IDX_9ABCE3447D36E8FB", columns={"id_jefe_inmediato"}), @ORM\Index(name="IDX_9ABCE344D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_9ABCE344AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_9ABCE344F6BCBD1", columns={"id_area_servicio_atencion"}), @ORM\Index(name="IDX_9ABCE3444F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_9ABCE344B13434FE", columns={"id_tipo_empleado"})})
  * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\EmpleadoRepository")
  */
 class ReqEmpleado
@@ -93,11 +93,42 @@ class ReqEmpleado
     private $horaNacimiento;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="sexo", type="boolean", nullable=true)
+     * @ORM\Column(name="correo_institucional", type="string", length=100, nullable=true)
      */
-    private $sexo = true;
+    private $correoInstitucional;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_contratacion", type="datetime", nullable=true)
+     */
+    private $fechaContratacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_inicia_labores", type="datetime", nullable=true)
+     */
+    private $fechaIniciaLabores;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_finaliza_labores", type="datetime", nullable=true)
+     */
+    private $fechaFinalizaLabores;
+
+    /**
+     * @var \ReqCtlSexo
+     *
+     * @ORM\ManyToOne(targetEntity="ReqCtlSexo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_sexo", referencedColumnName="id")
+     * })
+     */
+    private $idSexo;
 
     /**
      * @var \ReqEmpleado
@@ -173,12 +204,15 @@ class ReqEmpleado
     {
         return mb_strtoupper(trim($this->apellido), 'utf-8') . ', ' . mb_strtoupper(trim($this->nombre), 'utf-8');
     }
-    
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->fechaHoraReg = new \DateTime('now');
+        $this->fechaContratacion = new \DateTime('now');
+        $this->fechaIniciaLabores = new \DateTime('now');
         $this->empleadoSubordinados = new \Doctrine\Common\Collections\ArrayCollection();
         $this->empleadoServiciosLabora = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -434,27 +468,123 @@ class ReqEmpleado
     }
 
     /**
-     * Set sexo
+     * Set correoInstitucional
      *
-     * @param boolean $sexo
+     * @param string $correoInstitucional
      *
      * @return ReqEmpleado
      */
-    public function setSexo($sexo)
+    public function setCorreoInstitucional($correoInstitucional)
     {
-        $this->sexo = $sexo;
+        $this->correoInstitucional = $correoInstitucional;
 
         return $this;
     }
 
     /**
-     * Get sexo
+     * Get correoInstitucional
      *
-     * @return boolean
+     * @return string
      */
-    public function getSexo()
+    public function getCorreoInstitucional()
     {
-        return $this->sexo;
+        return $this->correoInstitucional;
+    }
+
+    /**
+     * Set fechaContratacion
+     *
+     * @param \DateTime $fechaContratacion
+     *
+     * @return ReqEmpleado
+     */
+    public function setFechaContratacion($fechaContratacion)
+    {
+        $this->fechaContratacion = $fechaContratacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaContratacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaContratacion()
+    {
+        return $this->fechaContratacion;
+    }
+
+    /**
+     * Set fechaIniciaLabores
+     *
+     * @param \DateTime $fechaIniciaLabores
+     *
+     * @return ReqEmpleado
+     */
+    public function setFechaIniciaLabores($fechaIniciaLabores)
+    {
+        $this->fechaIniciaLabores = $fechaIniciaLabores;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIniciaLabores
+     *
+     * @return \DateTime
+     */
+    public function getFechaIniciaLabores()
+    {
+        return $this->fechaIniciaLabores;
+    }
+
+    /**
+     * Set fechaFinalizaLabores
+     *
+     * @param \DateTime $fechaFinalizaLabores
+     *
+     * @return ReqEmpleado
+     */
+    public function setFechaFinalizaLabores($fechaFinalizaLabores)
+    {
+        $this->fechaFinalizaLabores = $fechaFinalizaLabores;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaFinalizaLabores
+     *
+     * @return \DateTime
+     */
+    public function getFechaFinalizaLabores()
+    {
+        return $this->fechaFinalizaLabores;
+    }
+
+    /**
+     * Set idSexo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlSexo $idSexo
+     *
+     * @return ReqEmpleado
+     */
+    public function setIdSexo(\SanRafael\RequerimientosBundle\Entity\ReqCtlSexo $idSexo = null)
+    {
+        $this->idSexo = $idSexo;
+
+        return $this;
+    }
+
+    /**
+     * Get idSexo
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlSexo
+     */
+    public function getIdSexo()
+    {
+        return $this->idSexo;
     }
 
     /**
