@@ -46,6 +46,12 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="false">
+      <options>
+        <option name="default">(now())::timestamp(0) without time zone</option>
+      </options>
+    </field>
+    <field name="fechaHoraMod" type="datetime" column="fecha_hora_mod" nullable="true"/>
     <many-to-one field="idModeloEquipo" target-entity="ReqCtlModeloEquipo" fetch="LAZY">
       <join-columns>
         <join-column name="id_modelo_equipo" referenced-column-name="id"/>
