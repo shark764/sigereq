@@ -1343,7 +1343,8 @@ a.anchor-camry-celestial-silver-metallic {
 }
 
 .alert-success {
-  background-color: #dcf1f5 !important;
+  /*background-color: #dcf1f5 !important;*/
+  background-color: #d4e6e9 !important;
   border-color: #abc9cf !important;
   color: #065d6f !important;
 }
