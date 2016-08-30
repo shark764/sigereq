@@ -20,5 +20,10 @@
         <option name="default">DHP</option>
       </options>
     </field>
+    <field name="esJefatura" type="boolean" column="es_jefatura" nullable="true">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>
