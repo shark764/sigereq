@@ -51,12 +51,12 @@
         <option name="default">#2a5469</option>
       </options>
     </field>
-    <field name="descripcion" type="text" column="descripcion" nullable="false">
+    <field name="descripcion" type="text" column="descripcion" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="descripcionRequerimiento" type="text" column="descripcion_requerimiento" nullable="true">
+    <field name="comentarios" type="text" column="comentarios" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

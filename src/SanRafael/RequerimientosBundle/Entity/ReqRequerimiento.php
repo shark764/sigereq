@@ -46,14 +46,14 @@ class ReqRequerimiento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_hora_inicio", type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_hora_inicio", type="datetime", nullable=true)
      */
     private $fechaHoraInicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_hora_fin", type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_hora_fin", type="datetime", nullable=true)
      */
     private $fechaHoraFin;
 
@@ -81,16 +81,16 @@ class ReqRequerimiento
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="text", nullable=false)
+     * @ORM\Column(name="descripcion", type="text", nullable=true)
      */
     private $descripcion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion_requerimiento", type="text", nullable=true)
+     * @ORM\Column(name="comentarios", type="string", length=255, nullable=true)
      */
-    private $descripcionRequerimiento;
+    private $comentarios;
 
     /**
      * @var string
@@ -517,27 +517,27 @@ class ReqRequerimiento
     }
 
     /**
-     * Set descripcionRequerimiento
+     * Set comentarios
      *
-     * @param string $descripcionRequerimiento
+     * @param string $comentarios
      *
      * @return ReqRequerimiento
      */
-    public function setDescripcionRequerimiento($descripcionRequerimiento)
+    public function setComentarios($comentarios)
     {
-        $this->descripcionRequerimiento = $descripcionRequerimiento;
+        $this->comentarios = $comentarios;
 
         return $this;
     }
 
     /**
-     * Get descripcionRequerimiento
+     * Get comentarios
      *
      * @return string
      */
-    public function getDescripcionRequerimiento()
+    public function getComentarios()
     {
-        return $this->descripcionRequerimiento;
+        return $this->comentarios;
     }
 
     /**

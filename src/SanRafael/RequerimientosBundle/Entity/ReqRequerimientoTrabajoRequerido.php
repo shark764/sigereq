@@ -39,16 +39,16 @@ class ReqRequerimientoTrabajoRequerido
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_inicio", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_hora_inicio", type="datetime", nullable=true)
      */
-    private $fechaInicio;
+    private $fechaHoraInicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_fin", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_hora_fin", type="datetime", nullable=true)
      */
-    private $fechaFin;
+    private $fechaHoraFin;
 
     /**
      * @var string
@@ -277,51 +277,51 @@ class ReqRequerimientoTrabajoRequerido
     }
 
     /**
-     * Set fechaInicio
+     * Set fechaHoraInicio
      *
-     * @param \DateTime $fechaInicio
+     * @param \DateTime $fechaHoraInicio
      *
      * @return ReqRequerimientoTrabajoRequerido
      */
-    public function setFechaInicio($fechaInicio)
+    public function setFechaHoraInicio($fechaHoraInicio)
     {
-        $this->fechaInicio = $fechaInicio;
+        $this->fechaHoraInicio = $fechaHoraInicio;
 
         return $this;
     }
 
     /**
-     * Get fechaInicio
+     * Get fechaHoraInicio
      *
      * @return \DateTime
      */
-    public function getFechaInicio()
+    public function getFechaHoraInicio()
     {
-        return $this->fechaInicio;
+        return $this->fechaHoraInicio;
     }
 
     /**
-     * Set fechaFin
+     * Set fechaHoraFin
      *
-     * @param \DateTime $fechaFin
+     * @param \DateTime $fechaHoraFin
      *
      * @return ReqRequerimientoTrabajoRequerido
      */
-    public function setFechaFin($fechaFin)
+    public function setFechaHoraFin($fechaHoraFin)
     {
-        $this->fechaFin = $fechaFin;
+        $this->fechaHoraFin = $fechaHoraFin;
 
         return $this;
     }
 
     /**
-     * Get fechaFin
+     * Get fechaHoraFin
      *
      * @return \DateTime
      */
-    public function getFechaFin()
+    public function getFechaHoraFin()
     {
-        return $this->fechaFin;
+        return $this->fechaHoraFin;
     }
 
     /**

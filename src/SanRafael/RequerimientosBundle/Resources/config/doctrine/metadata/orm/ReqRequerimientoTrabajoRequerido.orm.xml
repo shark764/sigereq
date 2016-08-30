@@ -29,8 +29,8 @@
       </options>
     </field>
     <field name="fechaHoraMod" type="datetime" column="fecha_hora_mod" nullable="true"/>
-    <field name="fechaInicio" type="datetime" column="fecha_inicio" nullable="true"/>
-    <field name="fechaFin" type="datetime" column="fecha_fin" nullable="true"/>
+    <field name="fechaHoraInicio" type="datetime" column="fecha_hora_inicio" nullable="true"/>
+    <field name="fechaHoraFin" type="datetime" column="fecha_hora_fin" nullable="true"/>
     <field name="descripcion" type="text" column="descripcion" nullable="true">
       <options>
         <option name="fixed"/>
