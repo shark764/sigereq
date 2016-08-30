@@ -89,7 +89,7 @@ class ReqCtlMarcaEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('codigo', null, array(
                                         'label' => 'Código',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         // 'help' => '',
                                         'attr' => array(/*'maxlength' => '10',*/
                                                         'placeholder' => 'Código',
@@ -113,7 +113,7 @@ class ReqCtlMarcaEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('idMarcaGrupo', null, array(
                                         'label' => 'Marca grupo',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
                                         'group_by' => 'idMarcaGrupo',
@@ -131,7 +131,7 @@ class ReqCtlMarcaEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('caracteristicas', null, array(
                                         'label' => 'Características',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'attr' => array('rows' => '3',
                                                         'style' => 'resize:none',

@@ -97,7 +97,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('codigo', null, array(
                                         'label' => 'Código',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         // 'help' => '',
                                         'attr' => array(/*'maxlength' => '10',*/
                                                         'placeholder' => 'Código',
@@ -121,7 +121,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('idMarcaEquipo', 'entity', array(
                                         'label' => 'Marca',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'mapped' => false,
                                         'empty_value' => '',
@@ -141,7 +141,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('idModeloEquipo', null, array(
                                         'label' => 'Modelo',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
                                         'group_by' => 'idModeloGrupo',
@@ -159,7 +159,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('serie', null, array(
                                         'label' => 'Serie',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         // 'help' => '',
                                         'attr' => array(/*'maxlength' => '10',*/
                                                         'placeholder' => 'Serie',
@@ -183,7 +183,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('idTipoEquipo', null, array(
                                         'label' => 'Tipo / Clasificación',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
                                         'group_by' => 'idTipoPadre',
@@ -201,7 +201,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('numeroInventario', null, array(
                                         'label' => 'Inventario',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         // 'help' => '',
                                         'attr' => array(/*'maxlength' => '10',*/
                                                         'placeholder' => 'Número de Inventario',
@@ -225,7 +225,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('caracteristicas', null, array(
                                         'label' => 'Características',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'attr' => array('rows' => '3',
                                                         'style' => 'resize:none',
@@ -247,7 +247,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('fechaAdquisicion', 'datetime', array(
                                         'label' => 'Fecha de Adquisición',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
@@ -271,7 +271,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('idServicioAsignado', null, array(
                                         'label' => 'Servicio asignado',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
                                         'group_by' => 'idAreaAtencion',
@@ -289,7 +289,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('idEmpleadoAsignado', null, array(
                                         'label' => 'Empleado asignado',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
                                         'group_by' => 'idCargoEmpleado',
@@ -307,7 +307,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('fechaDespacho', 'datetime', array(
                                         'label' => 'Fecha de Despacho',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
@@ -331,7 +331,7 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('idEstadoEquipo', null, array(
                                         'label' => 'Estado',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',

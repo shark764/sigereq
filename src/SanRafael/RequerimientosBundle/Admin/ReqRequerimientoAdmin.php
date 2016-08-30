@@ -111,7 +111,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('fechaHoraInicio', 'datetime', array(
                                         'label' => 'Fecha de inicio',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
@@ -135,7 +135,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('fechaHoraFin', 'datetime', array(
                                         'label' => 'Fecha de finalización',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
@@ -159,13 +159,15 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('repetirPor', null, array(
                                         'label' => 'Repetir durante',
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'attr' => array('min' => '0',
                                                         'max' => '32767',
                                                         'placeholder' => 'N° de días',
+                                                        'class' => 'form-control input-sm',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'info-v2',
-                                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-question-sign',
+                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-repeat',
 
                                                         'data-fv-integer' => 'true',
                                                         'data-fv-integer-message' => 'El valor no es un entero',
@@ -194,7 +196,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'placeholder' => 'Título del requerimiento',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
-                                                        'class' => 'input-sm',
+                                                        'class' => 'form-control input-sm',
 
                                                         'data-add-input-addon' => 'true',
                                                         'data-add-input-addon-class' => 'primary-v4',
@@ -212,7 +214,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('descripcion', null, array(
                                         'label' => 'Requerimiento / Actividad',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'attr' => array('rows' => '3',
                                                         'style' => 'resize:none',
@@ -234,7 +236,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('solucion', null, array(
                                         'label' => 'Solución / Trabajo realizado',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'attr' => array('rows' => '3',
                                                         'style' => 'resize:none',
@@ -254,9 +256,9 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('comentarios', null, array(
+                ->add('comentarios', /*TextareaType::class*/ 'textarea', array(
                                         'label' => 'Comentarios / Observaciones / Incidencias',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'attr' => array('rows' => '2',
                                                         'style' => 'resize:none',
@@ -278,7 +280,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('fechaAsignacion', 'datetime', array(
                                         'label' => 'Fecha de asignación',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
@@ -302,7 +304,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('fechaRecibido', 'datetime', array(
                                         'label' => 'Fecha de recibido',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
@@ -326,7 +328,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('fechaDigitacion', 'datetime', array(
                                         'label' => 'Fecha de digitación',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
@@ -351,11 +353,10 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 // ->add('requerimientoDetalles')
                 ->add('requerimientoDetalles', 'sonata_type_collection', array(
                                         'label' =>'Detalle del requerimiento / Actividad',
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         'help' => 'Agregue los trabajos requeridos / Actividades realizadas'
-                ),
-                                                // 'cascade_validation' => true,),
-                                                // array('edit' => 'inline', 'inline' => 'table')
-                )
+                                        // 'cascade_validation' => true,),
+                ) /*array('edit' => 'inline', 'inline' => 'table')*/ )
             ->end()
         ;
     }
@@ -401,9 +402,9 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         /*
          * default values
          */
-        $instance->setIdEstadoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlEstadoEquipo', array('codigo' => 'FNC')));
+        /*$instance->setIdEstadoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlEstadoEquipo', array('codigo' => 'FNC')));
         $instance->setIdTipoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoEquipo', array('codigo' => 'DKT')));
-        $instance->setIdModeloEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlModeloEquipo', array('codigo' => 'dlloptx9020')));
+        $instance->setIdModeloEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlModeloEquipo', array('codigo' => 'dlloptx9020')));*/
         
         return $instance;
     }
