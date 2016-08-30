@@ -87,7 +87,7 @@ class ReqCtlServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('codigo', null, array(
                                         'label' => 'Código',
-                                        'label_attr' => array('class' => 'input-sm'),
+                                        'label_attr' => array('class' => 'label_form_sm'),
                                         // 'help' => '',
                                         'attr' => array(/*'maxlength' => '10',*/
                                                         'placeholder' => 'Código',

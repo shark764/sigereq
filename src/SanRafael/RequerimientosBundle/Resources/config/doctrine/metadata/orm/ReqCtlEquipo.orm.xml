@@ -2,13 +2,13 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="ReqCtlEquipo" table="req_ctl_equipo">
     <indexes>
-      <index name="IDX_2DD770B3BF5B4BA" columns="id_servicio_asignado"/>
-      <index name="IDX_2DD770B3290DEAD8" columns="id_estado_equipo"/>
       <index name="IDX_2DD770B369953885" columns="id_empleado_asignado"/>
+      <index name="IDX_2DD770B3290DEAD8" columns="id_estado_equipo"/>
+      <index name="IDX_2DD770B366D95F61" columns="id_modelo_equipo"/>
+      <index name="IDX_2DD770B3BF5B4BA" columns="id_servicio_asignado"/>
+      <index name="IDX_2DD770B3493768E4" columns="id_tipo_equipo"/>
       <index name="IDX_2DD770B3AC39DE56" columns="id_user_mod"/>
       <index name="IDX_2DD770B3D8A5832B" columns="id_user_reg"/>
-      <index name="IDX_2DD770B366D95F61" columns="id_modelo_equipo"/>
-      <index name="IDX_2DD770B3493768E4" columns="id_tipo_equipo"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="idx_req_codigo_equipo" columns="codigo"/>
@@ -52,14 +52,9 @@
       </options>
     </field>
     <field name="fechaHoraMod" type="datetime" column="fecha_hora_mod" nullable="true"/>
-    <many-to-one field="idModeloEquipo" target-entity="ReqCtlModeloEquipo" fetch="LAZY">
+    <many-to-one field="idUserMod" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
-        <join-column name="id_modelo_equipo" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idTipoEquipo" target-entity="ReqCtlTipoEquipo" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_tipo_equipo" referenced-column-name="id"/>
+        <join-column name="id_user_mod" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
@@ -67,9 +62,14 @@
         <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idUserMod" target-entity="FosUserUser" fetch="LAZY">
+    <many-to-one field="idTipoEquipo" target-entity="ReqCtlTipoEquipo" fetch="LAZY">
       <join-columns>
-        <join-column name="id_user_mod" referenced-column-name="id"/>
+        <join-column name="id_tipo_equipo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idServicioAsignado" target-entity="ReqAreaServicioAtencion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_servicio_asignado" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idEstadoEquipo" target-entity="ReqCtlEstadoEquipo" fetch="LAZY">
@@ -77,14 +77,14 @@
         <join-column name="id_estado_equipo" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="idModeloEquipo" target-entity="ReqCtlModeloEquipo" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_modelo_equipo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idEmpleadoAsignado" target-entity="ReqEmpleado" fetch="LAZY">
       <join-columns>
         <join-column name="id_empleado_asignado" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idServicioAsignado" target-entity="ReqAreaServicioAtencion" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_servicio_asignado" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

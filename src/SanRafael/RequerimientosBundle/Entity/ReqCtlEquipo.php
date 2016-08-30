@@ -157,7 +157,7 @@ class ReqCtlEquipo
 
     public function __toString()
     {
-        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
+        return $this->nombre ? strtoupper(trim($this->serie)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
 
     /**
