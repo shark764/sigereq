@@ -1303,13 +1303,14 @@ INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etique
 INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (24, 'Elaboración de Notas', 'ENT', 12, 'element-v2     ');
 INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (25, 'Reunión programada', 'RPG', 12, 'element-v2     ');
 INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (26, 'Reunión fuera del Establecimiento', 'RFR', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (27, 'Creación de Términos de Referencia', 'TDR', 12, 'element-v2     ');
 
 
 --
 -- Name: req_ctl_area_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_area_trabajo_id_seq', 26, true);
+SELECT pg_catalog.setval('req_ctl_area_trabajo_id_seq', 27, true);
 
 
 --
