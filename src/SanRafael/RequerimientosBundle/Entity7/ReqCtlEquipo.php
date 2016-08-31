@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqCtlEquipo
  *
  * @ORM\Table(name="req_ctl_equipo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_equipo", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_2DD770B369953885", columns={"id_empleado_asignado"}), @ORM\Index(name="IDX_2DD770B3290DEAD8", columns={"id_estado_equipo"}), @ORM\Index(name="IDX_2DD770B366D95F61", columns={"id_modelo_equipo"}), @ORM\Index(name="IDX_2DD770B3BF5B4BA", columns={"id_servicio_asignado"}), @ORM\Index(name="IDX_2DD770B3493768E4", columns={"id_tipo_equipo"}), @ORM\Index(name="IDX_2DD770B3AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_2DD770B3D8A5832B", columns={"id_user_reg"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\EquipoRepository")
  */
 class ReqCtlEquipo
 {
@@ -155,6 +155,19 @@ class ReqCtlEquipo
      */
     private $idUserReg;
 
+    public function __toString()
+    {
+        return $this->nombre ? strtoupper(trim($this->serie)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fechaHoraReg = new \DateTime('now');
+        $this->fechaAdquisicion = new \DateTime('now');
+        $this->fechaDespacho = new \DateTime('now');
+    }
 
 }
-

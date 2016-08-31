@@ -245,7 +245,8 @@ CREATE TABLE req_ctl_area_trabajo (
     id smallint NOT NULL,
     nombre character varying(75) DEFAULT 'Desarrollo de Sistemas Informáticos'::character varying NOT NULL,
     codigo character(3) DEFAULT 'DSI'::bpchar NOT NULL,
-    id_area_padre smallint
+    id_area_padre smallint,
+    tipo_etiqueta character(15) DEFAULT 'primary-v4'::bpchar
 );
 
 
@@ -466,8 +467,8 @@ ALTER SEQUENCE req_ctl_marca_equipo_id_seq OWNED BY req_ctl_marca_equipo.id;
 
 CREATE TABLE req_ctl_modalidad_atencion (
     id smallint NOT NULL,
-    nombre character(25) NOT NULL,
-    codigo character(6) NOT NULL
+    nombre character(25) DEFAULT 'MINSAL'::bpchar NOT NULL,
+    codigo character(6) DEFAULT 'MSL'::bpchar NOT NULL
 );
 
 
@@ -537,8 +538,8 @@ ALTER SEQUENCE req_ctl_modelo_equipo_id_seq OWNED BY req_ctl_modelo_equipo.id;
 
 CREATE TABLE req_ctl_servicio_atencion (
     id smallint NOT NULL,
-    nombre character varying(100) NOT NULL,
-    codigo character(6),
+    nombre character varying(100) DEFAULT 'Unidad de Informática'::character varying NOT NULL,
+    codigo character(6) DEFAULT 'INF'::bpchar,
     id_atencion_padre integer,
     id_tipo_servicio smallint NOT NULL
 );
@@ -573,8 +574,8 @@ ALTER SEQUENCE req_ctl_servicio_atencion_id_seq OWNED BY req_ctl_servicio_atenci
 
 CREATE TABLE req_ctl_servicio_externo (
     id smallint NOT NULL,
-    nombre character varying(100) NOT NULL,
-    codigo character(6)
+    nombre character varying(100) DEFAULT 'ISSS'::character varying NOT NULL,
+    codigo character(6) DEFAULT 'ISSS'::bpchar
 );
 
 
@@ -1277,27 +1278,38 @@ SELECT pg_catalog.setval('req_ctl_area_atencion_id_seq', 7, true);
 -- Data for Name: req_ctl_area_trabajo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (3, 'Soporte Técnico', 'SPT', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (4, 'Soporte Técnico en Equipos Informáticos', 'SPQ', 3);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (5, 'Soporte Técnico en Sistemas Informáticos', 'SPS', 3);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (6, 'Ofimática', 'OFM', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (7, 'Comunicaciones de Datos', 'RCD', 2);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (8, 'Redes de Datos', 'RDT', 2);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (2, 'Redes y Comunicaciones de Datos', 'RDD', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (9, 'Seguridad Informática', 'SGI', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (10, 'Mantenimiento de Equipos Informáticos', 'MNT', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (11, 'Virus Informáticos', 'SVR', 9);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (12, 'Administrativo', 'ADM', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (1, 'Sistemas Informáticos', 'SIT', NULL);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (14, 'Desarrollo de Sistemas Informáticos', 'DSI', 1);
-INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre) VALUES (15, 'Actualización de Sistemas Informáticos', 'ASI', 1);
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (7, 'Comunicaciones de Datos', 'RCD', 2, 'primary-v4     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (8, 'Redes de Datos', 'RDT', 2, 'primary-v4     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (2, 'Redes y Comunicaciones de Datos', 'RDD', NULL, 'primary-v4     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (10, 'Mantenimiento de Equipos Informáticos', 'MNT', NULL, 'primary-v4     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (3, 'Soporte Técnico', 'SPT', NULL, 'primary-v3     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (4, 'Soporte Técnico en Equipos Informáticos', 'SPQ', 3, 'primary-v3     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (5, 'Soporte Técnico en Sistemas Informáticos', 'SPS', 3, 'primary-v3     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (12, 'Administrativo', 'ADM', NULL, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (1, 'Sistemas Informáticos', 'SIT', NULL, 'success-v4     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (14, 'Desarrollo de Sistemas Informáticos', 'DSI', 1, 'success-v4     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (15, 'Actualización de Sistemas Informáticos', 'ASI', 1, 'success-v4     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (9, 'Seguridad Informática', 'SGI', NULL, 'success-v3     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (11, 'Virus Informáticos', 'SVR', 9, 'success-v3     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (6, 'Ofimática', 'OFM', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (16, 'Capacitaciones', 'CPT', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (17, 'Capacitaciones de Ofimática', 'CPF', 16, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (18, 'Capacitaciones de Software Libre', 'CSL', 16, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (19, 'Capacitaciones de Manejo de Computadora', 'CMC', 16, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (20, 'Capacitaciones de uso de Correo Institucional', 'CCI', 16, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (21, 'Elaboración de Informes', 'EIN', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (22, 'Elaboración de Memorandum', 'EMM', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (23, 'Reunión de Personal del Departamento / Unidad', 'RPD', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (24, 'Elaboración de Notas', 'ENT', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (25, 'Reunión programada', 'RPG', 12, 'element-v2     ');
+INSERT INTO req_ctl_area_trabajo (id, nombre, codigo, id_area_padre, tipo_etiqueta) VALUES (26, 'Reunión fuera del Establecimiento', 'RFR', 12, 'element-v2     ');
 
 
 --
 -- Name: req_ctl_area_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_area_trabajo_id_seq', 15, true);
+SELECT pg_catalog.setval('req_ctl_area_trabajo_id_seq', 26, true);
 
 
 --
@@ -1450,26 +1462,35 @@ SELECT pg_catalog.setval('req_ctl_modelo_equipo_id_seq', 2, true);
 -- Data for Name: req_ctl_servicio_atencion; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+INSERT INTO req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre, id_tipo_servicio) VALUES (2, 'Dirección del Hospital', 'DHP   ', NULL, 2);
+INSERT INTO req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre, id_tipo_servicio) VALUES (1, 'Unidad de Informática', 'INF   ', NULL, 1);
+INSERT INTO req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre, id_tipo_servicio) VALUES (3, 'Departamento de Servicios de Diagnóstico y Apoyo', 'DGY   ', NULL, 4);
+INSERT INTO req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre, id_tipo_servicio) VALUES (4, 'Departamento de Radiología e Imágenes Médicas', 'DRX   ', 3, 4);
+INSERT INTO req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre, id_tipo_servicio) VALUES (5, 'Departamento de Laboratorio Clínico', 'DLB   ', 3, 4);
+INSERT INTO req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre, id_tipo_servicio) VALUES (6, 'Departamento de Anatomía Patológica', 'DPT   ', 3, 4);
+INSERT INTO req_ctl_servicio_atencion (id, nombre, codigo, id_atencion_padre, id_tipo_servicio) VALUES (7, 'División Administrativa', 'ADM   ', 2, 1);
 
 
 --
 -- Name: req_ctl_servicio_atencion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_servicio_atencion_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_servicio_atencion_id_seq', 7, true);
 
 
 --
 -- Data for Name: req_ctl_servicio_externo; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+INSERT INTO req_ctl_servicio_externo (id, nombre, codigo) VALUES (1, 'ISSS', 'ISSS  ');
+INSERT INTO req_ctl_servicio_externo (id, nombre, codigo) VALUES (2, 'Bienestar Magisterial', 'BM    ');
 
 
 --
 -- Name: req_ctl_servicio_externo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_servicio_externo_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_servicio_externo_id_seq', 2, true);
 
 
 --
@@ -1535,13 +1556,16 @@ SELECT pg_catalog.setval('req_ctl_tipo_equipo_id_seq', 1, true);
 --
 
 INSERT INTO req_ctl_tipo_servicio (id, nombre, codigo, id_tipo_padre) VALUES (1, 'División Administrativa', 'ADM', NULL);
+INSERT INTO req_ctl_tipo_servicio (id, nombre, codigo, id_tipo_padre) VALUES (2, 'Dirección General', 'DRG', NULL);
+INSERT INTO req_ctl_tipo_servicio (id, nombre, codigo, id_tipo_padre) VALUES (3, 'División Médica', 'DMD', NULL);
+INSERT INTO req_ctl_tipo_servicio (id, nombre, codigo, id_tipo_padre) VALUES (4, 'División de Diagnóstico y Apoyo', 'DGY', NULL);
 
 
 --
 -- Name: req_ctl_tipo_servicio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_tipo_servicio_id_seq', 1, true);
+SELECT pg_catalog.setval('req_ctl_tipo_servicio_id_seq', 4, true);
 
 
 --

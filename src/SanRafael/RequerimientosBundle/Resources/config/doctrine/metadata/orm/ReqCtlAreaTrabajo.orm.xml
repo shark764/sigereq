@@ -23,6 +23,12 @@
         <option name="default">DSI</option>
       </options>
     </field>
+    <field name="tipoEtiqueta" type="string" column="tipo_etiqueta" length="15" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default">primary-v4</option>
+      </options>
+    </field>
     <many-to-one field="idAreaPadre" target-entity="ReqCtlAreaTrabajo" fetch="LAZY">
       <join-columns>
         <join-column name="id_area_padre" referenced-column-name="id"/>

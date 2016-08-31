@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReqCtlAreaTrabajo
  *
  * @ORM\Table(name="req_ctl_area_trabajo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_area_trabajo", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_64D82128FB25A2E6", columns={"id_area_padre"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SanRafael\RequerimientosBundle\Repository\AreaTrabajoRepository")
  */
 class ReqCtlAreaTrabajo
 {
@@ -37,22 +37,23 @@ class ReqCtlAreaTrabajo
     private $codigo = 'DSI';
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo_etiqueta", type="string", length=15, nullable=true)
-     */
-    private $tipoEtiqueta = 'primary-v4';
-
-    /**
      * @var \ReqCtlAreaTrabajo
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlAreaTrabajo")
+     * @ORM\ManyToOne(targetEntity="ReqCtlAreaTrabajo", inversedBy="areaSubareasTrabajo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_area_padre", referencedColumnName="id")
      * })
      */
     private $idAreaPadre;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqCtlAreaTrabajo", mappedBy="idAreaPadre", cascade={"all"}, orphanRemoval=true)
+     */
+    private $areaSubareasTrabajo;
+
+    public function __toString()
+    {
+        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
+    }
 
 }
-

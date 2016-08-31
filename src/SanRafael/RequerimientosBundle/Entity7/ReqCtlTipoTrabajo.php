@@ -5,12 +5,12 @@ namespace SanRafael\RequerimientosBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ReqCtlModalidadAtencion
+ * ReqCtlTipoTrabajo
  *
- * @ORM\Table(name="req_ctl_modalidad_atencion", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_modalidad_atencion", columns={"codigo"})})
+ * @ORM\Table(name="req_ctl_tipo_trabajo", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_tipo_trabajo", columns={"codigo"})})
  * @ORM\Entity
  */
-class ReqCtlModalidadAtencion
+class ReqCtlTipoTrabajo
 {
     /**
      * @var integer
@@ -18,7 +18,7 @@ class ReqCtlModalidadAtencion
      * @ORM\Column(name="id", type="smallint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="req_ctl_modalidad_atencion_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="req_ctl_tipo_trabajo_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
@@ -27,14 +27,14 @@ class ReqCtlModalidadAtencion
      *
      * @ORM\Column(name="nombre", type="string", length=25, nullable=false)
      */
-    private $nombre = 'MINSAL';
+    private $nombre = 'Trabajo Correctivo';
 
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", length=6, nullable=false)
+     * @ORM\Column(name="codigo", type="string", length=1, nullable=true)
      */
-    private $codigo = 'MSL';
+    private $codigo = 'C';
 
 
 }

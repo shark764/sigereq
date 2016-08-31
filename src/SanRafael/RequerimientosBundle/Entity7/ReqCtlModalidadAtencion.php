@@ -27,14 +27,14 @@ class ReqCtlModalidadAtencion
      *
      * @ORM\Column(name="nombre", type="string", length=25, nullable=false)
      */
-    private $nombre = 'MINSAL';
+    private $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=6, nullable=false)
      */
-    private $codigo = 'MSL';
+    private $codigo;
 
 
 }

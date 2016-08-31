@@ -36,6 +36,9 @@ class ReqCtlEstadoEquipo
      */
     private $codigo = 'FNC';
 
+    public function __toString()
+    {
+        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
+    }
 
 }
-

@@ -27,14 +27,14 @@ class ReqCtlServicioAtencion
      *
      * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
      */
-    private $nombre = 'Unidad de Informática';
+    private $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=6, nullable=true)
      */
-    private $codigo = 'INF';
+    private $codigo;
 
     /**
      * @var \ReqCtlServicioAtencion

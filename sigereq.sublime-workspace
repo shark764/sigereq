@@ -126,22 +126,6 @@
 				"buffer_size": 21637,
 				"line_ending": "Unix"
 			}
-		},
-		{
-			"file": "src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoRequerimiento.php",
-			"settings":
-			{
-				"buffer_size": 1306,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/SanRafael/RequerimientosBundle/Entity9/ReqCtlEstadoRequerimiento.php",
-			"settings":
-			{
-				"buffer_size": 4524,
-				"line_ending": "Unix"
-			}
 		}
 	],
 	"build_system": "",
@@ -187,6 +171,8 @@
 	],
 	"file_history":
 	[
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlEstadoRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoRequerimiento.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoEquipo.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlEstadoEquipo.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
@@ -275,7 +261,6 @@
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlModeloEquipo.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlModalidadAtencion.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlMarcaEquipo.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoRequerimiento.php",
 		"/home/farid/NetBeansProjects/sigereq/sigereq_v3_req_trb.sql",
 		"/home/farid/NetBeansProjects/minsalsiaps/composer.json",
 		"/home/farid/NetBeansProjects/sigereq/composer.json",
@@ -313,8 +298,7 @@
 		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgCitaAdmin/cit_popover_contentwrapper.html.twig",
 		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgCitaAdmin/cit_event_contentwrapper.html.twig",
 		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/css/simagd-table.css",
-		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgCitaAdmin/cit_pendientesCita.js",
-		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgLecturaAdmin/lct_estudiosLectura_theme.html.twig"
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgCitaAdmin/cit_pendientesCita.js"
 	],
 	"find":
 	{
@@ -538,7 +522,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -568,7 +552,7 @@
 						"translation.y": 9056.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -598,7 +582,7 @@
 						"translation.y": 8629.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -625,67 +609,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoRequerimiento.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1306,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/SanRafael/RequerimientosBundle/Entity9/ReqCtlEstadoRequerimiento.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4524,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								175,
-								175
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

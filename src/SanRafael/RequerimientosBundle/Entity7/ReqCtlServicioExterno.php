@@ -27,14 +27,14 @@ class ReqCtlServicioExterno
      *
      * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
      */
-    private $nombre = 'ISSS';
+    private $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=6, nullable=true)
      */
-    private $codigo = 'ISSS';
+    private $codigo;
 
 
 }
