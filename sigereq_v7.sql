@@ -642,9 +642,10 @@ ALTER SEQUENCE req_ctl_sexo_id_seq OWNED BY req_ctl_sexo.id;
 
 CREATE TABLE req_ctl_solucion_requerimiento (
     id smallint NOT NULL,
-    nombre character varying(150) DEFAULT 'Funciona correctamente'::character varying NOT NULL,
-    codigo character(3) DEFAULT 'FNC'::bpchar NOT NULL,
-    id_solucion_padre smallint
+    nombre character varying(150) DEFAULT 'Instalación de Equipo Informático'::character varying NOT NULL,
+    codigo character(3) DEFAULT 'IEI'::bpchar NOT NULL,
+    id_solucion_padre smallint,
+    id_area_trabajo smallint
 );
 
 
@@ -1514,14 +1515,18 @@ SELECT pg_catalog.setval('req_ctl_sexo_id_seq', 3, true);
 -- Data for Name: req_ctl_solucion_requerimiento; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-INSERT INTO req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre) VALUES (1, 'Se cambio antivirus', 'ANT', NULL);
+INSERT INTO req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre, id_area_trabajo) VALUES (4, 'Cambio de Dirección IPV4', 'DIP', NULL, NULL);
+INSERT INTO req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre, id_area_trabajo) VALUES (2, 'Actualización de Versión de Antivirus', 'VAV', NULL, NULL);
+INSERT INTO req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre, id_area_trabajo) VALUES (3, 'Actualización de Versión de Sistema Informático', 'VSI', NULL, NULL);
+INSERT INTO req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre, id_area_trabajo) VALUES (1, 'Actualización de Sistema Operativo', 'ASO', NULL, NULL);
+INSERT INTO req_ctl_solucion_requerimiento (id, nombre, codigo, id_solucion_padre, id_area_trabajo) VALUES (5, 'Instalación de Equipo Informático', 'IEI', NULL, NULL);
 
 
 --
 -- Name: req_ctl_solucion_requerimiento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_solucion_requerimiento_id_seq', 1, true);
+SELECT pg_catalog.setval('req_ctl_solucion_requerimiento_id_seq', 5, true);
 
 
 --
@@ -2098,6 +2103,14 @@ ALTER TABLE ONLY req_requerimiento
 
 ALTER TABLE ONLY req_requerimiento_trabajo_requerido
     ADD CONSTRAINT fk_area_trabajo_requerimiento_trabajo_requerido FOREIGN KEY (id_area_trabajo) REFERENCES req_ctl_area_trabajo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_area_trabajo_solucion_requerimiento; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY req_ctl_solucion_requerimiento
+    ADD CONSTRAINT fk_area_trabajo_solucion_requerimiento FOREIGN KEY (id_area_trabajo) REFERENCES req_ctl_area_trabajo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --

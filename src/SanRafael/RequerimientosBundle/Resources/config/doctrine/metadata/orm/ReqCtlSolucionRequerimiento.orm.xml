@@ -3,6 +3,7 @@
   <entity name="ReqCtlSolucionRequerimiento" table="req_ctl_solucion_requerimiento">
     <indexes>
       <index name="IDX_A204D7AB1B0A8FB" columns="id_solucion_padre"/>
+      <index name="IDX_A204D7ABDDC7A485" columns="id_area_trabajo"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="idx_req_codigo_solucion_requerimiento" columns="codigo"/>
@@ -14,15 +15,20 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="default">Funciona correctamente</option>
+        <option name="default">Instalación de Equipo Informático</option>
       </options>
     </field>
     <field name="codigo" type="string" column="codigo" length="3" nullable="false">
       <options>
         <option name="fixed">1</option>
-        <option name="default">FNC</option>
+        <option name="default">IEI</option>
       </options>
     </field>
+    <many-to-one field="idAreaTrabajo" target-entity="ReqCtlAreaTrabajo" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_area_trabajo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idSolucionPadre" target-entity="ReqCtlSolucionRequerimiento" fetch="LAZY">
       <join-columns>
         <join-column name="id_solucion_padre" referenced-column-name="id"/>

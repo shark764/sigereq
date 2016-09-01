@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ReqCtlSolucionRequerimiento
  *
- * @ORM\Table(name="req_ctl_solucion_requerimiento", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_solucion_requerimiento", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_A204D7AB1B0A8FB", columns={"id_solucion_padre"})})
+ * @ORM\Table(name="req_ctl_solucion_requerimiento", uniqueConstraints={@ORM\UniqueConstraint(name="idx_req_codigo_solucion_requerimiento", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_A204D7AB1B0A8FB", columns={"id_solucion_padre"}), @ORM\Index(name="IDX_A204D7ABDDC7A485", columns={"id_area_trabajo"})})
  * @ORM\Entity
  */
 class ReqCtlSolucionRequerimiento
@@ -27,14 +27,14 @@ class ReqCtlSolucionRequerimiento
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=false)
      */
-    private $nombre = 'Funciona correctamente';
+    private $nombre = 'Instalación de Equipo Informático';
 
     /**
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=3, nullable=false)
      */
-    private $codigo = 'FNC';
+    private $codigo = 'IEI';
 
     /**
      * @var \ReqCtlSolucionRequerimiento
@@ -45,6 +45,16 @@ class ReqCtlSolucionRequerimiento
      * })
      */
     private $idSolucionPadre;
+
+    /**
+     * @var \ReqCtlAreaTrabajo
+     *
+     * @ORM\ManyToOne(targetEntity="ReqCtlAreaTrabajo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_area_trabajo", referencedColumnName="id")
+     * })
+     */
+    private $idAreaTrabajo;
 
 
 }
