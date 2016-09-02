@@ -39,13 +39,144 @@ class ReqCtlTipoServicio
     /**
      * @var \ReqCtlTipoServicio
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlTipoServicio")
+     * @ORM\ManyToOne(targetEntity="ReqCtlTipoServicio", inversedBy="tipoSubtiposServicioAtencion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tipo_padre", referencedColumnName="id")
      * })
      */
     private $idTipoPadre;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqCtlTipoServicio", mappedBy="idTipoPadre", cascade={"all"}, orphanRemoval=true)
+     */
+    private $tipoSubtiposServicioAtencion;
 
+    public function __toString()
+    {
+        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tipoSubtiposServicioAtencion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return ReqCtlTipoServicio
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return ReqCtlTipoServicio
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set idTipoPadre
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoServicio $idTipoPadre
+     *
+     * @return ReqCtlTipoServicio
+     */
+    public function setIdTipoPadre(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoServicio $idTipoPadre = null)
+    {
+        $this->idTipoPadre = $idTipoPadre;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoPadre
+     *
+     * @return \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoServicio
+     */
+    public function getIdTipoPadre()
+    {
+        return $this->idTipoPadre;
+    }
+
+    /**
+     * Add tipoSubtiposServicioAtencion
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoServicio $tipoSubtiposServicioAtencion
+     *
+     * @return ReqCtlTipoServicio
+     */
+    public function addTipoSubtiposServicioAtencion(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoServicio $tipoSubtiposServicioAtencion)
+    {
+        $this->tipoSubtiposServicioAtencion[] = $tipoSubtiposServicioAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Remove tipoSubtiposServicioAtencion
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlTipoServicio $tipoSubtiposServicioAtencion
+     */
+    public function removeTipoSubtiposServicioAtencion(\SanRafael\RequerimientosBundle\Entity\ReqCtlTipoServicio $tipoSubtiposServicioAtencion)
+    {
+        $this->tipoSubtiposServicioAtencion->removeElement($tipoSubtiposServicioAtencion);
+    }
+
+    /**
+     * Get tipoSubtiposServicioAtencion
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTipoSubtiposServicioAtencion()
+    {
+        return $this->tipoSubtiposServicioAtencion;
+    }
 }
-
