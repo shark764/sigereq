@@ -12,10 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
+class ReqCtlTipoEquipoAdmin extends Admin
 {
-    protected $baseRouteName    = 'sigereq_solucion_requerimiento';
-    protected $baseRoutePattern = 'catalogo/solucion-requerimiento';
+    protected $baseRouteName    = 'sigereq_tipo_equipo';
+    protected $baseRoutePattern = 'catalogo/tipo-equipo';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -26,6 +26,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
+            ->add('caracteristicas')
         ;
     }
 
@@ -38,6 +39,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
+            ->add('caracteristicas')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -109,12 +111,12 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('idSolucionPadre', null, array(
-                                        'label' => 'Tipo / Clasificación grupo',
+                ->add('idTipoPadre', null, array(
+                                        'label' => 'Tipo / Clasificación',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
-                                        'group_by' => 'idSolucionPadre',
+                                        'group_by' => 'idTipoPadre',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
@@ -125,6 +127,28 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
 
                                                         'data-fv-notempty' => 'true',
                                                         'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('caracteristicas', null, array(
+                                        'label' => 'Características',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => false,
+                                        'attr' => array('rows' => '3',
+                                                        'style' => 'resize:none',
+                                                        /*'maxlength' => '255',*/
+                                                        'placeholder' => 'Características del equipo',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'class' => 'form-control input-sm',
+
+                                                        'data-fv-stringlength' => 'true',
+                                                        'data-fv-stringlength-min' => '5',
+                                                        'data-fv-stringlength-max' => '255',
+                                                        'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                                        'data-fv-regexp' => 'true',
+                                                        'data-fv-regexp-regexp' => '^[a-zA-ZüÜñÑáéíóúÁÉÍÓÚ0-9¿!¡;,:\.\?#@()_-\s]+$',
+                                                        'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
             ->end()
@@ -140,6 +164,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
+            ->add('caracteristicas')
         ;
     }
 
@@ -166,7 +191,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         /*
          * default values
          */
-        $instance->setIdSolucionPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimiento', array('codigo' => 'FNC')));
+        $instance->setIdTipoPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoEquipo', array('codigo' => 'DKT')));
         
         return $instance;
     }

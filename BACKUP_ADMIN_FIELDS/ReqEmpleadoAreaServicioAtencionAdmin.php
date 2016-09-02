@@ -2,20 +2,27 @@
 
 namespace SanRafael\RequerimientosBundle\Admin;
 
-//use Sonata\AdminBundle\Admin\Admin;
-use SanRafael\RequerimientosBundle\Admin\SanRafaelRequerimientosAdmin;
+use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-//use Doctrine\ORM\EntityRepository;
-//use Sonata\AdminBundle\Validator\ErrorElement;
-//use Sonata\AdminBundle\Route\RouteCollection;
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqEmpleadoAreaServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
+class ReqEmpleadoAreaServicioAtencionAdmin extends Admin
 {
     protected $baseRouteName    = 'sigereq_empleado_area_servicio_atencion';
     protected $baseRoutePattern = 'catalogo/empleado-servicio-atencion';
+    
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        // $collection->remove('delete');
+        $collection->add('create', 'crear');
+        $collection->add('edit', 'editar');
+        $collection->add('list', 'listar');
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -67,33 +74,4 @@ class ReqEmpleadoAreaServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
             ->add('habilitado')
         ;
     }
-
-    public function prePersist($entity)
-    {
-        /*if ($entity->getCodigo())
-        {
-            $entity->setCodigo(strtoupper($entity->getCodigo()));
-        }*/
-    }
-    
-    public function preUpdate($entity)
-    {
-        /*if ($entity->getCodigo())
-        {
-            $entity->setCodigo(strtoupper($entity->getCodigo()));
-        }*/
-    }
-    
-    public function getNewInstance()
-    {
-        $instance   = parent::getNewInstance();
-        
-        /*
-         * default values
-         */
-        /*$instance->setIdSolucionPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimiento', array('codigo' => 'FNC')));*/
-        
-        return $instance;
-    }
-
 }

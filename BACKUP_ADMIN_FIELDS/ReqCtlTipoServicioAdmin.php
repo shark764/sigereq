@@ -12,10 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
+class ReqCtlTipoServicioAdmin extends Admin
 {
-    protected $baseRouteName    = 'sigereq_solucion_requerimiento';
-    protected $baseRoutePattern = 'catalogo/solucion-requerimiento';
+    protected $baseRouteName    = 'sigereq_tipo_servicio';
+    protected $baseRoutePattern = 'catalogo/tipo-servicio';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -109,12 +109,12 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('idSolucionPadre', null, array(
+                ->add('idTipoPadre', null, array(
                                         'label' => 'Tipo / Clasificación grupo',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
-                                        'group_by' => 'idSolucionPadre',
+                                        'group_by' => 'idTipoPadre',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
@@ -166,7 +166,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         /*
          * default values
          */
-        $instance->setIdSolucionPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimiento', array('codigo' => 'FNC')));
+        $instance->setIdTipoPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoServicio', array('codigo' => 'ADM')));
         
         return $instance;
     }

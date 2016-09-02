@@ -12,10 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
+class ReqCtlServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
 {
-    protected $baseRouteName    = 'sigereq_solucion_requerimiento';
-    protected $baseRoutePattern = 'catalogo/solucion-requerimiento';
+    protected $baseRouteName    = 'sigereq_servicio_atencion';
+    protected $baseRoutePattern = 'catalogo/servicio-atencion';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -66,9 +66,9 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'label' => 'Nombre',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Nombre de la actividad',
+                                                        'placeholder' => 'Nombre para el registro',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
                                                         'class' => 'input-sm',
 
                                                         'data-add-input-addon' => 'true',
@@ -109,15 +109,33 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('idSolucionPadre', null, array(
-                                        'label' => 'Tipo / Clasificación grupo',
+                ->add('idTipoServicio', null, array(
+                                        'label' => 'Tipo',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
-                                        'group_by' => 'idSolucionPadre',
+                                        'group_by' => 'idTipoPadre',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('idAtencionPadre', null, array(
+                                        'label' => 'Atención padre / Grupo',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => false,
+                                        'empty_value' => '',
+                                        'group_by' => 'idTipoServicio',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
                                                         'class' => 'form-control input-sm',
                                                         'data-input-transform' => 'select2',
                                                         'data-apply-formatter' => 'user',
@@ -166,7 +184,8 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         /*
          * default values
          */
-        $instance->setIdSolucionPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimiento', array('codigo' => 'FNC')));
+        $instance->setIdTipoServicio($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoServicio', array('codigo' => 'ADM')));
+        $instance->setIdAtencionPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlServicioAtencion', array('codigo' => 'INF')));
         
         return $instance;
     }

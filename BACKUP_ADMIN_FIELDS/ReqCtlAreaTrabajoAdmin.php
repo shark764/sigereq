@@ -12,10 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
+class ReqCtlAreaTrabajoAdmin extends SanRafaelRequerimientosAdmin
 {
-    protected $baseRouteName    = 'sigereq_solucion_requerimiento';
-    protected $baseRoutePattern = 'catalogo/solucion-requerimiento';
+    protected $baseRouteName    = 'sigereq_area_trabajo';
+    protected $baseRoutePattern = 'catalogo/area-trabajo';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -26,6 +26,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
+            ->add('idAreaPadre')
         ;
     }
 
@@ -38,6 +39,8 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
+            ->add('idAreaPadre')
+            ->add('areaSubareasTrabajo')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -66,7 +69,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'label' => 'Nombre',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Nombre de la actividad',
+                                                        'placeholder' => 'Nombre para el registro',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
                                                         'class' => 'input-sm',
@@ -109,15 +112,15 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('idSolucionPadre', null, array(
-                                        'label' => 'Tipo / Clasificación grupo',
+                ->add('idAreaPadre', null, array(
+                                        'label' => 'Area padre / Grupo',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'required' => true,
+                                        'required' => false,
                                         'empty_value' => '',
-                                        'group_by' => 'idSolucionPadre',
+                                        'group_by' => 'idAreaPadre',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
                                                         'class' => 'form-control input-sm',
                                                         'data-input-transform' => 'select2',
                                                         'data-apply-formatter' => 'user',
@@ -127,6 +130,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
+                ->add('areaSubareasTrabajo')
             ->end()
         ;
     }
@@ -140,6 +144,8 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
+            ->add('idAreaPadre')
+            ->add('areaSubareasTrabajo')
         ;
     }
 
@@ -166,7 +172,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         /*
          * default values
          */
-        $instance->setIdSolucionPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimiento', array('codigo' => 'FNC')));
+        $instance->setIdAreaPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlAreaTrabajo', array('codigo' => 'SPT')));
         
         return $instance;
     }

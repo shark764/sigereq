@@ -12,10 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
+class ReqCtlTrabajoRequeridoAdmin extends Admin
 {
-    protected $baseRouteName    = 'sigereq_solucion_requerimiento';
-    protected $baseRoutePattern = 'catalogo/solucion-requerimiento';
+    protected $baseRouteName    = 'sigereq_trabajo_requerido';
+    protected $baseRoutePattern = 'catalogo/trabajo-requerido';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -24,7 +24,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('nombre')
+            ->add('requerimiento')
             ->add('codigo')
         ;
     }
@@ -36,7 +36,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
     {
         $listMapper
             ->add('id')
-            ->add('nombre')
+            ->add('requerimiento')
             ->add('codigo')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -62,8 +62,8 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         $formMapper
             ->with($MAIN_BOX_LABEL, array('class' => 'col-lg-12 col-md-12 col-sm-12', 'description' => ''))
                 // ->add('id')
-                ->add('nombre', null, array(
-                                        'label' => 'Nombre',
+                ->add('requerimiento', null, array(
+                                        'label' => 'Requerimiento',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'attr' => array(/*'maxlength' => '100',*/
                                                         'placeholder' => 'Nombre de la actividad',
@@ -109,12 +109,30 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('idSolucionPadre', null, array(
-                                        'label' => 'Tipo / Clasificación grupo',
+                ->add('idTrabajoRequeridoPadre', null, array(
+                                        'label' => 'Grupo',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
-                                        'group_by' => 'idSolucionPadre',
+                                        'group_by' => 'idTrabajoRequeridoPadre',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('idAreaTrabajo', null, array(
+                                        'label' => 'Área de trabajo',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'group_by' => 'idAreaPadre',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
@@ -138,7 +156,7 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
     {
         $showMapper
             ->add('id')
-            ->add('nombre')
+            ->add('requerimiento')
             ->add('codigo')
         ;
     }
@@ -166,7 +184,8 @@ class ReqCtlSolucionRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         /*
          * default values
          */
-        $instance->setIdSolucionPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimiento', array('codigo' => 'FNC')));
+        $instance->setIdTrabajoRequeridoPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTrabajoRequerido', array('codigo' => '000000')));
+        $instance->setIdAreaTrabajo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlAreaTrabajo', array('codigo' => 'DSI')));
         
         return $instance;
     }

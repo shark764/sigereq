@@ -2,20 +2,27 @@
 
 namespace SanRafael\RequerimientosBundle\Admin;
 
-//use Sonata\AdminBundle\Admin\Admin;
-use SanRafael\RequerimientosBundle\Admin\SanRafaelRequerimientosAdmin;
+use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-//use Doctrine\ORM\EntityRepository;
-//use Sonata\AdminBundle\Validator\ErrorElement;
-//use Sonata\AdminBundle\Route\RouteCollection;
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqAreaServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
+class ReqAreaServicioAtencionAdmin extends Admin
 {
     protected $baseRouteName    = 'sigereq_area_servicio_atencion';
     protected $baseRoutePattern = 'catalogo/area-servicio-atencion';
+    
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        // $collection->remove('delete');
+        $collection->add('create', 'crear');
+        $collection->add('edit', 'editar');
+        $collection->add('list', 'listar');
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -63,29 +70,32 @@ class ReqAreaServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
             ->add('id')
         ;
     }
+    
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'edit':
+                return 'SanRafaelRequerimientosBundle:CRUD:base_edit.html.twig';
+                break;
+            case 'list':
+                return 'SanRafaelRequerimientosBundle:CRUD:base_list.html.twig';
+                break;
+            case 'show':
+                return 'SanRafaelRequerimientosBundle:CRUD:base_show.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 
-    public function prePersist($entity)
+    public function getFormTheme()
     {
-        parent::prePersist($entity);
-    }
-    
-    public function preUpdate($entity)
-    {
-        parent::preUpdate($entity);
-    }
-    
-    public function getNewInstance()
-    {
-        $instance   = parent::getNewInstance();
-        
-        /*
-         * default values
-         */
-        /*$instance->setIdEstadoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlEstadoEquipo', array('codigo' => 'FNC')));
-        $instance->setIdTipoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoEquipo', array('codigo' => 'DKT')));
-        $instance->setIdModeloEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlModeloEquipo', array('codigo' => 'dlloptx9020')));*/
-        
-        return $instance;
+        return array_merge(
+            parent::getFormTheme(),
+            array('SanRafaelRequerimientosBundle:Form:sigereq_form_admin_fields.html.twig'),
+            array('SanRafaelRequerimientosBundle:Form:sigereq_doctrine_orm_form_admin_fields.html.twig')
+       );
     }
 
 }
