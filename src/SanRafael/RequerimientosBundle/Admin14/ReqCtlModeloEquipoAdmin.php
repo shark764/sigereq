@@ -12,10 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlTipoEquipoAdmin extends Admin
+class ReqCtlModeloEquipoAdmin extends SanRafaelRequerimientosAdmin
 {
-    protected $baseRouteName    = 'sigereq_tipo_equipo';
-    protected $baseRoutePattern = 'catalogo/tipo-equipo';
+    protected $baseRouteName    = 'sigereq_modelo_equipo';
+    protected $baseRoutePattern = 'catalogo/modelo-equipo';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -68,9 +68,9 @@ class ReqCtlTipoEquipoAdmin extends Admin
                                         'label' => 'Nombre',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Nombre de la actividad',
+                                                        'placeholder' => 'Nombre para el registro',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
                                                         'class' => 'input-sm',
 
                                                         'data-add-input-addon' => 'true',
@@ -111,15 +111,33 @@ class ReqCtlTipoEquipoAdmin extends Admin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('idTipoPadre', null, array(
-                                        'label' => 'Tipo / Clasificación',
+                ->add('idMarcaEquipo', null, array(
+                                        'label' => 'Marca',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
-                                        'group_by' => 'idTipoPadre',
+                                        'group_by' => 'idMarcaGrupo',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('idModeloGrupo', null, array(
+                                        'label' => 'Modelo padre / Grupo',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'group_by' => 'idMarcaEquipo',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
                                                         'class' => 'form-control input-sm',
                                                         'data-input-transform' => 'select2',
                                                         'data-apply-formatter' => 'user',
@@ -191,9 +209,10 @@ class ReqCtlTipoEquipoAdmin extends Admin
         /*
          * default values
          */
-        $instance->setIdTipoPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoEquipo', array('codigo' => 'DKT')));
+        $instance->setIdMarcaEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlMarcaEquipo', array('codigo' => 'DLL')));
+        $instance->setIdModeloGrupo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlModeloEquipo', array('codigo' => 'dlloptx9020')));
         
         return $instance;
     }
-
+    
 }

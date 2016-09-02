@@ -12,10 +12,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlTipoEquipoAdmin extends Admin
+class ReqCtlAreaTrabajoAdmin extends SanRafaelRequerimientosAdmin
 {
-    protected $baseRouteName    = 'sigereq_tipo_equipo';
-    protected $baseRoutePattern = 'catalogo/tipo-equipo';
+    protected $baseRouteName    = 'sigereq_area_trabajo';
+    protected $baseRoutePattern = 'catalogo/area-trabajo';
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -26,7 +26,7 @@ class ReqCtlTipoEquipoAdmin extends Admin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
-            ->add('caracteristicas')
+            ->add('idAreaPadre')
         ;
     }
 
@@ -39,7 +39,8 @@ class ReqCtlTipoEquipoAdmin extends Admin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
-            ->add('caracteristicas')
+            ->add('idAreaPadre')
+            ->add('areaSubareasTrabajo')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -68,7 +69,7 @@ class ReqCtlTipoEquipoAdmin extends Admin
                                         'label' => 'Nombre',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Nombre de la actividad',
+                                                        'placeholder' => 'Nombre para el registro',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
                                                         'class' => 'input-sm',
@@ -111,15 +112,15 @@ class ReqCtlTipoEquipoAdmin extends Admin
                                                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
-                ->add('idTipoPadre', null, array(
-                                        'label' => 'Tipo / Clasificación',
+                ->add('idAreaPadre', null, array(
+                                        'label' => 'Area padre / Grupo',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'required' => true,
+                                        'required' => false,
                                         'empty_value' => '',
-                                        'group_by' => 'idTipoPadre',
+                                        'group_by' => 'idAreaPadre',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
                                                         'class' => 'form-control input-sm',
                                                         'data-input-transform' => 'select2',
                                                         'data-apply-formatter' => 'user',
@@ -129,28 +130,7 @@ class ReqCtlTipoEquipoAdmin extends Admin
                                                         'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
-                ->add('caracteristicas', null, array(
-                                        'label' => 'Características',
-                                        'label_attr' => array('class' => 'label_form_sm'),
-                                        'required' => false,
-                                        'attr' => array('rows' => '3',
-                                                        'style' => 'resize:none',
-                                                        /*'maxlength' => '255',*/
-                                                        'placeholder' => 'Características del equipo',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
-                                                        'class' => 'form-control input-sm',
-
-                                                        'data-fv-stringlength' => 'true',
-                                                        'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '255',
-                                                        'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                                        'data-fv-regexp' => 'true',
-                                                        'data-fv-regexp-regexp' => '^[a-zA-ZüÜñÑáéíóúÁÉÍÓÚ0-9¿!¡;,:\.\?#@()_-\s]+$',
-                                                        'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                                        )
-                ))
+                ->add('areaSubareasTrabajo')
             ->end()
         ;
     }
@@ -164,7 +144,8 @@ class ReqCtlTipoEquipoAdmin extends Admin
             ->add('id')
             ->add('nombre')
             ->add('codigo')
-            ->add('caracteristicas')
+            ->add('idAreaPadre')
+            ->add('areaSubareasTrabajo')
         ;
     }
 
@@ -191,7 +172,7 @@ class ReqCtlTipoEquipoAdmin extends Admin
         /*
          * default values
          */
-        $instance->setIdTipoPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoEquipo', array('codigo' => 'DKT')));
+        $instance->setIdAreaPadre($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlAreaTrabajo', array('codigo' => 'SPT')));
         
         return $instance;
     }
