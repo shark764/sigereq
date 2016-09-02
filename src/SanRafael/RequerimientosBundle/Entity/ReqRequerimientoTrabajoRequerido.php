@@ -214,7 +214,7 @@ class ReqRequerimientoTrabajoRequerido
         $this->fechaHoraReg = new \DateTime('now');
         $this->fechaAsignacion = new \DateTime('now');
         $this->fechaRecibido = new \DateTime('now');
-        $this->fechaHoraInicio = new \DateTime('now');
+        /*$this->fechaHoraInicio = new \DateTime('now');*/
     }
 
 
