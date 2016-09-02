@@ -27,76 +27,15 @@ class ReqCtlModalidadAtencion
      *
      * @ORM\Column(name="nombre", type="string", length=25, nullable=false)
      */
-    private $nombre;
+    private $nombre = 'MINSAL';
 
     /**
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=6, nullable=false)
      */
-    private $codigo;
+    private $codigo = 'MSL';
 
-    public function __toString()
-    {
-        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
-    }
-    
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set nombre
-     *
-     * @param string $nombre
-     *
-     * @return ReqCtlModalidadAtencion
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    /**
-     * Set codigo
-     *
-     * @param string $codigo
-     *
-     * @return ReqCtlModalidadAtencion
-     */
-    public function setCodigo($codigo)
-    {
-        $this->codigo = $codigo;
-
-        return $this;
-    }
-
-    /**
-     * Get codigo
-     *
-     * @return string
-     */
-    public function getCodigo()
-    {
-        return $this->codigo;
-    }
 }
+

@@ -11,11 +11,13 @@
     <field name="nombre" type="string" column="nombre" length="25" nullable="false">
       <options>
         <option name="fixed">1</option>
+        <option name="default">MINSAL</option>
       </options>
     </field>
     <field name="codigo" type="string" column="codigo" length="6" nullable="false">
       <options>
         <option name="fixed">1</option>
+        <option name="default">MSL</option>
       </options>
     </field>
   </entity>

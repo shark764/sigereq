@@ -114,7 +114,7 @@ class ReqCtlMarcaEquipoAdmin extends SanRafaelRequerimientosAdmin
                 ->add('idMarcaGrupo', null, array(
                                         'label' => 'Marca grupo',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'required' => true,
+                                        'required' => false,
                                         'empty_value' => '',
                                         'group_by' => 'idMarcaGrupo',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
