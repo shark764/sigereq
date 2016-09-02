@@ -2,8 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="ReqCtlSolucionRequerimiento" table="req_ctl_solucion_requerimiento">
     <indexes>
-      <index name="IDX_A204D7ABDDC7A485" columns="id_area_trabajo"/>
       <index name="IDX_A204D7AB1B0A8FB" columns="id_solucion_padre"/>
+      <index name="IDX_A204D7ABDDC7A485" columns="id_area_trabajo"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="idx_req_codigo_solucion_requerimiento" columns="codigo"/>
@@ -24,14 +24,14 @@
         <option name="default">IEI</option>
       </options>
     </field>
-    <many-to-one field="idSolucionPadre" target-entity="ReqCtlSolucionRequerimiento" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_solucion_padre" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idAreaTrabajo" target-entity="ReqCtlAreaTrabajo" fetch="LAZY">
       <join-columns>
         <join-column name="id_area_trabajo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSolucionPadre" target-entity="ReqCtlSolucionRequerimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_solucion_padre" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>
