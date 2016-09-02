@@ -12,7 +12,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 //use Sonata\AdminBundle\Validator\ErrorElement;
 //use Sonata\AdminBundle\Route\RouteCollection;
 
-class ReqCtlTrabajoRequeridoAdmin extends Admin
+class ReqCtlTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
 {
     protected $baseRouteName    = 'sigereq_trabajo_requerido';
     protected $baseRoutePattern = 'catalogo/trabajo-requerido';
