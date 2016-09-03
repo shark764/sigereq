@@ -15,14 +15,14 @@ services:
         class: SanRafael\RequerimientosBundle\Admin\ReqCtlTrabajoRequeridoAdmin
         arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlTrabajoRequerido, SanRafaelRequerimientosBundle:ReqCtlTrabajoRequeridoAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Catálogos, label: Catálogo de requerimientos}
+            - {name: sonata.admin, manager_type: orm, group: Catálogos, label: Requerimientos}
 
     san_rafael_requerimientos.admin.req_empleado_area_servicio_atencion:
         class: SanRafael\RequerimientosBundle\Admin\ReqEmpleadoAreaServicioAtencionAdmin
         arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqEmpleadoAreaServicioAtencion, SanRafaelRequerimientosBundle:ReqEmpleadoAreaServicioAtencionAdmin]
         tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: ReqEmpleadoAreaServicioAtencion}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: Administración, label: Empleados por Departamentos}
+            # - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     san_rafael_requerimientos.admin.req_ctl_area_atencion:
         class: SanRafael\RequerimientosBundle\Admin\ReqCtlAreaAtencionAdmin
@@ -34,7 +34,7 @@ services:
         class: SanRafael\RequerimientosBundle\Admin\ReqCtlSolucionRequerimientoAdmin
         arguments: [~, SanRafael\RequerimientosBundle\Entity\ReqCtlSolucionRequerimiento, SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimientoAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Catálogos, label: Catálogo de soluciones}
+            - {name: sonata.admin, manager_type: orm, group: Catálogos, label: Soluciones}
 
     san_rafael_requerimientos.admin.req_ctl_servicio_atencion:
         class: SanRafael\RequerimientosBundle\Admin\ReqCtlServicioAtencionAdmin

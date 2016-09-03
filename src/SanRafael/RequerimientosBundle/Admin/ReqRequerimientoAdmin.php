@@ -163,6 +163,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'attr' => array('min' => '0',
                                                         'max' => '32767',
                                                         'placeholder' => 'N° de días',
+                                                        'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
                                                         'class' => 'form-control input-sm',
 
                                                         'data-add-input-addon' => 'true',
@@ -195,7 +196,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'attr' => array(/*'maxlength' => '100',*/
                                                         'placeholder' => 'Título del requerimiento',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
 
                                                         'data-add-input-addon' => 'true',
