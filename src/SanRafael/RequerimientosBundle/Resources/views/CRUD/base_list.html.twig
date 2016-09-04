@@ -23,7 +23,7 @@ file that was distributed with this source code.
 
 
 {% block list_table %}
-    <div class="box box-primary">
+    <div class="box box-drop-outside-shadow box-primary">
         <div class="box-body table-responsive no-padding">
             {{ sonata_block_render_event('sonata.admin.list.table.top', { 'admin': admin }) }}
 
@@ -195,7 +195,7 @@ file that was distributed with this source code.
 {% block list_filters %}
     {% if admin.datagrid.filters %}
         {% form_theme form admin.getTemplate('filter') %}
-        <div class="box box-primary">
+        <div class="box box-drop-outside-shadow box-primary">
             <div class="box-header">
                 <h4 class="box-title filter_legend {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">{{ 'label_filters'|trans({}, 'SonataAdminBundle') }}</h4>
             </div>
