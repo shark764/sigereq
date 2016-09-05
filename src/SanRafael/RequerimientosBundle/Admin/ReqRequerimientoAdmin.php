@@ -163,7 +163,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'attr' => array('min' => '0',
                                                         'max' => '32767',
                                                         'placeholder' => 'N° de días',
-                                                        'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
 
                                                         'data-add-input-addon' => 'true',
@@ -184,7 +184,7 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ))
                 ->add('diaCompleto', null, array(
                                         'label' => 'Día completo',
-                                        'label_attr' => array('class' => 'label_form_sm label_check'),
+                                        'label_attr' => array('class' => 'label_form_sm label_check col-lg-4 col-md-4 col-sm-4'),
                                         'required' => false,
                                         'attr' => array('data-input-transform' => 'icheck',
                                                         'class' => 'form-control input-sm',

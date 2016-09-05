@@ -106,7 +106,8 @@ CREATE TABLE fos_user_user (
     gplus_data text,
     token character varying(255) DEFAULT NULL::character varying,
     two_step_code character varying(255) DEFAULT NULL::character varying,
-    id_empleado integer
+    id_empleado integer,
+    id_area_servicio_atencion smallint
 );
 
 
@@ -468,7 +469,7 @@ ALTER SEQUENCE req_ctl_marca_equipo_id_seq OWNED BY req_ctl_marca_equipo.id;
 CREATE TABLE req_ctl_modalidad_atencion (
     id smallint NOT NULL,
     nombre character(25) DEFAULT 'MINSAL'::bpchar NOT NULL,
-    codigo character(6) DEFAULT 'MSL'::bpchar NOT NULL
+    codigo character(6) DEFAULT 'MINSAL'::bpchar NOT NULL
 );
 
 
@@ -1212,21 +1213,26 @@ ALTER TABLE ONLY req_requerimiento_trabajo_requerido ALTER COLUMN id SET DEFAULT
 -- Data for Name: fos_user_group; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+INSERT INTO fos_user_group (id, name, roles) VALUES (1, 'yeah baby', 'a:5:{i:0;s:32:"ROLE_SONATA_USER_ADMIN_USER_EDIT";i:1;s:34:"ROLE_SONATA_USER_ADMIN_USER_CREATE";i:2;s:36:"ROLE_SONATA_USER_ADMIN_USER_OPERATOR";i:3;s:33:"ROLE_SONATA_USER_ADMIN_GROUP_EDIT";i:4;s:33:"ROLE_SONATA_USER_ADMIN_GROUP_VIEW";}');
+INSERT INTO fos_user_group (id, name, roles) VALUES (2, 'yeah 2 baby', 'a:8:{i:0;s:34:"ROLE_SONATA_USER_ADMIN_USER_MASTER";i:1;s:33:"ROLE_SONATA_USER_ADMIN_GROUP_EDIT";i:2;s:33:"ROLE_SONATA_USER_ADMIN_GROUP_LIST";i:3;s:35:"ROLE_SONATA_USER_ADMIN_GROUP_DELETE";i:4;s:35:"ROLE_SONATA_USER_ADMIN_GROUP_MASTER";i:5;s:9:"ROLE_USER";i:6;s:17:"ROLE_SONATA_ADMIN";i:7;s:32:"ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT";}');
+INSERT INTO fos_user_group (id, name, roles) VALUES (3, 'field_dialog_form_list_handle_action_s57c9e0ffd9030_groups', 'a:0:{}');
+INSERT INTO fos_user_group (id, name, roles) VALUES (4, 'field_dialog_form_list_handle_action_s57c9e0ffd9030_groupsfield_dialog_form_list_handle_action_s57c9e0ffd9030_groups', 'a:13:{i:0;s:62:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_AREA_TRABAJO_EDIT";i:1;s:62:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_AREA_TRABAJO_VIEW";i:2;s:64:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_AREA_TRABAJO_MASTER";i:3;s:58:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_EQUIPO_CREATE";i:4;s:58:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_EQUIPO_DELETE";i:5;s:69:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TRABAJO_REQUERIDO_MASTER";i:6;s:79:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_EMPLEADO_AREA_SERVICIO_ATENCION_EXPORT";i:7;s:61:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TIPO_EQUIPO_VIEW";i:8;s:63:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TIPO_EQUIPO_DELETE";i:9;s:63:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TIPO_EQUIPO_EXPORT";i:10;s:65:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TIPO_EQUIPO_OPERATOR";i:11;s:9:"ROLE_USER";i:12;s:17:"ROLE_SONATA_ADMIN";}');
+INSERT INTO fos_user_group (id, name, roles) VALUES (7, 'TOS_ADMIN_REQ_CTL_AREA_TRABAJO_EDIT', 'a:5:{i:0;s:64:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_AREA_TRABAJO_EXPORT";i:1;s:65:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TIPO_SERVICIO_CREATE";i:2;s:65:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TIPO_SERVICIO_DELETE";i:3;s:67:"ROLE_SAN_RAFAEL_REQUERIMIENTOS_ADMIN_REQ_CTL_TIPO_SERVICIO_OPERATOR";i:4;s:16:"ROLE_SUPER_ADMIN";}');
 
 
 --
 -- Name: fos_user_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('fos_user_group_id_seq', 1, false);
+SELECT pg_catalog.setval('fos_user_group_id_seq', 7, true);
 
 
 --
 -- Data for Name: fos_user_user; Type: TABLE DATA; Schema: public; Owner: request
 --
 
-INSERT INTO fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code, id_empleado) VALUES (1, 'admin', 'admin', 'farid.hdz.64@gmail.com', 'farid.hdz.64@gmail.com', false, 'qe8kcle04sgw0oo48w8ssko80cgcccc', 'G5pGA/C+RRlnARla0DX3jmEL+KsEv+8vscuTFXyeyk9Zn7qNKi8U4FGZh+KSFuIYTImRllOYrcVKcdH7IFeceA==', NULL, false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', false, NULL, '2016-08-10 13:59:30', '2016-08-26 11:58:31', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, NULL);
-INSERT INTO fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code, id_empleado) VALUES (4, 'adminrequest', 'adminrequest', 'admin.request@gmail.com', 'admin.request@gmail.com', true, '3vl8bdxfucqog88gwsoswg4cg048ckg', 'pn5P8d7TkK9/TOb4Sn85Bdr6pRw+3fwPIM3lFbnm9lbNpMp1ykFMiVb0XMwMX6jCE/up5b3Yj+Q/SLSfK1++tQ==', '2016-08-30 05:07:20', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', false, NULL, '2016-08-24 01:03:31', '2016-08-30 05:07:20', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, NULL);
+INSERT INTO fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code, id_empleado, id_area_servicio_atencion) VALUES (1, 'admin', 'admin', 'farid.hdz.64@gmail.com', 'farid.hdz.64@gmail.com', false, 'qe8kcle04sgw0oo48w8ssko80cgcccc', 'G5pGA/C+RRlnARla0DX3jmEL+KsEv+8vscuTFXyeyk9Zn7qNKi8U4FGZh+KSFuIYTImRllOYrcVKcdH7IFeceA==', NULL, false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', false, NULL, '2016-08-10 13:59:30', '2016-08-26 11:58:31', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, NULL, NULL);
+INSERT INTO fos_user_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at, created_at, updated_at, date_of_birth, firstname, lastname, website, biography, gender, locale, timezone, phone, facebook_uid, facebook_name, facebook_data, twitter_uid, twitter_name, twitter_data, gplus_uid, gplus_name, gplus_data, token, two_step_code, id_empleado, id_area_servicio_atencion) VALUES (4, 'adminrequest', 'adminrequest', 'admin.request@gmail.com', 'admin.request@gmail.com', true, '3vl8bdxfucqog88gwsoswg4cg048ckg', 'pn5P8d7TkK9/TOb4Sn85Bdr6pRw+3fwPIM3lFbnm9lbNpMp1ykFMiVb0XMwMX6jCE/up5b3Yj+Q/SLSfK1++tQ==', '2016-09-04 18:20:06', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', false, NULL, '2016-08-24 01:03:31', '2016-09-04 18:20:06', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, NULL, NULL);
 
 
 --
@@ -1534,13 +1540,14 @@ SELECT pg_catalog.setval('req_ctl_solucion_requerimiento_id_seq', 5, true);
 --
 
 INSERT INTO req_ctl_tipo_empleado (id, nombre, codigo) VALUES (1, 'Médico de Consulta General/de Especialidad', 'MED');
+INSERT INTO req_ctl_tipo_empleado (id, nombre, codigo) VALUES (2, 'Empleado Administrativo', 'ADM');
 
 
 --
 -- Name: req_ctl_tipo_empleado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_tipo_empleado_id_seq', 1, true);
+SELECT pg_catalog.setval('req_ctl_tipo_empleado_id_seq', 2, true);
 
 
 --
@@ -1580,32 +1587,35 @@ SELECT pg_catalog.setval('req_ctl_tipo_servicio_id_seq', 4, true);
 
 INSERT INTO req_ctl_tipo_trabajo (id, nombre, codigo) VALUES (1, 'Trabajo Correctivo       ', 'C');
 INSERT INTO req_ctl_tipo_trabajo (id, nombre, codigo) VALUES (2, 'Trabajo Preventivo       ', 'P');
+INSERT INTO req_ctl_tipo_trabajo (id, nombre, codigo) VALUES (3, 'Otros                    ', 'O');
 
 
 --
 -- Name: req_ctl_tipo_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_tipo_trabajo_id_seq', 2, true);
+SELECT pg_catalog.setval('req_ctl_tipo_trabajo_id_seq', 3, true);
 
 
 --
 -- Data for Name: req_ctl_trabajo_requerido; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+INSERT INTO req_ctl_trabajo_requerido (id, requerimiento, codigo, id_area_trabajo, id_trabajo_requerido_padre) VALUES (1, 'Asignación de equipo de cómputo', '000000', 3, NULL);
 
 
 --
 -- Name: req_ctl_trabajo_requerido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_ctl_trabajo_requerido_id_seq', 1, false);
+SELECT pg_catalog.setval('req_ctl_trabajo_requerido_id_seq', 1, true);
 
 
 --
 -- Data for Name: req_empleado; Type: TABLE DATA; Schema: public; Owner: request
 --
 
+INSERT INTO req_empleado (id, nombre, apellido, id_tipo_empleado, id_cargo_empleado, habilitado, correo_electronico, telefono_casa, telefono_celular, fecha_nacimiento, id_jefe_inmediato, fecha_hora_reg, fecha_hora_mod, hora_nacimiento, id_user_reg, id_user_mod, id_area_servicio_atencion, id_sexo, correo_institucional, fecha_contratacion, fecha_inicia_labores, fecha_finaliza_labores) VALUES (1, 'Daniel Farid', 'Hernández Cortez', 2, 19, true, 'farid.hdz.64@gmail.com', '2-272-4516', '7-710-2360', '1990-01-04', NULL, '2016-09-02 16:39:15', '2016-09-02 16:39:34', '01:30:00', 4, 4, NULL, 1, 'farid.hdz.64@gmail.com', '2015-05-04 00:00:00', '2016-09-02 00:00:00', NULL);
 
 
 --
@@ -1625,7 +1635,7 @@ SELECT pg_catalog.setval('req_empleado_area_servicio_atencion_id_seq', 1, false)
 -- Name: req_empleado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_empleado_id_seq', 1, false);
+SELECT pg_catalog.setval('req_empleado_id_seq', 1, true);
 
 
 --
@@ -1651,7 +1661,7 @@ SELECT pg_catalog.setval('req_requerimiento_id_seq', 1, false);
 -- Name: req_requerimiento_trabajo_requerido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: request
 --
 
-SELECT pg_catalog.setval('req_requerimiento_trabajo_requerido_id_seq', 1, false);
+SELECT pg_catalog.setval('req_requerimiento_trabajo_requerido_id_seq', 3, true);
 
 
 --
@@ -2087,6 +2097,14 @@ ALTER TABLE ONLY req_ctl_area_trabajo
 
 ALTER TABLE ONLY req_empleado
     ADD CONSTRAINT fk_area_servicio_atencion_empleado FOREIGN KEY (id_area_servicio_atencion) REFERENCES req_area_servicio_atencion(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: fk_area_servicio_atencion_user_user; Type: FK CONSTRAINT; Schema: public; Owner: request
+--
+
+ALTER TABLE ONLY fos_user_user
+    ADD CONSTRAINT fk_area_servicio_atencion_user_user FOREIGN KEY (id_area_servicio_atencion) REFERENCES req_area_servicio_atencion(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --

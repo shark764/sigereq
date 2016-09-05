@@ -4,7 +4,7 @@
 
 {% set _messageCurrentTemplate = action is defined and action == 'edit' ?
                         '<i class="fa fa-refresh"></i> <i class="fa fa-pencil-square-o"></i> Edición de registro' :
-                        '<i class="fa fa-floppy-o"></i> <i class="fa fa-plus-circle"></i> Nuevo registro' %}
+                        '<i class="fa fa-floppy-o"></i> <span class="glyphicon glyphicon-plus-sign"></span> Nuevo registro' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -285,10 +285,10 @@
                     {% if app.request.isxmlhttprequest %}
                         {% if admin.id(object) is not null %}
 			    <button type="button" data-dismiss="modal" class="btn btn-primary-v4"><i class="fa fa-times"></i> No, Cerrar</button>
-                            <button type="submit" class="btn btn-primary-v4" name="btn_update"><i class="fa fa-save"></i> Editar</button>
+                            <button type="submit" class="btn btn-primary-v4" name="btn_update"><span class="glyphicon glyphicon-floppy-saved"></span> Editar</button>
                         {% else %}
 			    <button type="button" data-dismiss="modal" class="btn btn-primary-v4"><i class="fa fa-times"></i> No, Cerrar</button>
-                            <button type="submit" class="btn btn-success-v3" name="btn_create"><i class="fa fa-plus-circle"></i> Enviar</button>
+                            <button type="submit" class="btn btn-success-v3" name="btn_create"><span class="glyphicon glyphicon-plus-sign"></span> Enviar</button>
                         {% endif %}
                     {% else %}
                         {% if admin.supportsPreviewMode %}
@@ -298,10 +298,10 @@
                             </button>
                         {% endif %}
                         {% if admin.id(object) is not null %}
-                            <button type="submit" class="btn btn-primary-v4" name="btn_update_and_edit"><span class="glyphicon glyphicon-ok-sign"></span> Enviar</button>
+                            <button type="submit" class="btn btn-primary-v4" name="btn_update_and_edit"><span class="glyphicon glyphicon-floppy-saved"></span> Enviar</button>
 
                             {% if admin.hasroute('list') and admin.isGranted('LIST') %}
-                                <button type="submit" class="btn btn-primary-v4" name="btn_update_and_list"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-list-alt"></span> Enviar</button>
+                                <button type="submit" class="btn btn-primary-v4" name="btn_update_and_list"><span class="glyphicon glyphicon-floppy-disk"></span> <span class="glyphicon glyphicon-list"></span> Enviar</button>
                             {% endif %}{# #}
 
                             {% if admin.hasroute('delete') and admin.isGranted('DELETE', object) %}
@@ -315,12 +315,12 @@
 			    <button class="btn btn-default" type="reset" name="btn_reset_on_edit"><i class="fa fa-repeat"></i> Restablecer</button>
                         {% else %}
                             {% if admin.hasroute('edit') and admin.isGranted('EDIT') %}
-                                <button class="btn btn-success-v3" type="submit" name="btn_create_and_edit"><span class="glyphicon glyphicon-ok-sign"></span> Enviar</button>
+                                <button class="btn btn-success-v3" type="submit" name="btn_create_and_edit"><span class="glyphicon glyphicon-floppy-saved"></span> Enviar</button>
                             {% endif %}
                             {% if admin.hasroute('list') and admin.isGranted('LIST') %}
-                                <button type="submit" class="btn btn-success-v3" name="btn_create_and_list"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-list-alt"></span> Enviar</button>
+                                <button type="submit" class="btn btn-success-v3" name="btn_create_and_list"><span class="glyphicon glyphicon-floppy-disk"></span> <span class="glyphicon glyphicon-list"></span> Enviar</button>
                             {% endif %}{# #}
-                            <button class="btn btn-success-v3" type="submit" name="btn_create_and_create"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-repeat"></span> Enviar</button>{# #}
+                            <button class="btn btn-success-v3" type="submit" name="btn_create_and_create"><span class="glyphicon glyphicon-floppy-saved"></span> <span class="glyphicon glyphicon-repeat"></span> Enviar</button>{# #}
 			    <button class="btn btn-default" type="reset" name="btn_reset_on_create"><i class="fa fa-repeat"></i> Restablecer</button>
                         {% endif %}
                     {% endif %}
