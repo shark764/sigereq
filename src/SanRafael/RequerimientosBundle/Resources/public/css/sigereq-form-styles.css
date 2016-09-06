@@ -179,9 +179,9 @@ textarea:focus:hover {
 
 div.form-actions {
   /*text-align: center;*/
-  background: #fffefd;
+/*  background: #fffefd;
   border-top: 2px solid #c1c1c1;
-  border-top-color: #f56954;
+  border-top-color: #f56954;*/
 }
 
 .input-group .input-group-addon:last-child {

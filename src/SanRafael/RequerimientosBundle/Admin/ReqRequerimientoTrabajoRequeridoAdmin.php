@@ -121,15 +121,68 @@ class ReqRequerimientoTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-date-message' => 'Fecha no válida',
                                         )
                 ))
+                ->add('idTipoTrabajo', null, array(
+                                        'label' => 'Tipo de trabajo',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('idAreaTrabajo', null, array(
+                                        'label' => 'Área de trabajo',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'group_by' => 'idAreaPadre',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('idEquipoSolicitud', null, array(
+                                        'label' => 'Equipo',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'group_by' => 'idModeloEquipo',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
                 ->add('idEmpleadoRegistra', null, array(
                                         'label' => 'Registra',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'empty_value' => '',
-                                        'group_by' => 'idAreaServicioAtencion',
+                                        'group_by' => 'idCargoEmpleado',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
                                                         'class' => 'form-control input-sm',
                                                         'data-input-transform' => 'select2',
                                                         'data-apply-formatter' => 'user',
@@ -144,7 +197,43 @@ class ReqRequerimientoTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
                                         'empty_value' => '',
-                                        'group_by' => 'idAreaServicioAtencion',
+                                        'group_by' => 'idCargoEmpleado',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('idEmpleadoAsignado', null, array(
+                                        'label' => 'Asignado a',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'group_by' => 'idCargoEmpleado',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('idEstadoRequerimiento', null, array(
+                                        'label' => 'Estado',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'group_by' => 'idEstadoPadre',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
@@ -157,15 +246,55 @@ class ReqRequerimientoTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
                                                         'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
-                ->add('idEmpleadoAsignado', null, array(
-                                        'label' => 'Empleado asignado',
+                ->add('idTrabajoRequerido', null, array(
+                                        'label' => 'Trabajo requerido',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => true,
+                                        'empty_value' => '',
+                                        'group_by' => 'idAreaTrabajo',
+                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'class' => 'form-control input-sm',
+                                                        'data-input-transform' => 'select2',
+                                                        'data-apply-formatter' => 'user',
+                                                        'data-apply-formatter-mode' => 'enabled',
+
+                                                        'data-fv-notempty' => 'true',
+                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                        )
+                ))
+                ->add('descripcion', null, array(
+                                        'label' => 'Requerimiento / Actividad',
+                                        'label_attr' => array('class' => 'label_form_sm'),
+                                        'required' => false,
+                                        'attr' => array('rows' => '3',
+                                                        'style' => 'resize:none',
+                                                        /*'maxlength' => '255',*/
+                                                        'placeholder' => 'Descripción del requerimiento / Actividad',
+                                                        'data-add-form-group-col' => 'true',
+                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'class' => 'form-control input-sm',
+
+                                                        'data-fv-stringlength' => 'true',
+                                                        'data-fv-stringlength-min' => '5',
+                                                        'data-fv-stringlength-max' => '255',
+                                                        'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                                        'data-fv-regexp' => 'true',
+                                                        'data-fv-regexp-regexp' => '^[a-zA-ZüÜñÑáéíóúÁÉÍÓÚ0-9¿!¡;,:\.\?#@()_-\s]+$',
+                                                        'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                                        )
+                ))
+                ->add('idSolucionaRequerimiento', null, array(
+                                        'label' => 'Resuelto por',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
                                         'empty_value' => '',
                                         'group_by' => 'idCargoEmpleado',
                                         'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
                                                         'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
                                                         'class' => 'form-control input-sm',
                                                         'data-input-transform' => 'select2',
                                                         'data-apply-formatter' => 'user',
@@ -191,34 +320,6 @@ class ReqRequerimientoTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
 
                                                         'data-fv-notempty' => 'true',
                                                         'data-fv-notempty-message' => 'Seleccione un elemento',
-                                        )
-                ))
-                ->add('idTipoTrabajo')
-                ->add('idAreaTrabajo')
-                ->add('idEquipoSolicitud')
-                ->add('idSolucionaRequerimiento')
-                ->add('idEstadoRequerimiento')
-                ->add('idTrabajoRequerido')
-                ->add('descripcion', null, array(
-                                        'label' => 'Requerimiento / Actividad',
-                                        'label_attr' => array('class' => 'label_form_sm'),
-                                        'required' => false,
-                                        'attr' => array('rows' => '3',
-                                                        'style' => 'resize:none',
-                                                        /*'maxlength' => '255',*/
-                                                        'placeholder' => 'Descripción del requerimiento / Actividad',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
-                                                        'class' => 'form-control input-sm',
-
-                                                        'data-fv-stringlength' => 'true',
-                                                        'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '255',
-                                                        'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                                        'data-fv-regexp' => 'true',
-                                                        'data-fv-regexp-regexp' => '^[a-zA-ZüÜñÑáéíóúÁÉÍÓÚ0-9¿!¡;,:\.\?#@()_-\s]+$',
-                                                        'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                         )
                 ))
                 ->add('solucion', null, array(
@@ -299,13 +400,39 @@ class ReqRequerimientoTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
     public function getNewInstance()
     {
         $instance   = parent::getNewInstance();
+
+        $securityContext    = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $sessionUser    = $securityContext->getToken()->getUser();
+        $sessionUser_employee   = $sessionUser->getIdEmpleado();
         
         /*
          * default values
          */
-        /*$instance->setIdEstadoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlEstadoEquipo', array('codigo' => 'FNC')));
-        $instance->setIdTipoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoEquipo', array('codigo' => 'DKT')));
-        $instance->setIdModeloEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlModeloEquipo', array('codigo' => 'dlloptx9020')));*/
+        $instance->setIdAreaTrabajo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlAreaTrabajo', array('codigo' => 'DSI')));
+        $instance->setIdTipoTrabajo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTipoTrabajo', array('codigo' => 'C')));
+        $instance->setIdTrabajoRequerido($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlTrabajoRequerido', array('codigo' => '000000')));
+
+        $instance->setIdEmpleadoRegistra($sessionUser_employee);
+        $instance->setIdEmpleadoAsignado($sessionUser_employee);
+        $instance->setIdAsignaRequerimiento($sessionUser_employee);
+        $instance->setIdSolucionaRequerimiento($sessionUser_employee);
+
+        $instance->setIdEquipoSolicitud($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlEquipo', array('codigo' => '000000')));
+        $instance->setIdEstadoRequerimiento($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlEstadoRequerimiento', array('codigo' => 'RRC')));
+        $instance->setIdSolucionRequerimiento($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlSolucionRequerimiento', array('codigo' => 'IEI')));
+
+        /*
+         * REQUEST VALUES
+         */
+        if ($this->hasRequest())
+        {
+            $__PARAM_REQUEST__REQ = $this->getRequest()->get('__REQ', null);
+            if ($__PARAM_REQUEST__REQ !== null)
+            {
+                $em = $this->getModelManager()->getEntityManager('SanRafael\RequerimientosBundle\Entity\ReqRequerimiento');
+                $instance->setIdRequerimiento($em->getReference('SanRafael\RequerimientosBundle\Entity\ReqRequerimiento', $__PARAM_REQUEST__REQ));
+            }
+        }
         
         return $instance;
     }

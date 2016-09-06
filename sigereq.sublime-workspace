@@ -103,6 +103,38 @@
 				"line_ending": "Unix",
 				"name": "git branch"
 			}
+		},
+		{
+			"file": "/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Admin/UserAdmin.php",
+			"settings":
+			{
+				"buffer_size": 9333,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vendor/sonata-project/doctrine-orm-admin-bundle/Resources/views/CRUD/edit_orm_many_association_script.html.twig",
+			"settings":
+			{
+				"buffer_size": 14280,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vendor/sonata-project/doctrine-orm-admin-bundle/Resources/views/Form/form_admin_fields.html.twig",
+			"settings":
+			{
+				"buffer_size": 8057,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 25485,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -141,6 +173,7 @@
 		"/home/farid/NetBeansProjects/sigereq/src",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle",
+<<<<<<< HEAD
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata",
@@ -197,6 +230,142 @@
 		"/home/farid/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Entity/ImgLectura.php",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Entity/ImgCtlProyeccion.php"
+=======
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views"
+	],
+	"file_history":
+	[
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/CRUD/base_edit.html.twig",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/CRUD/base_edit_form.html.twig",
+		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Resources/views/CRUD/simagd_base_edit.html.twig",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/CRUD/base_edit_form_macro.html.twig",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqAreaServicioAtencionAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaAtencionAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/public/css/sigereq-extend-bootstrap3.css",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form/sigereq_form_admin_fields.html.twig",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/SanRafaelRequerimientosAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/services.yml",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoTrabajoRequeridoAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/CRUD/sigereq_edit_orm_modal.html.twig",
+		"/home/farid/NetBeansProjects/sigereq/src/Application/Sonata/UserBundle/Entity/User.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Controller/AdminSecurityController.php",
+		"/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Controller/ChangePasswordFOSUser1Controller.php",
+		"/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Controller/ProfileFOSUser1Controller.php",
+		"/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Entity/Group.php",
+		"/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Entity/User.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTipoTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqEmpleadoAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimientoTrabajoRequerido.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/SanRafaelRequerimientosBundle.php",
+		"/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/ApplicationSonataUserBundle.php",
+		"/home/farid/NetBeansProjects/sigereq/src/Application/Sonata/UserBundle/ApplicationSonataUserBundle.php",
+		"/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Admin/UserAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqRequerimientoTrabajoRequerido.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqEmpleadoAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqEmpleadoAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqEmpleadoAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTrabajoRequerido.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlTrabajoRequerido.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlTipoTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlTipoTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlTipoTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTipoServicio.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlTipoServicio.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlTipoServicio.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlTipoServicio.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTipoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlTipoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlTipoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlTipoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlTipoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlTipoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlTipoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlTipoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlSolucionRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlSolucionRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlSolucionRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlSolucionRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlSexo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlSexo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlSexo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlSexo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlServicioExterno.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlServicioExterno.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlServicioExterno.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlServicioExterno.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlModeloEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlModeloEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlMarcaEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlModeloEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlModeloEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlModalidadAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlModalidadAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlModalidadAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlModalidadAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlMarcaEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlMarcaEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlMarcaEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlEstadoRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlEstadoRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlEstadoRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEstadoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlEstadoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlEstadoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlEstadoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlCargoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlCargoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlCargoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlCargoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlAreaTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlAreaTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlAreaTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlAreaTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlAreaAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqCtlAreaAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqCtlAreaAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqCtlAreaAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity7/ReqAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity9/ReqAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/BACKUP_ADMIN_FIELDS/Entity14/ReqAreaServicioAtencion.php",
+		"/home/farid/NetBeansProjects/versionsimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgEstudioPacienteAdmin/est_busquedaEstudio_v2.html.twig",
+		"/home/farid/NetBeansProjects/sigereq/SIGEREQ_TEMPLATE_NEW_MODEL.html",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlEstadoRequerimiento.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlEstadoEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlEquipo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlCargoEmpleado.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlAreaTrabajo.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqCtlAreaAtencion.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity9/ReqAreaServicioAtencion.php",
+		"/home/farid/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/farid/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/farid/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqAreaServicioAtencion.orm.xml",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlModeloEquipoAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlServicioAtencionAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaTrabajoAdmin.php",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlMarcaEquipoAdmin.php"
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 	],
 	"find":
 	{
@@ -207,7 +376,12 @@
 		"height": 90.0,
 		"where_history":
 		[
+<<<<<<< HEAD
 			"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin"
+=======
+			"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity",
+			"/home/farid/NetBeansProjects/sigereq"
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 		]
 	},
 	"find_state":
@@ -215,6 +389,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+<<<<<<< HEAD
 			"\\",
 			"Admin extends Admin",
 			"SolucionPadre",
@@ -259,6 +434,124 @@
 			"$idEstablecimiento)",
 			"$idEstablecimiento,",
 			".code("
+=======
+			"shark",
+			"idJefeInmediato",
+			"IdJefeInmediato",
+			"ReqAreaServicioAtencion",
+			"Minsal\\SiapsBundle\\Entity\\MntEmpleado",
+			"__exp",
+			"Minsal\\SiapsBundle\\Entity\\MntExpediente",
+			"param_expediente",
+			"FosUserUser",
+			"shark",
+			"highlight_modified_tabs",
+			"'placeholder' => 'Nombre del Área',",
+			"setIdMarcaGrupo",
+			"idMarcaGrupo",
+			"getCorrelativo",
+			"setCorrelativo",
+			"getCorrelativo",
+			"lectura",
+			"-8",
+			"primary-v3",
+			"'label_attr' => array('class' => 'input-sm'),",
+			"-8",
+			"-9",
+			"nombre",
+			"sexo",
+			"-9",
+			"FosUserUser",
+			"'data-fv-regexp-regexp' => '^[a-zA-Z0-9_-]+$',",
+			"'data-fv-regexp-regexp' => '^[a-zA-ZüÜñÑáéíóúÁÉÍÓÚ0-9¿!¡;,:\\.\\?#@()_-\\s]+$',",
+			"glyphicon-edit",
+			"SIAP",
+			"Dashboard",
+			"form-a",
+			"btn-success",
+			"main_box_label",
+			"primary-v3",
+			"form-action",
+			"well",
+			"Nuevo equipo",
+			"FosUserUser",
+			"$estabLocal",
+			"$pacs",
+			"simagd",
+			"minsalsimagd",
+			"'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',",
+			"-6",
+			"simagd",
+			"ImgLecturaAdmin",
+			"MinsalSimagdBundle",
+			"inversedBy",
+			"tipoSubtiposTrabajoRequerido",
+			"tipoSubtiposEquipo",
+			"_requerimiento FOREIGN KEY",
+			"RESTRICT;",
+			"ADD CONSTRAINT",
+			"add column ",
+			"ALTER TABLE ONLY req_requerimiento",
+			"id_",
+			"fecha_ultima_edicion",
+			"fecha_creacion",
+			"fechaUltimaEdicion",
+			"FechaUltimaEdicion",
+			"FechaCreacion",
+			"fechaCreacion",
+			"FosUserUser",
+			"loop.last",
+			"resultsPerColumn",
+			"city",
+			"cities",
+			"button",
+			"ryx_procedimiento_radiologico_realizado",
+			"procedimiento_radiologico_realizado",
+			"table-non-top-boderless",
+			"-5px",
+			"fc_formitem_buscarFecha",
+			"ryx_estudio_paciente",
+			"  ",
+			"    ",
+			"   | ",
+			"                     | not null                                                     | plain          | ",
+			"                        |                                                              | extended       | ",
+			"text",
+			"    | text                        |                                                               | extended       | ",
+			"                     | not null                                                      | plain          | ",
+			"-- ",
+			",",
+			"ctrl+shift+c",
+			"ctrl+shift+d",
+			"ctrl+d",
+			"  ",
+			"   ",
+			"	  ",
+			"| timestamp without time zone |                                                               | plain          | ",
+			"| text                        |                                                               | extended       | ",
+			"| text                        | not null                                                      | extended       | ",
+			"| text                        |                                                               | extended       | ",
+			"      | text                        | not null                                                      | extended       | ",
+			"\n    ",
+			"text",
+			"img_serie_instancia",
+			"img_estudio_serie",
+			"img_estudio_pendiente_lectura",
+			"img_estudio_paciente",
+			"id_establecimiento_solicitud",
+			"idx_ryx_ryx_",
+			"idx_",
+			"id bigint NOT NULL,",
+			"                ",
+			"         | ",
+			"img",
+			"img_",
+			"img_solicitud_estudio",
+			"img_",
+			"img_solicitud_estudio_proyeccion",
+			"img_",
+			"idx_"
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -266,6 +559,7 @@
 		"regex": false,
 		"replace_history":
 		[
+<<<<<<< HEAD
 			"/",
 			"TrabajoRequeridoPadre",
 			"'Requerimiento'",
@@ -286,6 +580,59 @@
 			"ReqEmp",
 			"ReqCtl",
 			"Req",
+=======
+			"farid",
+			"idEmpleado",
+			"IdEmpleado",
+			"SanRafael\\RequerimientosBundle\\Entity\\ReqAreaServicioAtencion",
+			"SanRafael\\RequerimientosBundle\\Entity\\ReqEmpleado",
+			"__REQ",
+			"SanRafael\\RequerimientosBundle\\Entity\\ReqRequerimiento",
+			"__PARAM_REQUEST__REQ",
+			"Application\\Sonata\\UserBundle\\Entity\\User",
+			"farid",
+			"'placeholder' => 'Nombre para el registro',",
+			"setIdMarcaEquipo",
+			"idMarcaEquipo",
+			"getCodigo",
+			"setCodigo",
+			"getCodigo",
+			"entity",
+			"-6",
+			"primary-v4",
+			"'label_attr' => array('class' => 'label_form_sm'),",
+			"-6",
+			"sexo",
+			"idSexo",
+			"-6",
+			" ->add('idTipoEmpleado', null, array(\n                                        'label' => 'Tipo / Clasificación',\n                                        'label_attr' => array('class' => 'input-sm'),\n                                        'required' => true,\n                                        'empty_value' => '',\n                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'form-control input-sm',\n                                                        'data-input-transform' => 'select2',\n                                                        'data-apply-formatter' => 'user',\n                                                        'data-apply-formatter-mode' => 'enabled',\n\n                                                        'data-fv-notempty' => 'true',\n                                                        'data-fv-notempty-message' => 'Seleccione un elemento',\n                                        )\n                ))\n                ->add('idCargoEmpleado', null, array(\n                                        'label' => 'Cargo',\n                                        'label_attr' => array('class' => 'input-sm'),\n                                        'required' => true,\n                                        'empty_value' => '',\n                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'form-control input-sm',\n                                                        'data-input-transform' => 'select2',\n                                                        'data-apply-formatter' => 'user',\n                                                        'data-apply-formatter-mode' => 'enabled',\n\n                                                        'data-fv-notempty' => 'true',\n                                                        'data-fv-notempty-message' => 'Seleccione un elemento',\n                                        )\n                ))",
+			"idAreaServicioAtencion",
+			" ))\n                ->add('idTipoEmpleado', null, array(\n                                        'label' => 'Tipo / Clasificación',\n                                        'label_attr' => array('class' => 'input-sm'),\n                                        'required' => true,\n                                        'empty_value' => '',\n                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'form-control input-sm',\n                                                        'data-input-transform' => 'select2',\n                                                        'data-apply-formatter' => 'user',\n                                                        'data-apply-formatter-mode' => 'enabled',\n\n                                                        'data-fv-notempty' => 'true',\n                                                        'data-fv-notempty-message' => 'Seleccione un elemento',\n                                        )\n                ))\n                ->add('idCargoEmpleado', null, array(\n                                        'label' => 'Cargo',\n                                        'label_attr' => array('class' => 'input-sm'),\n                                        'required' => true,\n                                        'empty_value' => '',\n                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'form-control input-sm',\n                                                        'data-input-transform' => 'select2',\n                                                        'data-apply-formatter' => 'user',\n                                                        'data-apply-formatter-mode' => 'enabled',\n\n                                                        'data-fv-notempty' => 'true',\n                                                        'data-fv-notempty-message' => 'Seleccione un elemento',\n                                        )\n                ))",
+			"Application\\Sonata\\UserBundle\\Entity\\User",
+			"'data-fv-regexp-regexp' => '^[a-zA-Z_-,\\.\\s]+$',",
+			"'data-fv-regexp-regexp' => '^[a-zA-Z0-9_-]+$',",
+			"glyphicon-user",
+			"Perfil",
+			"btn-primary-v4",
+			"MAIN_BOX_LABEL",
+			"primary-v4",
+			"Ingreo de nuevo equipo",
+			"Application\\Sonata\\UserBundle\\Entity\\User",
+			"$userLocation",
+			"$entity",
+			"sigereq",
+			"sanrafaelrequerimientos",
+			"'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',",
+			"-8",
+			"sigereq",
+			"CRUD",
+			"SanRafaelRequerimientosBundle",
+			"trabajoSubtrabajosRequeridos",
+			"tipoSubtiposTrabajoRequerido",
+			"_trabajo_requerido FOREIGN KEY",
+			"RESTRICT,",
+			"CONSTRAINT",
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 			"",
 			"imgCodigo",
 			"col-md-5",
@@ -315,11 +662,49 @@
 	"groups":
 	[
 		{
+<<<<<<< HEAD
 			"selected": 0,
+=======
+			"selected": 6,
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 			"sheets":
 			[
 				{
 					"buffer": 0,
+<<<<<<< HEAD
+=======
+					"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgLecturaAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 54457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								49449,
+								49449
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 12293.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgSolicitudEstudioAdmin.php",
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 					"semi_transient": false,
 					"settings":
 					{
@@ -330,8 +715,13 @@
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								0,
 								104
+=======
+								23073,
+								23073
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 							]
 						],
 						"settings":
@@ -340,7 +730,161 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
 						"translation.y": 0.0,
+=======
+						"translation.y": 4347.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgCtlPacsEstablecimientoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1956,
+								1956
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3436.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/farid/NetBeansProjects/minsalsiaps/src/Application/Sonata/UserBundle/Admin/UserAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9333,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "vendor/sonata-project/doctrine-orm-admin-bundle/Resources/views/CRUD/edit_orm_many_association_script.html.twig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "vendor/sonata-project/doctrine-orm-admin-bundle/Resources/views/Form/form_admin_fields.html.twig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8057,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2051,
+								2051
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 375.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25485,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25482,
+								25482
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5645.0,
+>>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

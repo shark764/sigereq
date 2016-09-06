@@ -17,7 +17,7 @@
     <field name="codigo" type="string" column="codigo" length="6" nullable="false">
       <options>
         <option name="fixed">1</option>
-        <option name="default">MSL</option>
+        <option name="default">MINSAL</option>
       </options>
     </field>
   </entity>
