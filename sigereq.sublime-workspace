@@ -4,104 +4,127 @@
 		"selected_items":
 		[
 			[
-				"Req",
-				"requerimiento"
+				"tr",
+				"true"
 			],
 			[
-				"req",
-				"requerimiento"
+				"fecha",
+				"fechaContratacion"
 			],
 			[
-				"O",
-				"OLD_PROYECCIONES"
+				"fech",
+				"fechaHoraReg"
 			],
 			[
-				"add",
-				"addOrderBy"
+				"requer",
+				"req_requerimiento"
 			],
 			[
-				"s",
-				"scalar"
+				"fec",
+				"fechaDespacho"
 			],
 			[
-				"grou",
-				"groups"
+				"Re",
+				"ReqCtlEquipoAdmin"
 			],
 			[
-				"I",
-				"ID_MODALIDAD"
+				"Sa",
+				"SanRafaelRequerimientosAdmin"
 			],
 			[
-				"var",
-				"var_dump"
+				"id",
+				"idEmpleado"
 			],
 			[
-				"que",
-				"query"
-			],
-			[
-				"Pr",
-				"proyeccion"
-			],
-			[
-				"idM",
-				"id_mod"
-			],
-			[
-				"thi",
-				"this_el"
-			],
-			[
-				"l",
-				"list_el"
+				"fe",
+				"fechaCreacion"
 			],
 			[
 				"th",
-				"this_el"
+				"this"
 			],
 			[
-				"for",
-				"foreach	foreach …"
+				"ti",
+				"titulo"
 			],
 			[
-				"Min",
-				"MinsalSiapsBundle"
-			],
-			[
-				"t",
-				"this_group"
-			],
-			[
-				"ide",
-				"idExamenServicioDiagnostico"
+				"expl_",
+				"expl_id_userReg"
 			],
 			[
 				"exp",
 				"expl"
 			],
 			[
-				"ex",
-				"exm"
+				"exm_",
+				"exm_id_atencion"
 			],
 			[
-				"des",
-				"descripcion"
+				"id_m",
+				"id_material"
 			],
 			[
-				"idE",
-				"idExamenServicioDiagnostico"
+				"big",
+				"bigint"
+			],
+			[
+				"bi",
+				"bigserial"
+			],
+			[
+				"ryx",
+				"ryx_ctl_modo_obtencion_estudio"
+			],
+			[
+				"ry",
+				"ryx_ctl_modo_obtencion_estudio"
+			],
+			[
+				"img",
+				"img_estudio_serie"
+			],
+			[
+				"pr",
+				"PRIMARY"
+			],
+			[
+				"nu",
+				"NULL"
+			],
+			[
+				"no",
+				"NOT"
+			],
+			[
+				"de",
+				"DEFAULT"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "git branch\ngit add --all\ngit commit -am 'commit plugins'\ngit pull origin farid\ngit push origin farid\n\n\n\n",
+			"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgLecturaAdmin.php",
 			"settings":
 			{
-				"buffer_size": 104,
-				"line_ending": "Unix",
-				"name": "git branch"
+				"buffer_size": 54457,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgSolicitudEstudioAdmin.php",
+			"settings":
+			{
+				"buffer_size": 115000,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgCtlPacsEstablecimientoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 21637,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -173,64 +196,6 @@
 		"/home/farid/NetBeansProjects/sigereq/src",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle",
-<<<<<<< HEAD
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form"
-	],
-	"file_history":
-	[
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoTrabajoRequeridoAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlSolucionRequerimientoAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/services.yml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqEmpleadoAreaServicioAtencionAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlTipoServicioAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlTipoEquipoAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqAreaServicioAtencionAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlServicioAtencionAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqEmpleadoAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlTrabajoRequeridoAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
-		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgSolicitudEstudioAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlSolucionRequerimiento.orm.xml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqRequerimientoTrabajoRequerido.orm.xml",
-		"/home/farid/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/farid/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/SanRafaelRequerimientosAdmin.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlTrabajoRequerido.orm.xml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlAreaTrabajo.orm.xml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlTipoServicio.orm.xml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlServicioAtencion.orm.xml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlTipoEquipo.orm.xml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form/sigereq_form_admin_fields.html.twig",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form/form_admin_fields.html.twig",
-		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Resources/views/ImgBloqueoAgendaAdmin/blAgd_crearBloqueo_modal.html.twig",
-		"/home/farid/NetBeansProjects/sigereq/composer.json",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Repository/ProyeccionRepository.php",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Controller/ImgSolicitudEstudioAdminController.php",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgSolicitudEstudioAdmin/prc_edit.html.twig",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Admin/ImgSolicitudEstudioAdmin.php",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgSolicitudEstudioAdmin/prc_pry_list_v2.html.twig",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgSolicitudEstudioAdmin/prc_atenciones.js",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/public/js/ImgSolicitudEstudioAdmin/prc_calc_peso_actual.js",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/views/simagd_base_edit.html.twig",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/public/js/simagd_filter_bstable_config.js",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgSolicitudEstudioAdmin/prc_citar_button.html.twig",
-		"/home/farid/NetBeansProjects/advancesimagdigital/src/Minsal/SimagdBundle/Resources/views/Form/simagd_form_admin_fields.html.twig",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/WORK_simagdigital_squema_only.sql",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/views/simagd_base_list_v3.html.twig",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/public/js/simagd_summernote_config.js",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/app/config/bundles/sonata_admin.yml",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Entity/ImgSolicitudEstudio.php",
-		"/home/farid/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/home/farid/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Entity/ImgLectura.php",
-		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Entity/ImgCtlProyeccion.php"
-=======
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views"
@@ -365,7 +330,6 @@
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlServicioAtencionAdmin.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaTrabajoAdmin.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlMarcaEquipoAdmin.php"
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 	],
 	"find":
 	{
@@ -376,12 +340,8 @@
 		"height": 90.0,
 		"where_history":
 		[
-<<<<<<< HEAD
-			"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin"
-=======
 			"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity",
 			"/home/farid/NetBeansProjects/sigereq"
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 		]
 	},
 	"find_state":
@@ -389,52 +349,6 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-<<<<<<< HEAD
-			"\\",
-			"Admin extends Admin",
-			"SolucionPadre",
-			"'Nombre'",
-			"'nombre'",
-			"\"\"",
-			" --filter=\"",
-			"Req",
-			"_ext",
-			"serv",
-			"tipo",
-			"cargo",
-			"area",
-			"_emp",
-			"_ser",
-			"_ate",
-			"_area",
-			"Reqarea",
-			"Reqemp",
-			"Reqctl_",
-			"req_",
-			"/*",
-			"*/",
-			"idEstandar",
-			"col-md-7",
-			"col-md-12",
-			"descripcion",
-			"coalesce",
-			"concat",
-			"subgroup",
-			"subkey",
-			"element",
-			"$scalar",
-			"scalar",
-			"' =",
-			"<br />",
-			"getList_proyeccionesLocales",
-			"$idAtencion)",
-			"$idAtencion",
-			"$id_mod",
-			"$idEstablecimiento",
-			"$idEstablecimiento)",
-			"$idEstablecimiento,",
-			".code("
-=======
 			"shark",
 			"idJefeInmediato",
 			"IdJefeInmediato",
@@ -551,7 +465,6 @@
 			"img_solicitud_estudio_proyeccion",
 			"img_",
 			"idx_"
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -559,28 +472,6 @@
 		"regex": false,
 		"replace_history":
 		[
-<<<<<<< HEAD
-			"/",
-			"TrabajoRequeridoPadre",
-			"'Requerimiento'",
-			"'requerimiento'",
-			"\"",
-			"\" --filter=\"",
-			"--filter=\"Req",
-			"Ext",
-			"Serv",
-			"Tipo",
-			"Cargo",
-			"Area",
-			"Emp",
-			"Ser",
-			"Ate",
-			"Area",
-			"ReqArea",
-			"ReqEmp",
-			"ReqCtl",
-			"Req",
-=======
 			"farid",
 			"idEmpleado",
 			"IdEmpleado",
@@ -632,26 +523,47 @@
 			"_trabajo_requerido FOREIGN KEY",
 			"RESTRICT,",
 			"CONSTRAINT",
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 			"",
-			"imgCodigo",
-			"col-md-5",
-			"col-md-7",
-			"grupo",
-			"COALESCE",
-			"CONCAT",
+			"ALTER TABLE ONLY req_requerimiento_trabajo_requerido",
+			"add column id_",
+			"fecha_hora_mod",
+			"fecha_hora_reg",
+			"fechaHoraMod",
+			"FechaHoraMod",
+			"FechaHoraReg",
+			"fechaHoraReg",
+			"Application\\Sonata\\UserBundle\\Entity\\User",
+			"loop.last",
+			"RESULTS_PER_COLUMN",
 			"result",
-			"id",
-			"group",
-			"$resultados",
-			"' => ",
+			"results",
+			"btn_toolbar_insert_date",
+			"non-top-bordered-table",
+			"-0.4em",
+			"fc_heading_formitem_buscarFecha",
+			"ryx_estudio_por_imagenes",
+			" ",
+			",",
+			"/*text*/",
+			"text,",
+			",",
+			"-- ,",
 			"",
-			"$__PARAM__ID_ATENCION)",
-			"$__PARAM__ID_ATENCION",
-			"$__PARAM__ID_MODALIDAD",
-			"$__PARAM__ID_ESTAB)",
-			"$__PARAM__ID_ESTAB,",
-			".summernote('code', "
+			",",
+			" ",
+			"",
+			"ryx_serie_instancia",
+			"ryx_estudio_serie",
+			"ryx_estudio_pendiente_lectura",
+			"ryx_estudio_paciente",
+			"id_establecimiento_solicita",
+			"idx_ryx_",
+			"id bigserial NOT NULL,",
+			" ",
+			"ryx_",
+			"ryx_solicitud_estudio",
+			"ryx_solicitud_estudio_proyeccion",
+			"idx_ryx_"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -662,17 +574,11 @@
 	"groups":
 	[
 		{
-<<<<<<< HEAD
-			"selected": 0,
-=======
 			"selected": 6,
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 			"sheets":
 			[
 				{
 					"buffer": 0,
-<<<<<<< HEAD
-=======
 					"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgLecturaAdmin.php",
 					"semi_transient": false,
 					"settings":
@@ -704,35 +610,27 @@
 				{
 					"buffer": 1,
 					"file": "/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Admin/ImgSolicitudEstudioAdmin.php",
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 104,
+						"buffer_size": 115000,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-<<<<<<< HEAD
-								0,
-								104
-=======
 								23073,
 								23073
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 							]
 						],
 						"settings":
 						{
-							"auto_name": "git branch",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-<<<<<<< HEAD
-						"translation.y": 0.0,
-=======
 						"translation.y": 4347.0,
 						"zoom_level": 1.0
 					},
@@ -884,7 +782,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 5645.0,
->>>>>>> bc5b1c6bc4ccb3d0476a01fa19bc403a236c2524
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -899,7 +796,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -970,7 +867,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 288.0,
+	"side_bar_width": 271.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
