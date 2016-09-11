@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqEmpleado
@@ -26,6 +27,7 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
+     * @Assert\NotBlank(message = "Por favor introduzca un valor")
      */
     private $nombre;
 
@@ -33,6 +35,7 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="apellido", type="string", length=50, nullable=false)
+     * @Assert\NotBlank(message = "Por favor introduzca un valor")
      */
     private $apellido;
 
@@ -137,6 +140,7 @@ class ReqEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_cargo_empleado", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "Por favor seleccione un elemento")
      */
     private $idCargoEmpleado;
 
@@ -157,6 +161,7 @@ class ReqEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_sexo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "Por favor seleccione un elemento")
      */
     private $idSexo;
 
@@ -167,6 +172,7 @@ class ReqEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tipo_empleado", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "Por favor seleccione un elemento")
      */
     private $idTipoEmpleado;
 
