@@ -102,6 +102,14 @@
 				"buffer_size": 44167,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+			"settings":
+			{
+				"buffer_size": 25079,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -140,6 +148,7 @@
 		"/home/farid/NetBeansProjects/sigereq/src",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources"
 	],
 	"file_history":
@@ -311,7 +320,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -337,8 +346,38 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 20399.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/SanRafael/RequerimientosBundle/Entity/ReqRequerimiento.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25079,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8128,
+								8150
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4203.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
