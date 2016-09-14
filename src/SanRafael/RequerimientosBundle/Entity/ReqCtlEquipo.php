@@ -67,8 +67,8 @@ class ReqCtlEquipo
      * @ORM\Column(name="caracteristicas", type="text", nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
-     *     match=true,
-     *     message="regex.match.true"
+     *     match=false,
+     *     message="regex.match.false"
      * )
      */
     private $caracteristicas;

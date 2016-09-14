@@ -191,10 +191,10 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         )
                 ))
                 ->add('color', null, array(
-                                        'label' => 'Título',
+                                        'label' => 'Color',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Título del requerimiento',
+                                                        'placeholder' => 'Color',
                                                         'data-add-form-group-col' => 'true',
                                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',

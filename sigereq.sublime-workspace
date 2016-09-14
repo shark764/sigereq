@@ -95,6 +95,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 25074,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
+			"settings":
+			{
+				"buffer_size": 13870,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 25465,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/SanRafaelRequerimientosAdmin.php",
+			"settings":
+			{
+				"buffer_size": 2555,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -133,6 +165,7 @@
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources",
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations",
 		"/home/farid/NetBeansProjects/sigereq/vendor",
 		"/home/farid/NetBeansProjects/sigereq/vendor/symfony",
 		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony",
@@ -146,6 +179,7 @@
 	],
 	"file_history":
 	[
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations/validators.es.yml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqRequerimientoEmpleado.php",
@@ -174,7 +208,6 @@
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/EntityV7/ReqEmpleado.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/EntityV7/ReqCtlTrabajoRequerido.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/EntityV7/ReqCtlEquipo.php",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations/validators.es.yml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/EntityV7/ReqCtlSolucionRequerimiento.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/EntityV7/ReqCtlTipoEmpleado.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/EntityV7/ReqCtlTipoEquipo.php",
@@ -419,8 +452,129 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24480,
+								24480
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5625.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2441,
+								2441
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 765.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11026,
+								11026
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2655.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/SanRafaelRequerimientosAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2555,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2095,
+								2095
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
