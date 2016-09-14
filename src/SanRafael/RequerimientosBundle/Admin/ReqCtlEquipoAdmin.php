@@ -390,6 +390,13 @@ class ReqCtlEquipoAdmin extends SanRafaelRequerimientosAdmin
         $instance   = parent::getNewInstance();
         
         /*
+         * user
+         */
+        $securityContext    = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $sessionUser        = $securityContext->getToken()->getUser();
+        $instance->setIdUserReg($sessionUser);
+        
+        /*
          * default values
          */
         $instance->setIdEstadoEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlEstadoEquipo', array('codigo' => 'FNC')));
