@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqCtlSexo
@@ -26,6 +27,12 @@ class ReqCtlSexo
      * @var string
      *
      * @ORM\Column(name="sexo", type="string", length=15, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $sexo = 'Masculino';
 
@@ -33,9 +40,18 @@ class ReqCtlSexo
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=1, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $codigo = 'M';
 
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->sexo ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->sexo), 'utf-8') : '';

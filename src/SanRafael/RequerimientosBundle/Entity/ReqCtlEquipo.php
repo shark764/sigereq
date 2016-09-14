@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqCtlEquipo
@@ -26,6 +27,12 @@ class ReqCtlEquipo
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $nombre = 'PC Dell Optiplex 9020 de prestaciones medias';
 
@@ -33,6 +40,12 @@ class ReqCtlEquipo
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=10, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $codigo = '000000';
 
@@ -40,6 +53,11 @@ class ReqCtlEquipo
      * @var string
      *
      * @ORM\Column(name="numero_inventario", type="string", length=50, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $numeroInventario;
 
@@ -47,6 +65,11 @@ class ReqCtlEquipo
      * @var string
      *
      * @ORM\Column(name="caracteristicas", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $caracteristicas;
 
@@ -54,6 +77,7 @@ class ReqCtlEquipo
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_adquisicion", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaAdquisicion;
 
@@ -61,6 +85,7 @@ class ReqCtlEquipo
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_despacho", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaDespacho;
 
@@ -68,6 +93,11 @@ class ReqCtlEquipo
      * @var string
      *
      * @ORM\Column(name="serie", type="string", length=16, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $serie;
 
@@ -75,13 +105,16 @@ class ReqCtlEquipo
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\DateTime()
      */
-    private $fechaHoraReg = '(now())::timestamp(0) without time zone';
+    private $fechaHoraReg;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraMod;
 
@@ -102,23 +135,25 @@ class ReqCtlEquipo
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_estado_equipo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEstadoEquipo;
 
     /**
      * @var \ReqCtlModeloEquipo
      *
-     * @ORM\ManyToOne(targetEntity="ReqCtlModeloEquipo")
+     * @ORM\ManyToOne(targetEntity="ReqCtlModeloEquipo", inversedBy="modeloEquipos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_modelo_equipo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idModeloEquipo;
 
     /**
      * @var \ReqAreaServicioAtencion
      *
-     * @ORM\ManyToOne(targetEntity="ReqAreaServicioAtencion")
+     * @ORM\ManyToOne(targetEntity="ReqAreaServicioAtencion", inversedBy="areaServicioEquipoAsignado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_servicio_asignado", referencedColumnName="id")
      * })
@@ -132,6 +167,7 @@ class ReqCtlEquipo
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tipo_equipo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idTipoEquipo;
 
@@ -152,9 +188,13 @@ class ReqCtlEquipo
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
 
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->nombre ? strtoupper(trim($this->serie)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
@@ -165,11 +205,10 @@ class ReqCtlEquipo
      */
     public function __construct()
     {
-        $this->fechaHoraReg = new \DateTime('now');
+        $this->fechaHoraReg     = new \DateTime('now');
         $this->fechaAdquisicion = new \DateTime('now');
-        $this->fechaDespacho = new \DateTime('now');
+        $this->fechaDespacho    = new \DateTime('now');
     }
-
 
     /**
      * Get id

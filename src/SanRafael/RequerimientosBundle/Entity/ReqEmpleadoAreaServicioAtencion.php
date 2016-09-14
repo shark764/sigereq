@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqEmpleadoAreaServicioAtencion
@@ -36,6 +37,7 @@ class ReqEmpleadoAreaServicioAtencion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEmpleado;
 
@@ -46,9 +48,13 @@ class ReqEmpleadoAreaServicioAtencion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_area_servicio_atencion", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idAreaServicioAtencion;
-    
+
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->idEmpleado ? $this->idEmpleado . ' | ' . $this->idAreaServicioAtencion : '';

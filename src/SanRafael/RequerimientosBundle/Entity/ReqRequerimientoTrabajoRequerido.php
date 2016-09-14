@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqRequerimientoTrabajoRequerido
@@ -26,13 +27,16 @@ class ReqRequerimientoTrabajoRequerido
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\DateTime()
      */
-    private $fechaHoraReg = '(now())::timestamp(0) without time zone';
+    private $fechaHoraReg;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraMod;
 
@@ -40,6 +44,7 @@ class ReqRequerimientoTrabajoRequerido
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_inicio", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraInicio;
 
@@ -47,6 +52,7 @@ class ReqRequerimientoTrabajoRequerido
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_fin", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraFin;
 
@@ -54,6 +60,11 @@ class ReqRequerimientoTrabajoRequerido
      * @var string
      *
      * @ORM\Column(name="descripcion", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $descripcion;
 
@@ -61,6 +72,11 @@ class ReqRequerimientoTrabajoRequerido
      * @var string
      *
      * @ORM\Column(name="solucion", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $solucion;
 
@@ -68,6 +84,11 @@ class ReqRequerimientoTrabajoRequerido
      * @var string
      *
      * @ORM\Column(name="comentarios", type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $comentarios;
 
@@ -78,6 +99,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_area_trabajo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idAreaTrabajo;
 
@@ -88,6 +110,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_asigna_requerimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idAsignaRequerimiento;
 
@@ -108,6 +131,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_empleado_registra", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEmpleadoRegistra;
 
@@ -128,6 +152,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_estado_requerimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEstadoRequerimiento;
 
@@ -138,6 +163,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_requerimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idRequerimiento;
 
@@ -148,6 +174,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_solucion_requerimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idSolucionRequerimiento;
 
@@ -168,6 +195,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tipo_trabajo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idTipoTrabajo;
 
@@ -178,6 +206,7 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_trabajo_requerido", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idTrabajoRequerido;
 
@@ -198,9 +227,18 @@ class ReqRequerimientoTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqRequerimientoEmpleado", mappedBy="idTrabajoRequerido", cascade={"all"}, orphanRemoval=true)
+     */
+    private $trabajoRequeridoRequerimientoEmpleado;
+
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->idTrabajoRequerido ? mb_strtoupper(trim($this->idTrabajoRequerido), 'utf-8') . ' | ' . $this->fechaHoraInicio->format('Y-m-d H:i:s A') : '';
@@ -211,12 +249,10 @@ class ReqRequerimientoTrabajoRequerido
      */
     public function __construct()
     {
-        $this->fechaHoraReg = new \DateTime('now');
-        $this->fechaAsignacion = new \DateTime('now');
-        $this->fechaRecibido = new \DateTime('now');
-        /*$this->fechaHoraInicio = new \DateTime('now');*/
+        $this->fechaHoraReg     = new \DateTime('now');
+        $this->fechaHoraInicio  = new \DateTime('now');
+        $this->trabajoRequeridoRequerimientoEmpleado = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -706,5 +742,39 @@ class ReqRequerimientoTrabajoRequerido
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Add trabajoRequeridoRequerimientoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $trabajoRequeridoRequerimientoEmpleado
+     *
+     * @return ReqRequerimientoTrabajoRequerido
+     */
+    public function addTrabajoRequeridoRequerimientoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $trabajoRequeridoRequerimientoEmpleado)
+    {
+        $this->trabajoRequeridoRequerimientoEmpleado[] = $trabajoRequeridoRequerimientoEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Remove trabajoRequeridoRequerimientoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $trabajoRequeridoRequerimientoEmpleado
+     */
+    public function removeTrabajoRequeridoRequerimientoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $trabajoRequeridoRequerimientoEmpleado)
+    {
+        $this->trabajoRequeridoRequerimientoEmpleado->removeElement($trabajoRequeridoRequerimientoEmpleado);
+    }
+
+    /**
+     * Get trabajoRequeridoRequerimientoEmpleado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTrabajoRequeridoRequerimientoEmpleado()
+    {
+        return $this->trabajoRequeridoRequerimientoEmpleado;
     }
 }

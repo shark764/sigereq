@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ReqRequerimientoEmpleado" table="req_requerimiento_empleado">
+    <indexes>
+      <index name="IDX_FB2FC8EA69953885" columns="id_empleado_asignado"/>
+      <index name="IDX_FB2FC8EA2737BBE4" columns="id_trabajo_requerido"/>
+      <index name="IDX_FB2FC8EAEAC1F577" columns="id_requerimiento"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_req_empleado_trabajo_requerido" columns="id_trabajo_requerido,id_empleado_asignado"/>
+    </unique-constraints>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="req_requerimiento_empleado_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="fechaAsignacion" type="datetime" column="fecha_asignacion" nullable="true">
+      <options>
+        <option name="default">(now())::timestamp(0) without time zone</option>
+      </options>
+    </field>
+    <field name="fechaHoraInicio" type="datetime" column="fecha_hora_inicio" nullable="true">
+      <options>
+        <option name="default">(now())::timestamp(0) without time zone</option>
+      </options>
+    </field>
+    <field name="fechaHoraFin" type="datetime" column="fecha_hora_fin" nullable="true"/>
+    <many-to-one field="idRequerimiento" target-entity="ReqRequerimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_requerimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTrabajoRequerido" target-entity="ReqRequerimientoTrabajoRequerido" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_trabajo_requerido" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleadoAsignado" target-entity="ReqEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_empleado_asignado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

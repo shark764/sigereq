@@ -27,7 +27,12 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
-     * @Assert\NotBlank(message = "Por favor introduzca un valor")
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $nombre;
 
@@ -35,7 +40,12 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="apellido", type="string", length=50, nullable=false)
-     * @Assert\NotBlank(message = "Por favor introduzca un valor")
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $apellido;
 
@@ -50,6 +60,15 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="correo_electronico", type="string", length=100, nullable=true)
+     * @Assert\Email(
+     *     message = "La dirección '{{ value }}' no es válida.",
+     *     checkMX = true
+     * )
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $correoElectronico;
 
@@ -57,6 +76,11 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="telefono_casa", type="string", length=10, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $telefonoCasa;
 
@@ -64,6 +88,11 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="telefono_celular", type="string", length=10, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $telefonoCelular;
 
@@ -71,6 +100,7 @@ class ReqEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_nacimiento", type="date", nullable=true)
+     * @Assert\Date()
      */
     private $fechaNacimiento;
 
@@ -78,6 +108,7 @@ class ReqEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraReg;
 
@@ -85,6 +116,7 @@ class ReqEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraMod;
 
@@ -92,6 +124,7 @@ class ReqEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="hora_nacimiento", type="time", nullable=true)
+     * @Assert\Time()
      */
     private $horaNacimiento;
 
@@ -99,6 +132,15 @@ class ReqEmpleado
      * @var string
      *
      * @ORM\Column(name="correo_institucional", type="string", length=100, nullable=true)
+     * @Assert\Email(
+     *     message = "La dirección '{{ value }}' no es válida.",
+     *     checkMX = true
+     * )
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $correoInstitucional;
 
@@ -106,6 +148,7 @@ class ReqEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_contratacion", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaContratacion;
 
@@ -113,6 +156,7 @@ class ReqEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_inicia_labores", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaIniciaLabores;
 
@@ -120,6 +164,7 @@ class ReqEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_finaliza_labores", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaFinalizaLabores;
 
@@ -140,7 +185,7 @@ class ReqEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_cargo_empleado", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "Por favor seleccione un elemento")
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idCargoEmpleado;
 
@@ -161,7 +206,7 @@ class ReqEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_sexo", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "Por favor seleccione un elemento")
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idSexo;
 
@@ -172,7 +217,7 @@ class ReqEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tipo_empleado", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "Por favor seleccione un elemento")
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idTipoEmpleado;
 
@@ -193,6 +238,7 @@ class ReqEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
 
@@ -206,6 +252,14 @@ class ReqEmpleado
      */
     private $empleadoServiciosLabora;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqRequerimientoEmpleado", mappedBy="idEmpleadoAsignado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $empleadoRequerimientoEmpleado;
+
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return mb_strtoupper(trim($this->apellido), 'utf-8') . ', ' . mb_strtoupper(trim($this->nombre), 'utf-8');
@@ -216,13 +270,13 @@ class ReqEmpleado
      */
     public function __construct()
     {
-        $this->fechaHoraReg = new \DateTime('now');
-        $this->fechaContratacion = new \DateTime('now');
-        $this->fechaIniciaLabores = new \DateTime('now');
+        $this->fechaHoraReg         = new \DateTime('now');
+        $this->fechaContratacion    = new \DateTime('now');
+        $this->fechaIniciaLabores   = new \DateTime('now');
         $this->empleadoSubordinados = new \Doctrine\Common\Collections\ArrayCollection();
         $this->empleadoServiciosLabora = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->empleadoRequerimientoEmpleado = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -804,5 +858,39 @@ class ReqEmpleado
     public function getEmpleadoServiciosLabora()
     {
         return $this->empleadoServiciosLabora;
+    }
+
+    /**
+     * Add empleadoRequerimientoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $empleadoRequerimientoEmpleado
+     *
+     * @return ReqEmpleado
+     */
+    public function addEmpleadoRequerimientoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $empleadoRequerimientoEmpleado)
+    {
+        $this->empleadoRequerimientoEmpleado[] = $empleadoRequerimientoEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Remove empleadoRequerimientoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $empleadoRequerimientoEmpleado
+     */
+    public function removeEmpleadoRequerimientoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $empleadoRequerimientoEmpleado)
+    {
+        $this->empleadoRequerimientoEmpleado->removeElement($empleadoRequerimientoEmpleado);
+    }
+
+    /**
+     * Get empleadoRequerimientoEmpleado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmpleadoRequerimientoEmpleado()
+    {
+        return $this->empleadoRequerimientoEmpleado;
     }
 }

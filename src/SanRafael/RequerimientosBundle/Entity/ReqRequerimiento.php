@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqRequerimiento
@@ -26,6 +27,12 @@ class ReqRequerimiento
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $titulo;
 
@@ -33,13 +40,16 @@ class ReqRequerimiento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\DateTime()
      */
-    private $fechaHoraReg = '(now())::timestamp(0) without time zone';
+    private $fechaHoraReg;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraMod;
 
@@ -47,6 +57,7 @@ class ReqRequerimiento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_inicio", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraInicio;
 
@@ -54,6 +65,7 @@ class ReqRequerimiento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_hora_fin", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaHoraFin;
 
@@ -61,8 +73,14 @@ class ReqRequerimiento
      * @var integer
      *
      * @ORM\Column(name="repetir_por", type="smallint", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 365,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
-    private $repetirPor = '0';
+    private $repetirPor = 0;
 
     /**
      * @var boolean
@@ -75,6 +93,11 @@ class ReqRequerimiento
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=15, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $color = '#2a5469';
 
@@ -82,6 +105,11 @@ class ReqRequerimiento
      * @var string
      *
      * @ORM\Column(name="descripcion", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $descripcion;
 
@@ -89,6 +117,11 @@ class ReqRequerimiento
      * @var string
      *
      * @ORM\Column(name="comentarios", type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $comentarios;
 
@@ -96,6 +129,11 @@ class ReqRequerimiento
      * @var string
      *
      * @ORM\Column(name="solucion", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $solucion;
 
@@ -103,6 +141,7 @@ class ReqRequerimiento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_asignacion", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaAsignacion;
 
@@ -110,6 +149,7 @@ class ReqRequerimiento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_recibido", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaRecibido;
 
@@ -117,6 +157,7 @@ class ReqRequerimiento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_digitacion", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaDigitacion;
 
@@ -127,6 +168,7 @@ class ReqRequerimiento
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_area_trabajo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idAreaTrabajo;
 
@@ -157,6 +199,7 @@ class ReqRequerimiento
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_empleado_registra", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEmpleadoRegistra;
 
@@ -187,6 +230,7 @@ class ReqRequerimiento
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_estado_requerimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEstadoRequerimiento;
 
@@ -227,6 +271,7 @@ class ReqRequerimiento
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tipo_trabajo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idTipoTrabajo;
 
@@ -237,6 +282,7 @@ class ReqRequerimiento
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_trabajo_requerido", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idTrabajoRequerido;
 
@@ -257,6 +303,7 @@ class ReqRequerimiento
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
 
@@ -270,6 +317,14 @@ class ReqRequerimiento
      */
     private $requerimientoDetalles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqRequerimientoEmpleado", mappedBy="idRequerimiento", cascade={"all"}, orphanRemoval=true)
+     */
+    private $requerimientoRequerimientoEmpleado;
+
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->titulo ? mb_strtoupper(trim($this->titulo), 'utf-8') . ' | ' . $this->fechaHoraInicio->format('Y-m-d H:i:s A') : '';
@@ -280,18 +335,15 @@ class ReqRequerimiento
      */
     public function __construct()
     {
-        $this->fechaHoraReg = new \DateTime('now');
-        $this->fechaDigitacion = new \DateTime('now');
-        $this->fechaAsignacion = new \DateTime('now');
-        $this->fechaRecibido = new \DateTime('now');
-        /*
-         * INIT WHEN START BUTTON IS PRESSED
-         */
-        /*$this->fechaHoraInicio = new \DateTime('now');*/
+        $this->fechaHoraReg     = new \DateTime('now');
+        $this->fechaHoraInicio  = new \DateTime('now');
+        $this->fechaAsignacion  = new \DateTime('now');
+        $this->fechaRecibido    = new \DateTime('now');
+        $this->fechaDigitacion  = new \DateTime('now');
         $this->requerimientoSubsecuentes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->requerimientoDetalles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->requerimientoRequerimientoEmpleado = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -1041,5 +1093,39 @@ class ReqRequerimiento
     public function getRequerimientoDetalles()
     {
         return $this->requerimientoDetalles;
+    }
+
+    /**
+     * Add requerimientoRequerimientoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $requerimientoRequerimientoEmpleado
+     *
+     * @return ReqRequerimiento
+     */
+    public function addRequerimientoRequerimientoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $requerimientoRequerimientoEmpleado)
+    {
+        $this->requerimientoRequerimientoEmpleado[] = $requerimientoRequerimientoEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Remove requerimientoRequerimientoEmpleado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $requerimientoRequerimientoEmpleado
+     */
+    public function removeRequerimientoRequerimientoEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqRequerimientoEmpleado $requerimientoRequerimientoEmpleado)
+    {
+        $this->requerimientoRequerimientoEmpleado->removeElement($requerimientoRequerimientoEmpleado);
+    }
+
+    /**
+     * Get requerimientoRequerimientoEmpleado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRequerimientoRequerimientoEmpleado()
+    {
+        return $this->requerimientoRequerimientoEmpleado;
     }
 }

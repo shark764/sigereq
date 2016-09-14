@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqCtlEstadoEquipo
@@ -26,6 +27,12 @@ class ReqCtlEstadoEquipo
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=75, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $nombre = 'Equipo se encuentra funcionando correctamente';
 
@@ -33,9 +40,17 @@ class ReqCtlEstadoEquipo
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=3, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $codigo = 'FNC';
 
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';

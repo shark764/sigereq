@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqCtlTrabajoRequerido
@@ -26,6 +27,12 @@ class ReqCtlTrabajoRequerido
      * @var string
      *
      * @ORM\Column(name="requerimiento", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $requerimiento = 'Asignación de equipo de cómputo';
 
@@ -33,6 +40,11 @@ class ReqCtlTrabajoRequerido
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=6, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $codigo = '000000';
 
@@ -43,6 +55,7 @@ class ReqCtlTrabajoRequerido
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_area_trabajo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idAreaTrabajo;
 
@@ -61,6 +74,9 @@ class ReqCtlTrabajoRequerido
      */
     private $trabajoSubtrabajosRequeridos;
 
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->requerimiento ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->requerimiento), 'utf-8') : '';

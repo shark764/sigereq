@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqAreaServicioAtencion
@@ -29,6 +30,7 @@ class ReqAreaServicioAtencion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_area_atencion", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idAreaAtencion;
 
@@ -49,6 +51,7 @@ class ReqAreaServicioAtencion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_modalidad_atencion", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idModalidadAtencion;
 
@@ -59,6 +62,7 @@ class ReqAreaServicioAtencion
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_servicio_atencion", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idServicioAtencion;
 
@@ -82,6 +86,14 @@ class ReqAreaServicioAtencion
      */
     private $areaServicioEmpleadosLaboran;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqCtlEquipo", mappedBy="idServicioAsignado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $areaServicioEquipoAsignado;
+
+    /**
+     * ToString
+     */
     public function __toString()
     {
         if ($this->getIdServicioExterno())
@@ -98,6 +110,7 @@ class ReqAreaServicioAtencion
     {
         $this->areaServicioEmpleados = new \Doctrine\Common\Collections\ArrayCollection();
         $this->areaServicioEmpleadosLaboran = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->areaServicioEquipoAsignado = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -296,5 +309,39 @@ class ReqAreaServicioAtencion
     public function getAreaServicioEmpleadosLaboran()
     {
         return $this->areaServicioEmpleadosLaboran;
+    }
+
+    /**
+     * Add areaServicioEquipoAsignado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $areaServicioEquipoAsignado
+     *
+     * @return ReqAreaServicioAtencion
+     */
+    public function addAreaServicioEquipoAsignado(\SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $areaServicioEquipoAsignado)
+    {
+        $this->areaServicioEquipoAsignado[] = $areaServicioEquipoAsignado;
+
+        return $this;
+    }
+
+    /**
+     * Remove areaServicioEquipoAsignado
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $areaServicioEquipoAsignado
+     */
+    public function removeAreaServicioEquipoAsignado(\SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $areaServicioEquipoAsignado)
+    {
+        $this->areaServicioEquipoAsignado->removeElement($areaServicioEquipoAsignado);
+    }
+
+    /**
+     * Get areaServicioEquipoAsignado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAreaServicioEquipoAsignado()
+    {
+        return $this->areaServicioEquipoAsignado;
     }
 }

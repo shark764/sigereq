@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqCtlModeloEquipo
@@ -26,6 +27,12 @@ class ReqCtlModeloEquipo
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=75, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $nombre = 'Dell OptiPlex 9020';
 
@@ -33,6 +40,12 @@ class ReqCtlModeloEquipo
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=15, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $codigo = 'dlloptx9020';
 
@@ -40,6 +53,11 @@ class ReqCtlModeloEquipo
      * @var string
      *
      * @ORM\Column(name="caracteristicas", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $caracteristicas;
 
@@ -50,6 +68,7 @@ class ReqCtlModeloEquipo
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_marca_equipo", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idMarcaEquipo;
 
@@ -68,6 +87,14 @@ class ReqCtlModeloEquipo
      */
     private $grupoModelosEquipo;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ReqCtlEquipo", mappedBy="idModeloEquipo", cascade={"all"}, orphanRemoval=true)
+     */
+    private $modeloEquipos;
+
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8')
@@ -80,6 +107,7 @@ class ReqCtlModeloEquipo
     public function __construct()
     {
         $this->grupoModelosEquipo = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->modeloEquipos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -244,5 +272,39 @@ class ReqCtlModeloEquipo
     public function getGrupoModelosEquipo()
     {
         return $this->grupoModelosEquipo;
+    }
+
+    /**
+     * Add modeloEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $modeloEquipo
+     *
+     * @return ReqCtlModeloEquipo
+     */
+    public function addModeloEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $modeloEquipo)
+    {
+        $this->modeloEquipos[] = $modeloEquipo;
+
+        return $this;
+    }
+
+    /**
+     * Remove modeloEquipo
+     *
+     * @param \SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $modeloEquipo
+     */
+    public function removeModeloEquipo(\SanRafael\RequerimientosBundle\Entity\ReqCtlEquipo $modeloEquipo)
+    {
+        $this->modeloEquipos->removeElement($modeloEquipo);
+    }
+
+    /**
+     * Get modeloEquipos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getModeloEquipos()
+    {
+        return $this->modeloEquipos;
     }
 }

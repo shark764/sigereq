@@ -3,6 +3,7 @@
 namespace SanRafael\RequerimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReqCtlModalidadAtencion
@@ -26,6 +27,12 @@ class ReqCtlModalidadAtencion
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=25, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $nombre = 'MINSAL';
 
@@ -33,9 +40,18 @@ class ReqCtlModalidadAtencion
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=6, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $codigo = 'MINSAL';
 
+    /**
+     * ToString
+     */
     public function __toString()
     {
         return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
