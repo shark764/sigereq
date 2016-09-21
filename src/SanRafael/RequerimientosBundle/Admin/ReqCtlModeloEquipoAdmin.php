@@ -211,6 +211,9 @@ class ReqCtlModeloEquipoAdmin extends SanRafaelRequerimientosAdmin
          */
         $instance->setIdMarcaEquipo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlMarcaEquipo', array('codigo' => 'DLL')));
         $instance->setIdModeloGrupo($this->getModelManager()->findOneBy('SanRafaelRequerimientosBundle:ReqCtlModeloEquipo', array('codigo' => 'dlloptx9020')));
+
+        $instance->setCaracteristicas(/*nl2br*/("SanRafaelRequerimientosBundle\r\nSanRafaelRequerimientosBundle\r\nReqCtlModeloEquipo"));
+        // $instance->setCaracteristicas(str_replace("\r\n", "\n", "SanRafaelRequerimientosBundle\r\nSanRafaelRequerimientosBundle\r\nReqCtlModeloEquipo"));
         
         return $instance;
     }
