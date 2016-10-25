@@ -194,13 +194,7 @@
 		"/home/farid/NetBeansProjects/sigereq/vendor",
 		"/home/farid/NetBeansProjects/sigereq/vendor/symfony",
 		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form"
+		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src"
 	],
 	"file_history":
 	[
@@ -579,11 +573,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-<<<<<<< HEAD
-						"translation.y": 3156.0,
-=======
-						"translation.y": 2685.0,
->>>>>>> 62fc894858a3100feb05d93d1b70156165582609
+						"translation.y": 1731.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
