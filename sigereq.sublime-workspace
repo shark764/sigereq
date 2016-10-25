@@ -164,21 +164,17 @@
 		"/home/farid/NetBeansProjects/sigereq/src",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations",
 		"/home/farid/NetBeansProjects/sigereq/vendor",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views",
-		"/home/farid/NetBeansProjects/sigereq/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form"
+		"/home/farid/NetBeansProjects/sigereq/vendor/symfony"
 	],
 	"file_history":
 	[
+		"/home/farid/NetBeansProjects/sigereq/composer.lock",
+		"/home/farid/NetBeansProjects/sigereq/composer.json",
+		"/home/farid/NetBeansProjects/sigereq/app/config/bundles/fos_user.yml",
+		"/home/farid/NetBeansProjects/sigereq/app/config/bundles/sonata_admin.yml",
+		"/home/farid/NetBeansProjects/sigereq/app/config/bundles/sonata_block.yml",
+		"/home/farid/NetBeansProjects/sigereq/app/config/config.yml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations/validators.es.yml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
@@ -260,7 +256,6 @@
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlTipoEquipo.orm.xml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form/form_admin_fields.html.twig",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Resources/views/ImgBloqueoAgendaAdmin/blAgd_crearBloqueo_modal.html.twig",
-		"/home/farid/NetBeansProjects/sigereq/composer.json",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Repository/ProyeccionRepository.php",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Controller/ImgSolicitudEstudioAdminController.php",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgSolicitudEstudioAdmin/prc_edit.html.twig",
@@ -539,7 +534,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2685.0,
+						"translation.y": 1545.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
