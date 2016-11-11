@@ -276,6 +276,8 @@
 		"/home/farid/NetBeansProjects/sigereq/src",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle",
+		"/home/farid/NetBeansProjects/sigereq/vendor",
+		"/home/farid/NetBeansProjects/sigereq/vendor/symfony"
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations",
@@ -286,7 +288,12 @@
 	],
 	"file_history":
 	[
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form/form_admin_fields.html.twig",
+		"/home/farid/NetBeansProjects/sigereq/composer.lock",
+		"/home/farid/NetBeansProjects/sigereq/composer.json",
+		"/home/farid/NetBeansProjects/sigereq/app/config/bundles/fos_user.yml",
+		"/home/farid/NetBeansProjects/sigereq/app/config/bundles/sonata_admin.yml",
+		"/home/farid/NetBeansProjects/sigereq/app/config/bundles/sonata_block.yml",
+		"/home/farid/NetBeansProjects/sigereq/app/config/config.yml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations/validators.es.yml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
@@ -367,7 +374,6 @@
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlServicioAtencion.orm.xml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlTipoEquipo.orm.xml",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Resources/views/ImgBloqueoAgendaAdmin/blAgd_crearBloqueo_modal.html.twig",
-		"/home/farid/NetBeansProjects/sigereq/composer.json",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Repository/ProyeccionRepository.php",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Controller/ImgSolicitudEstudioAdminController.php",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Resources/views/ImgSolicitudEstudioAdmin/prc_edit.html.twig",
