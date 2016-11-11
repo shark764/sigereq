@@ -99,7 +99,15 @@
 			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
 			"settings":
 			{
-				"buffer_size": 25074,
+				"buffer_size": 24262,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlMarcaEquipoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 9724,
 				"line_ending": "Unix"
 			}
 		},
@@ -115,7 +123,23 @@
 			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
 			"settings":
 			{
-				"buffer_size": 25465,
+				"buffer_size": 26306,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaAtencionAdmin.php",
+			"settings":
+			{
+				"buffer_size": 6348,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaTrabajoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 8063,
 				"line_ending": "Unix"
 			}
 		},
@@ -123,7 +147,15 @@
 			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqEmpleadoAdmin.php",
 			"settings":
 			{
-				"buffer_size": 31088,
+				"buffer_size": 30919,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqEmpleadoAreaServicioAtencionAdmin.php",
+			"settings":
+			{
+				"buffer_size": 2559,
 				"line_ending": "Unix"
 			}
 		},
@@ -131,7 +163,7 @@
 			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoTrabajoRequeridoAdmin.php",
 			"settings":
 			{
-				"buffer_size": 27743,
+				"buffer_size": 26075,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,7 +171,63 @@
 			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlModeloEquipoAdmin.php",
 			"settings":
 			{
-				"buffer_size": 11469,
+				"buffer_size": 11336,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Resources/views/Form/sigereq_form_admin_fields.html.twig",
+			"settings":
+			{
+				"buffer_size": 21474,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlServicioAtencionAdmin.php",
+			"settings":
+			{
+				"buffer_size": 9163,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlSolucionRequerimientoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 7895,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqAreaServicioAtencionAdmin.php",
+			"settings":
+			{
+				"buffer_size": 2559,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlTipoEquipoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 9723,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlTipoServicioAdmin.php",
+			"settings":
+			{
+				"buffer_size": 7847,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlTrabajoRequeridoAdmin.php",
+			"settings":
+			{
+				"buffer_size": 9215,
 				"line_ending": "Unix"
 			}
 		},
@@ -147,7 +235,7 @@
 			"file": "src/SanRafael/RequerimientosBundle/Admin/SanRafaelRequerimientosAdmin.php",
 			"settings":
 			{
-				"buffer_size": 2555,
+				"buffer_size": 2539,
 				"line_ending": "Unix"
 			}
 		}
@@ -198,6 +286,7 @@
 	],
 	"file_history":
 	[
+		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form/form_admin_fields.html.twig",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/translations/validators.es.yml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin/ReqCtlEquipoAdmin.php",
@@ -277,7 +366,6 @@
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlTipoServicio.orm.xml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlServicioAtencion.orm.xml",
 		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/config/doctrine/metadata/orm/ReqCtlTipoEquipo.orm.xml",
-		"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Resources/views/Form/form_admin_fields.html.twig",
 		"/home/farid/NetBeansProjects/simagdigital/src/Minsal/SimagdBundle/Resources/views/ImgBloqueoAgendaAdmin/blAgd_crearBloqueo_modal.html.twig",
 		"/home/farid/NetBeansProjects/sigereq/composer.json",
 		"/home/farid/NetBeansProjects/versionsharksimagdigital/src/Minsal/SimagdBundle/Repository/ProyeccionRepository.php",
@@ -307,7 +395,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 340.0,
 		"where_history":
 		[
 			"/home/farid/NetBeansProjects/sigereq/src/SanRafael/RequerimientosBundle/Admin"
@@ -318,6 +406,55 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\n                                        'required' => true,\n                                        'mapped' => false,\n                                        'empty_value' => '',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'data-radio-display-form' => 'inline',\n                                                        'class' => 'form-control input-sm',",
+			"'attr' => array(/*'style' => 'min-width: 100%; max-width: 100%;',*/",
+			"'label' => 'Habilitado',",
+			"\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'form-control input-sm',",
+			"'attr' => array(/*'maxlength' => '10',*/",
+			"\n                                                        /*'maxlength' => '255',*/",
+			"'placeholder' => 'descripción del requerimiento / Actividad',",
+			"\n\n    public function prePersist($entity)\n    {\n        parent::prePersist($entity);\n    }\n    \n    public function preUpdate($entity)\n    {\n        parent::preUpdate($entity);\n    }",
+			"\n\n        $formMapper\n            ->with($MAIN_BOX_LABEL, array('class' => 'col-lg-12 col-md-12 col-sm-12', 'description' => ''))\n                ->add",
+			"$sessionUser_employee   = $sessionUser->getIdEmpleado();",
+			"$instance   = parent::getNewInstance();",
+			"\n                // ->add('id')",
+			"\n                                                        'placeholder' => 'D",
+			"\n                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',\n                                                        'class' => 'form-control input-sm',",
+			"\n                                                        'placeholder' => 'N",
+			"\n                                                        'placeholder' => 'C",
+			"'attr' => array('min'",
+			"'attr' => array(/*'maxlength' => '100',*/",
+			",\n                                                        'class' => 'input-sm',",
+			"'attr' => array(/*'maxlength' => '75',*/",
+			"'attr' => array('data-input-transform' => 'icheck',",
+			"\n                                                        'data-add-input-addon-class' => 'primary-v4',",
+			"\n                                                        'data-add-input-addon-class' => 'primary-v4',\n                                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',",
+			"if ($this->id($admin_subject)) {",
+			"$userLocation   =",
+			"$securityContext    =",
+			"$sessionUser    =",
+			"$securityContext    = $this",
+			"\n                                                        'data-fv-stringlength-max' =>",
+			"'attr' => array('rows'",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'form-control input-sm',",
+			"'required' => false,\n                                        'empty_value' => '',",
+			"'attr' => array('style' => 'min-width: 100%; max-width: 100%;',",
+			"'required' => true,\n                                        'empty_value' => '',",
+			"'attr' => array(/*'readonly' => 'readonly',*/",
+			",\n\n                                                        'data-fv-notempty' => 'true',\n                                                        'data-fv-notempty-message' => 'Seleccione un elemento',",
+			",\n                                                        'data-input-transform' => 'select2',\n                                                        'data-apply-formatter' => 'user',\n                                                        'data-apply-formatter-mode' => 'enabled',",
+			"\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'form-control input-sm',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-11 col-md-11 col-sm-11',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-10 col-md-10 col-sm-10',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-5 col-md-5 col-sm-5',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',",
+			"\n                                                        'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',",
+			"'data-add-form-group-col' => 'true',\n                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'class' => 'input-sm',",
 			"\\\\r\\\\n",
 			"&#13;&#10;",
 			"\\\\r\\\\n",
@@ -404,6 +541,47 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\n                                        'required' => true,\n                                        'mapped' => false,",
+			"\n                                                        'class' => 'form-control input-sm',\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',\n                                                        'data-radio-display-form' => 'inline',",
+			"'attr' => array(\n                                                        // 'style' => 'min-width: 100%; max-width: 100%;',",
+			"'label' => '¿Habilitado?',",
+			"\n                                                        'class' => 'form-control input-sm',\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',",
+			"'attr' => array(\n                                                        // 'maxlength' => '10',",
+			"\n                                                        // 'maxlength' => '255',",
+			"'placeholder' => '',",
+			"\n\n    // public function prePersist($entity)\n    // {\n    //     parent::prePersist($entity);\n    // }\n    \n    // public function preUpdate($entity)\n    // {\n    //     parent::preUpdate($entity);\n    // }",
+			"\n\n        $formMapper\n            ->with($MAIN_BOX_LABEL, array('class' => 'col-lg-12 col-md-12 col-sm-12', 'description' => ''))\n            ->end()\n        ;\n\n        $formMapper\n            ->with($MAIN_BOX_LABEL)\n                ->add",
+			"$sessionUser_employee = $sessionUser->getIdEmpleado();",
+			"$instance = parent::getNewInstance();",
+			"",
+			"\n                                                        'placeholder' => 'd",
+			"\n                                                        'class' => 'form-control input-sm',\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',",
+			"\n                                                        'placeholder' => 'n",
+			"\n                                                        'placeholder' => 'c",
+			"'attr' => array(\n                                                        'min'",
+			"'attr' => array(\n                                                        // 'maxlength' => '100',",
+			",\n                                                        'class' => 'form-control input-sm',",
+			"'attr' => array(\n                                                        // 'maxlength' => '75',",
+			"'attr' => array(\n                                                        // 'data-input-transform' => 'icheck',",
+			"\n                                                        // 'data-add-input-addon-class' => 'primary-v4',",
+			"\n                                                        // 'data-add-input-addon-class' => 'primary-v4',\n                                                        // 'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',",
+			"if ($this->id($admin_subject))\n        {",
+			"$userLocation =",
+			"$securityContext =",
+			"$sessionUser =",
+			"$securityContext = $this",
+			"\n                                                        // 'data-fv-stringlength-max' =>",
+			"'attr' => array(\n                                                        'rows'",
+			"\n                                                        'class' => 'form-control input-sm',\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',",
+			"'required' => false,\n                                        // 'empty_value' => '',",
+			"'attr' => array(\n                                                        // 'style' => 'min-width: 100%; max-width: 100%;',",
+			"'required' => true,\n                                        // 'empty_value' => '',",
+			"'attr' => array(\n                                                        // 'readonly' => 'readonly',",
+			",\n\n                                                        // 'data-fv-notempty' => 'true',\n                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',",
+			",",
+			"\n                                                        'class' => 'form-control input-sm',\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',",
+			"\n                                                        // 'data-add-form-group-col' => 'true',\n                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',",
+			"'class' => 'form-control input-sm',\n                                        // 'data-add-form-group-col' => 'true',\n                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',",
 			"\\r\\n",
 			"\\\\r\\\\n",
 			"&#13;&#10;",
@@ -486,7 +664,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 16,
 			"sheets":
 			[
 				{
@@ -495,15 +673,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 25074,
+						"buffer_size": 24262,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								24480,
-								24480
+								6377,
+								6377
 							]
 						],
 						"settings":
@@ -513,14 +691,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4115.0,
+						"translation.y": 1865.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlMarcaEquipoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2700.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "src/SanRafael/RequerimientosBundle/Entity/ReqCtlEquipo.php",
 					"semi_transient": false,
 					"settings":
@@ -543,117 +751,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 765.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 25465,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11335,
-								11335
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1731.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqEmpleadoAdmin.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 31088,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6175,
-								6175
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1635.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoTrabajoRequeridoAdmin.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 27743,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2958,
-								2958
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2852.0,
+						"translation.y": 705.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlModeloEquipoAdmin.php",
+					"buffer": 3,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoAdmin.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11469,
+						"buffer_size": 26306,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2144,
-								2144
+								13548,
+								13548
 							]
 						],
 						"settings":
@@ -663,27 +781,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 630.0,
+						"translation.y": 6066.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "src/SanRafael/RequerimientosBundle/Admin/SanRafaelRequerimientosAdmin.php",
+					"buffer": 4,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaAtencionAdmin.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2555,
+						"buffer_size": 6348,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2555,
-								2555
+								0,
+								0
 							]
 						],
 						"settings":
@@ -693,10 +811,400 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 313.0,
+						"translation.y": 2025.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlAreaTrabajoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8063,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2050,
+								2050
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2351.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqEmpleadoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 30919,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24947,
+								24947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6979.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqEmpleadoAreaServicioAtencionAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2559,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1080.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqRequerimientoTrabajoRequeridoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23899,
+								23899
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 803.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlModeloEquipoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4271,
+								4271
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1335.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/SanRafael/RequerimientosBundle/Resources/views/Form/sigereq_form_admin_fields.html.twig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7913,
+								7913
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Groovy/Groovy.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2145.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlServicioAtencionAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9163,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3019,
+								3019
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1875.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlSolucionRequerimientoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7630,
+								7630
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 705.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqAreaServicioAtencionAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2559,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlTipoEquipoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9723,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4659,
+								4659
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1305.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlTipoServicioAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7847,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1665.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/ReqCtlTrabajoRequeridoAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "src/SanRafael/RequerimientosBundle/Admin/SanRafaelRequerimientosAdmin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2001,
+								2001
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
 					"type": "text"
 				}
 			]
@@ -778,7 +1286,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 288.0,
 	"status_bar_visible": true,
 	"template_settings":

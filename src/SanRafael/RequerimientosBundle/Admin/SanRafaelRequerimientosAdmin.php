@@ -52,9 +52,9 @@ class SanRafaelRequerimientosAdmin extends Admin
 
     public function prePersist($entity)
     {
-        $securityContext    = $this->getConfigurationPool()->getContainer()->get('security.context');
-        $sessionUser    = $securityContext->getToken()->getUser();
-        /*$userLocation   = $sessionUser->getIdEstablecimiento();*/
+        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $sessionUser = $securityContext->getToken()->getUser();
+        /*$userLocation = $sessionUser->getIdEstablecimiento();*/
 
         $entity->setIdUserReg($sessionUser);
         $entity->setFechaHoraReg(new \DateTime('now'));
@@ -62,9 +62,9 @@ class SanRafaelRequerimientosAdmin extends Admin
     
     public function preUpdate($entity)
     {
-        $securityContext    = $this->getConfigurationPool()->getContainer()->get('security.context');
-        $sessionUser    = $securityContext->getToken()->getUser();
-        /*$userLocation   = $sessionUser->getIdEstablecimiento();*/
+        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $sessionUser = $securityContext->getToken()->getUser();
+        /*$userLocation = $sessionUser->getIdEstablecimiento();*/
 
         $entity->setIdUserMod($sessionUser);
         $entity->setFechaHoraMod(new \DateTime('now'));

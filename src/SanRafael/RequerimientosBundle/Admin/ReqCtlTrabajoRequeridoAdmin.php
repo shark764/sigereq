@@ -55,29 +55,35 @@ class ReqCtlTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
     {
         $MAIN_BOX_LABEL = 'Nuevo registro';
         $admin_subject  = $this->getSubject();
-        if ($this->id($admin_subject)) {
+        if ($this->id($admin_subject))
+        {
             $MAIN_BOX_LABEL = 'Editar registro';
         }
 
         $formMapper
             ->with($MAIN_BOX_LABEL, array('class' => 'col-lg-12 col-md-12 col-sm-12', 'description' => ''))
-                // ->add('id')
+            ->end()
+        ;
+
+        $formMapper
+            ->with($MAIN_BOX_LABEL)
                 ->add('requerimiento', null, array(
                                         'label' => 'Requerimiento',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Nombre de la actividad',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-8 col-md-8 col-sm-8',
-                                                        'class' => 'input-sm',
+                                        'attr' => array(
+                                                        // 'maxlength' => '100',
+                                                        'placeholder' => 'nombre de la actividad',
+                                                        'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
-                                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '100',
+                                                        // 'data-fv-stringlength-max' => '100',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -89,19 +95,20 @@ class ReqCtlTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
                                         'label' => 'Código',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         // 'help' => '',
-                                        'attr' => array(/*'maxlength' => '10',*/
-                                                        'placeholder' => 'Código',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                        'attr' => array(
+                                                        // 'maxlength' => '10',
+                                                        'placeholder' => 'código',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                                             
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '2',
-                                                        'data-fv-stringlength-max' => '10',
+                                                        // 'data-fv-stringlength-max' => '10',
                                                         'data-fv-stringlength-message' => '2 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -113,36 +120,32 @@ class ReqCtlTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
                                         'label' => 'Grupo',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
-                                        'empty_value' => '',
+                                        // 'empty_value' => '',
                                         'group_by' => 'idTrabajoRequeridoPadre',
-                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                        'attr' => array(
+                                                        // 'style' => 'min-width: 100%; max-width: 100%;',
                                                         'class' => 'form-control input-sm',
-                                                        'data-input-transform' => 'select2',
-                                                        'data-apply-formatter' => 'user',
-                                                        'data-apply-formatter-mode' => 'enabled',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
-                                                        'data-fv-notempty' => 'true',
-                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                                        // 'data-fv-notempty' => 'true',
+                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
                 ->add('idAreaTrabajo', null, array(
                                         'label' => 'Área de trabajo',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
-                                        'empty_value' => '',
+                                        // 'empty_value' => '',
                                         'group_by' => 'idAreaPadre',
-                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                        'attr' => array(
+                                                        // 'style' => 'min-width: 100%; max-width: 100%;',
                                                         'class' => 'form-control input-sm',
-                                                        'data-input-transform' => 'select2',
-                                                        'data-apply-formatter' => 'user',
-                                                        'data-apply-formatter-mode' => 'enabled',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
-                                                        'data-fv-notempty' => 'true',
-                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                                        // 'data-fv-notempty' => 'true',
+                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
             ->end()
@@ -179,7 +182,7 @@ class ReqCtlTrabajoRequeridoAdmin extends SanRafaelRequerimientosAdmin
     
     public function getNewInstance()
     {
-        $instance   = parent::getNewInstance();
+        $instance = parent::getNewInstance();
         
         /*
          * default values

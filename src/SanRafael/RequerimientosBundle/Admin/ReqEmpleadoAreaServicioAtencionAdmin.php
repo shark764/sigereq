@@ -86,7 +86,7 @@ class ReqEmpleadoAreaServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
     
     public function getNewInstance()
     {
-        $instance   = parent::getNewInstance();
+        $instance = parent::getNewInstance();
         
         /*
          * default values

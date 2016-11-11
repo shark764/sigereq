@@ -73,29 +73,35 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
     {
         $MAIN_BOX_LABEL = 'Nuevo registro';
         $admin_subject  = $this->getSubject();
-        if ($this->id($admin_subject)) {
+        if ($this->id($admin_subject))
+        {
             $MAIN_BOX_LABEL = 'Editar registro';
         }
 
         $formMapper
             ->with($MAIN_BOX_LABEL, array('class' => 'col-lg-12 col-md-12 col-sm-12', 'description' => ''))
-                // ->add('id')
+            ->end()
+        ;
+
+        $formMapper
+            ->with($MAIN_BOX_LABEL)
                 ->add('nombre', null, array(
                                         'label' => 'Nombre',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Nombre',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
-                                                        'class' => 'input-sm',
+                                        'attr' => array(
+                                                        // 'maxlength' => '100',
+                                                        'placeholder' => 'nombre',
+                                                        'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '100',
+                                                        // 'data-fv-stringlength-max' => '100',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -106,19 +112,20 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                 ->add('apellido', null, array(
                                         'label' => 'Apellido',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '100',*/
+                                        'attr' => array(
+                                                        // 'maxlength' => '100',
                                                         'placeholder' => 'Apellido',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
-                                                        'class' => 'input-sm',
+                                                        'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '100',
+                                                        // 'data-fv-stringlength-max' => '100',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -127,29 +134,31 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                                         )
                 ))
                 ->add('habilitado', null, array(
-                                        'label' => 'Habilitado',
+                                        'label' => '¿Habilitado?',
                                         'label_attr' => array('class' => 'label_form_sm label_check'),
                                         'required' => false,
-                                        'attr' => array('data-input-transform' => 'icheck',
+                                        'attr' => array(
+                                                        // 'data-input-transform' => 'icheck',
                                                         'class' => 'form-control input-sm',
                                         )
                 ))
                 ->add('correoInstitucional', null, array(
                                         'label' => 'Correo institucional',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '75',*/
+                                        'attr' => array(
+                                                        // 'maxlength' => '75',
                                                         'placeholder' => 'correo.electrónico@dominio.gob.sv',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-envelope',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '75',
+                                                        // 'data-fv-stringlength-max' => '75',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-callback' => 'true',
@@ -160,19 +169,20 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                 ->add('correoElectronico', null, array(
                                         'label' => 'Correo personal',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '75',*/
+                                        'attr' => array(
+                                                        // 'maxlength' => '75',
                                                         'placeholder' => 'correo.electrónico@dominio',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-envelope',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '75',
+                                                        // 'data-fv-stringlength-max' => '75',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-callback' => 'true',
@@ -183,19 +193,20 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                 ->add('telefonoCasa', null, array(
                                         'label' => 'Teléfono casa',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '75',*/
+                                        'attr' => array(
+                                                        // 'maxlength' => '75',
                                                         'placeholder' => '9-999-9999',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-phone-alt',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '75',
+                                                        // 'data-fv-stringlength-max' => '75',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-callback' => 'true',
@@ -206,19 +217,20 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                 ->add('telefonoCelular', null, array(
                                         'label' => 'Teléfono celular',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '75',*/
+                                        'attr' => array(
+                                                        // 'maxlength' => '75',
                                                         'placeholder' => '9-999-9999',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-phone-alt',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '75',
+                                                        // 'data-fv-stringlength-max' => '75',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-callback' => 'true',
@@ -232,11 +244,12 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -256,11 +269,12 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'HH:mm',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'HH:mm',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'time',
 
@@ -280,11 +294,12 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -304,11 +319,12 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -328,11 +344,12 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -353,87 +370,77 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
                                         // 'empty_value' => '',
                                         'expanded' => true,
                                         'multiple' => false,
-                                        'attr' => array(/*'style' => 'min-width: 100%; max-width: 100%;',*/
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
-                                                        'data-radio-display-form' => 'inline',
+                                        'attr' => array(
+                                                        // 'style' => 'min-width: 100%; max-width: 100%;',
                                                         'class' => 'form-control input-sm',
-                                                        'data-input-transform' => 'select2',
-                                                        'data-apply-formatter' => 'user',
-                                                        'data-apply-formatter-mode' => 'enabled',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        'data-radio-display-form' => 'inline',
 
-                                                        'data-fv-notempty' => 'true',
-                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                                        // 'data-fv-notempty' => 'true',
+                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
                 ->add('idTipoEmpleado', null, array(
                                         'label' => 'Tipo / Clasificación',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
-                                        'empty_value' => '',
-                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                        // 'empty_value' => '',
+                                        'attr' => array(
+                                                        // 'style' => 'min-width: 100%; max-width: 100%;',
                                                         'class' => 'form-control input-sm',
-                                                        'data-input-transform' => 'select2',
-                                                        'data-apply-formatter' => 'user',
-                                                        'data-apply-formatter-mode' => 'enabled',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
-                                                        'data-fv-notempty' => 'true',
-                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                                        // 'data-fv-notempty' => 'true',
+                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
                 ->add('idCargoEmpleado', null, array(
                                         'label' => 'Cargo',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => true,
-                                        'empty_value' => '',
-                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                        // 'empty_value' => '',
+                                        'attr' => array(
+                                                        // 'style' => 'min-width: 100%; max-width: 100%;',
                                                         'class' => 'form-control input-sm',
-                                                        'data-input-transform' => 'select2',
-                                                        'data-apply-formatter' => 'user',
-                                                        'data-apply-formatter-mode' => 'enabled',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
-                                                        'data-fv-notempty' => 'true',
-                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                                        // 'data-fv-notempty' => 'true',
+                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
                 ->add('idAreaServicioAtencion', null, array(
                                         'label' => 'Departamento',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
-                                        'empty_value' => '',
+                                        // 'empty_value' => '',
                                         'group_by' => 'idAreaAtencion',
-                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                        'attr' => array(
+                                                        // 'style' => 'min-width: 100%; max-width: 100%;',
                                                         'class' => 'form-control input-sm',
-                                                        'data-input-transform' => 'select2',
-                                                        'data-apply-formatter' => 'user',
-                                                        'data-apply-formatter-mode' => 'enabled',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
-                                                        'data-fv-notempty' => 'true',
-                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                                        // 'data-fv-notempty' => 'true',
+                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
                 ->add('idJefeInmediato', null, array(
                                         'label' => 'Jefe inmediato',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
-                                        'empty_value' => '',
+                                        // 'empty_value' => '',
                                         'group_by' => 'idAreaServicioAtencion',
-                                        'attr' => array('style' => 'min-width: 100%; max-width: 100%;',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
+                                        'attr' => array(
+                                                        // 'style' => 'min-width: 100%; max-width: 100%;',
                                                         'class' => 'form-control input-sm',
-                                                        'data-input-transform' => 'select2',
-                                                        'data-apply-formatter' => 'user',
-                                                        'data-apply-formatter-mode' => 'enabled',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
-                                                        'data-fv-notempty' => 'true',
-                                                        'data-fv-notempty-message' => 'Seleccione un elemento',
+                                                        // 'data-fv-notempty' => 'true',
+                                                        // 'data-fv-notempty-message' => 'Seleccione un elemento',
                                         )
                 ))
             ->end()
@@ -463,7 +470,7 @@ class ReqEmpleadoAdmin extends SanRafaelRequerimientosAdmin
     
     public function getNewInstance()
     {
-        $instance   = parent::getNewInstance();
+        $instance = parent::getNewInstance();
         
         /*
          * default values
