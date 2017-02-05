@@ -79,29 +79,35 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
     {
         $MAIN_BOX_LABEL = 'Nuevo registro';
         $admin_subject  = $this->getSubject();
-        if ($this->id($admin_subject)) {
+        if ($this->id($admin_subject))
+        {
             $MAIN_BOX_LABEL = 'Editar registro';
         }
 
         $formMapper
             ->with($MAIN_BOX_LABEL, array('class' => 'col-lg-12 col-md-12 col-sm-12', 'description' => ''))
-                // ->add('id')
+            ->end()
+        ;
+
+        $formMapper
+            ->with($MAIN_BOX_LABEL)
                 ->add('titulo', null, array(
                                         'label' => 'Título',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '100',*/
+                                        'attr' => array(
+                                                        // 'maxlength' => '100',
                                                         'placeholder' => 'Título del requerimiento',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
-                                                        'class' => 'input-sm',
+                                                        'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
-                                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '100',
+                                                        // 'data-fv-stringlength-max' => '100',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -115,11 +121,12 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD HH:mm',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -139,11 +146,12 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD HH:mm',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -160,14 +168,16 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                 ->add('repetirPor', null, array(
                                         'label' => 'Repetir durante',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array('min' => '0',
+                                        'attr' => array(
+                                                        'min' => '0',
                                                         'max' => '32767',
-                                                        'placeholder' => 'N° de días',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                                        'placeholder' => 'n° de días',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-repeat',
 
                                                         'data-fv-integer' => 'true',
@@ -183,29 +193,31 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         )
                 ))
                 ->add('diaCompleto', null, array(
-                                        'label' => 'Día completo',
+                                        'label' => '¿Día completo?',
                                         'label_attr' => array('class' => 'label_form_sm label_check col-lg-4 col-md-4 col-sm-4'),
                                         'required' => false,
-                                        'attr' => array('data-input-transform' => 'icheck',
+                                        'attr' => array(
+                                                        // 'data-input-transform' => 'icheck',
                                                         'class' => 'form-control input-sm',
                                         )
                 ))
                 ->add('color', null, array(
                                         'label' => 'Color',
                                         'label_attr' => array('class' => 'label_form_sm'),
-                                        'attr' => array(/*'maxlength' => '100',*/
-                                                        'placeholder' => 'Color',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                        'attr' => array(
+                                                        // 'maxlength' => '100',
+                                                        'placeholder' => 'color',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-add-input-addon' => 'true',
-                                                        'data-add-input-addon-class' => 'primary-v4',
+                                                        // 'data-add-input-addon-class' => 'primary-v4',
                                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '100',
+                                                        // 'data-fv-stringlength-max' => '100',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -217,17 +229,18 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'label' => 'Requerimiento / Actividad',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
-                                        'attr' => array('rows' => '3',
+                                        'attr' => array(
+                                                        'rows' => '3',
                                                         'style' => 'resize:none',
-                                                        /*'maxlength' => '255',*/
-                                                        'placeholder' => 'Descripción del requerimiento / Actividad',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        // 'maxlength' => '255',
+                                                        'placeholder' => '',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '255',
+                                                        // 'data-fv-stringlength-max' => '255',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -239,17 +252,18 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'label' => 'Solución / Trabajo realizado',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
-                                        'attr' => array('rows' => '3',
+                                        'attr' => array(
+                                                        'rows' => '3',
                                                         'style' => 'resize:none',
-                                                        /*'maxlength' => '255',*/
-                                                        'placeholder' => 'Descripción del requerimiento / Actividad',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        // 'maxlength' => '255',
+                                                        'placeholder' => '',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '255',
+                                                        // 'data-fv-stringlength-max' => '255',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -261,17 +275,18 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'label' => 'Comentarios / Observaciones / Incidencias',
                                         'label_attr' => array('class' => 'label_form_sm'),
                                         'required' => false,
-                                        'attr' => array('rows' => '2',
+                                        'attr' => array(
+                                                        'rows' => '2',
                                                         'style' => 'resize:none',
-                                                        /*'maxlength' => '255',*/
-                                                        'placeholder' => 'Descripción del requerimiento / Actividad',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
+                                                        // 'maxlength' => '255',
+                                                        'placeholder' => '',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
 
                                                         'data-fv-stringlength' => 'true',
                                                         'data-fv-stringlength-min' => '5',
-                                                        'data-fv-stringlength-max' => '255',
+                                                        // 'data-fv-stringlength-max' => '255',
                                                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
                                                         'data-fv-regexp' => 'true',
@@ -285,11 +300,12 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD HH:mm',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -309,11 +325,12 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD HH:mm',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -333,11 +350,12 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
                                         'required' => false,
                                         'widget' => 'single_text',
                                         'format' => 'yyyy-MM-dd HH:mm',
-                                        'attr' => array(/*'readonly' => 'readonly',*/
+                                        'attr' => array(
+                                                        // 'readonly' => 'readonly',
                                                         'placeholder' => 'YYYY-MM-DD HH:mm',
-                                                        'data-add-form-group-col' => 'true',
-                                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                                         'class' => 'form-control input-sm',
+                                                        // 'data-add-form-group-col' => 'true',
+                                                        // 'data-add-form-group-col-class' => 'col-lg-9 col-md-9 col-sm-9',
                                                         'data-input-transform' => 'datetimepicker',
                                                         'data-datetimepicker-type' => 'date',
 
@@ -386,19 +404,19 @@ class ReqRequerimientoAdmin extends SanRafaelRequerimientosAdmin
         ;
     }
 
-    public function prePersist($entity)
-    {
-        parent::prePersist($entity);
-    }
+    // public function prePersist($entity)
+    // {
+    //     parent::prePersist($entity);
+    // }
     
-    public function preUpdate($entity)
-    {
-        parent::preUpdate($entity);
-    }
+    // public function preUpdate($entity)
+    // {
+    //     parent::preUpdate($entity);
+    // }
     
     public function getNewInstance()
     {
-        $instance   = parent::getNewInstance();
+        $instance = parent::getNewInstance();
         
         /*
          * default values

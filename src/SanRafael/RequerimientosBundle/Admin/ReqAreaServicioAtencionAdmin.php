@@ -64,19 +64,19 @@ class ReqAreaServicioAtencionAdmin extends SanRafaelRequerimientosAdmin
         ;
     }
 
-    public function prePersist($entity)
-    {
-        parent::prePersist($entity);
-    }
+    // public function prePersist($entity)
+    // {
+    //     parent::prePersist($entity);
+    // }
     
-    public function preUpdate($entity)
-    {
-        parent::preUpdate($entity);
-    }
+    // public function preUpdate($entity)
+    // {
+    //     parent::preUpdate($entity);
+    // }
     
     public function getNewInstance()
     {
-        $instance   = parent::getNewInstance();
+        $instance = parent::getNewInstance();
         
         /*
          * default values
