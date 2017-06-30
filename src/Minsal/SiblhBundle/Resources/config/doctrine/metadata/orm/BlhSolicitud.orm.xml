@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhSolicitud" table="blh_solicitud">
+    <indexes>
+      <index name="fk_grupo_solicitud_solicitud" columns="id_grupo_solicitud"/>
+      <index name="IDX_9E50CAC8B91944F2" columns="id_receptor"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_solicitud_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoSolicitud" type="string" column="codigo_solicitud" length="14" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="volumenPorDia" type="decimal" column="volumen_por_dia" precision="7" scale="4" nullable="false"/>
+    <field name="acidezNecesaria" type="string" column="acidez_necesaria" length="9" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="caloriasNecesarias" type="string" column="calorias_necesarias" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pesoDia" type="decimal" column="peso_dia" precision="8" scale="4" nullable="false"/>
+    <field name="volumenPorToma" type="decimal" column="volumen_por_toma" precision="7" scale="4" nullable="false"/>
+    <field name="tomaPorDia" type="integer" column="toma_por_dia" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaSolicitud" type="date" column="fecha_solicitud" nullable="false"/>
+    <field name="cuna" type="integer" column="cuna" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="estado" type="string" column="estado" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="responsable" type="string" column="responsable" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idGrupoSolicitud" target-entity="BlhGrupoSolicitud" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_grupo_solicitud" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idReceptor" target-entity="BlhReceptor" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_receptor" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

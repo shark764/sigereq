@@ -40,6 +40,8 @@ class AppKernel extends Kernel
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new SanRafael\RequerimientosBundle\SanRafaelRequerimientosBundle(),
             new SanRafael\AdminBundle\SanRafaelAdminBundle(),
+            new Minsal\SiblhBundle\MinsalSiblhBundle(),
+            new Minsal\SiapsBundle\MinsalSiapsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

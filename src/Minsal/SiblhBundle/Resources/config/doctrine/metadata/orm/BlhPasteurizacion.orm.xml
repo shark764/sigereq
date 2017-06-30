@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhPasteurizacion" table="blh_pasteurizacion">
+    <indexes>
+      <index name="fk_curva_pasteurizacion" columns="id_curva"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_pasteurizacion_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoPasteurizacion" type="string" column="codigo_pasteurizacion" length="11" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="numCiclo" type="integer" column="num_ciclo" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="volumenPasteurizado" type="decimal" column="volumen_pasteurizado" precision="7" scale="4" nullable="false"/>
+    <field name="numFrascosPasteurizados" type="integer" column="num_frascos_pasteurizados" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaPasteurizacion" type="date" column="fecha_pasteurizacion" nullable="false"/>
+    <field name="responsablePasteurizacion" type="string" column="responsable_pasteurizacion" length="60" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="volumenTotal" type="decimal" column="volumen_total" precision="8" scale="0" nullable="true"/>
+    <many-to-one field="idCurva" target-entity="BlhCurva" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_curva" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

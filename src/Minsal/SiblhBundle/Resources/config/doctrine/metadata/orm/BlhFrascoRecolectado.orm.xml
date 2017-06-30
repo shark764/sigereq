@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhFrascoRecolectado" table="blh_frasco_recolectado">
+    <indexes>
+      <index name="fk_frasco_recolectado_lote_anal" columns="id_lote_analisis"/>
+      <index name="fk_donacion_frasco_recolectado" columns="id_donacion"/>
+      <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
+      <index name="fk_estado_frasco_recolectado" columns="id_estado"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_frasco_recolectado_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoFrascoRecolectado" type="string" column="codigo_frasco_recolectado" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="volumenRecolectado" type="decimal" column="volumen_recolectado" precision="7" scale="4" nullable="false"/>
+    <field name="formaExtraccion" type="string" column="forma_extraccion" length="8" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="onzRecolectado" type="decimal" column="onz_recolectado" precision="6" scale="4" nullable="true"/>
+    <field name="observacionFrascoRecolectado" type="string" column="observacion_frasco_recolectado" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="volumenDisponibleFr" type="decimal" column="volumen_disponible_fr" precision="7" scale="4" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="volumenReal" type="decimal" column="volumen_real" precision="7" scale="4" nullable="true"/>
+    <many-to-one field="idLoteAnalisis" target-entity="BlhLoteAnalisis" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_lote_analisis" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonante" target-entity="BlhDonante" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_donante" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonacion" target-entity="BlhDonacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_donacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstado" target-entity="BlhEstado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_estado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

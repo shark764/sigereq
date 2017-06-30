@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhHistorialClinico" table="blh_historial_clinico">
+    <indexes>
+      <index name="IDX_33FD85BC54F03532" columns="id_donante"/>
+      <index name="IDX_33FD85BC7DFA12F6" columns="id_establecimiento"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_historial_clinico_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="controlPrenatal" type="string" column="control_prenatal" length="2" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="edadGestFur" type="decimal" column="edad_gest_fur" precision="6" scale="4" nullable="true"/>
+    <field name="lugarControl" type="string" column="lugar_control" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroControl" type="integer" column="numero_control" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaParto" type="date" column="fecha_parto" nullable="false"/>
+    <field name="lugarParto" type="string" column="lugar_parto" length="150" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="patologiaEmbarazo" type="string" column="patologia_embarazo" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="periodoIntergenesico" type="integer" column="periodo_intergenesico" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaPartoAnterior" type="date" column="fecha_parto_anterior" nullable="true"/>
+    <field name="formulaObstetricaG" type="string" column="formula_obstetrica_g" length="2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="formulaObstetricaP1" type="string" column="formula_obstetrica_p1" length="2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="formulaObstetricaP2" type="string" column="formula_obstetrica_p2" length="2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="formulaObstetricaA" type="string" column="formula_obstetrica_a" length="2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="formulaObstetricaV" type="string" column="formula_obstetrica_v" length="2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="formulaObstetricaM" type="string" column="formula_obstetrica_m" length="2" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonante" target-entity="BlhDonante" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_donante" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
