@@ -4,6 +4,7 @@
     <indexes>
       <index name="fk_paciente_receptor" columns="id_paciente"/>
       <index name="fk_banco_de_leche_receptor" columns="id_banco_de_leche"/>
+      <index name="IDX_6498D2AD8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -67,6 +68,12 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idPaciente" target-entity="MntPaciente" fetch="LAZY">
       <join-columns>
         <join-column name="id_paciente" referenced-column-name="id"/>

@@ -1,0 +1,255 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{#{% extends base_template %}#}
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {# stylesheets minimized with Assetic #}
+    {% stylesheets
+        'bundles/minsalsimagd/css/simagd-styles.css'
+        'bundles/minsalsimagd/css/simagd-form-styles.css'
+        'bundles/minsalsimagd/css/simagd-extend-bootstrap3_minsalsiaps.css'
+        'bundles/minsalsimagd/css/simagd-table.css'
+
+        'bundles/minsalsimagd/css/select2-bootstrap_minsalsiaps.css'
+
+        output="bundles/minsalsimagd/compiled/css/bundle_stylesheets___base_list.css" %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+
+    {#'bundles/minsalsimagd/css/simagd-extend-bootstrap3.css'#}
+    {#'bundles/minsalsimagd/css/typeahead.css'
+    'bundles/minsalsimagd/css/select2-bootstrap.css'#}
+
+
+    {# simagd-styles
+    <link href="{{ asset('bundles/minsalsimagd/css/simagd-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsimagd/css/simagd-form-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsimagd/css/simagd-extend-bootstrap3.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsimagd/css/simagd-table.css') }}" type="text/css" rel="stylesheet" /> #}
+
+    {# Bootstrap #}
+    {#<link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-3.3.7/dist/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-3.3.7/dist/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet" />#}
+
+    {# jquery-ui #}
+    <link href="{{ asset('bundles/minsalsimagd/plugin/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css') }}" type="text/css" rel="stylesheet" />
+    
+    {# Bootstrap-calendar #}
+    <link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+
+    {# iCheck #}
+    <link href="{{ asset('bundles/minsalsimagd/plugin/icheck-1.x/skins/minimal/aero.css') }}" type="text/css" rel="stylesheet" />
+
+    {# Twitter Typeahead #}
+    {#<link href="{{ asset('bundles/minsalsimagd/css/typeahead.css') }}" type="text/css" rel="stylesheet" />#}
+
+    {# bootstrap-table #}
+    <link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+
+    {# formValidation #}
+    <link href="{{ asset('bundles/minsalsimagd/plugin/formvalidation-master/dist/css/formValidation.min.css') }}" type="text/css" rel="stylesheet" />
+
+    {# toastmessage #}
+    <link href="{{ asset('bundles/minsalsimagd/plugin/akquinet-jquery-toastmessage-plugin-6f5d7bf/src/main/resources/css/jquery.toastmessage.css') }}" type="text/css" rel="stylesheet" />
+
+    {# bootstrap-modal #}
+    <link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-modal-master/css/bootstrap-modal-bs3patch.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-modal-master/css/bootstrap-modal.css') }}" type="text/css" rel="stylesheet" />
+
+    {# bootstrap-vertical-tabs #}
+    {#<link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-vertical-tabs-1.2.2/bootstrap.vertical-tabs.css') }}" type="text/css" rel="stylesheet" />#}
+    
+    {# bootstrap-switch #}
+    {#<link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.min.css') }}" type="text/css" rel="stylesheet" />#}
+
+    {# select2-bootstrap #}
+    {#<link href="{{ asset('bundles/minsalsimagd/css/select2-bootstrap.css') }}" type="text/css" rel="stylesheet" />#}
+
+    {# Bootstrap-Colorpicker #}
+    {#<link href="{{ asset('bundles/minsalsimagd/plugin/bootstrap-colorpicker-master/dist/css/bootstrap-colorpicker.min.css') }}" type="text/css" rel="stylesheet" />#}
+    {# colorpicker #}
+    {#<link href="{{ asset('bundles/minsalsimagd/css/colorpicker.css') }}" type="text/css" rel="stylesheet" />#}
+
+    {# bootstrap text-editor summernote #}
+    {#<link href="{{ asset('bundles/minsalsimagd/plugin/summernote-master/dist/summernote.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsimagd/css/summernote.css') }}" type="text/css" rel="stylesheet" />#}
+{% endblock %}
+
+{% block actions %}
+    <li>{% include 'MinsalSiblhBundle:Button:show_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:acl_button.html.twig' %}</li>
+    <li>{% include 'MinsalSiblhBundle:Button:list_button.html.twig' %}</li>
+    <li>{% include 'MinsalSiblhBundle:Button:create_button.html.twig' %}</li>
+    <li>{% include 'MinsalSiblhBundle:Button:delete_button.html.twig' %}</li>
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {% block sonata_page_content_nav %}
+        {% if _tab_menu is not empty or _actions is not empty %}
+            <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-offset-1 ">
+                {#<div class="row">#}
+                    <div class="box box-drop-outside-shadow box-primary-v4 box-content-header-menu"><!-- <nav class="navbar navbar-default" role="navigation"> -->
+                        <div class="box-body">
+                            <div class="row">
+                                {% if _navbar_title is not empty %}
+                                    <!-- <div class="navbar-header"> -->
+                                        <div class="col-lg-3 col-md-3 col-sm-3"><h5>{{ _navbar_title|upper|raw }} <small>(Menú de operaciones)</small></h5></div>
+                                        <!-- <span class="navbar-brand"> --><!-- </span> -->
+                                    <!-- </div> -->
+                                {% endif %}
+                                <!-- <div class="container-fluid"> -->
+                                    <!-- <div class="navbar-left"> -->
+                                        {#{% if _tab_menu is not empty %}
+                                            {{ _tab_menu|raw }}
+                                        {% endif %}#}
+                                    <!-- </div> -->
+
+                                    {% if _actions is not empty %}
+                                        <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                            {#
+                                            <li class="dropdown sonata-actions">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions <b class="caret"></b></a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    {{ _actions|raw }}
+                                                </ul>
+                                            </li>
+                                            #}
+                                            {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
+                                                {{ _actions|replace({ '\r': '', '\n': '' })|replace({ '<li></li>': '' })|replace({ '<li>': '', '</li>': '' })|raw }}
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div><!-- </nav> -->
+                {#</div>#}
+            </div>
+        {% endif %}
+    {% endblock sonata_page_content_nav %}
+
+{% endblock sonata_page_content_header %}
+
+{% block tab_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}
+
+{% use 'MinsalSiblhBundle:CRUD:base_edit_form.html.twig' with form as parentForm %}
+
+{% block form %}
+
+    {{ block('parentForm') }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        window.__GLOBAL_ADMIN_CONFIGURATION__ = {
+            ADMIN_UNIQID_TOKEN:         '{{ admin.uniqId }}',
+            CURRENT_ACTION_FORM:        {% if action is defined %}'{{ action }}'{% else %}'create'{% endif %},
+            OBJECT_ID:                  {% if admin.id(object) is not null %}{{ object.id }}{% else %}false{% endif %},
+            IS_OBJECT_ALLOW_TO_SWITCH:  false,
+            ID_USERLOGGED:              {{ app.user.getId()|e('js') }},
+            ID_USERLOGGED_EMPLOYEE:     {% if app.user.getIdEmpleado() is not null %}{{ app.user.getIdEmpleado().getId()|e('js') }}{% else %}false{% endif %},
+            COD_USERLOGGED_EMPLOYEE:    {% if app.user.getIdEmpleado() is not null %}'{{ app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo()|e('js') }}'{% else %}false{% endif %},
+            ID_USERLOGGED_ESTAB:        {% if app.user.getIdEstablecimiento() is not null %}{{ app.user.getIdEstablecimiento().getId()|e('js') }}{% else %}false{% endif %}
+        };
+        window.__GLOBAL_BUNDLE_CONFIGURATION__ = {
+            IS_USERLOGGED_ADMIN:        {% if is_granted('ROLE_ADMIN') %}true{% else %}false{% endif %},
+            IS_USERLOGGED_RADX:         {% if is_granted('ROLE_MINSAL_SIMAGD_ADMIN_IMG_LECTURA_CREATE') and (app.user.getIdEmpleado() is not null and app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo() == 'MRY') %}true{% else %}false{% endif %},
+            IS_USERLOGGED_PRCMED:       {% if is_granted('ROLE_MINSAL_SIMAGD_ADMIN_IMG_SOLICITUD_ESTUDIO_CREATE') and (app.user.getIdEmpleado() is not null and app.user.getIdEmpleado().getIdTipoEmpleado().getCodigo() == 'MED') %}true{% else %}false{% endif %}
+        };
+        // window.console.log(jQuery.extend(true, {}, window.__GLOBAL_ADMIN_CONFIGURATION__, window.__GLOBAL_BUNDLE_CONFIGURATION__));
+    </script>
+
+    {# Bootstrap #}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-3.3.7/dist/js/bootstrap.min.js') }}" ></script>#}
+
+    {# select2-es #}
+    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
+
+    {# iCheck #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/icheck-1.x/icheck.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_form_configuration.js') }}" ></script>
+
+    {# jquery-ui #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_highlight_error_ui.js') }}" ></script>
+
+    {# jquery-formparams #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/jquery.formparams.min.js') }}" ></script>
+
+    {# jquery-maskedinput #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/jquery.mask.min.js') }}" ></script>
+
+    {# Simagd extend jQuery #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_jQueryCustomFunctions.js') }}" ></script>
+
+    {# Twitter Typeahead #}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/typeahead.js-master/dist/typeahead.bundle.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/typeahead.js-master/dist/bloodhound.js') }}" ></script>#}
+
+    {# bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
+    {# data format for bootstrap-table #}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_data_bsTable_formatter.js') }}" ></script>#}
+    {# filters for bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_filter_bstable_configuration.js') }}" ></script>
+
+    {# Bootstrap-calendar #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/moment-develop/min/moment-with-locales.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}" ></script>
+
+    {# Simagd Custom Scripts #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_personal_formplugin.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_init_formplugin.js') }}" ></script>
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_form_configuration_v2.js') }}" ></script>#}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_configuration_alert.js') }}" ></script>#}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_setterObject_modalData.js') }}" ></script>#}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_select2_custom_formatter.js') }}" ></script>#}
+
+    {# Patologia Custom Scripts #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalpatologia/js/patlg_edittemplate_bsform_configuration.js') }}" ></script>
+
+    {# formValidation #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/formvalidation-master/dist/js/formValidation.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/formvalidation-master/dist/js/framework/bootstrap.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/formvalidation-master/dist/js/language/es_ES.js') }}" ></script>
+
+    {# toastmessage #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/akquinet-jquery-toastmessage-plugin-6f5d7bf/src/main/javascript/jquery.toastmessage.js') }}" ></script>
+
+    {# bootstrap-modal #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-modal-master/js/bootstrap-modalmanager.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-modal-master/js/bootstrap-modal.js') }}" ></script>
+
+    {# bootstrap-switch #}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-switch-master/dist/js/bootstrap-switch.min.js') }}" ></script>#}
+
+    {# Bootstrap-Colorpicker #}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/bootstrap-colorpicker-master/dist/js/bootstrap-colorpicker.min.js') }}" ></script>#}
+
+    {# bootstrap text-editor summernote #}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/summernote-master/dist/summernote.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/plugin/summernote-master/dist/lang/summernote-es-ES.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_summernote_configuration.js') }}" ></script>#}
+
+    {# google chrome - SpeechRecognition #}
+    {#<script type="text/javascript" src="{{ asset('bundles/minsalsimagd/js/simagd_webkitSpeechRecognition.js') }}" ></script>#}
+
+    {% include 'MinsalSiblhBundle:General:general_form_script.html.twig' %}
+{% endblock %}

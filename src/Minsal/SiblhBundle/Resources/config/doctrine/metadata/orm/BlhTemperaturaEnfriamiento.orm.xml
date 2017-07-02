@@ -3,6 +3,7 @@
   <entity name="BlhTemperaturaEnfriamiento" table="blh_temperatura_enfriamiento">
     <indexes>
       <index name="IDX_3985D55C9D483370" columns="id_pasteurizacion"/>
+      <index name="IDX_3985D55CD8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -20,6 +21,12 @@
     </field>
     <field name="horaInicioE" type="time" column="hora_inicio_e" nullable="true"/>
     <field name="horaFinalE" type="time" column="hora_final_e" nullable="true"/>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idPasteurizacion" target-entity="BlhPasteurizacion" fetch="LAZY">
       <join-columns>
         <join-column name="id_pasteurizacion" referenced-column-name="id"/>

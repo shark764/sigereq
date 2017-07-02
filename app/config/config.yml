@@ -9,7 +9,8 @@ imports:
     - { resource: bundles/sonata_core.yml }
     - { resource: bundles/sonata_formatter.yml }
     - { resource: bundles/sonata_user.yml }
-    - { resource: @SanRafaelRequerimientosBundle/Resources/config/services.yml }
+    # - { resource: @SanRafaelRequerimientosBundle/Resources/config/services.yml }
+    - { resource: @MinsalSiblhBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~
@@ -45,7 +46,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SanRafaelRequerimientosBundle, SanRafaelAdminBundle ]
+    bundles:        [ SanRafaelRequerimientosBundle, SanRafaelAdminBundle, MinsalSiblhBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

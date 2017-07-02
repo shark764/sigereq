@@ -1,8 +1,8 @@
 sonata_admin:
     security:
         handler: sonata.admin.security.handler.role
-    title:       Sistema de Requerimientos
-    title_logo:  /bundles/sanrafaelrequerimientos/images/pc_error.png
+    title:       Sistema de Bancos de Leche
+    title_logo:  /bundles/minsalsiblh/images/blh.png
     templates:
         # default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig

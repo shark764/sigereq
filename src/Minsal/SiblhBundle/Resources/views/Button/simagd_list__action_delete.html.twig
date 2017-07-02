@@ -1,0 +1,8 @@
+{# empty Twig template #}
+
+{% if admin.isGranted('DELETE', object) and admin.hasRoute('delete') %}
+    <a href="{{ admin.generateObjectUrl('delete', object) }}" class="btn btn-sm btn-danger delete_link" title="{{ 'action_delete'|trans({}, 'SonataAdminBundle') }}">
+        <i class="glyphicon glyphicon-remove"></i>
+        {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+    </a>
+{% endif %}

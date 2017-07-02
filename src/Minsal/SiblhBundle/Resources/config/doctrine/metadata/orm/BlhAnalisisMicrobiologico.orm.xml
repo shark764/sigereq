@@ -3,6 +3,7 @@
   <entity name="BlhAnalisisMicrobiologico" table="blh_analisis_microbiologico">
     <indexes>
       <index name="fk_frasco_procesado_analisis_mi" columns="id_frasco_procesado"/>
+      <index name="IDX_709DCB00D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -33,6 +34,12 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idFrascoProcesado" target-entity="BlhFrascoProcesado" fetch="LAZY">
       <join-columns>
         <join-column name="id_frasco_procesado" referenced-column-name="id"/>

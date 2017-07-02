@@ -6,6 +6,7 @@
       <index name="fk_banco_de_leche_donante" columns="id_banco_de_leche"/>
       <index name="fki_blh_dona_fk_naciona_blh" columns="nacionalidad"/>
       <index name="fki_blh_dona_fk_nacionalidad_blh" columns="nacionalidad"/>
+      <index name="IDX_D458FB01D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -113,6 +114,12 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="nacionalidad" target-entity="CtlNacionalidad" fetch="LAZY">
       <join-columns>
         <join-column name="nacionalidad" referenced-column-name="id"/>

@@ -6,6 +6,7 @@
       <index name="fk_donacion_frasco_recolectado" columns="id_donacion"/>
       <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
       <index name="fk_estado_frasco_recolectado" columns="id_estado"/>
+      <index name="IDX_37ABF7A6D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -35,6 +36,12 @@
       </options>
     </field>
     <field name="volumenReal" type="decimal" column="volumen_real" precision="7" scale="4" nullable="true"/>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idLoteAnalisis" target-entity="BlhLoteAnalisis" fetch="LAZY">
       <join-columns>
         <join-column name="id_lote_analisis" referenced-column-name="id"/>

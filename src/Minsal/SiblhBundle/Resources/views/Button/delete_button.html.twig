@@ -1,0 +1,19 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% if admin.hasroute('delete') and admin.isGranted('DELETE', object) and admin.id(object) is not null %}
+    <div class="btn-group" role="group" aria-label="...">
+    	{#{{ 'delete_or'|trans({}, 'SonataAdminBundle') }}#}
+	    <a class="btn btn-sm btn-emergency" href="{{ admin.generateObjectUrl('delete', object) }}">
+	        <span class="glyphicon glyphicon-trash"></span>
+	        {{ 'link_delete'|trans({}, 'SonataAdminBundle') }}</a>
+    </div>
+{% endif %}

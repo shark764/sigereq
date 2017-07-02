@@ -3,6 +3,7 @@
   <entity name="BlhSeguimientoReceptor" table="blh_seguimiento_receptor">
     <indexes>
       <index name="IDX_EB08C6D4B91944F2" columns="id_receptor"/>
+      <index name="IDX_EB08C6D4D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -40,6 +41,12 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idReceptor" target-entity="BlhReceptor" fetch="LAZY">
       <join-columns>
         <join-column name="id_receptor" referenced-column-name="id"/>

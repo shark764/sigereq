@@ -4,6 +4,7 @@
     <indexes>
       <index name="fk_rol_rol_menu" columns="id_rol"/>
       <index name="fk_menu_rol_menu" columns="id_menu"/>
+      <index name="IDX_80162271D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -14,6 +15,12 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idMenu" target-entity="BlhMenu" fetch="LAZY">
       <join-columns>
         <join-column name="id_menu" referenced-column-name="id"/>

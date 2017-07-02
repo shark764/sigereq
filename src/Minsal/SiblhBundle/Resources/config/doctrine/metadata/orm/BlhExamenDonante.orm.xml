@@ -4,6 +4,7 @@
     <indexes>
       <index name="fk__donante_examen_donante" columns="id_examen"/>
       <index name="IDX_BECE40754F03532" columns="id_donante"/>
+      <index name="IDX_BECE407D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -19,6 +20,12 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idExamen" target-entity="BlhExamen" fetch="LAZY">
       <join-columns>
         <join-column name="id_examen" referenced-column-name="id"/>

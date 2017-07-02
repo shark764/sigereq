@@ -4,6 +4,7 @@
     <indexes>
       <index name="fk_solicitud_frasco_procesado_s" columns="id_solicitud"/>
       <index name="IDX_F422174A59B17EFE" columns="id_frasco_procesado"/>
+      <index name="IDX_F422174AD8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -15,6 +16,12 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idSolicitud" target-entity="BlhSolicitud" fetch="LAZY">
       <join-columns>
         <join-column name="id_solicitud" referenced-column-name="id"/>
