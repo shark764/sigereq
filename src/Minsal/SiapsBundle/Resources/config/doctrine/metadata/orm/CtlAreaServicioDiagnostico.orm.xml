@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlAreaServicioDiagnostico" table="ctl_area_servicio_diagnostico">
+    <indexes>
+      <index name="IDX_C44C3A31695EA351" columns="id_atencion"/>
+      <index name="IDX_C44C3A316724C8DC" columns="idusuariomod"/>
+      <index name="IDX_C44C3A3113B895A1" columns="idusuarioreg"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ctl_area_servicio_diagnostico_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="idarea" type="string" column="idarea" length="4" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Id del área de laboratorio</option>
+      </options>
+    </field>
+    <field name="nombrearea" type="string" column="nombrearea" length="75" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombre de Área</option>
+      </options>
+    </field>
+    <field name="administrativa" type="string" column="administrativa" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Bandera para saber si es área administrativa del laboratorio</option>
+        <option name="default">N</option>
+      </options>
+    </field>
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true">
+      <options>
+        <option name="comment">Fecha y hora en que se ingreso el registro</option>
+      </options>
+    </field>
+    <field name="fechahoramod" type="datetime" column="fechahoramod" nullable="true">
+      <options>
+        <option name="comment">Fecha y hora de modificacion de registro</option>
+      </options>
+    </field>
+    <field name="descripcion" type="text" column="descripcion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idusuarioreg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="idusuarioreg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idusuariomod" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="idusuariomod" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAtencion" target-entity="CtlAtencion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_atencion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -166,9 +166,9 @@ class BlhHistoriaActual implements EntityInterface
     private $patologia;
 
     /**
-     * @var \Minsal\SiapsBundle\Entity\CtlHabitoToxico
+     * @var \CtlHabitoToxico
      *
-     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlHabitoToxico")
+     * @ORM\ManyToOne(targetEntity="CtlHabitoToxico")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="habito_toxico", referencedColumnName="id")
      * })
@@ -226,4 +226,293 @@ class BlhHistoriaActual implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set pesoDonante
+     *
+     * @param string $pesoDonante
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setPesoDonante($pesoDonante)
+    {
+        $this->pesoDonante = $pesoDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get pesoDonante
+     *
+     * @return string
+     */
+    public function getPesoDonante()
+    {
+        return $this->pesoDonante;
+    }
+
+    /**
+     * Set tallaDonante
+     *
+     * @param string $tallaDonante
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setTallaDonante($tallaDonante)
+    {
+        $this->tallaDonante = $tallaDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get tallaDonante
+     *
+     * @return string
+     */
+    public function getTallaDonante()
+    {
+        return $this->tallaDonante;
+    }
+
+    /**
+     * Set medicamento
+     *
+     * @param string $medicamento
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setMedicamento($medicamento)
+    {
+        $this->medicamento = $medicamento;
+
+        return $this;
+    }
+
+    /**
+     * Get medicamento
+     *
+     * @return string
+     */
+    public function getMedicamento()
+    {
+        return $this->medicamento;
+    }
+
+    /**
+     * Set motivoDonacion
+     *
+     * @param string $motivoDonacion
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setMotivoDonacion($motivoDonacion)
+    {
+        $this->motivoDonacion = $motivoDonacion;
+
+        return $this;
+    }
+
+    /**
+     * Get motivoDonacion
+     *
+     * @return string
+     */
+    public function getMotivoDonacion()
+    {
+        return $this->motivoDonacion;
+    }
+
+    /**
+     * Set imc
+     *
+     * @param string $imc
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setImc($imc)
+    {
+        $this->imc = $imc;
+
+        return $this;
+    }
+
+    /**
+     * Get imc
+     *
+     * @return string
+     */
+    public function getImc()
+    {
+        return $this->imc;
+    }
+
+    /**
+     * Set estadoDonante
+     *
+     * @param string $estadoDonante
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setEstadoDonante($estadoDonante)
+    {
+        $this->estadoDonante = $estadoDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoDonante
+     *
+     * @return string
+     */
+    public function getEstadoDonante()
+    {
+        return $this->estadoDonante;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idDonante
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonante $idDonante
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setIdDonante(\Minsal\SiblhBundle\Entity\BlhDonante $idDonante = null)
+    {
+        $this->idDonante = $idDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get idDonante
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhDonante
+     */
+    public function getIdDonante()
+    {
+        return $this->idDonante;
+    }
+
+    /**
+     * Set patologia
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlPatologia $patologia
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setPatologia(\Minsal\SiapsBundle\Entity\CtlPatologia $patologia = null)
+    {
+        $this->patologia = $patologia;
+
+        return $this;
+    }
+
+    /**
+     * Get patologia
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlPatologia
+     */
+    public function getPatologia()
+    {
+        return $this->patologia;
+    }
+
+    /**
+     * Set habitoToxico
+     *
+     * @param \Minsal\SiblhBundle\Entity\CtlHabitoToxico $habitoToxico
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setHabitoToxico(\Minsal\SiblhBundle\Entity\CtlHabitoToxico $habitoToxico = null)
+    {
+        $this->habitoToxico = $habitoToxico;
+
+        return $this;
+    }
+
+    /**
+     * Get habitoToxico
+     *
+     * @return \Minsal\SiblhBundle\Entity\CtlHabitoToxico
+     */
+    public function getHabitoToxico()
+    {
+        return $this->habitoToxico;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

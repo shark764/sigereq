@@ -131,4 +131,149 @@ class BlhFrascoProcesadoSolicitud implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set volumenDespachado
+     *
+     * @param string $volumenDespachado
+     *
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setVolumenDespachado($volumenDespachado)
+    {
+        $this->volumenDespachado = $volumenDespachado;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenDespachado
+     *
+     * @return string
+     */
+    public function getVolumenDespachado()
+    {
+        return $this->volumenDespachado;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idFrascoProcesado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoProcesado $idFrascoProcesado
+     *
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setIdFrascoProcesado(\Minsal\SiblhBundle\Entity\BlhFrascoProcesado $idFrascoProcesado = null)
+    {
+        $this->idFrascoProcesado = $idFrascoProcesado;
+
+        return $this;
+    }
+
+    /**
+     * Get idFrascoProcesado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhFrascoProcesado
+     */
+    public function getIdFrascoProcesado()
+    {
+        return $this->idFrascoProcesado;
+    }
+
+    /**
+     * Set idSolicitud
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhSolicitud $idSolicitud
+     *
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setIdSolicitud(\Minsal\SiblhBundle\Entity\BlhSolicitud $idSolicitud = null)
+    {
+        $this->idSolicitud = $idSolicitud;
+
+        return $this;
+    }
+
+    /**
+     * Get idSolicitud
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhSolicitud
+     */
+    public function getIdSolicitud()
+    {
+        return $this->idSolicitud;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

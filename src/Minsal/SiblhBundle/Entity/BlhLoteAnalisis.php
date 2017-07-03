@@ -142,4 +142,149 @@ class BlhLoteAnalisis implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoLoteAnalisis
+     *
+     * @param string $codigoLoteAnalisis
+     *
+     * @return BlhLoteAnalisis
+     */
+    public function setCodigoLoteAnalisis($codigoLoteAnalisis)
+    {
+        $this->codigoLoteAnalisis = $codigoLoteAnalisis;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoLoteAnalisis
+     *
+     * @return string
+     */
+    public function getCodigoLoteAnalisis()
+    {
+        return $this->codigoLoteAnalisis;
+    }
+
+    /**
+     * Set fechaAnalisisFisicoQuimico
+     *
+     * @param \DateTime $fechaAnalisisFisicoQuimico
+     *
+     * @return BlhLoteAnalisis
+     */
+    public function setFechaAnalisisFisicoQuimico($fechaAnalisisFisicoQuimico)
+    {
+        $this->fechaAnalisisFisicoQuimico = $fechaAnalisisFisicoQuimico;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaAnalisisFisicoQuimico
+     *
+     * @return \DateTime
+     */
+    public function getFechaAnalisisFisicoQuimico()
+    {
+        return $this->fechaAnalisisFisicoQuimico;
+    }
+
+    /**
+     * Set responsableAnalisis
+     *
+     * @param string $responsableAnalisis
+     *
+     * @return BlhLoteAnalisis
+     */
+    public function setResponsableAnalisis($responsableAnalisis)
+    {
+        $this->responsableAnalisis = $responsableAnalisis;
+
+        return $this;
+    }
+
+    /**
+     * Get responsableAnalisis
+     *
+     * @return string
+     */
+    public function getResponsableAnalisis()
+    {
+        return $this->responsableAnalisis;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhLoteAnalisis
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhLoteAnalisis
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhLoteAnalisis
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

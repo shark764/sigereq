@@ -29,6 +29,46 @@ class CtlNacionalidad
      */
     private $nacionalidad;
 
+    /**
+     * ToString
+     */
+    public function __toString()
+    {
+        return (string) $this->nacionalidad ? : '';
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nacionalidad
+     *
+     * @param string $nacionalidad
+     *
+     * @return CtlNacionalidad
+     */
+    public function setNacionalidad($nacionalidad)
+    {
+        $this->nacionalidad = $nacionalidad;
+
+        return $this;
+    }
+
+    /**
+     * Get nacionalidad
+     *
+     * @return string
+     */
+    public function getNacionalidad()
+    {
+        return $this->nacionalidad;
+    }
 
 }
-

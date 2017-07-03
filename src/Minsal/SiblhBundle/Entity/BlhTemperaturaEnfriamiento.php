@@ -136,4 +136,173 @@ class BlhTemperaturaEnfriamiento implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set temperaturaE
+     *
+     * @param integer $temperaturaE
+     *
+     * @return BlhTemperaturaEnfriamiento
+     */
+    public function setTemperaturaE($temperaturaE)
+    {
+        $this->temperaturaE = $temperaturaE;
+
+        return $this;
+    }
+
+    /**
+     * Get temperaturaE
+     *
+     * @return integer
+     */
+    public function getTemperaturaE()
+    {
+        return $this->temperaturaE;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhTemperaturaEnfriamiento
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set horaInicioE
+     *
+     * @param \DateTime $horaInicioE
+     *
+     * @return BlhTemperaturaEnfriamiento
+     */
+    public function setHoraInicioE($horaInicioE)
+    {
+        $this->horaInicioE = $horaInicioE;
+
+        return $this;
+    }
+
+    /**
+     * Get horaInicioE
+     *
+     * @return \DateTime
+     */
+    public function getHoraInicioE()
+    {
+        return $this->horaInicioE;
+    }
+
+    /**
+     * Set horaFinalE
+     *
+     * @param \DateTime $horaFinalE
+     *
+     * @return BlhTemperaturaEnfriamiento
+     */
+    public function setHoraFinalE($horaFinalE)
+    {
+        $this->horaFinalE = $horaFinalE;
+
+        return $this;
+    }
+
+    /**
+     * Get horaFinalE
+     *
+     * @return \DateTime
+     */
+    public function getHoraFinalE()
+    {
+        return $this->horaFinalE;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhTemperaturaEnfriamiento
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idPasteurizacion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhPasteurizacion $idPasteurizacion
+     *
+     * @return BlhTemperaturaEnfriamiento
+     */
+    public function setIdPasteurizacion(\Minsal\SiblhBundle\Entity\BlhPasteurizacion $idPasteurizacion = null)
+    {
+        $this->idPasteurizacion = $idPasteurizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idPasteurizacion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhPasteurizacion
+     */
+    public function getIdPasteurizacion()
+    {
+        return $this->idPasteurizacion;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhTemperaturaEnfriamiento
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

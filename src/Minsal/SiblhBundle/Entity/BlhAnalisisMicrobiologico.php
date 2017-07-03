@@ -179,4 +179,197 @@ class BlhAnalisisMicrobiologico implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoAnalisisMicrobiologico
+     *
+     * @param string $codigoAnalisisMicrobiologico
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setCodigoAnalisisMicrobiologico($codigoAnalisisMicrobiologico)
+    {
+        $this->codigoAnalisisMicrobiologico = $codigoAnalisisMicrobiologico;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoAnalisisMicrobiologico
+     *
+     * @return string
+     */
+    public function getCodigoAnalisisMicrobiologico()
+    {
+        return $this->codigoAnalisisMicrobiologico;
+    }
+
+    /**
+     * Set coliformesTotales
+     *
+     * @param string $coliformesTotales
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setColiformesTotales($coliformesTotales)
+    {
+        $this->coliformesTotales = $coliformesTotales;
+
+        return $this;
+    }
+
+    /**
+     * Get coliformesTotales
+     *
+     * @return string
+     */
+    public function getColiformesTotales()
+    {
+        return $this->coliformesTotales;
+    }
+
+    /**
+     * Set control
+     *
+     * @param string $control
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setControl($control)
+    {
+        $this->control = $control;
+
+        return $this;
+    }
+
+    /**
+     * Get control
+     *
+     * @return string
+     */
+    public function getControl()
+    {
+        return $this->control;
+    }
+
+    /**
+     * Set situacion
+     *
+     * @param string $situacion
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setSituacion($situacion)
+    {
+        $this->situacion = $situacion;
+
+        return $this;
+    }
+
+    /**
+     * Get situacion
+     *
+     * @return string
+     */
+    public function getSituacion()
+    {
+        return $this->situacion;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idFrascoProcesado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoProcesado $idFrascoProcesado
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setIdFrascoProcesado(\Minsal\SiblhBundle\Entity\BlhFrascoProcesado $idFrascoProcesado = null)
+    {
+        $this->idFrascoProcesado = $idFrascoProcesado;
+
+        return $this;
+    }
+
+    /**
+     * Get idFrascoProcesado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhFrascoProcesado
+     */
+    public function getIdFrascoProcesado()
+    {
+        return $this->idFrascoProcesado;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

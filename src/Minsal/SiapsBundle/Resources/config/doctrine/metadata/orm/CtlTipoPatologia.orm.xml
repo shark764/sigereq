@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlTipoPatologia" table="ctl_tipo_patologia">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ctl_tipo_patologia_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Almacena los nombres de los distintos tipos de patologia</option>
+      </options>
+    </field>
+    <field name="descripcion" type="text" column="descripcion" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Almacena la descripcion de los tipos de patologias</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

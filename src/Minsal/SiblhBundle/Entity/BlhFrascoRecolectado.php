@@ -248,4 +248,341 @@ class BlhFrascoRecolectado implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoFrascoRecolectado
+     *
+     * @param string $codigoFrascoRecolectado
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setCodigoFrascoRecolectado($codigoFrascoRecolectado)
+    {
+        $this->codigoFrascoRecolectado = $codigoFrascoRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoFrascoRecolectado
+     *
+     * @return string
+     */
+    public function getCodigoFrascoRecolectado()
+    {
+        return $this->codigoFrascoRecolectado;
+    }
+
+    /**
+     * Set volumenRecolectado
+     *
+     * @param string $volumenRecolectado
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setVolumenRecolectado($volumenRecolectado)
+    {
+        $this->volumenRecolectado = $volumenRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenRecolectado
+     *
+     * @return string
+     */
+    public function getVolumenRecolectado()
+    {
+        return $this->volumenRecolectado;
+    }
+
+    /**
+     * Set formaExtraccion
+     *
+     * @param string $formaExtraccion
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setFormaExtraccion($formaExtraccion)
+    {
+        $this->formaExtraccion = $formaExtraccion;
+
+        return $this;
+    }
+
+    /**
+     * Get formaExtraccion
+     *
+     * @return string
+     */
+    public function getFormaExtraccion()
+    {
+        return $this->formaExtraccion;
+    }
+
+    /**
+     * Set onzRecolectado
+     *
+     * @param string $onzRecolectado
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setOnzRecolectado($onzRecolectado)
+    {
+        $this->onzRecolectado = $onzRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Get onzRecolectado
+     *
+     * @return string
+     */
+    public function getOnzRecolectado()
+    {
+        return $this->onzRecolectado;
+    }
+
+    /**
+     * Set observacionFrascoRecolectado
+     *
+     * @param string $observacionFrascoRecolectado
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setObservacionFrascoRecolectado($observacionFrascoRecolectado)
+    {
+        $this->observacionFrascoRecolectado = $observacionFrascoRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Get observacionFrascoRecolectado
+     *
+     * @return string
+     */
+    public function getObservacionFrascoRecolectado()
+    {
+        return $this->observacionFrascoRecolectado;
+    }
+
+    /**
+     * Set volumenDisponibleFr
+     *
+     * @param string $volumenDisponibleFr
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setVolumenDisponibleFr($volumenDisponibleFr)
+    {
+        $this->volumenDisponibleFr = $volumenDisponibleFr;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenDisponibleFr
+     *
+     * @return string
+     */
+    public function getVolumenDisponibleFr()
+    {
+        return $this->volumenDisponibleFr;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set volumenReal
+     *
+     * @param string $volumenReal
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setVolumenReal($volumenReal)
+    {
+        $this->volumenReal = $volumenReal;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenReal
+     *
+     * @return string
+     */
+    public function getVolumenReal()
+    {
+        return $this->volumenReal;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idEstado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhEstado $idEstado
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdEstado(\Minsal\SiblhBundle\Entity\BlhEstado $idEstado = null)
+    {
+        $this->idEstado = $idEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhEstado
+     */
+    public function getIdEstado()
+    {
+        return $this->idEstado;
+    }
+
+    /**
+     * Set idDonacion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonacion $idDonacion
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdDonacion(\Minsal\SiblhBundle\Entity\BlhDonacion $idDonacion = null)
+    {
+        $this->idDonacion = $idDonacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idDonacion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhDonacion
+     */
+    public function getIdDonacion()
+    {
+        return $this->idDonacion;
+    }
+
+    /**
+     * Set idDonante
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonante $idDonante
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdDonante(\Minsal\SiblhBundle\Entity\BlhDonante $idDonante = null)
+    {
+        $this->idDonante = $idDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get idDonante
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhDonante
+     */
+    public function getIdDonante()
+    {
+        return $this->idDonante;
+    }
+
+    /**
+     * Set idLoteAnalisis
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhLoteAnalisis $idLoteAnalisis
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdLoteAnalisis(\Minsal\SiblhBundle\Entity\BlhLoteAnalisis $idLoteAnalisis = null)
+    {
+        $this->idLoteAnalisis = $idLoteAnalisis;
+
+        return $this;
+    }
+
+    /**
+     * Get idLoteAnalisis
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhLoteAnalisis
+     */
+    public function getIdLoteAnalisis()
+    {
+        return $this->idLoteAnalisis;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

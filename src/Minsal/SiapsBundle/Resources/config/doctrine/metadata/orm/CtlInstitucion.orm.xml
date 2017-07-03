@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlInstitucion" table="ctl_institucion">
+    <indexes>
+      <index name="IDX_3123F0D4F57D32FD" columns="id_pais"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ctl_institucion_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="150" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Descripción nombre de la Institución</option>
+      </options>
+    </field>
+    <field name="logo" type="string" column="logo" length="35" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">nombre archivo de imagen utilizada como logo de la institución</option>
+      </options>
+    </field>
+    <field name="rectora" type="string" column="rectora" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="categoria" type="integer" column="categoria" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sigla" type="string" column="sigla" length="14" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Sigla de la institución</option>
+      </options>
+    </field>
+    <field name="estado" type="integer" column="estado" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idPais" target-entity="CtlPais" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_pais" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

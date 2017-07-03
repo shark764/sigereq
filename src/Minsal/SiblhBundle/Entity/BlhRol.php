@@ -132,4 +132,125 @@ class BlhRol implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set nombreRol
+     *
+     * @param string $nombreRol
+     *
+     * @return BlhRol
+     */
+    public function setNombreRol($nombreRol)
+    {
+        $this->nombreRol = $nombreRol;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreRol
+     *
+     * @return string
+     */
+    public function getNombreRol()
+    {
+        return $this->nombreRol;
+    }
+
+    /**
+     * Set descripcionRol
+     *
+     * @param string $descripcionRol
+     *
+     * @return BlhRol
+     */
+    public function setDescripcionRol($descripcionRol)
+    {
+        $this->descripcionRol = $descripcionRol;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcionRol
+     *
+     * @return string
+     */
+    public function getDescripcionRol()
+    {
+        return $this->descripcionRol;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhRol
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhRol
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhRol
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

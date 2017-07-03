@@ -196,4 +196,221 @@ class BlhAnalisisSensorial implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set embalaje
+     *
+     * @param string $embalaje
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setEmbalaje($embalaje)
+    {
+        $this->embalaje = $embalaje;
+
+        return $this;
+    }
+
+    /**
+     * Get embalaje
+     *
+     * @return string
+     */
+    public function getEmbalaje()
+    {
+        return $this->embalaje;
+    }
+
+    /**
+     * Set suciedad
+     *
+     * @param string $suciedad
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setSuciedad($suciedad)
+    {
+        $this->suciedad = $suciedad;
+
+        return $this;
+    }
+
+    /**
+     * Get suciedad
+     *
+     * @return string
+     */
+    public function getSuciedad()
+    {
+        return $this->suciedad;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set flavor
+     *
+     * @param string $flavor
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setFlavor($flavor)
+    {
+        $this->flavor = $flavor;
+
+        return $this;
+    }
+
+    /**
+     * Get flavor
+     *
+     * @return string
+     */
+    public function getFlavor()
+    {
+        return $this->flavor;
+    }
+
+    /**
+     * Set observacion
+     *
+     * @param string $observacion
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+
+        return $this;
+    }
+
+    /**
+     * Get observacion
+     *
+     * @return string
+     */
+    public function getObservacion()
+    {
+        return $this->observacion;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idFrascoRecolectado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setIdFrascoRecolectado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado = null)
+    {
+        $this->idFrascoRecolectado = $idFrascoRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Get idFrascoRecolectado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado
+     */
+    public function getIdFrascoRecolectado()
+    {
+        return $this->idFrascoRecolectado;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

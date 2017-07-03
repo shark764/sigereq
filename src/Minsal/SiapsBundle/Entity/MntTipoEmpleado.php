@@ -43,6 +43,94 @@ class MntTipoEmpleado
      */
     private $prescribeMedicamento = false;
 
+    /**
+     * ToString
+     */
+    public function __toString()
+    {
+        return (string) $this->codigo . ' ' . $this->tipo ? : '';
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return MntTipoEmpleado
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set tipo
+     *
+     * @param string $tipo
+     *
+     * @return MntTipoEmpleado
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * Set prescribeMedicamento
+     *
+     * @param boolean $prescribeMedicamento
+     *
+     * @return MntTipoEmpleado
+     */
+    public function setPrescribeMedicamento($prescribeMedicamento)
+    {
+        $this->prescribeMedicamento = $prescribeMedicamento;
+
+        return $this;
+    }
+
+    /**
+     * Get prescribeMedicamento
+     *
+     * @return boolean
+     */
+    public function getPrescribeMedicamento()
+    {
+        return $this->prescribeMedicamento;
+    }
 
 }
-

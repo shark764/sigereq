@@ -190,4 +190,245 @@ class BlhAcidez implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set acidez1
+     *
+     * @param integer $acidez1
+     *
+     * @return BlhAcidez
+     */
+    public function setAcidez1($acidez1)
+    {
+        $this->acidez1 = $acidez1;
+
+        return $this;
+    }
+
+    /**
+     * Get acidez1
+     *
+     * @return integer
+     */
+    public function getAcidez1()
+    {
+        return $this->acidez1;
+    }
+
+    /**
+     * Set acidez2
+     *
+     * @param integer $acidez2
+     *
+     * @return BlhAcidez
+     */
+    public function setAcidez2($acidez2)
+    {
+        $this->acidez2 = $acidez2;
+
+        return $this;
+    }
+
+    /**
+     * Get acidez2
+     *
+     * @return integer
+     */
+    public function getAcidez2()
+    {
+        return $this->acidez2;
+    }
+
+    /**
+     * Set acidez3
+     *
+     * @param integer $acidez3
+     *
+     * @return BlhAcidez
+     */
+    public function setAcidez3($acidez3)
+    {
+        $this->acidez3 = $acidez3;
+
+        return $this;
+    }
+
+    /**
+     * Get acidez3
+     *
+     * @return integer
+     */
+    public function getAcidez3()
+    {
+        return $this->acidez3;
+    }
+
+    /**
+     * Set factor
+     *
+     * @param string $factor
+     *
+     * @return BlhAcidez
+     */
+    public function setFactor($factor)
+    {
+        $this->factor = $factor;
+
+        return $this;
+    }
+
+    /**
+     * Get factor
+     *
+     * @return string
+     */
+    public function getFactor()
+    {
+        return $this->factor;
+    }
+
+    /**
+     * Set resultado
+     *
+     * @param string $resultado
+     *
+     * @return BlhAcidez
+     */
+    public function setResultado($resultado)
+    {
+        $this->resultado = $resultado;
+
+        return $this;
+    }
+
+    /**
+     * Get resultado
+     *
+     * @return string
+     */
+    public function getResultado()
+    {
+        return $this->resultado;
+    }
+
+    /**
+     * Set mediaAcidez
+     *
+     * @param string $mediaAcidez
+     *
+     * @return BlhAcidez
+     */
+    public function setMediaAcidez($mediaAcidez)
+    {
+        $this->mediaAcidez = $mediaAcidez;
+
+        return $this;
+    }
+
+    /**
+     * Get mediaAcidez
+     *
+     * @return string
+     */
+    public function getMediaAcidez()
+    {
+        return $this->mediaAcidez;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhAcidez
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhAcidez
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idFrascoRecolectado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado
+     *
+     * @return BlhAcidez
+     */
+    public function setIdFrascoRecolectado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado = null)
+    {
+        $this->idFrascoRecolectado = $idFrascoRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Get idFrascoRecolectado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado
+     */
+    public function getIdFrascoRecolectado()
+    {
+        return $this->idFrascoRecolectado;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhAcidez
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

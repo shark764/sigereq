@@ -364,4 +364,533 @@ class BlhReceptor implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoReceptor
+     *
+     * @param string $codigoReceptor
+     *
+     * @return BlhReceptor
+     */
+    public function setCodigoReceptor($codigoReceptor)
+    {
+        $this->codigoReceptor = $codigoReceptor;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoReceptor
+     *
+     * @return string
+     */
+    public function getCodigoReceptor()
+    {
+        return $this->codigoReceptor;
+    }
+
+    /**
+     * Set fechaRegistroBlh
+     *
+     * @param \DateTime $fechaRegistroBlh
+     *
+     * @return BlhReceptor
+     */
+    public function setFechaRegistroBlh($fechaRegistroBlh)
+    {
+        $this->fechaRegistroBlh = $fechaRegistroBlh;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaRegistroBlh
+     *
+     * @return \DateTime
+     */
+    public function getFechaRegistroBlh()
+    {
+        return $this->fechaRegistroBlh;
+    }
+
+    /**
+     * Set procedencia
+     *
+     * @param string $procedencia
+     *
+     * @return BlhReceptor
+     */
+    public function setProcedencia($procedencia)
+    {
+        $this->procedencia = $procedencia;
+
+        return $this;
+    }
+
+    /**
+     * Get procedencia
+     *
+     * @return string
+     */
+    public function getProcedencia()
+    {
+        return $this->procedencia;
+    }
+
+    /**
+     * Set estadoReceptor
+     *
+     * @param string $estadoReceptor
+     *
+     * @return BlhReceptor
+     */
+    public function setEstadoReceptor($estadoReceptor)
+    {
+        $this->estadoReceptor = $estadoReceptor;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoReceptor
+     *
+     * @return string
+     */
+    public function getEstadoReceptor()
+    {
+        return $this->estadoReceptor;
+    }
+
+    /**
+     * Set edadDias
+     *
+     * @param integer $edadDias
+     *
+     * @return BlhReceptor
+     */
+    public function setEdadDias($edadDias)
+    {
+        $this->edadDias = $edadDias;
+
+        return $this;
+    }
+
+    /**
+     * Get edadDias
+     *
+     * @return integer
+     */
+    public function getEdadDias()
+    {
+        return $this->edadDias;
+    }
+
+    /**
+     * Set pesoReceptor
+     *
+     * @param string $pesoReceptor
+     *
+     * @return BlhReceptor
+     */
+    public function setPesoReceptor($pesoReceptor)
+    {
+        $this->pesoReceptor = $pesoReceptor;
+
+        return $this;
+    }
+
+    /**
+     * Get pesoReceptor
+     *
+     * @return string
+     */
+    public function getPesoReceptor()
+    {
+        return $this->pesoReceptor;
+    }
+
+    /**
+     * Set duracionCpap
+     *
+     * @param integer $duracionCpap
+     *
+     * @return BlhReceptor
+     */
+    public function setDuracionCpap($duracionCpap)
+    {
+        $this->duracionCpap = $duracionCpap;
+
+        return $this;
+    }
+
+    /**
+     * Get duracionCpap
+     *
+     * @return integer
+     */
+    public function getDuracionCpap()
+    {
+        return $this->duracionCpap;
+    }
+
+    /**
+     * Set clasificacionLubchengo
+     *
+     * @param string $clasificacionLubchengo
+     *
+     * @return BlhReceptor
+     */
+    public function setClasificacionLubchengo($clasificacionLubchengo)
+    {
+        $this->clasificacionLubchengo = $clasificacionLubchengo;
+
+        return $this;
+    }
+
+    /**
+     * Get clasificacionLubchengo
+     *
+     * @return string
+     */
+    public function getClasificacionLubchengo()
+    {
+        return $this->clasificacionLubchengo;
+    }
+
+    /**
+     * Set diagnosticoIngreso
+     *
+     * @param string $diagnosticoIngreso
+     *
+     * @return BlhReceptor
+     */
+    public function setDiagnosticoIngreso($diagnosticoIngreso)
+    {
+        $this->diagnosticoIngreso = $diagnosticoIngreso;
+
+        return $this;
+    }
+
+    /**
+     * Get diagnosticoIngreso
+     *
+     * @return string
+     */
+    public function getDiagnosticoIngreso()
+    {
+        return $this->diagnosticoIngreso;
+    }
+
+    /**
+     * Set duracionNpt
+     *
+     * @param integer $duracionNpt
+     *
+     * @return BlhReceptor
+     */
+    public function setDuracionNpt($duracionNpt)
+    {
+        $this->duracionNpt = $duracionNpt;
+
+        return $this;
+    }
+
+    /**
+     * Get duracionNpt
+     *
+     * @return integer
+     */
+    public function getDuracionNpt()
+    {
+        return $this->duracionNpt;
+    }
+
+    /**
+     * Set apgarPrimerMinuto
+     *
+     * @param string $apgarPrimerMinuto
+     *
+     * @return BlhReceptor
+     */
+    public function setApgarPrimerMinuto($apgarPrimerMinuto)
+    {
+        $this->apgarPrimerMinuto = $apgarPrimerMinuto;
+
+        return $this;
+    }
+
+    /**
+     * Get apgarPrimerMinuto
+     *
+     * @return string
+     */
+    public function getApgarPrimerMinuto()
+    {
+        return $this->apgarPrimerMinuto;
+    }
+
+    /**
+     * Set edadGestFur
+     *
+     * @param string $edadGestFur
+     *
+     * @return BlhReceptor
+     */
+    public function setEdadGestFur($edadGestFur)
+    {
+        $this->edadGestFur = $edadGestFur;
+
+        return $this;
+    }
+
+    /**
+     * Get edadGestFur
+     *
+     * @return string
+     */
+    public function getEdadGestFur()
+    {
+        return $this->edadGestFur;
+    }
+
+    /**
+     * Set duracionVentilacion
+     *
+     * @param integer $duracionVentilacion
+     *
+     * @return BlhReceptor
+     */
+    public function setDuracionVentilacion($duracionVentilacion)
+    {
+        $this->duracionVentilacion = $duracionVentilacion;
+
+        return $this;
+    }
+
+    /**
+     * Get duracionVentilacion
+     *
+     * @return integer
+     */
+    public function getDuracionVentilacion()
+    {
+        return $this->duracionVentilacion;
+    }
+
+    /**
+     * Set edadGestBallard
+     *
+     * @param string $edadGestBallard
+     *
+     * @return BlhReceptor
+     */
+    public function setEdadGestBallard($edadGestBallard)
+    {
+        $this->edadGestBallard = $edadGestBallard;
+
+        return $this;
+    }
+
+    /**
+     * Get edadGestBallard
+     *
+     * @return string
+     */
+    public function getEdadGestBallard()
+    {
+        return $this->edadGestBallard;
+    }
+
+    /**
+     * Set pc
+     *
+     * @param string $pc
+     *
+     * @return BlhReceptor
+     */
+    public function setPc($pc)
+    {
+        $this->pc = $pc;
+
+        return $this;
+    }
+
+    /**
+     * Get pc
+     *
+     * @return string
+     */
+    public function getPc()
+    {
+        return $this->pc;
+    }
+
+    /**
+     * Set tallaIngreso
+     *
+     * @param string $tallaIngreso
+     *
+     * @return BlhReceptor
+     */
+    public function setTallaIngreso($tallaIngreso)
+    {
+        $this->tallaIngreso = $tallaIngreso;
+
+        return $this;
+    }
+
+    /**
+     * Get tallaIngreso
+     *
+     * @return string
+     */
+    public function getTallaIngreso()
+    {
+        return $this->tallaIngreso;
+    }
+
+    /**
+     * Set apgarQuintoMinuto
+     *
+     * @param string $apgarQuintoMinuto
+     *
+     * @return BlhReceptor
+     */
+    public function setApgarQuintoMinuto($apgarQuintoMinuto)
+    {
+        $this->apgarQuintoMinuto = $apgarQuintoMinuto;
+
+        return $this;
+    }
+
+    /**
+     * Get apgarQuintoMinuto
+     *
+     * @return string
+     */
+    public function getApgarQuintoMinuto()
+    {
+        return $this->apgarQuintoMinuto;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhReceptor
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhReceptor
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhReceptor
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
+    }
+
+    /**
+     * Set idPaciente
+     *
+     * @param \Minsal\SiapsBundle\Entity\MntPaciente $idPaciente
+     *
+     * @return BlhReceptor
+     */
+    public function setIdPaciente(\Minsal\SiapsBundle\Entity\MntPaciente $idPaciente = null)
+    {
+        $this->idPaciente = $idPaciente;
+
+        return $this;
+    }
+
+    /**
+     * Get idPaciente
+     *
+     * @return \Minsal\SiapsBundle\Entity\MntPaciente
+     */
+    public function getIdPaciente()
+    {
+        return $this->idPaciente;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhReceptor
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

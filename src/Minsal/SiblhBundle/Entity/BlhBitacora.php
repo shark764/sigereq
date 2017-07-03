@@ -174,4 +174,197 @@ class BlhBitacora implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set fechaAccion
+     *
+     * @param \DateTime $fechaAccion
+     *
+     * @return BlhBitacora
+     */
+    public function setFechaAccion($fechaAccion)
+    {
+        $this->fechaAccion = $fechaAccion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaAccion
+     *
+     * @return \DateTime
+     */
+    public function getFechaAccion()
+    {
+        return $this->fechaAccion;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return BlhBitacora
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set tabla
+     *
+     * @param string $tabla
+     *
+     * @return BlhBitacora
+     */
+    public function setTabla($tabla)
+    {
+        $this->tabla = $tabla;
+
+        return $this;
+    }
+
+    /**
+     * Get tabla
+     *
+     * @return string
+     */
+    public function getTabla()
+    {
+        return $this->tabla;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param string $usuario
+     *
+     * @return BlhBitacora
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return string
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set accion
+     *
+     * @param string $accion
+     *
+     * @return BlhBitacora
+     */
+    public function setAccion($accion)
+    {
+        $this->accion = $accion;
+
+        return $this;
+    }
+
+    /**
+     * Get accion
+     *
+     * @return string
+     */
+    public function getAccion()
+    {
+        return $this->accion;
+    }
+
+    /**
+     * Set detalle
+     *
+     * @param string $detalle
+     *
+     * @return BlhBitacora
+     */
+    public function setDetalle($detalle)
+    {
+        $this->detalle = $detalle;
+
+        return $this;
+    }
+
+    /**
+     * Get detalle
+     *
+     * @return string
+     */
+    public function getDetalle()
+    {
+        return $this->detalle;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhBitacora
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhBitacora
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

@@ -136,4 +136,149 @@ class BlhExamenDonante implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set resultadoExamen
+     *
+     * @param string $resultadoExamen
+     *
+     * @return BlhExamenDonante
+     */
+    public function setResultadoExamen($resultadoExamen)
+    {
+        $this->resultadoExamen = $resultadoExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get resultadoExamen
+     *
+     * @return string
+     */
+    public function getResultadoExamen()
+    {
+        return $this->resultadoExamen;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhExamenDonante
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhExamenDonante
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idDonante
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonante $idDonante
+     *
+     * @return BlhExamenDonante
+     */
+    public function setIdDonante(\Minsal\SiblhBundle\Entity\BlhDonante $idDonante = null)
+    {
+        $this->idDonante = $idDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get idDonante
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhDonante
+     */
+    public function getIdDonante()
+    {
+        return $this->idDonante;
+    }
+
+    /**
+     * Set idExamen
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhExamen $idExamen
+     *
+     * @return BlhExamenDonante
+     */
+    public function setIdExamen(\Minsal\SiblhBundle\Entity\BlhExamen $idExamen = null)
+    {
+        $this->idExamen = $idExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get idExamen
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhExamen
+     */
+    public function getIdExamen()
+    {
+        return $this->idExamen;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhExamenDonante
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

@@ -208,4 +208,269 @@ class BlhFrascoProcesado implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoFrascoProcesado
+     *
+     * @param string $codigoFrascoProcesado
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setCodigoFrascoProcesado($codigoFrascoProcesado)
+    {
+        $this->codigoFrascoProcesado = $codigoFrascoProcesado;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoFrascoProcesado
+     *
+     * @return string
+     */
+    public function getCodigoFrascoProcesado()
+    {
+        return $this->codigoFrascoProcesado;
+    }
+
+    /**
+     * Set volumenFrascoPasteurizado
+     *
+     * @param string $volumenFrascoPasteurizado
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setVolumenFrascoPasteurizado($volumenFrascoPasteurizado)
+    {
+        $this->volumenFrascoPasteurizado = $volumenFrascoPasteurizado;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenFrascoPasteurizado
+     *
+     * @return string
+     */
+    public function getVolumenFrascoPasteurizado()
+    {
+        return $this->volumenFrascoPasteurizado;
+    }
+
+    /**
+     * Set acidezTotal
+     *
+     * @param string $acidezTotal
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setAcidezTotal($acidezTotal)
+    {
+        $this->acidezTotal = $acidezTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get acidezTotal
+     *
+     * @return string
+     */
+    public function getAcidezTotal()
+    {
+        return $this->acidezTotal;
+    }
+
+    /**
+     * Set kcaloriasTotales
+     *
+     * @param string $kcaloriasTotales
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setKcaloriasTotales($kcaloriasTotales)
+    {
+        $this->kcaloriasTotales = $kcaloriasTotales;
+
+        return $this;
+    }
+
+    /**
+     * Get kcaloriasTotales
+     *
+     * @return string
+     */
+    public function getKcaloriasTotales()
+    {
+        return $this->kcaloriasTotales;
+    }
+
+    /**
+     * Set observacionFrascoProcesado
+     *
+     * @param string $observacionFrascoProcesado
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setObservacionFrascoProcesado($observacionFrascoProcesado)
+    {
+        $this->observacionFrascoProcesado = $observacionFrascoProcesado;
+
+        return $this;
+    }
+
+    /**
+     * Get observacionFrascoProcesado
+     *
+     * @return string
+     */
+    public function getObservacionFrascoProcesado()
+    {
+        return $this->observacionFrascoProcesado;
+    }
+
+    /**
+     * Set volumenDisponibleFp
+     *
+     * @param string $volumenDisponibleFp
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setVolumenDisponibleFp($volumenDisponibleFp)
+    {
+        $this->volumenDisponibleFp = $volumenDisponibleFp;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenDisponibleFp
+     *
+     * @return string
+     */
+    public function getVolumenDisponibleFp()
+    {
+        return $this->volumenDisponibleFp;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idEstado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhEstado $idEstado
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setIdEstado(\Minsal\SiblhBundle\Entity\BlhEstado $idEstado = null)
+    {
+        $this->idEstado = $idEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhEstado
+     */
+    public function getIdEstado()
+    {
+        return $this->idEstado;
+    }
+
+    /**
+     * Set idPasteurizacion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhPasteurizacion $idPasteurizacion
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setIdPasteurizacion(\Minsal\SiblhBundle\Entity\BlhPasteurizacion $idPasteurizacion = null)
+    {
+        $this->idPasteurizacion = $idPasteurizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idPasteurizacion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhPasteurizacion
+     */
+    public function getIdPasteurizacion()
+    {
+        return $this->idPasteurizacion;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

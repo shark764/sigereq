@@ -201,4 +201,269 @@ class BlhPasteurizacion implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoPasteurizacion
+     *
+     * @param string $codigoPasteurizacion
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setCodigoPasteurizacion($codigoPasteurizacion)
+    {
+        $this->codigoPasteurizacion = $codigoPasteurizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoPasteurizacion
+     *
+     * @return string
+     */
+    public function getCodigoPasteurizacion()
+    {
+        return $this->codigoPasteurizacion;
+    }
+
+    /**
+     * Set numCiclo
+     *
+     * @param integer $numCiclo
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setNumCiclo($numCiclo)
+    {
+        $this->numCiclo = $numCiclo;
+
+        return $this;
+    }
+
+    /**
+     * Get numCiclo
+     *
+     * @return integer
+     */
+    public function getNumCiclo()
+    {
+        return $this->numCiclo;
+    }
+
+    /**
+     * Set volumenPasteurizado
+     *
+     * @param string $volumenPasteurizado
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setVolumenPasteurizado($volumenPasteurizado)
+    {
+        $this->volumenPasteurizado = $volumenPasteurizado;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenPasteurizado
+     *
+     * @return string
+     */
+    public function getVolumenPasteurizado()
+    {
+        return $this->volumenPasteurizado;
+    }
+
+    /**
+     * Set numFrascosPasteurizados
+     *
+     * @param integer $numFrascosPasteurizados
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setNumFrascosPasteurizados($numFrascosPasteurizados)
+    {
+        $this->numFrascosPasteurizados = $numFrascosPasteurizados;
+
+        return $this;
+    }
+
+    /**
+     * Get numFrascosPasteurizados
+     *
+     * @return integer
+     */
+    public function getNumFrascosPasteurizados()
+    {
+        return $this->numFrascosPasteurizados;
+    }
+
+    /**
+     * Set fechaPasteurizacion
+     *
+     * @param \DateTime $fechaPasteurizacion
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setFechaPasteurizacion($fechaPasteurizacion)
+    {
+        $this->fechaPasteurizacion = $fechaPasteurizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaPasteurizacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaPasteurizacion()
+    {
+        return $this->fechaPasteurizacion;
+    }
+
+    /**
+     * Set responsablePasteurizacion
+     *
+     * @param string $responsablePasteurizacion
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setResponsablePasteurizacion($responsablePasteurizacion)
+    {
+        $this->responsablePasteurizacion = $responsablePasteurizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get responsablePasteurizacion
+     *
+     * @return string
+     */
+    public function getResponsablePasteurizacion()
+    {
+        return $this->responsablePasteurizacion;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set volumenTotal
+     *
+     * @param string $volumenTotal
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setVolumenTotal($volumenTotal)
+    {
+        $this->volumenTotal = $volumenTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenTotal
+     *
+     * @return string
+     */
+    public function getVolumenTotal()
+    {
+        return $this->volumenTotal;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idCurva
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCurva $idCurva
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setIdCurva(\Minsal\SiblhBundle\Entity\BlhCurva $idCurva = null)
+    {
+        $this->idCurva = $idCurva;
+
+        return $this;
+    }
+
+    /**
+     * Get idCurva
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCurva
+     */
+    public function getIdCurva()
+    {
+        return $this->idCurva;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhPasteurizacion
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

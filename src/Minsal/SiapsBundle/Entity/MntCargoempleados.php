@@ -39,6 +39,70 @@ class MntCargoempleados
      */
     private $idAtencion;
 
+    /**
+     * ToString
+     */
+    public function __toString()
+    {
+        return (string) $this->cargo ? : '';
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cargo
+     *
+     * @param string $cargo
+     *
+     * @return MntCargoempleados
+     */
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
+
+        return $this;
+    }
+
+    /**
+     * Get cargo
+     *
+     * @return string
+     */
+    public function getCargo()
+    {
+        return $this->cargo;
+    }
+
+    /**
+     * Set idAtencion
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlAtencion $idAtencion
+     *
+     * @return MntCargoempleados
+     */
+    public function setIdAtencion(\Minsal\SiapsBundle\Entity\CtlAtencion $idAtencion = null)
+    {
+        $this->idAtencion = $idAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Get idAtencion
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlAtencion
+     */
+    public function getIdAtencion()
+    {
+        return $this->idAtencion;
+    }
 
 }
-

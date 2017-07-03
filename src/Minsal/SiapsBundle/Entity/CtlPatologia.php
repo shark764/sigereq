@@ -39,7 +39,7 @@ class CtlPatologia
     /**
      * @var \CtlPatologia
      *
-     * @ORM\ManyToOne(targetEntity="CtlPatologia")
+     * @ORM\ManyToOne(targetEntity="CtlPatologia", inversedBy="patologiaSubPatologias")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_patologia_padre", referencedColumnName="id")
      * })
@@ -56,6 +56,165 @@ class CtlPatologia
      */
     private $idTipoPatologia;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CtlPatologia", mappedBy="idPatologiaPadre", cascade={"all"}, orphanRemoval=true)
+     */
+    private $patologiaSubPatologias;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->patologiaSubPatologias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * ToString
+     */
+    public function __toString()
+    {
+        return (string) $this->nombre ? : '';
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return CtlPatologia
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set notificacion
+     *
+     * @param boolean $notificacion
+     *
+     * @return CtlPatologia
+     */
+    public function setNotificacion($notificacion)
+    {
+        $this->notificacion = $notificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get notificacion
+     *
+     * @return boolean
+     */
+    public function getNotificacion()
+    {
+        return $this->notificacion;
+    }
+
+    /**
+     * Set idPatologiaPadre
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlPatologia $idPatologiaPadre
+     *
+     * @return CtlPatologia
+     */
+    public function setIdPatologiaPadre(\Minsal\SiapsBundle\Entity\CtlPatologia $idPatologiaPadre = null)
+    {
+        $this->idPatologiaPadre = $idPatologiaPadre;
+
+        return $this;
+    }
+
+    /**
+     * Get idPatologiaPadre
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlPatologia
+     */
+    public function getIdPatologiaPadre()
+    {
+        return $this->idPatologiaPadre;
+    }
+
+    /**
+     * Set idTipoPatologia
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlTipoPatologia $idTipoPatologia
+     *
+     * @return CtlPatologia
+     */
+    public function setIdTipoPatologia(\Minsal\SiapsBundle\Entity\CtlTipoPatologia $idTipoPatologia = null)
+    {
+        $this->idTipoPatologia = $idTipoPatologia;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoPatologia
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlTipoPatologia
+     */
+    public function getIdTipoPatologia()
+    {
+        return $this->idTipoPatologia;
+    }
+
+    /**
+     * Add patologiaSubPatologia
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlPatologia $patologiaSubPatologia
+     *
+     * @return CtlPatologia
+     */
+    public function addPatologiaSubPatologia(\Minsal\SiapsBundle\Entity\CtlPatologia $patologiaSubPatologia)
+    {
+        $this->patologiaSubPatologias[] = $patologiaSubPatologia;
+
+        return $this;
+    }
+
+    /**
+     * Remove patologiaSubPatologia
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlPatologia $patologiaSubPatologia
+     */
+    public function removePatologiaSubPatologia(\Minsal\SiapsBundle\Entity\CtlPatologia $patologiaSubPatologia)
+    {
+        $this->patologiaSubPatologias->removeElement($patologiaSubPatologia);
+    }
+
+    /**
+     * Get patologiaSubPatologias
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPatologiaSubPatologias()
+    {
+        return $this->patologiaSubPatologias;
+    }
 
 }
-

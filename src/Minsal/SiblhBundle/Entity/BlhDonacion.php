@@ -174,4 +174,221 @@ class BlhDonacion implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoDonante
+     *
+     * @param string $codigoDonante
+     *
+     * @return BlhDonacion
+     */
+    public function setCodigoDonante($codigoDonante)
+    {
+        $this->codigoDonante = $codigoDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoDonante
+     *
+     * @return string
+     */
+    public function getCodigoDonante()
+    {
+        return $this->codigoDonante;
+    }
+
+    /**
+     * Set fechaDonacion
+     *
+     * @param \DateTime $fechaDonacion
+     *
+     * @return BlhDonacion
+     */
+    public function setFechaDonacion($fechaDonacion)
+    {
+        $this->fechaDonacion = $fechaDonacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaDonacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaDonacion()
+    {
+        return $this->fechaDonacion;
+    }
+
+    /**
+     * Set responsableDonacion
+     *
+     * @param string $responsableDonacion
+     *
+     * @return BlhDonacion
+     */
+    public function setResponsableDonacion($responsableDonacion)
+    {
+        $this->responsableDonacion = $responsableDonacion;
+
+        return $this;
+    }
+
+    /**
+     * Get responsableDonacion
+     *
+     * @return string
+     */
+    public function getResponsableDonacion()
+    {
+        return $this->responsableDonacion;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhDonacion
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhDonacion
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idDonante
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonante $idDonante
+     *
+     * @return BlhDonacion
+     */
+    public function setIdDonante(\Minsal\SiblhBundle\Entity\BlhDonante $idDonante = null)
+    {
+        $this->idDonante = $idDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get idDonante
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhDonante
+     */
+    public function getIdDonante()
+    {
+        return $this->idDonante;
+    }
+
+    /**
+     * Set idCentroRecoleccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\CtlCentroRecoleccion $idCentroRecoleccion
+     *
+     * @return BlhDonacion
+     */
+    public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\CtlCentroRecoleccion $idCentroRecoleccion = null)
+    {
+        $this->idCentroRecoleccion = $idCentroRecoleccion;
+
+        return $this;
+    }
+
+    /**
+     * Get idCentroRecoleccion
+     *
+     * @return \Minsal\SiblhBundle\Entity\CtlCentroRecoleccion
+     */
+    public function getIdCentroRecoleccion()
+    {
+        return $this->idCentroRecoleccion;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhDonacion
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhDonacion
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

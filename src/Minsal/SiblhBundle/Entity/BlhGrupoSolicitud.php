@@ -114,4 +114,101 @@ class BlhGrupoSolicitud implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set codigoGrupoSolicitud
+     *
+     * @param string $codigoGrupoSolicitud
+     *
+     * @return BlhGrupoSolicitud
+     */
+    public function setCodigoGrupoSolicitud($codigoGrupoSolicitud)
+    {
+        $this->codigoGrupoSolicitud = $codigoGrupoSolicitud;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoGrupoSolicitud
+     *
+     * @return string
+     */
+    public function getCodigoGrupoSolicitud()
+    {
+        return $this->codigoGrupoSolicitud;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhGrupoSolicitud
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhGrupoSolicitud
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhGrupoSolicitud
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }

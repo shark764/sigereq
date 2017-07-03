@@ -131,4 +131,149 @@ class BlhFrascoRecolectadoFrascoP implements EntityInterface
     {
         return $this->id;
     }
+
+    /**
+     * Set volumenAgregado
+     *
+     * @param string $volumenAgregado
+     *
+     * @return BlhFrascoRecolectadoFrascoP
+     */
+    public function setVolumenAgregado($volumenAgregado)
+    {
+        $this->volumenAgregado = $volumenAgregado;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenAgregado
+     *
+     * @return string
+     */
+    public function getVolumenAgregado()
+    {
+        return $this->volumenAgregado;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     *
+     * @return BlhFrascoRecolectadoFrascoP
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set fechaHoraReg
+     *
+     * @param \DateTime $fechaHoraReg
+     *
+     * @return BlhFrascoRecolectadoFrascoP
+     */
+    public function setFechaHoraReg($fechaHoraReg)
+    {
+        $this->fechaHoraReg = $fechaHoraReg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaHoraReg
+     *
+     * @return \DateTime
+     */
+    public function getFechaHoraReg()
+    {
+        return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set idFrascoProcesado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoProcesado $idFrascoProcesado
+     *
+     * @return BlhFrascoRecolectadoFrascoP
+     */
+    public function setIdFrascoProcesado(\Minsal\SiblhBundle\Entity\BlhFrascoProcesado $idFrascoProcesado = null)
+    {
+        $this->idFrascoProcesado = $idFrascoProcesado;
+
+        return $this;
+    }
+
+    /**
+     * Get idFrascoProcesado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhFrascoProcesado
+     */
+    public function getIdFrascoProcesado()
+    {
+        return $this->idFrascoProcesado;
+    }
+
+    /**
+     * Set idFrascoRecolectado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado
+     *
+     * @return BlhFrascoRecolectadoFrascoP
+     */
+    public function setIdFrascoRecolectado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado = null)
+    {
+        $this->idFrascoRecolectado = $idFrascoRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Get idFrascoRecolectado
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado
+     */
+    public function getIdFrascoRecolectado()
+    {
+        return $this->idFrascoRecolectado;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return BlhFrascoRecolectadoFrascoP
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
+    }
+
 }
