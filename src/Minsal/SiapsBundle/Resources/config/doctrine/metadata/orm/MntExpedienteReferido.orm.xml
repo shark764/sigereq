@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntExpedienteReferido" table="mnt_expediente_referido">
+    <indexes>
+      <index name="IDX_56FC0F12CC9E1B67" columns="id_creacion_expediente"/>
+      <index name="IDX_56FC0F127DFA12F6" columns="id_establecimiento"/>
+      <index name="IDX_56FC0F125916625F" columns="id_establecimiento_origen"/>
+      <index name="IDX_56FC0F12D7D198FB" columns="id_referido"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="mnt_expediente_referido_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numero" type="string" column="numero" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Numero de expediente a registrar</option>
+      </options>
+    </field>
+    <field name="fechaCreacion" type="date" column="fecha_creacion" nullable="true">
+      <options>
+        <option name="comment">Fecha de creación</option>
+      </options>
+    </field>
+    <field name="horaCreacion" type="time" column="hora_creacion" nullable="true">
+      <options>
+        <option name="comment">Hora de la creación</option>
+      </options>
+    </field>
+    <many-to-one field="idReferido" target-entity="MntPacienteReferido" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_referido" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimientoOrigen" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento_origen" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCreacionExpediente" target-entity="CtlCreacionExpediente" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_creacion_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

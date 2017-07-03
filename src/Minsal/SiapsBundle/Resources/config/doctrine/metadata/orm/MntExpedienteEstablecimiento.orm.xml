@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntExpedienteEstablecimiento" table="mnt_expediente_establecimiento">
+    <indexes>
+      <index name="IDX_8715ED227DFA12F6" columns="id_establecimiento"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="mnt_expediente_establecimiento_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="idPacienteInicial" type="bigint" column="id_paciente_inicial" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Identificación unico del paciente</option>
+      </options>
+    </field>
+    <field name="idPacienteSiapLocal" type="bigint" column="id_paciente_siap_local" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Id paciente local que posee en el establecimiento donde posee el expediente</option>
+      </options>
+    </field>
+    <field name="idNumeroExpediente" type="bigint" column="id_numero_expediente" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">id del numero de expediente del paciente a nivel local</option>
+      </options>
+    </field>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

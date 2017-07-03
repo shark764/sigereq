@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlEstablecimiento" table="ctl_establecimiento">
+    <indexes>
+      <index name="IDX_332BD42CEF433A34" columns="id_institucion"/>
+      <index name="IDX_332BD42C3544B551" columns="id_establecimiento_padre"/>
+      <index name="IDX_332BD42C7EAD49C7" columns="id_municipio"/>
+      <index name="IDX_332BD42C4E0E50FD" columns="id_tipo_establecimiento"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ctl_establecimiento_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="150" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombre del establecimiento de salud</option>
+      </options>
+    </field>
+    <field name="direccion" type="string" column="direccion" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Lugar físico del establecimiento</option>
+      </options>
+    </field>
+    <field name="telefono" type="string" column="telefono" length="15" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Teléfono de contacto del establecimiento</option>
+      </options>
+    </field>
+    <field name="fax" type="string" column="fax" length="15" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Fax del establecimiento</option>
+      </options>
+    </field>
+    <field name="latitud" type="decimal" column="latitud" precision="10" scale="4" nullable="true">
+      <options>
+        <option name="comment">Coordenadas de latitud para sistema georeferencial</option>
+      </options>
+    </field>
+    <field name="longitud" type="decimal" column="longitud" precision="10" scale="4" nullable="true">
+      <options>
+        <option name="comment">Coordenadas de longitud para sistema georeferencial</option>
+      </options>
+    </field>
+    <field name="idNivelMinsal" type="integer" column="id_nivel_minsal" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Representa el nivel del establecimiento, pueden ser 1,2,3</option>
+      </options>
+    </field>
+    <field name="codUcsf" type="integer" column="cod_ucsf" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Código asignados a la Unidad Comunitaria de Salud Familiar.</option>
+      </options>
+    </field>
+    <field name="activo" type="boolean" column="activo" nullable="true">
+      <options>
+        <option name="comment">Estado del establecimiento</option>
+      </options>
+    </field>
+    <field name="tipoExpediente" type="string" column="tipo_expediente" length="1" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+        <option name="comment">Los tipos de expedientes son: G = Utiliza guión (xxx-xx); I = Infinito</option>
+      </options>
+    </field>
+    <field name="configurado" type="boolean" column="configurado" nullable="true">
+      <options>
+        <option name="comment">Determina cual es el establecimiento que esta configurado </option>
+      </options>
+    </field>
+    <field name="tipoFarmacia" type="boolean" column="tipo_farmacia" nullable="true">
+      <options>
+        <option name="comment">Representa el tipo de farmacia que opera en el establecimiento</option>
+      </options>
+    </field>
+    <field name="diasIntermediosCitas" type="integer" column="dias_intermedios_citas" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Variable que determina entre cuantos dias se puede dejar una cita</option>
+      </options>
+    </field>
+    <field name="citasSinExpediente" type="boolean" column="citas_sin_expediente" nullable="true">
+      <options>
+        <option name="comment">Campo que determina si el establecimiento puede dejar citas sin expedientes. Generalmente cuando es por telefono</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="tipoImpresion" type="integer" column="tipo_impresion" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Tipo de impresión para citas 1-comprobante , 2- ticket</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="minutoshora" type="integer" column="minutoshora" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">1:si son minutos, 2: si es hora</option>
+      </options>
+    </field>
+    <field name="tiempoprevioalacita" type="integer" column="tiempoprevioalacita" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Tiempo previo que el paciente debe presentarse a su cita</option>
+      </options>
+    </field>
+    <field name="distribucionEspecial" type="boolean" column="distribucion_especial" nullable="true">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
+    <many-to-one field="idTipoEstablecimiento" target-entity="CtlTipoEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_tipo_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idMunicipio" target-entity="CtlMunicipio" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_municipio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimientoPadre" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento_padre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idInstitucion" target-entity="CtlInstitucion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_institucion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

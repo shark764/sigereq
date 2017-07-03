@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhHistoriaActual" table="blh_historia_actual">
+    <indexes>
+      <index name="fki_blh_his_fk_hab_tox" columns="habito_toxico"/>
+      <index name="fki_blh_his_fk_pat" columns="patologia"/>
+      <index name="fki_blh_his_hab" columns="habito_toxico"/>
+      <index name="IDX_F93902A254F03532" columns="id_donante"/>
+      <index name="IDX_F93902A2D8A5832B" columns="id_user_reg"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_historia_actual_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="pesoDonante" type="decimal" column="peso_donante" precision="7" scale="4" nullable="false"/>
+    <field name="tallaDonante" type="decimal" column="talla_donante" precision="7" scale="4" nullable="false"/>
+    <field name="medicamento" type="string" column="medicamento" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="motivoDonacion" type="string" column="motivo_donacion" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imc" type="decimal" column="imc" precision="7" scale="4" nullable="false"/>
+    <field name="estadoDonante" type="string" column="estado_donante" length="12" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="habitoToxico" target-entity="CtlHabitoToxico" fetch="LAZY">
+      <join-columns>
+        <join-column name="habito_toxico" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="patologia" target-entity="CtlPatologia" fetch="LAZY">
+      <join-columns>
+        <join-column name="patologia" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonante" target-entity="BlhDonante" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_donante" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -39,24 +39,26 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @var \SanRafael\RequerimientosBundle\Entity\ReqEmpleado
+     * @var \Minsal\SiapsBundle\Entity\MntEmpleado
      *
-     * @ORM\ManyToOne(targetEntity="SanRafael\RequerimientosBundle\Entity\ReqEmpleado")
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntEmpleado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
-    protected $idEmpleado;
+    private $idEmpleado;
 
     /**
-     * @var \SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion
+     * @var \Minsal\SiapsBundle\Entity\CtlEstablecimiento
      *
-     * @ORM\ManyToOne(targetEntity="SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion")
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlEstablecimiento")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_area_servicio_atencion", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_establecimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
-    private $idAreaServicioAtencion;
+    private $idEstablecimiento;
 
     public function __toString()
     {
@@ -96,11 +98,10 @@ class User extends BaseUser
     /**
      * Set idEmpleado
      *
-     * @param \SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idEmpleado
-     *
-     * @return ReqEmpleado
+     * @param \Minsal\SiapsBundle\Entity\MntEmpleado $idEmpleado
+     * @return User
      */
-    public function setIdEmpleado(\SanRafael\RequerimientosBundle\Entity\ReqEmpleado $idEmpleado = null)
+    public function setIdEmpleado(\Minsal\SiapsBundle\Entity\MntEmpleado $idEmpleado = null)
     {
         $this->idEmpleado = $idEmpleado;
 
@@ -110,7 +111,7 @@ class User extends BaseUser
     /**
      * Get idEmpleado
      *
-     * @return \SanRafael\RequerimientosBundle\Entity\ReqEmpleado
+     * @return \Minsal\SiapsBundle\Entity\MntEmpleado 
      */
     public function getIdEmpleado()
     {
@@ -118,27 +119,26 @@ class User extends BaseUser
     }
 
     /**
-     * Set idAreaServicioAtencion
+     * Set idEstablecimiento
      *
-     * @param \SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion $idAreaServicioAtencion
-     *
-     * @return ReqEmpleado
+     * @param \Minsal\SiapsBundle\Entity\CtlEstablecimiento $idEstablecimiento
+     * @return User
      */
-    public function setIdAreaServicioAtencion(\SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion $idAreaServicioAtencion = null)
+    public function setIdEstablecimiento(\Minsal\SiapsBundle\Entity\CtlEstablecimiento $idEstablecimiento = null)
     {
-        $this->idAreaServicioAtencion = $idAreaServicioAtencion;
+        $this->idEstablecimiento = $idEstablecimiento;
 
         return $this;
     }
 
     /**
-     * Get idAreaServicioAtencion
+     * Get idEstablecimiento
      *
-     * @return \SanRafael\RequerimientosBundle\Entity\ReqAreaServicioAtencion
+     * @return \Minsal\SiapsBundle\Entity\CtlEstablecimiento 
      */
-    public function getIdAreaServicioAtencion()
+    public function getIdEstablecimiento()
     {
-        return $this->idAreaServicioAtencion;
+        return $this->idEstablecimiento;
     }
 
     /**

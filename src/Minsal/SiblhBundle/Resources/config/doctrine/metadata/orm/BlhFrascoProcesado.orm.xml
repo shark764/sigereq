@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhFrascoProcesado" table="blh_frasco_procesado">
+    <indexes>
+      <index name="fk_pasteurizacion_frasco_proces" columns="id_pasteurizacion"/>
+      <index name="IDX_4BD55E3D6A540E" columns="id_estado"/>
+      <index name="IDX_4BD55E3DD8A5832B" columns="id_user_reg"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_frasco_procesado_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoFrascoProcesado" type="string" column="codigo_frasco_procesado" length="15" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="volumenFrascoPasteurizado" type="decimal" column="volumen_frasco_pasteurizado" precision="7" scale="4" nullable="false"/>
+    <field name="acidezTotal" type="decimal" column="acidez_total" precision="7" scale="4" nullable="false"/>
+    <field name="kcaloriasTotales" type="decimal" column="kcalorias_totales" precision="7" scale="4" nullable="false"/>
+    <field name="observacionFrascoProcesado" type="string" column="observacion_frasco_procesado" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="volumenDisponibleFp" type="decimal" column="volumen_disponible_fp" precision="7" scale="4" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPasteurizacion" target-entity="BlhPasteurizacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_pasteurizacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstado" target-entity="BlhEstado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_estado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

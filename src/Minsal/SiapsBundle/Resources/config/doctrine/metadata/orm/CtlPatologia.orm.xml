@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CtlPatologia" table="ctl_patologia">
+    <indexes>
+      <index name="fki_tipo_patologia_patologia" columns="id_tipo_patologia"/>
+      <index name="fki_patologia_patologia" columns="id_patologia_padre"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ctl_patologia_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Almacena nombres de patologias</option>
+      </options>
+    </field>
+    <field name="notificacion" type="boolean" column="notificacion" nullable="false">
+      <options>
+        <option name="comment">Indica si la patologia es de notificacion o no </option>
+        <option name="default"/>
+      </options>
+    </field>
+    <many-to-one field="idTipoPatologia" target-entity="CtlTipoPatologia" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_tipo_patologia" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPatologiaPadre" target-entity="CtlPatologia" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_patologia_padre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhInformacionPublica" table="blh_informacion_publica">
+    <indexes>
+      <index name="fk_banco_de_leche_informacion_p" columns="id_banco_de_leche"/>
+      <index name="IDX_E463F775D8A5832B" columns="id_user_reg"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_informacion_publica_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="path" type="string" column="path" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipo" type="string" column="tipo" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreDocumento" type="string" column="nombre_documento" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaPublicacion" type="date" column="fecha_publicacion" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

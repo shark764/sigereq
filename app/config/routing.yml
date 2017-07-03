@@ -1,3 +1,13 @@
+minsal_siaps:
+    resource: "@MinsalSiapsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+minsal_siblh:
+    resource: "@MinsalSiblhBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 san_rafael_admin:
     resource: "@SanRafaelAdminBundle/Controller/"
     type:     annotation

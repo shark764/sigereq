@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhEgresoReceptor" table="blh_egreso_receptor">
+    <indexes>
+      <index name="fk_receptor_egreso_receptor" columns="id_receptor"/>
+      <index name="IDX_7993CDC67DFA12F6" columns="id_establecimiento"/>
+      <index name="IDX_7993CDC6D8A5832B" columns="id_user_reg"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_egreso_receptor_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="diagnosticoEgreso" type="string" column="diagnostico_egreso" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="madreCanguro" type="string" column="madre_canguro" length="2" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoEgreso" type="string" column="tipo_egreso" length="6" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="comentarioEgreso" type="string" column="comentario_egreso" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="trasladoPeriferico" type="string" column="traslado_periferico" length="2" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="permanenciaUcin" type="integer" column="permanencia_ucin" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="hospitalSeguimientoEgreso" type="string" column="hospital_seguimiento_egreso" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaEgreso" type="date" column="fecha_egreso" nullable="false"/>
+    <field name="estanciaHospitalaria" type="integer" column="estancia_hospitalaria" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="usuario" type="integer" column="usuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="diasPermanencia" type="integer" column="dias_permanencia" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idReceptor" target-entity="BlhReceptor" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_receptor" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

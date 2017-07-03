@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MntExpediente" table="mnt_expediente">
+    <indexes>
+      <index name="IDX_E4950F57CC9E1B67" columns="id_creacion_expediente"/>
+      <index name="IDX_E4950F577DFA12F6" columns="id_establecimiento"/>
+      <index name="IDX_E4950F57961045CB" columns="id_paciente"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_id_id_paciente" columns="id,id_paciente"/>
+      <unique-constraint name="idx_numero_expediente" columns="numero"/>
+    </unique-constraints>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="mnt_expediente_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numero" type="string" column="numero" length="12" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Número de expediente de un paciente en el SIAPS local</option>
+      </options>
+    </field>
+    <field name="habilitado" type="boolean" column="habilitado" nullable="false">
+      <options>
+        <option name="comment">Para determinar si el expediente esta habilitado. TRUE=Habilitado; FALSE= Deshabilitado</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="fechaCreacion" type="date" column="fecha_creacion" nullable="true">
+      <options>
+        <option name="comment">almacena la fecha de creacion</option>
+      </options>
+    </field>
+    <field name="horaCreacion" type="time" column="hora_creacion" nullable="true">
+      <options>
+        <option name="comment">almacena la hora de creacion</option>
+      </options>
+    </field>
+    <field name="numeroTemporal" type="boolean" column="numero_temporal" nullable="true">
+      <options>
+        <option name="comment">almacena el numero temporal</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <many-to-one field="idPaciente" target-entity="MntPaciente" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_paciente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCreacionExpediente" target-entity="CtlCreacionExpediente" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_creacion_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

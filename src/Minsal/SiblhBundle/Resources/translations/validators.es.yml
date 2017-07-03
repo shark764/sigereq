@@ -1,0 +1,8 @@
+# validators.es.yml
+
+author.name.not_blank:      Please enter an author name.
+
+foreign.default.not_null:   Por favor seleccione un elemento.
+foreign.default.not_blank:  Por favor introduzca un valor.
+regex.match.true:           Texto solo puede contener caracteres permitidos
+regex.match.false:          Texto contiene caracteres no permitidos
