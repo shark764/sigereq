@@ -16,7 +16,7 @@ class BlhPasteurizacionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoPasteurizacion')
             ->add('numCiclo')
             ->add('volumenPasteurizado')
@@ -25,7 +25,7 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('responsablePasteurizacion')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -35,7 +35,7 @@ class BlhPasteurizacionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoPasteurizacion')
             ->add('numCiclo')
             ->add('volumenPasteurizado')
@@ -44,7 +44,7 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('responsablePasteurizacion')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -61,7 +61,7 @@ class BlhPasteurizacionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoPasteurizacion')
             ->add('numCiclo')
             ->add('volumenPasteurizado')
@@ -70,7 +70,7 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('responsablePasteurizacion')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -80,7 +80,7 @@ class BlhPasteurizacionAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoPasteurizacion')
             ->add('numCiclo')
             ->add('volumenPasteurizado')
@@ -89,7 +89,8 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('responsablePasteurizacion')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

@@ -16,7 +16,7 @@ class BlhHistorialClinicoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('controlPrenatal')
             ->add('edadGestFur')
             ->add('lugarControl')
@@ -33,7 +33,7 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -43,7 +43,7 @@ class BlhHistorialClinicoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('controlPrenatal')
             ->add('edadGestFur')
             ->add('lugarControl')
@@ -60,7 +60,7 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -77,7 +77,7 @@ class BlhHistorialClinicoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('controlPrenatal')
             ->add('edadGestFur')
             ->add('lugarControl')
@@ -94,7 +94,7 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -104,7 +104,7 @@ class BlhHistorialClinicoAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('controlPrenatal')
             ->add('edadGestFur')
             ->add('lugarControl')
@@ -121,7 +121,8 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

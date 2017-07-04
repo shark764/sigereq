@@ -16,7 +16,7 @@ class BlhFrascoProcesadoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoFrascoProcesado')
             ->add('volumenFrascoPasteurizado')
             ->add('acidezTotal')
@@ -24,7 +24,7 @@ class BlhFrascoProcesadoAdmin extends Admin
             ->add('observacionFrascoProcesado')
             ->add('volumenDisponibleFp')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -34,7 +34,7 @@ class BlhFrascoProcesadoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoFrascoProcesado')
             ->add('volumenFrascoPasteurizado')
             ->add('acidezTotal')
@@ -42,7 +42,7 @@ class BlhFrascoProcesadoAdmin extends Admin
             ->add('observacionFrascoProcesado')
             ->add('volumenDisponibleFp')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -59,7 +59,7 @@ class BlhFrascoProcesadoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoFrascoProcesado')
             ->add('volumenFrascoPasteurizado')
             ->add('acidezTotal')
@@ -67,7 +67,7 @@ class BlhFrascoProcesadoAdmin extends Admin
             ->add('observacionFrascoProcesado')
             ->add('volumenDisponibleFp')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -77,7 +77,7 @@ class BlhFrascoProcesadoAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoFrascoProcesado')
             ->add('volumenFrascoPasteurizado')
             ->add('acidezTotal')
@@ -85,7 +85,8 @@ class BlhFrascoProcesadoAdmin extends Admin
             ->add('observacionFrascoProcesado')
             ->add('volumenDisponibleFp')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

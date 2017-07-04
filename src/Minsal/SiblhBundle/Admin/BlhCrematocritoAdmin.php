@@ -16,7 +16,7 @@ class BlhCrematocritoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('crema1')
             ->add('crema2')
             ->add('crema3')
@@ -28,7 +28,7 @@ class BlhCrematocritoAdmin extends Admin
             ->add('porcentajeCrema')
             ->add('kilocalorias')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -38,7 +38,7 @@ class BlhCrematocritoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('crema1')
             ->add('crema2')
             ->add('crema3')
@@ -50,7 +50,7 @@ class BlhCrematocritoAdmin extends Admin
             ->add('porcentajeCrema')
             ->add('kilocalorias')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -67,7 +67,7 @@ class BlhCrematocritoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('crema1')
             ->add('crema2')
             ->add('crema3')
@@ -79,7 +79,7 @@ class BlhCrematocritoAdmin extends Admin
             ->add('porcentajeCrema')
             ->add('kilocalorias')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -89,7 +89,7 @@ class BlhCrematocritoAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('crema1')
             ->add('crema2')
             ->add('crema3')
@@ -101,7 +101,8 @@ class BlhCrematocritoAdmin extends Admin
             ->add('porcentajeCrema')
             ->add('kilocalorias')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

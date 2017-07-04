@@ -16,14 +16,14 @@ class BlhBitacoraAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
             ->add('usuario')
             ->add('accion')
             ->add('detalle')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -33,14 +33,14 @@ class BlhBitacoraAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
             ->add('usuario')
             ->add('accion')
             ->add('detalle')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -57,14 +57,14 @@ class BlhBitacoraAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
             ->add('usuario')
             ->add('accion')
             ->add('detalle')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -74,14 +74,15 @@ class BlhBitacoraAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
             ->add('usuario')
             ->add('accion')
             ->add('detalle')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

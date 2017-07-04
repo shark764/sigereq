@@ -16,12 +16,12 @@ class BlhDonacionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('fechaDonacion')
             ->add('responsableDonacion')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -31,12 +31,12 @@ class BlhDonacionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('fechaDonacion')
             ->add('responsableDonacion')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -53,12 +53,12 @@ class BlhDonacionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('fechaDonacion')
             ->add('responsableDonacion')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -68,12 +68,13 @@ class BlhDonacionAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('fechaDonacion')
             ->add('responsableDonacion')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

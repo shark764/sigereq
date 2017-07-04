@@ -16,7 +16,7 @@ class BlhSolicitudAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoSolicitud')
             ->add('volumenPorDia')
             ->add('acidezNecesaria')
@@ -29,7 +29,7 @@ class BlhSolicitudAdmin extends Admin
             ->add('estado')
             ->add('responsable')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -39,7 +39,7 @@ class BlhSolicitudAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoSolicitud')
             ->add('volumenPorDia')
             ->add('acidezNecesaria')
@@ -52,7 +52,7 @@ class BlhSolicitudAdmin extends Admin
             ->add('estado')
             ->add('responsable')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -69,7 +69,7 @@ class BlhSolicitudAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoSolicitud')
             ->add('volumenPorDia')
             ->add('acidezNecesaria')
@@ -82,7 +82,7 @@ class BlhSolicitudAdmin extends Admin
             ->add('estado')
             ->add('responsable')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -92,7 +92,7 @@ class BlhSolicitudAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoSolicitud')
             ->add('volumenPorDia')
             ->add('acidezNecesaria')
@@ -105,7 +105,8 @@ class BlhSolicitudAdmin extends Admin
             ->add('estado')
             ->add('responsable')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

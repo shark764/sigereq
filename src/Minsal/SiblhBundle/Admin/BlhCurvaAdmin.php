@@ -16,7 +16,7 @@ class BlhCurvaAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('tiempo1')
             ->add('tiempo2')
             ->add('tiempo3')
@@ -27,7 +27,7 @@ class BlhCurvaAdmin extends Admin
             ->add('horaInicioCurva')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -37,7 +37,7 @@ class BlhCurvaAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('tiempo1')
             ->add('tiempo2')
             ->add('tiempo3')
@@ -48,7 +48,7 @@ class BlhCurvaAdmin extends Admin
             ->add('horaInicioCurva')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -65,7 +65,7 @@ class BlhCurvaAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('tiempo1')
             ->add('tiempo2')
             ->add('tiempo3')
@@ -76,7 +76,7 @@ class BlhCurvaAdmin extends Admin
             ->add('horaInicioCurva')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -86,7 +86,7 @@ class BlhCurvaAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('tiempo1')
             ->add('tiempo2')
             ->add('tiempo3')
@@ -97,7 +97,8 @@ class BlhCurvaAdmin extends Admin
             ->add('horaInicioCurva')
             ->add('usuario')
             ->add('volumenTotal')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

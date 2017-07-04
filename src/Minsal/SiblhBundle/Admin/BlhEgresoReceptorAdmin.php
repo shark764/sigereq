@@ -16,7 +16,7 @@ class BlhEgresoReceptorAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('diagnosticoEgreso')
             ->add('madreCanguro')
             ->add('tipoEgreso')
@@ -28,7 +28,7 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('estanciaHospitalaria')
             ->add('usuario')
             ->add('diasPermanencia')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -38,7 +38,7 @@ class BlhEgresoReceptorAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('diagnosticoEgreso')
             ->add('madreCanguro')
             ->add('tipoEgreso')
@@ -50,7 +50,7 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('estanciaHospitalaria')
             ->add('usuario')
             ->add('diasPermanencia')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -67,7 +67,7 @@ class BlhEgresoReceptorAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('diagnosticoEgreso')
             ->add('madreCanguro')
             ->add('tipoEgreso')
@@ -79,7 +79,7 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('estanciaHospitalaria')
             ->add('usuario')
             ->add('diasPermanencia')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -89,7 +89,7 @@ class BlhEgresoReceptorAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('diagnosticoEgreso')
             ->add('madreCanguro')
             ->add('tipoEgreso')
@@ -101,7 +101,8 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('estanciaHospitalaria')
             ->add('usuario')
             ->add('diasPermanencia')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

@@ -16,7 +16,7 @@ class BlhDonanteAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('primerNombre')
             ->add('segundoNombre')
@@ -39,7 +39,7 @@ class BlhDonanteAdmin extends Admin
             ->add('observaciones')
             ->add('estado')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -49,7 +49,7 @@ class BlhDonanteAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('primerNombre')
             ->add('segundoNombre')
@@ -72,7 +72,7 @@ class BlhDonanteAdmin extends Admin
             ->add('observaciones')
             ->add('estado')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -89,7 +89,7 @@ class BlhDonanteAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('primerNombre')
             ->add('segundoNombre')
@@ -112,7 +112,7 @@ class BlhDonanteAdmin extends Admin
             ->add('observaciones')
             ->add('estado')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -122,7 +122,7 @@ class BlhDonanteAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('codigoDonante')
             ->add('primerNombre')
             ->add('segundoNombre')
@@ -145,7 +145,8 @@ class BlhDonanteAdmin extends Admin
             ->add('observaciones')
             ->add('estado')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }

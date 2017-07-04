@@ -16,7 +16,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            // ->add('id')
             ->add('tallaReceptor')
             ->add('pesoSeguimiento')
             ->add('pcSeguimiento')
@@ -29,7 +29,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -39,7 +39,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            // ->add('id')
             ->add('tallaReceptor')
             ->add('pesoSeguimiento')
             ->add('pcSeguimiento')
@@ -52,7 +52,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -69,7 +69,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            // ->add('id')
             ->add('tallaReceptor')
             ->add('pesoSeguimiento')
             ->add('pcSeguimiento')
@@ -82,7 +82,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
 
@@ -92,7 +92,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            // ->add('id')
             ->add('tallaReceptor')
             ->add('pesoSeguimiento')
             ->add('pcSeguimiento')
@@ -105,7 +105,8 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
             ->add('usuario')
-            ->add('fechaHoraReg')
+            // ->add('fechaHoraReg')
         ;
     }
+
 }
