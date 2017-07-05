@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhBitacoraAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhBitacoraAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_bitacora';
+    protected $baseRoutePattern = 'blh/bitacora';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -20,7 +27,7 @@ class BlhBitacoraAdmin extends Admin
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('accion')
             ->add('detalle')
             // ->add('fechaHoraReg')
@@ -37,7 +44,7 @@ class BlhBitacoraAdmin extends Admin
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('accion')
             ->add('detalle')
             // ->add('fechaHoraReg')
@@ -61,7 +68,7 @@ class BlhBitacoraAdmin extends Admin
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('accion')
             ->add('detalle')
             // ->add('fechaHoraReg')
@@ -78,7 +85,7 @@ class BlhBitacoraAdmin extends Admin
             ->add('fechaAccion')
             ->add('codigo')
             ->add('tabla')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('accion')
             ->add('detalle')
             // ->add('fechaHoraReg')

@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhHistoriaActualAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhHistoriaActualAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_historia_actual';
+    protected $baseRoutePattern = 'blh/historia-actual';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -23,7 +30,7 @@ class BlhHistoriaActualAdmin extends Admin
             ->add('motivoDonacion')
             ->add('imc')
             ->add('estadoDonante')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -41,7 +48,7 @@ class BlhHistoriaActualAdmin extends Admin
             ->add('motivoDonacion')
             ->add('imc')
             ->add('estadoDonante')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -66,7 +73,7 @@ class BlhHistoriaActualAdmin extends Admin
             ->add('motivoDonacion')
             ->add('imc')
             ->add('estadoDonante')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -84,7 +91,7 @@ class BlhHistoriaActualAdmin extends Admin
             ->add('motivoDonacion')
             ->add('imc')
             ->add('estadoDonante')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhHistoriaActual
  *
- * @ORM\Table(name="blh_historia_actual", indexes={@ORM\Index(name="fki_blh_his_fk_hab_tox", columns={"habito_toxico"}), @ORM\Index(name="fki_blh_his_fk_pat", columns={"patologia"}), @ORM\Index(name="fki_blh_his_hab", columns={"habito_toxico"}), @ORM\Index(name="IDX_F93902A254F03532", columns={"id_donante"}), @ORM\Index(name="IDX_F93902A2D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_historia_actual", indexes={@ORM\Index(name="fki_blh_his_fk_pat", columns={"patologia"}), @ORM\Index(name="fki_blh_his_fk_hab_tox", columns={"habito_toxico"}), @ORM\Index(name="fki_blh_his_hab", columns={"habito_toxico"}), @ORM\Index(name="IDX_F93902A254F03532", columns={"id_donante"}), @ORM\Index(name="IDX_F93902A2D8A5832B", columns={"id_user_reg"})})
  * @ORM\Entity
  */
 class BlhHistoriaActual implements EntityInterface
@@ -166,9 +166,9 @@ class BlhHistoriaActual implements EntityInterface
     private $patologia;
 
     /**
-     * @var \CtlHabitoToxico
+     * @var \BlhCtlHabitoToxico
      *
-     * @ORM\ManyToOne(targetEntity="CtlHabitoToxico")
+     * @ORM\ManyToOne(targetEntity="BlhCtlHabitoToxico")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="habito_toxico", referencedColumnName="id")
      * })
@@ -470,11 +470,11 @@ class BlhHistoriaActual implements EntityInterface
     /**
      * Set habitoToxico
      *
-     * @param \Minsal\SiblhBundle\Entity\CtlHabitoToxico $habitoToxico
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlHabitoToxico $habitoToxico
      *
      * @return BlhHistoriaActual
      */
-    public function setHabitoToxico(\Minsal\SiblhBundle\Entity\CtlHabitoToxico $habitoToxico = null)
+    public function setHabitoToxico(\Minsal\SiblhBundle\Entity\BlhCtlHabitoToxico $habitoToxico = null)
     {
         $this->habitoToxico = $habitoToxico;
 
@@ -484,7 +484,7 @@ class BlhHistoriaActual implements EntityInterface
     /**
      * Get habitoToxico
      *
-     * @return \Minsal\SiblhBundle\Entity\CtlHabitoToxico
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlHabitoToxico
      */
     public function getHabitoToxico()
     {

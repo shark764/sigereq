@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhEgresoReceptorAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_egreso_receptor';
+    protected $baseRoutePattern = 'blh/egreso-receptor';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -26,7 +33,7 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('hospitalSeguimientoEgreso')
             ->add('fechaEgreso')
             ->add('estanciaHospitalaria')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('diasPermanencia')
             // ->add('fechaHoraReg')
         ;
@@ -48,7 +55,7 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('hospitalSeguimientoEgreso')
             ->add('fechaEgreso')
             ->add('estanciaHospitalaria')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('diasPermanencia')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
@@ -77,7 +84,7 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('hospitalSeguimientoEgreso')
             ->add('fechaEgreso')
             ->add('estanciaHospitalaria')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('diasPermanencia')
             // ->add('fechaHoraReg')
         ;
@@ -99,7 +106,7 @@ class BlhEgresoReceptorAdmin extends Admin
             ->add('hospitalSeguimientoEgreso')
             ->add('fechaEgreso')
             ->add('estanciaHospitalaria')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('diasPermanencia')
             // ->add('fechaHoraReg')
         ;

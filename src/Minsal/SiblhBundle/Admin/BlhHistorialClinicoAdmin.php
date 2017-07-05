@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhHistorialClinicoAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_historial_clinico';
+    protected $baseRoutePattern = 'blh/historial-clinico';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -32,7 +39,7 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaA')
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -59,7 +66,7 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaA')
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -93,7 +100,7 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaA')
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -120,7 +127,7 @@ class BlhHistorialClinicoAdmin extends Admin
             ->add('formulaObstetricaA')
             ->add('formulaObstetricaV')
             ->add('formulaObstetricaM')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

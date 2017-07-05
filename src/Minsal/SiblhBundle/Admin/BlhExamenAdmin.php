@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhExamenAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhExamenAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_examen';
+    protected $baseRoutePattern = 'blh/examen';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -18,7 +25,7 @@ class BlhExamenAdmin extends Admin
         $datagridMapper
             // ->add('id')
             ->add('nombreExamen')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -31,7 +38,7 @@ class BlhExamenAdmin extends Admin
         $listMapper
             // ->add('id')
             ->add('nombreExamen')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -51,7 +58,7 @@ class BlhExamenAdmin extends Admin
         $formMapper
             // ->add('id')
             ->add('nombreExamen')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -64,7 +71,7 @@ class BlhExamenAdmin extends Admin
         $showMapper
             // ->add('id')
             ->add('nombreExamen')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhLoteAnalisisAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_lote_analisis';
+    protected $baseRoutePattern = 'blh/lote-analisis';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -20,7 +27,7 @@ class BlhLoteAnalisisAdmin extends Admin
             ->add('codigoLoteAnalisis')
             ->add('fechaAnalisisFisicoQuimico')
             ->add('responsableAnalisis')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -35,7 +42,7 @@ class BlhLoteAnalisisAdmin extends Admin
             ->add('codigoLoteAnalisis')
             ->add('fechaAnalisisFisicoQuimico')
             ->add('responsableAnalisis')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -57,7 +64,7 @@ class BlhLoteAnalisisAdmin extends Admin
             ->add('codigoLoteAnalisis')
             ->add('fechaAnalisisFisicoQuimico')
             ->add('responsableAnalisis')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -72,7 +79,7 @@ class BlhLoteAnalisisAdmin extends Admin
             ->add('codigoLoteAnalisis')
             ->add('fechaAnalisisFisicoQuimico')
             ->add('responsableAnalisis')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

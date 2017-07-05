@@ -38,7 +38,7 @@
         <join-column name="id_banco_de_leche" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idCentroRecoleccion" target-entity="CtlCentroRecoleccion" fetch="LAZY">
+    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
       <join-columns>
         <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
       </join-columns>

@@ -38,7 +38,19 @@
     </field>
     <field name="numeroTemporal" type="boolean" column="numero_temporal" nullable="true">
       <options>
-        <option name="comment">almacena el numero temporal</option>
+        <option name="comment">Boolean que determina si es un expediente temporal. Cuando el expediente sea eliminado fisicamente el número quedará como temporal</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="expedienteFisicoEliminado" type="boolean" column="expediente_fisico_eliminado" nullable="true">
+      <options>
+        <option name="comment">Boolean que determina si un expediente ha sido eliminado fisicamente del establecimiento</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="cun" type="boolean" column="cun" nullable="true">
+      <options>
+        <option name="comment">Si el número de expediente es un Código Único de Nacimiento</option>
         <option name="default"/>
       </options>
     </field>

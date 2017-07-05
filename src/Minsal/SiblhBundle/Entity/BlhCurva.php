@@ -171,6 +171,7 @@ class BlhCurva implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaCurva = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

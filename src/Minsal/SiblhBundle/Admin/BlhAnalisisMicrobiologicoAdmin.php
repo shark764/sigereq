@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhAnalisisMicrobiologicoAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_analisis_microbiologico';
+    protected $baseRoutePattern = 'blh/analisis-microbiologico';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -21,7 +28,7 @@ class BlhAnalisisMicrobiologicoAdmin extends Admin
             ->add('coliformesTotales')
             ->add('control')
             ->add('situacion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -37,7 +44,7 @@ class BlhAnalisisMicrobiologicoAdmin extends Admin
             ->add('coliformesTotales')
             ->add('control')
             ->add('situacion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -56,11 +63,89 @@ class BlhAnalisisMicrobiologicoAdmin extends Admin
     {
         $formMapper
             // ->add('id')
-            ->add('codigoAnalisisMicrobiologico')
-            ->add('coliformesTotales')
-            ->add('control')
-            ->add('situacion')
-            ->add('usuario')
+            ->add('idFrascoProcesado', null, array(
+                            'label' => 'Frasco procesado',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
+                            'group_by' => 'idPasteurizacion',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                            )
+            ))
+            ->add('codigoAnalisisMicrobiologico', null, array(
+                            'label' => 'Código',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'código...',
+                                    'class' => 'form-control input-sm',
+                                    'readonly' => 'readonly',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                            )
+            ))
+            ->add('coliformesTotales', null, array(
+                            'label' => 'Coliformes totales',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'placeholder' => 'coliformes totales...',
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '1',
+                                    'data-fv-stringlength-max' => '8',
+                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('control', null, array(
+                            'label' => 'Control',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'placeholder' => 'control...',
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '1',
+                                    'data-fv-stringlength-max' => '8',
+                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('situacion', null, array(
+                            'label' => 'Situación',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'placeholder' => 'situación...',
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '1',
+                                    'data-fv-stringlength-max' => '9',
+                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -76,7 +161,7 @@ class BlhAnalisisMicrobiologicoAdmin extends Admin
             ->add('coliformesTotales')
             ->add('control')
             ->add('situacion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

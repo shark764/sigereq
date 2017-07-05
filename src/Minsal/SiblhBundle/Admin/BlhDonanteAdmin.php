@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhDonanteAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_donante';
+    protected $baseRoutePattern = 'blh/donante';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -38,7 +45,7 @@ class BlhDonanteAdmin extends Admin
             ->add('tipoColecta')
             ->add('observaciones')
             ->add('estado')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -71,7 +78,7 @@ class BlhDonanteAdmin extends Admin
             ->add('tipoColecta')
             ->add('observaciones')
             ->add('estado')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -111,7 +118,7 @@ class BlhDonanteAdmin extends Admin
             ->add('tipoColecta')
             ->add('observaciones')
             ->add('estado')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -144,7 +151,7 @@ class BlhDonanteAdmin extends Admin
             ->add('tipoColecta')
             ->add('observaciones')
             ->add('estado')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

@@ -204,14 +204,28 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Temperatura Pasteurización}
 
-    minsal_siblh.admin.ctl_centro_recoleccion:
-        class: Minsal\SiblhBundle\Admin\CtlCentroRecoleccionAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\CtlCentroRecoleccion, MinsalSiblhBundle:CtlCentroRecoleccionAdmin]
+    # minsal_siblh.admin.ctl_centro_recoleccion:
+    #     class: Minsal\SiblhBundle\Admin\CtlCentroRecoleccionAdmin
+    #     arguments: [~, Minsal\SiblhBundle\Entity\CtlCentroRecoleccion, MinsalSiblhBundle:CtlCentroRecoleccionAdmin]
+    #     tags:
+    #         - {name: sonata.admin, manager_type: orm, group: Administración, label: Centros de Recolección}
+
+    # minsal_siblh.admin.ctl_habito_toxico:
+    #     class: Minsal\SiblhBundle\Admin\CtlHabitoToxicoAdmin
+    #     arguments: [~, Minsal\SiblhBundle\Entity\CtlHabitoToxico, MinsalSiblhBundle:CtlHabitoToxicoAdmin]
+    #     tags:
+    #         - {name: sonata.admin, manager_type: orm, group: Administración, label: Hábitos Tóxicos}
+
+    minsal_siblh.admin.blh_ctl_centro_recoleccion:
+        class: Minsal\SiblhBundle\Admin\BlhCtlCentroRecoleccionAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion, MinsalSiblhBundle:BlhCtlCentroRecoleccionAdmin]
         tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhCtlCentroRecoleccion}
             - {name: sonata.admin, manager_type: orm, group: Administración, label: Centros de Recolección}
 
-    minsal_siblh.admin.ctl_habito_toxico:
-        class: Minsal\SiblhBundle\Admin\CtlHabitoToxicoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\CtlHabitoToxico, MinsalSiblhBundle:CtlHabitoToxicoAdmin]
+    minsal_siblh.admin.blh_ctl_habito_toxico:
+        class: Minsal\SiblhBundle\Admin\BlhCtlHabitoToxicoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhCtlHabitoToxico, MinsalSiblhBundle:BlhCtlHabitoToxicoAdmin]
         tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhCtlHabitoToxico}
             - {name: sonata.admin, manager_type: orm, group: Administración, label: Hábitos Tóxicos}

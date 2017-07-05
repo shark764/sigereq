@@ -1,0 +1,153 @@
+{% autoescape false %}
+
+	<script type="text/javascript">
+        ////////////////////////////////////////////////////////////////
+        //////// clear form
+        ////////////////////////////////////////////////////////////////
+        var clearForm = function(el) {
+            $form = jQuery(el).closest('form');
+            $form.data('formValidation').resetForm();
+            $form.get(0).reset();
+            $form
+                .find('select')
+                    .each(function () {
+                        var $select2    = jQuery(this);
+                        $select2.select2('val', $select2.find(':selected').val());
+                    });
+        };
+        ////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////
+        //////// select2 build
+        ////////////////////////////////////////////////////////////////
+        jQuery.extend(true,
+                window.Admin,
+                {
+                    setup_select2: function(subject) {
+                        if (window.SONATA_CONFIG && window.SONATA_CONFIG.USE_SELECT2 && window.Select2) {
+
+                            jQuery('select:not([data-sonata-select2="false"])', subject).each(function() {
+
+                                var select = jQuery(this);
+                                var allowClearEnabled = false;
+
+                                if (select.find('option[value=""]').length) {
+                                    allowClearEnabled = true;
+                                }
+
+                                if (select.attr('data-sonata-select2-allow-clear')==='true') {
+                                    allowClearEnabled = true;
+                                } else if (select.attr('data-sonata-select2-allow-clear')==='false') {
+                                    allowClearEnabled = false;
+                                }
+
+                                var placeholder = '';
+                                if (allowClearEnabled !== false) {
+                                    placeholder = 'click para seleccionar...';
+                                }
+
+                                ereg = /width:(auto|(([-+]?([0-9]*\.)?[0-9]+)(px|em|ex|%|in|cm|mm|pt|pc)))/i;
+                                select.select2({
+                                    width: function() {
+
+                                        // this code is an adaptation of select2 code (initContainerWidth function)
+                                        style = this.element.attr('style');
+                                        //console.log("main style", style);
+                                        if (style !== undefined) {
+                                            attrs = style.split(';');
+                                            for (i = 0, l = attrs.length; i < l; i = i + 1) {
+
+                                                matches = attrs[i].replace(/\s/g, '').match(ereg);
+
+                                                if (matches !== null && matches.length >= 1) {
+                                                    return matches[1];
+                                                }
+                                            }
+                                        }
+
+                                        style = this.element.css('width');
+                                        if (style.indexOf("%") > 0) {
+                                            return style;
+                                        }
+
+                                        return '100%';
+                                    },
+                                    dropdownAutoWidth: true,
+                                    minimumResultsForSearch: 10,
+                                    allowClear: allowClearEnabled,
+                                    placeholder: placeholder
+                                });
+
+                                var popover = select.data('popover');
+
+                                if (undefined !== popover) {
+                                    select
+                                        .select2('container')
+                                        .popover(popover.options)
+                                    ;
+                                }
+                            });
+                        }
+                    }
+                }
+        ); // set value for filter
+
+        jQuery(document).ready(function() {
+            var $gtable = jQuery('#ryx_target_bstable');
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// click-row.bs.table event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            $gtable.on('click-row.bs.table', function (e, row, $element, field) {
+                if ($element.hasClass('click-row-bstable')) {
+                    $element.removeClass('click-row-bstable');
+                    return;
+                }
+                $element.addClass('click-row-bstable').siblings('tr').removeClass('click-row-bstable');
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////
+            //////// dbl-click-row.bs.table event
+            //////////////////////////////////////////////////////////////////////////
+            $gtable.on('dbl-click-row.bs.table', function (e, row, $element, field) {
+                // var url = null;
+                // var type_view = jQuery('input[name=_worklist_dashboard_display_type]:checked').val();
+                // if (row.hasOwnProperty('table_dbl_click_url') && type_view === 'list') {
+                //     url = row.table_dbl_click_url;
+                // }
+                // if (typeof url !== "undefined" && url !== null && url !== "") {
+                //     window.console.log('e', e, '\nrow', row, '\n$element', $element, '\nfield', field, '\nurl', url, '\nID', row.id);
+                //     window.location.href = url; // simulate link click
+                // }
+                window.console.log('e', e, '\nrow', row, '\n$element', $element, '\nfield', field, '\nID', row.id);
+            });
+            //////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////
+            //////// PREVENTDEFAULT - PILL CLICK EVENT
+            //////////////////////////////////////////////////////////////////////////
+            // jQuery('#_request_dashboard_display_items a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
+            //     // console.log('showing tab Active Tab ' + e.target); // Active Tab
+            //     // console.log('showing tab Previous Tab ' + e.relatedTarget); // Previous Tab
+            //     // console.log('showing tab ', e, $(e.target).attr('id'), $(e.target)); // Active Tab
+
+            //     if (jQuery(this).parents('li').hasClass('disabled')) {
+            //         e.preventDefault();
+            //     }
+            // });
+            //////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////
+            //////// TOUPPERCASE - KEYUP EVENT
+            //////////////////////////////////////////////////////////////////////////
+            jQuery('[data-input-uppercase="true"]').on('keyup keydown blur', function(e) {
+                this.value= this.value.toUpperCase();
+            });
+            //////////////////////////////////////////////////////////////////////////
+
+        });
+    </script>
+
+{% endautoescape %}

@@ -255,6 +255,7 @@ class BlhSolicitud implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaSolicitud = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

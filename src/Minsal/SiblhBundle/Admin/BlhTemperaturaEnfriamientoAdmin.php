@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhTemperaturaEnfriamientoAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhTemperaturaEnfriamientoAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_temperatura_enfriamiento';
+    protected $baseRoutePattern = 'blh/temperatura-enfriamiento';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -18,7 +25,7 @@ class BlhTemperaturaEnfriamientoAdmin extends Admin
         $datagridMapper
             // ->add('id')
             ->add('temperaturaE')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioE')
             ->add('horaFinalE')
             // ->add('fechaHoraReg')
@@ -33,7 +40,7 @@ class BlhTemperaturaEnfriamientoAdmin extends Admin
         $listMapper
             // ->add('id')
             ->add('temperaturaE')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioE')
             ->add('horaFinalE')
             // ->add('fechaHoraReg')
@@ -55,7 +62,7 @@ class BlhTemperaturaEnfriamientoAdmin extends Admin
         $formMapper
             // ->add('id')
             ->add('temperaturaE')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioE')
             ->add('horaFinalE')
             // ->add('fechaHoraReg')
@@ -70,7 +77,7 @@ class BlhTemperaturaEnfriamientoAdmin extends Admin
         $showMapper
             // ->add('id')
             ->add('temperaturaE')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioE')
             ->add('horaFinalE')
             // ->add('fechaHoraReg')

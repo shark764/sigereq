@@ -113,6 +113,17 @@ class BlhBitacora implements EntityInterface
      * @var string
      *
      * @ORM\Column(name="detalle", type="string", length=500, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 500,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $detalle;
 
@@ -140,6 +151,7 @@ class BlhBitacora implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaAccion = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

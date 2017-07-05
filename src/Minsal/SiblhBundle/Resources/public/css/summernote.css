@@ -1,0 +1,6 @@
+/*.note-editor{
+	border: 0 !important;
+}*/
+.note-placeholder {
+    z-index: 2;
+}

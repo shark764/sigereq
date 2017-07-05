@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MntEmpleado
  *
- * @ORM\Table(name="mnt_empleado", indexes={@ORM\Index(name="IDX_2138DDC945BCCC8", columns={"idarea"}), @ORM\Index(name="IDX_2138DDC94F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_2138DDC97DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_2138DDC9DA799B26", columns={"id_establecimiento_externo"}), @ORM\Index(name="IDX_2138DDC9B13434FE", columns={"id_tipo_empleado"})})
+ * @ORM\Table(name="mnt_empleado", indexes={@ORM\Index(name="IDX_2138DDC94F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_2138DDC97DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_2138DDC9DA799B26", columns={"id_establecimiento_externo"}), @ORM\Index(name="IDX_2138DDC9B13434FE", columns={"id_tipo_empleado"})})
  * @ORM\Entity
  */
 class MntEmpleado
@@ -81,65 +81,44 @@ class MntEmpleado
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_farmacia", type="string", length=15, nullable=true)
-     */
-    private $codigoFarmacia;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="habilitado_farmacia", type="string", length=1, nullable=true)
-     */
-    private $habilitadoFarmacia = 'H';
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="firma_digital", type="text", nullable=true)
      */
     private $firmaDigital;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="idempleado", type="string", length=7, nullable=true)
-     */
-    private $idempleado = '';
-
-    /**
      * @var integer
      *
-     * @ORM\Column(name="idusuarioreg", type="smallint", nullable=true)
+     * @ORM\Column(name="id_user_reg", type="smallint", nullable=true)
      */
-    private $idusuarioreg;
+    private $idUserReg;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechahorareg", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=true)
      */
-    private $fechahorareg;
+    private $fechaHoraReg;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idusuariomod", type="smallint", nullable=true)
+     * @ORM\Column(name="id_user_mod", type="smallint", nullable=true)
      */
-    private $idusuariomod;
+    private $idUserMod;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechahoramod", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
      */
-    private $fechahoramod;
+    private $fechaHoraMod;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombreempleado", type="string", length=200, nullable=true)
+     * @ORM\Column(name="nombre_empleado", type="string", length=200, nullable=true)
      */
-    private $nombreempleado;
+    private $nombreEmpleado;
 
     /**
      * @var boolean
@@ -161,16 +140,6 @@ class MntEmpleado
      * @ORM\Column(name="id_nuevo_empleado", type="integer", nullable=true)
      */
     private $idNuevoEmpleado;
-
-    /**
-     * @var \CtlAreaServicioDiagnostico
-     *
-     * @ORM\ManyToOne(targetEntity="CtlAreaServicioDiagnostico")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idarea", referencedColumnName="id")
-     * })
-     */
-    private $idarea;
 
     /**
      * @var \MntCargoempleados
@@ -217,7 +186,7 @@ class MntEmpleado
      */
     public function __toString()
     {
-        return (string) $this->nombreempleado ? ucwords(strtolower($this->nombreempleado)) : '';
+        return (string) $this->nombreEmpleado ? ucwords(strtolower($this->nombreEmpleado)) : '';
     }
 
     /**
@@ -423,54 +392,6 @@ class MntEmpleado
     }
 
     /**
-     * Set codigoFarmacia
-     *
-     * @param string $codigoFarmacia
-     *
-     * @return MntEmpleado
-     */
-    public function setCodigoFarmacia($codigoFarmacia)
-    {
-        $this->codigoFarmacia = $codigoFarmacia;
-
-        return $this;
-    }
-
-    /**
-     * Get codigoFarmacia
-     *
-     * @return string
-     */
-    public function getCodigoFarmacia()
-    {
-        return $this->codigoFarmacia;
-    }
-
-    /**
-     * Set habilitadoFarmacia
-     *
-     * @param string $habilitadoFarmacia
-     *
-     * @return MntEmpleado
-     */
-    public function setHabilitadoFarmacia($habilitadoFarmacia)
-    {
-        $this->habilitadoFarmacia = $habilitadoFarmacia;
-
-        return $this;
-    }
-
-    /**
-     * Get habilitadoFarmacia
-     *
-     * @return string
-     */
-    public function getHabilitadoFarmacia()
-    {
-        return $this->habilitadoFarmacia;
-    }
-
-    /**
      * Set firmaDigital
      *
      * @param string $firmaDigital
@@ -495,147 +416,123 @@ class MntEmpleado
     }
 
     /**
-     * Set idempleado
+     * Set idUserReg
      *
-     * @param string $idempleado
+     * @param integer $idUserReg
      *
      * @return MntEmpleado
      */
-    public function setIdempleado($idempleado)
+    public function setIdUserReg($idUserReg)
     {
-        $this->idempleado = $idempleado;
+        $this->idUserReg = $idUserReg;
 
         return $this;
     }
 
     /**
-     * Get idempleado
-     *
-     * @return string
-     */
-    public function getIdempleado()
-    {
-        return $this->idempleado;
-    }
-
-    /**
-     * Set idusuarioreg
-     *
-     * @param integer $idusuarioreg
-     *
-     * @return MntEmpleado
-     */
-    public function setIdusuarioreg($idusuarioreg)
-    {
-        $this->idusuarioreg = $idusuarioreg;
-
-        return $this;
-    }
-
-    /**
-     * Get idusuarioreg
+     * Get idUserReg
      *
      * @return integer
      */
-    public function getIdusuarioreg()
+    public function getIdUserReg()
     {
-        return $this->idusuarioreg;
+        return $this->idUserReg;
     }
 
     /**
-     * Set fechahorareg
+     * Set fechaHoraReg
      *
-     * @param \DateTime $fechahorareg
+     * @param \DateTime $fechaHoraReg
      *
      * @return MntEmpleado
      */
-    public function setFechahorareg($fechahorareg)
+    public function setFechaHoraReg($fechaHoraReg)
     {
-        $this->fechahorareg = $fechahorareg;
+        $this->fechaHoraReg = $fechaHoraReg;
 
         return $this;
     }
 
     /**
-     * Get fechahorareg
+     * Get fechaHoraReg
      *
      * @return \DateTime
      */
-    public function getFechahorareg()
+    public function getFechaHoraReg()
     {
-        return $this->fechahorareg;
+        return $this->fechaHoraReg;
     }
 
     /**
-     * Set idusuariomod
+     * Set idUserMod
      *
-     * @param integer $idusuariomod
+     * @param integer $idUserMod
      *
      * @return MntEmpleado
      */
-    public function setIdusuariomod($idusuariomod)
+    public function setIdUserMod($idUserMod)
     {
-        $this->idusuariomod = $idusuariomod;
+        $this->idUserMod = $idUserMod;
 
         return $this;
     }
 
     /**
-     * Get idusuariomod
+     * Get idUserMod
      *
      * @return integer
      */
-    public function getIdusuariomod()
+    public function getIdUserMod()
     {
-        return $this->idusuariomod;
+        return $this->idUserMod;
     }
 
     /**
-     * Set fechahoramod
+     * Set fechaHoraMod
      *
-     * @param \DateTime $fechahoramod
+     * @param \DateTime $fechaHoraMod
      *
      * @return MntEmpleado
      */
-    public function setFechahoramod($fechahoramod)
+    public function setFechaHoraMod($fechaHoraMod)
     {
-        $this->fechahoramod = $fechahoramod;
+        $this->fechaHoraMod = $fechaHoraMod;
 
         return $this;
     }
 
     /**
-     * Get fechahoramod
+     * Get fechaHoraMod
      *
      * @return \DateTime
      */
-    public function getFechahoramod()
+    public function getFechaHoraMod()
     {
-        return $this->fechahoramod;
+        return $this->fechaHoraMod;
     }
 
     /**
-     * Set nombreempleado
+     * Set nombreEmpleado
      *
-     * @param string $nombreempleado
+     * @param string $nombreEmpleado
      *
      * @return MntEmpleado
      */
-    public function setNombreempleado($nombreempleado)
+    public function setNombreEmpleado($nombreEmpleado)
     {
-        $this->nombreempleado = $nombreempleado;
+        $this->nombreEmpleado = $nombreEmpleado;
 
         return $this;
     }
 
     /**
-     * Get nombreempleado
+     * Get nombreEmpleado
      *
      * @return string
      */
-    public function getNombreempleado()
+    public function getNombreEmpleado()
     {
-        return $this->nombreempleado;
+        return $this->nombreEmpleado;
     }
 
     /**
@@ -708,30 +605,6 @@ class MntEmpleado
     public function getIdNuevoEmpleado()
     {
         return $this->idNuevoEmpleado;
-    }
-
-    /**
-     * Set idarea
-     *
-     * @param \Minsal\SiapsBundle\Entity\CtlAreaServicioDiagnostico $idarea
-     *
-     * @return MntEmpleado
-     */
-    public function setIdarea(\Minsal\SiapsBundle\Entity\CtlAreaServicioDiagnostico $idarea = null)
-    {
-        $this->idarea = $idarea;
-
-        return $this;
-    }
-
-    /**
-     * Get idarea
-     *
-     * @return \Minsal\SiapsBundle\Entity\CtlAreaServicioDiagnostico
-     */
-    public function getIdarea()
-    {
-        return $this->idarea;
     }
 
     /**

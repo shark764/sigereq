@@ -108,6 +108,7 @@ class BlhLoteAnalisis implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaAnalisisFisicoQuimico = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

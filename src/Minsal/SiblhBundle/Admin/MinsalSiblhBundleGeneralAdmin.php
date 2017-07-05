@@ -24,8 +24,8 @@ use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class MinsalSiblhBundleGeneralAdmin extends Admin
 {
-    //////// << Imagenología >>
-    const ___XRAY_CLINICAL_SERVICE___   = '97';
+    //////// << Bancos de Leche >>
+    const ___BLH_CLINICAL_SERVICE___    = '101';
     ////////
 
     const ___CLASS_REGEX_MINIMAL___     = '^[a-zA-Z0-9_-]+$';

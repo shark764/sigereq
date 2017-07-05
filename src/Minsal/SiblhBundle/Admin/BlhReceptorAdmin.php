@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhReceptorAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_receptor';
+    protected $baseRoutePattern = 'blh/receptor';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -34,7 +41,7 @@ class BlhReceptorAdmin extends Admin
             ->add('pc')
             ->add('tallaIngreso')
             ->add('apgarQuintoMinuto')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -63,7 +70,7 @@ class BlhReceptorAdmin extends Admin
             ->add('pc')
             ->add('tallaIngreso')
             ->add('apgarQuintoMinuto')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -99,7 +106,7 @@ class BlhReceptorAdmin extends Admin
             ->add('pc')
             ->add('tallaIngreso')
             ->add('apgarQuintoMinuto')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -128,7 +135,7 @@ class BlhReceptorAdmin extends Admin
             ->add('pc')
             ->add('tallaIngreso')
             ->add('apgarQuintoMinuto')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

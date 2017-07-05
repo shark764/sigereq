@@ -24,8 +24,8 @@ use Sonata\AdminBundle\Util\AdminObjectAclData;
 
 class MinsalSiblhBundleGeneralAdminController extends CRUDController
 {
-    //////// << Imagenología >>
-    const ___XRAY_CLINICAL_SERVICE___   = '97';
+    //////// << Bancos de Leche >>
+    const ___BLH_CLINICAL_SERVICE___    = '101';
     ////////
 
     /**
@@ -38,7 +38,7 @@ class MinsalSiblhBundleGeneralAdminController extends CRUDController
     public function listAction()
     {
         if (false === $this->admin->isGranted('LIST')) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_accessDenied'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
         }
 
         //////// --| << prepare >>
@@ -71,7 +71,7 @@ class MinsalSiblhBundleGeneralAdminController extends CRUDController
     public function batchActionDelete(ProxyQueryInterface $query)
     {
         if (false === $this->admin->isGranted('DELETE')) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_accessDenied'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
         }
 
         $modelManager = $this->admin->getModelManager();
@@ -98,11 +98,11 @@ class MinsalSiblhBundleGeneralAdminController extends CRUDController
         $object = $this->admin->getObject($id);
 
         if (!$object) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_objectNotFound'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_objectNotFound'));
         }
 
         if (false === $this->admin->isGranted('DELETE', $object)) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_accessDenied'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
         }
 
         //////// --| << prepare >>
@@ -189,11 +189,11 @@ class MinsalSiblhBundleGeneralAdminController extends CRUDController
         $object = $this->admin->getObject($id);
 
         if (!$object) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_objectNotFound'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_objectNotFound'));
         }
 
         if (false === $this->admin->isGranted('EDIT', $object)) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_accessDenied'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
         }
 
         //////// --| << prepare >>
@@ -420,7 +420,7 @@ class MinsalSiblhBundleGeneralAdminController extends CRUDController
         $templateKey = 'edit';
 
         if (false === $this->admin->isGranted('CREATE')) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_accessDenied'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
         }
 
         //////// --| << prepare >>
@@ -444,7 +444,7 @@ class MinsalSiblhBundleGeneralAdminController extends CRUDController
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
                 
                 if (false === $this->admin->isGranted('CREATE', $object)) {
-                    return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_accessDenied'));
+                    return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
                 }
 
                 try {
@@ -509,11 +509,11 @@ class MinsalSiblhBundleGeneralAdminController extends CRUDController
         $object = $this->admin->getObject($id);
 
         if (!$object) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_objectNotFound'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_objectNotFound'));
         }
 
         if (false === $this->admin->isGranted('VIEW', $object)) {
-            return new RedirectResponse($this->generateUrl('simagd_solicitud_estudio_accessDenied'));
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
         }
 
         //////// --| << prepare >>

@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhSeguimientoReceptorAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhSeguimientoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_seguimiento_receptor';
+    protected $baseRoutePattern = 'blh/seguimiento-receptor';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -28,7 +35,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('observacion')
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -51,7 +58,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('observacion')
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -81,7 +88,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('observacion')
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -104,7 +111,7 @@ class BlhSeguimientoReceptorAdmin extends Admin
             ->add('observacion')
             ->add('periodoEvaluacion')
             ->add('gananciaDiaPc')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

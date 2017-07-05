@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhOpcionMenuAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhOpcionMenuAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_opcion_menu';
+    protected $baseRoutePattern = 'blh/opcion-menu';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -19,7 +26,7 @@ class BlhOpcionMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreOpcion')
             ->add('urlOpcion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -33,7 +40,7 @@ class BlhOpcionMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreOpcion')
             ->add('urlOpcion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -54,7 +61,7 @@ class BlhOpcionMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreOpcion')
             ->add('urlOpcion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -68,7 +75,7 @@ class BlhOpcionMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreOpcion')
             ->add('urlOpcion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

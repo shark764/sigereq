@@ -103,9 +103,9 @@ class BlhDonacion implements EntityInterface
     private $idDonante;
 
     /**
-     * @var \CtlCentroRecoleccion
+     * @var \BlhCtlCentroRecoleccion
      *
-     * @ORM\ManyToOne(targetEntity="CtlCentroRecoleccion")
+     * @ORM\ManyToOne(targetEntity="BlhCtlCentroRecoleccion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
      * })
@@ -140,6 +140,7 @@ class BlhDonacion implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaDonacion = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 
@@ -322,11 +323,11 @@ class BlhDonacion implements EntityInterface
     /**
      * Set idCentroRecoleccion
      *
-     * @param \Minsal\SiblhBundle\Entity\CtlCentroRecoleccion $idCentroRecoleccion
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion
      *
      * @return BlhDonacion
      */
-    public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\CtlCentroRecoleccion $idCentroRecoleccion = null)
+    public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion = null)
     {
         $this->idCentroRecoleccion = $idCentroRecoleccion;
 
@@ -336,7 +337,7 @@ class BlhDonacion implements EntityInterface
     /**
      * Get idCentroRecoleccion
      *
-     * @return \Minsal\SiblhBundle\Entity\CtlCentroRecoleccion
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
      */
     public function getIdCentroRecoleccion()
     {

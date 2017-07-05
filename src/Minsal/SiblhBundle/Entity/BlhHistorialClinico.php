@@ -322,6 +322,7 @@ class BlhHistorialClinico implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaParto = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

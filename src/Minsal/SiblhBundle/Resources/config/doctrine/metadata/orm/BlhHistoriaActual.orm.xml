@@ -41,7 +41,7 @@
         <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="habitoToxico" target-entity="CtlHabitoToxico" fetch="LAZY">
+    <many-to-one field="habitoToxico" target-entity="BlhCtlHabitoToxico" fetch="LAZY">
       <join-columns>
         <join-column name="habito_toxico" referenced-column-name="id"/>
       </join-columns>

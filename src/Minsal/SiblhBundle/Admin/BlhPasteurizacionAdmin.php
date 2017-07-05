@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhPasteurizacionAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_pasteurizacion';
+    protected $baseRoutePattern = 'blh/pasteurizacion';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -23,7 +30,7 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('numFrascosPasteurizados')
             ->add('fechaPasteurizacion')
             ->add('responsablePasteurizacion')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
         ;
@@ -42,7 +49,7 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('numFrascosPasteurizados')
             ->add('fechaPasteurizacion')
             ->add('responsablePasteurizacion')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
@@ -68,7 +75,7 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('numFrascosPasteurizados')
             ->add('fechaPasteurizacion')
             ->add('responsablePasteurizacion')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
         ;
@@ -87,7 +94,7 @@ class BlhPasteurizacionAdmin extends Admin
             ->add('numFrascosPasteurizados')
             ->add('fechaPasteurizacion')
             ->add('responsablePasteurizacion')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
         ;

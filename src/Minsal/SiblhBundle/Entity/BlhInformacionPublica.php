@@ -138,6 +138,7 @@ class BlhInformacionPublica implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaPublicacion = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhInformacionPublicaAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhInformacionPublicaAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_informacion_publica';
+    protected $baseRoutePattern = 'blh/informacion-publica';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -21,7 +28,7 @@ class BlhInformacionPublicaAdmin extends Admin
             ->add('tipo')
             ->add('nombreDocumento')
             ->add('fechaPublicacion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -37,7 +44,7 @@ class BlhInformacionPublicaAdmin extends Admin
             ->add('tipo')
             ->add('nombreDocumento')
             ->add('fechaPublicacion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -60,7 +67,7 @@ class BlhInformacionPublicaAdmin extends Admin
             ->add('tipo')
             ->add('nombreDocumento')
             ->add('fechaPublicacion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -76,7 +83,7 @@ class BlhInformacionPublicaAdmin extends Admin
             ->add('tipo')
             ->add('nombreDocumento')
             ->add('fechaPublicacion')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

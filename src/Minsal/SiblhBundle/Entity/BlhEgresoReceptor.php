@@ -243,6 +243,7 @@ class BlhEgresoReceptor implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaEgreso = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

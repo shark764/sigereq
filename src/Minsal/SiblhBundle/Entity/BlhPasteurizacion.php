@@ -129,6 +129,12 @@ class BlhPasteurizacion implements EntityInterface
      * @var string
      *
      * @ORM\Column(name="volumen_total", type="decimal", precision=8, scale=0, nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 2147483647,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $volumenTotal;
 
@@ -167,6 +173,7 @@ class BlhPasteurizacion implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaPasteurizacion = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

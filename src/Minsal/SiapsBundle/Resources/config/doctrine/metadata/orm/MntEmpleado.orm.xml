@@ -2,7 +2,6 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="MntEmpleado" table="mnt_empleado">
     <indexes>
-      <index name="IDX_2138DDC945BCCC8" columns="idarea"/>
       <index name="IDX_2138DDC94F664059" columns="id_cargo_empleado"/>
       <index name="IDX_2138DDC97DFA12F6" columns="id_establecimiento"/>
       <index name="IDX_2138DDC9DA799B26" columns="id_establecimiento_externo"/>
@@ -59,54 +58,35 @@
         <option name="comment">UTILIZADO PARA LOS QUE POSEE VERSIÓN ANTIGUA DE CODIGO SIAP</option>
       </options>
     </field>
-    <field name="codigoFarmacia" type="string" column="codigo_farmacia" length="15" nullable="true">
-      <options>
-        <option name="fixed"/>
-        <option name="comment">Codigo del usuario en farmacia</option>
-      </options>
-    </field>
-    <field name="habilitadoFarmacia" type="string" column="habilitado_farmacia" length="1" nullable="true">
-      <options>
-        <option name="fixed">1</option>
-        <option name="comment">Si esta habilitado en farmacia</option>
-        <option name="default">H</option>
-      </options>
-    </field>
     <field name="firmaDigital" type="text" column="firma_digital" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="comment">Campo para setearle el hash de la firma digital del empleado</option>
       </options>
     </field>
-    <field name="idempleado" type="string" column="idempleado" length="7" nullable="true">
-      <options>
-        <option name="fixed"/>
-        <option name="default"/>
-      </options>
-    </field>
-    <field name="idusuarioreg" type="smallint" column="idusuarioreg" nullable="true">
+    <field name="idUserReg" type="smallint" column="id_user_reg" nullable="true">
       <options>
         <option name="unsigned"/>
         <option name="comment">Almacena el id del usuario que ingresa el registro</option>
       </options>
     </field>
-    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true">
+    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true">
       <options>
         <option name="comment">almacena la fecha y hora de ingreso del registro</option>
       </options>
     </field>
-    <field name="idusuariomod" type="smallint" column="idusuariomod" nullable="true">
+    <field name="idUserMod" type="smallint" column="id_user_mod" nullable="true">
       <options>
         <option name="unsigned"/>
         <option name="comment">Almacena el id del usuario que modifico el registro</option>
       </options>
     </field>
-    <field name="fechahoramod" type="datetime" column="fechahoramod" nullable="true">
+    <field name="fechaHoraMod" type="datetime" column="fecha_hora_mod" nullable="true">
       <options>
         <option name="comment">almacena la fecha y hora de modificacion del registro</option>
       </options>
     </field>
-    <field name="nombreempleado" type="string" column="nombreempleado" length="200" nullable="true">
+    <field name="nombreEmpleado" type="string" column="nombre_empleado" length="200" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="comment">Nombre Unido para los modulos de PHP Puro y POstgresql</option>
@@ -146,11 +126,6 @@
     <many-to-one field="idCargoEmpleado" target-entity="MntCargoempleados" fetch="LAZY">
       <join-columns>
         <join-column name="id_cargo_empleado" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idarea" target-entity="CtlAreaServicioDiagnostico" fetch="LAZY">
-      <join-columns>
-        <join-column name="idarea" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

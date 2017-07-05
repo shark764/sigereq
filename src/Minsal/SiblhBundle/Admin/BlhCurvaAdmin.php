@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhCurvaAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_curva';
+    protected $baseRoutePattern = 'blh/curva';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -25,7 +32,7 @@ class BlhCurvaAdmin extends Admin
             ->add('cantidadFrascos')
             ->add('volumenPorFrasco')
             ->add('horaInicioCurva')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
         ;
@@ -46,7 +53,7 @@ class BlhCurvaAdmin extends Admin
             ->add('cantidadFrascos')
             ->add('volumenPorFrasco')
             ->add('horaInicioCurva')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
@@ -74,7 +81,7 @@ class BlhCurvaAdmin extends Admin
             ->add('cantidadFrascos')
             ->add('volumenPorFrasco')
             ->add('horaInicioCurva')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
         ;
@@ -95,7 +102,7 @@ class BlhCurvaAdmin extends Admin
             ->add('cantidadFrascos')
             ->add('volumenPorFrasco')
             ->add('horaInicioCurva')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
         ;

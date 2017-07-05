@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonante
  *
- * @ORM\Table(name="blh_donante", indexes={@ORM\Index(name="fk_municipio_donante", columns={"id_municipio"}), @ORM\Index(name="fk_banco_de_leche_donante", columns={"id_banco_de_leche"}), @ORM\Index(name="fki_blh_dona_fk_naciona_blh", columns={"nacionalidad"}), @ORM\Index(name="fki_blh_dona_fk_nacionalidad_blh", columns={"nacionalidad"}), @ORM\Index(name="IDX_D458FB01D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_donante", indexes={@ORM\Index(name="fki_blh_dona_fk_naciona_blh", columns={"nacionalidad"}), @ORM\Index(name="fki_blh_dona_fk_nacionalidad_blh", columns={"nacionalidad"}), @ORM\Index(name="fk_municipio_donante", columns={"id_municipio"}), @ORM\Index(name="fk_banco_de_leche_donante", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_D458FB01D8A5832B", columns={"id_user_reg"})})
  * @ORM\Entity
  */
 class BlhDonante implements EntityInterface
@@ -455,6 +455,7 @@ class BlhDonante implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaNacimiento = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

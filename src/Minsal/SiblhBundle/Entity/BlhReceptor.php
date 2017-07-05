@@ -330,6 +330,7 @@ class BlhReceptor implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaRegistroBlh = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 
@@ -338,6 +339,9 @@ class BlhReceptor implements EntityInterface
      */
     public function __toString()
     {
+        if ($this->idPaciente !== null) {
+            return (string) $this->idPaciente . ' - ' . $this->codigoReceptor;
+        }
         return (string) $this->codigoReceptor;
     }
     

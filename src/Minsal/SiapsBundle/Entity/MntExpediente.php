@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MntExpediente
  *
- * @ORM\Table(name="mnt_expediente", uniqueConstraints={@ORM\UniqueConstraint(name="idx_id_id_paciente", columns={"id", "id_paciente"}), @ORM\UniqueConstraint(name="idx_numero_expediente", columns={"numero"})}, indexes={@ORM\Index(name="IDX_E4950F57CC9E1B67", columns={"id_creacion_expediente"}), @ORM\Index(name="IDX_E4950F577DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_E4950F57961045CB", columns={"id_paciente"})})
+ * @ORM\Table(name="mnt_expediente", uniqueConstraints={@ORM\UniqueConstraint(name="idx_numero_expediente", columns={"numero"}), @ORM\UniqueConstraint(name="idx_id_id_paciente", columns={"id", "id_paciente"})}, indexes={@ORM\Index(name="IDX_E4950F57CC9E1B67", columns={"id_creacion_expediente"}), @ORM\Index(name="IDX_E4950F577DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_E4950F57961045CB", columns={"id_paciente"})})
  * @ORM\Entity(repositoryClass="Minsal\SiapsBundle\Repository\MntExpedienteRepository")
  */
 class MntExpediente
@@ -56,6 +56,20 @@ class MntExpediente
      * @ORM\Column(name="numero_temporal", type="boolean", nullable=true)
      */
     private $numeroTemporal = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="expediente_fisico_eliminado", type="boolean", nullable=true)
+     */
+    private $expedienteFisicoEliminado = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="cun", type="boolean", nullable=true)
+     */
+    private $cun = false;
 
     /**
      * @var \CtlCreacionExpediente
@@ -223,6 +237,54 @@ class MntExpediente
     public function getNumeroTemporal()
     {
         return $this->numeroTemporal;
+    }
+
+    /**
+     * Set expedienteFisicoEliminado
+     *
+     * @param boolean $expedienteFisicoEliminado
+     *
+     * @return MntExpediente
+     */
+    public function setExpedienteFisicoEliminado($expedienteFisicoEliminado)
+    {
+        $this->expedienteFisicoEliminado = $expedienteFisicoEliminado;
+
+        return $this;
+    }
+
+    /**
+     * Get expedienteFisicoEliminado
+     *
+     * @return boolean
+     */
+    public function getExpedienteFisicoEliminado()
+    {
+        return $this->expedienteFisicoEliminado;
+    }
+
+    /**
+     * Set cun
+     *
+     * @param boolean $cun
+     *
+     * @return MntExpediente
+     */
+    public function setCun($cun)
+    {
+        $this->cun = $cun;
+
+        return $this;
+    }
+
+    /**
+     * Get cun
+     *
+     * @return boolean
+     */
+    public function getCun()
+    {
+        return $this->cun;
     }
 
     /**

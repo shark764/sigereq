@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhFrascoRecolectado
  *
- * @ORM\Table(name="blh_frasco_recolectado", indexes={@ORM\Index(name="fk_frasco_recolectado_lote_anal", columns={"id_lote_analisis"}), @ORM\Index(name="fk_donacion_frasco_recolectado", columns={"id_donacion"}), @ORM\Index(name="fk_donante_frasco_recolectado", columns={"id_donante"}), @ORM\Index(name="fk_estado_frasco_recolectado", columns={"id_estado"}), @ORM\Index(name="IDX_37ABF7A6D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_frasco_recolectado", indexes={@ORM\Index(name="fk_estado_frasco_recolectado", columns={"id_estado"}), @ORM\Index(name="fk_frasco_recolectado_lote_anal", columns={"id_lote_analisis"}), @ORM\Index(name="fk_donacion_frasco_recolectado", columns={"id_donacion"}), @ORM\Index(name="fk_donante_frasco_recolectado", columns={"id_donante"}), @ORM\Index(name="IDX_37ABF7A6D8A5832B", columns={"id_user_reg"})})
  * @ORM\Entity
  */
 class BlhFrascoRecolectado implements EntityInterface

@@ -73,47 +73,6 @@
         <option name="comment">Determina cual es el establecimiento que esta configurado </option>
       </options>
     </field>
-    <field name="tipoFarmacia" type="boolean" column="tipo_farmacia" nullable="true">
-      <options>
-        <option name="comment">Representa el tipo de farmacia que opera en el establecimiento</option>
-      </options>
-    </field>
-    <field name="diasIntermediosCitas" type="integer" column="dias_intermedios_citas" nullable="true">
-      <options>
-        <option name="unsigned"/>
-        <option name="comment">Variable que determina entre cuantos dias se puede dejar una cita</option>
-      </options>
-    </field>
-    <field name="citasSinExpediente" type="boolean" column="citas_sin_expediente" nullable="true">
-      <options>
-        <option name="comment">Campo que determina si el establecimiento puede dejar citas sin expedientes. Generalmente cuando es por telefono</option>
-        <option name="default"/>
-      </options>
-    </field>
-    <field name="tipoImpresion" type="integer" column="tipo_impresion" nullable="true">
-      <options>
-        <option name="unsigned"/>
-        <option name="comment">Tipo de impresión para citas 1-comprobante , 2- ticket</option>
-        <option name="default">1</option>
-      </options>
-    </field>
-    <field name="minutoshora" type="integer" column="minutoshora" nullable="true">
-      <options>
-        <option name="unsigned"/>
-        <option name="comment">1:si son minutos, 2: si es hora</option>
-      </options>
-    </field>
-    <field name="tiempoprevioalacita" type="integer" column="tiempoprevioalacita" nullable="true">
-      <options>
-        <option name="unsigned"/>
-        <option name="comment">Tiempo previo que el paciente debe presentarse a su cita</option>
-      </options>
-    </field>
-    <field name="distribucionEspecial" type="boolean" column="distribucion_especial" nullable="true">
-      <options>
-        <option name="default"/>
-      </options>
-    </field>
     <many-to-one field="idTipoEstablecimiento" target-entity="CtlTipoEstablecimiento" fetch="LAZY">
       <join-columns>
         <join-column name="id_tipo_establecimiento" referenced-column-name="id"/>

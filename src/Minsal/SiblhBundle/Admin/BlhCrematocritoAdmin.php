@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhCrematocritoAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_crematocrito';
+    protected $baseRoutePattern = 'blh/crematocrito';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -27,7 +34,7 @@ class BlhCrematocritoAdmin extends Admin
             ->add('mediaCt')
             ->add('porcentajeCrema')
             ->add('kilocalorias')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -49,7 +56,7 @@ class BlhCrematocritoAdmin extends Admin
             ->add('mediaCt')
             ->add('porcentajeCrema')
             ->add('kilocalorias')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -78,7 +85,7 @@ class BlhCrematocritoAdmin extends Admin
             ->add('mediaCt')
             ->add('porcentajeCrema')
             ->add('kilocalorias')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -100,7 +107,7 @@ class BlhCrematocritoAdmin extends Admin
             ->add('mediaCt')
             ->add('porcentajeCrema')
             ->add('kilocalorias')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

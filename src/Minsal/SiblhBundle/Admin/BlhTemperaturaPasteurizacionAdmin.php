@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhTemperaturaPasteurizacionAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhTemperaturaPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_temperatura_pasteurizacion';
+    protected $baseRoutePattern = 'blh/temperatura-pasteurizacion';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -18,7 +25,7 @@ class BlhTemperaturaPasteurizacionAdmin extends Admin
         $datagridMapper
             // ->add('id')
             ->add('temperaturaP')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioP')
             ->add('horaFinalP')
             // ->add('fechaHoraReg')
@@ -33,7 +40,7 @@ class BlhTemperaturaPasteurizacionAdmin extends Admin
         $listMapper
             // ->add('id')
             ->add('temperaturaP')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioP')
             ->add('horaFinalP')
             // ->add('fechaHoraReg')
@@ -55,7 +62,7 @@ class BlhTemperaturaPasteurizacionAdmin extends Admin
         $formMapper
             // ->add('id')
             ->add('temperaturaP')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioP')
             ->add('horaFinalP')
             // ->add('fechaHoraReg')
@@ -70,7 +77,7 @@ class BlhTemperaturaPasteurizacionAdmin extends Admin
         $showMapper
             // ->add('id')
             ->add('temperaturaP')
-            ->add('usuario')
+            // ->add('usuario')
             ->add('horaInicioP')
             ->add('horaFinalP')
             // ->add('fechaHoraReg')

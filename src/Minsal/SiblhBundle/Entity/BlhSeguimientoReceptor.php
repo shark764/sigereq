@@ -228,6 +228,7 @@ class BlhSeguimientoReceptor implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaSeguimiento = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
 

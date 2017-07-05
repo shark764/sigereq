@@ -2,14 +2,21 @@
 
 namespace Minsal\SiblhBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BlhMenuAdmin extends Admin
+use Doctrine\ORM\EntityRepository;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Route\RouteCollection;
+
+class BlhMenuAdmin extends MinsalSiblhBundleGeneralAdmin
 {
+    protected $baseRouteName    = 'siblh_menu';
+    protected $baseRoutePattern = 'blh/menu';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -19,7 +26,7 @@ class BlhMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreMenu')
             ->add('descripcionMenu')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -33,7 +40,7 @@ class BlhMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreMenu')
             ->add('descripcionMenu')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -54,7 +61,7 @@ class BlhMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreMenu')
             ->add('descripcionMenu')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }
@@ -68,7 +75,7 @@ class BlhMenuAdmin extends Admin
             // ->add('id')
             ->add('nombreMenu')
             ->add('descripcionMenu')
-            ->add('usuario')
+            // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
     }

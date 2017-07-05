@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhRolMenu
  *
- * @ORM\Table(name="blh_rol_menu", indexes={@ORM\Index(name="fk_rol_rol_menu", columns={"id_rol"}), @ORM\Index(name="fk_menu_rol_menu", columns={"id_menu"}), @ORM\Index(name="IDX_80162271D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_rol_menu", indexes={@ORM\Index(name="fk_menu_rol_menu", columns={"id_menu"}), @ORM\Index(name="fk_rol_rol_menu", columns={"id_rol"}), @ORM\Index(name="IDX_80162271D8A5832B", columns={"id_user_reg"})})
  * @ORM\Entity
  */
 class BlhRolMenu implements EntityInterface
