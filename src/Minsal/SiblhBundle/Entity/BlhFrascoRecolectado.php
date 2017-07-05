@@ -168,7 +168,7 @@ class BlhFrascoRecolectado implements EntityInterface
     /**
      * @var \BlhDonacion
      *
-     * @ORM\ManyToOne(targetEntity="BlhDonacion")
+     * @ORM\ManyToOne(targetEntity="BlhDonacion", inversedBy="donacionFrascoRecolectado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_donacion", referencedColumnName="id")
      * })

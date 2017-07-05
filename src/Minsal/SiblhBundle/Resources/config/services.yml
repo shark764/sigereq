@@ -101,13 +101,14 @@ services:
         class: Minsal\SiblhBundle\Admin\BlhFrascoRecolectadoAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoRecolectado, MinsalSiblhBundle:BlhFrascoRecolectadoAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoRecolectado}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoRecolectado}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_grupo_solicitud:
         class: Minsal\SiblhBundle\Admin\BlhGrupoSolicitudAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhGrupoSolicitud, MinsalSiblhBundle:BlhGrupoSolicitudAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Solicitud, label: Agrupar Solicitudes}
+            - {name: sonata.admin, manager_type: orm, group: Solicitudes, label: Agrupar Solicitudes}
 
     minsal_siblh.admin.blh_historia_actual:
         class: Minsal\SiblhBundle\Admin\BlhHistoriaActualAdmin

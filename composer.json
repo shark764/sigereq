@@ -38,7 +38,6 @@
         "jms/di-extra-bundle": "~1.4@dev",
         "friendsofsymfony/jsrouting-bundle": "~1.1",
         "adesigns/calendar-bundle": "dev-master",
-        "endroid/qrcode-bundle": "dev-master",
         "knplabs/knp-snappy-bundle": "dev-master"
  
     },

@@ -69,14 +69,155 @@ class BlhFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('codigoFrascoRecolectado')
-            ->add('volumenRecolectado')
-            ->add('formaExtraccion')
-            ->add('onzRecolectado')
-            ->add('observacionFrascoRecolectado')
-            ->add('volumenDisponibleFr')
+            ->add('codigoFrascoRecolectado', null, array(
+                            'label' => 'Código',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'código...',
+                                    'class' => 'form-control input-sm',
+                                    'readonly' => 'readonly',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                            )
+            ))
+            ->add('volumenRecolectado', null, array(
+                            'label' => 'Volumen recolectado',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen recolectado...',
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    // 'min' => '2.27',
+                                    // 'max' => '226.80',
+                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
+                            )
+            ))
+            ->add('formaExtraccion', null, array(
+                            'label' => 'Forma de extracción',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'placeholder' => 'forma de extracción...',
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '1',
+                                    'data-fv-stringlength-max' => '8',
+                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('onzRecolectado', null, array(
+                            'label' => 'Volumen recolectado (onz)',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen recolectado (onz)...',
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    // 'min' => '2.27',
+                                    // 'max' => '226.80',
+                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
+                            )
+            ))
+            ->add('observacionFrascoRecolectado', 'textarea', array(
+                            'label' => 'Observaciones / Comentarios',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'rows' => '2',
+                                    'style' => 'resize:none',
+                                    'placeholder' => 'comentarios...',
+                                    'class' => 'form-control input-sm',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('volumenDisponibleFr', null, array(
+                            'label' => 'Volumen disponible en frasco',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen disponible en frasco...',
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    // 'min' => '2.27',
+                                    // 'max' => '226.80',
+                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
+                            )
+            ))
             // ->add('usuario')
-            ->add('volumenReal')
+            ->add('volumenReal', null, array(
+                            'label' => 'Volumen real',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen real...',
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    // 'min' => '2.27',
+                                    // 'max' => '226.80',
+                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
+                            )
+            ))
             // ->add('fechaHoraReg')
         ;
     }

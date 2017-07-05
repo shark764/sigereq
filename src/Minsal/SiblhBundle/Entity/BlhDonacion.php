@@ -136,12 +136,19 @@ class BlhDonacion implements EntityInterface
     private $idUserReg;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhFrascoRecolectado", mappedBy="idDonacion", cascade={"all"}, orphanRemoval=true)
+     */
+    private $donacionFrascoRecolectado;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->fechaDonacion = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->donacionFrascoRecolectado = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -390,6 +397,40 @@ class BlhDonacion implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Add donacionFrascoRecolectado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $donacionFrascoRecolectado
+     *
+     * @return BlhDonacion
+     */
+    public function addDonacionFrascoRecolectado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $donacionFrascoRecolectado)
+    {
+        $this->donacionFrascoRecolectado[] = $donacionFrascoRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Remove donacionFrascoRecolectado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $donacionFrascoRecolectado
+     */
+    public function removeDonacionFrascoRecolectado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $donacionFrascoRecolectado)
+    {
+        $this->donacionFrascoRecolectado->removeElement($donacionFrascoRecolectado);
+    }
+
+    /**
+     * Get donacionFrascoRecolectado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDonacionFrascoRecolectado()
+    {
+        return $this->donacionFrascoRecolectado;
     }
 
 }
