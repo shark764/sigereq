@@ -383,9 +383,9 @@ class MntPaciente
     private $idSexo;
 
     /**
-     * @var \FosUserUser
+     * @var \Application\Sonata\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="FosUserUser")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
      * })
@@ -393,9 +393,9 @@ class MntPaciente
     private $idUserReg;
 
     /**
-     * @var \FosUserUser
+     * @var \Application\Sonata\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="FosUserUser")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_mod", referencedColumnName="id")
      * })
@@ -1543,11 +1543,11 @@ class MntPaciente
     /**
      * Set idUserReg
      *
-     * @param \Minsal\SiapsBundle\Entity\FosUserUser $idUserReg
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
      *
      * @return MntPaciente
      */
-    public function setIdUserReg(\Minsal\SiapsBundle\Entity\FosUserUser $idUserReg = null)
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
     {
         $this->idUserReg = $idUserReg;
 
@@ -1557,7 +1557,7 @@ class MntPaciente
     /**
      * Get idUserReg
      *
-     * @return \Minsal\SiapsBundle\Entity\FosUserUser
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getIdUserReg()
     {
@@ -1567,11 +1567,11 @@ class MntPaciente
     /**
      * Set idUserMod
      *
-     * @param \Minsal\SiapsBundle\Entity\FosUserUser $idUserMod
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserMod
      *
      * @return MntPaciente
      */
-    public function setIdUserMod(\Minsal\SiapsBundle\Entity\FosUserUser $idUserMod = null)
+    public function setIdUserMod(\Application\Sonata\UserBundle\Entity\User $idUserMod = null)
     {
         $this->idUserMod = $idUserMod;
 
@@ -1581,7 +1581,7 @@ class MntPaciente
     /**
      * Get idUserMod
      *
-     * @return \Minsal\SiapsBundle\Entity\FosUserUser
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getIdUserMod()
     {
