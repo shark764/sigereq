@@ -57,28 +57,6 @@ class BlhCtlCentroRecoleccionAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idEstablecimiento', null, array(
-                            'label' => 'Establecimiento',
-                            'required' => true,
-                            // 'query_builder' => function(EntityRepository $er) {
-                            //                         return $er->createQueryBuilder('std')
-                            //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
-                            //                                         ->where('tipo.codigo IN (:code_hospital_type)')
-                            //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
-                            //                                         ->orderBy('std.nombre', 'asc')
-                            //                                         ->distinct();
-                            //                     },
-                            'group_by' => 'idTipoEstablecimiento',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'stop',
-                                    // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
-
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                            )
-            ))
             ->add('nombre', null, array(
                             'label' => 'Nombre',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -138,6 +116,28 @@ class BlhCtlCentroRecoleccionAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp' => 'true',
                                     'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('idEstablecimiento', null, array(
+                            'label' => 'Establecimiento',
+                            'required' => true,
+                            // 'query_builder' => function(EntityRepository $er) {
+                            //                         return $er->createQueryBuilder('std')
+                            //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
+                            //                                         ->where('tipo.codigo IN (:code_hospital_type)')
+                            //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
+                            //                                         ->orderBy('std.nombre', 'asc')
+                            //                                         ->distinct();
+                            //                     },
+                            'group_by' => 'idTipoEstablecimiento',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'stop',
+                                    // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
                             )
             ))
             ->add('idBancoDeLeche', null, array(
