@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhCtlCentroRecoleccion
  *
- * @ORM\Table(name="blh_ctl_centro_recoleccion", indexes={@ORM\Index(name="IDX_97B3664ED8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_ctl_centro_recoleccion", indexes={@ORM\Index(name="IDX_97B3664ED8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_97B3664E7DFA12F6", columns={"id_establecimiento"})})
  * @ORM\Entity
  */
 class BlhCtlCentroRecoleccion implements EntityInterface
@@ -71,6 +71,42 @@ class BlhCtlCentroRecoleccion implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=6, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 6,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
+     */
+    private $codigo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=250, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 250,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
+     */
+    private $direccion;
+
+    /**
      * @var \Application\Sonata\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
@@ -80,6 +116,17 @@ class BlhCtlCentroRecoleccion implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\CtlEstablecimiento
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlEstablecimiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_establecimiento", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idEstablecimiento;
 
     /**
      * Constructor
@@ -194,6 +241,54 @@ class BlhCtlCentroRecoleccion implements EntityInterface
     }
 
     /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return BlhDonante
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     *
+     * @return BlhDonante
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
      * Set idUserReg
      *
      * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
@@ -215,6 +310,30 @@ class BlhCtlCentroRecoleccion implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idEstablecimiento
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlEstablecimiento $idEstablecimiento
+     *
+     * @return BlhBancoDeLeche
+     */
+    public function setIdEstablecimiento(\Minsal\SiapsBundle\Entity\CtlEstablecimiento $idEstablecimiento = null)
+    {
+        $this->idEstablecimiento = $idEstablecimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstablecimiento
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlEstablecimiento
+     */
+    public function getIdEstablecimiento()
+    {
+        return $this->idEstablecimiento;
     }
 
 }

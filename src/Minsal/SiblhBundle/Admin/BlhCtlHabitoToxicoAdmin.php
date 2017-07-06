@@ -53,7 +53,20 @@ class BlhCtlHabitoToxicoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('habitoToxico')
+            ->add('habitoToxico', null, array(
+                            'label' => 'Hábito tóxico',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'hábito tóxico...',
+                                    'class' => 'form-control input-sm',
+                                    // 'readonly' => 'readonly',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                            )
+            ))
         ;
     }
 

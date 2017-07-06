@@ -182,10 +182,14 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-input-transform' => 'datetimepicker',
                                     'data-datetimepicker-type' => 'date',
 
-                                    'data-add-input-btn' => 'true',
-                                    'data-add-input-btn-class' => 'display-datetimepicker',
-                                    'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
-                                    'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+                                    // 'data-add-input-btn' => 'true',
+                                    // 'data-add-input-btn-class' => 'display-datetimepicker',
+                                    // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
+                                    // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
 
                                     'data-fv-date' => 'true',
                                     'data-fv-date-format' => 'DD/MM/YYYY',
@@ -242,16 +246,20 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                             'widget' => 'single_text',
                             'format' => 'HH:mm',
                             'attr' => array(
-                                    'readonly' => 'readonly',
+                                    // 'readonly' => 'readonly',
                                     'placeholder' => 'HH:mm',
                                     'class' => 'form-control input-sm',
                                     'data-input-transform' => 'datetimepicker',
                                     'data-datetimepicker-type' => 'time',
 
-                                    'data-add-input-btn' => 'true',
-                                    'data-add-input-btn-class' => 'display-datetimepicker',
-                                    'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
-                                    'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+                                    // 'data-add-input-btn' => 'true',
+                                    // 'data-add-input-btn-class' => 'display-datetimepicker',
+                                    // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
+                                    // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
 
                                     'data-fv-date' => 'true',
                                     'data-fv-date-format' => 'h:m A',
@@ -306,6 +314,11 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenTotal')
             // ->add('fechaHoraReg')
         ;
+    }
+    
+    public function preUpdate($entity)
+    {
+        // parent::preUpdate($entity);
     }
 
 }

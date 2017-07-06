@@ -3,6 +3,7 @@
   <entity name="BlhCtlCentroRecoleccion" table="blh_ctl_centro_recoleccion">
     <indexes>
       <index name="IDX_97B3664ED8A5832B" columns="id_user_reg"/>
+      <index name="IDX_97B3664E7DFA12F6" columns="id_establecimiento"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -19,6 +20,21 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <field name="codigo" type="string" column="codigo" length="6" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccion" type="string" column="direccion" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
