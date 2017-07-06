@@ -3,8 +3,8 @@
   <entity name="BlhFrascoRecolectado" table="blh_frasco_recolectado">
     <indexes>
       <index name="fk_frasco_recolectado_lote_anal" columns="id_lote_analisis"/>
-      <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
       <index name="fk_estado_frasco_recolectado" columns="id_estado"/>
+      <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
       <index name="fk_donacion_frasco_recolectado" columns="id_donacion"/>
       <index name="IDX_37ABF7A6D8A5832B" columns="id_user_reg"/>
     </indexes>
