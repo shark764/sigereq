@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonante
  *
- * @ORM\Table(name="blh_donante", indexes={@ORM\Index(name="fki_blh_dona_fk_naciona_blh", columns={"nacionalidad"}), @ORM\Index(name="fki_blh_dona_fk_nacionalidad_blh", columns={"nacionalidad"}), @ORM\Index(name="fk_municipio_donante", columns={"id_municipio"}), @ORM\Index(name="fk_banco_de_leche_donante", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_D458FB01D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_donante", indexes={@ORM\Index(name="fk_municipio_donante", columns={"id_municipio"}), @ORM\Index(name="fki_blh_dona_fk_nacionalidad_blh", columns={"nacionalidad"}), @ORM\Index(name="fk_banco_de_leche_donante", columns={"id_banco_de_leche"}), @ORM\Index(name="fki_blh_dona_fk_naciona_blh", columns={"nacionalidad"}), @ORM\Index(name="IDX_D458FB01D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_D458FB0110281A9F", columns={"id_escolaridad"}), @ORM\Index(name="IDX_D458FB0185E56563", columns={"id_tipo_colecta"}), @ORM\Index(name="IDX_D458FB01D7E358F6", columns={"id_estado_civil"}), @ORM\Index(name="IDX_D458FB018C587E61", columns={"id_ocupacion"}), @ORM\Index(name="IDX_D458FB01AF36C2D7", columns={"id_doc_ide_donante"})})
  * @ORM\Entity
  */
 class BlhDonante implements EntityInterface
@@ -451,6 +451,66 @@ class BlhDonante implements EntityInterface
     private $idUserReg;
 
     /**
+     * @var \BlhCtlEscolaridad
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlEscolaridad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_escolaridad", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idEscolaridad;
+
+    /**
+     * @var \BlhCtlTipoColecta
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlTipoColecta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_colecta", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idTipoColecta;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\CtlEstadoCivil
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlEstadoCivil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estado_civil", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idEstadoCivil;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\CtlOcupacion
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlOcupacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_ocupacion", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idOcupacion;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\CtlDocumentoIdentidad
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlDocumentoIdentidad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_doc_ide_donante", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idDoceDonante;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhDonacion", mappedBy="idDonante", cascade={"all"}, orphanRemoval=true)
+     */
+    private $donanteDonaciones;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -458,6 +518,8 @@ class BlhDonante implements EntityInterface
         $this->fechaRegistroDonanteBlh = new \DateTime('now');
         $this->fechaNacimiento = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->donanteDonaciones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -1143,6 +1205,160 @@ class BlhDonante implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idEscolaridad
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlEscolaridad $idEscolaridad
+     *
+     * @return BlhDonante
+     */
+    public function setIdEscolaridad(\Minsal\SiblhBundle\Entity\BlhCtlEscolaridad $idEscolaridad = null)
+    {
+        $this->idEscolaridad = $idEscolaridad;
+
+        return $this;
+    }
+
+    /**
+     * Get idEscolaridad
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlEscolaridad
+     */
+    public function getIdEscolaridad()
+    {
+        return $this->idEscolaridad;
+    }
+
+    /**
+     * Set idTipoColecta
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlTipoColecta $idTipoColecta
+     *
+     * @return BlhDonante
+     */
+    public function setIdTipoColecta(\Minsal\SiblhBundle\Entity\BlhCtlTipoColecta $idTipoColecta = null)
+    {
+        $this->idTipoColecta = $idTipoColecta;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoColecta
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlTipoColecta
+     */
+    public function getIdTipoColecta()
+    {
+        return $this->idTipoColecta;
+    }
+
+    /**
+     * Set idEstadoCivil
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlEstadoCivil $idEstadoCivil
+     *
+     * @return BlhDonante
+     */
+    public function setIdEstadoCivil(\Minsal\SiapsBundle\Entity\CtlEstadoCivil $idEstadoCivil = null)
+    {
+        $this->idEstadoCivil = $idEstadoCivil;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstadoCivil
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlEstadoCivil
+     */
+    public function getIdEstadoCivil()
+    {
+        return $this->idEstadoCivil;
+    }
+
+    /**
+     * Set idOcupacion
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlOcupacion $idOcupacion
+     *
+     * @return BlhDonante
+     */
+    public function setIdOcupacion(\Minsal\SiapsBundle\Entity\CtlOcupacion $idOcupacion = null)
+    {
+        $this->idOcupacion = $idOcupacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idOcupacion
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlOcupacion
+     */
+    public function getIdOcupacion()
+    {
+        return $this->idOcupacion;
+    }
+
+    /**
+     * Set idDoceDonante
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlDocumentoIdentidad $idDoceDonante
+     *
+     * @return BlhDonante
+     */
+    public function setIdDoceDonante(\Minsal\SiapsBundle\Entity\CtlDocumentoIdentidad $idDoceDonante = null)
+    {
+        $this->idDoceDonante = $idDoceDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get idDoceDonante
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlDocumentoIdentidad
+     */
+    public function getIdDoceDonante()
+    {
+        return $this->idDoceDonante;
+    }
+
+    /**
+     * Add donanteDonacione
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonacion $donanteDonacione
+     *
+     * @return BlhDonante
+     */
+    public function addDonanteDonacione(\Minsal\SiblhBundle\Entity\BlhDonacion $donanteDonacione)
+    {
+        $this->donanteDonaciones[] = $donanteDonacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove donanteDonacione
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonacion $donanteDonacione
+     */
+    public function removeDonanteDonacione(\Minsal\SiblhBundle\Entity\BlhDonacion $donanteDonacione)
+    {
+        $this->donanteDonaciones->removeElement($donanteDonacione);
+    }
+
+    /**
+     * Get donanteDonaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDonanteDonaciones()
+    {
+        return $this->donanteDonaciones;
     }
 
 }
