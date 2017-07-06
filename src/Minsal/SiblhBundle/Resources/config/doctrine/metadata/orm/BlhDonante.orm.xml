@@ -11,6 +11,7 @@
       <index name="IDX_D458FB0185E56563" columns="id_tipo_colecta"/>
       <index name="IDX_D458FB01D7E358F6" columns="id_estado_civil"/>
       <index name="IDX_D458FB018C587E61" columns="id_ocupacion"/>
+      <index name="IDX_D458FB01AF36C2D7" columns="id_doc_ide_donante"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -119,11 +120,6 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
-    <many-to-one field="idTipoColecta" target-entity="BlhCtlTipoColecta" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_tipo_colecta" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idEstadoCivil" target-entity="CtlEstadoCivil" fetch="LAZY">
       <join-columns>
         <join-column name="id_estado_civil" referenced-column-name="id"/>
@@ -134,14 +130,19 @@
         <join-column name="id_ocupacion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="idDoceDonante" target-entity="CtlDocumentoIdentidad" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_doc_ide_donante" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTipoColecta" target-entity="BlhCtlTipoColecta" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_tipo_colecta" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idEscolaridad" target-entity="BlhCtlEscolaridad" fetch="LAZY">
       <join-columns>
         <join-column name="id_escolaridad" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idMunicipio" target-entity="CtlMunicipio" fetch="LAZY">
@@ -152,6 +153,11 @@
     <many-to-one field="nacionalidad" target-entity="CtlNacionalidad" fetch="LAZY">
       <join-columns>
         <join-column name="nacionalidad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
