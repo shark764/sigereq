@@ -455,6 +455,7 @@ class BlhDonante implements EntityInterface
      */
     public function __construct()
     {
+        $this->fechaRegistroDonanteBlh = new \DateTime('now');
         $this->fechaNacimiento = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
     }
@@ -464,7 +465,12 @@ class BlhDonante implements EntityInterface
      */
     public function __toString()
     {
-        return (string) $this->primerApellido . ' ' . $this->segundoApellido . ', ' . $this->primerNombre . ' ' . $this->segundoNombre . ' - ' . $this->codigoDonante;
+        return ucfirst(strtolower($this->primerApellido)) . ' ' . ucfirst(strtolower($this->segundoApellido)) . ', ' . ucfirst(strtolower($this->primerNombre)) . ' ' . ucfirst(strtolower($this->segundoNombre)) ? : '';
+    }
+
+    public function getNombrePaciente()
+    {
+        return ucfirst(strtolower($this->primerNombre)) . ' ' . ucfirst(strtolower($this->segundoNombre)) . ' ' . ucfirst(strtolower($this->primerApellido)) . ' ' . ucfirst(strtolower($this->segundoApellido)) ? : '';
     }
     
     /**
