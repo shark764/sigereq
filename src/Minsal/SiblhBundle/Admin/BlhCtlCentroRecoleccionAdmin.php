@@ -140,6 +140,19 @@ class BlhCtlCentroRecoleccionAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
+            ->add('idBancoDeLeche', null, array(
+                            'label' => 'Banco de Leche',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            // 'required' => true,
+                            // 'group_by' => 'idEstablecimiento',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
             // ->add('fechaHoraReg')
         ;
     }

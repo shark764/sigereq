@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhPasteurizacion
  *
- * @ORM\Table(name="blh_pasteurizacion", indexes={@ORM\Index(name="fk_curva_pasteurizacion", columns={"id_curva"}), @ORM\Index(name="IDX_822F9117D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_pasteurizacion", indexes={@ORM\Index(name="fk_curva_pasteurizacion", columns={"id_curva"}), @ORM\Index(name="IDX_822F9117D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_822F9117919F2FC7", columns={"id_responsable_pasteurizacion"})})
  * @ORM\Entity
  */
 class BlhPasteurizacion implements EntityInterface
@@ -167,6 +167,17 @@ class BlhPasteurizacion implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\MntEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_responsable_pasteurizacion", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResponsablePasteurizacion;
 
     /**
      * Constructor
@@ -471,6 +482,30 @@ class BlhPasteurizacion implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idResponsablePasteurizacion
+     *
+     * @param \Minsal\SiapsBundle\Entity\MntEmpleado $idResponsablePasteurizacion
+     *
+     * @return BlhDonacion
+     */
+    public function setIdResponsablePasteurizacion(\Minsal\SiapsBundle\Entity\MntEmpleado $idResponsablePasteurizacion = null)
+    {
+        $this->idResponsablePasteurizacion = $idResponsablePasteurizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idResponsablePasteurizacion
+     *
+     * @return \Minsal\SiapsBundle\Entity\MntEmpleado
+     */
+    public function getIdResponsablePasteurizacion()
+    {
+        return $this->idResponsablePasteurizacion;
     }
 
 }

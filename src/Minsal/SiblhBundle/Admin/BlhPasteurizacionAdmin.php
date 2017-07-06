@@ -69,14 +69,185 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('codigoPasteurizacion')
-            ->add('numCiclo')
-            ->add('volumenPasteurizado')
-            ->add('numFrascosPasteurizados')
-            ->add('fechaPasteurizacion')
-            ->add('responsablePasteurizacion')
+            ->add('codigoPasteurizacion', null, array(
+                            'label' => 'Código',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'código...',
+                                    'class' => 'form-control input-sm',
+                                    'readonly' => 'readonly',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                            )
+            ))
+            ->add('idCurva', null, array(
+                            'label' => 'Curva de pasteurización',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-list',
+                            )
+            ))
+            ->add('numCiclo', null, array(
+                            'label' => 'Número de ciclos',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'placeholder' => 'número de ciclos...',
+                                    // 'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-repeat',
+
+                                    'data-fv-integer' => 'true',
+                                    'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
+            ->add('volumenPasteurizado', null, array(
+                            'label' => 'Volumen pasteurizado',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen pasteurizado...',
+                                    'class' => 'form-control input-sm',
+                                    // 'readonly' => 'readonly',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
+            ->add('numFrascosPasteurizados', null, array(
+                            'label' => 'Número de frascos pasteurizados',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'placeholder' => 'número de frascos pasteurizados...',
+                                    // 'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tasks',
+
+                                    'data-fv-integer' => 'true',
+                                    'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
+            ->add('fechaPasteurizacion', 'datetime', array(
+                            'label' => 'Fecha de pasteurización',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'widget' => 'single_text',
+                            'format' => 'dd/MM/yyyy',
+                            'attr' => array(
+                                    // 'readonly' => 'readonly',
+                                    'placeholder' => 'DD/MM/YYYY',
+                                    'class' => 'form-control input-sm',
+                                    'data-input-transform' => 'datetimepicker',
+                                    'data-datetimepicker-type' => 'date',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+                                    // 'data-add-input-btn' => 'true',
+                                    // 'data-add-input-btn-class' => 'display-datetimepicker',
+                                    // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
+                                    // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
+
+                                    'data-fv-date' => 'true',
+                                    'data-fv-date-format' => 'DD/MM/YYYY',
+                                    'data-fv-date-message' => 'No es una fecha válida',
+                            )
+            ))
+            ->add('idResponsablePasteurizacion', null, array(
+                            'label' => 'Responsable de pasteurización',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+                            )
+            ))
+            // ->add('responsablePasteurizacion', null, array(
+                            // 'label' => 'Responsable de pasteurización',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'attr' => array(
+                                    // 'placeholder' => 'responsable de pasteurización...',
+            //                         'class' => 'form-control input-sm',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-max' => '60',
+            //                         'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
             // ->add('usuario')
-            ->add('volumenTotal')
+            ->add('volumenTotal', null, array(
+                            'label' => 'Volumen total',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen total...',
+                                    'class' => 'form-control input-sm',
+                                    // 'readonly' => 'readonly',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tasks',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
             // ->add('fechaHoraReg')
         ;
     }

@@ -94,7 +94,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                 'label' => 'Centro de recolección',
                                 'label_attr' => array('class' => 'label_form_sm'),
                                 'required' => true,
-                                // 'group_by' => 'idBancoDeLeche',
+                                'group_by' => 'idBancoDeLeche',
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
 

@@ -106,11 +106,18 @@ class BlhBancoDeLeche implements EntityInterface
     private $idUserReg;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhCtlCentroRecoleccion", mappedBy="idBancoDeLeche", cascade={"all"}, orphanRemoval=true)
+     */
+    private $bancoLecheCentroRecoleccion;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->bancoLecheCentroRecoleccion = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -287,6 +294,40 @@ class BlhBancoDeLeche implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Add bancoLecheCentroRecoleccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $bancoLecheCentroRecoleccion
+     *
+     * @return BlhBancoDeLeche
+     */
+    public function addBancoLecheCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $bancoLecheCentroRecoleccion)
+    {
+        $this->bancoLecheCentroRecoleccion[] = $bancoLecheCentroRecoleccion;
+
+        return $this;
+    }
+
+    /**
+     * Remove bancoLecheCentroRecoleccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $bancoLecheCentroRecoleccion
+     */
+    public function removeBancoLecheCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $bancoLecheCentroRecoleccion)
+    {
+        $this->bancoLecheCentroRecoleccion->removeElement($bancoLecheCentroRecoleccion);
+    }
+
+    /**
+     * Get bancoLecheCentroRecoleccion
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBancoLecheCentroRecoleccion()
+    {
+        return $this->bancoLecheCentroRecoleccion;
     }
 
 }

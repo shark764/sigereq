@@ -1,0 +1,60 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{#{% extends base_template %}#}
+{% extends 'MinsalSiblhBundle:CRUD:base_edit.html.twig' %}
+
+{% use 'MinsalSiblhBundle:BlhHistoriaActualAdmin:base_edit_form.html.twig' with form as parentForm %}
+
+{% block form %}
+
+    {{ block('parentForm') }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {# select2-es #}
+    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
+
+    {# formValidation #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/formValidation.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/framework/bootstrap.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/language/es_ES.js') }}" ></script>
+
+    {% include 'MinsalSiblhBundle:General:general_form_script.html.twig' %}
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function() {
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// calculate value
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('#{{ admin.uniqId }}_pesoDonante, #{{ admin.uniqId }}_tallaDonante').on('keyup change blur', function (e) {
+                var pesoDonante = parseFloat(jQuery('#{{ admin.uniqId }}_pesoDonante').val());
+                var tallaDonante = parseFloat(jQuery('#{{ admin.uniqId }}_tallaDonante').val());
+
+                if (isNaN(pesoDonante) || jQuery.trim(pesoDonante).length === 0) {
+                    pesoDonante = 0;
+                }
+                if (isNaN(tallaDonante) || jQuery.trim(tallaDonante).length === 0) {
+                    jQuery('#{{ admin.uniqId }}_imc').val(0);
+                    return;
+                }
+                var imc = pesoDonante / Math.pow(tallaDonante, 2);
+                jQuery('#{{ admin.uniqId }}_imc').val(imc.toFixed(2));
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+        });
+
+    </script>
+{% endblock %}

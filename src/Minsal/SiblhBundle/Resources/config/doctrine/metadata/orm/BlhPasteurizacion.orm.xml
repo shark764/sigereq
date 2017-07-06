@@ -4,6 +4,7 @@
     <indexes>
       <index name="fk_curva_pasteurizacion" columns="id_curva"/>
       <index name="IDX_822F9117D8A5832B" columns="id_user_reg"/>
+      <index name="IDX_822F9117919F2FC7" columns="id_responsable_pasteurizacion"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -39,6 +40,11 @@
     </field>
     <field name="volumenTotal" type="decimal" column="volumen_total" precision="8" scale="0" nullable="true"/>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idResponsablePasteurizacion" target-entity="MntEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_responsable_pasteurizacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
