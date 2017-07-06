@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonacion
  *
- * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"})})
  * @ORM\Entity
  */
 class BlhDonacion implements EntityInterface
@@ -92,17 +92,6 @@ class BlhDonacion implements EntityInterface
     private $fechaHoraReg;
 
     /**
-     * @var \BlhDonante
-     *
-     * @ORM\ManyToOne(targetEntity="BlhDonante")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_donante", referencedColumnName="id")
-     * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
-     */
-    private $idDonante;
-
-    /**
      * @var \BlhCtlCentroRecoleccion
      *
      * @ORM\ManyToOne(targetEntity="BlhCtlCentroRecoleccion")
@@ -112,6 +101,17 @@ class BlhDonacion implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idCentroRecoleccion;
+
+    /**
+     * @var \BlhDonante
+     *
+     * @ORM\ManyToOne(targetEntity="BlhDonante", inversedBy="donanteDonaciones")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_donante", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idDonante;
 
     /**
      * @var \BlhBancoDeLeche
@@ -304,30 +304,6 @@ class BlhDonacion implements EntityInterface
     }
 
     /**
-     * Set idDonante
-     *
-     * @param \Minsal\SiblhBundle\Entity\BlhDonante $idDonante
-     *
-     * @return BlhDonacion
-     */
-    public function setIdDonante(\Minsal\SiblhBundle\Entity\BlhDonante $idDonante = null)
-    {
-        $this->idDonante = $idDonante;
-
-        return $this;
-    }
-
-    /**
-     * Get idDonante
-     *
-     * @return \Minsal\SiblhBundle\Entity\BlhDonante
-     */
-    public function getIdDonante()
-    {
-        return $this->idDonante;
-    }
-
-    /**
      * Set idCentroRecoleccion
      *
      * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion
@@ -349,6 +325,30 @@ class BlhDonacion implements EntityInterface
     public function getIdCentroRecoleccion()
     {
         return $this->idCentroRecoleccion;
+    }
+
+    /**
+     * Set idDonante
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonante $idDonante
+     *
+     * @return BlhDonacion
+     */
+    public function setIdDonante(\Minsal\SiblhBundle\Entity\BlhDonante $idDonante = null)
+    {
+        $this->idDonante = $idDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get idDonante
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhDonante
+     */
+    public function getIdDonante()
+    {
+        return $this->idDonante;
     }
 
     /**
