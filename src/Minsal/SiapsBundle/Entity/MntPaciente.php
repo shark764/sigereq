@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MntPaciente
  *
- * @ORM\Table(name="mnt_paciente", indexes={@ORM\Index(name="IDX_3E2ACBC57F1FADD6", columns={"area_geografica_domicilio"}), @ORM\Index(name="IDX_3E2ACBC5B490DCBC", columns={"id_canton_domicilio"}), @ORM\Index(name="IDX_3E2ACBC59CC1698E", columns={"id_condicion_persona"}), @ORM\Index(name="IDX_3E2ACBC5F4BEBFC8", columns={"id_departamento_domicilio"}), @ORM\Index(name="IDX_3E2ACBC5BB55CDF5", columns={"id_departamento_nacimiento"}), @ORM\Index(name="IDX_3E2ACBC5468B95CB", columns={"id_doc_ide_paciente"}), @ORM\Index(name="IDX_3E2ACBC5558DDFB5", columns={"id_doc_ide_proporciono_datos"}), @ORM\Index(name="IDX_3E2ACBC5ACA54FF3", columns={"id_doc_ide_responsable"}), @ORM\Index(name="IDX_3E2ACBC5B3457663", columns={"id_municipio_domicilio"}), @ORM\Index(name="IDX_3E2ACBC5FA164C5C", columns={"id_municipio_nacimiento"}), @ORM\Index(name="IDX_3E2ACBC5B0DC2AB1", columns={"id_nacionalidad"}), @ORM\Index(name="IDX_3E2ACBC5242CF91E", columns={"id_pais_nacimiento"}), @ORM\Index(name="IDX_3E2ACBC526DA8252", columns={"id_parentesco_propor_datos"}), @ORM\Index(name="IDX_3E2ACBC5FC412399", columns={"id_parentesco_responsable"}), @ORM\Index(name="IDX_3E2ACBC5A7194A90", columns={"id_sexo"}), @ORM\Index(name="IDX_3E2ACBC5D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_3E2ACBC5AC39DE56", columns={"id_user_mod"})})
+ * @ORM\Table(name="mnt_paciente", indexes={@ORM\Index(name="IDX_3E2ACBC57F1FADD6", columns={"area_geografica_domicilio"}), @ORM\Index(name="IDX_3E2ACBC5B490DCBC", columns={"id_canton_domicilio"}), @ORM\Index(name="IDX_3E2ACBC59CC1698E", columns={"id_condicion_persona"}), @ORM\Index(name="IDX_3E2ACBC5F4BEBFC8", columns={"id_departamento_domicilio"}), @ORM\Index(name="IDX_3E2ACBC5BB55CDF5", columns={"id_departamento_nacimiento"}), @ORM\Index(name="IDX_3E2ACBC5468B95CB", columns={"id_doc_ide_paciente"}), @ORM\Index(name="IDX_3E2ACBC5558DDFB5", columns={"id_doc_ide_proporciono_datos"}), @ORM\Index(name="IDX_3E2ACBC5ACA54FF3", columns={"id_doc_ide_responsable"}), @ORM\Index(name="IDX_3E2ACBC5B3457663", columns={"id_municipio_domicilio"}), @ORM\Index(name="IDX_3E2ACBC5FA164C5C", columns={"id_municipio_nacimiento"}), @ORM\Index(name="IDX_3E2ACBC5B0DC2AB1", columns={"id_nacionalidad"}), @ORM\Index(name="IDX_3E2ACBC5242CF91E", columns={"id_pais_nacimiento"}), @ORM\Index(name="IDX_3E2ACBC526DA8252", columns={"id_parentesco_propor_datos"}), @ORM\Index(name="IDX_3E2ACBC5FC412399", columns={"id_parentesco_responsable"}), @ORM\Index(name="IDX_3E2ACBC5A7194A90", columns={"id_sexo"}), @ORM\Index(name="IDX_3E2ACBC5D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_3E2ACBC5AC39DE56", columns={"id_user_mod"}), @ORM\Index(name="IDX_3E2ACBC58C587E61", columns={"id_ocupacion"}), @ORM\Index(name="IDX_3E2ACBC5D7E358F6", columns={"id_estado_civil"})})
  * @ORM\Entity(repositoryClass="Minsal\SiapsBundle\Repository\MntPacienteRepository")
  */
 class MntPaciente
@@ -383,9 +383,9 @@ class MntPaciente
     private $idSexo;
 
     /**
-     * @var \Application\Sonata\UserBundle\Entity\User
+     * @var \FosUserUser
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
      * })
@@ -393,14 +393,34 @@ class MntPaciente
     private $idUserReg;
 
     /**
-     * @var \Application\Sonata\UserBundle\Entity\User
+     * @var \FosUserUser
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="FosUserUser")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user_mod", referencedColumnName="id")
      * })
      */
     private $idUserMod;
+
+    /**
+     * @var \CtlOcupacion
+     *
+     * @ORM\ManyToOne(targetEntity="CtlOcupacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_ocupacion", referencedColumnName="id")
+     * })
+     */
+    private $idOcupacion;
+
+    /**
+     * @var \CtlEstadoCivil
+     *
+     * @ORM\ManyToOne(targetEntity="CtlEstadoCivil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estado_civil", referencedColumnName="id")
+     * })
+     */
+    private $idEstadoCivil;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -1523,11 +1543,11 @@ class MntPaciente
     /**
      * Set idUserReg
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     * @param \Minsal\SiapsBundle\Entity\FosUserUser $idUserReg
      *
      * @return MntPaciente
      */
-    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    public function setIdUserReg(\Minsal\SiapsBundle\Entity\FosUserUser $idUserReg = null)
     {
         $this->idUserReg = $idUserReg;
 
@@ -1537,7 +1557,7 @@ class MntPaciente
     /**
      * Get idUserReg
      *
-     * @return \Application\Sonata\UserBundle\Entity\User
+     * @return \Minsal\SiapsBundle\Entity\FosUserUser
      */
     public function getIdUserReg()
     {
@@ -1547,11 +1567,11 @@ class MntPaciente
     /**
      * Set idUserMod
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $idUserMod
+     * @param \Minsal\SiapsBundle\Entity\FosUserUser $idUserMod
      *
      * @return MntPaciente
      */
-    public function setIdUserMod(\Application\Sonata\UserBundle\Entity\User $idUserMod = null)
+    public function setIdUserMod(\Minsal\SiapsBundle\Entity\FosUserUser $idUserMod = null)
     {
         $this->idUserMod = $idUserMod;
 
@@ -1561,11 +1581,59 @@ class MntPaciente
     /**
      * Get idUserMod
      *
-     * @return \Application\Sonata\UserBundle\Entity\User
+     * @return \Minsal\SiapsBundle\Entity\FosUserUser
      */
     public function getIdUserMod()
     {
         return $this->idUserMod;
+    }
+
+    /**
+     * Set idOcupacion
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlOcupacion $idOcupacion
+     *
+     * @return MntPaciente
+     */
+    public function setIdOcupacion(\Minsal\SiapsBundle\Entity\CtlOcupacion $idOcupacion = null)
+    {
+        $this->idOcupacion = $idOcupacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idOcupacion
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlOcupacion
+     */
+    public function getIdOcupacion()
+    {
+        return $this->idOcupacion;
+    }
+
+    /**
+     * Set idEstadoCivil
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlEstadoCivil $idEstadoCivil
+     *
+     * @return MntPaciente
+     */
+    public function setIdEstadoCivil(\Minsal\SiapsBundle\Entity\CtlEstadoCivil $idEstadoCivil = null)
+    {
+        $this->idEstadoCivil = $idEstadoCivil;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstadoCivil
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlEstadoCivil
+     */
+    public function getIdEstadoCivil()
+    {
+        return $this->idEstadoCivil;
     }
 
     /**
