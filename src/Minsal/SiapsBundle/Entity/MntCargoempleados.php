@@ -44,7 +44,7 @@ class MntCargoempleados
      */
     public function __toString()
     {
-        return (string) $this->nombre ? : '';
+        return (string) $this->cargo ? : '';
     }
 
     /**
