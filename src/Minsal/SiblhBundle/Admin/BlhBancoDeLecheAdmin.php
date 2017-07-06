@@ -59,8 +59,55 @@ class BlhBancoDeLecheAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('codigoBancoDeLeche')
-            ->add('estadoBanco')
+            ->add('idEstablecimiento', null, array(
+                            'label' => 'Establecimiento',
+                            'required' => true,
+                            // 'query_builder' => function(EntityRepository $er) {
+                            //                         return $er->createQueryBuilder('std')
+                            //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
+                            //                                         ->where('tipo.codigo IN (:code_hospital_type)')
+                            //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
+                            //                                         ->orderBy('std.nombre', 'asc')
+                            //                                         ->distinct();
+                            //                     },
+                            'group_by' => 'idTipoEstablecimiento',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'stop',
+                                    // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
+            ->add('codigoBancoDeLeche', null, array(
+                            'label' => 'Código',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'código...',
+                                    'class' => 'form-control input-sm',
+                                    'readonly' => 'readonly',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                            )
+            ))
+            ->add('estadoBanco', null, array(
+                            'label' => 'Estado',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'estado...',
+                                    'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;

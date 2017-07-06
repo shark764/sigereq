@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonacion
  *
- * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_13A0CBCBD4737338", columns={"id_responsable_donacion"})})
  * @ORM\Entity
  */
 class BlhDonacion implements EntityInterface
@@ -134,6 +134,17 @@ class BlhDonacion implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\MntEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_responsable_donacion", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResponsableDonacion;
 
     /**
      * @ORM\OneToMany(targetEntity="BlhFrascoRecolectado", mappedBy="idDonacion", cascade={"all"}, orphanRemoval=true)
@@ -431,6 +442,30 @@ class BlhDonacion implements EntityInterface
     public function getDonacionFrascoRecolectado()
     {
         return $this->donacionFrascoRecolectado;
+    }
+
+    /**
+     * Set idResponsableDonacion
+     *
+     * @param \Minsal\SiapsBundle\Entity\MntEmpleado $idResponsableDonacion
+     *
+     * @return BlhDonacion
+     */
+    public function setIdResponsableDonacion(\Minsal\SiapsBundle\Entity\MntEmpleado $idResponsableDonacion = null)
+    {
+        $this->idResponsableDonacion = $idResponsableDonacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idResponsableDonacion
+     *
+     * @return \Minsal\SiapsBundle\Entity\MntEmpleado
+     */
+    public function getIdResponsableDonacion()
+    {
+        return $this->idResponsableDonacion;
     }
 
 }

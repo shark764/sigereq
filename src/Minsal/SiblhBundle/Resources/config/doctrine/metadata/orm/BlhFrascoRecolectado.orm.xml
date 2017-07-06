@@ -7,6 +7,7 @@
       <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
       <index name="fk_donacion_frasco_recolectado" columns="id_donacion"/>
       <index name="IDX_37ABF7A6D8A5832B" columns="id_user_reg"/>
+      <index name="IDX_37ABF7A67DA00A52" columns="id_forma_extraccion"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -40,6 +41,11 @@
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFormaExtraccion" target-entity="BlhCtlFormaExtraccion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_forma_extraccion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idLoteAnalisis" target-entity="BlhLoteAnalisis" fetch="LAZY">

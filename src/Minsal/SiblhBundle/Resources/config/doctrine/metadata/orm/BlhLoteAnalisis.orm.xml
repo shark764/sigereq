@@ -3,6 +3,7 @@
   <entity name="BlhLoteAnalisis" table="blh_lote_analisis">
     <indexes>
       <index name="IDX_232421CCD8A5832B" columns="id_user_reg"/>
+      <index name="IDX_232421CC78720D11" columns="id_responsable_analisis"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -25,6 +26,11 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idResponsableAnalisis" target-entity="MntEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_responsable_analisis" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>

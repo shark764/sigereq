@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhLoteAnalisis
  *
- * @ORM\Table(name="blh_lote_analisis", indexes={@ORM\Index(name="IDX_232421CCD8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_lote_analisis", indexes={@ORM\Index(name="IDX_232421CCD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_232421CC78720D11", columns={"id_responsable_analisis"})})
  * @ORM\Entity
  */
 class BlhLoteAnalisis implements EntityInterface
@@ -104,12 +104,30 @@ class BlhLoteAnalisis implements EntityInterface
     private $idUserReg;
 
     /**
+     * @var \Minsal\SiapsBundle\Entity\MntEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_responsable_analisis", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResponsableAnalisis;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhFrascoRecolectado", mappedBy="idLoteAnalisis", cascade={"all"}, orphanRemoval=true)
+     */
+    private $loteAnalisisFrascoRecolectado;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->fechaAnalisisFisicoQuimico = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->loteAnalisisFrascoRecolectado = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -286,6 +304,64 @@ class BlhLoteAnalisis implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idResponsableAnalisis
+     *
+     * @param \Minsal\SiapsBundle\Entity\MntEmpleado $idResponsableAnalisis
+     *
+     * @return BlhDonacion
+     */
+    public function setIdResponsableAnalisis(\Minsal\SiapsBundle\Entity\MntEmpleado $idResponsableAnalisis = null)
+    {
+        $this->idResponsableAnalisis = $idResponsableAnalisis;
+
+        return $this;
+    }
+
+    /**
+     * Get idResponsableAnalisis
+     *
+     * @return \Minsal\SiapsBundle\Entity\MntEmpleado
+     */
+    public function getIdResponsableAnalisis()
+    {
+        return $this->idResponsableAnalisis;
+    }
+
+    /**
+     * Add loteAnalisisFrascoRecolectado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $loteAnalisisFrascoRecolectado
+     *
+     * @return BlhLoteAnalisis
+     */
+    public function addLoteAnalisisFrascoRecolectado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $loteAnalisisFrascoRecolectado)
+    {
+        $this->loteAnalisisFrascoRecolectado[] = $loteAnalisisFrascoRecolectado;
+
+        return $this;
+    }
+
+    /**
+     * Remove loteAnalisisFrascoRecolectado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $loteAnalisisFrascoRecolectado
+     */
+    public function removeLoteAnalisisFrascoRecolectado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $loteAnalisisFrascoRecolectado)
+    {
+        $this->loteAnalisisFrascoRecolectado->removeElement($loteAnalisisFrascoRecolectado);
+    }
+
+    /**
+     * Get loteAnalisisFrascoRecolectado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLoteAnalisisFrascoRecolectado()
+    {
+        return $this->loteAnalisisFrascoRecolectado;
     }
 
 }

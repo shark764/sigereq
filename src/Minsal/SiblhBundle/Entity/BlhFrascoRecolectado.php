@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhFrascoRecolectado
  *
- * @ORM\Table(name="blh_frasco_recolectado", indexes={@ORM\Index(name="fk_frasco_recolectado_lote_anal", columns={"id_lote_analisis"}), @ORM\Index(name="fk_estado_frasco_recolectado", columns={"id_estado"}), @ORM\Index(name="fk_donante_frasco_recolectado", columns={"id_donante"}), @ORM\Index(name="fk_donacion_frasco_recolectado", columns={"id_donacion"}), @ORM\Index(name="IDX_37ABF7A6D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_frasco_recolectado", indexes={@ORM\Index(name="fk_frasco_recolectado_lote_anal", columns={"id_lote_analisis"}), @ORM\Index(name="fk_estado_frasco_recolectado", columns={"id_estado"}), @ORM\Index(name="fk_donante_frasco_recolectado", columns={"id_donante"}), @ORM\Index(name="fk_donacion_frasco_recolectado", columns={"id_donacion"}), @ORM\Index(name="IDX_37ABF7A6D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_37ABF7A67DA00A52", columns={"id_forma_extraccion"})})
  * @ORM\Entity
  */
 class BlhFrascoRecolectado implements EntityInterface
@@ -190,7 +190,7 @@ class BlhFrascoRecolectado implements EntityInterface
     /**
      * @var \BlhLoteAnalisis
      *
-     * @ORM\ManyToOne(targetEntity="BlhLoteAnalisis")
+     * @ORM\ManyToOne(targetEntity="BlhLoteAnalisis", inversedBy="loteAnalisisFrascoRecolectado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_lote_analisis", referencedColumnName="id")
      * })
@@ -208,6 +208,17 @@ class BlhFrascoRecolectado implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \BlhCtlFormaExtraccion
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlFormaExtraccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_forma_extraccion", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idFormaExtraccion;
 
     /**
      * Constructor
@@ -583,6 +594,30 @@ class BlhFrascoRecolectado implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idFormaExtraccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhLoteAnalisis $idFormaExtraccion
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdFormaExtraccion(\Minsal\SiblhBundle\Entity\BlhLoteAnalisis $idFormaExtraccion = null)
+    {
+        $this->idFormaExtraccion = $idFormaExtraccion;
+
+        return $this;
+    }
+
+    /**
+     * Get idFormaExtraccion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhLoteAnalisis
+     */
+    public function getIdFormaExtraccion()
+    {
+        return $this->idFormaExtraccion;
     }
 
 }

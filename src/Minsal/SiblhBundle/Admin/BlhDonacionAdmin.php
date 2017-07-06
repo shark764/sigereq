@@ -63,6 +63,20 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
         $formMapper
             ->with('Registro de donación')
             // ->add('id')
+                ->add('codigoDonante', null, array(
+                                'label' => 'Código',
+                                'label_attr' => array('class' => 'label_form_sm'),
+                                'required' => false,
+                                'attr' => array(
+                                        'placeholder' => 'código...',
+                                        'class' => 'form-control input-sm',
+                                        'readonly' => 'readonly',
+                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                        'data-add-input-addon' => 'true',
+                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                                )
+                ))
                 ->add('idBancoDeLeche', null, array(
                                 'label' => 'Banco de Leche',
                                 'label_attr' => array('class' => 'label_form_sm'),
@@ -70,6 +84,10 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                 // 'group_by' => 'idEstablecimiento',
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
+
+                                        'data-add-input-addon' => 'true',
+                                        // 'data-add-input-addon-class' => 'primary-v4',
+                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
                                 )
                 ))
                 ->add('idCentroRecoleccion', null, array(
@@ -79,19 +97,10 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                 // 'group_by' => 'idBancoDeLeche',
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
-                                )
-                ))
-                ->add('codigoDonante', null, array(
-                                'label' => 'Código',
-                                'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => false,
-                                'attr' => array(
-                                        'placeholder' => 'código...',
-                                        'class' => 'form-control input-sm',
-                                        'readonly' => 'readonly',
 
                                         'data-add-input-addon' => 'true',
-                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                                        // 'data-add-input-addon-class' => 'primary-v4',
+                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
                                 )
                 ))
                 ->add('fechaDonacion', 'datetime', array(
@@ -106,37 +115,56 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                         'class' => 'form-control input-sm',
                                         'data-input-transform' => 'datetimepicker',
                                         'data-datetimepicker-type' => 'date',
+                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                        'data-add-input-btn' => 'true',
-                                        'data-add-input-btn-class' => 'display-datetimepicker',
-                                        'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
-                                        'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
+                                        'data-add-input-addon' => 'true',
+                                        // 'data-add-input-addon-class' => 'primary-v4',
+                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+                                        // 'data-add-input-btn' => 'true',
+                                        // 'data-add-input-btn-class' => 'display-datetimepicker',
+                                        // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
+                                        // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
 
                                         'data-fv-date' => 'true',
                                         'data-fv-date-format' => 'DD/MM/YYYY',
                                         'data-fv-date-message' => 'No es una fecha válida',
                                 )
                 ))
-                ->add('responsableDonacion', null, array(
+                ->add('idResponsableDonacion', null, array(
                                 'label' => 'Responsable de donación',
                                 'label_attr' => array('class' => 'label_form_sm'),
+                                'required' => false,
                                 'attr' => array(
-                                        'placeholder' => 'responsable de donación...',
                                         'class' => 'form-control input-sm',
+                                        // 'data-form-inline-group' => 'start',
+                                        // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
+                                        // 'data-add-input-addon-class' => 'primary-v4',
                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
-
-                                        'data-fv-stringlength' => 'true',
-                                        'data-fv-stringlength-min' => '1',
-                                        'data-fv-stringlength-max' => '60',
-                                        'data-fv-stringlength-message' => '1 caracteres mínimo',
-
-                                        'data-fv-regexp' => 'true',
-                                        'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
-                                        'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                                 )
                 ))
+                // ->add('responsableDonacion', null, array(
+                //                 'label' => 'Responsable de donación',
+                //                 'label_attr' => array('class' => 'label_form_sm'),
+                //                 'attr' => array(
+                //                         'placeholder' => 'responsable de donación...',
+                //                         'class' => 'form-control input-sm',
+
+                //                         'data-add-input-addon' => 'true',
+                //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+
+                //                         'data-fv-stringlength' => 'true',
+                //                         'data-fv-stringlength-min' => '1',
+                //                         'data-fv-stringlength-max' => '60',
+                //                         'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+                //                         'data-fv-regexp' => 'true',
+                //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+                //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                //                 )
+                // ))
             ->end()
         ;
 
@@ -145,7 +173,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ->add('donacionFrascoRecolectado', 'sonata_type_collection', array(
                                 'label' => false,
                                 'label_attr' => array('class' => 'label_form_sm'),
-                                'btn_add' => 'Agregar frasco recolectado',  // --| Prevents the "Add" option from being displayed
+                                'btn_add' => 'Agregar frasco',  // --| Prevents the "Add" option from being displayed
                                 // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
                                 'attr' => array(
                                         'class' => 'form-control input-sm',

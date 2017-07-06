@@ -105,6 +105,7 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'placeholder' => 'código...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
@@ -333,11 +334,33 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
-            ->add('documentoIdentificacion', null, array(
+            // ->add('documentoIdentificacion', null, array(
+            //                 'label' => 'Documento de identificación',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'attr' => array(
+            //                         'placeholder' => 'documento de identificación...',
+            //                         'class' => 'form-control input-sm',
+            //                         'data-form-inline-group' => 'start',
+            //                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-message' => '1 caracter mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_MINIMAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
+            ->add('idDoceDonante', null, array(
                             'label' => 'Documento de identificación',
                             'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
                             'attr' => array(
-                                    'placeholder' => 'documento de identificación...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
@@ -345,14 +368,6 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '1',
-                                    'data-fv-stringlength-message' => '1 caracter mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_MINIMAL___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
             ->add('numeroDocumentoIdentificacion', null, array(
@@ -404,6 +419,10 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-wrench',
                             )
             ))
             // ->add('ocupacion', null, array(
@@ -436,6 +455,10 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-link',
                             )
             ))
             // ->add('estadoCivil', null, array(
@@ -468,6 +491,10 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
                             )
             ))
             // ->add('escolaridad', null, array(
@@ -478,38 +505,6 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
             //                         'class' => 'form-control input-sm',
             //                         // 'data-form-inline-group' => 'stop',
             //                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-            //                         'data-add-input-addon' => 'true',
-            //                         // 'data-add-input-addon-class' => 'primary-v4',
-            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
-
-            //                         'data-fv-stringlength' => 'true',
-            //                         'data-fv-stringlength-min' => '1',
-            //                         'data-fv-stringlength-message' => '1 caracter mínimo',
-
-            //                         'data-fv-regexp' => 'true',
-            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_MINIMAL___,
-            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-            //                 )
-            // ))
-            ->add('idTipoColecta', null, array(
-                            'label' => 'Tipo de colecta',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-                            )
-            ))
-            // ->add('tipoColecta', null, array(
-            //                 'label' => 'Tipo de colecta',
-            //                 'label_attr' => array('class' => 'label_form_sm'),
-            //                 'attr' => array(
-            //                         'placeholder' => 'tipo de colecta...',
-            //                         'class' => 'form-control input-sm',
-            //                         // 'data-form-inline-group' => 'stop',
-            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
             //                         'data-add-input-addon' => 'true',
             //                         // 'data-add-input-addon-class' => 'primary-v4',
@@ -543,6 +538,42 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
+            ->add('idTipoColecta', null, array(
+                            'label' => 'Tipo de colecta',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+                            )
+            ))
+            // ->add('tipoColecta', null, array(
+            //                 'label' => 'Tipo de colecta',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'attr' => array(
+            //                         'placeholder' => 'tipo de colecta...',
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'stop',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-message' => '1 caracter mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_MINIMAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
             ->add('estado', null, array(
                             'label' => 'Estado',
                             'label_attr' => array('class' => 'label_form_sm'),

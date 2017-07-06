@@ -1,0 +1,59 @@
+{# empty Twig template #}
+
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {# stylesheets minimized with Assetic #}
+    {% stylesheets
+        'bundles/minsalsiblh/css/simagd-styles.css'
+        'bundles/minsalsiblh/css/simagd-form-styles.css'
+        'bundles/minsalsiblh/css/simagd-extend-bootstrap3_minsalsiaps.css'
+        'bundles/minsalsiblh/css/simagd-table.css'
+
+        'bundles/minsalsiblh/css/select2-bootstrap_minsalsiaps.css'
+
+        output="bundles/minsalsiblh/compiled/css/bundle_stylesheets___base_list.css" %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}{# #}
+
+    {# bootstrap-table #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+{% endblock %}
+
+
+
+{% block sonata_page_content_header %} {% endblock sonata_page_content_header %}
+
+{#{% block sonata_breadcrumb %} {% endblock sonata_breadcrumb %} #}
+
+{% block actions %} {% endblock %}{# #}
+
+{% block tab_menu %} {% endblock %}{# #}
+
+
+
+{#{% block content %}
+    {{ parent() }}
+{% endblock %}#}
+
+
+
+{% block list_table %} {% endblock %}
+
+{% block list_filters %} {% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {# select2-es #}
+    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
+
+    {# bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
+    
+    {% include 'MinsalSiblhBundle:General:general_form_script.html.twig' %}
+{% endblock %}
