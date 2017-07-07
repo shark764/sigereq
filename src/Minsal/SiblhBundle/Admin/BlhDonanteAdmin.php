@@ -208,6 +208,34 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
+            ->add('idMunicipio', null, array(
+                            'label' => 'Procedencia',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
+            ->add('nacionalidad', null, array(
+                            'label' => 'Nacionalidad',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-globe',
+                            )
+            ))
             ->add('fechaNacimiento', 'datetime', array(
                             'label' => 'Fecha de nacimiento',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -263,7 +291,7 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             // ->add('fechaRegistroDonanteBlh')
             ->add('telefonoFijo', null, array(
-                            'label' => 'Teléfono fijo',
+                            'label' => 'Teléfono',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => false,
                             'attr' => array(
@@ -290,25 +318,25 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-phone',
                             )
             ))
-            ->add('procedencia', null, array(
-                            'label' => 'Procedencia',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    'placeholder' => 'procedencia...',
-                                    'class' => 'form-control input-sm',
+            // ->add('procedencia', null, array(
+            //                 'label' => 'Procedencia',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         // 'rows' => '2',
+            //                         // 'style' => 'resize:none',
+            //                         'placeholder' => 'procedencia...',
+            //                         'class' => 'form-control input-sm',
 
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '5',
+            //                         'data-fv-stringlength-message' => '5 caracteres mínimo',
 
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
             ->add('registro', null, array(
                             'label' => 'Número de registro',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -574,26 +602,35 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
             //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
             //                 )
             // ))
-            ->add('estado', null, array(
-                            'label' => 'Estado',
-                            'label_attr' => array('class' => 'label_form_sm'),
+            // ->add('estado', null, array(
+            //                 'label' => 'Estado',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'attr' => array(
+            //                         'placeholder' => 'estado...',
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'stop',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-hearth',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-message' => '1 caracter mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_MINIMAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
+            ->add('activo', null, array(
+                            'label' => '¿Activo?',
+                            'label_attr' => array('class' => 'label_form_sm label_check col-lg-12 col-md-12 col-sm-12'),
                             'attr' => array(
-                                    'placeholder' => 'estado...',
                                     'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'stop',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-hearth',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '1',
-                                    'data-fv-stringlength-message' => '1 caracter mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_MINIMAL___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
                             )
             ))
             // ->add('usuario')

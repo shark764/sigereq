@@ -407,6 +407,13 @@ class BlhDonante implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", nullable=true)
+     */
+    private $activo = false;
+
+    /**
      * @var \BlhBancoDeLeche
      *
      * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
@@ -1109,6 +1116,29 @@ class BlhDonante implements EntityInterface
     public function getFechaHoraReg()
     {
         return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     * @return BlhDonante
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean 
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 
     /**

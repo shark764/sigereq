@@ -62,6 +62,24 @@ class BlhCtlEscolaridad implements EntityInterface
     private $codigo;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="rango", type="string", length=25, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 25,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
+     */
+    private $rango;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -73,7 +91,7 @@ class BlhCtlEscolaridad implements EntityInterface
      */
     public function __toString()
     {
-        return (string) $this->nombre;
+        return (string) $this->nombre . ($this->rango ? ' (' . $this->rango . ')' : '');
     }
     
     /**
@@ -146,6 +164,30 @@ class BlhCtlEscolaridad implements EntityInterface
     public function getCodigo()
     {
         return $this->codigo;
+    }
+
+    /**
+     * Set rango
+     *
+     * @param string $rango
+     *
+     * @return BlhCtlEscolaridad
+     */
+    public function setRango($rango)
+    {
+        $this->rango = $rango;
+
+        return $this;
+    }
+
+    /**
+     * Get rango
+     *
+     * @return string
+     */
+    public function getRango()
+    {
+        return $this->rango;
     }
 
 }
