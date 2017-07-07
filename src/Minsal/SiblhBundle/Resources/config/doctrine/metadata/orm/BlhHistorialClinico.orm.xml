@@ -5,6 +5,7 @@
       <index name="IDX_33FD85BC54F03532" columns="id_donante"/>
       <index name="IDX_33FD85BC7DFA12F6" columns="id_establecimiento"/>
       <index name="IDX_33FD85BCD8A5832B" columns="id_user_reg"/>
+      <index name="IDX_33FD85BCBC3F8658" columns="id_patologia_embarazo"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -79,6 +80,16 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <field name="controlPrenatalEmbarazo" type="boolean" column="control_prenatal_embarazo" nullable="true">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
+    <many-to-one field="idPatologiaEmbarazo" target-entity="CtlPatologia" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_patologia_embarazo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>

@@ -1,0 +1,108 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{#{% extends base_template %}#}
+{% extends 'MinsalSiblhBundle:CRUD:base_edit.html.twig' %}
+
+{% use 'MinsalSiblhBundle:BlhHistorialClinicoAdmin:base_edit_form.html.twig' with form as parentForm %}
+
+{% block form %}
+    {#{% for group_label, choice in form.idEmpleado.vars.choices %}
+        {%- if choice is iterable -%}
+            <span class="label label-primary-v4">{{ group_label }}</span><br/>
+            
+            {% for item in choice %}
+                <span class="label label-element-v2">
+                    {{ item.value }}
+                    {{ item.label }}
+                    {% if item is selectedchoice(form.idEmpleado.vars) %}
+                        <i>SELECTED</i>
+                    {% endif %}
+                </span><br/>
+            {% endfor %}
+        {%- else -%}
+            <span class="label label-element-v2">
+                {{ choice.value }}
+                {% if choice is selectedchoice(form.idEmpleado.vars) %}
+                    <i>SELECTED</i>
+                {% endif %}
+                {{ choice.label }}
+            </span><br/>
+        {%- endif -%}
+    {% endfor %}#}
+    {#<div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="box box-drop-outside-shadow box-primary-v4">
+                <div class="box-body">#}
+        {#            <br/><br/><br/>#}
+                    {#<span class="text-primary-v4">form.vars.value.idCurva:______________________  {{ form.vars.value.idCurva }}</span><br/>
+                    <span class="text-primary-v4">form.idCurva.vars.full_name:__________________  {{ form.idCurva.vars.full_name }}</span><br/>
+                    <span class="text-primary-v4">form.idCurva.vars.id:_________________________  {{ form.idCurva.vars.id }}</span><br/>
+                    <span class="text-primary-v4">form.idCurva.vars.data:_______________________  {{ form.idCurva.vars.data }}</span><br/>
+                    <span class="text-primary-v4">form.idCurva.vars.data.id:____________________  {{ form.idCurva.vars.data.id }}</span><br/>
+                    <span class="text-primary-v4">form.idCurva.vars.data.cantidadFrascos:_______  {{ form.idCurva.vars.data.cantidadFrascos }}</span><br/>
+                    <span class="text-primary-v4">form.idCurva.vars.choices|length:_____________  {{ form.idCurva.vars.choices|length }}</span><br/><br/>
+                    <span class="text-success-v6">form_row(form.idCurva):_______________________  {{ form_row(form.idCurva) }}</span><br/><br/><br/>#}
+
+{#                    <span class="text-primary-v4">form.vars.value.periodoIntergenesico:______________________  {{ form.vars.value.periodoIntergenesico }}</span><br/>#}
+{#                    <span class="text-primary-v4">form.periodoIntergenesico.vars.full_name:__________________  {{ form.periodoIntergenesico.vars.full_name }}</span><br/>#}
+{#                    <span class="text-primary-v4">form.periodoIntergenesico.vars.id:_________________________  {{ form.periodoIntergenesico.vars.id }}</span><br/>#}
+{#                    <span class="text-primary-v4">form.periodoIntergenesico.vars.data:_______________________  {{ form.periodoIntergenesico.vars.data }}</span><br/>#}
+        {#            <span class="text-primary-v4">form.periodoIntergenesico.vars.data.id:____________________  {{ form.periodoIntergenesico.vars.data.id }}</span><br/>#}
+        {#            <span class="text-primary-v4">form.periodoIntergenesico.vars.data.cantidadFrascos:_______  {{ form.periodoIntergenesico.vars.data.cantidadFrascos }}</span><br/>#}
+        {#            <span class="text-primary-v4">form.periodoIntergenesico.vars.choices|length:_____________  {{ form.periodoIntergenesico.vars.choices|length }}</span><br/><br/>#}
+{#                    <span class="text-success-v6">form_row(form.periodoIntergenesico):_______________________  {{ form_row(form.periodoIntergenesico) }}</span><br/><br/><br/>#}
+
+                    {#<div class="row">
+                        <div class="row"><div class="col-lg-12 col-md-12 col-sm-12 data-box-row"><h5>Fórmula Obstétrica <small>(Historial del donante)</small></h5></div></div>
+
+                        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                            {{ form_label(form.formulaObstetricaG) }}
+                            {{ form_errors(form.formulaObstetricaG) }}
+                            {{ form_widget(form.formulaObstetricaG) }}
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                            {{ form_label(form.formulaObstetricaP1) }}
+                            {{ form_errors(form.formulaObstetricaP1) }}
+                            {{ form_widget(form.formulaObstetricaP1) }}
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                            {{ form_label(form.formulaObstetricaP2) }}
+                            {{ form_errors(form.formulaObstetricaP2) }}
+                            {{ form_widget(form.formulaObstetricaP2) }}
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                            {{ form_label(form.formulaObstetricaA) }}
+                            {{ form_errors(form.formulaObstetricaA) }}
+                            {{ form_widget(form.formulaObstetricaA) }}
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                            {{ form_label(form.formulaObstetricaV) }}
+                            {{ form_errors(form.formulaObstetricaV) }}
+                            {{ form_widget(form.formulaObstetricaV) }}
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                            {{ form_label(form.formulaObstetricaM) }}
+                            {{ form_errors(form.formulaObstetricaM) }}
+                            {{ form_widget(form.formulaObstetricaM) }}
+                        </div>
+                    </div>#}
+        {#            <br/><br/><br/><br/>#}
+                {#</div>
+            </div>
+        </div>
+    </div>
+    </div>#}
+
+    {{ block('parentForm') }}
+
+{% endblock %}

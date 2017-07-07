@@ -54,6 +54,55 @@
                                                 <p>{{ form_group.description|raw }}</p>
                                             {% endif %}
 
+                                            <div class="form-group form-group-collapsed-fields" id="sonata-ba-field-container-s595fa7942ef65_formulaObstetrica">
+                                                <label class="label_form_sm control-label " for="s595fa7942ef65_formulaObstetrica" style="padding-left: 30px;">Fórmula Obstétrica</label>
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 sonata-ba-field sonata-ba-field-standard-natural  ">
+                                                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                                                        {{ form_label(form.formulaObstetricaG) }}
+                                                        {{ form_errors(form.formulaObstetricaG) }}
+                                                        {{ form_widget(form.formulaObstetricaG) }}
+                                                    </div>
+                                                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                                                        {{ form_label(form.formulaObstetricaP1) }}
+                                                        {{ form_errors(form.formulaObstetricaP1) }}
+                                                        {{ form_widget(form.formulaObstetricaP1) }}
+                                                    </div>
+                                                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                                                        {{ form_label(form.formulaObstetricaP2) }}
+                                                        {{ form_errors(form.formulaObstetricaP2) }}
+                                                        {{ form_widget(form.formulaObstetricaP2) }}
+                                                    </div>
+                                                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                                                        {{ form_label(form.formulaObstetricaA) }}
+                                                        {{ form_errors(form.formulaObstetricaA) }}
+                                                        {{ form_widget(form.formulaObstetricaA) }}
+                                                    </div>
+                                                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                                                        {{ form_label(form.formulaObstetricaV) }}
+                                                        {{ form_errors(form.formulaObstetricaV) }}
+                                                        {{ form_widget(form.formulaObstetricaV) }}
+                                                    </div>
+                                                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+                                                        {{ form_label(form.formulaObstetricaM) }}
+                                                        {{ form_errors(form.formulaObstetricaM) }}
+                                                        {{ form_widget(form.formulaObstetricaM) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {#{{ form_row(form.idDonante) }}
+                                            {{ form_row(form.edadGestFur) }}
+                                            {{ form_row(form.idEstablecimiento) }}
+                                            {{ form_row(form.controlPrenatal) }}
+                                            {{ form_row(form.lugarControl) }}
+                                            {{ form_row(form.numeroControl) }}
+                                            {{ form_row(form.fechaParto) }}
+                                            {{ form_row(form.lugarParto) }}
+                                            {{ form_row(form.patologiaEmbarazo) }}
+                                            {{ form_row(form.periodoIntergenesico) }}
+                                            {{ form_row(form.fechaPartoAnterior) }}#}
+                                            
                                             {% for field_name in form_group.fields %}
                                                 {% if admin.formfielddescriptions[field_name] is defined %}
                                                     {{ form_row(form[field_name])}}
