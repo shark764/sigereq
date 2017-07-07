@@ -86,7 +86,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('idCurva', null, array(
                             'label' => 'Curva de pasteurización',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+//                            'required' => false,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',
@@ -270,5 +270,46 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('fechaHoraReg')
         ;
     }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhPasteurizacionAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
+//    public function getNewInstance()
+//    {
+//        $instance = parent::getNewInstance();
+//
+////        $container = $this->getConfigurationPool()->getContainer();
+////        $doctrine = $container->get('doctrine');
+////
+////        $securityContext = $container->get('security.context');
+//
+////        $instance->setIdCurva($this->getModelManager()->find('MinsalSiblhBundle:BlhCurva', 1));
+//
+//        //////// --| builder entity
+////        $ENTITY_LOGIC_ = new RyxCtlConexionPacsEstablecimientoLogic($container, $instance);
+////        $ENTITY_LOGIC_->builderEntity();
+//        //////// --|
+//        
+//        return $instance;
+//    }
 
 }
