@@ -126,7 +126,8 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'placeholder' => 'volumen pasteurizado...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
@@ -143,12 +144,12 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('numFrascosPasteurizados', null, array(
                             'label' => 'Número de frascos pasteurizados',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'número de frascos pasteurizados...',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -156,6 +157,30 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-fv-integer' => 'true',
                                     'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
+            ->add('volumenTotal', null, array(
+                            'label' => 'Volumen total',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen total...',
+                                    'class' => 'form-control input-sm',
+                                    // 'readonly' => 'readonly',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tasks',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
 
                                     'min' => '0',
                                     'max' => '32767',
@@ -225,29 +250,6 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             //                 )
             // ))
             // ->add('usuario')
-            ->add('volumenTotal', null, array(
-                            'label' => 'Volumen total',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'placeholder' => 'volumen total...',
-                                    'class' => 'form-control input-sm',
-                                    // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tasks',
-
-                                    'data-fv-numeric' => 'true',
-                                    'data-fv-numeric-message' => 'El valor no es un número válido',
-                                    'data-fv-numeric-thousandsSeparator' => '',
-                                    'data-fv-numeric-decimalSeparator' => '.',
-
-                                    'min' => '0',
-                                    'max' => '32767',
-                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
-                            )
-            ))
             // ->add('fechaHoraReg')
         ;
     }

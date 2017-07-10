@@ -29,19 +29,19 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// calculate value
             //////////////////////////////////////////////////////////////////////////////////////////////
-            jQuery('#{{ admin.uniqId }}_pesoDonante, #{{ admin.uniqId }}_tallaDonante').on('keyup change blur', function (e) {
-                var pesoDonante = parseFloat(jQuery('#{{ admin.uniqId }}_pesoDonante').val());
-                var tallaDonante = parseFloat(jQuery('#{{ admin.uniqId }}_tallaDonante').val());
+            jQuery('#{{ admin.uniqId }}_volumenPasteurizado, #{{ admin.uniqId }}_numFrascosPasteurizados').on('keyup change blur', function (e) {
+                var volumenPasteurizado = parseFloat(jQuery('#{{ admin.uniqId }}_volumenPasteurizado').val());
+                var numFrascosPasteurizados = parseFloat(jQuery('#{{ admin.uniqId }}_numFrascosPasteurizados').val());
 
-                if (isNaN(pesoDonante) || jQuery.trim(pesoDonante).length === 0) {
-                    pesoDonante = 0;
+                if (isNaN(volumenPasteurizado) || jQuery.trim(volumenPasteurizado).length === 0) {
+                    volumenPasteurizado = 0;
                 }
-                if (isNaN(tallaDonante) || jQuery.trim(tallaDonante).length === 0) {
-                    jQuery('#{{ admin.uniqId }}_imc').val(0);
+                if (isNaN(numFrascosPasteurizados) || jQuery.trim(numFrascosPasteurizados).length === 0) {
+                    jQuery('#{{ admin.uniqId }}_volumenTotal').val(0);
                     return;
                 }
-                var imc = pesoDonante / Math.pow(tallaDonante, 2);
-                jQuery('#{{ admin.uniqId }}_imc').val(imc.toFixed(2));
+                var volumenTotal = volumenPasteurizado * numFrascosPasteurizados;
+                jQuery('#{{ admin.uniqId }}_volumenTotal').val(volumenTotal.toFixed(2));
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
         });
