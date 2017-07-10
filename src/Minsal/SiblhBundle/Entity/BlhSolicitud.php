@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhSolicitud
  *
- * @ORM\Table(name="blh_solicitud", indexes={@ORM\Index(name="fk_grupo_solicitud_solicitud", columns={"id_grupo_solicitud"}), @ORM\Index(name="IDX_9E50CAC8B91944F2", columns={"id_receptor"}), @ORM\Index(name="IDX_9E50CAC8D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_9E50CAC8BA23BAD6", columns={"id_responsable_solicitud"})})
+ * @ORM\Table(name="blh_solicitud", indexes={@ORM\Index(name="fk_grupo_solicitud_solicitud", columns={"id_grupo_solicitud"}), @ORM\Index(name="IDX_9E50CAC8B91944F2", columns={"id_receptor"}), @ORM\Index(name="IDX_9E50CAC8D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_9E50CAC8BA23BAD6", columns={"id_responsable_solicitud"}), @ORM\Index(name="IDX_9E50CAC8C9232A1C", columns={"id_acidez_necesaria"}), @ORM\Index(name="IDX_9E50CAC8AE5F7773", columns={"id_calorias_necesarias"})})
  * @ORM\Entity
  */
 class BlhSolicitud implements EntityInterface
@@ -260,6 +260,28 @@ class BlhSolicitud implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idResponsableSolicitud;
+
+    /**
+     * @var \BlhCtlAcidezDornic
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlAcidezDornic")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_acidez_necesaria", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idAcidezNecesaria;
+
+    /**
+     * @var \BlhCtlCaloria
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlCaloria")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_calorias_necesarias", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idCaloriasNecesarias;
 
     /**
      * Constructor
@@ -708,6 +730,54 @@ class BlhSolicitud implements EntityInterface
     public function getIdResponsableSolicitud()
     {
         return $this->idResponsableSolicitud;
+    }
+
+    /**
+     * Set idAcidezNecesaria
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlAcidezDornic $idAcidezNecesaria
+     *
+     * @return BlhSolicitud
+     */
+    public function setIdAcidezNecesaria(\Minsal\SiblhBundle\Entity\BlhCtlAcidezDornic $idAcidezNecesaria = null)
+    {
+        $this->idAcidezNecesaria = $idAcidezNecesaria;
+
+        return $this;
+    }
+
+    /**
+     * Get idAcidezNecesaria
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlAcidezDornic
+     */
+    public function getIdAcidezNecesaria()
+    {
+        return $this->idAcidezNecesaria;
+    }
+
+    /**
+     * Set idCaloriasNecesarias
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCaloria $idCaloriasNecesarias
+     *
+     * @return BlhSolicitud
+     */
+    public function setIdCaloriasNecesarias(\Minsal\SiblhBundle\Entity\BlhCtlCaloria $idCaloriasNecesarias = null)
+    {
+        $this->idCaloriasNecesarias = $idCaloriasNecesarias;
+
+        return $this;
+    }
+
+    /**
+     * Get idCaloriasNecesarias
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCaloria
+     */
+    public function getIdCaloriasNecesarias()
+    {
+        return $this->idCaloriasNecesarias;
     }
 
 }
