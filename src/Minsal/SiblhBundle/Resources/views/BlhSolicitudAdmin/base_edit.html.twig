@@ -1,0 +1,50 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{#{% extends base_template %}#}
+{% extends 'MinsalSiblhBundle:CRUD:base_edit.html.twig' %}
+
+{% use 'MinsalSiblhBundle:BlhSolicitudAdmin:base_edit_form.html.twig' with form as parentForm %}
+
+{% block form %}
+
+    {{ block('parentForm') }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function() {
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// calculate value
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('#{{ admin.uniqId }}_volumenPorToma, #{{ admin.uniqId }}_tomaPorDia').on('keyup change blur', function (e) {
+                var volumenPorToma = parseFloat(jQuery('#{{ admin.uniqId }}_volumenPorToma').val());
+                var tomaPorDia = parseFloat(jQuery('#{{ admin.uniqId }}_tomaPorDia').val());
+
+                if (isNaN(volumenPorToma) || jQuery.trim(volumenPorToma).length === 0) {
+                    volumenPorToma = 0;
+                }
+                if (isNaN(tomaPorDia) || jQuery.trim(tomaPorDia).length === 0) {
+                    jQuery('#{{ admin.uniqId }}_volumenPorDia').val(0);
+                    return;
+                }
+                var volumenPorDia = volumenPorToma * tomaPorDia;
+                jQuery('#{{ admin.uniqId }}_volumenPorDia').val(volumenPorDia/*.toFixed(2)*/);
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+        });
+
+    </script>
+{% endblock %}

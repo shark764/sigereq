@@ -188,8 +188,8 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'placeholder' => 'volumen por toma...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    // 'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
@@ -205,15 +205,15 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('tomaPorDia', null, array(
-                            'label' => 'Toma por día',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label' => 'Tomas por día',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
                             'attr' => array(
                                     'class' => 'form-control input-sm',
-                                    'placeholder' => 'toma por día...',
+                                    'placeholder' => 'tomas por día...',
                                     // 'readonly' => 'readonly',
-                                    // 'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -221,6 +221,30 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-fv-integer' => 'true',
                                     'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
+            ->add('volumenPorDia', null, array(
+                            'label' => 'Volumen total por día (ml)',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'required' => true,
+                            'attr' => array(
+                                    'placeholder' => 'volumen total por día (ml)...',
+                                    'class' => 'form-control input-sm',
+                                    // 'readonly' => 'readonly',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
 
                                     'min' => '0',
                                     'max' => '32767',
@@ -253,8 +277,8 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                             'required' => true,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -283,40 +307,16 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('idAcidezNecesaria', null, array(
                             'label' => 'Acidez Dornic',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
-                            )
-            ))
-            ->add('volumenPorDia', null, array(
-                            'label' => 'Volumen total por día (ml)',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
-                            'attr' => array(
-                                    'placeholder' => 'volumen total por día (ml)...',
-                                    'class' => 'form-control input-sm',
-                                    // 'readonly' => 'readonly',
-                                    // 'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
-
-                                    'data-fv-numeric' => 'true',
-                                    'data-fv-numeric-message' => 'El valor no es un número válido',
-                                    'data-fv-numeric-thousandsSeparator' => '',
-                                    'data-fv-numeric-decimalSeparator' => '.',
-
-                                    'min' => '0',
-                                    'max' => '32767',
-                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
                             )
             ))
             // ->add('estado', null, array(
@@ -397,6 +397,28 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhSolicitudAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
 }
