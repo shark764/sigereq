@@ -23,16 +23,6 @@ file that was distributed with this source code.
 {% block javascripts %}
     {{ parent() }}
 
-    {# select2-es #}
-    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
-
-    {# formValidation #}
-    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/formValidation.min.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/framework/bootstrap.min.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/language/es_ES.js') }}" ></script>
-
-    {% include 'MinsalSiblhBundle:General:general_form_script.html.twig' %}
-
     <script type="text/javascript">
 
         jQuery(document).ready(function() {

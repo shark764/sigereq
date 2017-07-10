@@ -599,11 +599,11 @@ class BlhFrascoRecolectado implements EntityInterface
     /**
      * Set idFormaExtraccion
      *
-     * @param \Minsal\SiblhBundle\Entity\BlhLoteAnalisis $idFormaExtraccion
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlFormaExtraccion $idFormaExtraccion
      *
      * @return BlhFrascoRecolectado
      */
-    public function setIdFormaExtraccion(\Minsal\SiblhBundle\Entity\BlhLoteAnalisis $idFormaExtraccion = null)
+    public function setIdFormaExtraccion(\Minsal\SiblhBundle\Entity\BlhCtlFormaExtraccion $idFormaExtraccion = null)
     {
         $this->idFormaExtraccion = $idFormaExtraccion;
 
@@ -613,7 +613,7 @@ class BlhFrascoRecolectado implements EntityInterface
     /**
      * Get idFormaExtraccion
      *
-     * @return \Minsal\SiblhBundle\Entity\BlhLoteAnalisis
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlFormaExtraccion
      */
     public function getIdFormaExtraccion()
     {

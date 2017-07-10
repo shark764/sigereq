@@ -17,7 +17,7 @@
               data-clientside-validation="page"
               {% block simagd_apply_custom_formid %}
                   {# can add a custom id to the form #}
-                  id="simagd_entity_full_admin_form"
+                  id="_blh_entity_full_admin_form"
               {% endblock %}
               {% block simagd_apply_custom_formname %}
                   {# can add a name to the form #}
@@ -36,22 +36,7 @@
 
             <div class="col-lg-12 col-md-12 col-sm-12"> <!-- form block -->
 
-                {% block simagd_apply_custom_firstbox %}
-                    {#
-                    <div class="col-md-12">
-                        <div class="box box-drop-outside-shadow box-primary-v4">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    <span class="label label-emergency">FORMULARIO DE INGRESO DE DATOS</span>
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                Por favor complete el siguiente formulario.
-                            </div>
-                        </div>
-                    </div>
-                    #}
-                {% endblock %}
+                {% block simagd_apply_custom_firstbox %} {% endblock %}
 
                 {% block sonata_tab_content %}
                     {% for name, form_group in admin.formgroups %}
@@ -135,22 +120,6 @@
                 {% endblock formactions %}
             
             </div> <!-- end form block -->
-        
-            {#<div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="col-md-12">
-                    <div class="box box-drop-outside-shadow box-primary-v4 list-light-data-in-table">
-                        <div class="box-header" >
-                            <h4 class="box-title">
-                                <span class="label label-primary-v4">ACTIVIDAD</span>
-                            </h4>
-                        </div>
-                        <div class="box-body">
-                            {% include 'MinsalSiblhBundle:Menu:side_menu.html.twig' ignore missing with {'position': 'right'} %}
-                            <!-- <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> -->
-                        </div>
-                    </div>
-                </div>
-            </div>#}
 
             {% block sonata_post_fieldsets %}
                 </div> <!-- end row block -->

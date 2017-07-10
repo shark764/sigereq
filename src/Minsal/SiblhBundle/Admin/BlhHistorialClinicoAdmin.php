@@ -101,7 +101,7 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('idEstablecimiento', null, array(
                             'label' => 'Establecimiento',
-                            // 'required' => true,
+                            'required' => false,
                             // 'query_builder' => function(EntityRepository $er) {
                             //                         return $er->createQueryBuilder('std')
                             //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
@@ -121,15 +121,116 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
                             )
             ))
-            ->add('controlPrenatal', null, array(
-                            'label' => 'Control prenatal',
+            ->add('formulaObstetricaG', null, array(
+                            'label' => 'G',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => false,
                             'attr' => array(
                                     // 'rows' => '2',
                                     // 'style' => 'resize:none',
-                                    'placeholder' => 'control prenatal...',
+                                    // 'placeholder' => 'patología en el embarazo...',
                                     'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('formulaObstetricaP1', null, array(
+                            'label' => 'P1',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    // 'rows' => '2',
+                                    // 'style' => 'resize:none',
+                                    // 'placeholder' => 'patología en el embarazo...',
+                                    'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('formulaObstetricaP2', null, array(
+                            'label' => 'P2',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    // 'rows' => '2',
+                                    // 'style' => 'resize:none',
+                                    // 'placeholder' => 'patología en el embarazo...',
+                                    'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('formulaObstetricaA', null, array(
+                            'label' => 'A',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    // 'rows' => '2',
+                                    // 'style' => 'resize:none',
+                                    // 'placeholder' => 'patología en el embarazo...',
+                                    'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('formulaObstetricaV', null, array(
+                            'label' => 'V',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    // 'rows' => '2',
+                                    // 'style' => 'resize:none',
+                                    // 'placeholder' => 'patología en el embarazo...',
+                                    'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
+            ->add('formulaObstetricaM', null, array(
+                            'label' => 'M',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    // 'rows' => '2',
+                                    // 'style' => 'resize:none',
+                                    // 'placeholder' => 'patología en el embarazo...',
+                                    'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
 
                                     'data-fv-stringlength' => 'true',
                                     'data-fv-stringlength-min' => '5',
@@ -163,37 +264,100 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
                             )
             ))
-            ->add('lugarControl', null, array(
-                            'label' => 'Lugar del control',
+//            ->add('controlPrenatal', null, array(
+//                            'label' => 'Control prenatal',
+//                            'label_attr' => array('class' => 'label_form_sm'),
+//                            'required' => false,
+//                            'attr' => array(
+//                                    // 'rows' => '2',
+//                                    // 'style' => 'resize:none',
+//                                    'placeholder' => 'control prenatal...',
+//                                    'class' => 'form-control input-sm',
+//
+//                                    'data-fv-stringlength' => 'true',
+//                                    'data-fv-stringlength-min' => '5',
+//                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+//
+//                                    'data-fv-regexp' => 'true',
+//                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+//                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+//                            )
+//            ))
+            ->add('controlPrenatalEmbarazo', 'choice', array(
+                            'label' => '¿Control prenatal?',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+//                            'mapped' => false,
+                            'required' => true,
+                            'expanded' => true,
+                            'multiple' => false,
+                            'choices' => array(
+                                    false => 'No',
+                                    true => 'Si',
+                            ),
+                            'data' => false,
                             'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    'placeholder' => 'lugar del control...',
-                                    'class' => 'form-control input-sm',
+                                    'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    // 'data-sonata-select2-escape-markup' => 'true',
+                                    'data-form-inline-group' => 'start',
 
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
                             )
             ))
+//            ->add('lugarControl', null, array(
+//                            'label' => 'Lugar del control',
+//                            'label_attr' => array('class' => 'label_form_sm'),
+//                            'required' => false,
+//                            'attr' => array(
+//                                    // 'rows' => '2',
+//                                    // 'style' => 'resize:none',
+//                                    'placeholder' => 'lugar del control...',
+//                                    'class' => 'form-control input-sm',
+//
+//                                    'data-fv-stringlength' => 'true',
+//                                    'data-fv-stringlength-min' => '5',
+//                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+//
+//                                    'data-fv-regexp' => 'true',
+//                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+//                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+//                            )
+//            ))
             ->add('numeroControl', null, array(
                             'label' => 'Número de control',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'número de control...',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+
+                                    'data-fv-integer' => 'true',
+                                    'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
+            ->add('periodoIntergenesico', null, array(
+                            'label' => 'Periodo intergenésico',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'placeholder' => 'periodo intergenésico...',
                                     // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
 
                                     'data-fv-integer' => 'true',
                                     'data-fv-integer-message' => 'El valor no es un entero',
@@ -231,15 +395,40 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-date-message' => 'No es una fecha válida',
                             )
             ))
+            ->add('NOTMAPPEDpartoEnHospital', 'choice', array(
+                            'label' => '¿Parto dentro del Hospital?',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'mapped' => false,
+                            'required' => true,
+                            'expanded' => true,
+                            'multiple' => false,
+                            'choices' => array(
+                                    'F' => 'No',
+                                    'T' => 'Si',
+                            ),
+                            'data' => 'F',
+                            'attr' => array(
+                                    'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    // 'data-sonata-select2-escape-markup' => 'true',
+                                    'data-form-inline-group' => 'start',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                            )
+            ))
             ->add('lugarParto', null, array(
                             'label' => 'Lugar del parto',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     // 'rows' => '2',
                                     // 'style' => 'resize:none',
                                     'placeholder' => 'lugar del parto...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-5 col-md-5 col-sm-5',
 
                                     'data-fv-stringlength' => 'true',
                                     'data-fv-stringlength-min' => '5',
@@ -250,49 +439,91 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
-            ->add('patologiaEmbarazo', null, array(
-                            'label' => 'Patología en el embarazo',
+            ->add('NOTMAPPEDpatologiaEmbarazo', 'choice', array(
+                            'label' => '¿Patología durante embarazo?',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'mapped' => false,
+                            'required' => true,
+                            'expanded' => true,
+                            'multiple' => false,
+                            'choices' => array(
+                                    'F' => 'No',
+                                    'T' => 'Si',
+                            ),
+                            'data' => 'F',
                             'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    'placeholder' => 'patología en el embarazo...',
-                                    'class' => 'form-control input-sm',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('periodoIntergenesico', null, array(
-                            'label' => 'Periodo intergenésico',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    'placeholder' => 'periodo intergenésico...',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    // 'data-sonata-select2-escape-markup' => 'true',
+                                    'data-form-inline-group' => 'start',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                            )
+            ))
+            ->add('idPatologiaEmbarazo', null, array(
+                            'label' => 'Patología',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'required' => false,
+                            'group_by' => 'idPatologiaPadre',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-5 col-md-5 col-sm-5',
 
-                                    'data-fv-integer' => 'true',
-                                    'data-fv-integer-message' => 'El valor no es un entero',
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                            )
+            ))
+//            ->add('patologiaEmbarazo', null, array(
+//                            'label' => 'Patología',
+//                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+//                            'required' => false,
+//                            'attr' => array(
+//                                    // 'rows' => '2',
+//                                    // 'style' => 'resize:none',
+//                                    'placeholder' => 'patología en el embarazo...',
+//                                    'class' => 'form-control input-sm',
+//                                    'data-form-inline-group' => 'stop',
+//                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+//
+//                                    'data-fv-stringlength' => 'true',
+//                                    'data-fv-stringlength-min' => '5',
+//                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+//
+//                                    'data-fv-regexp' => 'true',
+//                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+//                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+//                            )
+//            ))
+            ->add('NOTMAPPEDpartoAnterior', 'choice', array(
+                            'label' => '¿Partos anteriores?',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'mapped' => false,
+                            'required' => true,
+                            'expanded' => true,
+                            'multiple' => false,
+                            'choices' => array(
+                                    'F' => 'No',
+                                    'T' => 'Si',
+                            ),
+                            'data' => 'F',
+                            'attr' => array(
+                                    'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    // 'data-sonata-select2-escape-markup' => 'true',
+                                    'data-form-inline-group' => 'start',
 
-                                    'min' => '0',
-                                    'max' => '32767',
-                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
                             )
             ))
             ->add('fechaPartoAnterior', 'datetime', array(
-                            'label' => 'Fecha de parto anterior',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label' => 'Fecha (Parto anterior)',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'widget' => 'single_text',
                             'format' => 'dd/MM/yyyy',
@@ -302,6 +533,7 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     'data-input-transform' => 'datetimepicker',
                                     'data-datetimepicker-type' => 'date',
+                                    'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
@@ -316,126 +548,6 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-date' => 'true',
                                     'data-fv-date-format' => 'DD/MM/YYYY',
                                     'data-fv-date-message' => 'No es una fecha válida',
-                            )
-            ))
-            ->add('formulaObstetricaG', null, array(
-                            // 'label' => 'Patología en el embarazo',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    // 'placeholder' => 'patología en el embarazo...',
-                                    'class' => 'form-control input-sm',
-                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('formulaObstetricaP1', null, array(
-                            // 'label' => 'Patología en el embarazo',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    // 'placeholder' => 'patología en el embarazo...',
-                                    'class' => 'form-control input-sm',
-                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('formulaObstetricaP2', null, array(
-                            // 'label' => 'Patología en el embarazo',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    // 'placeholder' => 'patología en el embarazo...',
-                                    'class' => 'form-control input-sm',
-                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('formulaObstetricaA', null, array(
-                            // 'label' => 'Patología en el embarazo',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    // 'placeholder' => 'patología en el embarazo...',
-                                    'class' => 'form-control input-sm',
-                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('formulaObstetricaV', null, array(
-                            // 'label' => 'Patología en el embarazo',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    // 'placeholder' => 'patología en el embarazo...',
-                                    'class' => 'form-control input-sm',
-                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('formulaObstetricaM', null, array(
-                            // 'label' => 'Patología en el embarazo',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    // 'placeholder' => 'patología en el embarazo...',
-                                    'class' => 'form-control input-sm',
-                                    'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
             // ->add('usuario')
@@ -468,6 +580,28 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhHistorialClinicoAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
 }

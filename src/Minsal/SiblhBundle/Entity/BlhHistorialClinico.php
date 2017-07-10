@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhHistorialClinico
  *
- * @ORM\Table(name="blh_historial_clinico", indexes={@ORM\Index(name="IDX_33FD85BC54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_33FD85BC7DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_33FD85BCD8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_historial_clinico", indexes={@ORM\Index(name="IDX_33FD85BC54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_33FD85BC7DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_33FD85BCD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_33FD85BCBC3F8658", columns={"id_patologia_embarazo"})})
  * @ORM\Entity
  */
 class BlhHistorialClinico implements EntityInterface
@@ -285,6 +285,13 @@ class BlhHistorialClinico implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="control_prenatal_embarazo", type="boolean", nullable=true)
+     */
+    private $controlPrenatalEmbarazo = false;
+
+    /**
      * @var \BlhDonante
      *
      * @ORM\ManyToOne(targetEntity="BlhDonante")
@@ -316,6 +323,17 @@ class BlhHistorialClinico implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\CtlPatologia
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlPatologia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_patologia_embarazo", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idPatologiaEmbarazo;
 
     /**
      * Constructor
@@ -767,6 +785,29 @@ class BlhHistorialClinico implements EntityInterface
     }
 
     /**
+     * Set controlPrenatalEmbarazo
+     *
+     * @param boolean $controlPrenatalEmbarazo
+     * @return BlhHistorialClinico
+     */
+    public function setControlPrenatalEmbarazo($controlPrenatalEmbarazo)
+    {
+        $this->controlPrenatalEmbarazo = $controlPrenatalEmbarazo;
+
+        return $this;
+    }
+
+    /**
+     * Get controlPrenatalEmbarazo
+     *
+     * @return boolean 
+     */
+    public function getControlPrenatalEmbarazo()
+    {
+        return $this->controlPrenatalEmbarazo;
+    }
+
+    /**
      * Set idDonante
      *
      * @param \Minsal\SiblhBundle\Entity\BlhDonante $idDonante
@@ -836,6 +877,30 @@ class BlhHistorialClinico implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idPatologiaEmbarazo
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlPatologia $idPatologiaEmbarazo
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setIdPatologiaEmbarazo(\Minsal\SiapsBundle\Entity\CtlPatologia $idPatologiaEmbarazo = null)
+    {
+        $this->idPatologiaEmbarazo = $idPatologiaEmbarazo;
+
+        return $this;
+    }
+
+    /**
+     * Get idPatologiaEmbarazo
+     *
+     * @return \Minsal\SiapsBundle\Entity\CtlPatologia
+     */
+    public function getIdPatologiaEmbarazo()
+    {
+        return $this->idPatologiaEmbarazo;
     }
 
 }

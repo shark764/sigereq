@@ -144,6 +144,13 @@ class BlhHistoriaActual implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="donante_apta", type="boolean", nullable=true)
+     */
+    private $donanteApta = false;
+
+    /**
      * @var \BlhDonante
      *
      * @ORM\ManyToOne(targetEntity="BlhDonante")
@@ -417,6 +424,29 @@ class BlhHistoriaActual implements EntityInterface
     public function getFechaHoraReg()
     {
         return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set donanteApta
+     *
+     * @param boolean $donanteApta
+     * @return BlhHistoriaActual
+     */
+    public function setDonanteApta($donanteApta)
+    {
+        $this->donanteApta = $donanteApta;
+
+        return $this;
+    }
+
+    /**
+     * Get donanteApta
+     *
+     * @return boolean 
+     */
+    public function getDonanteApta()
+    {
+        return $this->donanteApta;
     }
 
     /**
