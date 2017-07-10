@@ -60,6 +60,28 @@ class User extends BaseUser
      */
     private $idEstablecimiento;
 
+    /**
+     * @var \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiblhBundle\Entity\BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idBancoDeLeche;
+
+    /**
+     * @var \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idCentroRecoleccion;
+
     public function __toString()
     {
         return $this->lastname . ', ' . $this->firstname ? : '';
@@ -82,6 +104,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        
         $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -139,6 +162,54 @@ class User extends BaseUser
     public function getIdEstablecimiento()
     {
         return $this->idEstablecimiento;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhDonante
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
+    }
+
+    /**
+     * Set idCentroRecoleccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion
+     *
+     * @return BlhDonante
+     */
+    public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion = null)
+    {
+        $this->idCentroRecoleccion = $idCentroRecoleccion;
+
+        return $this;
+    }
+
+    /**
+     * Get idCentroRecoleccion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
+     */
+    public function getIdCentroRecoleccion()
+    {
+        return $this->idCentroRecoleccion;
     }
 
     /**
