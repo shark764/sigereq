@@ -135,7 +135,7 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                                 'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
                                 // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $__XRAY_CLINICAL_SERVICE_ID__, $filter_modality_) {
                                 //                         return $er->createQueryBuilder('pryn')
-                                //                                     ->innerJoin('MinsalSimagdBundle:RyxCtlProyeccionEstablecimiento', 'prynhptl',
+                                //                                     ->innerJoin('MinsalSiblhBundle:RyxCtlProyeccionEstablecimiento', 'prynhptl',
                                 //                                             \Doctrine\ORM\Query\Expr\Join::WITH,
                                 //                                             'pryn.id = prynhptl.idProyeccion')
                                 //                                     ->innerJoin('prynhptl.idAreaExamenEstab', 'mmxstd')
