@@ -5,6 +5,7 @@
       <index name="fk_grupo_solicitud_solicitud" columns="id_grupo_solicitud"/>
       <index name="IDX_9E50CAC8B91944F2" columns="id_receptor"/>
       <index name="IDX_9E50CAC8D8A5832B" columns="id_user_reg"/>
+      <index name="IDX_9E50CAC8BA23BAD6" columns="id_responsable_solicitud"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -56,6 +57,11 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <many-to-one field="idResponsableSolicitud" target-entity="MntEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_responsable_solicitud" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>

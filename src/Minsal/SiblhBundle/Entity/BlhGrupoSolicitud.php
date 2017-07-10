@@ -76,11 +76,18 @@ class BlhGrupoSolicitud implements EntityInterface
     private $idUserReg;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhSolicitud", mappedBy="idGrupoSolicitud", cascade={"all"}, orphanRemoval=true)
+     */
+    private $grupoSolicitudes;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->grupoSolicitudes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -209,6 +216,40 @@ class BlhGrupoSolicitud implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Add grupoSolicitude
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhSolicitud $grupoSolicitude
+     *
+     * @return BlhGrupoSolicitud
+     */
+    public function addGrupoSolicitude(\Minsal\SiblhBundle\Entity\BlhSolicitud $grupoSolicitude)
+    {
+        $this->grupoSolicitudes[] = $grupoSolicitude;
+
+        return $this;
+    }
+
+    /**
+     * Remove grupoSolicitude
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhSolicitud $grupoSolicitude
+     */
+    public function removeGrupoSolicitude(\Minsal\SiblhBundle\Entity\BlhSolicitud $grupoSolicitude)
+    {
+        $this->grupoSolicitudes->removeElement($grupoSolicitude);
+    }
+
+    /**
+     * Get grupoSolicitudes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrupoSolicitudes()
+    {
+        return $this->grupoSolicitudes;
     }
 
 }

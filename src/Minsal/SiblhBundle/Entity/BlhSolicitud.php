@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhSolicitud
  *
- * @ORM\Table(name="blh_solicitud", indexes={@ORM\Index(name="fk_grupo_solicitud_solicitud", columns={"id_grupo_solicitud"}), @ORM\Index(name="IDX_9E50CAC8B91944F2", columns={"id_receptor"}), @ORM\Index(name="IDX_9E50CAC8D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_solicitud", indexes={@ORM\Index(name="fk_grupo_solicitud_solicitud", columns={"id_grupo_solicitud"}), @ORM\Index(name="IDX_9E50CAC8B91944F2", columns={"id_receptor"}), @ORM\Index(name="IDX_9E50CAC8D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_9E50CAC8BA23BAD6", columns={"id_responsable_solicitud"})})
  * @ORM\Entity
  */
 class BlhSolicitud implements EntityInterface
@@ -231,7 +231,7 @@ class BlhSolicitud implements EntityInterface
     /**
      * @var \BlhGrupoSolicitud
      *
-     * @ORM\ManyToOne(targetEntity="BlhGrupoSolicitud")
+     * @ORM\ManyToOne(targetEntity="BlhGrupoSolicitud", inversedBy="grupoSolicitudes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_grupo_solicitud", referencedColumnName="id")
      * })
@@ -249,6 +249,17 @@ class BlhSolicitud implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\MntEmpleado
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntEmpleado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_responsable_solicitud", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResponsableSolicitud;
 
     /**
      * Constructor
@@ -673,6 +684,30 @@ class BlhSolicitud implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idResponsableSolicitud
+     *
+     * @param \Minsal\SiapsBundle\Entity\MntEmpleado $idResponsableSolicitud
+     *
+     * @return BlhSolicitud
+     */
+    public function setIdResponsableSolicitud(\Minsal\SiapsBundle\Entity\MntEmpleado $idResponsableSolicitud = null)
+    {
+        $this->idResponsableSolicitud = $idResponsableSolicitud;
+
+        return $this;
+    }
+
+    /**
+     * Get idResponsableSolicitud
+     *
+     * @return \Minsal\SiapsBundle\Entity\MntEmpleado
+     */
+    public function getIdResponsableSolicitud()
+    {
+        return $this->idResponsableSolicitud;
     }
 
 }
