@@ -12,6 +12,7 @@
       <index name="IDX_D458FB018C587E61" columns="id_ocupacion"/>
       <index name="IDX_D458FB0185E56563" columns="id_tipo_colecta"/>
       <index name="IDX_D458FB01D8A5832B" columns="id_user_reg"/>
+      <index name="IDX_D458FB018653A7AF" columns="id_centro_recoleccion"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -120,6 +121,11 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <field name="activo" type="boolean" column="activo" nullable="true">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
     <many-to-one field="idOcupacion" target-entity="CtlOcupacion" fetch="LAZY">
       <join-columns>
         <join-column name="id_ocupacion" referenced-column-name="id"/>
@@ -133,6 +139,11 @@
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idEstadoCivil" target-entity="CtlEstadoCivil" fetch="LAZY">
