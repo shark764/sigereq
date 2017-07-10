@@ -60,8 +60,8 @@ file that was distributed with this source code.
                 if (isNaN(tiempo3) || jQuery.trim(tiempo3).length === 0) {
                     tiempo3 = 0;
                 }
-                var valorCurva = Math.round(((tiempo1 + tiempo2 + tiempo3) / 3) * 10) / 10;
-                jQuery('#{{ admin.uniqId }}_valorCurva').val(valorCurva.toFixed(2));
+                var valorCurva = Math.round(Math.round(((tiempo1 + tiempo2 + tiempo3) / 3) * 10) / 10);
+                jQuery('#{{ admin.uniqId }}_valorCurva').val(valorCurva/*.toFixed(2)*/);
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
         });
