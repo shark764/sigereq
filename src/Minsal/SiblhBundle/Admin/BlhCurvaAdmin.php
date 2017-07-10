@@ -76,6 +76,7 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('cantidadFrascos', null, array(
                             'label' => 'Cantidad de frascos',
                             'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'cantidad de frascos...',
@@ -97,7 +98,7 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenPorFrasco', null, array(
                             'label' => 'Volumen por frasco',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'volumen por frasco...',
                                     'class' => 'form-control input-sm',
@@ -121,10 +122,11 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenTotal', null, array(
                             'label' => 'Volumen total',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'volumen total...',
                                     'class' => 'form-control input-sm',
+                                    'readonly' => 'readonly',
                                     'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
@@ -145,7 +147,7 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('tiempo1', null, array(
                             'label' => '1er tiempo',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => '1er tiempo...',
                                     'class' => 'form-control input-sm',
@@ -169,7 +171,7 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('tiempo2', null, array(
                             'label' => '2do tiempo',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => '2do tiempo...',
                                     'class' => 'form-control input-sm',
@@ -193,7 +195,7 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('tiempo3', null, array(
                             'label' => '3er tiempo',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => '3er tiempo...',
                                     'class' => 'form-control input-sm',
@@ -217,10 +219,11 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('valorCurva', null, array(
                             'label' => 'Valor de curva',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'valor curva...',
                                     'class' => 'form-control input-sm',
+                                    'readonly' => 'readonly',
                                     // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
@@ -241,7 +244,7 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('fechaCurva', 'datetime', array(
                             'label' => 'Fecha de registro de curva',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'widget' => 'single_text',
                             'format' => 'dd/MM/yyyy',
                             'attr' => array(
