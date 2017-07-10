@@ -170,11 +170,18 @@ class BlhFrascoProcesado implements EntityInterface
     private $idUserReg;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhAnalisisMicrobiologico", mappedBy="idFrascoProcesado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $frascoProcesadoAnalisisMicrobiologico;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->frascoProcesadoAnalisisMicrobiologico = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -471,6 +478,40 @@ class BlhFrascoProcesado implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Add frascoProcesadoAnalisisMicrobiologico
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhAnalisisMicrobiologico $frascoProcesadoAnalisisMicrobiologico
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function addFrascoProcesadoAnalisisMicrobiologico(\Minsal\SiblhBundle\Entity\BlhAnalisisMicrobiologico $frascoProcesadoAnalisisMicrobiologico)
+    {
+        $this->frascoProcesadoAnalisisMicrobiologico[] = $frascoProcesadoAnalisisMicrobiologico;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoProcesadoAnalisisMicrobiologico
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhAnalisisMicrobiologico $frascoProcesadoAnalisisMicrobiologico
+     */
+    public function removeFrascoProcesadoAnalisisMicrobiologico(\Minsal\SiblhBundle\Entity\BlhAnalisisMicrobiologico $frascoProcesadoAnalisisMicrobiologico)
+    {
+        $this->frascoProcesadoAnalisisMicrobiologico->removeElement($frascoProcesadoAnalisisMicrobiologico);
+    }
+
+    /**
+     * Get frascoProcesadoAnalisisMicrobiologico
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFrascoProcesadoAnalisisMicrobiologico()
+    {
+        return $this->frascoProcesadoAnalisisMicrobiologico;
     }
 
 }

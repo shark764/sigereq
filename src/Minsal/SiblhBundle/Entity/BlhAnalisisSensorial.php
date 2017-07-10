@@ -138,7 +138,7 @@ class BlhAnalisisSensorial implements EntityInterface
     /**
      * @var \BlhFrascoRecolectado
      *
-     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado", inversedBy="frascoRecolectadoAnalisisSensorial")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_recolectado", referencedColumnName="id")
      * })

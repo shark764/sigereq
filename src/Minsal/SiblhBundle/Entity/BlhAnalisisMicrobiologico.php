@@ -121,7 +121,7 @@ class BlhAnalisisMicrobiologico implements EntityInterface
     /**
      * @var \BlhFrascoProcesado
      *
-     * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado", inversedBy="frascoProcesadoAnalisisMicrobiologico")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_procesado", referencedColumnName="id")
      * })

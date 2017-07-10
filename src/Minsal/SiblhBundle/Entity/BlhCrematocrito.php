@@ -189,7 +189,7 @@ class BlhCrematocrito implements EntityInterface
     /**
      * @var \BlhFrascoRecolectado
      *
-     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado", inversedBy="frascoRecolectadoCrematocrito")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_recolectado", referencedColumnName="id")
      * })

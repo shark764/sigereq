@@ -132,7 +132,7 @@ class BlhAcidez implements EntityInterface
     /**
      * @var \BlhFrascoRecolectado
      *
-     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado", inversedBy="frascoRecolectadoAcidez")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_recolectado", referencedColumnName="id")
      * })

@@ -221,11 +221,30 @@ class BlhFrascoRecolectado implements EntityInterface
     private $idFormaExtraccion;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhAcidez", mappedBy="idFrascoRecolectado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $frascoRecolectadoAcidez;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhAnalisisSensorial", mappedBy="idFrascoRecolectado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $frascoRecolectadoAnalisisSensorial;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhCrematocrito", mappedBy="idFrascoRecolectado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $frascoRecolectadoCrematocrito;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->frascoRecolectadoAcidez = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->frascoRecolectadoAnalisisSensorial = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->frascoRecolectadoCrematocrito = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -618,6 +637,108 @@ class BlhFrascoRecolectado implements EntityInterface
     public function getIdFormaExtraccion()
     {
         return $this->idFormaExtraccion;
+    }
+
+    /**
+     * Add frascoRecolectadoAcidez
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhAcidez $frascoRecolectadoAcidez
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function addFrascoRecolectadoAcidez(\Minsal\SiblhBundle\Entity\BlhAcidez $frascoRecolectadoAcidez)
+    {
+        $this->frascoRecolectadoAcidez[] = $frascoRecolectadoAcidez;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoRecolectadoAcidez
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhAcidez $frascoRecolectadoAcidez
+     */
+    public function removeFrascoRecolectadoAcidez(\Minsal\SiblhBundle\Entity\BlhAcidez $frascoRecolectadoAcidez)
+    {
+        $this->frascoRecolectadoAcidez->removeElement($frascoRecolectadoAcidez);
+    }
+
+    /**
+     * Get frascoRecolectadoAcidez
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFrascoRecolectadoAcidez()
+    {
+        return $this->frascoRecolectadoAcidez;
+    }
+
+    /**
+     * Add frascoRecolectadoAnalisisSensorial
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhAnalisisSensorial $frascoRecolectadoAnalisisSensorial
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function addFrascoRecolectadoAnalisisSensorial(\Minsal\SiblhBundle\Entity\BlhAnalisisSensorial $frascoRecolectadoAnalisisSensorial)
+    {
+        $this->frascoRecolectadoAnalisisSensorial[] = $frascoRecolectadoAnalisisSensorial;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoRecolectadoAnalisisSensorial
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhAnalisisSensorial $frascoRecolectadoAnalisisSensorial
+     */
+    public function removeFrascoRecolectadoAnalisisSensorial(\Minsal\SiblhBundle\Entity\BlhAnalisisSensorial $frascoRecolectadoAnalisisSensorial)
+    {
+        $this->frascoRecolectadoAnalisisSensorial->removeElement($frascoRecolectadoAnalisisSensorial);
+    }
+
+    /**
+     * Get frascoRecolectadoAnalisisSensorial
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFrascoRecolectadoAnalisisSensorial()
+    {
+        return $this->frascoRecolectadoAnalisisSensorial;
+    }
+
+    /**
+     * Add frascoRecolectadoCrematocrito
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoRecolectadoCrematocrito
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function addFrascoRecolectadoCrematocrito(\Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoRecolectadoCrematocrito)
+    {
+        $this->frascoRecolectadoCrematocrito[] = $frascoRecolectadoCrematocrito;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoRecolectadoCrematocrito
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoRecolectadoCrematocrito
+     */
+    public function removeFrascoRecolectadoCrematocrito(\Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoRecolectadoCrematocrito)
+    {
+        $this->frascoRecolectadoCrematocrito->removeElement($frascoRecolectadoCrematocrito);
+    }
+
+    /**
+     * Get frascoRecolectadoCrematocrito
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFrascoRecolectadoCrematocrito()
+    {
+        return $this->frascoRecolectadoCrematocrito;
     }
 
 }
