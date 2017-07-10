@@ -181,11 +181,11 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('volumenPorToma', null, array(
-                            'label' => 'Volumen por toma (ml)',
+                            'label' => 'Vol. por toma (ml)',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'volumen por toma...',
+                                    'placeholder' => 'vol. por toma...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'start',
@@ -228,11 +228,11 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('volumenPorDia', null, array(
-                            'label' => 'Volumen total por día (ml)',
+                            'label' => 'Vol. total por día (ml)',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'volumen total por día (ml)...',
+                                    'placeholder' => 'vol. total por día (ml)...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'stop',

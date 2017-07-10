@@ -61,20 +61,20 @@ class BlhTemperaturaEnfriamientoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idPasteurizacion', null, array(
-                            'label' => 'Pasteurización',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            // ->add('idPasteurizacion', null, array(
+            //                 'label' => 'Pasteurización',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'start',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
-                            )
-            ))
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+            //                 )
+            // ))
             ->add('temperaturaE', null, array(
                             'label' => 'Temperatura de enfriamiento',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -98,7 +98,7 @@ class BlhTemperaturaEnfriamientoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             // ->add('usuario')
             ->add('horaInicioE', 'datetime', array(
-                            'label' => 'Hora de inicio de enfriamiento',
+                            'label' => 'Hora de inicio',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => true,
                             'widget' => 'single_text',
@@ -126,7 +126,7 @@ class BlhTemperaturaEnfriamientoAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('horaFinalE', 'datetime', array(
-                            'label' => 'Hora final de enfriamiento',
+                            'label' => 'Hora final',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => true,
                             'widget' => 'single_text',

@@ -180,12 +180,31 @@ class BlhPasteurizacion implements EntityInterface
     private $idResponsablePasteurizacion;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhTemperaturaPasteurizacion", mappedBy="idPasteurizacion", cascade={"all"}, orphanRemoval=true)
+     */
+    private $pasteurizacionTemperaturaPasteurizacion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhTemperaturaEnfriamiento", mappedBy="idPasteurizacion", cascade={"all"}, orphanRemoval=true)
+     */
+    private $pasteurizacionTemperaturaEnfriamiento;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhFrascoProcesado", mappedBy="idPasteurizacion", cascade={"all"}, orphanRemoval=true)
+     */
+    private $pasteurizacionFrascoProcesado;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->fechaPasteurizacion = new \DateTime('now');
         $this->fechaHoraReg = new \DateTime('now');
+        
+        $this->pasteurizacionTemperaturaPasteurizacion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pasteurizacionTemperaturaEnfriamiento = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pasteurizacionFrascoProcesado = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -506,6 +525,108 @@ class BlhPasteurizacion implements EntityInterface
     public function getIdResponsablePasteurizacion()
     {
         return $this->idResponsablePasteurizacion;
+    }
+
+    /**
+     * Add pasteurizacionTemperaturaPasteurizacion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhTemperaturaPasteurizacion $pasteurizacionTemperaturaPasteurizacion
+     *
+     * @return BlhPasteurizacion
+     */
+    public function addPasteurizacionTemperaturaPasteurizacion(\Minsal\SiblhBundle\Entity\BlhTemperaturaPasteurizacion $pasteurizacionTemperaturaPasteurizacion)
+    {
+        $this->pasteurizacionTemperaturaPasteurizacion[] = $pasteurizacionTemperaturaPasteurizacion;
+
+        return $this;
+    }
+
+    /**
+     * Remove pasteurizacionTemperaturaPasteurizacion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhTemperaturaPasteurizacion $pasteurizacionTemperaturaPasteurizacion
+     */
+    public function removePasteurizacionTemperaturaPasteurizacion(\Minsal\SiblhBundle\Entity\BlhTemperaturaPasteurizacion $pasteurizacionTemperaturaPasteurizacion)
+    {
+        $this->pasteurizacionTemperaturaPasteurizacion->removeElement($pasteurizacionTemperaturaPasteurizacion);
+    }
+
+    /**
+     * Get pasteurizacionTemperaturaPasteurizacion
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPasteurizacionTemperaturaPasteurizacion()
+    {
+        return $this->pasteurizacionTemperaturaPasteurizacion;
+    }
+
+    /**
+     * Add pasteurizacionTemperaturaEnfriamiento
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhTemperaturaEnfriamiento $pasteurizacionTemperaturaEnfriamiento
+     *
+     * @return BlhPasteurizacion
+     */
+    public function addPasteurizacionTemperaturaEnfriamiento(\Minsal\SiblhBundle\Entity\BlhTemperaturaEnfriamiento $pasteurizacionTemperaturaEnfriamiento)
+    {
+        $this->pasteurizacionTemperaturaEnfriamiento[] = $pasteurizacionTemperaturaEnfriamiento;
+
+        return $this;
+    }
+
+    /**
+     * Remove pasteurizacionTemperaturaEnfriamiento
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhTemperaturaEnfriamiento $pasteurizacionTemperaturaEnfriamiento
+     */
+    public function removePasteurizacionTemperaturaEnfriamiento(\Minsal\SiblhBundle\Entity\BlhTemperaturaEnfriamiento $pasteurizacionTemperaturaEnfriamiento)
+    {
+        $this->pasteurizacionTemperaturaEnfriamiento->removeElement($pasteurizacionTemperaturaEnfriamiento);
+    }
+
+    /**
+     * Get pasteurizacionTemperaturaEnfriamiento
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPasteurizacionTemperaturaEnfriamiento()
+    {
+        return $this->pasteurizacionTemperaturaEnfriamiento;
+    }
+
+    /**
+     * Add pasteurizacionFrascoProcesado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoProcesado $pasteurizacionFrascoProcesado
+     *
+     * @return BlhPasteurizacion
+     */
+    public function addPasteurizacionFrascoProcesado(\Minsal\SiblhBundle\Entity\BlhFrascoProcesado $pasteurizacionFrascoProcesado)
+    {
+        $this->pasteurizacionFrascoProcesado[] = $pasteurizacionFrascoProcesado;
+
+        return $this;
+    }
+
+    /**
+     * Remove pasteurizacionFrascoProcesado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoProcesado $pasteurizacionFrascoProcesado
+     */
+    public function removePasteurizacionFrascoProcesado(\Minsal\SiblhBundle\Entity\BlhFrascoProcesado $pasteurizacionFrascoProcesado)
+    {
+        $this->pasteurizacionFrascoProcesado->removeElement($pasteurizacionFrascoProcesado);
+    }
+
+    /**
+     * Get pasteurizacionFrascoProcesado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPasteurizacionFrascoProcesado()
+    {
+        return $this->pasteurizacionFrascoProcesado;
     }
 
 }

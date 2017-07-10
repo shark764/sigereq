@@ -150,11 +150,11 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('volumenPorFrasco', null, array(
-                            'label' => 'Volumen por frasco',
+                            'label' => 'Vol. por frasco',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'volumen por frasco...',
+                                    'placeholder' => 'vol. por frasco...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'continue',
                                     'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
@@ -174,11 +174,11 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('volumenTotal', null, array(
-                            'label' => 'Volumen total',
+                            'label' => 'Vol. total',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'volumen total...',
+                                    'placeholder' => 'vol. total...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
                                     'data-form-inline-group' => 'stop',

@@ -77,7 +77,7 @@ class BlhTemperaturaPasteurizacion implements EntityInterface
     /**
      * @var \BlhPasteurizacion
      *
-     * @ORM\ManyToOne(targetEntity="BlhPasteurizacion")
+     * @ORM\ManyToOne(targetEntity="BlhPasteurizacion", inversedBy="pasteurizacionTemperaturaPasteurizacion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_pasteurizacion", referencedColumnName="id")
      * })
