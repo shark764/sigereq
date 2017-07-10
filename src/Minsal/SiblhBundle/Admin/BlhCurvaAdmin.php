@@ -73,6 +73,60 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('fechaCurva', 'datetime', array(
+                            'label' => 'Fecha de registro de curva',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
+                            'widget' => 'single_text',
+                            'format' => 'dd/MM/yyyy',
+                            'attr' => array(
+                                    // 'readonly' => 'readonly',
+                                    'placeholder' => 'DD/MM/YYYY',
+                                    'class' => 'form-control input-sm',
+                                    'data-input-transform' => 'datetimepicker',
+                                    'data-datetimepicker-type' => 'date',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+                                    // 'data-add-input-btn' => 'true',
+                                    // 'data-add-input-btn-class' => 'display-datetimepicker',
+                                    // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
+                                    // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
+
+                                    'data-fv-date' => 'true',
+                                    'data-fv-date-format' => 'DD/MM/YYYY',
+                                    'data-fv-date-message' => 'No es una fecha válida',
+                            )
+            ))
+            // ->add('horaInicioCurva', 'datetime', array(
+            //                 'label' => 'Hora de inicio de curva',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => true,
+            //                 'widget' => 'single_text',
+            //                 'format' => 'HH:mm',
+            //                 'attr' => array(
+            //                         // 'readonly' => 'readonly',
+            //                         'placeholder' => 'HH:mm',
+            //                         'class' => 'form-control input-sm',
+            //                         'data-input-transform' => 'datetimepicker',
+            //                         'data-datetimepicker-type' => 'time',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+            //                         // 'data-add-input-btn' => 'true',
+            //                         // 'data-add-input-btn-class' => 'display-datetimepicker',
+            //                         // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
+            //                         // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
+
+            //                         'data-fv-date' => 'true',
+            //                         'data-fv-date-format' => 'h:m A',
+            //                         'data-fv-date-message' => 'No es una fecha válida',
+            //                 )
+            // ))
             ->add('cantidadFrascos', null, array(
                             'label' => 'Cantidad de frascos',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -239,60 +293,6 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                                     // 'min' => '2.27',
                                     // 'max' => '226.80',
                                     // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
-                            )
-            ))
-            ->add('fechaCurva', 'datetime', array(
-                            'label' => 'Fecha de registro de curva',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
-                            'widget' => 'single_text',
-                            'format' => 'dd/MM/yyyy',
-                            'attr' => array(
-                                    // 'readonly' => 'readonly',
-                                    'placeholder' => 'DD/MM/YYYY',
-                                    'class' => 'form-control input-sm',
-                                    'data-input-transform' => 'datetimepicker',
-                                    'data-datetimepicker-type' => 'date',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
-
-                                    // 'data-add-input-btn' => 'true',
-                                    // 'data-add-input-btn-class' => 'display-datetimepicker',
-                                    // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
-                                    // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
-
-                                    'data-fv-date' => 'true',
-                                    'data-fv-date-format' => 'DD/MM/YYYY',
-                                    'data-fv-date-message' => 'No es una fecha válida',
-                            )
-            ))
-            ->add('horaInicioCurva', 'datetime', array(
-                            'label' => 'Hora de inicio de curva',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
-                            'widget' => 'single_text',
-                            'format' => 'HH:mm',
-                            'attr' => array(
-                                    // 'readonly' => 'readonly',
-                                    'placeholder' => 'HH:mm',
-                                    'class' => 'form-control input-sm',
-                                    'data-input-transform' => 'datetimepicker',
-                                    'data-datetimepicker-type' => 'time',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
-
-                                    // 'data-add-input-btn' => 'true',
-                                    // 'data-add-input-btn-class' => 'display-datetimepicker',
-                                    // 'data-add-input-btn-btn-class' => 'btn-sm btn-xray-awesome-blue background-opacity display-datetimepicker',
-                                    // 'data-add-input-btn-addon' => 'glyphicon glyphicon-time',
-
-                                    'data-fv-date' => 'true',
-                                    'data-fv-date-format' => 'h:m A',
-                                    'data-fv-date-message' => 'No es una fecha válida',
                             )
             ))
             // ->add('usuario')
