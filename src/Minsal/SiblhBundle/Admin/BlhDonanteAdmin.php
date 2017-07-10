@@ -97,6 +97,32 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idBancoDeLeche', null, array(
+                            'label' => 'Banco de Leche',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            // 'required' => true,
+                            // 'group_by' => 'idEstablecimiento',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
+            ->add('idCentroRecoleccion', null, array(
+                            'label' => 'Centro de recolección',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
+                            'group_by' => 'idBancoDeLeche',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
             ->add('codigoDonante', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),
