@@ -2,10 +2,10 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="BlhDonante" table="blh_donante">
     <indexes>
-      <index name="fk_banco_de_leche_donante" columns="id_banco_de_leche"/>
       <index name="fk_municipio_donante" columns="id_municipio"/>
       <index name="fki_blh_dona_fk_naciona_blh" columns="nacionalidad"/>
       <index name="fki_blh_dona_fk_nacionalidad_blh" columns="nacionalidad"/>
+      <index name="fk_banco_de_leche_donante" columns="id_banco_de_leche"/>
       <index name="IDX_D458FB01AF36C2D7" columns="id_doc_ide_donante"/>
       <index name="IDX_D458FB0110281A9F" columns="id_escolaridad"/>
       <index name="IDX_D458FB01D7E358F6" columns="id_estado_civil"/>
@@ -120,11 +120,6 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
-    <field name="activo" type="boolean" column="activo" nullable="true">
-      <options>
-        <option name="default"/>
-      </options>
-    </field>
     <many-to-one field="idOcupacion" target-entity="CtlOcupacion" fetch="LAZY">
       <join-columns>
         <join-column name="id_ocupacion" referenced-column-name="id"/>

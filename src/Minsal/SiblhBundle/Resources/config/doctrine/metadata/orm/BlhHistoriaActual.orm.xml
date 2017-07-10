@@ -2,8 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="BlhHistoriaActual" table="blh_historia_actual">
     <indexes>
-      <index name="fki_blh_his_fk_hab_tox" columns="habito_toxico"/>
       <index name="fki_blh_his_fk_pat" columns="patologia"/>
+      <index name="fki_blh_his_fk_hab_tox" columns="habito_toxico"/>
       <index name="fki_blh_his_hab" columns="habito_toxico"/>
       <index name="IDX_F93902A254F03532" columns="id_donante"/>
       <index name="IDX_F93902A2D8A5832B" columns="id_user_reg"/>

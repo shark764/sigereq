@@ -10,17 +10,17 @@
       <index name="IDX_3E2ACBC5468B95CB" columns="id_doc_ide_paciente"/>
       <index name="IDX_3E2ACBC5558DDFB5" columns="id_doc_ide_proporciono_datos"/>
       <index name="IDX_3E2ACBC5ACA54FF3" columns="id_doc_ide_responsable"/>
+      <index name="IDX_3E2ACBC5D7E358F6" columns="id_estado_civil"/>
       <index name="IDX_3E2ACBC5B3457663" columns="id_municipio_domicilio"/>
       <index name="IDX_3E2ACBC5FA164C5C" columns="id_municipio_nacimiento"/>
       <index name="IDX_3E2ACBC5B0DC2AB1" columns="id_nacionalidad"/>
+      <index name="IDX_3E2ACBC58C587E61" columns="id_ocupacion"/>
       <index name="IDX_3E2ACBC5242CF91E" columns="id_pais_nacimiento"/>
       <index name="IDX_3E2ACBC526DA8252" columns="id_parentesco_propor_datos"/>
       <index name="IDX_3E2ACBC5FC412399" columns="id_parentesco_responsable"/>
       <index name="IDX_3E2ACBC5A7194A90" columns="id_sexo"/>
       <index name="IDX_3E2ACBC5D8A5832B" columns="id_user_reg"/>
       <index name="IDX_3E2ACBC5AC39DE56" columns="id_user_mod"/>
-      <index name="IDX_3E2ACBC58C587E61" columns="id_ocupacion"/>
-      <index name="IDX_3E2ACBC5D7E358F6" columns="id_estado_civil"/>
     </indexes>
     <id name="id" type="bigint" column="id">
       <generator strategy="SEQUENCE"/>
@@ -197,34 +197,9 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="idParentescoResponsable" target-entity="CtlParentesco" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_parentesco_responsable" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idParentescoProporDatos" target-entity="CtlParentesco" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_parentesco_propor_datos" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idPaisNacimiento" target-entity="CtlPais" fetch="LAZY">
       <join-columns>
         <join-column name="id_pais_nacimiento" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idSexo" target-entity="CtlSexo" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_sexo" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_user_reg" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idEstadoCivil" target-entity="CtlEstadoCivil" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_estado_civil" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idOcupacion" target-entity="CtlOcupacion" fetch="LAZY">
@@ -232,19 +207,44 @@
         <join-column name="id_ocupacion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idUserMod" target-entity="FosUserUser" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_user_mod" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idNacionalidad" target-entity="CtlNacionalidad" fetch="LAZY">
       <join-columns>
         <join-column name="id_nacionalidad" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="idParentescoProporDatos" target-entity="CtlParentesco" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_parentesco_propor_datos" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idParentescoResponsable" target-entity="CtlParentesco" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_parentesco_responsable" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUserMod" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_mod" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSexo" target-entity="CtlSexo" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_sexo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idMunicipioNacimiento" target-entity="CtlMunicipio" fetch="LAZY">
       <join-columns>
         <join-column name="id_municipio_nacimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idMunicipioDomicilio" target-entity="CtlMunicipio" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_municipio_domicilio" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idDepartamentoDomicilio" target-entity="CtlDepartamento" fetch="LAZY">
@@ -272,9 +272,9 @@
         <join-column name="id_doc_ide_paciente" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idMunicipioDomicilio" target-entity="CtlMunicipio" fetch="LAZY">
+    <many-to-one field="idEstadoCivil" target-entity="CtlEstadoCivil" fetch="LAZY">
       <join-columns>
-        <join-column name="id_municipio_domicilio" referenced-column-name="id"/>
+        <join-column name="id_estado_civil" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idDoceResponsable" target-entity="CtlDocumentoIdentidad" fetch="LAZY">

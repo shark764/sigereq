@@ -2,8 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="BlhRolMenu" table="blh_rol_menu">
     <indexes>
-      <index name="fk_rol_rol_menu" columns="id_rol"/>
       <index name="fk_menu_rol_menu" columns="id_menu"/>
+      <index name="fk_rol_rol_menu" columns="id_rol"/>
       <index name="IDX_80162271D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
