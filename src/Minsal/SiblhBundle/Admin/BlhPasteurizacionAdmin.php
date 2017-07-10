@@ -72,7 +72,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('codigoPasteurizacion', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'código...',
                                     'class' => 'form-control input-sm',
@@ -86,7 +86,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('idCurva', null, array(
                             'label' => 'Curva de pasteurización',
                             'label_attr' => array('class' => 'label_form_sm'),
-//                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',
@@ -121,7 +121,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenPasteurizado', null, array(
                             'label' => 'Volumen pasteurizado',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'volumen pasteurizado...',
                                     'class' => 'form-control input-sm',
@@ -166,7 +166,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenTotal', null, array(
                             'label' => 'Volumen total',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'volumen total...',
                                     'class' => 'form-control input-sm',
@@ -190,7 +190,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('fechaPasteurizacion', 'datetime', array(
                             'label' => 'Fecha de pasteurización',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'widget' => 'single_text',
                             'format' => 'dd/MM/yyyy',
                             'attr' => array(
@@ -218,7 +218,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('idResponsablePasteurizacion', null, array(
                             'label' => 'Responsable de pasteurización',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',
