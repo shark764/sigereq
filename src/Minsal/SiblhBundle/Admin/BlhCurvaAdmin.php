@@ -73,6 +73,75 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('cantidadFrascos', null, array(
+                            'label' => 'Cantidad de frascos',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'placeholder' => 'cantidad de frascos...',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tag',
+
+                                    'data-fv-integer' => 'true',
+                                    'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '0',
+                                    'max' => '32767',
+                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                            )
+            ))
+            ->add('volumenPorFrasco', null, array(
+                            'label' => 'Volumen por frasco',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen por frasco...',
+                                    'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    // 'min' => '2.27',
+                                    // 'max' => '226.80',
+                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
+                            )
+            ))
+            ->add('volumenTotal', null, array(
+                            'label' => 'Volumen total',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'volumen total...',
+                                    'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+                                    'data-fv-numeric' => 'true',
+                                    'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    'data-fv-numeric-thousandsSeparator' => '',
+                                    'data-fv-numeric-decimalSeparator' => '.',
+
+                                    // 'min' => '2.27',
+                                    // 'max' => '226.80',
+                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
+                            )
+            ))
             ->add('tiempo1', null, array(
                             'label' => '1er tiempo',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -80,8 +149,8 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                             'attr' => array(
                                     'placeholder' => '1er tiempo...',
                                     'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -99,13 +168,13 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('tiempo2', null, array(
                             'label' => '2do tiempo',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '2do tiempo...',
                                     'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -123,13 +192,13 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('tiempo3', null, array(
                             'label' => '3er tiempo',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '3er tiempo...',
                                     'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -153,7 +222,7 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'placeholder' => 'valor curva...',
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -196,49 +265,6 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-date-message' => 'No es una fecha válida',
                             )
             ))
-            ->add('cantidadFrascos', null, array(
-                            'label' => 'Cantidad de frascos',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    'placeholder' => 'cantidad de frascos...',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tag',
-
-                                    'data-fv-integer' => 'true',
-                                    'data-fv-integer-message' => 'El valor no es un entero',
-
-                                    'min' => '0',
-                                    'max' => '32767',
-                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
-                            )
-            ))
-            ->add('volumenPorFrasco', null, array(
-                            'label' => 'Volumen por frasco',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'placeholder' => 'volumen por frasco...',
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
-
-                                    'data-fv-numeric' => 'true',
-                                    'data-fv-numeric-message' => 'El valor no es un número válido',
-                                    'data-fv-numeric-thousandsSeparator' => '',
-                                    'data-fv-numeric-decimalSeparator' => '.',
-
-                                    // 'min' => '2.27',
-                                    // 'max' => '226.80',
-                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
-                            )
-            ))
             ->add('horaInicioCurva', 'datetime', array(
                             'label' => 'Hora de inicio de curva',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -267,30 +293,6 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             // ->add('usuario')
-            ->add('volumenTotal', null, array(
-                            'label' => 'Volumen total',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'placeholder' => 'volumen total...',
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
-
-                                    'data-fv-numeric' => 'true',
-                                    'data-fv-numeric-message' => 'El valor no es un número válido',
-                                    'data-fv-numeric-thousandsSeparator' => '',
-                                    'data-fv-numeric-decimalSeparator' => '.',
-
-                                    // 'min' => '2.27',
-                                    // 'max' => '226.80',
-                                    // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
-                            )
-            ))
             // ->add('fechaHoraReg')
         ;
     }
@@ -319,6 +321,28 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
     public function preUpdate($entity)
     {
         // parent::preUpdate($entity);
+    }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhCurvaAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
 }

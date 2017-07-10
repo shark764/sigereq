@@ -1,0 +1,70 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{#{% extends base_template %}#}
+{% extends 'MinsalSiblhBundle:CRUD:base_edit.html.twig' %}
+
+{% use 'MinsalSiblhBundle:BlhCurvaAdmin:base_edit_form.html.twig' with form as parentForm %}
+
+{% block form %}
+
+    {{ block('parentForm') }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function() {
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// calculate value
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('#{{ admin.uniqId }}_cantidadFrascos, #{{ admin.uniqId }}_volumenPorFrasco').on('keyup change blur', function (e) {
+                var cantidadFrascos = parseFloat(jQuery('#{{ admin.uniqId }}_cantidadFrascos').val());
+                var volumenPorFrasco = parseFloat(jQuery('#{{ admin.uniqId }}_volumenPorFrasco').val());
+
+                if (isNaN(cantidadFrascos) || jQuery.trim(cantidadFrascos).length === 0) {
+                    cantidadFrascos = 0;
+                }
+                if (isNaN(volumenPorFrasco) || jQuery.trim(volumenPorFrasco).length === 0) {
+                    jQuery('#{{ admin.uniqId }}_volumenTotal').val(0);
+                    return;
+                }
+                var volumenTotal = cantidadFrascos * volumenPorFrasco;
+                jQuery('#{{ admin.uniqId }}_volumenTotal').val(volumenTotal.toFixed(2));
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('#{{ admin.uniqId }}_tiempo1, #{{ admin.uniqId }}_tiempo2, #{{ admin.uniqId }}_tiempo3').on('keyup change blur', function (e) {
+                var tiempo1 = parseInt(jQuery('#{{ admin.uniqId }}_tiempo1').val());
+                var tiempo2 = parseInt(jQuery('#{{ admin.uniqId }}_tiempo2').val());
+                var tiempo3 = parseInt(jQuery('#{{ admin.uniqId }}_tiempo3').val());
+
+                if (isNaN(tiempo1) || jQuery.trim(tiempo1).length === 0) {
+                    tiempo1 = 0;
+                }
+                if (isNaN(tiempo2) || jQuery.trim(tiempo2).length === 0) {
+                    tiempo2 = 0;
+                }
+                if (isNaN(tiempo3) || jQuery.trim(tiempo3).length === 0) {
+                    tiempo3 = 0;
+                }
+                var valorCurva = Math.round(((tiempo1 + tiempo2 + tiempo3) / 3) * 10) / 10;
+                jQuery('#{{ admin.uniqId }}_valorCurva').val(valorCurva.toFixed(2));
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+        });
+
+    </script>
+{% endblock %}
