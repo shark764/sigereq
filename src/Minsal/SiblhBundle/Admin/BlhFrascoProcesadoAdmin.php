@@ -110,7 +110,7 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('volumenFrascoPasteurizado', null, array(
-                            'label' => 'Vol. de frasco pasteurizado (ml)',
+                            'label' => 'Vol. frasco pasteurizado (ml)',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => true,
                             'attr' => array(
@@ -135,13 +135,13 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('acidezTotal', null, array(
                             'label' => 'Acidez total',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => true,
                             'attr' => array(
                                     'placeholder' => 'acidez total...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-form-inline-group' => 'start',
+                                    'data-form-inline-group' => 'continue',
                                     'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
@@ -159,13 +159,13 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('kcaloriasTotales', null, array(
                             'label' => 'Total de calorías',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => true,
                             'attr' => array(
                                     'placeholder' => 'total de calorías...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-form-inline-group' => 'start',
+                                    'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
