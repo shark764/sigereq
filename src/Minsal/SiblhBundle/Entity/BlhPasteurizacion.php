@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhPasteurizacion
  *
- * @ORM\Table(name="blh_pasteurizacion", indexes={@ORM\Index(name="fk_curva_pasteurizacion", columns={"id_curva"}), @ORM\Index(name="IDX_822F9117D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_822F9117919F2FC7", columns={"id_responsable_pasteurizacion"})})
+ * @ORM\Table(name="blh_pasteurizacion", indexes={@ORM\Index(name="fk_curva_pasteurizacion", columns={"id_curva"}), @ORM\Index(name="IDX_822F9117D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_822F9117919F2FC7", columns={"id_responsable_pasteurizacion"}), @ORM\Index(name="IDX_822F91172DF9F9B6", columns={"id_banco_de_leche"})})
  * @ORM\Entity
  */
 class BlhPasteurizacion implements EntityInterface
@@ -178,6 +178,17 @@ class BlhPasteurizacion implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idResponsablePasteurizacion;
+
+    /**
+     * @var \BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idBancoDeLeche;
 
     /**
      * @ORM\OneToMany(targetEntity="BlhTemperaturaPasteurizacion", mappedBy="idPasteurizacion", cascade={"all"}, orphanRemoval=true)
@@ -525,6 +536,30 @@ class BlhPasteurizacion implements EntityInterface
     public function getIdResponsablePasteurizacion()
     {
         return $this->idResponsablePasteurizacion;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhSolicitud
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
     }
 
     /**

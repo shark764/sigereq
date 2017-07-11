@@ -5,7 +5,6 @@
       <index name="fk_banco_de_leche_receptor" columns="id_banco_de_leche"/>
       <index name="fk_paciente_receptor" columns="id_paciente"/>
       <index name="IDX_6498D2AD8A5832B" columns="id_user_reg"/>
-      <index name="IDX_6498D2A8653A7AF" columns="id_centro_recoleccion"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -70,11 +69,6 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
-    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
