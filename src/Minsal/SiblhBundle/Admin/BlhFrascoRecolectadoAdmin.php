@@ -17,6 +17,13 @@ class BlhFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
     protected $baseRouteName    = 'siblh_frasco_recolectado';
     protected $baseRoutePattern = 'blh/frasco-recolectado';
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        
+        $collection->add('getForSensoryAnalysis', 'analisis-sensorial', [], [], ['expose' => true]);
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

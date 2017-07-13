@@ -8,7 +8,7 @@
 
 namespace Minsal\SiblhBundle\Generator\ListViewGenerator\Formatter\ListViewFormatter;
 
-use Minsal\SiblhBundle\Generator\ListViewGenerator\Formatter\ListViewFormatter\RyxListViewFormatter;
+use Minsal\SiblhBundle\Generator\ListViewGenerator\Formatter\ListViewFormatter\BlhListViewFormatter;
 // use Symfony\Component\DependencyInjection\ContainerInterface;
 // use Doctrine\ORM\EntityManager;
 // use FOS\UserBundle\Model\UserInterface;
@@ -28,7 +28,7 @@ use Minsal\SiblhBundle\Generator\ListViewGenerator\Formatter\ListViewFormatter\R
  *
  * @author farid
  */
-class RyxCtlConexionPacsEstablecimientoListViewFormatter extends RyxListViewFormatter
+class RyxCtlConexionPacsEstablecimientoListViewFormatter extends BlhListViewFormatter
 {
     public function buildCompactList()
     {

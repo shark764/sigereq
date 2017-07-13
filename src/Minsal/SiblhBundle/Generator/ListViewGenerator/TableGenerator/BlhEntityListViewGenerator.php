@@ -8,7 +8,7 @@
 
 namespace Minsal\SiblhBundle\Generator\ListViewGenerator\TableGenerator;
 
-use Minsal\SiblhBundle\Generator\ListViewGenerator\TableGenerator\RyxListViewGenerator;
+use Minsal\SiblhBundle\Generator\ListViewGenerator\TableGenerator\BlhListViewGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Model\UserInterface;
@@ -22,11 +22,11 @@ use Sonata\AdminBundle\Route\RouteGeneratorInterface;
 ///////////////////////////////////////////////////////
 
 /**
- * RyxEntityListViewGenerator
+ * BlhEntityListViewGenerator
  *
  * @author farid
  */
-class RyxEntityListViewGenerator extends RyxListViewGenerator
+class BlhEntityListViewGenerator extends BlhListViewGenerator
 {
     /**
      * @var array

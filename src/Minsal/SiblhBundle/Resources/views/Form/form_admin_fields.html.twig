@@ -156,7 +156,7 @@ file that was distributed with this source code.
             <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %} {% if not has_label %}sonata-collection-row-without-label{% endif %}">
 
 		{#{% if attr['data-add-input-addon'] is defined and (attr['data-add-input-addon'] == true or attr['data-add-input-addon'] == 'true') %}#}
-        {% if attr['data-add-input-addon-skipicon'] is not defined %}
+        {% if attr['data-add-input-addon'] is defined and attr['data-add-input-addon-skipicon'] is not defined %}
             <div class="has-left-addinputaddon">
                 <i class="form-control-feedback feedback-leftside {{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}" style=""></i>
     		    {#<div class="input-group {{ attr['data-add-input-addon-class']|default('xray-awesome-blue') }} background-opacity">#}

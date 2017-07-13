@@ -303,7 +303,7 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    'data-add-input-addon-skipicon' => 'true',
                             )
             ))
 //            ->add('lugarControl', null, array(
@@ -415,7 +415,7 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    'data-add-input-addon-skipicon' => 'true',
                             )
             ))
             ->add('lugarParto', null, array(
@@ -459,7 +459,7 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    'data-add-input-addon-skipicon' => 'true',
                             )
             ))
             ->add('idPatologiaEmbarazo', null, array(
@@ -518,7 +518,7 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    'data-add-input-addon-skipicon' => 'true',
                             )
             ))
             ->add('fechaPartoAnterior', 'datetime', array(

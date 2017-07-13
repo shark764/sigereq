@@ -11,5 +11,23 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class BlhFrascoRecolectadoAdminController extends MinsalSiblhBundleGeneralAdminController
 {
+    public function getForSensoryAnalysisAction(Request $request)
+    {
+        $request->isXmlHttpRequest();
+
+        //////// --| << prepare >>
+        $this->admin->prepareAdminInstance();
+        ////////
+
+        $em = $this->getDoctrine()->getManager();
+
+        $results = $em->getRepository('MinsalSiblhBundle:BlhFrascoRecolectado')->findAll();
+
+        foreach ($results as $key => $r)
+        {
+        }
+
+        return $this->renderJson($results);
+    }
 
 }

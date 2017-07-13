@@ -192,7 +192,7 @@ class BlhHistoriaActualAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    'data-add-input-addon-skipicon' => 'true',
                             )
             ))
             ->add('medicamento', null, array(
@@ -236,7 +236,7 @@ class BlhHistoriaActualAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    'data-add-input-addon-skipicon' => 'true',
                             )
             ))
             ->add('habitoToxico', null, array(
@@ -273,7 +273,7 @@ class BlhHistoriaActualAdmin extends MinsalSiblhBundleGeneralAdmin
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    'data-add-input-addon-skipicon' => 'true',
                             )
             ))
             ->add('patologia', null, array(

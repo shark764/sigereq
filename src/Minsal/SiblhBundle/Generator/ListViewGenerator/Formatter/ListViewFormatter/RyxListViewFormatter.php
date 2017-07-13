@@ -15,11 +15,11 @@ use FOS\UserBundle\Model\UserInterface;
 use Sonata\AdminBundle\Route\RouteGeneratorInterface;
 
 /**
- * RyxListViewFormatter
+ * BlhListViewFormatter
  *
  * @author farid
  */
-class RyxListViewFormatter
+class BlhListViewFormatter
 {
     /**
      * @var ContainerInterface

@@ -131,6 +131,20 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                         'data-fv-date-message' => 'No es una fecha válida',
                                 )
                 ))
+                ->add('idTipoColecta', null, array(
+                                'label' => 'Tipo de colecta',
+                                'label_attr' => array('class' => 'label_form_sm'),
+                                'required' => false,
+                                'attr' => array(
+                                        'class' => 'form-control input-sm',
+                                        // 'data-form-inline-group' => 'start',
+                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                        'data-add-input-addon' => 'true',
+                                        // 'data-add-input-addon-class' => 'primary-v4',
+                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+                                )
+                ))
                 ->add('idResponsableDonacion', null, array(
                                 'label' => 'Responsable de donación',
                                 'label_attr' => array('class' => 'label_form_sm'),

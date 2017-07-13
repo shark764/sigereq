@@ -21,11 +21,11 @@ use Sonata\AdminBundle\Route\RouteGeneratorInterface;
 ///////////////////////////////////////////////////////
 
 /**
- * RyxListViewGenerator
+ * BlhListViewGenerator
  *
  * @author farid
  */
-class RyxListViewGenerator /*implements ListViewGeneratorInterface*/
+class BlhListViewGenerator /*implements ListViewGeneratorInterface*/
 {
     /**
      * @var ContainerInterface
@@ -76,9 +76,9 @@ class RyxListViewGenerator /*implements ListViewGeneratorInterface*/
         'pageSize'      => 25,
         'sortName'      => 'id',
         'sortOrder'     => 'desc',
-        'classes'       => 'table table-hover table-condensed table-no-bordered table-striped table-black-head',
-        // 'buttonsClass'  => 'primary-v4',
-        'buttonsClass'  => 'black-thrash',
+        'classes'       => 'table table-hover table-condensed table-no-bordered table-black-head'/*table-striped*/,
+        'buttonsClass'  => 'xray-awesome-blue',
+        // 'buttonsClass'  => 'black-thrash',
         'icons'         => array(
             'paginationSwitchDown'  => 'glyphicon-collapse-down icon-chevron-down',
             'paginationSwitchUp'    => 'glyphicon-collapse-up icon-chevron-up',

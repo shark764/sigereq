@@ -15,20 +15,14 @@ use FOS\UserBundle\Model\UserInterface;
 // use Minsal\SiblhBundle\Entity\EntityInterface;
 use Sonata\AdminBundle\Route\RouteGeneratorInterface;
 
-// use Minsal\SiblhBundle\Entity\RyxLecturaRadiologica;
-
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-// http://stackoverflow.com/questions/6956258/adding-onclick-event-to-dynamically-added-button
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
+// use Minsal\SiblhBundle\Entity\BlhFrascoRecolectado;
 
 /**
- * RyxLecturaRadiologicaListViewGenerator
+ * BlhFrascoRecolectadoListViewGenerator
  *
  * @author farid
  */
-class RyxLecturaRadiologicaListViewGenerator extends BlhEntityListViewGenerator
+class BlhFrascoRecolectadoListViewGenerator extends BlhEntityListViewGenerator
 {
     /**
      * Sets the array.
@@ -256,12 +250,12 @@ class RyxLecturaRadiologicaListViewGenerator extends BlhEntityListViewGenerator
     public function defineEntityOptions()
     {
         ////////
-        $this->entityOptions['url']         = $this->routeGenerator->generate('simagd_lectura_generateData', array('type' => $this->type, 'range' => $this->range));
+        $this->entityOptions['url']         = $this->routeGenerator->generate('siblh_frasco_recolectado_getForSensoryAnalysis', array('type' => $this->type, 'range' => $this->range));
         // $this->entityOptions['classes']     = 'table table-hover table-condensed table-striped table-darkblue-head';
         // $this->entityOptions['classes']     = 'table table-hover table-condensed table-striped table-black-head';
-        $this->entityOptions['classes']     = 'table table-hover table-condensed table-striped table-xray-supreme-head';
+        $this->entityOptions['classes']     = 'table table-hover table-condensed table-xray-supreme-head'/*table-striped*/;
         // $this->entityOptions['buttonsClass']   = 'primary-v4';
-        $this->entityOptions['pageSize']    = 50;
+        // $this->entityOptions['pageSize']    = 50;
         // $this->entityOptions['sortName']    = 'undefined';
         if ($this->type === 'detail' || $this->type === 'compact') {
             $this->entityOptions['showToggle']  = false;
