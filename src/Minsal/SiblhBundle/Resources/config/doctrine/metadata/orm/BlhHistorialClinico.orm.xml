@@ -6,6 +6,8 @@
       <index name="IDX_33FD85BC7DFA12F6" columns="id_establecimiento"/>
       <index name="IDX_33FD85BCBC3F8658" columns="id_patologia_embarazo"/>
       <index name="IDX_33FD85BCD8A5832B" columns="id_user_reg"/>
+      <index name="IDX_33FD85BC2DF9F9B6" columns="id_banco_de_leche"/>
+      <index name="IDX_33FD85BC8653A7AF" columns="id_centro_recoleccion"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -85,6 +87,16 @@
         <option name="default"/>
       </options>
     </field>
+    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>

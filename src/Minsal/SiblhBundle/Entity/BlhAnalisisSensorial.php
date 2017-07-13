@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhAnalisisSensorial
  *
- * @ORM\Table(name="blh_analisis_sensorial", indexes={@ORM\Index(name="IDX_880123DFEC124187", columns={"id_frasco_recolectado"}), @ORM\Index(name="IDX_880123DFD8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_analisis_sensorial", indexes={@ORM\Index(name="IDX_880123DFEC124187", columns={"id_frasco_recolectado"}), @ORM\Index(name="IDX_880123DFD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_880123DF6708CAF6", columns={"id_resultado_embalaje"}), @ORM\Index(name="IDX_880123DF9DF1DCAB", columns={"id_resultado_suciedad"}), @ORM\Index(name="IDX_880123DFB9798FD9", columns={"id_resultado_color"}), @ORM\Index(name="IDX_880123DF9A232B3F", columns={"id_resultado_flavor"})})
  * @ORM\Entity
  */
 class BlhAnalisisSensorial implements EntityInterface
@@ -156,6 +156,50 @@ class BlhAnalisisSensorial implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \BlhCtlResultadoAnalisis
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlResultadoAnalisis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_resultado_embalaje", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResultadoEmbalaje;
+
+    /**
+     * @var \BlhCtlResultadoAnalisis
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlResultadoAnalisis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_resultado_suciedad", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResultadoSuciedad;
+
+    /**
+     * @var \BlhCtlResultadoAnalisis
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlResultadoAnalisis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_resultado_color", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResultadoColor;
+
+    /**
+     * @var \BlhCtlResultadoAnalisis
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlResultadoAnalisis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_resultado_flavor", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idResultadoFlavor;
 
     /**
      * Constructor
@@ -411,6 +455,102 @@ class BlhAnalisisSensorial implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idResultadoEmbalaje
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoEmbalaje
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setIdResultadoEmbalaje(\Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoEmbalaje = null)
+    {
+        $this->idResultadoEmbalaje = $idResultadoEmbalaje;
+
+        return $this;
+    }
+
+    /**
+     * Get idResultadoEmbalaje
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis
+     */
+    public function getIdResultadoEmbalaje()
+    {
+        return $this->idResultadoEmbalaje;
+    }
+
+    /**
+     * Set idResultadoSuciedad
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoSuciedad
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setIdResultadoSuciedad(\Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoSuciedad = null)
+    {
+        $this->idResultadoSuciedad = $idResultadoSuciedad;
+
+        return $this;
+    }
+
+    /**
+     * Get idResultadoSuciedad
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis
+     */
+    public function getIdResultadoSuciedad()
+    {
+        return $this->idResultadoSuciedad;
+    }
+
+    /**
+     * Set idResultadoColor
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoColor
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setIdResultadoColor(\Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoColor = null)
+    {
+        $this->idResultadoColor = $idResultadoColor;
+
+        return $this;
+    }
+
+    /**
+     * Get idResultadoColor
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis
+     */
+    public function getIdResultadoColor()
+    {
+        return $this->idResultadoColor;
+    }
+
+    /**
+     * Set idResultadoFlavor
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoFlavor
+     *
+     * @return BlhAnalisisSensorial
+     */
+    public function setIdResultadoFlavor(\Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis $idResultadoFlavor = null)
+    {
+        $this->idResultadoFlavor = $idResultadoFlavor;
+
+        return $this;
+    }
+
+    /**
+     * Get idResultadoFlavor
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlResultadoAnalisis
+     */
+    public function getIdResultadoFlavor()
+    {
+        return $this->idResultadoFlavor;
     }
 
 }
