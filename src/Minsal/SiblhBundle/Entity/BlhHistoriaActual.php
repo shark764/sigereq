@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhHistoriaActual
  *
- * @ORM\Table(name="blh_historia_actual", indexes={@ORM\Index(name="fki_blh_his_fk_hab_tox", columns={"habito_toxico"}), @ORM\Index(name="fki_blh_his_fk_pat", columns={"patologia"}), @ORM\Index(name="fki_blh_his_hab", columns={"habito_toxico"}), @ORM\Index(name="IDX_F93902A254F03532", columns={"id_donante"}), @ORM\Index(name="IDX_F93902A2D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_historia_actual", indexes={@ORM\Index(name="fki_blh_his_fk_hab_tox", columns={"habito_toxico"}), @ORM\Index(name="fki_blh_his_fk_pat", columns={"patologia"}), @ORM\Index(name="fki_blh_his_hab", columns={"habito_toxico"}), @ORM\Index(name="IDX_F93902A254F03532", columns={"id_donante"}), @ORM\Index(name="IDX_F93902A2D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_F93902A28653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_F93902A22DF9F9B6", columns={"id_banco_de_leche"})})
  * @ORM\Entity
  */
 class BlhHistoriaActual implements EntityInterface
@@ -193,6 +193,28 @@ class BlhHistoriaActual implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \BlhCtlCentroRecoleccion
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlCentroRecoleccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idCentroRecoleccion;
+
+    /**
+     * @var \BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idBancoDeLeche;
 
     /**
      * Constructor
@@ -543,6 +565,54 @@ class BlhHistoriaActual implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idCentroRecoleccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion = null)
+    {
+        $this->idCentroRecoleccion = $idCentroRecoleccion;
+
+        return $this;
+    }
+
+    /**
+     * Get idCentroRecoleccion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
+     */
+    public function getIdCentroRecoleccion()
+    {
+        return $this->idCentroRecoleccion;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
     }
 
 }

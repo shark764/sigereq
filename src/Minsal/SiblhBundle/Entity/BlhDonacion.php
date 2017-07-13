@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonacion
  *
- * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_13A0CBCBD4737338", columns={"id_responsable_donacion"})})
+ * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_13A0CBCBD4737338", columns={"id_responsable_donacion"}), @ORM\Index(name="IDX_13A0CBCB85E56563", columns={"id_tipo_colecta"})})
  * @ORM\Entity
  */
 class BlhDonacion implements EntityInterface
@@ -145,6 +145,17 @@ class BlhDonacion implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idResponsableDonacion;
+
+    /**
+     * @var \BlhCtlTipoColecta
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlTipoColecta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_colecta", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idTipoColecta;
 
     /**
      * @ORM\OneToMany(targetEntity="BlhFrascoRecolectado", mappedBy="idDonacion", cascade={"all"}, orphanRemoval=true)
@@ -466,6 +477,30 @@ class BlhDonacion implements EntityInterface
     public function getIdResponsableDonacion()
     {
         return $this->idResponsableDonacion;
+    }
+
+    /**
+     * Set idTipoColecta
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlTipoColecta $idTipoColecta
+     *
+     * @return BlhDonante
+     */
+    public function setIdTipoColecta(\Minsal\SiblhBundle\Entity\BlhCtlTipoColecta $idTipoColecta = null)
+    {
+        $this->idTipoColecta = $idTipoColecta;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoColecta
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlTipoColecta
+     */
+    public function getIdTipoColecta()
+    {
+        return $this->idTipoColecta;
     }
 
 }

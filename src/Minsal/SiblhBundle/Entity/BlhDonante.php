@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonante
  *
- * @ORM\Table(name="blh_donante", indexes={@ORM\Index(name="fk_municipio_donante", columns={"id_municipio"}), @ORM\Index(name="fki_blh_dona_fk_nacionalidad_blh", columns={"nacionalidad"}), @ORM\Index(name="fk_banco_de_leche_donante", columns={"id_banco_de_leche"}), @ORM\Index(name="fki_blh_dona_fk_naciona_blh", columns={"nacionalidad"}), @ORM\Index(name="IDX_D458FB01D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_D458FB0110281A9F", columns={"id_escolaridad"}), @ORM\Index(name="IDX_D458FB0185E56563", columns={"id_tipo_colecta"}), @ORM\Index(name="IDX_D458FB01D7E358F6", columns={"id_estado_civil"}), @ORM\Index(name="IDX_D458FB018C587E61", columns={"id_ocupacion"}), @ORM\Index(name="IDX_D458FB01AF36C2D7", columns={"id_doc_ide_donante"}), @ORM\Index(name="IDX_D458FB018653A7AF", columns={"id_centro_recoleccion"})})
+ * @ORM\Table(name="blh_donante", indexes={@ORM\Index(name="fk_municipio_donante", columns={"id_municipio"}), @ORM\Index(name="fki_blh_dona_fk_nacionalidad_blh", columns={"nacionalidad"}), @ORM\Index(name="fk_banco_de_leche_donante", columns={"id_banco_de_leche"}), @ORM\Index(name="fki_blh_dona_fk_naciona_blh", columns={"nacionalidad"}), @ORM\Index(name="IDX_D458FB01D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_D458FB0110281A9F", columns={"id_escolaridad"}), @ORM\Index(name="IDX_D458FB0185E56563", columns={"id_tipo_colecta"}), @ORM\Index(name="IDX_D458FB01D7E358F6", columns={"id_estado_civil"}), @ORM\Index(name="IDX_D458FB018C587E61", columns={"id_ocupacion"}), @ORM\Index(name="IDX_D458FB01AF36C2D7", columns={"id_doc_ide_donante"}), @ORM\Index(name="IDX_D458FB018653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_D458FB01701624C4", columns={"id_expediente"})})
  * @ORM\Entity
  */
 class BlhDonante implements EntityInterface
@@ -522,6 +522,17 @@ class BlhDonante implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idCentroRecoleccion;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\MntExpediente
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntExpediente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idExpediente;
 
     /**
      * @ORM\OneToMany(targetEntity="BlhDonacion", mappedBy="idDonante", cascade={"all"}, orphanRemoval=true)
@@ -1424,6 +1435,30 @@ class BlhDonante implements EntityInterface
     public function getDonanteDonaciones()
     {
         return $this->donanteDonaciones;
+    }
+
+    /**
+     * Set idExpediente
+     *
+     * @param \Minsal\SiapsBundle\Entity\MntExpediente $idExpediente
+     *
+     * @return BlhDonante
+     */
+    public function setIdExpediente(\Minsal\SiapsBundle\Entity\MntExpediente $idExpediente = null)
+    {
+        $this->idExpediente = $idExpediente;
+
+        return $this;
+    }
+
+    /**
+     * Get idExpediente
+     *
+     * @return \Minsal\SiapsBundle\Entity\MntExpediente
+     */
+    public function getIdExpediente()
+    {
+        return $this->idExpediente;
     }
 
 }

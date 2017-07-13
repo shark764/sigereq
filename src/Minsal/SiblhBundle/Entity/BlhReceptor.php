@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhReceptor
  *
- * @ORM\Table(name="blh_receptor", indexes={@ORM\Index(name="fk_paciente_receptor", columns={"id_paciente"}), @ORM\Index(name="fk_banco_de_leche_receptor", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_6498D2AD8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_receptor", indexes={@ORM\Index(name="fk_paciente_receptor", columns={"id_paciente"}), @ORM\Index(name="fk_banco_de_leche_receptor", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_6498D2AD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_6498D2A701624C4", columns={"id_expediente"})})
  * @ORM\Entity
  */
 class BlhReceptor implements EntityInterface
@@ -324,6 +324,17 @@ class BlhReceptor implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \Minsal\SiapsBundle\Entity\MntExpediente
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntExpediente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idExpediente;
 
     /**
      * Constructor
@@ -895,6 +906,30 @@ class BlhReceptor implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idExpediente
+     *
+     * @param \Minsal\SiapsBundle\Entity\MntExpediente $idExpediente
+     *
+     * @return BlhReceptor
+     */
+    public function setIdExpediente(\Minsal\SiapsBundle\Entity\MntExpediente $idExpediente = null)
+    {
+        $this->idExpediente = $idExpediente;
+
+        return $this;
+    }
+
+    /**
+     * Get idExpediente
+     *
+     * @return \Minsal\SiapsBundle\Entity\MntExpediente
+     */
+    public function getIdExpediente()
+    {
+        return $this->idExpediente;
     }
 
 }
