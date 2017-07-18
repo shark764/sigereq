@@ -8,6 +8,8 @@
       <index name="fk_frasco_recolectado_lote_anal" columns="id_lote_analisis"/>
       <index name="IDX_37ABF7A67DA00A52" columns="id_forma_extraccion"/>
       <index name="IDX_37ABF7A6D8A5832B" columns="id_user_reg"/>
+      <index name="IDX_37ABF7A68653A7AF" columns="id_centro_recoleccion"/>
+      <index name="IDX_37ABF7A62DF9F9B6" columns="id_banco_de_leche"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -38,14 +40,24 @@
     </field>
     <field name="volumenReal" type="decimal" column="volumen_real" precision="7" scale="4" nullable="true"/>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
-    <many-to-one field="idFormaExtraccion" target-entity="BlhCtlFormaExtraccion" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_forma_extraccion" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFormaExtraccion" target-entity="BlhCtlFormaExtraccion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_forma_extraccion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idLoteAnalisis" target-entity="BlhLoteAnalisis" fetch="LAZY">
@@ -53,14 +65,14 @@
         <join-column name="id_lote_analisis" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idDonante" target-entity="BlhDonante" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_donante" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idDonacion" target-entity="BlhDonacion" fetch="LAZY">
       <join-columns>
         <join-column name="id_donacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonante" target-entity="BlhDonante" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_donante" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idEstado" target-entity="BlhEstado" fetch="LAZY">

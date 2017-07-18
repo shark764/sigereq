@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhDonacionFrascoRecolectado" table="blh_donacion_frasco_recolectado">
+    <indexes>
+      <index name="IDX_E98D43ACF00213" columns="id_donacion"/>
+      <index name="IDX_E98D43EC124187" columns="id_frasco_recolectado"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_blh_donacion_frasco_recolectado" columns="id_donacion,id_frasco_recolectado"/>
+    </unique-constraints>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="blh_donacion_frasco_recolectado_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="volumenAgregado" type="decimal" column="volumen_agregado" precision="7" scale="4" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="volumenRealAgregado" type="decimal" column="volumen_real_agregado" precision="7" scale="4" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_frasco_recolectado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonacion" target-entity="BlhDonacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_donacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

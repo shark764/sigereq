@@ -405,7 +405,7 @@ file that was distributed with this source code.
 {% spaceless %}
     {% set type = type|default('text') %}
     {% set value = value matches '/^[-+]?[0-9]*\\,?[0-9]+$/' ? value|replace({ ',': '.' }) : value %}
-    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value|trim }}" {% endif %}/>
 {% endspaceless %}
 {% endblock form_widget_simple %}
 {# #}

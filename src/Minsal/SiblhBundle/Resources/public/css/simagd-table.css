@@ -169,7 +169,7 @@ table.simagd-search-table tr.sonata-ba-list-field-header {
 .table.full-collapse-bordered-table>thead>tr>td,
 .table.full-collapse-bordered-table>tbody>tr>td,
 .table.full-collapse-bordered-table>tfoot>tr>td {
-    padding: 4px 8px 4px 8px !important;
+    padding: 2px 4px 2px 4px !important;
 }
 
 .popover .table.full-collapse-bordered-table>thead>tr>th,
@@ -199,7 +199,7 @@ table .bstable-heading-primary-v3 {
 .content .bootstrap-table .table>tfoot>tr>td,
 .content .bootstrap-table .table>tfoot>tr>th,
 .content .bootstrap-table .table>thead>tr>td {
-    padding: 4px 8px 4px 8px !important;
+    padding: 2px 4px 2px 4px !important;
 /*     padding: 8px !important; */
     font-size: 12px !important;
 }
