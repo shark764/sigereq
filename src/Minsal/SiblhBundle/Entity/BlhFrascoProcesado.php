@@ -137,6 +137,13 @@ class BlhFrascoProcesado implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="desechado", type="boolean", nullable=true)
+     */
+    private $desechado = false;
+
+    /**
      * @var \BlhEstado
      *
      * @ORM\ManyToOne(targetEntity="BlhEstado")
@@ -175,6 +182,11 @@ class BlhFrascoProcesado implements EntityInterface
     private $frascoProcesadoAnalisisMicrobiologico;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhCrematocrito", mappedBy="idFrascoProcesado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $frascoProcesadoCrematocrito;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -182,6 +194,7 @@ class BlhFrascoProcesado implements EntityInterface
         $this->fechaHoraReg = new \DateTime('now');
         
         $this->frascoProcesadoAnalisisMicrobiologico = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->frascoProcesadoCrematocrito = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -409,6 +422,29 @@ class BlhFrascoProcesado implements EntityInterface
     }
 
     /**
+     * Set desechado
+     *
+     * @param boolean $desechado
+     * @return BlhFrascoProcesado
+     */
+    public function setDesechado($desechado)
+    {
+        $this->desechado = $desechado;
+
+        return $this;
+    }
+
+    /**
+     * Get desechado
+     *
+     * @return boolean 
+     */
+    public function getDesechado()
+    {
+        return $this->desechado;
+    }
+
+    /**
      * Set idEstado
      *
      * @param \Minsal\SiblhBundle\Entity\BlhEstado $idEstado
@@ -512,6 +548,40 @@ class BlhFrascoProcesado implements EntityInterface
     public function getFrascoProcesadoAnalisisMicrobiologico()
     {
         return $this->frascoProcesadoAnalisisMicrobiologico;
+    }
+
+    /**
+     * Add frascoProcesadoCrematocrito
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoProcesadoCrematocrito
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function addFrascoProcesadoCrematocrito(\Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoProcesadoCrematocrito)
+    {
+        $this->frascoProcesadoCrematocrito[] = $frascoProcesadoCrematocrito;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoProcesadoCrematocrito
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoProcesadoCrematocrito
+     */
+    public function removeFrascoProcesadoCrematocrito(\Minsal\SiblhBundle\Entity\BlhCrematocrito $frascoProcesadoCrematocrito)
+    {
+        $this->frascoProcesadoCrematocrito->removeElement($frascoProcesadoCrematocrito);
+    }
+
+    /**
+     * Get frascoProcesadoCrematocrito
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFrascoProcesadoCrematocrito()
+    {
+        return $this->frascoProcesadoCrematocrito;
     }
 
 }

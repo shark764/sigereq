@@ -60,6 +60,19 @@ class BlhFrascoProcesadoSolicitud implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="volumen_residual", type="decimal", precision=6, scale=4, nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 2147483647,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
+     */
+    private $volumenResidual;
+
+    /**
      * @var \BlhFrascoProcesado
      *
      * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado")
@@ -202,6 +215,30 @@ class BlhFrascoProcesadoSolicitud implements EntityInterface
     public function getFechaHoraReg()
     {
         return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set volumenResidual
+     *
+     * @param string $volumenResidual
+     *
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setVolumenResidual($volumenResidual)
+    {
+        $this->volumenResidual = $volumenResidual;
+
+        return $this;
+    }
+
+    /**
+     * Get volumenResidual
+     *
+     * @return string
+     */
+    public function getVolumenResidual()
+    {
+        return $this->volumenResidual;
     }
 
     /**

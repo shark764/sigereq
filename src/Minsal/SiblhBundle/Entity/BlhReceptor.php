@@ -9,8 +9,8 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhReceptor
  *
- * @ORM\Table(name="blh_receptor", indexes={@ORM\Index(name="fk_paciente_receptor", columns={"id_paciente"}), @ORM\Index(name="fk_banco_de_leche_receptor", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_6498D2AD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_6498D2A701624C4", columns={"id_expediente"})})
- * @ORM\Entity
+ * @ORM\Table(name="blh_receptor", indexes={@ORM\Index(name="fk_paciente_receptor", columns={"id_paciente"}), @ORM\Index(name="fk_banco_de_leche_receptor", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_6498D2AD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_6498D2A701624C4", columns={"id_expediente"}), @ORM\Index(name="IDX_6498D2AD436DB02", columns={"id_madre_donante"}), @ORM\Index(name="IDX_6498D2AD436DB02", columns={"id_curva_lubchenco"})})
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhReceptorRepository")
  */
 class BlhReceptor implements EntityInterface
 {
@@ -299,7 +299,6 @@ class BlhReceptor implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idBancoDeLeche;
 
@@ -335,6 +334,27 @@ class BlhReceptor implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idExpediente;
+
+    /**
+     * @var \BlhDonante
+     *
+     * @ORM\ManyToOne(targetEntity="BlhDonante", inversedBy="madreDonanteReceptor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_madre_donante", referencedColumnName="id")
+     * })
+     */
+    private $idMadreDonante;
+
+    /**
+     * @var \BlhCtlCurvaLubchenco
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlCurvaLubchenco")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curva_lubchenco", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idCurvaLubchenco;
 
     /**
      * Constructor
@@ -930,6 +950,54 @@ class BlhReceptor implements EntityInterface
     public function getIdExpediente()
     {
         return $this->idExpediente;
+    }
+
+    /**
+     * Set idMadreDonante
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonante $idMadreDonante
+     *
+     * @return BlhReceptor
+     */
+    public function setIdMadreDonante(\Minsal\SiblhBundle\Entity\BlhDonante $idMadreDonante = null)
+    {
+        $this->idMadreDonante = $idMadreDonante;
+
+        return $this;
+    }
+
+    /**
+     * Get idMadreDonante
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhDonante
+     */
+    public function getIdMadreDonante()
+    {
+        return $this->idMadreDonante;
+    }
+
+    /**
+     * Set idCurvaLubchenco
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCurvaLubchenco $idCurvaLubchenco
+     *
+     * @return BlhReceptor
+     */
+    public function setIdCurvaLubchenco(\Minsal\SiblhBundle\Entity\BlhCtlCurvaLubchenco $idCurvaLubchenco = null)
+    {
+        $this->idCurvaLubchenco = $idCurvaLubchenco;
+
+        return $this;
+    }
+
+    /**
+     * Get idCurvaLubchenco
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCurvaLubchenco
+     */
+    public function getIdCurvaLubchenco()
+    {
+        return $this->idCurvaLubchenco;
     }
 
 }

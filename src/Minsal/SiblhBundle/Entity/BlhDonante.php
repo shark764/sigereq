@@ -420,7 +420,6 @@ class BlhDonante implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idBancoDeLeche;
 
@@ -519,7 +518,6 @@ class BlhDonante implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idCentroRecoleccion;
 
@@ -530,7 +528,6 @@ class BlhDonante implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idExpediente;
 
@@ -538,6 +535,11 @@ class BlhDonante implements EntityInterface
      * @ORM\OneToMany(targetEntity="BlhDonacion", mappedBy="idDonante", cascade={"all"}, orphanRemoval=true)
      */
     private $donanteDonaciones;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhReceptor", mappedBy="idMadreDonante", cascade={"all"}, orphanRemoval=true)
+     */
+    private $madreDonanteReceptor;
 
     /**
      * Constructor
@@ -549,6 +551,7 @@ class BlhDonante implements EntityInterface
         $this->fechaHoraReg = new \DateTime('now');
         
         $this->donanteDonaciones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->madreDonanteReceptor = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

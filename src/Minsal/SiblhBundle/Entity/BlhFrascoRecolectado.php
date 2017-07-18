@@ -155,6 +155,20 @@ class BlhFrascoRecolectado implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="desechado", type="boolean", nullable=true)
+     */
+    private $desechado = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="descartado", type="boolean", nullable=true)
+     */
+    private $descartado = false;
+
+    /**
      * @var \BlhEstado
      *
      * @ORM\ManyToOne(targetEntity="BlhEstado")
@@ -236,6 +250,11 @@ class BlhFrascoRecolectado implements EntityInterface
     private $frascoRecolectadoCrematocrito;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhDonacionFrascoRecolectado", mappedBy="idFrascoRecolectado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $frascoRecolectadoDonacionMezcla;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -245,6 +264,7 @@ class BlhFrascoRecolectado implements EntityInterface
         $this->frascoRecolectadoAcidez = new \Doctrine\Common\Collections\ArrayCollection();
         $this->frascoRecolectadoAnalisisSensorial = new \Doctrine\Common\Collections\ArrayCollection();
         $this->frascoRecolectadoCrematocrito = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->frascoRecolectadoDonacionMezcla = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -496,6 +516,52 @@ class BlhFrascoRecolectado implements EntityInterface
     }
 
     /**
+     * Set desechado
+     *
+     * @param boolean $desechado
+     * @return BlhFrascoRecolectado
+     */
+    public function setDesechado($desechado)
+    {
+        $this->desechado = $desechado;
+
+        return $this;
+    }
+
+    /**
+     * Get desechado
+     *
+     * @return boolean 
+     */
+    public function getDesechado()
+    {
+        return $this->desechado;
+    }
+
+    /**
+     * Set descartado
+     *
+     * @param boolean $descartado
+     * @return BlhFrascoRecolectado
+     */
+    public function setDescartado($descartado)
+    {
+        $this->descartado = $descartado;
+
+        return $this;
+    }
+
+    /**
+     * Get descartado
+     *
+     * @return boolean 
+     */
+    public function getDescartado()
+    {
+        return $this->descartado;
+    }
+
+    /**
      * Set idEstado
      *
      * @param \Minsal\SiblhBundle\Entity\BlhEstado $idEstado
@@ -739,6 +805,40 @@ class BlhFrascoRecolectado implements EntityInterface
     public function getFrascoRecolectadoCrematocrito()
     {
         return $this->frascoRecolectadoCrematocrito;
+    }
+
+    /**
+     * Add frascoRecolectadoDonacionMezcla
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $frascoRecolectadoDonacionMezcla
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function addFrascoRecolectadoDonacionMezcla(\Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $frascoRecolectadoDonacionMezcla)
+    {
+        $this->frascoRecolectadoDonacionMezcla[] = $frascoRecolectadoDonacionMezcla;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoRecolectadoDonacionMezcla
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $frascoRecolectadoDonacionMezcla
+     */
+    public function removeFrascoRecolectadoDonacionMezcla(\Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $frascoRecolectadoDonacionMezcla)
+    {
+        $this->frascoRecolectadoDonacionMezcla->removeElement($frascoRecolectadoDonacionMezcla);
+    }
+
+    /**
+     * Get frascoRecolectadoDonacionMezcla
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFrascoRecolectadoDonacionMezcla()
+    {
+        return $this->frascoRecolectadoDonacionMezcla;
     }
 
 }

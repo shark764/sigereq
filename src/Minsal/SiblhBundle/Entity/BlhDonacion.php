@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonacion
  *
- * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_13A0CBCBD4737338", columns={"id_responsable_donacion"}), @ORM\Index(name="IDX_13A0CBCB85E56563", columns={"id_tipo_colecta"})})
+ * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_13A0CBCBD4737338", columns={"id_responsable_donacion"}), @ORM\Index(name="IDX_13A0CBCB85E56563", columns={"id_tipo_colecta"}), @ORM\Index(name="IDX_13A0CBCB867455CF", columns={"id_tipo_leche_materna"})})
  * @ORM\Entity
  */
 class BlhDonacion implements EntityInterface
@@ -98,7 +98,6 @@ class BlhDonacion implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idCentroRecoleccion;
 
@@ -120,7 +119,6 @@ class BlhDonacion implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idBancoDeLeche;
 
@@ -158,9 +156,25 @@ class BlhDonacion implements EntityInterface
     private $idTipoColecta;
 
     /**
+     * @var \BlhCtlTipoLecheMaterna
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlTipoLecheMaterna")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_leche_materna", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idTipoLecheMaterna;
+
+    /**
      * @ORM\OneToMany(targetEntity="BlhFrascoRecolectado", mappedBy="idDonacion", cascade={"all"}, orphanRemoval=true)
      */
     private $donacionFrascoRecolectado;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BlhDonacionFrascoRecolectado", mappedBy="idDonacion", cascade={"all"}, orphanRemoval=true)
+     */
+    private $donacionFrascoRecolectadoMezcla;
 
     /**
      * Constructor
@@ -171,6 +185,7 @@ class BlhDonacion implements EntityInterface
         $this->fechaHoraReg = new \DateTime('now');
         
         $this->donacionFrascoRecolectado = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->donacionFrascoRecolectadoMezcla = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -484,7 +499,7 @@ class BlhDonacion implements EntityInterface
      *
      * @param \Minsal\SiblhBundle\Entity\BlhCtlTipoColecta $idTipoColecta
      *
-     * @return BlhDonante
+     * @return BlhDonacion
      */
     public function setIdTipoColecta(\Minsal\SiblhBundle\Entity\BlhCtlTipoColecta $idTipoColecta = null)
     {
@@ -501,6 +516,64 @@ class BlhDonacion implements EntityInterface
     public function getIdTipoColecta()
     {
         return $this->idTipoColecta;
+    }
+
+    /**
+     * Set idTipoLecheMaterna
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlTipoLecheMaterna $idTipoLecheMaterna
+     *
+     * @return BlhDonacion
+     */
+    public function setIdTipoLecheMaterna(\Minsal\SiblhBundle\Entity\BlhCtlTipoLecheMaterna $idTipoLecheMaterna = null)
+    {
+        $this->idTipoLecheMaterna = $idTipoLecheMaterna;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoLecheMaterna
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlTipoLecheMaterna
+     */
+    public function getIdTipoLecheMaterna()
+    {
+        return $this->idTipoLecheMaterna;
+    }
+
+    /**
+     * Add donacionFrascoRecolectadoMezcla
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $donacionFrascoRecolectadoMezcla
+     *
+     * @return BlhDonacion
+     */
+    public function addDonacionFrascoRecolectadoMezcla(\Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $donacionFrascoRecolectadoMezcla)
+    {
+        $this->donacionFrascoRecolectadoMezcla[] = $donacionFrascoRecolectadoMezcla;
+
+        return $this;
+    }
+
+    /**
+     * Remove donacionFrascoRecolectadoMezcla
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $donacionFrascoRecolectadoMezcla
+     */
+    public function removeDonacionFrascoRecolectadoMezcla(\Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado $donacionFrascoRecolectadoMezcla)
+    {
+        $this->donacionFrascoRecolectadoMezcla->removeElement($donacionFrascoRecolectadoMezcla);
+    }
+
+    /**
+     * Get donacionFrascoRecolectadoMezcla
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDonacionFrascoRecolectadoMezcla()
+    {
+        return $this->donacionFrascoRecolectadoMezcla;
     }
 
 }

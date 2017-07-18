@@ -178,11 +178,10 @@ class BlhCrematocrito implements EntityInterface
     /**
      * @var \BlhFrascoProcesado
      *
-     * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado", inversedBy="frascoProcesadoCrematocrito")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_procesado", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idFrascoProcesado;
 
@@ -193,7 +192,6 @@ class BlhCrematocrito implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_recolectado", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idFrascoRecolectado;
 

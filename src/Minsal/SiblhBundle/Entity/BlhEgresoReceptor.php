@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhEgresoReceptor
  *
- * @ORM\Table(name="blh_egreso_receptor", indexes={@ORM\Index(name="fk_receptor_egreso_receptor", columns={"id_receptor"}), @ORM\Index(name="IDX_7993CDC67DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_egreso_receptor", indexes={@ORM\Index(name="fk_receptor_egreso_receptor", columns={"id_receptor"}), @ORM\Index(name="IDX_7993CDC67DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_tipo_egreso"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_banco_de_leche"})})
  * @ORM\Entity
  */
 class BlhEgresoReceptor implements EntityInterface
@@ -206,6 +206,20 @@ class BlhEgresoReceptor implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="metodo_madre_canguro", type="boolean", nullable=true)
+     */
+    private $metodoMadreCanguro = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="trasladar_periferico", type="boolean", nullable=true)
+     */
+    private $trasladarPeriferico = false;
+
+    /**
      * @var \Minsal\SiapsBundle\Entity\CtlEstablecimiento
      *
      * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\CtlEstablecimiento")
@@ -237,6 +251,27 @@ class BlhEgresoReceptor implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \BlhCtlTipoEgreso
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlTipoEgreso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_egreso", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idTipoEgreso;
+
+    /**
+     * @var \BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     */
+    private $idBancoDeLeche;
 
     /**
      * Constructor
@@ -568,6 +603,52 @@ class BlhEgresoReceptor implements EntityInterface
     }
 
     /**
+     * Set metodoMadreCanguro
+     *
+     * @param boolean $metodoMadreCanguro
+     * @return BlhEgresoReceptor
+     */
+    public function setMetodoMadreCanguro($metodoMadreCanguro)
+    {
+        $this->metodoMadreCanguro = $metodoMadreCanguro;
+
+        return $this;
+    }
+
+    /**
+     * Get metodoMadreCanguro
+     *
+     * @return boolean 
+     */
+    public function getMetodoMadreCanguro()
+    {
+        return $this->metodoMadreCanguro;
+    }
+
+    /**
+     * Set trasladarPeriferico
+     *
+     * @param boolean $trasladarPeriferico
+     * @return BlhEgresoReceptor
+     */
+    public function setTrasladarPeriferico($trasladarPeriferico)
+    {
+        $this->trasladarPeriferico = $trasladarPeriferico;
+
+        return $this;
+    }
+
+    /**
+     * Get trasladarPeriferico
+     *
+     * @return boolean 
+     */
+    public function getTrasladarPeriferico()
+    {
+        return $this->trasladarPeriferico;
+    }
+
+    /**
      * Set idEstablecimiento
      *
      * @param \Minsal\SiapsBundle\Entity\CtlEstablecimiento $idEstablecimiento
@@ -637,6 +718,54 @@ class BlhEgresoReceptor implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idTipoEgreso
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlTipoEgreso $idTipoEgreso
+     *
+     * @return BlhEgresoReceptor
+     */
+    public function setIdTipoEgreso(\Minsal\SiblhBundle\Entity\BlhCtlTipoEgreso $idTipoEgreso = null)
+    {
+        $this->idTipoEgreso = $idTipoEgreso;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoEgreso
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlTipoEgreso
+     */
+    public function getIdTipoEgreso()
+    {
+        return $this->idTipoEgreso;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhEgresoReceptor
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
     }
 
 }

@@ -22,6 +22,7 @@
         <option name="default">0</option>
       </options>
     </field>
+    <field name="fechaMezcla" type="datetime" column="fecha_mezcla" nullable="true"/>
     <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado" fetch="LAZY">
       <join-columns>
         <join-column name="id_frasco_recolectado" referenced-column-name="id"/>
