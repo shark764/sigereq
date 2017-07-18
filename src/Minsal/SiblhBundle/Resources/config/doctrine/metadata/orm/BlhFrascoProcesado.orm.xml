@@ -31,6 +31,11 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <field name="desechado" type="boolean" column="desechado" nullable="true">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>

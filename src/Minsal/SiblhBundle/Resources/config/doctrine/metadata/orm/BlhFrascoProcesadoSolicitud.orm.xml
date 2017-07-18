@@ -17,6 +17,7 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <field name="volumenResidual" type="decimal" column="volumen_residual" precision="6" scale="4" nullable="true"/>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>

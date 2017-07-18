@@ -40,6 +40,16 @@
     </field>
     <field name="volumenReal" type="decimal" column="volumen_real" precision="7" scale="4" nullable="true"/>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <field name="desechado" type="boolean" column="desechado" nullable="true">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="descartado" type="boolean" column="descartado" nullable="true">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
     <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
       <join-columns>
         <join-column name="id_centro_recoleccion" referenced-column-name="id"/>

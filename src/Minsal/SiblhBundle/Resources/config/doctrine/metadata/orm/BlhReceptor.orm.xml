@@ -7,6 +7,7 @@
       <index name="IDX_6498D2A701624C4" columns="id_expediente"/>
       <index name="IDX_6498D2AD8A5832B" columns="id_user_reg"/>
       <index name="IDX_6498D2AD436DB02" columns="id_madre_donante"/>
+      <index name="IDX_6498D2A73181F7D" columns="id_curva_lubchenco"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -74,6 +75,11 @@
     <many-to-one field="idMadreDonante" target-entity="BlhDonante" fetch="LAZY">
       <join-columns>
         <join-column name="id_madre_donante" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCurvaLubchenco" target-entity="BlhCtlCurvaLubchenco" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_curva_lubchenco" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
