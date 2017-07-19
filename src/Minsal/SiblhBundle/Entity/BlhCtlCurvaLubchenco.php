@@ -7,12 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
- * BlhCtlResultadoAnalisis
+ * BlhCtlCurvaLubchenco
  *
- * @ORM\Table(name="blh_ctl_resultado_analisis", uniqueConstraints={@ORM\UniqueConstraint(name="idx_codigo_resultado_analisis", columns={"codigo"})})
+ * @ORM\Table(name="blh_ctl_curva_lubchenco", uniqueConstraints={@ORM\UniqueConstraint(name="idx_codigo_curva_lubchenco", columns={"codigo"})})
  * @ORM\Entity
  */
-class BlhCtlResultadoAnalisis implements EntityInterface
+class BlhCtlCurvaLubchenco implements EntityInterface
 {
     /**
      * @var integer
@@ -20,14 +20,14 @@ class BlhCtlResultadoAnalisis implements EntityInterface
      * @ORM\Column(name="id", type="smallint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="blh_ctl_resultado_analisis_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="blh_ctl_curva_lubchenco_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=20, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=75, nullable=false)
      * @Assert\NotBlank(message = "foreign.default.not_blank")
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
@@ -36,7 +36,7 @@ class BlhCtlResultadoAnalisis implements EntityInterface
      * )
      * @Assert\Length(
      *      min = 0,
-     *      max = 20,
+     *      max = 75,
      *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
      *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
      * )
@@ -46,7 +46,7 @@ class BlhCtlResultadoAnalisis implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", length=3, nullable=true)
+     * @ORM\Column(name="codigo", type="string", length=12, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -54,12 +54,30 @@ class BlhCtlResultadoAnalisis implements EntityInterface
      * )
      * @Assert\Length(
      *      min = 0,
-     *      max = 3,
+     *      max = 12,
      *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
      *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
      * )
      */
     private $codigo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 255,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
+     */
+    private $descripcion;
 
     /**
      * Constructor
@@ -105,7 +123,7 @@ class BlhCtlResultadoAnalisis implements EntityInterface
      *
      * @param string $nombre
      *
-     * @return BlhCtlTipoColecta
+     * @return BlhCtlTipoLecheMaterna
      */
     public function setNombre($nombre)
     {
@@ -129,7 +147,7 @@ class BlhCtlResultadoAnalisis implements EntityInterface
      *
      * @param string $codigo
      *
-     * @return BlhCtlTipoColecta
+     * @return BlhCtlTipoLecheMaterna
      */
     public function setCodigo($codigo)
     {
@@ -146,6 +164,30 @@ class BlhCtlResultadoAnalisis implements EntityInterface
     public function getCodigo()
     {
         return $this->codigo;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return BlhCtlTipoLecheMaterna
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 
 }

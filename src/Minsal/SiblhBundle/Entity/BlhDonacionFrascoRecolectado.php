@@ -218,4 +218,28 @@ class BlhDonacionFrascoRecolectado implements EntityInterface
         return $this->idFrascoRecolectado;
     }
 
+    /**
+     * Set fechaMezcla
+     *
+     * @param \DateTime $fechaMezcla
+     *
+     * @return BlhDonacionFrascoRecolectado
+     */
+    public function setFechaMezcla($fechaMezcla)
+    {
+        $this->fechaMezcla = $fechaMezcla;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaMezcla
+     *
+     * @return \DateTime
+     */
+    public function getFechaMezcla()
+    {
+        return $this->fechaMezcla;
+    }
+
 }

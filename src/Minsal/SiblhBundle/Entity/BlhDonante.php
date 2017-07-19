@@ -1464,4 +1464,38 @@ class BlhDonante implements EntityInterface
         return $this->idExpediente;
     }
 
+    /**
+     * Add madreDonanteReceptor
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhReceptor $madreDonanteReceptor
+     *
+     * @return BlhDonante
+     */
+    public function addMadreDonanteReceptor(\Minsal\SiblhBundle\Entity\BlhReceptor $madreDonanteReceptor)
+    {
+        $this->madreDonanteReceptor[] = $madreDonanteReceptor;
+
+        return $this;
+    }
+
+    /**
+     * Remove madreDonanteReceptor
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhReceptor $madreDonanteReceptor
+     */
+    public function removeMadreDonanteReceptor(\Minsal\SiblhBundle\Entity\BlhReceptor $madreDonanteReceptor)
+    {
+        $this->madreDonanteReceptor->removeElement($madreDonanteReceptor);
+    }
+
+    /**
+     * Get madreDonanteReceptor
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMadreDonanteReceptor()
+    {
+        return $this->madreDonanteReceptor;
+    }
+
 }

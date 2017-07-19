@@ -69,3 +69,15 @@ select p.primer_nombre, p.primer_apellido, x.numero, xp.primer_nombre, xp.primer
  select id_banco_de_leche as blh, id_paciente as pct, fecha_registro_blh as fecha_reg, procedencia as proc, estado_receptor as std, edad_dias as dias, peso_receptor as peso, duracion_cpap as cpap, clasificacion_lubchengo as lubch, diagnostico_ingreso, duracion_npt as npt, apgar_primer_minuto as apgar1, edad_gest_fur as gest_fur, duracion_ventilacion as vent, edad_gest_ballard as ballard, pc, talla_ingreso as talla, apgar_quinto_minuto as apgar5, usuario as usr from blh_receptor;
 
 
+
+/****************************************************************************************************************************************************************
+****************************************************************************************************************************************************************/
+php app/console doctrine:mapping:convert xml ./src/Minsal/SiapsBundle/Resources/config/doctrine/metadata/orm --from-database --force --filter="Ctl"
+php app/console doctrine:mapping:convert xml ./src/Minsal/SiapsBundle/Resources/config/doctrine/metadata/orm --from-database --force --filter="Mnt"
+rm -rf ./src/Minsal/SiapsBundle/Resources/config/doctrine/metadata/orm/FosUser*
+rm -rf ./src/Minsal/SiapsBundle/Resources/config/doctrine/metadata/orm/Blh*
+rm -rf src/Minsal/SiapsBundle/Entity/FosUser*
+rm -rf src/Minsal/SiapsBundle/Entity/Blh*
+php app/console doctrine:mapping:convert xml ./src/Minsal/SiblhBundle/Resources/config/doctrine/metadata/orm --from-database --force --filter="Blh"
+php app/console doctrine:generate:entities MinsalSiapsBundle --no-backup
+php app/console doctrine:generate:entities MinsalSiblhBundle --no-backup
