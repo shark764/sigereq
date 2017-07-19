@@ -45,6 +45,7 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectado', function(e) {
                 var subject = jQuery(this);
+                console.log(subject.attr('id'), subject.attr('name'));
                 jQuery('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_idFrascoRecolectado"]', subject).each(function() {
                     var select = jQuery(this);
                     select.select2({
@@ -60,7 +61,7 @@ file that was distributed with this source code.
                             return markup;
                         },
                         ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-                            url: Routing.generate('simagd_expediente_referido_searchLocation'),
+                            url: Routing.generate('siblh_frasco_recolectado_generateTable'),
                             dataType: 'json',
                             quietMillis: 250,
                             data: function (term, page) {
@@ -80,6 +81,7 @@ file that was distributed with this source code.
                         // formatResult: patientFormatResult,  // display patient information
                         // formatSelection: patientFormatSelection,    // selection
                     });
+                    console.log(select.attr('id'), select.attr('name'));
                     
                     // select.on('change', function (e) {
                     // });

@@ -6,6 +6,7 @@
     {{ parent() }}
 
     {# stylesheets minimized with Assetic #}
+{#
     {% stylesheets
         'bundles/minsalsiblh/css/simagd-styles.css'
         'bundles/minsalsiblh/css/simagd-form-styles.css'
@@ -16,7 +17,16 @@
 
         output="bundles/minsalsiblh/compiled/css/bundle_stylesheets___base_list.css" %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
-    {% endstylesheets %}{# #}
+    {% endstylesheets %}
+#}
+
+
+    {# simagd-styles #}
+    <link href="{{ asset('bundles/minsalsiblh/css/simagd-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/simagd-form-styles.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/simagd-extend-bootstrap3_minsalsiaps.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/simagd-table.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/select2-bootstrap_minsalsiaps.css') }}" type="text/css" rel="stylesheet" />
 
     {# bootstrap-table #}
     <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
@@ -48,12 +58,15 @@
 {% block javascripts %}
     {{ parent() }}
 
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
     {# select2-es #}
     <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
 
     {# bootstrap-table #}
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
-    
+
     {% include 'MinsalSiblhBundle:General:general_form_script.html.twig' %}
 {% endblock %}
