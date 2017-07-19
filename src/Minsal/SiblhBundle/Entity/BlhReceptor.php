@@ -130,8 +130,7 @@ class BlhReceptor implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="clasificacion_lubchengo", type="string", length=3, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="clasificacion_lubchengo", type="string", length=3, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

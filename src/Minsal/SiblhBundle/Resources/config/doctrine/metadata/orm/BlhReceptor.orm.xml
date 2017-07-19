@@ -40,7 +40,7 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="clasificacionLubchengo" type="string" column="clasificacion_lubchengo" length="3" nullable="false">
+    <field name="clasificacionLubchengo" type="string" column="clasificacion_lubchengo" length="3" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

@@ -203,7 +203,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'edad (días)...',
-                                    'readonly' => 'readonly',
+//                                    'readonly' => 'readonly',
                                     // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
@@ -222,7 +222,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('edadGestFur', null, array(
                             'label' => 'Edad de gestación según FUR',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'edad de gestación según fur...',
                                     'class' => 'form-control input-sm',
@@ -245,7 +245,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('pesoReceptor', null, array(
                             'label' => 'Peso (kg)',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'peso (kg)...',
                                     'class' => 'form-control input-sm',
@@ -269,7 +269,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('tallaIngreso', null, array(
                             'label' => 'Talla (m)',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'talla (m)...',
                                     'class' => 'form-control input-sm',
@@ -293,7 +293,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('pc', null, array(
                             'label' => 'Perimetro cefálico',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'perimetro cefálico...',
                                     'class' => 'form-control input-sm',
@@ -378,7 +378,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('edadGestBallard', null, array(
                             'label' => 'Edad de gestación según Ballard',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
                             'attr' => array(
                                     'placeholder' => 'edad de gestación según ballard...',
                                     'class' => 'form-control input-sm',

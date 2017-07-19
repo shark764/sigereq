@@ -76,6 +76,31 @@ class BlhFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idFrascoRecolectado', 'sonata_type_model_hidden', array(
+                            'label' => 'Alimentar frasco',
+                            // 'label_attr' => array('class' => 'label_form_sm'),
+                            'mapped' => false,
+                            // 'required' => false,
+                            'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
+                            // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION) {
+                            //                         return $er->createQueryBuilder('ams')
+                            //                                     ->where('ams.idEstablecimiento = :id_std')
+                            //                                     ->setParameter('id_std', $session_USER_LOCATION->getId())
+                            //                                     ->orderBy('ams.idAreaAtencion', 'asc')
+                            //                                     ->addOrderBy('ams.idModalidadEstab', 'asc')
+                            //                                     ->distinct();
+                            //                     },
+                            // 'group_by' => 'idLoteAnalisis',
+                            // 'attr' => array(
+                            //         'class' => 'form-control input-sm',
+                            //         // 'data-form-inline-group' => 'start',
+                            //         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                            //         'data-add-input-addon' => 'true',
+                            //         // 'data-add-input-addon-class' => 'primary-v4',
+                            //         'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+                            // )
+            ))
             ->add('codigoFrascoRecolectado', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),

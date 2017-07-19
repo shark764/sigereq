@@ -38,6 +38,61 @@ file that was distributed with this source code.
                 jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_onzRecolectado"]').val(vOz.toFixed(4));
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// initialize with custom options
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectado', function(e) {
+                var subject = jQuery(this);
+                jQuery('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_idFrascoRecolectado"]', subject).each(function() {
+                    var select = jQuery(this);
+                    select.select2({
+                        width: 'resolve',
+                        minimumResultsForSearch: 10,
+                        dropdownAutoWidth : true,
+                        allowClear: true,
+                        placeholder: 'click para seleccionar...',
+                        minimumInputLength: 3,
+                        maximumSelectionSize: 1,
+                        // multiple: true,
+                        escapeMarkup: function(markup) {
+                            return markup;
+                        },
+                        ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                            url: Routing.generate('simagd_expediente_referido_searchLocation'),
+                            dataType: 'json',
+                            quietMillis: 250,
+                            data: function (term, page) {
+                                return {
+                                    q: term, // search term
+                                };
+                            },
+                            results: function (data, page) { // parse the results into the format expected by Select2.
+                                // since we are using custom formatting functions we do not need to alter the remote JSON data
+                                return { results: data.items };
+                            },
+                            cache: true
+                        },
+                        // initSelection: function(element, callback) {
+                        //     callback({'id': , 'full_name': ''});
+                        // },
+                        // formatResult: patientFormatResult,  // display patient information
+                        // formatSelection: patientFormatSelection,    // selection
+                    });
+                    
+                    // select.on('change', function (e) {
+                    // });
+                });
+            });
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// patient record LOCATION change event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////
         });
 
     </script>
