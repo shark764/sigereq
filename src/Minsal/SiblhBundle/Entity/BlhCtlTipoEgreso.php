@@ -7,12 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
- * BlhCtlTipoLecheMaterna
+ * BlhCtlTipoEgreso
  *
- * @ORM\Table(name="blh_ctl_tipo_leche_materna", uniqueConstraints={@ORM\UniqueConstraint(name="idx_codigo_tipo_leche_materna", columns={"codigo"})})
+ * @ORM\Table(name="blh_ctl_tipo_egreso", uniqueConstraints={@ORM\UniqueConstraint(name="idx_codigo_tipo_egreso", columns={"codigo"})})
  * @ORM\Entity
  */
-class BlhCtlTipoLecheMaterna implements EntityInterface
+class BlhCtlTipoEgreso implements EntityInterface
 {
     /**
      * @var integer
@@ -20,14 +20,14 @@ class BlhCtlTipoLecheMaterna implements EntityInterface
      * @ORM\Column(name="id", type="smallint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="blh_ctl_tipo_leche_materna_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="blh_ctl_tipo_egreso_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=35, nullable=false)
      * @Assert\NotBlank(message = "foreign.default.not_blank")
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
@@ -36,7 +36,7 @@ class BlhCtlTipoLecheMaterna implements EntityInterface
      * )
      * @Assert\Length(
      *      min = 0,
-     *      max = 50,
+     *      max = 35,
      *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
      *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
      * )
@@ -60,24 +60,6 @@ class BlhCtlTipoLecheMaterna implements EntityInterface
      * )
      */
     private $codigo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
-     * @Assert\Regex(
-     *     pattern="/[a-zA-Z0-9]/",
-     *     match=true,
-     *     message="regex.match.true"
-     * )
-     * @Assert\Length(
-     *      min = 0,
-     *      max = 255,
-     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
-     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
-     * )
-     */
-    private $descripcion;
 
     /**
      * Constructor
@@ -165,30 +147,6 @@ class BlhCtlTipoLecheMaterna implements EntityInterface
     public function getCodigo()
     {
         return $this->codigo;
-    }
-
-    /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     *
-     * @return BlhCtlTipoLecheMaterna
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcion
-     *
-     * @return string
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
     }
 
 }

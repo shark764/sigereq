@@ -91,7 +91,7 @@ class BlhCtlCurvaLubchenco implements EntityInterface
      */
     public function __toString()
     {
-        return (string) $this->nombre;
+        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
     
     /**
@@ -99,6 +99,7 @@ class BlhCtlCurvaLubchenco implements EntityInterface
      */
     public function getPresentacionEntidad()
     {
+        return $this->nombre ? mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
     
     /**
