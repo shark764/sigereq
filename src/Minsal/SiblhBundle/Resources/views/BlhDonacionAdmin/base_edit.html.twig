@@ -46,6 +46,20 @@ file that was distributed with this source code.
                 var vOz = v * 0.033814;
                 jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_onzRecolectado"]').val(vOz.toFixed(4));
             });
+            jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla', function(e) {
+                var subject = jQuery(this);
+                jQuery('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_onzRecolectado"]', subject).each(function() {
+                    var ozR = jQuery(this);
+
+                    var v = jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_volumenAgregado"]').val();
+                    if (isNaN(v) || jQuery.trim(v).length === 0) {
+                        v = 0;
+                    }
+                    var vOz = v * 0.033814;
+
+                    this.value = vOz.toFixed(4):
+                });
+            });
             //////////////////////////////////////////////////////////////////////////////////////////////
 
 
