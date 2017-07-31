@@ -1,6 +1,22 @@
 {% autoescape false %}
 
 	<script type="text/javascript">
+        // var _fn_show_object_detail = function(el, slug, id) {
+        //     window.alert(slug + '\n' + id);
+        // };
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        // window.console.log('%cPARA PROYECCION-HORARIO:\nTABLA QUE GUARDA DIA-HORARIO,\nAPLICAR CON ICHECK SOLO A LAS QUE TENGAN HORARIOS RESTRINGIDOS\nEL RESTO NORMAL\nSI VIENE UNA BOLETA CON PROYECCIÓN CON HORARIO DEFINIDO, MOVER CALENDARIO A ESE HORARIO EN FECHA MAS CONVENIENTE', 'background: #2a5469; color: #fff');
+
+        // window.console.log('%cEN LOGIC_ENTITY SE CREARÁ EL OBJETO DEFAULT, ES DECIR, DE NEWINSTANCE SE INSTANCIARA Y SE HARA EL CONSTRUCT CON TODO SETEADO', 'background: #2a5469; color: #fff');
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        
         ////////////////////////////////////////////////////////////////
         //////// clear form
         ////////////////////////////////////////////////////////////////
@@ -11,7 +27,7 @@
             $form
                 .find('select')
                     .each(function () {
-                        var $select2    = jQuery(this);
+                        var $select2 = jQuery(this);
                         $select2.select2('val', $select2.find(':selected').val());
                     });
         };
@@ -41,27 +57,21 @@
                                     allowClearEnabled = false;
                                 }
 
-                                var placeholder = '';
-                                if (allowClearEnabled !== false) {
-                                    placeholder = 'click para seleccionar...';
-                                }
-
                                 ereg = /width:(auto|(([-+]?([0-9]*\.)?[0-9]+)(px|em|ex|%|in|cm|mm|pt|pc)))/i;
-                                select.select2({
+                                var s2Opt_ = {
                                     width: function() {
 
-                                        // this code is an adaptation of select2 code (initContainerWidth function)
-                                        style = this.element.attr('style');
-                                        //console.log("main style", style);
-                                        if (style !== undefined) {
-                                            attrs = style.split(';');
-                                            for (i = 0, l = attrs.length; i < l; i = i + 1) {
+                                    // this code is an adaptation of select2 code (initContainerWidth function)
+                                    style = this.element.attr('style');
+                                    //console.log("main style", style);
+                                    if (style !== undefined) {
+                                        attrs = style.split(';');
+                                        for (i = 0, l = attrs.length; i < l; i = i + 1) {
 
-                                                matches = attrs[i].replace(/\s/g, '').match(ereg);
+                                            matches = attrs[i].replace(/\s/g, '').match(ereg);
 
-                                                if (matches !== null && matches.length >= 1) {
-                                                    return matches[1];
-                                                }
+                                            if (matches !== null && matches.length >= 1)
+                                                return matches[1];
                                             }
                                         }
 
@@ -75,8 +85,34 @@
                                     dropdownAutoWidth: true,
                                     minimumResultsForSearch: 10,
                                     allowClear: allowClearEnabled,
-                                    placeholder: placeholder
-                                });
+                                    placeholder: 'click para seleccionar...',
+                                };
+
+                                //////// escapeMarkup
+                                if (select.attr('data-sonata-select2-escape-markup')==='true') {
+                                    jQuery.extend(true,
+                                        s2Opt_,
+                                        {
+                                            escapeMarkup: function(markup) {
+                                                return markup;
+                                            }
+                                        }
+                                    );
+                                }
+                                ////////
+
+                                //////// dropdownAutoWidth
+                                if (select.attr('data-sonata-select2-dropdownautowidth')==='false') {
+                                    jQuery.extend(true,
+                                        s2Opt_,
+                                        {
+                                            dropdownAutoWidth: false
+                                        }
+                                    );
+                                }
+                                ////////
+
+                                select.select2(s2Opt_);
 
                                 var popover = select.data('popover');
 
@@ -93,6 +129,30 @@
         ); // set value for filter
 
         jQuery(document).ready(function() {
+            //     ////////////////////////////////////////////////////////////////
+            //     //////// table height
+            //     ////////////////////////////////////////////////////////////////
+            //     /*
+            //      *
+            //      * @type type
+            //      * Get Table definition
+            //      */
+            //      // generate(null, 'unrealized_procedures');
+            //      // jQuery('#')
+
+            //     //////
+            //     var $gtable = jQuery('#ryx_target_bstable');
+
+            //     $gtable.on('load-success.bs.table', function (e, data) {
+            //         var pageSize = $gtable.bootstrapTable('getOptions').pageSize;    // --| get pageSize
+            //         if ((data.length > 0 && data.length <= 15) || pageSize <= 15) {
+            //             $gtable.bootstrapTable('resetView', {height: 768}).bootstrapTable('resetWidth');
+            //         }
+            //         else {
+            //             $gtable.bootstrapTable('resetView', {height: undefined}).bootstrapTable('resetWidth');
+            //         }
+            //     });
+
             var $gtable = jQuery('#ryx_target_bstable');
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// click-row.bs.table event
@@ -148,6 +208,110 @@
             //////////////////////////////////////////////////////////////////////////
 
         });
+        
+
+        // var destroy = function(el) {
+        //     if (jQuery(el).attr('id') !== "undefined" && (jQuery(el).attr('id') === "pry2" || jQuery(el).attr('id') === "pry4")) {
+        //         var $gtable = jQuery('#ryx_target_bstable');
+        //         $gtable.bootstrapTable('destroy');
+        //     }
+        // };
+
+        // function patientFormatResult(el) {
+        //     var markup = '<div class="row-fluid">' +
+        //                         // '<div class="span2"><img src="' + el.owner.avatar_url + '" /></div>' +
+        //                         '<div class="span10">' +
+        //                         '<div class="row-fluid">' +
+        //                         '<div class="span6">' + el.full_name + '</div>' +
+        //                         // '<div class="span3"><i class="fa fa-code-fork"></i> ' + el.forks_count + '</div>' +
+        //                         // '<div class="span3"><i class="fa fa-star"></i> ' + el.stargazers_count + '</div>' +
+        //                     '</div>';
+
+        //     // if (el.description) {
+        //     //     markup += '<div>' + el.description + '</div>';
+        //     // }
+
+        //     markup += '</div></div>';
+
+        //     return markup;
+        // }
+
+        // function patientFormatSelection(el) {
+        //     return el.full_name;
+        // }
+
+        // function displaySelection(data)
+        // {
+        //     var jt = [];
+        //     if (!data.t || !parseInt(data.t, 10)) {
+        //         jt.push('<div class="jumbotron">');
+        //     }
+        //     else {
+        //         jt.push('<div class="jumbotron" style="background-color: #ebc5b9;">');
+        //     }
+        //     jt.push('<div class="container">', '<h2><strong><span class="text-primary-v4">', data.item.full_name, '</span></strong></h2>');
+        //     if (!data.t || !parseInt(data.t, 10)) {
+        //         jt.push('<strong><span class="badge badge-primary-v4" style="font-size: 25px;">', data.item.numero, '</span></strong>');
+        //     }
+        //     else {
+        //         jt.push('<strong><span class="badge badge-emergency" style="font-size: 25px;">', data.item.numero, '</span></strong>');
+        //     }
+        //     jt.push('<p><a class="btn btn-sm btn-primary-v4 " role="button">Crear solicitud</a></p>');
+        //     jt.push('</div>', '</div>');
+        //     return jt.join('');
+        // }
+
+
+
+        // jQuery(document).ready(function() {
+        //     /*
+        //      *
+        //      * @type type
+        //      * Get Table definition
+        //      */
+        //      // generate(null, 'unrealized_procedures');
+        //      // jQuery('#')
+
+        //     //////
+        //     var $gtable = jQuery('#ryx_target_bstable');
+        //     ////////
+        //     // $gtable.bootstrapTable('showLoading');
+
+        //     ////////
+        //     var DEFAULT_TABLE_OPTIONS = JSON.parse('{# DEFAULT_TABLE_OPTIONS|json_encode|e('js')|raw #}');
+        //     // $.each(DEFAULT_TABLE_OPTIONS, function(i, opt) {
+        //     //     if (typeof opt === 'string' && opt.indexOf('__FUNCTIONS_CALL__.functions') !== -1) {
+        //     //         var namespaces = opt.split('.');
+        //     //         var func = namespaces.pop();
+        //     //         var context = window;
+        //     //         for(var x = 0; x < namespaces.length; x++) {
+        //     //             context = context[namespaces[x]];
+        //     //         }
+        //     //         DEFAULT_TABLE_OPTIONS[i] = context[func];  // set function
+        //     //     }
+        //     // });
+        //     ////////
+
+        //     $gtable
+        //         .bootstrapTable('destroy')
+        //         .bootstrapTable(DEFAULT_TABLE_OPTIONS);
+
+
+        //     //////////////////////////////////////////////////////////////////////////
+        //     //////// change content type - worklist
+        //     //////////////////////////////////////////////////////////////////////////
+        //     var __DOM__worklistDisplayType = jQuery('input[name=_worklist_dashboard_display_type]');
+
+        //     __DOM__worklistDisplayType.on('ifChecked', function(e) {
+
+        //                 jQuery('#_worklist_dashboard_display_items li.active').find('a').triggerHandler('click');
+
+        //     });
+        //     //////////////////////////////////////////////////////////////////////////
+        //     //////////////////////////////////////////////////////////////////////////
+
+        //     // jQuery('#_switch_display').iCheck('destroy').bootstrapSwitch();
+        // });
     </script>
 
 {% endautoescape %}

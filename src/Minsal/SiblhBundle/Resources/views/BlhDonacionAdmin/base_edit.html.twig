@@ -38,11 +38,36 @@ file that was distributed with this source code.
                 jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_onzRecolectado"]').val(vOz.toFixed(4));
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery(document).on('keyup change blur', '[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_volumenAgregado"]', function(e) {
+                var v = this.value;
+                if (isNaN(v) || jQuery.trim(v).length === 0) {
+                    v = 0;
+                }
+                var vOz = v * 0.033814;
+                jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_onzRecolectado"]').val(vOz.toFixed(4));
+                jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_volumenRealAgregado"]').val(v);
+            });
+            jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla', function(e) {
+                var subject = jQuery(this);
+                jQuery('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_onzRecolectado"]', subject).each(function() {
+                    var ozR = jQuery(this);
+
+                    var v = jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_volumenAgregado"]').val();
+                    if (isNaN(v) || jQuery.trim(v).length === 0) {
+                        v = 0;
+                    }
+                    var vOz = v * 0.033814;
+
+                    ozR.val(vOz.toFixed(4));
+                });
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
 
 
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// initialize with custom options
             //////////////////////////////////////////////////////////////////////////////////////////////
+{#
             jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectado', function(e) {
                 var subject = jQuery(this);
                 console.log(subject.attr('id'), subject.attr('name'));
@@ -87,6 +112,7 @@ file that was distributed with this source code.
                     // });
                 });
             });
+#}
 
 
             //////////////////////////////////////////////////////////////////////////////////////////////

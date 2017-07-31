@@ -230,3 +230,9 @@ services:
         tags:
             # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhCtlHabitoToxico}
             - {name: sonata.admin, manager_type: orm, group: Administración, label: Hábitos Tóxicos}
+
+    minsal_siblh.admin.blh_donacion_frasco_recolectado:
+        class: Minsal\SiblhBundle\Admin\BlhDonacionFrascoRecolectadoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado, MinsalSiblhBundle:BlhDonacionFrascoRecolectadoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhDonacionFrascoRecolectado}

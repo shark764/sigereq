@@ -175,6 +175,16 @@ and open the template in the editor.
 .text-xray-awesome-blue {
   color: #08222e;
 }
+
+.panel-xray-awesome-blue {
+  border-color: #08222e;
+}
+
+.panel-xray-awesome-blue > .panel-heading {
+  color: rgb(255, 255, 255);
+  background-color: #08222e;
+  border-color: #08222e;
+}
 /*
  * *************************************************************************************************************************************************
  */
