@@ -120,16 +120,168 @@ file that was distributed with this source code.
         jQuery(window).load(function () {
             jQuery(document.body).removeClass('modal-open');
         });
+
+        jQuery(document).ready(function() {
+            /*
+             * **************************************************************************
+             * DEFINE VARIABLE FOR TEMPLATE FORM
+             * **************************************************************************
+             */
+            var $this_bsform = jQuery('form[id="simagd_entity_full_admin_form"]');
+            
+            /*
+             * **************************************************************************
+             * APPLY CUSTOM FORM RESET
+             * **************************************************************************
+             */
+            $this_bsform.find(':reset').click(function (e) {
+                e.preventDefault();
+                $this_bsform.data('formValidation').resetForm();
+                $this_bsform.get(0).reset();
+                $this_bsform
+                    .find('select[data-input-transform="select2"]')
+                        .each(function () {
+                            var $select2 = jQuery(this);
+                            $select2.select2('val', $select2.find(':selected').val());
+                        });
+            });
+            
+            /*
+             * **************************************************************************
+             * APPLY PLUGIN "DATETIMEPICKER" TO INPUT TEXT
+             * **************************************************************************
+             */
+            moment.locale('es');
+            jQuery(document)
+                .find(':input[data-input-transform="datetimepicker"]')
+                        .each(function () {
+                            var $dt_type    = jQuery(this).data('datetimepicker-type');
+                            var $dt_format  = $dt_type === 'date' ? 'DD/MM/YYYY' : ($dt_type === 'time' ? 'HH:mm' : 'DD/MM/YYYY hh:mm A');
+                            var $dt_display = jQuery(this).data('datetimepicker-display-format');
+                            // var $dt_format_display = typeof $dt_display !== "undefined" ? $dt_display : $dt_format;
+                            // window.console.log(jQuery(this).data('datetimepicker-display-format'),
+                            //     typeof $dt_display !== "undefined",
+                            //     '$name:',
+                            //     jQuery(this).attr('name'),
+                            //     '$dt_type:',
+                            //     $dt_type,
+                            //     '$dt_format:',
+                            //     $dt_format,
+                            //     '$dt_display:',
+                            //     $dt_display,
+                            //     '$dt_format_display:',
+                            //     $dt_format_display
+                            // );
+                            jQuery(this)
+                                .datetimepicker({
+                                    locale: 'es',
+                                    // format: $dt_format,
+                                    format: typeof $dt_display !== "undefined" ? $dt_display : $dt_format,
+                                    showTodayButton: true,
+                                    showClear: true,
+                                    showClose: true,
+                                    ignoreReadonly: true,
+                                    // inline: true,
+                                    sideBySide: true,
+                                    /*minDate: moment()*/
+                                }).on('dp.change dp.show', function(e) {
+                                    var $data_name  = jQuery(this).attr('name');
+                                    jQuery(this).closest('form').formValidation('revalidateField', $data_name);
+                                    // console.log('dp.change dp.show');
+                                }).prev().filter('.display-datetimepicker').click(function(e) {
+                                    e.preventDefault();
+                                    jQuery(this).next().data('DateTimePicker').show();
+                                }).next().filter('.display-datetimepicker').click(function(e) {
+                                    e.preventDefault();
+                                    jQuery(this).prev().data('DateTimePicker').show();
+                                });
+                            if ($dt_type === 'datetime' || $dt_type === 'time') {
+                                jQuery(this)
+                                    .on('dp.hide', function(e) {
+                                        jQuery(this).blur();
+                                        var $data_name  = jQuery(this).attr('name');
+                                        jQuery(this).closest('form').formValidation('revalidateField', $data_name);
+                                        // console.log('dp.hide');
+                                    });
+                            }
+                            if ($dt_type === 'date') {
+                                jQuery(this)
+                                    .on('dp.change', function (e) {
+                                        jQuery(this).blur();
+                                        // console.log('dp.change');
+                                    });
+                            }
+                            // window.console.log(jQuery(this).data('DateTimePicker').options());
+                        });
+
+            /*
+             * **************************************************************************
+             * build client side validation with formValidation for bootstrap
+             * plugin used: <formValidation>
+             * **************************************************************************
+             */
+
+            /*
+             * 
+             * @type @call;$
+             */
+            var $bs_form = jQuery('form');    // --| typeahead input field element
+            
+            $bs_form
+                // .filter(function(i) {
+                //     return jQuery(this).data('clientside-validation') === "modal" || jQuery(this).data('clientside-validation') === "page";
+                // })
+                .each(function() {
+                    var $this = jQuery(this);
+
+                    $this
+                        // IMPORTANT: You must declare .on('init.field.fv')
+                        // before calling .formValidation(options)
+                        .on('init.field.fv', function(e, data) {
+                            // data.fv      --> The FormValidation instance
+                            // data.field   --> The field name
+                            // data.element --> The field element
+
+                            var $parent = data.element.parents('.form-group'),
+                                $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+
+                            // You can retrieve the icon element by
+                            // $icon = data.element.data('fv.icon');
+
+                            $icon.on('click.clearing', function() {
+                                // Check if the field is valid or not via the icon class
+                                if ($icon.hasClass('glyphicon-remove')) {
+                                    // Clear the field
+                                    data.fv.resetField(data.element);
+                                }
+                            });
+                        })
+                        .formValidation({
+                            framework: 'bootstrap',
+                            excluded: [':disabled'],
+                            icon: {
+                                valid: 'glyphicon glyphicon-ok',
+                                invalid: 'glyphicon glyphicon-remove',
+                                validating: 'glyphicon glyphicon-refresh'
+                            },
+                            live: 'enabled',
+                            message: 'Valor introducido no es válido',
+                            locale: 'es_ES'
+                        });
+                    $this
+                        .on('err.field.fv', function(e, data) {
+                            data.fv.disableSubmitButtons(false);
+                        })
+                        .on('success.field.fv', function(e, data) {
+                            data.fv.disableSubmitButtons(false);
+                        });
+                });
+                    
+        });
     </script>
 
     {# select2-es #}
     <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
-
-    {# Simagd Custom Scripts #}
-    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/js/simagd_init_formplugin.js') }}" ></script>
-
-    {# Patologia Custom Scripts #}
-    <script type="text/javascript" src="{{ asset('bundles/minsalpatologia/js/patlg_edittemplate_bsform_configuration.js') }}" ></script>
 
     {# formValidation #}
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/formValidation.min.js') }}" ></script>

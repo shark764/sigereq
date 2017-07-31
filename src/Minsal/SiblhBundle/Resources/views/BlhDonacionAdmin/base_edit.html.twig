@@ -45,6 +45,7 @@ file that was distributed with this source code.
                 }
                 var vOz = v * 0.033814;
                 jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_onzRecolectado"]').val(vOz.toFixed(4));
+                jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_volumenRealAgregado"]').val(v);
             });
             jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla', function(e) {
                 var subject = jQuery(this);

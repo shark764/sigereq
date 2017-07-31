@@ -63,6 +63,9 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
         $formMapper
             ->with('Registro de donación')
             // ->add('id')
+                ->add('idBancoDeLeche', 'sonata_type_model_hidden')
+                ->add('idCentroRecoleccion', 'sonata_type_model_hidden')
+                ->add('idDonante', 'sonata_type_model_hidden')
                 ->add('codigoDonante', null, array(
                                 'label' => 'Código',
                                 'label_attr' => array('class' => 'label_form_sm'),
@@ -77,32 +80,32 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                                 )
                 ))
-                ->add('idBancoDeLeche', null, array(
-                                'label' => 'Banco de Leche',
-                                'label_attr' => array('class' => 'label_form_sm'),
-                                // 'required' => true,
-                                // 'group_by' => 'idEstablecimiento',
-                                'attr' => array(
-                                        'class' => 'form-control input-sm',
+                // ->add('idBancoDeLeche', null, array(
+                //                 'label' => 'Banco de Leche',
+                //                 'label_attr' => array('class' => 'label_form_sm'),
+                //                 // 'required' => true,
+                //                 // 'group_by' => 'idEstablecimiento',
+                //                 'attr' => array(
+                //                         'class' => 'form-control input-sm',
 
-                                        'data-add-input-addon' => 'true',
-                                        // 'data-add-input-addon-class' => 'primary-v4',
-                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                                )
-                ))
-                ->add('idCentroRecoleccion', null, array(
-                                'label' => 'Centro de recolección',
-                                'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => true,
-                                'group_by' => 'idBancoDeLeche',
-                                'attr' => array(
-                                        'class' => 'form-control input-sm',
+                //                         'data-add-input-addon' => 'true',
+                //                         // 'data-add-input-addon-class' => 'primary-v4',
+                //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                //                 )
+                // ))
+                // ->add('idCentroRecoleccion', null, array(
+                //                 'label' => 'Centro de recolección',
+                //                 'label_attr' => array('class' => 'label_form_sm'),
+                //                 // 'required' => true,
+                //                 'group_by' => 'idBancoDeLeche',
+                //                 'attr' => array(
+                //                         'class' => 'form-control input-sm',
 
-                                        'data-add-input-addon' => 'true',
-                                        // 'data-add-input-addon-class' => 'primary-v4',
-                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                                )
-                ))
+                //                         'data-add-input-addon' => 'true',
+                //                         // 'data-add-input-addon-class' => 'primary-v4',
+                //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                //                 )
+                // ))
                 ->add('fechaDonacion', 'datetime', array(
                                 'label' => 'Fecha de donación',
                                 'label_attr' => array('class' => 'label_form_sm'),
@@ -134,7 +137,23 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ->add('idTipoColecta', null, array(
                                 'label' => 'Tipo de colecta',
                                 'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => false,
+                                'required' => true,
+                                'property' => 'presentacionEntidad',
+                                'attr' => array(
+                                        'class' => 'form-control input-sm',
+                                        // 'data-form-inline-group' => 'start',
+                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                        'data-add-input-addon' => 'true',
+                                        // 'data-add-input-addon-class' => 'primary-v4',
+                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+                                )
+                ))
+                ->add('idTipoLecheMaterna', null, array(
+                                'label' => 'Tipo de leche donada',
+                                'label_attr' => array('class' => 'label_form_sm'),
+                                'required' => true,
+                                'property' => 'presentacionEntidad',
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
                                         // 'data-form-inline-group' => 'start',
@@ -148,7 +167,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ->add('idResponsableDonacion', null, array(
                                 'label' => 'Responsable de donación',
                                 'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => false,
+                                'required' => true,
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
                                         // 'data-form-inline-group' => 'start',
@@ -262,6 +281,38 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
             default:
                 return parent::getTemplate($name);
                 break;
+        }
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+
+        foreach ($entity->getDonacionFrascoRecolectado() as $fR)
+        {
+            $fR->setIdDonacion($entity);
+        }
+        foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)
+        {
+            $fR->setIdDonacion($entity);
+        }
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        parent::preUpdate($entity);
+        ////////
+
+        foreach ($entity->getDonacionFrascoRecolectado() as $fR)
+        {
+            $fR->setIdDonacion($entity);
+        }
+        foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)
+        {
+            $fR->setIdDonacion($entity);
         }
     }
 
