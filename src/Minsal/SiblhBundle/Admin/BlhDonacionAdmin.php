@@ -204,6 +204,27 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
             ->end()
             // ->add('usuario')
             // ->add('fechaHoraReg')
+            ->with('Agregar donación a frasco')
+                ->add('donacionFrascoRecolectadoMezcla', 'sonata_type_collection', array(
+                                'label' => false,
+                                'label_attr' => array('class' => 'label_form_sm'),
+                                'btn_add' => 'Mezclar frasco',  // --| Prevents the "Add" option from being displayed
+                                // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
+                                'attr' => array(
+                                        'class' => 'form-control input-sm',
+                                        'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                                ),
+                                'cascade_validation' => true,
+                                'type_options' => array(
+                                    // 'btn_add' => false, // --| Prevents the "Add" option from being displayed
+                                    // 'btn_delete' => false,  // --| Prevents the "Delete" option from being displayed
+                                )
+                        ),
+                        array('edit' => 'inline', 'inline' => 'table')
+                )
+            ->end()
+            // ->add('usuario')
+            // ->add('fechaHoraReg')
         ;
     }
 
