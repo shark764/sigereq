@@ -134,3 +134,7 @@ and open the template in the editor.
 /*.increase-select2-results */.select2-results {
     max-height: 300px;
 }
+
+/*.select2-default {
+  color: #f45 !important;
+}*/

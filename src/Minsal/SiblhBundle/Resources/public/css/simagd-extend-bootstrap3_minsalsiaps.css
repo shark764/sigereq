@@ -12,12 +12,12 @@ and open the template in the editor.
 /*
  * expand content width
  */
-/*.right-side {
+.right-side {
   margin-left: 2%;
   margin-right: 2%;
-  background-color: #f9f9f9;
-  margin-left: 220px;
-}*/
+  /*background-color: #f9f9f9;*/
+  /*margin-left: 220px;*/
+}
 
 
 /*.navbar-default .navbar-nav>li>a {
@@ -174,6 +174,16 @@ and open the template in the editor.
 
 .text-xray-awesome-blue {
   color: #08222e;
+}
+
+.panel-xray-awesome-blue {
+  border-color: #08222e;
+}
+
+.panel-xray-awesome-blue > .panel-heading {
+  color: rgb(255, 255, 255);
+  background-color: #08222e;
+  border-color: #08222e;
 }
 /*
  * *************************************************************************************************************************************************

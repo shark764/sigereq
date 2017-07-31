@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05-28-2015, 08:19:52 AM
+    Author     : dtic
+*/
+
+.sweet-alert .sa-icon.sa-info {
+    border-color: #2a5469;
+}
+.sweet-alert .sa-icon.sa-info::before {
+    background-color: #2a5469;
+}
+.sweet-alert .sa-icon.sa-info::after {
+    background-color: #2a5469;
+}

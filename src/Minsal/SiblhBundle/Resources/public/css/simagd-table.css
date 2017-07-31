@@ -464,3 +464,22 @@ span.bstable-toolbar-span-label {
     padding-left: 0;
     list-style: disc;
 }
+
+.fixed-table-container tr td .bs-list-styled {
+    margin-bottom: 0px;
+}
+
+.box .box-body .fixed-table-container {
+    border: none;
+}
+.box .box-body .fixed-table-container tbody td {
+    border-left: none;
+}
+.fixed-table-container .table>thead>tr>th,
+.fixed-table-container .table>tbody>tr>th,
+.fixed-table-container .table>tfoot>tr>th,
+.fixed-table-container .table>thead>tr>td,
+.fixed-table-container .table>tbody>tr>td,
+.fixed-table-container .table>tfoot>tr>td {
+    border-top: none;
+}

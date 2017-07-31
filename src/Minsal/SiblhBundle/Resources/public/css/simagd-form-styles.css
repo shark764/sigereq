@@ -189,7 +189,7 @@ textarea:focus:hover {
 }
 
 div.form-actions {
-  /*text-align: center;*/
+  text-align: center;
   background: #fffefd;
   border-top: 2px solid #c1c1c1;
   border-top-color: #f56954;
