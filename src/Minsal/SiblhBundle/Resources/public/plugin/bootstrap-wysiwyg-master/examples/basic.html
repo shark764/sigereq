@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>A tiny, opensource, Bootstrap WYSIWYG rich text editor</title>
+		<link href="../bower_components/google-code-prettify/src/prettify.css" rel="stylesheet" />
+		<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="../bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="./css/style.css" rel="stylesheet" />
+
+		<script src="../bower_components/jquery/dist/jquery.min.js"></script>>
+		<script src="../bower_components/jquery.hotkeys/jquery.hotkeys.js"></script>
+		<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../bower_components/google-code-prettify/src/prettify.js"></script>
+		<script src="../src/bootstrap-wysiwyg.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Basic editor, no fancy bits.</h1>
+			<div id="editor" class="lead" data-placeholder="This is a basic example with no toolbars."></div>
+			<div id="editorPreview"></div>
+			<p style="text-align: center;">
+				<a class="btn btn-large btn-default jumbo"
+				   href="#!" onClick="$('#editorPreview').html($('#editor').html());">Submit</a>
+			</p>
+		</div>
+		<script type='text/javascript'>
+			$('#editor').wysiwyg();
+		</script>
+	</body>
+</html>

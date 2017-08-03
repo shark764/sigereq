@@ -17,6 +17,14 @@ file that was distributed with this source code.
 
     {# bootstrap-table #}
     <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+    
+    {# bootstrap-modal
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/css/bootstrap-modal-bs3patch.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/css/bootstrap-modal.css') }}" type="text/css" rel="stylesheet" /> #}
+
+    {# bootstrap sweetalert #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/sweetalert.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% use 'MinsalSiblhBundle:BlhAnalisisSensorialAdmin:base_edit_form.html.twig' with form as parentForm %}
@@ -33,6 +41,13 @@ file that was distributed with this source code.
     {# bootstrap-table #}
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
+    
+    {# bootstrap-modal
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/js/bootstrap-modalmanager.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/js/bootstrap-modal.js') }}" ></script> #}
+
+    {# bootstrap sweetalert #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.min.js') }}" ></script>
 
     <script type="text/javascript">
 
@@ -64,8 +79,35 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// collected bottles table
             //////////////////////////////////////////////////////////////////////////////////////////////
-            var $table = jQuery('#blh_collected_bottle_target_bstable');
-            $table.bootstrapTable('destroy').bootstrapTable(JSON.parse('{{ DEFAULT_TABLE_OPTIONS|json_encode|e('js')|raw }}'));
+            {% if DEFAULT_TABLE_OPTIONS is defined %}
+                var $table = jQuery('#blh_collected_bottle_target_bstable');
+                $table.bootstrapTable('destroy').bootstrapTable(JSON.parse('{{ DEFAULT_TABLE_OPTIONS|json_encode|e('js')|raw }}'));
+    
+                $table.on('load-success.bs.table', function (e, data) {
+                    if (data.length === 0) {
+                        swal({
+                            html:true,
+                            title: "La consulta no devolvió ningún registro",
+                            text: "Consulte donaciones en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonClass: "btn-sm btn-default",
+                            confirmButtonClass: "btn-sm btn-primary-v4",
+                            confirmButtonText: "Aceptar",
+                            cancelButtonText: "Cancelar",
+                            // closeOnConfirm: false,
+                            // closeOnCancel: false,
+                            animation: false,
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                var url = Routing.generate('siblh_donacion_create', {mode: 'standard', interaction: false});
+                                window.location.href = url; // simulate link click
+                            }
+                        });
+                    }
+                });
+            {% endif %}
             //////////////////////////////////////////////////////////////////////////////////////////////
         });
 

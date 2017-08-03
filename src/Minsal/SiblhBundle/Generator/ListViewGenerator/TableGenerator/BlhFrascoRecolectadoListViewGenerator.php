@@ -254,6 +254,9 @@ class BlhFrascoRecolectadoListViewGenerator extends BlhEntityListViewGenerator
         // $this->entityOptions['classes']     = 'table table-hover table-condensed table-striped table-darkblue-head';
         // $this->entityOptions['classes']     = 'table table-hover table-condensed table-striped table-black-head';
         $this->entityOptions['classes']     = 'table table-hover table-condensed table-xray-supreme-head'/*table-striped*/;
+        $this->entityOptions['showToggle']  = false;
+        $this->entityOptions['pageList']    = '[5, 10, 15, 25, 30]';
+        $this->entityOptions['pageSize']    = 15;
         // $this->entityOptions['buttonsClass']   = 'primary-v4';
         // $this->entityOptions['pageSize']    = 50;
         // $this->entityOptions['sortName']    = 'undefined';
@@ -262,9 +265,9 @@ class BlhFrascoRecolectadoListViewGenerator extends BlhEntityListViewGenerator
             $this->entityOptions['showColumns'] = false;
             $this->entityOptions['pageSize']    = 5;
         }
-        if ($this->type === 'compact') {
-            $this->entityOptions['pageSize']    = 15;
-        }
+        // if ($this->type === 'compact') {
+        //     $this->entityOptions['pageSize']    = 15;
+        // }
         // $this->entityOptions['height']      = '1268';
 
         // $this->entityOptions['contextMenu']         = '#radiologicalresult-context-menu';
