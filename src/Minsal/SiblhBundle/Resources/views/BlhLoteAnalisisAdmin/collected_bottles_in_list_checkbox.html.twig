@@ -16,87 +16,50 @@ file that was distributed with this source code.
     </span>
 </div>
 
-<table data-toggle="table" class="table table-condensed table-hover table-xray-supreme-head" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable">
-    <thead>
-        <tr>
-            <th>Origen</th>
-            <th>Paciente</th>
-            <th>Reg.</th>
-            <th>Procedencia</th>
-            <th>Servicio</th>
-            <th>Modalidad</th>
-            <th>Procedimiento</th>
-            <th>Téc. / Lic. / Rdlg.</th>
-            <th>Fecha (Est)</th>
-            <th>Descargar</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for i in 0..10 %}
+<div class="non-bootstraptable-fixed-table-container">
+    <table {#data-toggle="table"#} class="table table-condensed table-hover table-xray-supreme-head" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable">
+        <thead>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" name=""></td>
+                <th>Paciente</th>
+                <th>Reg.</th>
+                <th>Procedimiento</th>
+                <th>Téc. / Lic. / Rdlg.</th>
+                <th></th>
             </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for i in 0..10 %}
+                <tr>
+                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                    <td style="vertical-align: middle; text-align: center;"><input type="checkbox" name=""></td>
+                </tr>
+            {% endfor %}
 
-        {% for child in form %}
-        	{% set s = choices[child.vars.value].data %}
-            {% set form_widget_content %}
-                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
-            {% endset %}
-            <tr>
-                <td>{{ s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getIdEstablecimientoOrigen() }}</td>
-                <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getIdReferido() }}</span>{% else %}{{ s.getIdExpediente().getIdPaciente() }}{% endif %}</td>
-                <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getNumero() }}</span>{% else %}{{ s.getIdExpediente().getNumero() }}{% endif %}</td>
-                <td>{{ s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getIdAtenAreaModEstab().getIdAreaModEstab() }}</td>
-                <td>{{ s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getIdAtenAreaModEstab() }}</td>
-                <td>{{ s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getIdAreaServicioDiagnostico() }}</td>
-                <td>
-                    <ul class="bs-list-styled">
-                        {% for p in s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getSolicitudEstudioProyeccion() %}
-                            <li>{{ p }}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-                <td>{{ s.getIdProcedimientoRealizado().getIdTecnologoRealiza() }}</td>
-                <td>{{ s.getFechaHoraReg()|format_date('EEEE, MMMM d, yyyy', 'es_ES') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
-                <td>
-                    <div class="btn-toolbar" role="toolbar" aria-label="...">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-xray-awesome-blue btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Visualizar estudio">
-                                <i class="glyphicon glyphicon-eye-open"></i>
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" style="right: 0; left: auto;" >
-                                <li>
-                                    <a href="http://127.0.0.1:8080/weasis-pacs-connector/viewer.jnlp?studyUID={{ s.getEstudioUid()|trim }}" target="_blank" title="Descargar estudio">
-                                        <i class="glyphicon glyphicon-save"></i> Weasis
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://127.0.0.1:8080/oviyam2/viewer.html?patientID={{ s.getIdExpediente().getNumero()|trim }}&studyUID={{ s.getEstudioUid()|trim }}" target="_blank" title="Visualizar estudio en web">
-                                        <i class="glyphicon glyphicon-play-circle"></i> Oviyam2
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-                <td style="vertical-align: middle; text-align: center;">{{ form_widget_content|raw }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            {% for child in form %}
+            	{% set s = choices[child.vars.value].data %}
+                {% set form_widget_content %}
+                    {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+                {% endset %}
+                <tr>
+                    <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getIdReferido() }}</span>{% else %}{{ s.getIdExpediente().getIdPaciente() }}{% endif %}</td>
+                    <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getNumero() }}</span>{% else %}{{ s.getIdExpediente().getNumero() }}{% endif %}</td>
+                    <td>
+                        <ul class="bs-list-styled">
+                            {% for p in s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getSolicitudEstudioProyeccion() %}
+                                <li>{{ p }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>{{ s.getFechaHoraReg()|format_date('EEEE, MMMM d, yyyy', 'es_ES') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
+                    <td style="vertical-align: middle; text-align: center;">{{ form_widget_content|raw }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <script type="text/javascript">
 
@@ -130,8 +93,6 @@ file that was distributed with this source code.
             });
         {% endif %}
         //////////////////////////////////////////////////////////////////////////////////////////////
-
-        window.alert('bootstrapTable requiere TH en thead');
     });
 
 </script>
