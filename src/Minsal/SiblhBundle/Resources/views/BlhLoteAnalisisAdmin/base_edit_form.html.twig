@@ -39,7 +39,7 @@
                 {% block simagd_apply_custom_firstbox %} {% endblock %}
 
                 {% block sonata_tab_content %}
-
+{#
                     <!--
                     //////////////////////////////////////////////////////////////
                     //////// TABLE
@@ -64,12 +64,12 @@
                     </div>
                     <!-- end table -->
 
-
                     <!--
                     //////////////////////////////////////////////////////////////
                     //////// END --| TABLE
                     //////////////////////////////////////////////////////////////
                      -->
+#}
 
                     {% for name, form_group in admin.formgroups %}
                         <div class="{{ form_group.class|default('col-md-12') }}">

@@ -60,6 +60,46 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with('Frascos recolectados no codificados en lote')
+                ->add('loteAnalisisFrascoRecolectado', 'entity', array(
+                                'label' => false,
+                                'label_attr' => array('class' => 'label_form_sm'),
+                                'required' => true,
+                                'expanded' => true,
+                                'multiple' => true,
+                                'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
+                                // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $__XRAY_CLINICAL_SERVICE_ID__, $filter_modality_) {
+                                //                         return $er->createQueryBuilder('pryn')
+                                //                                     ->innerJoin('MinsalSiblhBundle:RyxCtlProyeccionEstablecimiento', 'prynhptl',
+                                //                                             \Doctrine\ORM\Query\Expr\Join::WITH,
+                                //                                             'pryn.id = prynhptl.idProyeccion')
+                                //                                     ->innerJoin('prynhptl.idAreaExamenEstab', 'mmxstd')
+                                //                                     ->innerJoin('mmxstd.idAreaServicioDiagnostico', 'mdld')
+                                //                                     ->where('mdld.idAtencion = :id_atn')
+                                //                                     ->setParameter('id_atn', $__XRAY_CLINICAL_SERVICE_ID__)  // --| 97 (Imagenología)
+                                //                                     ->andWhere('mmxstd.idEstablecimiento = :id_std')
+                                //                                     ->setParameter('id_std', $session_USER_LOCATION->getId())  // --| 97 (Hospital Local)
+                                //                                     ->andWhere('mmxstd.idAreaServicioDiagnostico = :id_mdld')
+                                //                                     ->setParameter('id_mdld', $filter_modality_)  // --| 97 (Modalidad filtro)
+                                //                                     ->andWhere('mmxstd.activo = TRUE')
+                                //                                     ->andWhere('prynhptl.habilitado = TRUE')
+                                //                                     ->orderBy('pryn.codigo')
+                                //                                     ->addOrderBy('pryn.nombre')
+                                //                                     ->distinct();
+                                //                     },
+                                'group_by' => 'idDonacion',
+                                'help' => '<span class="text-primary-v4">Complete el lote para iniciar el análisis</span>',
+                                'attr' => array(
+                                        'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,
+                                        'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                                        'data-sonata-select2-escape-markup' => 'true',
+                                        // 'style' => 'max-height: 500px; overflow-y: auto;'
+                                )
+                ))
+            ->end()
+        ;
+
+        $formMapper
             ->with('Nuevo lote')
                 // ->add('id')
                 ->add('codigoLoteAnalisis', null, array(
@@ -123,46 +163,6 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                 // ->add('fechaHoraReg')
             ->end()
         ;
-
-        $formMapper
-            ->with('Frascos recolectados para análisis')
-                ->add('loteAnalisisFrascoRecolectado', 'entity', array(
-                                'label' => false,
-                                'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => true,
-                                'expanded' => true,
-                                'multiple' => true,
-                                'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
-                                // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $__XRAY_CLINICAL_SERVICE_ID__, $filter_modality_) {
-                                //                         return $er->createQueryBuilder('pryn')
-                                //                                     ->innerJoin('MinsalSiblhBundle:RyxCtlProyeccionEstablecimiento', 'prynhptl',
-                                //                                             \Doctrine\ORM\Query\Expr\Join::WITH,
-                                //                                             'pryn.id = prynhptl.idProyeccion')
-                                //                                     ->innerJoin('prynhptl.idAreaExamenEstab', 'mmxstd')
-                                //                                     ->innerJoin('mmxstd.idAreaServicioDiagnostico', 'mdld')
-                                //                                     ->where('mdld.idAtencion = :id_atn')
-                                //                                     ->setParameter('id_atn', $__XRAY_CLINICAL_SERVICE_ID__)  // --| 97 (Imagenología)
-                                //                                     ->andWhere('mmxstd.idEstablecimiento = :id_std')
-                                //                                     ->setParameter('id_std', $session_USER_LOCATION->getId())  // --| 97 (Hospital Local)
-                                //                                     ->andWhere('mmxstd.idAreaServicioDiagnostico = :id_mdld')
-                                //                                     ->setParameter('id_mdld', $filter_modality_)  // --| 97 (Modalidad filtro)
-                                //                                     ->andWhere('mmxstd.activo = TRUE')
-                                //                                     ->andWhere('prynhptl.habilitado = TRUE')
-                                //                                     ->orderBy('pryn.codigo')
-                                //                                     ->addOrderBy('pryn.nombre')
-                                //                                     ->distinct();
-                                //                     },
-                                'group_by' => 'idDonacion',
-                                'help' => '<span class="text-primary-v4">Complete el lote para iniciar el análisis</span>',
-                                'attr' => array(
-                                        'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,
-                                        'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
-                                        'data-sonata-select2-escape-markup' => 'true',
-                                        // 'style' => 'max-height: 500px; overflow-y: auto;'
-                                )
-                ))
-            ->end()
-        ;
     }
 
     /**
@@ -178,6 +178,37 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhLoteAnalisisAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            // array('MinsalSiblhBundle:BlhLoteAnalisisAdmin:doctrine_orm_form_admin_fields.html.twig'),
+            array('MinsalSiblhBundle:BlhLoteAnalisisAdmin:form_admin_fields.html.twig')
+       );
     }
 
 }
