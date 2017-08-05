@@ -55,61 +55,55 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// collected bottles table
             //////////////////////////////////////////////////////////////////////////////////////////////
-{#
-            {% if DEFAULT_TABLE_OPTIONS is defined %}
-#}
-                var $table = jQuery('#blh_collected_bottle_target_bstable');
+            var $table = jQuery('#blh_collected_bottle_target_bstable');
 
+            $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal'
+            });
+            $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
+
+            $table.on('page-change.bs.table', function (e, number, size) {
                 $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
                     checkboxClass: 'icheckbox_minimal',
                     radioClass: 'iradio_minimal'
                 });
                 $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
+                $table.find('tbody tr td input[type=radio][value="' + selections[0] + '"]').iCheck('check');
+            });
 
-                $table.on('page-change.bs.table', function (e, number, size) {
-                    $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
-                        checkboxClass: 'icheckbox_minimal',
-                        radioClass: 'iradio_minimal'
-                    });
-                    $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
-                    // window.console.log('radio', $table.find('tbody tr td input:radio').length, $table.find('tbody tr td .iCheck-helper').length, number, size);
+            {% if COLLECTED_BOTTLES_FOR_ANALYSIS is defined and COLLECTED_BOTTLES_FOR_ANALYSIS|length == 0 %}
+                swal({
+                    html:true,
+                    title: "La consulta no devolvió ningún registro",
+                    text: "Consulte frascos para análisis en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonClass: "btn-sm btn-default",
+                    confirmButtonClass: "btn-sm btn-primary-v4",
+                    confirmButtonText: "Aceptar",
+                    cancelButtonText: "Cancelar",
+                    // closeOnConfirm: false,
+                    // closeOnCancel: false,
+                    animation: false,
+                },
+                function(isConfirm) {
+                    if (isConfirm) {
+                        var url = Routing.generate('siblh_donacion_create', {mode: 'standard', interaction: false});
+                        window.location.href = url; // simulate link click
+                    }
                 });
-{#
-                $table.bootstrapTable('destroy').bootstrapTable(JSON.parse('{{ DEFAULT_TABLE_OPTIONS|json_encode|e('js')|raw }}'));
-#}
-    
-                // $table.on('load-success.bs.table', function (e, data) {
-                {% if COLLECTED_BOTTLES_FOR_ANALYSIS is defined and COLLECTED_BOTTLES_FOR_ANALYSIS|length == 0 %}
-                    // if (data.length === 0) {
-                        swal({
-                            html:true,
-                            title: "La consulta no devolvió ningún registro",
-                            text: "Consulte frascos para análisis en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
-                            type: "warning",
-                            showCancelButton: true,
-                            cancelButtonClass: "btn-sm btn-default",
-                            confirmButtonClass: "btn-sm btn-primary-v4",
-                            confirmButtonText: "Aceptar",
-                            cancelButtonText: "Cancelar",
-                            // closeOnConfirm: false,
-                            // closeOnCancel: false,
-                            animation: false,
-                        },
-                        function(isConfirm) {
-                            if (isConfirm) {
-                                var url = Routing.generate('siblh_donacion_create', {mode: 'standard', interaction: false});
-                                window.location.href = url; // simulate link click
-                            }
-                        });
-                //     }
-                {% endif %}
-                // });
-{#
             {% endif %}
-#}
 
+            var selections = [];
             jQuery(document).on('ifChecked', 'input[name="RLIST_{{ admin.uniqId }}[collected_bottles_for_analysis][]"]', function(e) {
                 jQuery('#{{ admin.uniqId }}_idFrascoRecolectado').val(this.value);
+
+                // save your data, here just save the current page
+                // selections = getIdSelections();
+                selections = [this.value];
+                // push or splice the selections if you want to save all data selections
+                console.log('selections', selections);
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
             
