@@ -59,7 +59,7 @@ file that was distributed with this source code.
             {% if DEFAULT_TABLE_OPTIONS is defined %}
 #}
                 var $table = jQuery('#blh_collected_bottle_target_bstable');
-                
+
                 $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
                     checkboxClass: 'icheckbox_minimal',
                     radioClass: 'iradio_minimal'
@@ -108,7 +108,7 @@ file that was distributed with this source code.
             {% endif %}
 #}
 
-            jQuery('input[name="RLIST_{{ admin.uniqId }}[collected_bottles_for_analysis][]"]').on('ifChecked', function(e) {
+            jQuery(document).on('ifChecked', 'input[name="RLIST_{{ admin.uniqId }}[collected_bottles_for_analysis][]"]', function(e) {
                 jQuery('#{{ admin.uniqId }}_idFrascoRecolectado').val(this.value);
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
