@@ -65,21 +65,22 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idFrascoRecolectado', null, array(
-                            'label' => 'Frasco recolectado',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'group_by' => 'idLoteAnalisis',
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            ->add('idFrascoRecolectado', 'sonata_type_model_hidden')
+            // ->add('idFrascoRecolectado', null, array(
+            //                 'label' => 'Frasco recolectado',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'group_by' => 'idLoteAnalisis',
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'start',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
-                            )
-            ))
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+            //                 )
+            // ))
             ->add('embalaje', null, array(
                             'label' => 'Embalaje',
                             'label_attr' => array('class' => 'label_form_sm'),

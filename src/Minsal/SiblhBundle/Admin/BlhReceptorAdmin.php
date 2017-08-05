@@ -117,6 +117,20 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
 //                            )
 //            ))
             ->add('idPaciente', 'sonata_type_model_hidden')
+            ->add('idExpediente', 'sonata_type_model_hidden')
+            ->add('idMadreDonante', null, array(
+                            'label' => 'Madre donante',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            // 'required' => true,
+                            // 'group_by' => 'idEstablecimiento',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+                            )
+            ))
             ->add('codigoReceptor', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),

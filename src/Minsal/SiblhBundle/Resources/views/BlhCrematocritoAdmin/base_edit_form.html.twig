@@ -39,6 +39,71 @@
                 {% block simagd_apply_custom_firstbox %} {% endblock %}
 
                 {% block sonata_tab_content %}
+
+                    <!--
+                    //////////////////////////////////////////////////////////////
+                    //////// TABLE
+                    //////////////////////////////////////////////////////////////
+                     -->
+                    <!-- table for any result -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="box box-drop-outside-shadow box-success-v3">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    <span class="text-black-thrash">Frascos para análisis</span>
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="alert alert-dark-success-lighter-medicine alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
+                                        <span>
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el lote no puede crearse por deficit, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>.
+                                        </span>
+                                    </div>
+
+                                    <div class="non-bootstraptable-fixed-table-container">
+                                        <table {#data-toggle="table"#} class="table table-condensed table-hover table-xray-supreme-head" id="blh_conditioned_bottle_target_bstable" name="blh_conditioned_bottle_target_bstable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Paciente</th>
+                                                    <th>Reg.</th>
+                                                    <th>Procedimiento</th>
+                                                    <th>Téc. / Lic. / Rdlg.</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in 0..10 %}
+                                                    <tr>
+                                                        <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                                                        <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                                                        <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                                                        <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                                                        <td style="vertical-align: middle; text-align: center;"><input type="checkbox" name=""></td>
+                                                    </tr>
+                                                {% endfor %}
+
+                                                {% for cb in CONDITIONED_BOTTLES_FOR_ANALYSIS %}
+                                                    <tr>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end table -->
+
+
+                    <!--
+                    //////////////////////////////////////////////////////////////
+                    //////// END --| TABLE
+                    //////////////////////////////////////////////////////////////
+                     -->
+
                     {% for name, form_group in admin.formgroups %}
                         <div class="{{ form_group.class|default('col-md-12') }}">
                             <div class="box box-drop-outside-shadow box-primary-v4">

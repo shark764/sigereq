@@ -66,7 +66,22 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ->add('idBancoDeLeche', 'sonata_type_model_hidden')
                 ->add('idCentroRecoleccion', 'sonata_type_model_hidden')
                 ->add('idDonante', 'sonata_type_model_hidden')
-                ->add('codigoDonante', null, array(
+                // ->add('codigoDonante', null, array(
+                //                 'label' => 'Código',
+                //                 'label_attr' => array('class' => 'label_form_sm'),
+                //                 'required' => false,
+                //                 'attr' => array(
+                //                         'placeholder' => 'código...',
+                //                         'class' => 'form-control input-sm',
+                //                         'readonly' => 'readonly',
+                //                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                //                         'data-add-input-addon' => 'true',
+                //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                //                 )
+                // ))
+/*
+                ->add('codigo', null, array(
                                 'label' => 'Código',
                                 'label_attr' => array('class' => 'label_form_sm'),
                                 'required' => false,
@@ -80,6 +95,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                                 )
                 ))
+*/
                 // ->add('idBancoDeLeche', null, array(
                 //                 'label' => 'Banco de Leche',
                 //                 'label_attr' => array('class' => 'label_form_sm'),

@@ -55,12 +55,17 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// collected bottles table
             //////////////////////////////////////////////////////////////////////////////////////////////
+{#
             {% if DEFAULT_TABLE_OPTIONS is defined %}
+#}
+{#
                 var $table = jQuery('#blh_collected_bottle_target_bstable');
                 $table.bootstrapTable('destroy').bootstrapTable(JSON.parse('{{ DEFAULT_TABLE_OPTIONS|json_encode|e('js')|raw }}'));
+#}
     
-                $table.on('load-success.bs.table', function (e, data) {
-                    if (data.length === 0) {
+                // $table.on('load-success.bs.table', function (e, data) {
+                {% if COLLECTED_BOTTLES_FOR_ANALYSIS is defined and COLLECTED_BOTTLES_FOR_ANALYSIS|length == 0 %}
+                    // if (data.length === 0) {
                         swal({
                             html:true,
                             title: "La consulta no devolvió ningún registro",
@@ -81,9 +86,16 @@ file that was distributed with this source code.
                                 window.location.href = url; // simulate link click
                             }
                         });
-                    }
-                });
+                //     }
+                {% endif %}
+                // });
+{#
             {% endif %}
+#}
+
+            jQuery('input[name="{{ admin.uniqId }}[collected_bottles_for_analysis][]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_idFrascoRecolectado').val(this.value);
+            });
             //////////////////////////////////////////////////////////////////////////////////////////////
             
             //////////////////////////////////////////////////////////////////////////////////////////////

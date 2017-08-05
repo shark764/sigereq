@@ -24,8 +24,178 @@ file that was distributed with this source code.
     {{ parent() }}
 
     <script type="text/javascript">
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var patientFormatResult = function(el) {
+            var markup = '<div class="row-fluid">' +
+                                '<div class="span10">' +
+                                '<div class="row-fluid">' +
+                                '<div class="span6">' + el.full_name + '</div>' +
+                            '</div>';
+
+            markup += '</div></div>';
+
+            return markup;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var patientFormatSelection = function(el) {
+            return el.full_name;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
 
         jQuery(document).ready(function() {
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// initialize with custom options
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            var record_select = jQuery('#DONATION_SEARCHPATIENT_search_patient');
+            record_select.select2({
+                width: 'resolve',
+                minimumResultsForSearch: 10,
+                dropdownAutoWidth : true,
+                allowClear: true,
+                placeholder: 'click para filtrar por donante...',
+                minimumInputLength: 3,
+                maximumSelectionSize: 1,
+                // multiple: true,
+                escapeMarkup: function(markup) {
+                    return markup;
+                },
+                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                    url: Routing.generate('simagd_expediente_referido_search'),
+                    dataType: 'json',
+                    quietMillis: 250,
+                    data: function (term, page) {
+                        var l = loc_select.val();
+                        // var $type = jQuery('input[name=_search_type]:checked');
+                        // var $val = $type.val();
+                        return {
+                            q: term, // search term
+                            // t: $val, // patient type
+                            l: l, // location
+                        };
+                    },
+                    results: function (data, page) { // parse the results into the format expected by Select2.
+                        // since we are using custom formatting functions we do not need to alter the remote JSON data
+                        return { results: data.items };
+                    },
+                    cache: true
+                },
+                initSelection: function(element, callback) {
+                    // the input tag has a value attribute preloaded that points to a preselected repository's id
+                    // this function resolves that id attribute to an object that select2 can render
+                    // using its formatResult renderer - that way the repository name is shown preselected
+                    var id = $(element).val();
+                    if (id !== "") {
+                        var $type = jQuery('input[name=_search_type]:checked');
+                        var tp = $type.val();
+                        $.ajax(Routing.generate('simagd_expediente_referido_search', {id: id, t: tp}), {
+                            dataType: "json"
+                        }).done(function(data) { callback(data.item); });
+                    }
+                },
+                formatResult: patientFormatResult,  // display patient information
+                formatSelection: patientFormatSelection,    // selection
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// patient record change event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            record_select.on('change', function (e) {
+                var rvalue = this.value;
+
+                if (!rvalue) {
+                    jQuery('#DONATION_SEARCHPATIENT_{{ admin.uniqId }}_short_info_container').html('');
+                    jQuery('#DONATION_SEARCHPATIENT_{{ admin.uniqId }}_info_container').html('');
+                    jQuery('#{{ admin.uniqId }}_idDonante').val('');
+                    return;
+                }
+
+                jQuery('#{{ admin.uniqId }}_idDonante').val(rvalue);
+
+                var l = loc_select.val();
+                var tp = parseInt(l, 10) !== parseInt({{ app.user.getIdEstablecimiento().getId()|e('js') }}, 10) ? 1 : 0;
+
+                $.getJSON(Routing.generate('simagd_expediente_referido_search'), {
+                        id : rvalue,
+                        t: tp,   // patient type
+                        l: l, // location
+                    })
+                    .done(function(data) {
+                        jQuery('#DONATION_SEARCHPATIENT_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+                    })
+                    .fail(function(jqxhr, textStatus, error) {
+                        //////// patient jumbotron
+                        jQuery('#DONATION_SEARCHPATIENT_{{ admin.uniqId }}_short_info_container').html('');
+                        jQuery('#DONATION_SEARCHPATIENT_{{ admin.uniqId }}_info_container').html('');
+                        window.console.log(error, textStatus);
+                    });
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// initialize with custom options - LOCATION
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            var loc_select = jQuery('#DONATION_SEARCHPATIENT_search_patient_location');
+            loc_select.select2({
+                width: 'resolve',
+                minimumResultsForSearch: 10,
+                dropdownAutoWidth : true,
+                allowClear: true,
+                placeholder: 'click para filtrar por establecimiento...',
+                minimumInputLength: 3,
+                maximumSelectionSize: 1,
+                // multiple: true,
+                escapeMarkup: function(markup) {
+                    return markup;
+                },
+                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                    url: Routing.generate('simagd_expediente_referido_searchLocation'),
+                    dataType: 'json',
+                    quietMillis: 250,
+                    data: function (term, page) {
+                        return {
+                            q: term, // search term
+                        };
+                    },
+                    results: function (data, page) { // parse the results into the format expected by Select2.
+                        // since we are using custom formatting functions we do not need to alter the remote JSON data
+                        return { results: data.items };
+                    },
+                    cache: true
+                },
+                {% if app.user.getIdEstablecimiento() is not null %}
+                    initSelection: function(element, callback) {
+                        // // the input tag has a value attribute preloaded that points to a preselected repository's id
+                        // // this function resolves that id attribute to an object that select2 can render
+                        // // using its formatResult renderer - that way the repository name is shown preselected
+                        // var id = $(element).val();
+                        // if (id !== "") {
+                        //     var $type = jQuery('input[name=_search_type]:checked');
+                        //     var tp = $type.val();
+                        //     $.ajax(Routing.generate('simagd_expediente_referido_search', {id: id, t: tp}), {
+                        //         dataType: "json"
+                        //     }).done(function(data) { callback(data.item); });
+                        // }
+                        callback({'id': {{ app.user.getIdEstablecimiento().getId()|e('js') }}, 'full_name': '{{ app.user.getIdEstablecimiento().getNombre() }}'});
+                    },
+                {% endif %}
+                formatResult: patientFormatResult,  // display patient information
+                formatSelection: patientFormatSelection,    // selection
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// patient record change event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            loc_select.on('change', function (e) {
+                record_select.select2('val', '').triggerHandler('change');
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// calculate value
             //////////////////////////////////////////////////////////////////////////////////////////////

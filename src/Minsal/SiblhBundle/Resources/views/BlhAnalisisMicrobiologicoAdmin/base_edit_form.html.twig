@@ -50,7 +50,7 @@
                         <div class="box box-drop-outside-shadow box-success-v3">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    <span class="text-black-thrash">Lote de frascos recolectados para análisis</span>
+                                    <span class="text-black-thrash">Frascos procesados para análisis</span>
                                 </h4>
                             </div>
                             <div class="box-body">
@@ -63,7 +63,7 @@
                                     </div>
 
                                     <div class="non-bootstraptable-fixed-table-container">
-                                        <table {#data-toggle="table"#} class="table table-condensed table-hover table-xray-supreme-head" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable">
+                                        <table {#data-toggle="table"#} class="table table-condensed table-hover table-xray-supreme-head" id="blh_processed_bottle_target_bstable" name="blh_processed_bottle_target_bstable">
                                             <thead>
                                                 <tr>
                                                     <th>Paciente</th>
@@ -84,7 +84,7 @@
                                                     </tr>
                                                 {% endfor %}
 
-                                                {% for cb in COLLECTED_BOTTLES_FOR_ANALYSIS %}
+                                                {% for cb in PROCESSED_BOTTLES_FOR_ANALYSIS %}
                                                     <tr>
                                                     </tr>
                                                 {% endfor %}

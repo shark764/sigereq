@@ -94,20 +94,23 @@ class BlhAnalisisSensorialAdminController extends MinsalSiblhBundleGeneralAdminC
         //////////////////////////////////////////////////////////////////////////////////////////////
         //////// --| builder entity
         //////////////////////////////////////////////////////////////////////////////////////////////
-        $ENTITY_LIST_VIEW_GENERATOR_ = new BlhFrascoRecolectadoListViewGenerator(
-                $this->container,
-                $this->admin->getRouteGenerator(),
-                $this->admin->getClass()
-        );
-        //////// --|
-        $options = $ENTITY_LIST_VIEW_GENERATOR_->getTable();
+        // $ENTITY_LIST_VIEW_GENERATOR_ = new BlhFrascoRecolectadoListViewGenerator(
+        //         $this->container,
+        //         $this->admin->getRouteGenerator(),
+        //         $this->admin->getClass()
+        // );
+        // //////// --|
+        // $options = $ENTITY_LIST_VIEW_GENERATOR_->getTable();
         //////////////////////////////////////////////////////////////////////////////////////////////
+
+        $collected_bottles_for_analysis = array();
 
         return $this->render($this->admin->getTemplate($templateKey), array(
             'action' => 'create',
             'form'   => $view,
             'object' => $object,
-            'DEFAULT_TABLE_OPTIONS' => $options,
+            // 'DEFAULT_TABLE_OPTIONS' => $options,
+            'COLLECTED_BOTTLES_FOR_ANALYSIS' => $collected_bottles_for_analysis,
         ));
     }
 

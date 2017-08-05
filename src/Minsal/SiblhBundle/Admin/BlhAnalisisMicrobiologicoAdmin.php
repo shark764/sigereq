@@ -63,21 +63,22 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idFrascoProcesado', null, array(
-                            'label' => 'Frasco procesado',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'group_by' => 'idPasteurizacion',
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            ->add('idFrascoProcesado', 'sonata_type_model_hidden')
+            // ->add('idFrascoProcesado', null, array(
+            //                 'label' => 'Frasco procesado',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'group_by' => 'idPasteurizacion',
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'start',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
-                            )
-            ))
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+            //                 )
+            // ))
             ->add('codigoAnalisisMicrobiologico', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -170,6 +171,28 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhAnalisisMicrobiologicoAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
 }
