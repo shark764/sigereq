@@ -62,8 +62,10 @@
                                         </span>
                                     </div>
 
+{#
                                     <div class="non-bootstraptable-fixed-table-container">
-                                        <table {#data-toggle="table"#} class="table table-condensed table-hover table-xray-supreme-head" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable">
+#}
+                                        <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable">
                                             <thead>
                                                 <tr>
                                                     <th>Paciente</th>
@@ -78,7 +80,7 @@
                                                         <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
                                                         <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
                                                         <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                                                        <td style="vertical-align: middle; text-align: center;"><input type="checkbox" name=""></td>
+                                                        <td style="vertical-align: middle; text-align: center;"><input type="checkbox" name="" checked="checked"></td>
                                                     </tr>
                                                 {% endfor %}
 
@@ -88,7 +90,9 @@
                                                 {% endfor %}
                                             </tbody>
                                         </table>
+{#
                                     </div>
+#}
                                 </div>
                             </div>
                         </div>
