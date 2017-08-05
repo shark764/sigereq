@@ -59,13 +59,20 @@ file that was distributed with this source code.
             {% if DEFAULT_TABLE_OPTIONS is defined %}
 #}
                 var $table = jQuery('#blh_collected_bottle_target_bstable');
+                
+                $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
+                    checkboxClass: 'icheckbox_minimal',
+                    radioClass: 'iradio_minimal'
+                });
+                $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
+
                 $table.on('page-change.bs.table', function (e, number, size) {
                     $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
                         checkboxClass: 'icheckbox_minimal',
                         radioClass: 'iradio_minimal'
                     });
                     $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
-                    window.console.log('radio', $table.find('tbody tr td input:radio').length, $table.find('tbody tr td .iCheck-helper').length, number, size);
+                    // window.console.log('radio', $table.find('tbody tr td input:radio').length, $table.find('tbody tr td .iCheck-helper').length, number, size);
                 });
 {#
                 $table.bootstrapTable('destroy').bootstrapTable(JSON.parse('{{ DEFAULT_TABLE_OPTIONS|json_encode|e('js')|raw }}'));
