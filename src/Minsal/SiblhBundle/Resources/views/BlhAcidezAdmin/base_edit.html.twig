@@ -64,7 +64,7 @@ file that was distributed with this source code.
                     radioClass: 'iradio_minimal'
                 });
                 $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
-                window.console.log('radio', $table.find('tbody tr td input:radio').length, $table.find('tbody tr td .iCheck-helper').length);
+                // window.console.log('radio', $table.find('tbody tr td input:radio').length, $table.find('tbody tr td .iCheck-helper').length);
 {#
                 $table.bootstrapTable('destroy').bootstrapTable(JSON.parse('{{ DEFAULT_TABLE_OPTIONS|json_encode|e('js')|raw }}'));
 #}
@@ -99,7 +99,7 @@ file that was distributed with this source code.
             {% endif %}
 #}
 
-            jQuery('input[name="{{ admin.uniqId }}[collected_bottles_for_analysis][]"]').on('ifChecked', function(e) {
+            jQuery('input[name="RLIST_{{ admin.uniqId }}[collected_bottles_for_analysis][]"]').on('ifChecked', function(e) {
                 jQuery('#{{ admin.uniqId }}_idFrascoRecolectado').val(this.value);
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
