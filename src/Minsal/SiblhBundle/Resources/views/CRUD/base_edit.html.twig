@@ -110,16 +110,9 @@ file that was distributed with this source code.
 
 {% block javascripts %}
     {{ parent() }}
-
-    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     
     <script>
         window.console.log('%c <div class="note-speech-recognize" style="height: 50px; background: #f5f5f5; display:none;"></div>', 'background: #2A5469; color: #fff');
-
-        jQuery(window).load(function () {
-            jQuery(document.body).removeClass('modal-open');
-        });
 
         jQuery(document).ready(function() {
             /*
@@ -280,8 +273,8 @@ file that was distributed with this source code.
         });
     </script>
 
-    {# select2-es #}
-    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script>
+    {# select2-es
+    <script type="text/javascript" src="{{ asset('/bundles/sonataadmin/vendor/select2/select2_locale_es.js') }}" ></script> #}
 
     {# formValidation #}
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/formvalidation-master/dist/js/formValidation.min.js') }}" ></script>

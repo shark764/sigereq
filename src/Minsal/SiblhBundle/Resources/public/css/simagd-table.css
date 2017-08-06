@@ -55,7 +55,7 @@ table td a.detail-icon {
 
 /*
  * *****************************************************************************
- * --| BSTABLE NO-RECORDS-FOUND
+ * --| BSTABLE CLICK-ROW-BSTABLE
  * *****************************************************************************
  */
 .bootstrap-table .fixed-table-container .fixed-table-body .click-row-bstable {
@@ -68,6 +68,23 @@ table td a.detail-icon {
 .table-hover>tbody>tr.click-row-bstable:hover>td,
 .table-hover>tbody>tr.click-row-bstable:hover>th {
     background-color: #ffffcc;
+}
+
+/*
+ * *****************************************************************************
+ * --| BSTABLE CHECKED-ROW-BSTABLE
+ * *****************************************************************************
+ */
+.bootstrap-table .fixed-table-container .fixed-table-body .checked-row-bstable {
+    background-color: rgba(255, 218, 204, 0.64);
+}
+.table-striped > tbody > tr.checked-row-bstable:nth-child(odd) > td,
+.table-striped > tbody > tr.checked-row-bstable:nth-child(odd) > th {
+    background-color: rgba(255, 218, 204, 0.64);
+}
+.table-hover>tbody>tr.checked-row-bstable:hover>td,
+.table-hover>tbody>tr.checked-row-bstable:hover>th {
+    background-color: rgba(255, 218, 204, 0.64);
 }
 
 

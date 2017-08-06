@@ -1,12 +1,12 @@
 sonata_admin:
     security:
         handler: sonata.admin.security.handler.role
-    title:       Sistema de Bancos de Leche
+    title:       Sistema de Bancos de Leche Humana
     title_logo:  /bundles/minsalsiblh/images/blh.png
     templates:
         # default global templates
-        layout:  SonataAdminBundle::standard_layout.html.twig
-        ajax:    SonataAdminBundle::ajax_layout.html.twig
+        layout:  SonataAdminBundle:Blh:standard_layout.html.twig
+        ajax:    SonataAdminBundle:Blh:ajax_layout.html.twig
  
         # default actions templates, should extend a global templates
         list:    SonataAdminBundle:CRUD:list.html.twig
