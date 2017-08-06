@@ -109,13 +109,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('crema1', null, array(
                             'label' => '1ra Crema',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '1ra crema...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
@@ -132,13 +133,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('crema2', null, array(
                             'label' => '2da Crema',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '2da crema...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
@@ -155,13 +157,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('crema3', null, array(
                             'label' => '3ra Crema',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '3ra crema...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
@@ -178,13 +181,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('mediaCrema', null, array(
                             'label' => 'Crema promedio',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'crema promedio...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
@@ -201,12 +205,12 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('porcentajeCrema', null, array(
                             'label' => 'Porcentaje de crema',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'porcentaje de crema...',
                                     'class' => 'form-control input-sm',
-                                    'readonly' => 'readonly',
+                                    // 'readonly' => 'readonly',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
@@ -224,13 +228,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('ct1', null, array(
                             'label' => '1ra ct',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '1ra ct...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
@@ -247,13 +252,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('ct2', null, array(
                             'label' => '2da ct',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '2da ct...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
@@ -270,13 +276,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('ct3', null, array(
                             'label' => '3ra ct',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => '3ra ct...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
@@ -293,13 +300,14 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('mediaCt', null, array(
                             'label' => 'Ct promedio',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'ct promedio...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
@@ -316,12 +324,12 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('kilocalorias', null, array(
                             'label' => 'Kilocalorías',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'kilocalorías...',
                                     'class' => 'form-control input-sm',
-                                    'readonly' => 'readonly',
+                                    // 'readonly' => 'readonly',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',

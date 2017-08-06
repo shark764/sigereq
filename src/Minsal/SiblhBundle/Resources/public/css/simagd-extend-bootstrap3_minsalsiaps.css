@@ -81,6 +81,7 @@ and open the template in the editor.
     z-index: 2;
     color: #08222e;
     top: -1px;
+    cursor: initial;
 }
 
 

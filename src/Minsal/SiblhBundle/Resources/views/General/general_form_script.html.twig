@@ -169,18 +169,18 @@
             //////////////////////////////////////////////////////////////////////////
             //////// dbl-click-row.bs.table event
             //////////////////////////////////////////////////////////////////////////
-            $gtable.on('dbl-click-row.bs.table', function (e, row, $element, field) {
-                // var url = null;
-                // var type_view = jQuery('input[name=_worklist_dashboard_display_type]:checked').val();
-                // if (row.hasOwnProperty('table_dbl_click_url') && type_view === 'list') {
-                //     url = row.table_dbl_click_url;
-                // }
-                // if (typeof url !== "undefined" && url !== null && url !== "") {
-                //     window.console.log('e', e, '\nrow', row, '\n$element', $element, '\nfield', field, '\nurl', url, '\nID', row.id);
-                //     window.location.href = url; // simulate link click
-                // }
-                window.console.log('e', e, '\nrow', row, '\n$element', $element, '\nfield', field, '\nID', row.id);
-            });
+            // $gtable.on('dbl-click-row.bs.table', function (e, row, $element, field) {
+            //     // var url = null;
+            //     // var type_view = jQuery('input[name=_worklist_dashboard_display_type]:checked').val();
+            //     // if (row.hasOwnProperty('table_dbl_click_url') && type_view === 'list') {
+            //     //     url = row.table_dbl_click_url;
+            //     // }
+            //     // if (typeof url !== "undefined" && url !== null && url !== "") {
+            //     //     window.console.log('e', e, '\nrow', row, '\n$element', $element, '\nfield', field, '\nurl', url, '\nID', row.id);
+            //     //     window.location.href = url; // simulate link click
+            //     // }
+            //     window.console.log('e', e, '\nrow', row, '\n$element', $element, '\nfield', field, '\nID', row.id);
+            // });
             //////////////////////////////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////
 
@@ -203,7 +203,7 @@
             //////// TOUPPERCASE - KEYUP EVENT
             //////////////////////////////////////////////////////////////////////////
             jQuery('[data-input-uppercase="true"]').on('keyup keydown blur', function(e) {
-                this.value= this.value.toUpperCase();
+                this.value = this.value.toUpperCase();
             });
             //////////////////////////////////////////////////////////////////////////
 

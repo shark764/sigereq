@@ -83,10 +83,12 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('embalaje', null, array(
                             'label' => 'Embalaje',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'placeholder' => 'embalaje...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
@@ -103,10 +105,12 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('suciedad', null, array(
                             'label' => 'Suciedad',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'placeholder' => 'suciedad...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
@@ -123,10 +127,12 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('color', null, array(
                             'label' => 'Color',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'placeholder' => 'color...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
@@ -143,10 +149,12 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('flavor', null, array(
                             'label' => 'Flavor',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'placeholder' => 'flavor...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
@@ -163,13 +171,14 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('observacion', 'textarea', array(
                             'label' => 'Observaciones / Comentarios',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'rows' => '2',
                                     'style' => 'resize:none',
                                     'placeholder' => 'comentarios...',
                                     'class' => 'form-control input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-5 col-md-5 col-sm-5',
 
                                     'data-fv-stringlength' => 'true',
                                     'data-fv-stringlength-min' => '5',

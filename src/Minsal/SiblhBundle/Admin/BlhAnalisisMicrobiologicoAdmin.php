@@ -81,12 +81,13 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('codigoAnalisisMicrobiologico', null, array(
                             'label' => 'Código',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'código...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
@@ -94,10 +95,12 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('coliformesTotales', null, array(
                             'label' => 'Coliformes totales',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'placeholder' => 'coliformes totales...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
@@ -114,10 +117,12 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('control', null, array(
                             'label' => 'Control',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'placeholder' => 'control...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
@@ -134,10 +139,12 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('situacion', null, array(
                             'label' => 'Situación',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'placeholder' => 'situación...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',

@@ -178,7 +178,7 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'placeholder' => 'factor...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
@@ -201,7 +201,7 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'placeholder' => 'resultado...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
