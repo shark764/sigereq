@@ -85,12 +85,12 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('acidez1', null, array(
                             'label' => '1ra Acidez',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => '1ra acidez...',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -106,12 +106,12 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('acidez2', null, array(
                             'label' => '2da Acidez',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => '2da acidez...',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -127,12 +127,12 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('acidez3', null, array(
                             'label' => '3ra Acidez',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => '3ra acidez...',
-                                    // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -148,13 +148,14 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('mediaAcidez', null, array(
                             'label' => 'Acidez promedio',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'acidez promedio...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
@@ -171,11 +172,13 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('factor', null, array(
                             'label' => 'Factor',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'factor...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
@@ -192,11 +195,13 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('resultado', null, array(
                             'label' => 'Resultado',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'resultado...',
                                     'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-edit',
