@@ -92,7 +92,7 @@ file that was distributed with this source code.
             });
             $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
             for (var i = 0, len = selections.length; i < len; ++i) {
-               $table.find('tbody tr td input[type=checkbox][value="' + selections[i] + '"]').iCheck('check');
+                $table.find('tbody tr td input[type=checkbox][value="' + selections[i] + '"]').iCheck('check');
             }
         });
         $table.on('dbl-click-row.bs.table', function (e, row, $element, field) {
