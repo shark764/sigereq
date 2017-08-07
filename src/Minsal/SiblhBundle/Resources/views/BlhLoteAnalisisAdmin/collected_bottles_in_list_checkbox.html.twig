@@ -16,61 +16,114 @@ file that was distributed with this source code.
     </span>
 </div>
 
-<div class="non-bootstraptable-fixed-table-container">
-    <table {#data-toggle="table"#} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable">
-        <thead>
+<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable"
+        data-id-field="id"
+        data-cache="false"
+        data-show-columns="true"
+        data-search="true"
+        data-pagination="true"
+        data-pagination-h-align="left"
+        data-pagination-detail-h-align="right"
+        data-page-list="[5, 10, 15]"
+        data-page-size="5"
+        data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
+        data-buttons-class="xray-awesome-blue"
+        data-search-align="left"
+        data-buttons-align="left"
+        data-toolbar-align="right">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Paciente</th>
+            <th>Reg.</th>
+            <th>Téc. / Lic. / Rdlg.</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in 1..15 %}
             <tr>
-                <th>Paciente</th>
-                <th>Reg.</th>
-                <th>Procedimiento</th>
-                <th>Téc. / Lic. / Rdlg.</th>
-                <th></th>
+                <td style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_loteAnalisisFrascoRecolectado_{{ i }}" name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]" value="{{ i }}"></td>
+                <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
             </tr>
-        </thead>
-        <tbody>
-            {% for i in 0..10 %}
-                <tr>
-                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                    <td style="vertical-align: middle; text-align: center;"><input type="checkbox" name=""></td>
-                </tr>
-            {% endfor %}
+        {% endfor %}
 
-            {% for child in form %}
-            	{% set s = choices[child.vars.value].data %}
-                {% set form_widget_content %}
-                    {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
-                {% endset %}
-                <tr>
-                    <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getIdReferido() }}</span>{% else %}{{ s.getIdExpediente().getIdPaciente() }}{% endif %}</td>
-                    <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getNumero() }}</span>{% else %}{{ s.getIdExpediente().getNumero() }}{% endif %}</td>
-                    <td>
-                        <ul class="bs-list-styled">
-                            {% for p in s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getSolicitudEstudioProyeccion() %}
-                                <li>{{ p }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                    <td>{{ s.getFechaHoraReg()|format_date('EEEE, MMMM d, yyyy', 'es_ES') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
-                    <td style="vertical-align: middle; text-align: center;">{{ form_widget_content|raw }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+        {% for child in form %}
+        	{% set s = choices[child.vars.value].data %}
+            {% set form_widget_content %}
+                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+            {% endset %}
+            <tr>
+                <td style="vertical-align: middle; text-align: center;">{{ form_widget_content|raw }}</td>
+                <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getIdReferido() }}</span>{% else %}{{ s.getIdExpediente().getIdPaciente() }}{% endif %}</td>
+                <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getNumero() }}</span>{% else %}{{ s.getIdExpediente().getNumero() }}{% endif %}</td>
+                <td>
+                    <ul class="bs-list-styled">
+                        {% for p in s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getSolicitudEstudioProyeccion() %}
+                            <li>{{ p }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ s.getFechaHoraReg()|format_date('EEEE, MMMM d, yyyy', 'es_ES') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 <script type="text/javascript">
 
     jQuery(document).ready(function() {
-        //////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////// collected bottles table
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        {#var $table = jQuery('#blh_collected_bottle_target_bstable');
-        $table.bootstrapTable('destroy').bootstrapTable();#}
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        var $table = jQuery('#blh_collected_bottle_target_bstable');
 
-        {% if choices|length == 0 %}
+        $table.find('tbody tr td input:checkbox').iCheck('destroy').iCheck({
+            checkboxClass: 'icheckbox_minimal',
+            radioClass: 'iradio_minimal'
+        });
+        $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
+
+        $table.on('page-change.bs.table', function (e, number, size) {
+            $table.find('tbody tr td input:checkbox').iCheck('destroy').iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal'
+            });
+            $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
+            for (var i = 0, len = selections.length; i < len; ++i) {
+                $table.find('tbody tr td input[type=checkbox][value="' + selections[i] + '"]').iCheck('check');
+            }
+        });
+        $table.on('dbl-click-row.bs.table', function (e, row, $element, field) {
+            $element.find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
+            // $element.addClass('checked-row-bstable').siblings('tr').removeClass('checked-row-bstable');
+        });
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //////// get selections
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var selections = [];
+        jQuery(document).on('ifChanged', 'input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]', function(e) {
+            if (this.checked === false) {
+                // push or splice the selections if you want to save all data selections
+                selections.splice(selections.indexOf(this.value), 1);
+                jQuery(this).closest('tr').removeClass('checked-row-bstable');
+            }
+            else {
+                // save your data, here just save the current page
+                if(jQuery.inArray(this.value, selections) === -1) {
+                    selections.push(this.value);
+                    jQuery(this).closest('tr').addClass('checked-row-bstable');
+                }
+            }
+            // window.console.log('selections +/-', selections);
+        });
+
+        {% if choices is defined and choices|length == 0 %}
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// there is not any collected bottle
+            //////////////////////////////////////////////////////////////////////////////////////////////
             swal({
                 html:true,
                 title: "La consulta no devolvió ningún registro",
@@ -92,7 +145,7 @@ file that was distributed with this source code.
                 }
             });
         {% endif %}
-        //////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     });
 
 </script>

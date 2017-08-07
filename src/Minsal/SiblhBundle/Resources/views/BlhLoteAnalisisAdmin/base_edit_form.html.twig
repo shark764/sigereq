@@ -39,37 +39,6 @@
                 {% block simagd_apply_custom_firstbox %} {% endblock %}
 
                 {% block sonata_tab_content %}
-{#
-                    <!--
-                    //////////////////////////////////////////////////////////////
-                    //////// TABLE
-                    //////////////////////////////////////////////////////////////
-                     -->
-                    <!-- table for any result -->
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="box box-drop-outside-shadow box-success-v3">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    <span class="text-black-thrash">Frascos recolectados</span>
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <table class="table table-condensed" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable" >
-                                        <thead></thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end table -->
-
-                    <!--
-                    //////////////////////////////////////////////////////////////
-                    //////// END --| TABLE
-                    //////////////////////////////////////////////////////////////
-                     -->
-#}
 
                     {% for name, form_group in admin.formgroups %}
                         <div class="{{ form_group.class|default('col-md-12') }}">

@@ -24,45 +24,6 @@ file that was distributed with this source code.
 
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        window.SONATA_CONFIG = {
-            CONFIRM_EXIT: {% if admin_pool is defined and admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %},
-            USE_SELECT2: {% if admin_pool is defined and admin_pool.getOption('use_select2') %}true{% else %}false{% endif %},
-            USE_ICHECK: {% if admin_pool is defined and admin_pool.getOption('use_icheck') %}true{% else %}false{% endif %}
-        };
-        window.SONATA_TRANSLATIONS = {
-            CONFIRM_EXIT:  '{{ 'confirm_exit'|trans({}, 'SonataAdminBundle')|escape('js') }}'
-       };
-    </script>
-
-    {% for javascript in admin_pool.getOption('javascripts', []) %}
-        <script src="{{ asset(javascript) }}"></script>
-    {% endfor %}
-
-    {# initialize fosjsrouting #}
-    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-
-    {# localize select2 #}
-    {% if admin_pool is defined and admin_pool.getOption('use_select2') %}
-        {% set locale = app.request.locale %}
-        {% if locale == 'pt' %}{% set locale = 'pt_PT' %}{% endif %}
-
-        {# omit default EN locale #}
-        {% if locale[:2] != 'en' %}
-            <script src="{{ asset('bundles/sonataadmin/vendor/select2/select2_locale_' ~ locale|replace({'_':'-'}) ~ '.js') }}"></script>
-        {% endif %}
-    {% endif %}
-    
-    <script>
-        jQuery(window).load(function () {
-            jQuery(document.body).removeClass('modal-open');
-        });
-    </script>
-
-{% endblock %}
-
 {% block sonata_header %}
     <header class="header">
         {% block sonata_header_noscript_warning %}
@@ -305,3 +266,42 @@ file that was distributed with this source code.
 
     </div>
 {% endblock sonata_wrapper %}
+
+{% block javascripts %}
+    <script>
+        window.SONATA_CONFIG = {
+            CONFIRM_EXIT: {% if admin_pool is defined and admin_pool.getOption('confirm_exit') %}true{% else %}false{% endif %},
+            USE_SELECT2: {% if admin_pool is defined and admin_pool.getOption('use_select2') %}true{% else %}false{% endif %},
+            USE_ICHECK: {% if admin_pool is defined and admin_pool.getOption('use_icheck') %}true{% else %}false{% endif %}
+        };
+        window.SONATA_TRANSLATIONS = {
+            CONFIRM_EXIT:  '{{ 'confirm_exit'|trans({}, 'SonataAdminBundle')|escape('js') }}'
+       };
+    </script>
+
+    {% for javascript in admin_pool.getOption('javascripts', []) %}
+        <script src="{{ asset(javascript) }}"></script>
+    {% endfor %}
+
+    {# initialize fosjsrouting #}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    {# localize select2 #}
+    {% if admin_pool is defined and admin_pool.getOption('use_select2') %}
+        {% set locale = app.request.locale %}
+        {% if locale == 'pt' %}{% set locale = 'pt_PT' %}{% endif %}
+
+        {# omit default EN locale #}
+        {% if locale[:2] != 'en' %}
+            <script src="{{ asset('bundles/sonataadmin/vendor/select2/select2_locale_' ~ locale|replace({'_':'-'}) ~ '.js') }}"></script>
+        {% endif %}
+    {% endif %}
+    
+    <script>
+        jQuery(window).load(function () {
+            jQuery(document.body).removeClass('modal-open');
+        });
+    </script>
+
+{% endblock %}
