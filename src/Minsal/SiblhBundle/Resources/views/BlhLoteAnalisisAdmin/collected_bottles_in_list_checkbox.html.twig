@@ -112,14 +112,10 @@ file that was distributed with this source code.
         var selections = [];
         jQuery(document).on('ifChanged', 'input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][all]"]', function(e) {
             selections.length = 0;
-            if (this.checked === false) {
-                // push or splice the selections if you want to save all data selections
-                // $table.find('tbody tr').removeClass('checked-row-bstable');
-                $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('uncheck');
-            }
-            else {
-                $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
-            }
+            var checked = this.checked === false ? 'uncheck' : 'check';
+            $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck(checked);
+            
+            window.console.log('selections all', selections);
         });
         jQuery(document).on('ifChanged', 'input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]', function(e) {
             if (this.checked === false) {
@@ -131,10 +127,10 @@ file that was distributed with this source code.
                 // save your data, here just save the current page
                 if(jQuery.inArray(this.value, selections) === -1) {
                     selections.push(this.value);
-                    jQuery(this).closest('tr').addClass('checked-row-bstable');
                 }
+                jQuery(this).closest('tr').addClass('checked-row-bstable');
             }
-            // window.console.log('selections +/-', selections);
+            window.console.log('selections +/-', selections);
         });
 
         {% if choices is defined and choices|length == 0 %}
