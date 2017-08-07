@@ -2,7 +2,7 @@
 
 namespace Minsal\SiapsBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Minsal\SiblhBundle\Admin\MinsalSiblhBundleGeneralAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class MntExpedienteAdmin extends Admin
+class MntExpedienteAdmin extends MinsalSiblhBundleGeneralAdmin
 {
     protected $baseRouteName    = 'siblh_expediente';
     protected $baseRoutePattern = 'blh/siap/expediente';
@@ -99,4 +99,37 @@ class MntExpedienteAdmin extends Admin
             ->add('cun')
         ;
     }
+    
+    public function prePersist($entity)
+    {
+        // parent::prePersist($entity);
+
+        $entity->setFechaCreacion(new \DateTime('now'));
+        $entity->setHoraCreacion(new \DateTime('now'));
+    }
+    
+    public function preUpdate($entity)
+    {
+        // parent::preUpdate($entity);
+        
+        $entity->setFechaCreacion(new \DateTime('now'));
+        $entity->setHoraCreacion(new \DateTime('now'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNewInstance()
+    {
+        $object = $this->getModelManager()->getModelInstance($this->getClass());
+        foreach ($this->getExtensions() as $extension)
+        {
+            $extension->alterNewInstance($this, $object);
+        }
+        
+        $object->setIdEstablecimiento($this->___session_system_USER_LOGGED_LOCATION___);
+
+        return $object;
+    }
+
 }

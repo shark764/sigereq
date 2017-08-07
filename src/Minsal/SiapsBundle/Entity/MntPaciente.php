@@ -433,6 +433,9 @@ class MntPaciente
      */
     public function __construct()
     {
+        $this->fechaNacimiento = new \DateTime('now');
+        $this->horaNacimiento = new \DateTime('now');
+        $this->fechaRegistro = new \DateTime('now');
         $this->expedientes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->estado = true;
     }

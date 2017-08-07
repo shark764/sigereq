@@ -102,6 +102,15 @@ class MntExpediente
     private $idPaciente;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fechaCreacion = new \DateTime('now');
+        $this->horaCreacion = new \DateTime('now');
+    }
+
+    /**
      * ToString
      */
     public function __toString()

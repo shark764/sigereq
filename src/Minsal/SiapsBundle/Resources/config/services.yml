@@ -5,3 +5,10 @@ services:
         tags:
             # - {name: sonata.admin, manager_type: orm, group: admin, label: MntExpediente}
             - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+
+    minsal_siaps.admin.mnt_paciente:
+        class: Minsal\SiapsBundle\Admin\MntPacienteAdmin
+        arguments: [~, Minsal\SiapsBundle\Entity\MntPaciente, MinsalSiapsBundle:MntPacienteAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: MntPaciente}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
