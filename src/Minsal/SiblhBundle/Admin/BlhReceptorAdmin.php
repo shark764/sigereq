@@ -89,33 +89,33 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-//            ->add('idBancoDeLeche', null, array(
-//                            'label' => 'Banco de Leche',
-//                            'label_attr' => array('class' => 'label_form_sm'),
-//                            // 'required' => true,
-//                            // 'group_by' => 'idEstablecimiento',
-//                            'attr' => array(
-//                                    'class' => 'form-control input-sm',
-//
-//                                    'data-add-input-addon' => 'true',
-//                                    // 'data-add-input-addon-class' => 'primary-v4',
-//                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-//                            )
-//            ))
+            // ->add('idBancoDeLeche', null, array(
+            //                 'label' => 'Banco de Leche',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 // 'required' => true,
+            //                 // 'group_by' => 'idEstablecimiento',
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+            //                 )
+            // ))
             ->add('idBancoDeLeche', 'sonata_type_model_hidden')
-//            ->add('idPaciente', null, array(
-//                            'label' => 'Paciente (de SIAP)',
-//                            'label_attr' => array('class' => 'label_form_sm'),
-//                            // 'required' => true,
-//                            // 'group_by' => 'idEstablecimiento',
-//                            'attr' => array(
-//                                    'class' => 'form-control input-sm',
-//
-//                                    'data-add-input-addon' => 'true',
-//                                    // 'data-add-input-addon-class' => 'primary-v4',
-//                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
-//                            )
-//            ))
+            // ->add('idPaciente', null, array(
+            //                 'label' => 'Paciente (de SIAP)',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 // 'required' => true,
+            //                 // 'group_by' => 'idEstablecimiento',
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+            //                 )
+            // ))
             ->add('idPaciente', 'sonata_type_model_hidden')
             ->add('idExpediente', 'sonata_type_model_hidden')
             ->add('idMadreDonante', null, array(
@@ -190,34 +190,34 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                             'attr' => array(
                                     'placeholder' => 'procedencia...',
                                     'class' => 'form-control input-sm',
-//                                    'readonly' => 'readonly',
-//                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    // 'readonly' => 'readonly',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                             )
             ))
-//            ->add('estadoReceptor', null, array(
-//                            'label' => 'Estado',
-//                            'label_attr' => array('class' => 'label_form_sm'),
-//                            'required' => false,
-//                            'attr' => array(
-//                                    'placeholder' => 'estado...',
-//                                    'class' => 'form-control input-sm',
-////                                    'readonly' => 'readonly',
-////                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-//
-//                                    'data-add-input-addon' => 'true',
-//                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
-//                            )
-//            ))
+            // ->add('estadoReceptor', null, array(
+            //                 'label' => 'Estado',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'placeholder' => 'estado...',
+            //                         'class' => 'form-control input-sm',
+            //                         // 'readonly' => 'readonly',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+            //                 )
+            // ))
             ->add('edadDias', null, array(
                             'label' => 'Edad (días)',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'edad (días)...',
-//                                    'readonly' => 'readonly',
+                                    // 'readonly' => 'readonly',
                                     // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
@@ -327,20 +327,20 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
                             )
             ))
-//            ->add('clasificacionLubchengo', null, array(
-//                            'label' => 'Clasificación Lubchengo',
-//                            'label_attr' => array('class' => 'label_form_sm'),
-//                            'required' => false,
-//                            'attr' => array(
-//                                    'placeholder' => 'clasificación lubchengo...',
-//                                    'class' => 'form-control input-sm',
-////                                    'readonly' => 'readonly',
-////                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-//
-//                                    'data-add-input-addon' => 'true',
-//                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-tag',
-//                            )
-//            ))
+            // ->add('clasificacionLubchengo', null, array(
+            //                 'label' => 'Clasificación Lubchengo',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'placeholder' => 'clasificación lubchengo...',
+            //                         'class' => 'form-control input-sm',
+            //                         // 'readonly' => 'readonly',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-tag',
+            //                 )
+            // ))
             ->add('apgarPrimerMinuto', null, array(
                             'label' => 'Apgar 1er minuto',
                             'label_attr' => array('class' => 'label_form_sm'),

@@ -72,6 +72,43 @@ file that was distributed with this source code.
 
         jQuery(document).ready(function() {
             //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDduracionVentilacion]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_duracionVentilacion').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
+                jQuery('label[for="{{ admin.uniqId }}_duracionVentilacion"]').toggle(this.value === 'T');
+                if (this.value === 'T') {
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[NOTMAPPEDduracionVentilacion]');
+                }
+                else if (this.value === 'F') {
+                    jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDduracionVentilacion]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDduracionVentilacion]');
+                }
+            });
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDduracionCpap]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_duracionCpap').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
+                jQuery('label[for="{{ admin.uniqId }}_duracionCpap"]').toggle(this.value === 'T');
+                if (this.value === 'T') {
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[NOTMAPPEDduracionCpap]');
+                }
+                else if (this.value === 'F') {
+                    jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDduracionCpap]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDduracionCpap]');
+                }
+            });
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDduracionNpt]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_duracionNpt').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
+                jQuery('label[for="{{ admin.uniqId }}_duracionNpt"]').toggle(this.value === 'T');
+                if (this.value === 'T') {
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[NOTMAPPEDduracionNpt]');
+                }
+                else if (this.value === 'F') {
+                    jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDduracionNpt]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDduracionNpt]');
+                }
+            });
+
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDduracionVentilacion]"]').triggerHandler('ifChecked');
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDduracionCpap]"]').triggerHandler('ifChecked');
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDduracionNpt]"]').triggerHandler('ifChecked');
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
             //////// initialize with custom options
             //////////////////////////////////////////////////////////////////////////////////////////////
             var BREAST_MILK_RECEIVER_SEARCHRECEIVER_search_patient_select = jQuery('#BREAST_MILK_RECEIVER_SEARCHRECEIVER_search_patient');
