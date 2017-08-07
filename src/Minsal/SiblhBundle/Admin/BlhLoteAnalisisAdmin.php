@@ -211,4 +211,28 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
        );
     }
 
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+
+        foreach ($entity->getLoteAnalisisFrascoRecolectado() as $subEntity)
+        {
+            $subEntity->setIdLoteAnalisis($entity);
+        }
+    }
+
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        parent::preUpdate($entity);
+        ////////
+
+        foreach ($entity->getLoteAnalisisFrascoRecolectado() as $subEntity)
+        {
+            $subEntity->setIdLoteAnalisis($entity);
+        }
+    }
+
 }

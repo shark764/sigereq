@@ -116,6 +116,12 @@ class BlhLoteAnalisis implements EntityInterface
 
     /**
      * @ORM\OneToMany(targetEntity="BlhFrascoRecolectado", mappedBy="idLoteAnalisis", cascade={"all"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = 1,
+     *      max = 15,
+     *      minMessage = "Debe seleccionar al menos {{ limit }} frasco(s)",
+     *      maxMessage = "Lote no puede contener más de {{ limit }} frascos"
+     * )
      */
     private $loteAnalisisFrascoRecolectado;
 

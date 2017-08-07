@@ -208,7 +208,6 @@ class BlhFrascoRecolectado implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_lote_analisis", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idLoteAnalisis;
 
