@@ -71,31 +71,35 @@ services:
         class: Minsal\SiblhBundle\Admin\BlhExamenDonanteAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhExamenDonante, MinsalSiblhBundle:BlhExamenDonanteAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhExamenDonante}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhExamenDonante}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_examen:
         class: Minsal\SiblhBundle\Admin\BlhExamenAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhExamen, MinsalSiblhBundle:BlhExamenAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhExamen}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhExamen}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_frasco_procesado:
         class: Minsal\SiblhBundle\Admin\BlhFrascoProcesadoAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoProcesado, MinsalSiblhBundle:BlhFrascoProcesadoAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoProcesado}
+            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Frascos procesados}
 
     minsal_siblh.admin.blh_frasco_procesado_solicitud:
         class: Minsal\SiblhBundle\Admin\BlhFrascoProcesadoSolicitudAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoProcesadoSolicitud, MinsalSiblhBundle:BlhFrascoProcesadoSolicitudAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoProcesadoSolicitud}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoProcesadoSolicitud}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_frasco_recolectado_frasco_p:
         class: Minsal\SiblhBundle\Admin\BlhFrascoRecolectadoFrascoPAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP, MinsalSiblhBundle:BlhFrascoRecolectadoFrascoPAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoRecolectadoFrascoP}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoRecolectadoFrascoP}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_frasco_recolectado:
         class: Minsal\SiblhBundle\Admin\BlhFrascoRecolectadoAdmin

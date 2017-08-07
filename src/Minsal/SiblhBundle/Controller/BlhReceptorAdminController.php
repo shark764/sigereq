@@ -91,23 +91,23 @@ class BlhReceptorAdminController extends MinsalSiblhBundleGeneralAdminController
         // set the theme for the current Admin Form
         $this->get('twig')->getExtension('form')->renderer->setTheme($view, $this->admin->getFormTheme());
 
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        //////// --| builder entity
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        $ENTITY_LIST_VIEW_GENERATOR_ = new MntExpedienteListViewGenerator(
-                $this->container,
-                $this->admin->getRouteGenerator(),
-                $this->admin->getClass()
-        );
-        //////// --|
-        $options = $ENTITY_LIST_VIEW_GENERATOR_->getTable();
-        //////////////////////////////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////////////////////////////////////////////////////////////////
+        // //////// --| builder entity
+        // //////////////////////////////////////////////////////////////////////////////////////////////
+        // $ENTITY_LIST_VIEW_GENERATOR_ = new MntExpedienteListViewGenerator(
+        //         $this->container,
+        //         $this->admin->getRouteGenerator(),
+        //         $this->admin->getClass()
+        // );
+        // //////// --|
+        // $options = $ENTITY_LIST_VIEW_GENERATOR_->getTable();
+        // //////////////////////////////////////////////////////////////////////////////////////////////
 
         return $this->render($this->admin->getTemplate($templateKey), array(
             'action' => 'create',
             'form'   => $view,
             'object' => $object,
-            'DEFAULT_TABLE_OPTIONS' => $options,
+            // 'DEFAULT_TABLE_OPTIONS' => $options,
         ));
     }
 

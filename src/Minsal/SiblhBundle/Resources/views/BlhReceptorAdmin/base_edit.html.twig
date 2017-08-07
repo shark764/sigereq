@@ -50,7 +50,109 @@ file that was distributed with this source code.
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.min.js') }}" ></script>
 
     <script type="text/javascript">
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var patientFormatResult = function(el) {
+            var markup = '<div class="row-fluid">' +
+                                '<div class="span10">' +
+                                '<div class="row-fluid">' +
+                                '<div class="span6">' + el.full_name + '</div>' +
+                            '</div>';
 
+            markup += '</div></div>';
+
+            return markup;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var patientFormatSelection = function(el) {
+            return el.full_name;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        jQuery(document).ready(function() {
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// initialize with custom options
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            var BREAST_MILK_RECEIVER_SEARCHRECEIVER_search_patient_select = jQuery('#BREAST_MILK_RECEIVER_SEARCHRECEIVER_search_patient');
+            BREAST_MILK_RECEIVER_SEARCHRECEIVER_search_patient_select.select2({
+                width: 'resolve',
+                minimumResultsForSearch: 10,
+                dropdownAutoWidth : true,
+                allowClear: true,
+                placeholder: 'click para filtrar por expediente...',
+                minimumInputLength: 3,
+                maximumSelectionSize: 1,
+                // multiple: true,
+                escapeMarkup: function(markup) {
+                    return markup;
+                },
+                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                    url: Routing.generate('siblh_expediente_search'),
+                    dataType: 'json',
+                    quietMillis: 250,
+                    data: function (term, page) {
+                        return {
+                            q: term, // search term
+                        };
+                    },
+                    results: function (data, page) { // parse the results into the format expected by Select2.
+                        // since we are using custom formatting functions we do not need to alter the remote JSON data
+                        return { results: data.items };
+                    },
+                    cache: true
+                },
+                initSelection: function(element, callback) {
+                    // the input tag has a value attribute preloaded that points to a preselected repository's id
+                    // this function resolves that id attribute to an object that select2 can render
+                    // using its formatResult renderer - that way the repository name is shown preselected
+                    var id = $(element).val();
+                    if (id !== "") {
+                        $.ajax(Routing.generate('siblh_expediente_search', {id: id}), {
+                            dataType: "json"
+                        }).done(function(data) { callback(data.item); });
+                    }
+                },
+                formatResult: patientFormatResult,  // display patient information
+                formatSelection: patientFormatSelection,    // selection
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// patient record change event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            BREAST_MILK_RECEIVER_SEARCHRECEIVER_search_patient_select.on('change', function (e) {
+                var rvalue = this.value;
+
+                if (!rvalue) {
+                    jQuery('#BREAST_MILK_RECEIVER_SEARCHRECEIVER_{{ admin.uniqId }}_short_info_container').html('');
+                    jQuery('#BREAST_MILK_RECEIVER_SEARCHRECEIVER_{{ admin.uniqId }}_info_container').html('');
+                    jQuery('#{{ admin.uniqId }}_idExpediente').val('');
+                    return;
+                }
+
+                jQuery('#{{ admin.uniqId }}_idExpediente').val(rvalue);
+
+                $.getJSON(Routing.generate('siblh_expediente_search'), {
+                        id : rvalue,
+                    })
+                    .done(function(data) {
+                        jQuery('#BREAST_MILK_RECEIVER_SEARCHRECEIVER_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+                    })
+                    .fail(function(jqxhr, textStatus, error) {
+                        //////// patient jumbotron
+                        jQuery('#BREAST_MILK_RECEIVER_SEARCHRECEIVER_{{ admin.uniqId }}_short_info_container').html('');
+                        jQuery('#BREAST_MILK_RECEIVER_SEARCHRECEIVER_{{ admin.uniqId }}_info_container').html('');
+                        window.console.log(error, textStatus);
+                    });
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+        });
+
+    </script>
+
+    <script type="text/javascript">
+{#
         jQuery(document).ready(function() {
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// new patients table
@@ -86,6 +188,6 @@ file that was distributed with this source code.
             {% endif %}
             //////////////////////////////////////////////////////////////////////////////////////////////
         });
-
+#}
     </script>
 {% endblock %}

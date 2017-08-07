@@ -10,4 +10,64 @@ namespace Minsal\SiapsBundle\Repository;
  */
 class MntExpedienteRepository extends \Doctrine\ORM\EntityRepository
 {
+    /////////////////////////////////////////////////////////////////////////////////////
+    //////// SEARCH METHOD
+    /////////////////////////////////////////////////////////////////////////////////////
+    public function search($localeId, $q)
+    {
+        ////////////////////////////////////////
+        //////// patient is local
+        ////////////////////////////////////////
+        $query = $this->getEntityManager()
+                    ->createQueryBuilder('t01')
+                            ->select('t01')
+                            ->addSelect('t02')
+                            ->addSelect('t01.id AS id, t01.numero as numero')
+                            ->addSelect('UPPER(CONCAT(t02.primerApellido, \' \', COALESCE(t02.segundoApellido, \'\'), \', \', t02.primerNombre, \' \', COALESCE(t02.segundoNombre, \'\'), \' -- | -- ( \', t01.numero, \' )\')) AS full_name')
+                            ->from('MinsalSiapsBundle:MntExpediente', 't01')
+                            ->innerJoin('t01.idPaciente', 't02')
+                            ->where('t01.idEstablecimiento = :id_est')
+                            ->setParameter('id_est', $localeId)
+                            ->orderBy('t01.numero')
+                            ->addOrderBy('full_name')
+                            ->distinct()
+                            ->setMaxResults(25);
+
+        if (is_numeric(str_replace('-', '', $q))) {
+            $query->andWhere($query->expr()->like('LOWER(t01.numero)', ':num_exp'))
+                                ->setParameter('num_exp', /*'%' .*/ strtolower($q) . '%');
+        } else {
+            $query->andWhere($query->expr()->like('LOWER(CONCAT(t02.primerApellido, COALESCE(t02.segundoApellido, \'\'), t02.primerNombre, COALESCE(t02.segundoNombre, \'\')))', ':num_exp'))
+                                ->setParameter('num_exp', '%' . strtolower(str_replace(' ', '', $q)) . '%');
+        }
+
+        return $query->getQuery()->getScalarResult();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    //////// SEARCH BY ID METHOD
+    /////////////////////////////////////////////////////////////////////////////////////
+    public function searchById($localeId, $id)
+    {
+        ////////////////////////////////////////
+        //////// patient is local
+        ////////////////////////////////////////
+        $query = $this->getEntityManager()
+                    ->createQueryBuilder('t01')
+                            ->select('t01')
+                            ->addSelect('t02', 't03')
+                            ->addSelect('t01.id AS id, t01.numero as numero')
+                            ->addSelect('UPPER(CONCAT(t02.primerApellido, \' \', COALESCE(t02.segundoApellido, \'\'), \', \', t02.primerNombre, \' \', COALESCE(t02.segundoNombre, \'\'), \' -- | -- ( \', t01.numero, \' )\')) AS full_name')
+                            ->addSelect('UPPER(CONCAT(t02.primerApellido, \' \', COALESCE(t02.segundoApellido, \'\'), \', \', t02.primerNombre, \' \', COALESCE(t02.segundoNombre, \'\'))) AS whole_name')
+                            ->from('MinsalSiapsBundle:MntExpediente', 't01')
+                            ->innerJoin('t01.idPaciente', 't02')
+                            ->innerJoin('t02.idSexo', 't03')
+                            ->where('t01.idEstablecimiento = :id_est')
+                            ->setParameter('id_est', $localeId)
+                            ->andWhere('t01.id = :id')
+                            ->setParameter('id', $id);
+
+        return $query->getQuery()->getScalarResult();
+    }
+
 }

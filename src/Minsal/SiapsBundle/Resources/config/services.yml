@@ -1,0 +1,7 @@
+services:
+    minsal_siaps.admin.mnt_expediente:
+        class: Minsal\SiapsBundle\Admin\MntExpedienteAdmin
+        arguments: [~, Minsal\SiapsBundle\Entity\MntExpediente, MinsalSiapsBundle:MntExpedienteAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: MntExpediente}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
