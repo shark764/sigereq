@@ -239,4 +239,5 @@ services:
         class: Minsal\SiblhBundle\Admin\BlhDonacionFrascoRecolectadoAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado, MinsalSiblhBundle:BlhDonacionFrascoRecolectadoAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: BlhDonacionFrascoRecolectado}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhDonacionFrascoRecolectado}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
