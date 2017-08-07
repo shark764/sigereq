@@ -410,8 +410,10 @@ div.form-actions {
 
   /*background-color: #555 !important;*/
   /*border-color: #444 !important;*/
-  background-color: #284858;
-  border-color: #1b4154;
+  /*background-color: #284858;
+  border-color: #1b4154;*/
+  background-color: #08222e;
+  border-color: #071c26;
 
   /*cursor: auto !important;*/
   cursor: auto;
