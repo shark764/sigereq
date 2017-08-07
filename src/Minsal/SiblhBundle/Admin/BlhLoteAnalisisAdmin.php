@@ -64,12 +64,13 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                 // ->add('id')
                 ->add('codigoLoteAnalisis', null, array(
                                 'label' => 'Código',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => false,
                                 'attr' => array(
                                         'placeholder' => 'código...',
                                         'class' => 'form-control input-sm',
                                         'readonly' => 'readonly',
+                                        'data-form-inline-group' => 'start',
                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
@@ -78,7 +79,7 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                 ))
                 ->add('fechaAnalisisFisicoQuimico', 'datetime', array(
                                 'label' => 'Fecha de análisis Físico-Químico',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => false,
                                 'widget' => 'single_text',
                                 'format' => 'dd/MM/yyyy',
@@ -88,6 +89,7 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                                         'class' => 'form-control input-sm',
                                         'data-input-transform' => 'datetimepicker',
                                         'data-datetimepicker-type' => 'date',
+                                        'data-form-inline-group' => 'stop',
                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
@@ -107,12 +109,12 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                 // ->add('responsableAnalisis')
                 ->add('idResponsableAnalisis', null, array(
                                 'label' => 'Responsable de análisis',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => false,
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
                                         // 'data-form-inline-group' => 'start',
-                                        // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
 
                                         'data-add-input-addon' => 'true',
                                         // 'data-add-input-addon-class' => 'primary-v4',
@@ -123,7 +125,7 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                 // ->add('fechaHoraReg')
                 ->add('loteAnalisisFrascoRecolectado', 'entity', array(
                                 'label' => false,
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => true,
                                 'expanded' => true,
                                 'multiple' => true,
