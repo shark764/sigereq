@@ -12,6 +12,24 @@ file that was distributed with this source code.
 {#{% extends base_template %}#}
 {% extends 'MinsalSiblhBundle:CRUD:base_edit.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {# Bootstrap-calendar #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+
+    {# bootstrap-table #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+    
+    {# bootstrap-modal
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/css/bootstrap-modal-bs3patch.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/css/bootstrap-modal.css') }}" type="text/css" rel="stylesheet" /> #}
+
+    {# bootstrap sweetalert #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/sweetalert.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% use 'MinsalSiblhBundle:BlhDonacionAdmin:base_edit_form.html.twig' with form as parentForm %}
 
 {% block form %}
@@ -22,6 +40,21 @@ file that was distributed with this source code.
 
 {% block javascripts %}
     {{ parent() }}
+
+    {# Bootstrap-calendar #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/moment-develop/min/moment-with-locales.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}" ></script>
+
+    {# bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
+    
+    {# bootstrap-modal
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/js/bootstrap-modalmanager.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/js/bootstrap-modal.js') }}" ></script> #}
+
+    {# bootstrap sweetalert #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.min.js') }}" ></script>
 
     <script type="text/javascript">
         //////////////////////////////////////////////////////////////////////////////////////////////
