@@ -17,6 +17,15 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
     protected $baseRouteName    = 'siblh_donante';
     protected $baseRoutePattern = 'blh/donante';
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->add('search', 'buscar', [], [], ['expose' => true]);
+        $collection->add('searchBy', 'buscar-mas', [], [], ['expose' => true]);
+        $collection->add('searchLocation', 'buscar-establecimiento', [], [], ['expose' => true]);
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

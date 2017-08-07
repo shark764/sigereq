@@ -27,6 +27,7 @@ class BlhDonacionFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenAgregado')
             ->add('volumenRealAgregado')
             ->add('fechaMezcla')
+            ->add('observacion')
         ;
     }
 
@@ -40,6 +41,7 @@ class BlhDonacionFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenAgregado')
             ->add('volumenRealAgregado')
             ->add('fechaMezcla')
+            ->add('observacion')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -156,6 +158,25 @@ class BlhDonacionFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     // 'data-fv-between-message' => 'Peso en Kg debe ser entre 2.27Kg y 226.80Kg',
                             )
             ))
+            ->add('observacion', 'textarea', array(
+                            'label' => 'Observaciones / Comentarios',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'rows' => '2',
+                                    'style' => 'resize:none',
+                                    'placeholder' => 'comentarios...',
+                                    'class' => 'form-control input-sm',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
             // ->add('fechaMezcla')
         ;
     }
@@ -170,6 +191,7 @@ class BlhDonacionFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('volumenAgregado')
             ->add('volumenRealAgregado')
             ->add('fechaMezcla')
+            ->add('observacion')
         ;
     }
     

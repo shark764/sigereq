@@ -92,6 +92,24 @@ class BlhDonacion implements EntityInterface
     private $fechaHoraReg;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=15, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 15,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
+     */
+    private $codigo;
+
+    /**
      * @var \BlhCtlCentroRecoleccion
      *
      * @ORM\ManyToOne(targetEntity="BlhCtlCentroRecoleccion")
@@ -338,6 +356,30 @@ class BlhDonacion implements EntityInterface
     public function getFechaHoraReg()
     {
         return $this->fechaHoraReg;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return BlhDonacion
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
     }
 
     /**

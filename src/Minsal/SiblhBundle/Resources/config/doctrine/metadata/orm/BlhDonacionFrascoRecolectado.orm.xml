@@ -23,6 +23,11 @@
       </options>
     </field>
     <field name="fechaMezcla" type="datetime" column="fecha_mezcla" nullable="true"/>
+    <field name="observacion" type="string" column="observacion" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado" fetch="LAZY">
       <join-columns>
         <join-column name="id_frasco_recolectado" referenced-column-name="id"/>

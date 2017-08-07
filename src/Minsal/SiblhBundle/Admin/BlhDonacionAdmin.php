@@ -80,22 +80,21 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                 //                 )
                 // ))
-/*
                 ->add('codigo', null, array(
                                 'label' => 'Código',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => false,
                                 'attr' => array(
                                         'placeholder' => 'código...',
                                         'class' => 'form-control input-sm',
                                         'readonly' => 'readonly',
+                                        'data-form-inline-group' => 'start',
                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                                 )
                 ))
-*/
                 // ->add('idBancoDeLeche', null, array(
                 //                 'label' => 'Banco de Leche',
                 //                 'label_attr' => array('class' => 'label_form_sm'),
@@ -124,7 +123,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 // ))
                 ->add('fechaDonacion', 'datetime', array(
                                 'label' => 'Fecha de donación',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => false,
                                 'widget' => 'single_text',
                                 'format' => 'dd/MM/yyyy',
@@ -134,6 +133,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                                         'class' => 'form-control input-sm',
                                         'data-input-transform' => 'datetimepicker',
                                         'data-datetimepicker-type' => 'date',
+                                        'data-form-inline-group' => 'stop',
                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
@@ -152,12 +152,12 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ))
                 ->add('idTipoColecta', null, array(
                                 'label' => 'Tipo de colecta',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => true,
                                 'property' => 'presentacionEntidad',
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
-                                        // 'data-form-inline-group' => 'start',
+                                        'data-form-inline-group' => 'start',
                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
@@ -167,12 +167,12 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ))
                 ->add('idTipoLecheMaterna', null, array(
                                 'label' => 'Tipo de leche donada',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => true,
                                 'property' => 'presentacionEntidad',
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
-                                        // 'data-form-inline-group' => 'start',
+                                        'data-form-inline-group' => 'stop',
                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
@@ -182,12 +182,12 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ))
                 ->add('idResponsableDonacion', null, array(
                                 'label' => 'Responsable de donación',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => true,
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
                                         // 'data-form-inline-group' => 'start',
-                                        // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                        'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
 
                                         'data-add-input-addon' => 'true',
                                         // 'data-add-input-addon-class' => 'primary-v4',
@@ -221,7 +221,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
             ->with('Frascos recolectados')
                 ->add('donacionFrascoRecolectado', 'sonata_type_collection', array(
                                 'label' => false,
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'btn_add' => 'Agregar frasco',  // --| Prevents the "Add" option from being displayed
                                 // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
                                 'attr' => array(
@@ -239,10 +239,10 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
             ->end()
             // ->add('usuario')
             // ->add('fechaHoraReg')
-            ->with('Agregar donación a frasco')
+            ->with('Agregar donación a frasco existente')
                 ->add('donacionFrascoRecolectadoMezcla', 'sonata_type_collection', array(
                                 'label' => false,
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'btn_add' => 'Mezclar frasco',  // --| Prevents the "Add" option from being displayed
                                 // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
                                 'attr' => array(

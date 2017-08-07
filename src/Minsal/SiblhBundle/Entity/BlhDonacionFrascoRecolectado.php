@@ -61,6 +61,24 @@ class BlhDonacionFrascoRecolectado implements EntityInterface
     private $fechaMezcla;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="observacion", type="string", length=150, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 150,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
+     */
+    private $observacion;
+
+    /**
      * @var \BlhDonacion
      *
      * @ORM\ManyToOne(targetEntity="BlhDonacion", inversedBy="donacionFrascoRecolectadoMezcla")
@@ -240,6 +258,30 @@ class BlhDonacionFrascoRecolectado implements EntityInterface
     public function getFechaMezcla()
     {
         return $this->fechaMezcla;
+    }
+
+    /**
+     * Set observacion
+     *
+     * @param string $observacion
+     *
+     * @return BlhDonacionFrascoRecolectado
+     */
+    public function setObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+
+        return $this;
+    }
+
+    /**
+     * Get observacion
+     *
+     * @return string
+     */
+    public function getObservacion()
+    {
+        return $this->observacion;
     }
 
 }

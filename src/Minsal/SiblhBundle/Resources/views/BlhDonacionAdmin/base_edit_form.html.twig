@@ -48,15 +48,34 @@
                                                 <div class="row">
                                                     <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
                                                         <div class="form-group">
-                                                            <label class="col-xs-4 col-lg-4 col-md-4 col-sm-4 control-label input-sm">CENTRO DE RECOLECCIÓN / BANCO DE LECHE</label>
+                                                            <label class="col-xs-4 col-lg-4 col-md-4 col-sm-4 control-label input-sm">TIPO</label>
                                                             <div class="col-xs-8 col-lg-8 col-md-8 col-sm-8">
-                                                                <input type="hidden" id="DONATION_SEARCHPATIENT_search_patient_location" name="DONATION_SEARCHPATIENT_search_patient_location" class="form-control input-sm" {% if app.user.getIdEstablecimiento() is not null %} value="{{ app.user.getIdEstablecimiento().getId()|e('js') }}" {% endif %} />
+                                                                <ul class="list-unstyled list-inline formstyle-radio-list-inline input-sm col-lg-12 col-md-12 col-sm-12" id="DONATION_SEARCHDONOR_search_donor_type_location">
+                                                                    <li>
+                                                                        <label class="">
+                                                                            <input type="radio" value="ctr" name="DONATION_SEARCHDONOR_search_donor_type_location" id="DONATION_SEARCHDONOR_search_donor_type_location_0">
+                                                                            <span style="margin-left: 5px;">CENTRO DE RECOLECCIÓN</span>
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label class="">
+                                                                            <input type="radio" checked="checked" value="blh" name="DONATION_SEARCHDONOR_search_donor_type_location" id="DONATION_SEARCHDONOR_search_donor_type_location_1">
+                                                                            <span style="margin-left: 5px;">BANCO DE LECHE</span>
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-xs-4 col-lg-4 col-md-4 col-sm-4 control-label input-sm">ESTABLECIMIENTO</label>
+                                                            <div class="col-xs-8 col-lg-8 col-md-8 col-sm-8">
+                                                                <input type="hidden" id="DONATION_SEARCHDONOR_search_donor_location" name="DONATION_SEARCHDONOR_search_donor_location" class="form-control input-sm" {% if app.user.getIdEstablecimiento() is not null %} value="{{ app.user.getIdEstablecimiento().getId()|e('js') }}" {% endif %} />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="col-xs-4 col-lg-4 col-md-4 col-sm-4 control-label input-sm">DONANTE</label>
                                                             <div class="col-xs-8 col-lg-8 col-md-8 col-sm-8">
-                                                                <input type="hidden" id="DONATION_SEARCHPATIENT_search_patient" name="DONATION_SEARCHPATIENT_search_patient" class="form-control input-sm" />
+                                                                <input type="hidden" id="DONATION_SEARCHDONOR_search_donor" name="DONATION_SEARCHDONOR_search_donor" class="form-control input-sm" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -66,7 +85,7 @@
 
                                         <div class="col-lg-6 col-md-6 col-sm-6 ">
                                             <div class="row"> <!-- row block -->
-                                                <div id="DONATION_SEARCHPATIENT_{{ admin.uniqId }}_short_info_container"></div>
+                                                <div id="DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container"></div>
                                             </div>
                                         </div>
 
