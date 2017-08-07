@@ -79,11 +79,15 @@ file that was distributed with this source code.
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         var $table = jQuery('#blh_collected_bottle_target_bstable');
 
-        $table.find('tbody tr td input:checkbox').iCheck('destroy').iCheck({
+        $table.find('thead tr th input:checkbox').iCheck('destroy').iCheck({
             checkboxClass: 'icheckbox_minimal',
             radioClass: 'iradio_minimal'
         });
         $table.find('thead tr th .iCheck-helper').css('position', 'relative');
+        $table.find('tbody tr td input:checkbox').iCheck('destroy').iCheck({
+            checkboxClass: 'icheckbox_minimal',
+            radioClass: 'iradio_minimal'
+        });
         $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
 
         $table.on('page-change.bs.table', function (e, number, size) {
@@ -110,8 +114,11 @@ file that was distributed with this source code.
             selections.length = 0;
             if (this.checked === false) {
                 // push or splice the selections if you want to save all data selections
-                $table.find('tbody tr').removeClass('checked-row-bstable');
+                // $table.find('tbody tr').removeClass('checked-row-bstable');
                 $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('uncheck');
+            }
+            else {
+                $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
             }
         });
         jQuery(document).on('ifChanged', 'input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]', function(e) {
