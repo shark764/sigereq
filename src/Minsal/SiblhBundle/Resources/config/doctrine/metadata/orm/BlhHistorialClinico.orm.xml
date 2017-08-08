@@ -13,7 +13,7 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="blh_historial_clinico_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="controlPrenatal" type="string" column="control_prenatal" length="2" nullable="false">
+    <field name="controlPrenatal" type="string" column="control_prenatal" length="2" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -30,7 +30,7 @@
       </options>
     </field>
     <field name="fechaParto" type="date" column="fecha_parto" nullable="false"/>
-    <field name="lugarParto" type="string" column="lugar_parto" length="150" nullable="false">
+    <field name="lugarParto" type="string" column="lugar_parto" length="150" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

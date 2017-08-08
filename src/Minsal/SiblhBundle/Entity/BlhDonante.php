@@ -27,8 +27,7 @@ class BlhDonante implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_donante", type="string", length=14, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="codigo_donante", type="string", length=14, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -120,8 +119,7 @@ class BlhDonante implements EntityInterface
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_nacimiento", type="date", nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="fecha_nacimiento", type="date", nullable=true)
      * @Assert\Date()
      */
     private $fechaNacimiento;
@@ -227,8 +225,7 @@ class BlhDonante implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="numero_documento_identificacion", type="string", length=10, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="numero_documento_identificacion", type="string", length=10, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -246,8 +243,7 @@ class BlhDonante implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="documento_identificacion", type="string", length=20, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="documento_identificacion", type="string", length=20, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -296,8 +292,7 @@ class BlhDonante implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="estado_civil", type="string", length=10, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="estado_civil", type="string", length=10, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -333,8 +328,7 @@ class BlhDonante implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo_colecta", type="string", length=10, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="tipo_colecta", type="string", length=10, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

@@ -27,8 +27,7 @@ class BlhHistorialClinico implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="control_prenatal", type="string", length=2, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="control_prenatal", type="string", length=2, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -99,8 +98,7 @@ class BlhHistorialClinico implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="lugar_parto", type="string", length=150, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="lugar_parto", type="string", length=150, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

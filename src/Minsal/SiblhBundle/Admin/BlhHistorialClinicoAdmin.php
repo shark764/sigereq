@@ -85,42 +85,46 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idDonante', null, array(
-                            'label' => 'Donante',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            ->add('idDonante', 'sonata_type_model_hidden')
+            // ->add('idDonante', null, array(
+            //                 'label' => 'Donante',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'start',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
-                            )
-            ))
-            ->add('idEstablecimiento', null, array(
-                            'label' => 'Establecimiento',
-                            'required' => false,
-                            // 'query_builder' => function(EntityRepository $er) {
-                            //                         return $er->createQueryBuilder('std')
-                            //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
-                            //                                         ->where('tipo.codigo IN (:code_hospital_type)')
-                            //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
-                            //                                         ->orderBy('std.nombre', 'asc')
-                            //                                         ->distinct();
-                            //                     },
-                            'group_by' => 'idTipoEstablecimiento',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'stop',
-                                    // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+            //                 )
+            // ))
+            ->add('idEstablecimiento', 'sonata_type_model_hidden')
+            ->add('idBancoDeLeche', 'sonata_type_model_hidden')
+            ->add('idCentroRecoleccion', 'sonata_type_model_hidden')
+            // ->add('idEstablecimiento', null, array(
+            //                 'label' => 'Establecimiento',
+            //                 'required' => false,
+            //                 // 'query_builder' => function(EntityRepository $er) {
+            //                 //                         return $er->createQueryBuilder('std')
+            //                 //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
+            //                 //                                         ->where('tipo.codigo IN (:code_hospital_type)')
+            //                 //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
+            //                 //                                         ->orderBy('std.nombre', 'asc')
+            //                 //                                         ->distinct();
+            //                 //                     },
+            //                 'group_by' => 'idTipoEstablecimiento',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'stop',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
 
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                            )
-            ))
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+            //                 )
+            // ))
             ->add('formulaObstetricaG', null, array(
                             'label' => 'G',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -264,29 +268,29 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
                             )
             ))
-//            ->add('controlPrenatal', null, array(
-//                            'label' => 'Control prenatal',
-//                            'label_attr' => array('class' => 'label_form_sm'),
-//                            'required' => false,
-//                            'attr' => array(
-//                                    // 'rows' => '2',
-//                                    // 'style' => 'resize:none',
-//                                    'placeholder' => 'control prenatal...',
-//                                    'class' => 'form-control input-sm',
-//
-//                                    'data-fv-stringlength' => 'true',
-//                                    'data-fv-stringlength-min' => '5',
-//                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-//
-//                                    'data-fv-regexp' => 'true',
-//                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-//                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-//                            )
-//            ))
+            // ->add('controlPrenatal', null, array(
+            //                 'label' => 'Control prenatal',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         // 'rows' => '2',
+            //                         // 'style' => 'resize:none',
+            //                         'placeholder' => 'control prenatal...',
+            //                         'class' => 'form-control input-sm',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '5',
+            //                         'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
             ->add('controlPrenatalEmbarazo', 'choice', array(
                             'label' => '¿Control prenatal?',
                             'label_attr' => array('class' => 'label_form_sm'),
-//                            'mapped' => false,
+                            // 'mapped' => false,
                             'required' => true,
                             'expanded' => true,
                             'multiple' => false,
@@ -306,25 +310,27 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-skipicon' => 'true',
                             )
             ))
-//            ->add('lugarControl', null, array(
-//                            'label' => 'Lugar del control',
-//                            'label_attr' => array('class' => 'label_form_sm'),
-//                            'required' => false,
-//                            'attr' => array(
-//                                    // 'rows' => '2',
-//                                    // 'style' => 'resize:none',
-//                                    'placeholder' => 'lugar del control...',
-//                                    'class' => 'form-control input-sm',
-//
-//                                    'data-fv-stringlength' => 'true',
-//                                    'data-fv-stringlength-min' => '5',
-//                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-//
-//                                    'data-fv-regexp' => 'true',
-//                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-//                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-//                            )
-//            ))
+            ->add('lugarControl', null, array(
+                            'label' => 'Lugar del control',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'required' => false,
+                            'attr' => array(
+                                    // 'rows' => '2',
+                                    // 'style' => 'resize:none',
+                                    'placeholder' => 'lugar del control...',
+                                    'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
             ->add('numeroControl', null, array(
                             'label' => 'Número de control',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
@@ -477,27 +483,27 @@ class BlhHistorialClinicoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
                             )
             ))
-//            ->add('patologiaEmbarazo', null, array(
-//                            'label' => 'Patología',
-//                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
-//                            'required' => false,
-//                            'attr' => array(
-//                                    // 'rows' => '2',
-//                                    // 'style' => 'resize:none',
-//                                    'placeholder' => 'patología en el embarazo...',
-//                                    'class' => 'form-control input-sm',
-//                                    'data-form-inline-group' => 'stop',
-//                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-//
-//                                    'data-fv-stringlength' => 'true',
-//                                    'data-fv-stringlength-min' => '5',
-//                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-//
-//                                    'data-fv-regexp' => 'true',
-//                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-//                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-//                            )
-//            ))
+            // ->add('patologiaEmbarazo', null, array(
+            //                 'label' => 'Patología',
+            //                 'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         // 'rows' => '2',
+            //                         // 'style' => 'resize:none',
+            //                         'placeholder' => 'patología en el embarazo...',
+            //                         'class' => 'form-control input-sm',
+            //                         'data-form-inline-group' => 'stop',
+            //                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '5',
+            //                         'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
             ->add('NOTMAPPEDpartoAnterior', 'choice', array(
                             'label' => '¿Partos anteriores?',
                             'label_attr' => array('class' => 'label_form_sm'),

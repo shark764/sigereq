@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhHistoriaActual
  *
- * @ORM\Table(name="blh_historia_actual", indexes={@ORM\Index(name="fki_blh_his_fk_hab_tox", columns={"habito_toxico"}), @ORM\Index(name="fki_blh_his_fk_pat", columns={"patologia"}), @ORM\Index(name="fki_blh_his_hab", columns={"habito_toxico"}), @ORM\Index(name="IDX_F93902A254F03532", columns={"id_donante"}), @ORM\Index(name="IDX_F93902A2D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_F93902A28653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_F93902A22DF9F9B6", columns={"id_banco_de_leche"})})
+ * @ORM\Table(name="blh_historia_actual", indexes={@ORM\Index(name="fki_blh_his_fk_hab_tox", columns={"habito_toxico"}), @ORM\Index(name="fki_blh_his_fk_pat", columns={"patologia"}), @ORM\Index(name="fki_blh_his_hab", columns={"habito_toxico"}), @ORM\Index(name="IDX_F93902A254F03532", columns={"id_donante"}), @ORM\Index(name="IDX_F93902A2D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_F93902A28653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_F93902A22DF9F9B6", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_F93902A297DBF4D1", columns={"id_motivo_donacion"})})
  * @ORM\Entity
  */
 class BlhHistoriaActual implements EntityInterface
@@ -73,8 +73,7 @@ class BlhHistoriaActual implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="motivo_donacion", type="string", length=50, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="motivo_donacion", type="string", length=50, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -106,8 +105,7 @@ class BlhHistoriaActual implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="estado_donante", type="string", length=12, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="estado_donante", type="string", length=12, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -215,6 +213,17 @@ class BlhHistoriaActual implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idBancoDeLeche;
+
+    /**
+     * @var \BlhCtlMotivoDonacion
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlMotivoDonacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_motivo_donacion", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idMotivoDonacion;
 
     /**
      * Constructor
@@ -613,6 +622,30 @@ class BlhHistoriaActual implements EntityInterface
     public function getIdBancoDeLeche()
     {
         return $this->idBancoDeLeche;
+    }
+
+    /**
+     * Set idMotivoDonacion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlMotivoDonacion $idMotivoDonacion
+     *
+     * @return BlhHistoriaActual
+     */
+    public function setIdMotivoDonacion(\Minsal\SiblhBundle\Entity\BlhCtlMotivoDonacion $idMotivoDonacion = null)
+    {
+        $this->idMotivoDonacion = $idMotivoDonacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idMotivoDonacion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlMotivoDonacion
+     */
+    public function getIdMotivoDonacion()
+    {
+        return $this->idMotivoDonacion;
     }
 
 }

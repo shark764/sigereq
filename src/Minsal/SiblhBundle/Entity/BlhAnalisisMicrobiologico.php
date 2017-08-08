@@ -27,8 +27,7 @@ class BlhAnalisisMicrobiologico implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_analisis_microbiologico", type="string", length=13, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="codigo_analisis_microbiologico", type="string", length=13, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

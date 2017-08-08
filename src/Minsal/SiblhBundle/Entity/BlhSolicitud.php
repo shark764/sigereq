@@ -40,7 +40,7 @@ class BlhSolicitud implements EntityInterface
      *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
      * )
      */
-    private $codigoSolicitud = 1;
+    private $codigoSolicitud;
 
     /**
      * @var string
@@ -59,8 +59,7 @@ class BlhSolicitud implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="acidez_necesaria", type="string", length=9, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="acidez_necesaria", type="string", length=9, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -78,8 +77,7 @@ class BlhSolicitud implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="calorias_necesarias", type="string", length=15, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="calorias_necesarias", type="string", length=15, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -148,8 +146,7 @@ class BlhSolicitud implements EntityInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="cuna", type="integer", nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="cuna", type="integer", nullable=true)
      * @Assert\Range(
      *      min = 0,
      *      max = 2147483647,
@@ -162,8 +159,7 @@ class BlhSolicitud implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=10, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="estado", type="string", length=10, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -235,7 +231,6 @@ class BlhSolicitud implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_grupo_solicitud", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idGrupoSolicitud;
 

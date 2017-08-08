@@ -54,8 +54,7 @@ class BlhDonacion implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable_donacion", type="string", length=60, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="responsable_donacion", type="string", length=60, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

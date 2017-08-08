@@ -7,8 +7,8 @@
       <index name="IDX_13A0CBCB54F03532" columns="id_donante"/>
       <index name="IDX_13A0CBCBD4737338" columns="id_responsable_donacion"/>
       <index name="IDX_13A0CBCB85E56563" columns="id_tipo_colecta"/>
-      <index name="IDX_13A0CBCBD8A5832B" columns="id_user_reg"/>
       <index name="IDX_13A0CBCB867455CF" columns="id_tipo_leche_materna"/>
+      <index name="IDX_13A0CBCBD8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -20,7 +20,7 @@
       </options>
     </field>
     <field name="fechaDonacion" type="date" column="fecha_donacion" nullable="false"/>
-    <field name="responsableDonacion" type="string" column="responsable_donacion" length="60" nullable="false">
+    <field name="responsableDonacion" type="string" column="responsable_donacion" length="60" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -36,14 +36,14 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_user_reg" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idTipoLecheMaterna" target-entity="BlhCtlTipoLecheMaterna" fetch="LAZY">
       <join-columns>
         <join-column name="id_tipo_leche_materna" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idTipoColecta" target-entity="BlhCtlTipoColecta" fetch="LAZY">

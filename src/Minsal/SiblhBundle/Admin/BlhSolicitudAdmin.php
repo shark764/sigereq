@@ -77,6 +77,21 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idReceptor', 'sonata_type_model_hidden')
+            // ->add('idReceptor', null, array(
+            //                 'label' => 'Receptor',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => true,
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'start',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
+            //                 )
+            // ))
             ->add('codigoSolicitud', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -91,24 +106,10 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                             )
             ))
-            ->add('idReceptor', null, array(
-                            'label' => 'Receptor',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
-                            )
-            ))
             ->add('fechaSolicitud', 'datetime', array(
                             'label' => 'Fecha de solicitud',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
+                            'required' => false,
                             'widget' => 'single_text',
                             'format' => 'dd/MM/yyyy',
                             'attr' => array(
@@ -136,7 +137,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('cuna', null, array(
                             'label' => 'Cuna',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
+                            'required' => false,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'cuna...',
@@ -319,25 +320,25 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
                             )
             ))
-            // ->add('estado', null, array(
-            //                 'label' => 'Estado',
-            //                 'label_attr' => array('class' => 'label_form_sm'),
-            //                 'required' => false,
-            //                 'attr' => array(
-            //                         // 'rows' => '2',
-            //                         // 'style' => 'resize:none',
-            //                         'placeholder' => 'estado...',
-            //                         'class' => 'form-control input-sm',
+            ->add('estado', null, array(
+                            'label' => 'Estado',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    // 'rows' => '2',
+                                    // 'style' => 'resize:none',
+                                    'placeholder' => 'estado...',
+                                    'class' => 'form-control input-sm',
 
-            //                         'data-fv-stringlength' => 'true',
-            //                         'data-fv-stringlength-min' => '5',
-            //                         'data-fv-stringlength-message' => '5 caracteres mínimo',
+                                    'data-fv-stringlength' => 'true',
+                                    'data-fv-stringlength-min' => '5',
+                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
 
-            //                         'data-fv-regexp' => 'true',
-            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-            //                 )
-            // ))
+                                    'data-fv-regexp' => 'true',
+                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                            )
+            ))
             // ->add('responsable', null, array(
             //                 'label' => 'Responsable',
             //                 'label_attr' => array('class' => 'label_form_sm'),

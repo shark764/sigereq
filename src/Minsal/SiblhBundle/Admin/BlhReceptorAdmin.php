@@ -17,6 +17,14 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
     protected $baseRouteName    = 'siblh_receptor';
     protected $baseRoutePattern = 'blh/receptor';
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->add('search', 'buscar', [], [], ['expose' => true]);
+        $collection->add('searchBy', 'buscar-mas', [], [], ['expose' => true]);
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

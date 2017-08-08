@@ -27,8 +27,7 @@ class BlhPasteurizacion implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_pasteurizacion", type="string", length=11, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="codigo_pasteurizacion", type="string", length=11, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -41,7 +40,7 @@ class BlhPasteurizacion implements EntityInterface
      *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
      * )
      */
-    private $codigoPasteurizacion = 1;
+    private $codigoPasteurizacion;
 
     /**
      * @var integer
@@ -96,8 +95,7 @@ class BlhPasteurizacion implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable_pasteurizacion", type="string", length=60, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="responsable_pasteurizacion", type="string", length=60, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

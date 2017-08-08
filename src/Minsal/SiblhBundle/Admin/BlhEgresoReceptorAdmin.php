@@ -75,42 +75,44 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idReceptor', null, array(
-                            'label' => 'Receptor',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            ->add('idReceptor', 'sonata_type_model_hidden')
+            // ->add('idReceptor', null, array(
+            //                 'label' => 'Receptor',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'start',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
-                            )
-            ))
-            ->add('idEstablecimiento', null, array(
-                            'label' => 'Establecimiento',
-                            // 'required' => true,
-                            // 'query_builder' => function(EntityRepository $er) {
-                            //                         return $er->createQueryBuilder('std')
-                            //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
-                            //                                         ->where('tipo.codigo IN (:code_hospital_type)')
-                            //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
-                            //                                         ->orderBy('std.nombre', 'asc')
-                            //                                         ->distinct();
-                            //                     },
-                            'group_by' => 'idTipoEstablecimiento',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'stop',
-                                    // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
+            //                 )
+            // ))
+            ->add('idEstablecimiento', 'sonata_type_model_hidden')
+            // ->add('idEstablecimiento', null, array(
+            //                 'label' => 'Establecimiento',
+            //                 // 'required' => true,
+            //                 // 'query_builder' => function(EntityRepository $er) {
+            //                 //                         return $er->createQueryBuilder('std')
+            //                 //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
+            //                 //                                         ->where('tipo.codigo IN (:code_hospital_type)')
+            //                 //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
+            //                 //                                         ->orderBy('std.nombre', 'asc')
+            //                 //                                         ->distinct();
+            //                 //                     },
+            //                 'group_by' => 'idTipoEstablecimiento',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'stop',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
 
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                            )
-            ))
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+            //                 )
+            // ))
             ->add('diagnosticoEgreso', null, array(
                             'label' => 'Diagnóstico de egreso',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -130,32 +132,56 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
-            ->add('madreCanguro', null, array(
-                            'label' => 'Madre canguro',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+            // ->add('madreCanguro', null, array(
+            //                 'label' => 'Madre canguro',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'placeholder' => 'madre canguro...',
+            //                         'class' => 'form-control input-sm',
+            //                         // 'readonly' => 'readonly',
+            //                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
+            //                 )
+            // ))
+            ->add('metodoMadreCanguro', null, array(
+                            'label' => '¿Madre canguro?',
+                            'label_attr' => array('class' => 'label_form_sm label_check col-lg-12 col-md-12 col-sm-12'),
                             'attr' => array(
-                                    'placeholder' => 'madre canguro...',
                                     'class' => 'form-control input-sm',
-                                    // 'readonly' => 'readonly',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
+                            )
+            ))
+            // ->add('tipoEgreso', null, array(
+            //                 'label' => 'Tipo de egreso',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'placeholder' => 'tipo de egreso...',
+            //                         'class' => 'form-control input-sm',
+            //                         // 'readonly' => 'readonly',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+            //                 )
+            // ))
+            ->add('idTipoEgreso', null, array(
+                            'label' => 'Tipo de egreso',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => true,
+                            'property' => 'presentacionEntidad',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
-                            )
-            ))
-            ->add('tipoEgreso', null, array(
-                            'label' => 'Tipo de egreso',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'placeholder' => 'tipo de egreso...',
-                                    'class' => 'form-control input-sm',
-//                                    'readonly' => 'readonly',
-//                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
                             )
             ))
             ->add('comentarioEgreso', 'textarea', array(
@@ -177,18 +203,27 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
-            ->add('trasladoPeriferico', null, array(
-                            'label' => 'Traslado a periférico',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'placeholder' => 'traslado a periférico...',
-                                    'class' => 'form-control input-sm',
-                                    // 'readonly' => 'readonly',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            // ->add('trasladoPeriferico', null, array(
+            //                 'label' => 'Traslado a periférico',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'placeholder' => 'traslado a periférico...',
+            //                         'class' => 'form-control input-sm',
+            //                         // 'readonly' => 'readonly',
+            //                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+            //                 )
+            // ))
+            ->add('trasladarPeriferico', null, array(
+                            'label' => '¿Traslado a periférico?',
+                            'label_attr' => array('class' => 'label_form_sm label_check col-lg-12 col-md-12 col-sm-12'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
                             )
             ))
             ->add('permanenciaUcin', null, array(
@@ -326,6 +361,28 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('diasPermanencia')
             // ->add('fechaHoraReg')
         ;
+    }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhEgresoReceptorAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
 }

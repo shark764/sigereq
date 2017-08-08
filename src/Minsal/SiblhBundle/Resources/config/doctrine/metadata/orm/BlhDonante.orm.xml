@@ -3,9 +3,9 @@
   <entity name="BlhDonante" table="blh_donante">
     <indexes>
       <index name="fk_municipio_donante" columns="id_municipio"/>
-      <index name="fki_blh_dona_fk_nacionalidad_blh" columns="nacionalidad"/>
       <index name="fki_blh_dona_fk_naciona_blh" columns="nacionalidad"/>
       <index name="fk_banco_de_leche_donante" columns="id_banco_de_leche"/>
+      <index name="fki_blh_dona_fk_nacionalidad_blh" columns="nacionalidad"/>
       <index name="IDX_D458FB018653A7AF" columns="id_centro_recoleccion"/>
       <index name="IDX_D458FB01AF36C2D7" columns="id_doc_ide_donante"/>
       <index name="IDX_D458FB0110281A9F" columns="id_escolaridad"/>
@@ -19,7 +19,7 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="blh_donante_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="codigoDonante" type="string" column="codigo_donante" length="14" nullable="false">
+    <field name="codigoDonante" type="string" column="codigo_donante" length="14" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -44,7 +44,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="false"/>
+    <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="true"/>
     <field name="fechaRegistroDonanteBlh" type="date" column="fecha_registro_donante_blh" nullable="true"/>
     <field name="telefonoFijo" type="string" column="telefono_fijo" length="9" nullable="true">
       <options>
@@ -71,12 +71,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="numeroDocumentoIdentificacion" type="string" column="numero_documento_identificacion" length="10" nullable="false">
+    <field name="numeroDocumentoIdentificacion" type="string" column="numero_documento_identificacion" length="10" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="documentoIdentificacion" type="string" column="documento_identificacion" length="20" nullable="false">
+    <field name="documentoIdentificacion" type="string" column="documento_identificacion" length="20" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -91,7 +91,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="estadoCivil" type="string" column="estado_civil" length="10" nullable="false">
+    <field name="estadoCivil" type="string" column="estado_civil" length="10" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -101,7 +101,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="tipoColecta" type="string" column="tipo_colecta" length="10" nullable="false">
+    <field name="tipoColecta" type="string" column="tipo_colecta" length="10" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

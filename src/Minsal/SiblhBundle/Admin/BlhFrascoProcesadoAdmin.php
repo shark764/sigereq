@@ -67,6 +67,7 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idPasteurizacion', 'sonata_type_model_hidden')
             // ->add('idPasteurizacion', null, array(
             //                 'label' => 'Pasteurización',
             //                 'label_attr' => array('class' => 'label_form_sm'),
@@ -98,7 +99,7 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('codigoFrascoProcesado', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
+                            'required' => false,
                             'attr' => array(
                                     'placeholder' => 'código...',
                                     'class' => 'form-control input-sm',

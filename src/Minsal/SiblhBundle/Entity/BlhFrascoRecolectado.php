@@ -27,8 +27,7 @@ class BlhFrascoRecolectado implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_frasco_recolectado", type="string", length=15, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="codigo_frasco_recolectado", type="string", length=15, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -60,8 +59,7 @@ class BlhFrascoRecolectado implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="forma_extraccion", type="string", length=8, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="forma_extraccion", type="string", length=8, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

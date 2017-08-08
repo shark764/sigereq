@@ -81,6 +81,20 @@ class BlhBancoDeLecheAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
                             )
             ))
+            ->add('nombre', null, array(
+                            'label' => 'Nombre',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'placeholder' => 'nombre...',
+                                    'class' => 'form-control input-sm',
+                                    // 'readonly' => 'readonly',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
+                            )
+            ))
             ->add('codigoBancoDeLeche', null, array(
                             'label' => 'Código',
                             'label_attr' => array('class' => 'label_form_sm'),

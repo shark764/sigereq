@@ -67,20 +67,21 @@ class BlhHistoriaActualAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idDonante', null, array(
-                            'label' => 'Donante',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            ->add('idDonante', 'sonata_type_model_hidden')
+            // ->add('idDonante', null, array(
+            //                 'label' => 'Donante',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         // 'data-form-inline-group' => 'start',
+            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
-                            )
-            ))
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+            //                 )
+            // ))
             ->add('pesoDonante', null, array(
                             'label' => 'Peso (kg)',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -153,23 +154,38 @@ class BlhHistoriaActualAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
                             )
             ))
-            ->add('motivoDonacion', null, array(
+            // ->add('motivoDonacion', null, array(
+            //                 'label' => 'Motivo de donación',
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'attr' => array(
+            //                         // 'rows' => '2',
+            //                         // 'style' => 'resize:none',
+            //                         'placeholder' => 'motivo de donación...',
+            //                         'class' => 'form-control input-sm',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '5',
+            //                         'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
+            ->add('idMotivoDonacion', null, array(
                             'label' => 'Motivo de donación',
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
+                            'required' => true,
+                            'property' => 'presentacionEntidad',
                             'attr' => array(
-                                    // 'rows' => '2',
-                                    // 'style' => 'resize:none',
-                                    'placeholder' => 'motivo de donación...',
                                     'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '5',
-                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart',
                             )
             ))
             ->add('NOTMAPPEDmedicamento', 'choice', array(
@@ -291,25 +307,25 @@ class BlhHistoriaActualAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
                             )
             ))
-//            ->add('estadoDonante', null, array(
-//                            'label' => 'Estado de donante',
-//                            'label_attr' => array('class' => 'label_form_sm'),
-//                            'required' => false,
-//                            'attr' => array(
-//                                    // 'rows' => '2',
-//                                    // 'style' => 'resize:none',
-//                                    'placeholder' => 'estado de donante...',
-//                                    'class' => 'form-control input-sm',
-//
-//                                    'data-fv-stringlength' => 'true',
-//                                    'data-fv-stringlength-min' => '5',
-//                                    'data-fv-stringlength-message' => '5 caracteres mínimo',
-//
-//                                    'data-fv-regexp' => 'true',
-//                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
-//                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-//                            )
-//            ))
+           ->add('estadoDonante', null, array(
+                           'label' => 'Estado de donante',
+                           'label_attr' => array('class' => 'label_form_sm'),
+                           'required' => false,
+                           'attr' => array(
+                                   // 'rows' => '2',
+                                   // 'style' => 'resize:none',
+                                   'placeholder' => 'estado de donante...',
+                                   'class' => 'form-control input-sm',
+
+                                   'data-fv-stringlength' => 'true',
+                                   'data-fv-stringlength-min' => '5',
+                                   'data-fv-stringlength-message' => '5 caracteres mínimo',
+
+                                   'data-fv-regexp' => 'true',
+                                   'data-fv-regexp-regexp' => self::___CLASS_REGEX_EXTENDED___,
+                                   'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                           )
+           ))
             ->add('donanteApta', null, array(
                             'label' => '¿Es apta para donación?',
                             'label_attr' => array('class' => 'label_form_sm label_check col-lg-12 col-md-12 col-sm-12'),

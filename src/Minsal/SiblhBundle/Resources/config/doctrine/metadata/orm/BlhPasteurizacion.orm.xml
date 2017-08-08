@@ -11,10 +11,9 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="blh_pasteurizacion_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="codigoPasteurizacion" type="string" column="codigo_pasteurizacion" length="11" nullable="false">
+    <field name="codigoPasteurizacion" type="string" column="codigo_pasteurizacion" length="11" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="default">1</option>
       </options>
     </field>
     <field name="numCiclo" type="integer" column="num_ciclo" nullable="true">
@@ -29,7 +28,7 @@
       </options>
     </field>
     <field name="fechaPasteurizacion" type="date" column="fecha_pasteurizacion" nullable="false"/>
-    <field name="responsablePasteurizacion" type="string" column="responsable_pasteurizacion" length="60" nullable="false">
+    <field name="responsablePasteurizacion" type="string" column="responsable_pasteurizacion" length="60" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

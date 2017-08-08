@@ -8,7 +8,7 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="blh_grupo_solicitud_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="codigoGrupoSolicitud" type="string" column="codigo_grupo_solicitud" length="13" nullable="false">
+    <field name="codigoGrupoSolicitud" type="string" column="codigo_grupo_solicitud" length="13" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

@@ -13,7 +13,6 @@
     <field name="codigoFrascoProcesado" type="string" column="codigo_frasco_procesado" length="15" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="default">1</option>
       </options>
     </field>
     <field name="volumenFrascoPasteurizado" type="decimal" column="volumen_frasco_pasteurizado" precision="7" scale="4" nullable="false"/>

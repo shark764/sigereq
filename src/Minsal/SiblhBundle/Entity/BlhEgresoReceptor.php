@@ -46,8 +46,7 @@ class BlhEgresoReceptor implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="madre_canguro", type="string", length=2, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="madre_canguro", type="string", length=2, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -65,8 +64,7 @@ class BlhEgresoReceptor implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo_egreso", type="string", length=6, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="tipo_egreso", type="string", length=6, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -102,8 +100,7 @@ class BlhEgresoReceptor implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="traslado_periferico", type="string", length=2, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="traslado_periferico", type="string", length=2, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

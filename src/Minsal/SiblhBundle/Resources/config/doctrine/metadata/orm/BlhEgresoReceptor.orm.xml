@@ -4,9 +4,9 @@
     <indexes>
       <index name="fk_receptor_egreso_receptor" columns="id_receptor"/>
       <index name="IDX_7993CDC67DFA12F6" columns="id_establecimiento"/>
-      <index name="IDX_7993CDC6D8A5832B" columns="id_user_reg"/>
-      <index name="IDX_7993CDC6197798D8" columns="id_tipo_egreso"/>
       <index name="IDX_7993CDC62DF9F9B6" columns="id_banco_de_leche"/>
+      <index name="IDX_7993CDC6197798D8" columns="id_tipo_egreso"/>
+      <index name="IDX_7993CDC6D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -17,12 +17,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="madreCanguro" type="string" column="madre_canguro" length="2" nullable="false">
+    <field name="madreCanguro" type="string" column="madre_canguro" length="2" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="tipoEgreso" type="string" column="tipo_egreso" length="6" nullable="false">
+    <field name="tipoEgreso" type="string" column="tipo_egreso" length="6" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -32,7 +32,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="trasladoPeriferico" type="string" column="traslado_periferico" length="2" nullable="false">
+    <field name="trasladoPeriferico" type="string" column="traslado_periferico" length="2" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -74,9 +74,9 @@
         <option name="default"/>
       </options>
     </field>
-    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
-        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idTipoEgreso" target-entity="BlhCtlTipoEgreso" fetch="LAZY">
@@ -84,14 +84,14 @@
         <join-column name="id_tipo_egreso" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_user_reg" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idReceptor" target-entity="BlhReceptor" fetch="LAZY">
       <join-columns>
         <join-column name="id_receptor" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">

@@ -439,6 +439,7 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('numeroDocumentoIdentificacion', null, array(
                             'label' => false/*'Número de documento de identificación'*/,
                             'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
                             'attr' => array(
                                     'placeholder' => 'número de documento de identificación...',
                                     'class' => 'form-control input-sm',

@@ -27,8 +27,7 @@ class BlhLoteAnalisis implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_lote_analisis", type="string", length=11, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="codigo_lote_analisis", type="string", length=11, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -55,8 +54,7 @@ class BlhLoteAnalisis implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable_analisis", type="string", length=60, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="responsable_analisis", type="string", length=60, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,

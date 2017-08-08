@@ -9,13 +9,13 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="blh_lote_analisis_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="codigoLoteAnalisis" type="string" column="codigo_lote_analisis" length="11" nullable="false">
+    <field name="codigoLoteAnalisis" type="string" column="codigo_lote_analisis" length="11" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
     <field name="fechaAnalisisFisicoQuimico" type="date" column="fecha_analisis_fisico_quimico" nullable="false"/>
-    <field name="responsableAnalisis" type="string" column="responsable_analisis" length="60" nullable="false">
+    <field name="responsableAnalisis" type="string" column="responsable_analisis" length="60" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

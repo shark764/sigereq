@@ -70,10 +70,25 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
         $formMapper
             ->with('Registro de donación')
                 // ->add('id')
+                ->add('idCurva', 'sonata_type_model_hidden')
+                // ->add('idCurva', null, array(
+                //                 'label' => 'Curva de pasteurización',
+                //                 'label_attr' => array('class' => 'label_form_sm'),
+                //                 'required' => true,
+                //                 'attr' => array(
+                //                         'class' => 'form-control input-sm',
+                //                         // 'data-form-inline-group' => 'start',
+                //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                //                         'data-add-input-addon' => 'true',
+                //                         // 'data-add-input-addon-class' => 'primary-v4',
+                //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-list',
+                //                 )
+                // ))
                 ->add('codigoPasteurizacion', null, array(
                                 'label' => 'Código',
                                 'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => true,
+                                'required' => false,
                                 'attr' => array(
                                         'placeholder' => 'código...',
                                         'class' => 'form-control input-sm',
@@ -84,24 +99,10 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
                                 )
                 ))
-                ->add('idCurva', null, array(
-                                'label' => 'Curva de pasteurización',
-                                'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => true,
-                                'attr' => array(
-                                        'class' => 'form-control input-sm',
-                                        // 'data-form-inline-group' => 'start',
-                                        // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                        'data-add-input-addon' => 'true',
-                                        // 'data-add-input-addon-class' => 'primary-v4',
-                                        'data-add-input-addon-addon' => 'glyphicon glyphicon-list',
-                                )
-                ))
                 ->add('fechaPasteurizacion', 'datetime', array(
                                 'label' => 'Fecha de pasteurización',
                                 'label_attr' => array('class' => 'label_form_sm'),
-                                'required' => true,
+                                'required' => false,
                                 'widget' => 'single_text',
                                 'format' => 'dd/MM/yyyy',
                                 'attr' => array(
@@ -257,7 +258,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
         ;
 
         $formMapper
-            ->with('Combinar frascos')
+            ->with('Selección de frascos pasteurizados')
                 ->add('pasteurizacionFrascoProcesado', 'sonata_type_collection', array(
                                 'label' => false,
                                 'label_attr' => array('class' => 'label_form_sm'),

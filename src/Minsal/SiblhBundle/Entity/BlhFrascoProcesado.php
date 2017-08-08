@@ -40,7 +40,7 @@ class BlhFrascoProcesado implements EntityInterface
      *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
      * )
      */
-    private $codigoFrascoProcesado = 1;
+    private $codigoFrascoProcesado;
 
     /**
      * @var string

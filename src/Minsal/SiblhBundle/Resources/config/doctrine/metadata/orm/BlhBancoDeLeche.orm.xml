@@ -9,12 +9,12 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="blh_banco_de_leche_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="codigoBancoDeLeche" type="string" column="codigo_banco_de_leche" length="6" nullable="false">
+    <field name="codigoBancoDeLeche" type="string" column="codigo_banco_de_leche" length="6" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="estadoBanco" type="string" column="estado_banco" length="8" nullable="false">
+    <field name="estadoBanco" type="string" column="estado_banco" length="8" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -25,6 +25,11 @@
       </options>
     </field>
     <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true"/>
+    <field name="nombre" type="string" column="nombre" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>

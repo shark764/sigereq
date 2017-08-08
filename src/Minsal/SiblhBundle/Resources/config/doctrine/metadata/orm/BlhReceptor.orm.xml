@@ -4,10 +4,10 @@
     <indexes>
       <index name="fk_banco_de_leche_receptor" columns="id_banco_de_leche"/>
       <index name="fk_paciente_receptor" columns="id_paciente"/>
-      <index name="IDX_6498D2A701624C4" columns="id_expediente"/>
-      <index name="IDX_6498D2AD8A5832B" columns="id_user_reg"/>
-      <index name="IDX_6498D2AD436DB02" columns="id_madre_donante"/>
       <index name="IDX_6498D2A73181F7D" columns="id_curva_lubchenco"/>
+      <index name="IDX_6498D2A701624C4" columns="id_expediente"/>
+      <index name="IDX_6498D2AD436DB02" columns="id_madre_donante"/>
+      <index name="IDX_6498D2AD8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -77,11 +77,6 @@
         <join-column name="id_madre_donante" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idCurvaLubchenco" target-entity="BlhCtlCurvaLubchenco" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_curva_lubchenco" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
@@ -90,6 +85,11 @@
     <many-to-one field="idExpediente" target-entity="MntExpediente" fetch="LAZY">
       <join-columns>
         <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCurvaLubchenco" target-entity="BlhCtlCurvaLubchenco" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_curva_lubchenco" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idPaciente" target-entity="MntPaciente" fetch="LAZY">

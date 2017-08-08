@@ -14,6 +14,17 @@ file that was distributed with this source code.
 
 {% block stylesheets %}
     {{ parent() }}
+
+    {# bootstrap-table #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+    
+    {# bootstrap-modal
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/css/bootstrap-modal-bs3patch.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/css/bootstrap-modal.css') }}" type="text/css" rel="stylesheet" /> #}
+
+    {# bootstrap sweetalert #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/sweetalert.css') }}" type="text/css" rel="stylesheet" />
     
     {# bootstrap-switch #}
     <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.min.css') }}" type="text/css" rel="stylesheet" />
@@ -45,12 +56,228 @@ file that was distributed with this source code.
 {% block javascripts %}
     {{ parent() }}
 
+    {# bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
+    
+    {# bootstrap-modal
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/js/bootstrap-modalmanager.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-modal-master/js/bootstrap-modal.js') }}" ></script> #}
+
+    {# bootstrap sweetalert #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.min.js') }}" ></script>
+
     {# bootstrap-switch #}
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-switch-master/dist/js/bootstrap-switch.min.js') }}" ></script>
 
     <script type="text/javascript">
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var donorFormatResult = function(el) {
+            var markup = '<div class="row-fluid">' +
+                                '<div class="span10">' +
+                                '<div class="row-fluid">' +
+                                '<div class="span6">' + el.full_name + '</div>' +
+                            '</div>';
+
+            markup += '</div></div>';
+
+            return markup;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var donorFormatSelection = function(el) {
+            return el.full_name;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
 
         jQuery(document).ready(function() {
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDmedicamento]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_medicamento').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
+                jQuery('label[for="{{ admin.uniqId }}_medicamento"]').toggle(this.value === 'T');
+                if (this.value === 'T') {
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[NOTMAPPEDmedicamento]');
+                }
+                else if (this.value === 'F') {
+                    jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDmedicamento]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDmedicamento]');
+                }
+            });
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDhabitoToxico]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_habitoToxico').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
+                jQuery('label[for="{{ admin.uniqId }}_habitoToxico"]').toggle(this.value === 'T');
+                if (this.value === 'T') {
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[NOTMAPPEDhabitoToxico]');
+                }
+                else if (this.value === 'F') {
+                    jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDhabitoToxico]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDhabitoToxico]');
+                }
+            });
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDpatologia]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_patologia').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
+                jQuery('label[for="{{ admin.uniqId }}_patologia"]').toggle(this.value === 'T');
+                if (this.value === 'T') {
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[NOTMAPPEDpatologia]');
+                }
+                else if (this.value === 'F') {
+                    jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDpatologia]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDpatologia]');
+                }
+            });
+
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDmedicamento]"]').triggerHandler('ifChecked');
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDhabitoToxico]"]').triggerHandler('ifChecked');
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDpatologia]"]').triggerHandler('ifChecked');
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// initialize with custom options
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            var DONATION_SEARCHDONOR_search_donor_select = jQuery('#DONATION_SEARCHDONOR_search_donor');
+            DONATION_SEARCHDONOR_search_donor_select.select2({
+                width: 'resolve',
+                minimumResultsForSearch: 10,
+                dropdownAutoWidth : true,
+                allowClear: true,
+                placeholder: 'click para filtrar por donante...',
+                minimumInputLength: 3,
+                maximumSelectionSize: 1,
+                // multiple: true,
+                escapeMarkup: function(markup) {
+                    return markup;
+                },
+                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                    url: Routing.generate('siblh_donante_search'),
+                    dataType: 'json',
+                    quietMillis: 250,
+                    data: function (term, page) {
+                        var l = DONATION_SEARCHDONOR_search_donor_location_select.val();
+                        // var $type = jQuery('input[name=_search_type]:checked');
+                        // var $val = $type.val();
+                        return {
+                            q: term, // search term
+                            // t: $val, // patient type
+                            l: l, // location
+                        };
+                    },
+                    results: function (data, page) { // parse the results into the format expected by Select2.
+                        // since we are using custom formatting functions we do not need to alter the remote JSON data
+                        return { results: data.items };
+                    },
+                    cache: true
+                },
+                initSelection: function(element, callback) {
+                    // the input tag has a value attribute preloaded that points to a preselected repository's id
+                    // this function resolves that id attribute to an object that select2 can render
+                    // using its formatResult renderer - that way the repository name is shown preselected
+                    var id = $(element).val();
+                    if (id !== "") {
+                        var $type = jQuery('input[name=_search_type]:checked');
+                        var tp = $type.val();
+                        $.ajax(Routing.generate('siblh_donante_search', {id: id, t: tp}), {
+                            dataType: "json"
+                        }).done(function(data) { callback(data.item); });
+                    }
+                },
+                formatResult: donorFormatResult,  // display patient information
+                formatSelection: donorFormatSelection,    // selection
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// patient record change event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            DONATION_SEARCHDONOR_search_donor_select.on('change', function (e) {
+                var rvalue = this.value;
+
+                if (!rvalue) {
+                    jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html('');
+                    jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_info_container').html('');
+                    jQuery('#{{ admin.uniqId }}_idDonante').val('');
+                    return;
+                }
+
+                jQuery('#{{ admin.uniqId }}_idDonante').val(rvalue);
+
+                var l = DONATION_SEARCHDONOR_search_donor_location_select.val();
+                var tp = {% if app.user.getIdEstablecimiento() is not null %}parseInt(l, 10) !== parseInt({{ app.user.getIdEstablecimiento().getId()|e('js') }}, 10) ? 1 : 0{% else %}0{% endif %};
+
+                $.getJSON(Routing.generate('siblh_donante_search'), {
+                        id : rvalue,
+                        t: tp,   // patient type
+                        l: l, // location
+                    })
+                    .done(function(data) {
+                        jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+                    })
+                    .fail(function(jqxhr, textStatus, error) {
+                        //////// patient jumbotron
+                        jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html('');
+                        jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_info_container').html('');
+                        window.console.log(error, textStatus);
+                    });
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// initialize with custom options - LOCATION
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            var DONATION_SEARCHDONOR_search_donor_location_select = jQuery('#DONATION_SEARCHDONOR_search_donor_location');
+            DONATION_SEARCHDONOR_search_donor_location_select.select2({
+                width: 'resolve',
+                minimumResultsForSearch: 10,
+                dropdownAutoWidth : true,
+                allowClear: true,
+                placeholder: 'click para filtrar por establecimiento...',
+                minimumInputLength: 3,
+                maximumSelectionSize: 1,
+                // multiple: true,
+                escapeMarkup: function(markup) {
+                    return markup;
+                },
+                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                    url: Routing.generate('siblh_donante_searchLocation'),
+                    dataType: 'json',
+                    quietMillis: 250,
+                    data: function (term, page) {
+                        return {
+                            q: term, // search term
+                        };
+                    },
+                    results: function (data, page) { // parse the results into the format expected by Select2.
+                        // since we are using custom formatting functions we do not need to alter the remote JSON data
+                        return { results: data.items };
+                    },
+                    cache: true
+                },
+                {% if app.user.getIdEstablecimiento() is not null %}
+                    initSelection: function(element, callback) {
+                        // // the input tag has a value attribute preloaded that points to a preselected repository's id
+                        // // this function resolves that id attribute to an object that select2 can render
+                        // // using its formatResult renderer - that way the repository name is shown preselected
+                        // var id = $(element).val();
+                        // if (id !== "") {
+                        //     var $type = jQuery('input[name=_search_type]:checked');
+                        //     var tp = $type.val();
+                        //     $.ajax(Routing.generate('siblh_donante_search', {id: id, t: tp}), {
+                        //         dataType: "json"
+                        //     }).done(function(data) { callback(data.item); });
+                        // }
+                        callback({'id': {{ app.user.getIdEstablecimiento().getId()|e('js') }}, 'full_name': '{{ app.user.getIdEstablecimiento().getNombre() }}'});
+                    },
+                {% endif %}
+                formatResult: donorFormatResult,  // display patient information
+                formatSelection: donorFormatSelection,    // selection
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// patient record change event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            DONATION_SEARCHDONOR_search_donor_location_select.on('change', function (e) {
+                DONATION_SEARCHDONOR_search_donor_select.select2('val', '').triggerHandler('change');
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            
 {#            jQuery('#{{ admin.uniqId }}_donanteApta').iCheck('destroy').bootstrapSwitch();#}
 {#            jQuery('#{{ admin.uniqId }}_donanteApta').iCheck('destroy');#}
             jQuery('[name="{{ admin.uniqId }}[donanteApta]"]').bootstrapSwitch();
