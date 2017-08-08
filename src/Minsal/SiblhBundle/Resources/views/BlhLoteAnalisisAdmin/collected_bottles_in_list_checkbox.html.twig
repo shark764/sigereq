@@ -26,7 +26,7 @@ file that was distributed with this source code.
         data-pagination="true"
         data-pagination-h-align="left"
         data-pagination-detail-h-align="right"
-        data-page-list="[5, 10, 15, 25, 30]"
+        data-page-list="[15, 25, 30]"
         data-page-size="15"
         data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
         data-buttons-class="xray-awesome-blue"
@@ -42,7 +42,7 @@ file that was distributed with this source code.
         </tr>
     </thead>
     <tbody>
-        {% for i in 1..15 %}
+        {% for i in 1..26 %}
             <tr>
                 <td style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_loteAnalisisFrascoRecolectado_{{ i }}" name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]" value="{{ i }}"></td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
@@ -85,15 +85,21 @@ file that was distributed with this source code.
     }(jQuery));
 
     var generateAutomaticBatchOfBottles = function(el) {
+{#
         {% if choices is defined and choices|length >= 15 %}
+#}
             var $table = jQuery('#blh_collected_bottle_target_bstable');
-            $table.bootstrapTable('refreshOptions', {
-                pageSize: 15,
-            });
+            // $table.bootstrapTable('refreshOptions', {
+            //     pageSize: 15,
+            // });
             selections.length = 0;
+            console.log('selections', selections, selections.length);
             jQuery('input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][all]"]').iCheck('uncheck');
-            $table.find('tbody > tr').slice(1, 15).find('td > input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
+            $table.find('tbody > tr').slice(0, 15).find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
+            console.log('selections checked', selections, selections.length, $table.find('tbody > tr').length);
+{#
         {% endif %}
+#}
     };
 
     jQuery(document).ready(function() {

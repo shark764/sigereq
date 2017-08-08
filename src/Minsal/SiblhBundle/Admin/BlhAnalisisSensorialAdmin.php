@@ -65,120 +65,181 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idFrascoRecolectado', 'sonata_type_model_hidden')
-            // ->add('idFrascoRecolectado', null, array(
-            //                 'label' => 'Frasco recolectado',
-            //                 'label_attr' => array('class' => 'label_form_sm'),
-            //                 'required' => false,
-            //                 'group_by' => 'idLoteAnalisis',
+            // ->add('idFrascoRecolectado', 'sonata_type_model_hidden')
+            ->add('idFrascoRecolectado', null, array(
+                            'label' => false,
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
+                            'expanded' => true,
+                            'multiple' => false,
+                            'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
+                            // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $resultId, $patientId, $rType) {
+                            //                         return $er->pendingStudies($session_USER_LOCATION->getId(), $resultId, $patientId, null, $rType);
+                            //                     },
+                            'group_by' => 'idLoteAnalisis',
+                            'attr' => array(
+                                    'class' => /*'form-control input-sm'*/ /*'list-inline*/' formstyle-radio-list-inline input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                            )
+            ))
+            // ->add('embalaje', null, array(
+            //                 'label' => 'Embalaje',
+            //                 'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
             //                 'attr' => array(
+            //                         'placeholder' => 'embalaje...',
             //                         'class' => 'form-control input-sm',
-            //                         // 'data-form-inline-group' => 'start',
-            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+            //                         'data-form-inline-group' => 'start',
+            //                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
             //                         'data-add-input-addon' => 'true',
-            //                         // 'data-add-input-addon-class' => 'primary-v4',
-            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-max' => '9',
+            //                         'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
             //                 )
             // ))
-            ->add('embalaje', null, array(
+            ->add('idResultadoEmbalaje', null, array(
                             'label' => 'Embalaje',
-                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => true,
+                            'property' => 'presentacionEntidad',
                             'attr' => array(
-                                    'placeholder' => 'embalaje...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '1',
-                                    'data-fv-stringlength-max' => '9',
-                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
                             )
             ))
-            ->add('suciedad', null, array(
+            // ->add('suciedad', null, array(
+            //                 'label' => 'Suciedad',
+            //                 'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+            //                 'attr' => array(
+            //                         'placeholder' => 'suciedad...',
+            //                         'class' => 'form-control input-sm',
+            //                         'data-form-inline-group' => 'continue',
+            //                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-max' => '9',
+            //                         'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
+            ->add('idResultadoSuciedad', null, array(
                             'label' => 'Suciedad',
-                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => true,
+                            'property' => 'presentacionEntidad',
                             'attr' => array(
-                                    'placeholder' => 'suciedad...',
-                                    'class' => 'form-control input-sm',
-                                    'data-form-inline-group' => 'continue',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
-
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '1',
-                                    'data-fv-stringlength-max' => '9',
-                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('color', null, array(
-                            'label' => 'Color',
-                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'attr' => array(
-                                    'placeholder' => 'color...',
-                                    'class' => 'form-control input-sm',
-                                    'data-form-inline-group' => 'continue',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
-
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
-
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '1',
-                                    'data-fv-stringlength-max' => '9',
-                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
-
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
-                            )
-            ))
-            ->add('flavor', null, array(
-                            'label' => 'Flavor',
-                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
-                            'attr' => array(
-                                    'placeholder' => 'flavor...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+                            )
+            ))
+            // ->add('color', null, array(
+            //                 'label' => 'Color',
+            //                 'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+            //                 'attr' => array(
+            //                         'placeholder' => 'color...',
+            //                         'class' => 'form-control input-sm',
+            //                         'data-form-inline-group' => 'continue',
+            //                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
-                                    'data-fv-stringlength' => 'true',
-                                    'data-fv-stringlength-min' => '1',
-                                    'data-fv-stringlength-max' => '9',
-                                    'data-fv-stringlength-message' => '1 caracteres mínimo',
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
 
-                                    'data-fv-regexp' => 'true',
-                                    'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
-                                    'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-max' => '9',
+            //                         'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
+            ->add('idResultadoColor', null, array(
+                            'label' => 'Color',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => true,
+                            'property' => 'presentacionEntidad',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'start',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
+                            )
+            ))
+            // ->add('flavor', null, array(
+            //                 'label' => 'Flavor',
+            //                 'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+            //                 'attr' => array(
+            //                         'placeholder' => 'flavor...',
+            //                         'class' => 'form-control input-sm',
+            //                         'data-form-inline-group' => 'stop',
+            //                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-heart-empty',
+
+            //                         'data-fv-stringlength' => 'true',
+            //                         'data-fv-stringlength-min' => '1',
+            //                         'data-fv-stringlength-max' => '9',
+            //                         'data-fv-stringlength-message' => '1 caracteres mínimo',
+
+            //                         'data-fv-regexp' => 'true',
+            //                         'data-fv-regexp-regexp' => self::___CLASS_REGEX_GENERAL___,
+            //                         'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
+            //                 )
+            // ))
+            ->add('idResultadoFlavor', null, array(
+                            'label' => 'Flavor',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => true,
+                            'property' => 'presentacionEntidad',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
                             )
             ))
             ->add('observacion', 'textarea', array(
                             'label' => 'Observaciones / Comentarios',
-                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'attr' => array(
                                     'rows' => '2',
                                     'style' => 'resize:none',
                                     'placeholder' => 'comentarios...',
                                     'class' => 'form-control input-sm',
-                                    'data-add-form-group-col-class' => 'col-lg-5 col-md-5 col-sm-5',
+                                    'data-add-form-group-col-class' => 'col-lg-6 col-md-6 col-sm-6',
 
                                     'data-fv-stringlength' => 'true',
                                     'data-fv-stringlength-min' => '5',
@@ -209,6 +270,15 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            // array('MinsalSiblhBundle:BlhAnalisisSensorialAdmin:doctrine_orm_form_admin_fields.html.twig'),
+            array('MinsalSiblhBundle:BlhAnalisisSensorialAdmin:form_admin_fields.html.twig')
+       );
     }
     
     public function getTemplate($name)

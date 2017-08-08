@@ -270,7 +270,6 @@ file that was distributed with this source code.
         //////////////////////////////////////////////////////////////////////////////////////////////
         //////// initialize with custom options
         //////////////////////////////////////////////////////////////////////////////////////////////
-        {#
         jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla', function(e) {
             var subject = jQuery(this);
             console.log(subject.attr('id'), subject.attr('name'));
@@ -314,7 +313,8 @@ file that was distributed with this source code.
                 // select.on('change', function (e) {
                 // });
             });
-        });#}
+        });
+        {# #}
         //////////////////////////////////////////////////////////////////////////////////////////////
 
     </script>

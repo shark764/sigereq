@@ -1,0 +1,143 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% if choices is defined and choices|length == 0 %}
+    <div class="alert alert-dark-success-lighter-medicine alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
+        <span>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el frasco no se encuentra en el listado, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>.
+        </span>
+    </div>
+{% endif %}
+
+<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable"
+        data-id-field="id"
+        data-cache="false"
+        data-show-columns="true"
+        data-search="true"
+        data-pagination="true"
+        data-pagination-h-align="left"
+        data-pagination-detail-h-align="right"
+        data-page-list="[5, 10, 15, 25, 30]"
+        data-page-size="5"
+        data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
+        data-buttons-class="xray-awesome-blue"
+        data-search-align="left"
+        data-buttons-align="left"
+        data-toolbar-align="right">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Paciente</th>
+            <th>Reg.</th>
+            <th>Téc. / Lic. / Rdlg.</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in 1..15 %}
+            <tr>
+                <td style="vertical-align: middle; text-align: center;"><input type="radio" id="{{ sonata_admin.admin.uniqId }}_idFrascoRecolectado_{{ loop.index - 1 }}" name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]" value="{{ i }}"></td>
+                <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+                <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
+            </tr>
+        {% endfor %}
+
+        {% for child in form %}
+        	{% set s = choices[child.vars.value].data %}
+            {% set form_widget_content %}
+                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+            {% endset %}
+            <tr>
+                <td style="vertical-align: middle; text-align: center;">{{ form_widget_content|raw }}</td>
+                <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getIdReferido() }}</span>{% else %}{{ s.getIdExpediente().getIdPaciente() }}{% endif %}</td>
+                <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getNumero() }}</span>{% else %}{{ s.getIdExpediente().getNumero() }}{% endif %}</td>
+                <td>
+                    <ul class="bs-list-styled">
+                        {% for p in s.getIdProcedimientoRealizado().getIdSolicitudEstudio().getSolicitudEstudioProyeccion() %}
+                            <li>{{ p }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ s.getFechaHoraReg()|format_date('EEEE, MMMM d, yyyy', 'es_ES') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////// collected bottles table
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            var $table = jQuery('#blh_collected_bottle_target_bstable');
+
+            $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal'
+            });
+            $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
+
+            $table.on('page-change.bs.table', function (e, number, size) {
+                $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
+                    checkboxClass: 'icheckbox_minimal',
+                    radioClass: 'iradio_minimal'
+                });
+                $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
+                $table.find('tbody tr td input[type=radio][name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]"][value="' + selections[0] + '"]').iCheck('check');
+            });
+            $table.on('dbl-click-row.bs.table', function (e, row, $element, field) {
+                $element.find('td input[type=radio][name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]"]').iCheck('check');
+            });
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// get selections
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            var selections = [];
+            jQuery(document).on('ifChecked', 'input[name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]"]', function(e) {
+                jQuery(this).closest('tr').addClass('checked-row-bstable').siblings('tr').removeClass('checked-row-bstable');
+                // save your data, here just save the current page
+                // selections = getIdSelections();
+                selections = [this.value];
+                // push or splice the selections if you want to save all data selections
+                // window.console.log('selections', selections);
+            });
+
+        {% if choices is defined and choices|length == 0 %}
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// there is not any collected bottle
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            swal({
+                html:true,
+                title: "La consulta no devolvió ningún registro",
+                text: "Consulte frascos para análisis en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonClass: "btn-sm btn-default",
+                confirmButtonClass: "btn-sm btn-warning",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancelar",
+                // closeOnConfirm: false,
+                // closeOnCancel: false,
+                animation: false,
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    var url = Routing.generate('siblh_donacion_create', {mode: 'standard', interaction: false});
+                    window.location.href = url; // simulate link click
+                }
+            });
+        {% endif %}
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    });
+
+</script>

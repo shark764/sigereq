@@ -67,22 +67,23 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idFrascoRecolectado', 'sonata_type_model_hidden')
-            // ->add('idFrascoRecolectado', null, array(
-            //                 'label' => 'Frasco recolectado',
-            //                 'label_attr' => array('class' => 'label_form_sm'),
-            //                 'required' => false,
-            //                 'group_by' => 'idLoteAnalisis',
-            //                 'attr' => array(
-            //                         'class' => 'form-control input-sm',
-            //                         // 'data-form-inline-group' => 'start',
-            //                         // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-            //                         'data-add-input-addon' => 'true',
-            //                         // 'data-add-input-addon-class' => 'primary-v4',
-            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
-            //                 )
-            // ))
+            // ->add('idFrascoRecolectado', 'sonata_type_model_hidden')
+            ->add('idFrascoRecolectado', null, array(
+                            'label' => false,
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
+                            'expanded' => true,
+                            'multiple' => false,
+                            'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
+                            // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $resultId, $patientId, $rType) {
+                            //                         return $er->pendingStudies($session_USER_LOCATION->getId(), $resultId, $patientId, null, $rType);
+                            //                     },
+                            'group_by' => 'idLoteAnalisis',
+                            'attr' => array(
+                                    'class' => /*'form-control input-sm'*/ /*'list-inline*/' formstyle-radio-list-inline input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                            )
+            ))
             ->add('acidez1', null, array(
                             'label' => '1ra Acidez',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
@@ -237,6 +238,15 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            // array('MinsalSiblhBundle:BlhAcidezAdmin:doctrine_orm_form_admin_fields.html.twig'),
+            array('MinsalSiblhBundle:BlhAcidezAdmin:form_admin_fields.html.twig')
+       );
     }
     
     public function getTemplate($name)

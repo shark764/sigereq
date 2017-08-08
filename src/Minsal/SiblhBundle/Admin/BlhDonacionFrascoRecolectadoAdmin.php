@@ -59,7 +59,11 @@ class BlhDonacionFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idFrascoRecolectado', 'sonata_type_model_hidden')
+            ->add('idFrascoRecolectado', 'sonata_type_model_hidden', array(
+                            'label' => 'Alimentar frasco',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
+            ))
             // ->add('idFrascoRecolectado', null, array(
             //                 'label' => 'Alimentar frasco',
             //                 'label_attr' => array('class' => 'label_form_sm'),

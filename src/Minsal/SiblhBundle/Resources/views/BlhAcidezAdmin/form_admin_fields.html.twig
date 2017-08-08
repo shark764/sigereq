@@ -1,0 +1,415 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'MinsalSiblhBundle:Form:form_admin_fields.html.twig' %}
+
+{# Labels #}
+{% block form_label %}
+{% spaceless %}
+
+    {% set label_class = " control-label col-lg-4 col-md-4 col-sm-4 " %}
+    {#{% if sonata_admin.admin and sonata_admin.admin.getConfigurationPool().getOption('form_type') == 'horizontal' %}
+        {% set label_class = " control-label col-sm-3" %}
+    {% else %}
+        {% set label_class = " control-label" %}
+    {% endif%}#}
+
+    {#{{ sonata_admin.admin.getConfigurationPool().getOption('form_type') }}#}
+    {% if label is not sameas(false) %}
+        {% set label_attr = label_attr|merge({'class': label_attr.class|default('col-lg-4 col-md-4 col-sm-4') ~ label_class }) %}
+
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('col-lg-4 col-md-4 col-sm-4') ~ ' required')|trim}) %}
+        {% endif %}
+
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+
+        {% if in_list_checkbox is defined and in_list_checkbox and widget is defined %}
+            <label{% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>
+                {{ widget|raw }}
+                <span class="in_list_checkbox_labelwidget" style="margin-left: 5px;">
+                    {% if not sonata_admin.admin %}
+                        {{- label|trans({}, translation_domain)|default(null)|raw -}}
+                    {% else %}
+                        {{- label|trans({}, sonata_admin.field_description.translationDomain)|default(null)|raw -}}
+                    {% endif%}
+                </span>
+            </label>
+        {% else %}
+            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+                {% if not sonata_admin.admin%}
+                    {{- label|trans({}, translation_domain)|default(null)|raw -}}
+                {% else %}
+                    {{ sonata_admin.admin.trans(label, {}, sonata_admin.field_description.translationDomain)|default(null)|raw }}
+                {% endif %}
+            </label>
+        {% endif %}
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <ul {{ block('widget_container_attributes') }}>
+        {% for child in form %}
+            <li>
+                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+                {{ form_label(child) }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block choice_widget %}
+{% spaceless %}
+    {% if compound %}
+        {% if (sonata_admin.admin.uniqId ~ '_idFrascoRecolectado') is not sameas(id) %}
+            {% if attr['data-radio-display-form'] is defined and attr['data-radio-display-form'] == 'inline' %}
+                {% set attr = attr|merge({'class': (attr.class|default('') ~ ' list-inline')|trim}) %}  {# inline radiobutton display mode #}
+            {% endif%}
+            <ul {{ block('widget_container_attributes_choice_widget') }}>
+            {% for child in form %}
+                <li>
+                    {% set form_widget_content %}
+                        {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+                    {% endset %}
+                    {{ form_label(child, child.vars.label|default(null)|raw, { 'in_list_checkbox' : true, 'widget' : form_widget_content } ) }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            {% include 'MinsalSiblhBundle:BlhAcidezAdmin:collected_bottles_in_list_checkbox.html.twig' ignore missing with {attr: block('widget_container_attributes_choice_widget'), form: form, choices: choices} %}
+        {% endif%}
+    {% else %}
+    {% if sonata_admin.admin and not sonata_admin.admin.getConfigurationPool().getOption('use_select2') %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+    {% endif %}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+        {% if empty_value is not none %}
+            <option value="">
+                {% if not sonata_admin.admin %}
+                    {{- empty_value|trans({}, translation_domain) -}}
+                {% else %}
+                    {{- empty_value|trans({}, sonata_admin.field_description.translationDomain) -}}
+                {% endif%}
+            </option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+            {{ block('choice_widget_options') }}
+            {% if choices|length > 0 %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('choice_widget_options') }}
+    </select>
+    {% endif %}
+{% endspaceless %}
+{% endblock choice_widget %}
+
+{% block form_row %}
+    {% set label_class = " control-label col-lg-4 col-md-4 col-sm-4 " %}
+    {% set div_class = attr['data-add-form-group-col-class']|default('col-lg-8 col-md-8 col-sm-8') %}
+    {#{% if sonata_admin.admin and sonata_admin.admin.getConfigurationPool().getOption('form_type') == 'horizontal' %}
+        {% set label_class = "control-label col-sm-3" %}
+        {% set div_class = "col-sm-9 col-md-9" %}
+    {% else %}
+        {% set label_class = "control-label" %}
+    {% endif%}#}
+
+    {% if sonata_admin is not defined or not sonata_admin_enabled or not sonata_admin.field_description %}
+        <div class="form-group {% if errors|length > 0%} has-error{% endif %}">
+            {{ form_label(form, label|default(null)|raw) }}
+            <div class="{% if label is sameas(false) %}sonata-collection-row-without-label{% endif %}">
+                {{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+                {% if errors|length > 0 %}
+                    <div class="help-block sonata-ba-field-error-messages">
+                        {{ form_errors(form) }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+	{% if attr['data-form-inline-group'] is not defined or (attr['data-form-inline-group'] is defined and attr['data-form-inline-group'] == 'start') %}
+	    <div class="form-group form-group-collapsed-fields{% if attr['data-add-input-addon'] is defined %} has-feedback{%endif%}{% if errors|length > 0%} has-error{%endif%}" id="sonata-ba-field-container-{{ id }}">
+	{% endif %}
+            {% block label %}
+                {% if sonata_admin.field_description.options.name is defined %}
+                    {{ form_label(form, sonata_admin.field_description.options.name, { 'attr' : {'class' : label_class} }) }}
+                {% else %}
+                    {{ form_label(form, label|default(null)|raw, { 'attr' : {'class' : label_class} }) }}
+                {% endif %}
+            {% endblock %}
+
+            {% set has_label = sonata_admin.field_description.options.name is defined or label is not sameas(false) %}
+            <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %} {% if not has_label %}sonata-collection-row-without-label{% endif %}">
+
+		{#{% if attr['data-add-input-addon'] is defined and (attr['data-add-input-addon'] == true or attr['data-add-input-addon'] == 'true') %}#}
+        {% if attr['data-add-input-addon'] is defined and attr['data-add-input-addon-skipicon'] is not defined %}
+            <div class="has-left-addinputaddon">
+                <i class="form-control-feedback feedback-leftside {{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}" style=""></i>
+    		    {#<div class="input-group {{ attr['data-add-input-addon-class']|default('xray-awesome-blue') }} background-opacity">#}
+    			{#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-question-sign') }}"></i></span>#}
+                {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}"></i></span>#}
+    			{{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+    		    {#</div>#}
+            </div>
+		{% elseif attr['data-add-input-btn'] is defined and (attr['data-add-input-btn'] == true or attr['data-add-input-btn'] == 'true') %}
+		    <div class="input-group ">
+			<span class="input-group-btn {{ attr['data-add-input-btn-class']|default('') }}">
+			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-xray-awesome-blue') }}" >
+				<i class="{{ attr['data-add-input-btn-addon']|default('glyphicon glyphicon-ok-circle') }}"></i>
+			    </button>
+			</span>
+			{{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+		    </div>
+		{% else %}
+		    {{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+		{% endif %}
+
+                {% if errors|length > 0 %}
+                    <div class="help-block sonata-ba-field-error-messages">
+                        {{ form_errors(form) }}
+                    </div>
+                {% endif %}
+
+                {% if sonata_admin.field_description.help %}
+                    <span class="help-block sonata-ba-field-help">{{ sonata_admin.admin.trans(sonata_admin.field_description.help, {}, sonata_admin.field_description.translationDomain)|raw }}</span>
+                {% endif %}
+            </div>
+	{% if attr['data-form-inline-group'] is not defined or (attr['data-form-inline-group'] is defined and attr['data-form-inline-group'] == 'stop') %}
+	    </div>
+	{% endif %}
+    {% endif %}
+{% endblock form_row %}
+
+{% block sonata_type_immutable_array_widget_row %}
+    {% spaceless %}
+        <div class="form-group{% if errors|length > 0%} error{%endif%}" id="sonata-ba-field-container-{{ id }}-{{ key }}">
+
+            {{ form_label(child) }}
+
+            {% set div_class = "col-sm-9 col-md-9" %}
+            {#{% if sonata_admin.admin and sonata_admin.admin.getConfigurationPool().getOption('form_type') == 'horizontal' %}
+                {% set div_class = "col-sm-9 col-md-9" %}
+            {% endif%}#}
+
+            <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %}">
+                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+            </div>
+
+            {% if errors|length > 0 %}
+                <div class="help-block sonata-ba-field-error-messages">
+                    {{ form_errors(child) }}
+                </div>
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block repeated_row %}
+    {% set label_class = " control-label col-lg-4 col-md-4 col-sm-4 " %}
+    {% set div_class = attr['data-add-form-group-col-class']|default('col-lg-3 col-md-3 col-sm-3') %}
+
+    {% if sonata_admin is not defined or not sonata_admin_enabled or not sonata_admin.field_description %}
+        <div class="form-group {% if errors|length > 0%} has-error{% endif %}">
+            {{ form_label(form.first, label|default(null)|raw) }}
+            <div class="{% if label is sameas(false) %}sonata-collection-row-without-label{% endif %}">
+                {{ form_widget(form.first, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+                {% if errors|length > 0 %}
+                    <div class="help-block sonata-ba-field-error-messages">
+                        {{ form_errors(form.first) }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div class="form-group form-group-collapsed-fields{% if attr['data-add-input-addon'] is defined %} has-feedback{%endif%}{% if errors|length > 0%} has-error{%endif%}" id="sonata-ba-field-container-{{ id }}">
+            {% block label_first %}
+                {% if sonata_admin.field_description.options.name is defined %}
+                    {{ form_label(form.first, sonata_admin.field_description.options.name, { 'attr' : {'class' : label_class} }) }}
+                {% else %}
+                    {{ form_label(form.first, label|default(null)|raw, { 'attr' : {'class' : label_class} }) }}
+                {% endif %}
+            {% endblock %}
+
+            {% set has_label = sonata_admin.field_description.options.name is defined or label is not sameas(false) %}
+            <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %} {% if not has_label %}sonata-collection-row-without-label{% endif %}">
+
+		{% if attr['data-add-input-addon'] is defined and (attr['data-add-input-addon'] == true or attr['data-add-input-addon'] == 'true') %}
+            <div class="has-left-addinputaddon">
+                <i class="form-control-feedback feedback-leftside {{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}" style=""></i>
+                {#<div class="input-group {{ attr['data-add-input-addon-class']|default('xray-awesome-blue') }} background-opacity">#}
+                {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-question-sign') }}"></i></span>#}
+                {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}"></i></span>#}
+                {{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+                {#</div>#}
+            </div>
+        {% elseif attr['data-add-input-btn'] is defined and (attr['data-add-input-btn'] == true or attr['data-add-input-btn'] == 'true') %}
+		    <div class="input-group ">
+			<span class="input-group-btn {{ attr['data-add-input-btn-class']|default('') }}">
+			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-xray-awesome-blue') }}" >
+				<i class="{{ attr['data-add-input-btn-addon']|default('glyphicon glyphicon-ok-circle') }}"></i>
+			    </button>
+			</span>
+			{{ form_widget(form.first, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+		    </div>
+		{% else %}
+		    {{ form_widget(form.first, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+		{% endif %}
+
+                {% if errors|length > 0 %}
+                    <div class="help-block sonata-ba-field-error-messages">
+                        {{ form_errors(form.first) }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            {% set label_class = " control-label col-lg-1 col-md-1 col-sm-1 " %}
+            {% block label_second %}
+                {% if sonata_admin.field_description.options.name is defined %}
+                    {{ form_label(form.second, sonata_admin.field_description.options.name, { 'attr' : {'class' : label_class} }) }}
+                {% else %}
+                    {{ form_label(form.second, label.second|default(null), { 'attr' : {'class' : label_class} }) }}
+                {% endif %}
+            {% endblock %}
+
+            {% set has_label = sonata_admin.field_description.options.name is defined or label is not sameas(false) %}
+            <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %} {% if not has_label %}sonata-collection-row-without-label{% endif %}">
+
+		{% if attr['data-add-input-addon'] is defined and (attr['data-add-input-addon'] == true or attr['data-add-input-addon'] == 'true') %}
+            <div class="has-left-addinputaddon">
+                <i class="form-control-feedback feedback-leftside {{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}" style=""></i>
+                {#<div class="input-group {{ attr['data-add-input-addon-class']|default('xray-awesome-blue') }} background-opacity">#}
+                {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-question-sign') }}"></i></span>#}
+                {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}"></i></span>#}
+                {{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+                {#</div>#}
+            </div>
+        {% elseif attr['data-add-input-btn'] is defined and (attr['data-add-input-btn'] == true or attr['data-add-input-btn'] == 'true') %}
+		    <div class="input-group ">
+			<span class="input-group-btn {{ attr['data-add-input-btn-class']|default('') }}">
+			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-xray-awesome-blue') }}" >
+				<i class="{{ attr['data-add-input-btn-addon']|default('glyphicon glyphicon-ok-circle') }}"></i>
+			    </button>
+			</span>
+			{{ form_widget(form.second, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+		    </div>
+		{% else %}
+		    {{ form_widget(form.second, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+		{% endif %}
+
+                {% if errors|length > 0 %}
+                    <div class="help-block sonata-ba-field-error-messages">
+                        {{ form_errors(form.second) }}
+                    </div>
+                {% endif %}
+            </div>
+
+	    {% if sonata_admin.field_description.help %}
+		<span class="help-block sonata-ba-field-help">{{ sonata_admin.admin.trans(sonata_admin.field_description.help, {}, sonata_admin.field_description.translationDomain)|raw }}</span>
+	    {% endif %}
+        </div>
+    {% endif %}
+{% endblock repeated_row %}
+
+{#{% block checkbox_widget %}
+{% spaceless %}
+    {% set label_class = " control-label col-lg-12 col-md-12 col-sm-12 " %}
+    
+    {% if label is not sameas(false) %}
+        {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ label_class }) %}
+
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+    {% endif %}
+
+    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+        {% if label is not sameas(false) %}
+            <span style="margin-left: 5px;">
+                {% if not sonata_admin.admin%}
+                    {{- label|trans({}, translation_domain)|default(null)|raw -}}
+                {% else %}
+                    {{ sonata_admin.admin.trans(label, {}, sonata_admin.field_description.translationDomain)|default(null)|raw }}
+                {% endif %}
+            </span>
+        {% endif %}
+    </label>
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block checkbox_row %}
+{% spaceless %}
+    {% set div_class = attr['data-add-form-group-col-class']|default('col-lg-8 col-md-8 col-sm-8 col-xs-offset-4') %}
+    
+    {% if attr['data-form-inline-group'] is not defined or (attr['data-form-inline-group'] is defined and attr['data-form-inline-group'] == 'start') %}
+        <div class="form-group form-group-collapsed-fields{% if attr['data-add-input-addon'] is defined %} has-feedback{%endif%}{% if errors|length > 0%} has-error{%endif%}" id="sonata-ba-field-container-{{ id }}">
+    {% endif %}
+	{% set has_label = sonata_admin.field_description.options.name is defined or label is not sameas(false) %}
+	<div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %} {% if not has_label %}sonata-collection-row-without-label{% endif %}">
+	    <div class="checkbox">
+		{{ form_widget(form) }}
+		{% if errors|length > 0 %}
+		    <div class="help-block sonata-ba-field-error-messages">
+			{{ form_errors(form) }}
+		    </div>
+		{% endif %}
+
+		{% if sonata_admin.field_description.help %}
+		    <span class="help-block sonata-ba-field-help">{{ sonata_admin.admin.trans(sonata_admin.field_description.help, {}, sonata_admin.field_description.translationDomain)|raw }}</span>
+		{% endif %}
+	    </div>
+	</div>
+    {% if attr['data-form-inline-group'] is not defined or (attr['data-form-inline-group'] is defined and attr['data-form-inline-group'] == 'stop') %}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock checkbox_row %}#}
+
+{% block choice_widget_options %}
+{% spaceless %}
+    {% for group_label, choice in options %}
+        {% if choice is iterable %}
+            <optgroup label="{{ group_label|trans({}, translation_domain) }}">
+                {% set options = choice %}
+                {{ block('choice_widget_options') }}
+            </optgroup>
+        {% else %}
+            <option {#data-id="{{ choice.value }}"#} value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain) }}</option>
+        {% endif %}
+    {% endfor %}
+{% endspaceless %}
+{% endblock choice_widget_options %}
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    {% set value = value matches '/^[-+]?[0-9]*\\,?[0-9]+$/' ? value|replace({ ',': '.' }) : value %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value|trim }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+{# #}
