@@ -110,7 +110,10 @@ file that was distributed with this source code.
                 jQuery('#HIDDEN_{{ admin.uniqId }}_idResultadoFlavor').val(this.value);
             });
 
+            //////// init select2 disabled mode
             jQuery('#{{ admin.uniqId }}_idResultadoEmbalaje').triggerHandler('change');
+            jQuery('#{{ admin.uniqId }}_idResultadoSuciedad').triggerHandler('change');
+            jQuery('#{{ admin.uniqId }}_idResultadoColor').triggerHandler('change');
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
 
