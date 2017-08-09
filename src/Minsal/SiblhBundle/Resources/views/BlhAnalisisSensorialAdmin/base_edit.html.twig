@@ -48,4 +48,64 @@ file that was distributed with this source code.
 
     {# bootstrap sweetalert #}
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.min.js') }}" ></script>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function() {
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////// enable selections
+            //////// >>>> assuming [1] as APPROVED STATUS
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('#{{ admin.uniqId }}_idResultadoEmbalaje').on('change', function (e) {
+                // console.log(this.value, parseInt(this.value), parseInt(this.value) === 1);
+                if (parseInt(this.value) === 1) {
+                    jQuery('#{{ admin.uniqId }}_idResultadoSuciedad'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[idResultadoSuciedad]');
+                }
+                else {
+                    jQuery(this).closest('form')
+                        .formValidation('resetField', '{{ admin.uniqId }}[idResultadoSuciedad]')
+                        .formValidation('removeField', '{{ admin.uniqId }}[idResultadoSuciedad]')
+                        .formValidation('resetField', '{{ admin.uniqId }}[idResultadoColor]')
+                        .formValidation('removeField', '{{ admin.uniqId }}[idResultadoColor]')
+                        .formValidation('resetField', '{{ admin.uniqId }}[idResultadoFlavor]')
+                        .formValidation('removeField', '{{ admin.uniqId }}[idResultadoFlavor]');
+                    jQuery('#{{ admin.uniqId }}_idResultadoSuciedad'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery('#{{ admin.uniqId }}_idResultadoColor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery('#{{ admin.uniqId }}_idResultadoFlavor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                }
+            });
+            jQuery('#{{ admin.uniqId }}_idResultadoSuciedad').on('change', function (e) {
+                // console.log(this.value, parseInt(this.value), parseInt(this.value) === 1);
+                if (parseInt(this.value) === 1) {
+                    jQuery('#{{ admin.uniqId }}_idResultadoColor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[idResultadoColor]');
+                }
+                else {
+                    jQuery(this).closest('form')
+                        .formValidation('resetField', '{{ admin.uniqId }}[idResultadoColor]')
+                        .formValidation('removeField', '{{ admin.uniqId }}[idResultadoColor]')
+                        .formValidation('resetField', '{{ admin.uniqId }}[idResultadoFlavor]')
+                        .formValidation('removeField', '{{ admin.uniqId }}[idResultadoFlavor]');
+                    jQuery('#{{ admin.uniqId }}_idResultadoColor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery('#{{ admin.uniqId }}_idResultadoFlavor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                }
+            });
+            jQuery('#{{ admin.uniqId }}_idResultadoColor').on('change', function (e) {
+                // console.log(this.value, parseInt(this.value), parseInt(this.value) === 1);
+                if (parseInt(this.value) === 1) {
+                    jQuery('#{{ admin.uniqId }}_idResultadoFlavor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[idResultadoFlavor]');
+                }
+                else {
+                    jQuery(this).closest('form')
+                        .formValidation('resetField', '{{ admin.uniqId }}[idResultadoFlavor]')
+                        .formValidation('removeField', '{{ admin.uniqId }}[idResultadoFlavor]');
+                    jQuery('#{{ admin.uniqId }}_idResultadoFlavor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                }
+            });
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        });
+
+    </script>
 {% endblock %}

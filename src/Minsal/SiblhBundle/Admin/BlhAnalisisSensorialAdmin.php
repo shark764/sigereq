@@ -152,6 +152,7 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
                                     'disabled' => 'disabled',
+                                    // 'readonly' => 'readonly',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
