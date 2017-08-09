@@ -11,13 +11,11 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del cantón</option>
       </options>
     </field>
     <field name="codigoDigestyc" type="string" column="codigo_digestyc" length="5" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Codigo asignado por la Digestyc para un cantón en especifico</option>
       </options>
     </field>
     <many-to-one field="idMunicipio" target-entity="CtlMunicipio" fetch="LAZY">

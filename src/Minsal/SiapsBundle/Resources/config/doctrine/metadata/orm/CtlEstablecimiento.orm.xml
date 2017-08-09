@@ -14,65 +14,35 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del establecimiento de salud</option>
       </options>
     </field>
     <field name="direccion" type="string" column="direccion" length="250" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Lugar físico del establecimiento</option>
       </options>
     </field>
     <field name="telefono" type="string" column="telefono" length="15" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Teléfono de contacto del establecimiento</option>
-      </options>
-    </field>
-    <field name="fax" type="string" column="fax" length="15" nullable="true">
-      <options>
-        <option name="fixed"/>
-        <option name="comment">Fax del establecimiento</option>
-      </options>
-    </field>
-    <field name="latitud" type="decimal" column="latitud" precision="10" scale="4" nullable="true">
-      <options>
-        <option name="comment">Coordenadas de latitud para sistema georeferencial</option>
-      </options>
-    </field>
-    <field name="longitud" type="decimal" column="longitud" precision="10" scale="4" nullable="true">
-      <options>
-        <option name="comment">Coordenadas de longitud para sistema georeferencial</option>
       </options>
     </field>
     <field name="idNivelMinsal" type="integer" column="id_nivel_minsal" nullable="true">
       <options>
         <option name="unsigned"/>
-        <option name="comment">Representa el nivel del establecimiento, pueden ser 1,2,3</option>
       </options>
     </field>
     <field name="codUcsf" type="integer" column="cod_ucsf" nullable="true">
       <options>
         <option name="unsigned"/>
-        <option name="comment">Código asignados a la Unidad Comunitaria de Salud Familiar.</option>
       </options>
     </field>
-    <field name="activo" type="boolean" column="activo" nullable="true">
-      <options>
-        <option name="comment">Estado del establecimiento</option>
-      </options>
-    </field>
+    <field name="activo" type="boolean" column="activo" nullable="true"/>
     <field name="tipoExpediente" type="string" column="tipo_expediente" length="1" nullable="true">
       <options>
         <option name="fixed">1</option>
-        <option name="comment">Los tipos de expedientes son: G = Utiliza guión (xxx-xx); I = Infinito</option>
       </options>
     </field>
-    <field name="configurado" type="boolean" column="configurado" nullable="true">
-      <options>
-        <option name="comment">Determina cual es el establecimiento que esta configurado </option>
-      </options>
-    </field>
+    <field name="configurado" type="boolean" column="configurado" nullable="true"/>
     <many-to-one field="idTipoEstablecimiento" target-entity="CtlTipoEstablecimiento" fetch="LAZY">
       <join-columns>
         <join-column name="id_tipo_establecimiento" referenced-column-name="id"/>

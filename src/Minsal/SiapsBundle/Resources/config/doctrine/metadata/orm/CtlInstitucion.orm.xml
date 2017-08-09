@@ -11,13 +11,11 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Descripción nombre de la Institución</option>
       </options>
     </field>
     <field name="logo" type="string" column="logo" length="35" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">nombre archivo de imagen utilizada como logo de la institución</option>
       </options>
     </field>
     <field name="rectora" type="string" column="rectora" length="10" nullable="true">
@@ -33,7 +31,6 @@
     <field name="sigla" type="string" column="sigla" length="14" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Sigla de la institución</option>
       </options>
     </field>
     <field name="estado" type="integer" column="estado" nullable="false">

@@ -8,13 +8,8 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del pais</option>
       </options>
     </field>
-    <field name="activo" type="boolean" column="activo" nullable="true">
-      <options>
-        <option name="comment">Si el país está activo para ser presentado en las aplicaciones del sistema</option>
-      </options>
-    </field>
+    <field name="activo" type="boolean" column="activo" nullable="true"/>
   </entity>
 </doctrine-mapping>

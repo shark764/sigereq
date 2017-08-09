@@ -8,13 +8,11 @@
     <field name="nombre" type="string" column="nombre" length="100" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Almacena los nombres de los distintos tipos de patologia</option>
       </options>
     </field>
     <field name="descripcion" type="text" column="descripcion" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Almacena la descripcion de los tipos de patologias</option>
       </options>
     </field>
   </entity>

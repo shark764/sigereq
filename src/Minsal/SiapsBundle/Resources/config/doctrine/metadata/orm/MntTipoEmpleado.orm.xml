@@ -8,18 +8,11 @@
     <field name="codigo" type="string" column="codigo" length="3" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Codigo del empleado</option>
       </options>
     </field>
     <field name="tipo" type="string" column="tipo" length="50" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Tipo de empleado</option>
-      </options>
-    </field>
-    <field name="prescribeMedicamento" type="boolean" column="prescribe_medicamento" nullable="false">
-      <options>
-        <option name="default"/>
       </options>
     </field>
   </entity>

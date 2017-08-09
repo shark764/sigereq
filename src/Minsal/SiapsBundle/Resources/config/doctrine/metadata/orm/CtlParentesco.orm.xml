@@ -8,7 +8,6 @@
     <field name="parentesco" type="string" column="parentesco" length="15" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Parentesco del paciente</option>
       </options>
     </field>
   </entity>

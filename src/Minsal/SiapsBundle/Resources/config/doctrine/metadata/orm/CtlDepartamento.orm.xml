@@ -12,25 +12,21 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del departamento</option>
       </options>
     </field>
     <field name="codigoCnr" type="string" column="codigo_cnr" length="5" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Codigo asignado por la Digestyc para un departamento en especifico</option>
       </options>
     </field>
     <field name="abreviatura" type="string" column="abreviatura" length="5" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Abreviatura asignada al departamento</option>
       </options>
     </field>
     <field name="iso31662" type="string" column="iso31662" length="5" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Código de departamento según norma ISO 3166-2 </option>
       </options>
     </field>
     <many-to-one field="idPais" target-entity="CtlPais" fetch="LAZY">

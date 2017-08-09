@@ -8,7 +8,6 @@
     <field name="nombre" type="string" column="nombre" length="20" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Descripción o nombre del documento</option>
       </options>
     </field>
   </entity>

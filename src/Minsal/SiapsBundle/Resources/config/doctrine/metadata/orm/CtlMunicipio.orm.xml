@@ -11,19 +11,16 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del municipio</option>
       </options>
     </field>
     <field name="codigoCnr" type="string" column="codigo_cnr" length="5" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Codigo asignado por la Digestyc para un municipio en especifico</option>
       </options>
     </field>
     <field name="abreviatura" type="string" column="abreviatura" length="5" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Abreviatura asignada al municipio</option>
       </options>
     </field>
     <many-to-one field="idDepartamento" target-entity="CtlDepartamento" fetch="LAZY">

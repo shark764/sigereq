@@ -8,13 +8,11 @@
     <field name="nombre" type="string" column="nombre" length="150" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del tipo de establecimiento</option>
       </options>
     </field>
     <field name="codigo" type="string" column="codigo" length="6" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Código que distingue al tipo establecimiento</option>
       </options>
     </field>
     <field name="idInstitucion" type="integer" column="id_institucion" nullable="true">

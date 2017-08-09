@@ -14,87 +14,63 @@
     <field name="nombre" type="string" column="nombre" length="100" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del empleado</option>
       </options>
     </field>
     <field name="apellido" type="string" column="apellido" length="100" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Apellidos del Empleado</option>
       </options>
     </field>
-    <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="true">
-      <options>
-        <option name="comment">Fecha de nacimiento del empleado</option>
-      </options>
-    </field>
+    <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="true"/>
     <field name="dui" type="string" column="dui" length="12" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">DUI del empleado</option>
       </options>
     </field>
     <field name="numeroJuntaVigilancia" type="string" column="numero_junta_vigilancia" length="20" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Numero de junta de vigilancia en caso de que sea medico</option>
       </options>
     </field>
     <field name="numeroCelular" type="string" column="numero_celular" length="10" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Telefono celular de contacto</option>
       </options>
     </field>
     <field name="correoElectronico" type="string" column="correo_electronico" length="50" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Correo electronico</option>
       </options>
     </field>
     <field name="correlativo" type="smallint" column="correlativo" nullable="true">
       <options>
         <option name="unsigned"/>
-        <option name="comment">UTILIZADO PARA LOS QUE POSEE VERSIÓN ANTIGUA DE CODIGO SIAP</option>
       </options>
     </field>
     <field name="firmaDigital" type="text" column="firma_digital" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Campo para setearle el hash de la firma digital del empleado</option>
       </options>
     </field>
-    <field name="idUserReg" type="smallint" column="id_user_reg" nullable="true">
+    <field name="idusuarioreg" type="smallint" column="idusuarioreg" nullable="true">
       <options>
         <option name="unsigned"/>
-        <option name="comment">Almacena el id del usuario que ingresa el registro</option>
       </options>
     </field>
-    <field name="fechaHoraReg" type="datetime" column="fecha_hora_reg" nullable="true">
-      <options>
-        <option name="comment">almacena la fecha y hora de ingreso del registro</option>
-      </options>
-    </field>
-    <field name="idUserMod" type="smallint" column="id_user_mod" nullable="true">
+    <field name="fechahorareg" type="datetime" column="fechahorareg" nullable="true"/>
+    <field name="idusuariomod" type="smallint" column="idusuariomod" nullable="true">
       <options>
         <option name="unsigned"/>
-        <option name="comment">Almacena el id del usuario que modifico el registro</option>
       </options>
     </field>
-    <field name="fechaHoraMod" type="datetime" column="fecha_hora_mod" nullable="true">
-      <options>
-        <option name="comment">almacena la fecha y hora de modificacion del registro</option>
-      </options>
-    </field>
-    <field name="nombreEmpleado" type="string" column="nombre_empleado" length="200" nullable="true">
+    <field name="fechahoramod" type="datetime" column="fechahoramod" nullable="true"/>
+    <field name="nombreempleado" type="string" column="nombreempleado" length="200" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre Unido para los modulos de PHP Puro y POstgresql</option>
       </options>
     </field>
     <field name="habilitado" type="boolean" column="habilitado" nullable="true">
       <options>
-        <option name="comment">Almacena si el registro esta habilitado</option>
         <option name="default">1</option>
       </options>
     </field>
@@ -104,6 +80,11 @@
       </options>
     </field>
     <field name="idNuevoEmpleado" type="integer" column="id_nuevo_empleado" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idRegistroSiap" type="bigint" column="id_registro_siap" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>

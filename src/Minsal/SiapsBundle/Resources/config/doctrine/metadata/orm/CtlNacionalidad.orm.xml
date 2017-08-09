@@ -8,7 +8,6 @@
     <field name="nacionalidad" type="string" column="nacionalidad" length="50" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre de la nacionalidad</option>
       </options>
     </field>
   </entity>

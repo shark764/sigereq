@@ -8,19 +8,16 @@
     <field name="nombre" type="string" column="nombre" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre de la Condicion de la Persona</option>
       </options>
     </field>
     <field name="descripcion" type="text" column="descripcion" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Descripcion de la Condicion de la Persona</option>
       </options>
     </field>
     <field name="abreviatura" type="string" column="abreviatura" length="5" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">abreviatura para identificar a la persona</option>
       </options>
     </field>
   </entity>

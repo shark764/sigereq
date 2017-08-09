@@ -8,13 +8,11 @@
     <field name="nombre" type="string" column="nombre" length="15" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del área geográfica</option>
       </options>
     </field>
     <field name="abreviatura" type="string" column="abreviatura" length="2" nullable="false">
       <options>
         <option name="fixed">1</option>
-        <option name="comment">Letra con la que se presentan el área geográfica</option>
       </options>
     </field>
   </entity>

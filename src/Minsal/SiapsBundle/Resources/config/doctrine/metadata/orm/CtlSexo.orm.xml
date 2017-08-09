@@ -8,13 +8,11 @@
     <field name="nombre" type="string" column="nombre" length="20" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del sexo de la persona</option>
       </options>
     </field>
     <field name="abreviatura" type="string" column="abreviatura" length="1" nullable="false">
       <options>
         <option name="fixed">1</option>
-        <option name="comment">Letra con la que se representara el sexo de una persona</option>
       </options>
     </field>
   </entity>
