@@ -95,6 +95,8 @@ file that was distributed with this source code.
             selections.length = 0;
             console.log('selections', selections, selections.length);
             jQuery('input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][all]"]').iCheck('uncheck');
+            $table.find('tbody > tr > td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('uncheck');
+            // if (selections.length !== 15) {}
             $table.find('tbody > tr').slice(0, 15).find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
             console.log('selections checked', selections, selections.length, $table.find('tbody > tr').length);
 {#
