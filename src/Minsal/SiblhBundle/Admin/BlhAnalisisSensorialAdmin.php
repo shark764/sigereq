@@ -151,7 +151,7 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-                                    // 'disabled' => 'disabled',
+                                    'disabled' => 'disabled',
                                     // 'readonly' => 'readonly',
 
                                     'data-add-input-addon' => 'true',
@@ -190,7 +190,7 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-                                    // 'disabled' => 'disabled',
+                                    'disabled' => 'disabled',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -228,7 +228,7 @@ class BlhAnalisisSensorialAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-                                    // 'disabled' => 'disabled',
+                                    'disabled' => 'disabled',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
