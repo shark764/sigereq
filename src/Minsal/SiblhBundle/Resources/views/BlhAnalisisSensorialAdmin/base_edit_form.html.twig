@@ -103,6 +103,9 @@
                                             {% for field_name in form_group.fields %}
                                                 {% if admin.formfielddescriptions[field_name] is defined %}
                                                     {{ form_row(form[field_name])}}
+                                                    {% if field_name in ['idResultadoSuciedad', 'idResultadoColor', 'idResultadoFlavor'] %}
+                                                        <input type="hidden" id="HIDDEN_{{ admin.uniqId }}_{{ field_name }}" name="{{ admin.uniqId }}[{{ field_name }}]" class="" value="{{ form[field_name].vars.value }}">
+                                                    {% endif %}
                                                 {% endif %}
                                             {% endfor %}
                                         </div>

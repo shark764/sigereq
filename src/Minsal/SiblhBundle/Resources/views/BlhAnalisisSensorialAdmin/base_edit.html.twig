@@ -76,6 +76,7 @@ file that was distributed with this source code.
                 }
             });
             jQuery('#{{ admin.uniqId }}_idResultadoSuciedad').on('change', function (e) {
+                jQuery('#HIDDEN_{{ admin.uniqId }}_idResultadoSuciedad').val(this.value);
                 // console.log(this.value, parseInt(this.value), parseInt(this.value) === 1);
                 if (parseInt(this.value) === 1) {
                     jQuery('#{{ admin.uniqId }}_idResultadoColor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
@@ -92,6 +93,7 @@ file that was distributed with this source code.
                 }
             });
             jQuery('#{{ admin.uniqId }}_idResultadoColor').on('change', function (e) {
+                jQuery('#HIDDEN_{{ admin.uniqId }}_idResultadoColor').val(this.value);
                 // console.log(this.value, parseInt(this.value), parseInt(this.value) === 1);
                 if (parseInt(this.value) === 1) {
                     jQuery('#{{ admin.uniqId }}_idResultadoFlavor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
@@ -103,6 +105,9 @@ file that was distributed with this source code.
                         .formValidation('removeField', '{{ admin.uniqId }}[idResultadoFlavor]');
                     jQuery('#{{ admin.uniqId }}_idResultadoFlavor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
                 }
+            });
+            jQuery('#{{ admin.uniqId }}_idResultadoFlavor').on('change', function (e) {
+                jQuery('#HIDDEN_{{ admin.uniqId }}_idResultadoFlavor').val(this.value);
             });
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
