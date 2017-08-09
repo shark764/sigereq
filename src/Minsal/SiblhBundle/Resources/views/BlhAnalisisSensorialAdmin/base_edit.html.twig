@@ -118,7 +118,7 @@ file that was distributed with this source code.
             {% if form.idResultadoColor.vars.value == 1 %}
                 jQuery('#{{ admin.uniqId }}_idResultadoColor').triggerHandler('change');{# #}
             {% endif %}
-            window.alert('Se necesita que se haga triggerHandler de change.\nNo lo hace porque algunos select2 están disabled al momento del triggerHandler.\nSe necesita que .select2(\'val\', 4) no sea 4, sino su valor value="{ form[field_name].vars.value }.\n\nQUIZÁ NO SEA NECESARIO QUE SEA CREATE_FORM PARA ASIGNAR EL VALOR DEL SERVIDOR CUANDO SE PONGA COMO DISABLED % if admin.id(object) is null %');
+            window.alert('QUIZÁ NO SEA NECESARIO QUE SEA CREATE_FORM PARA ASIGNAR EL VALOR DEL SERVIDOR CUANDO SE PONGA COMO DISABLED % if admin.id(object) is null %');
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
 
