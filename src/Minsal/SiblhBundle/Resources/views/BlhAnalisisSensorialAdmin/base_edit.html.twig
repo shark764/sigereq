@@ -109,6 +109,8 @@ file that was distributed with this source code.
             jQuery('#{{ admin.uniqId }}_idResultadoFlavor').on('change', function (e) {
                 jQuery('#HIDDEN_{{ admin.uniqId }}_idResultadoFlavor').val(this.value);
             });
+
+            jQuery('#{{ admin.uniqId }}_idResultadoEmbalaje').triggerHandler('change');
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
 
