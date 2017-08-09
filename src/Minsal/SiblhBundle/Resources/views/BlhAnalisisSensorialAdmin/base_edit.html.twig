@@ -111,9 +111,10 @@ file that was distributed with this source code.
             });
 
             //////// init select2 disabled mode
-            jQuery('#{{ admin.uniqId }}_idResultadoEmbalaje').triggerHandler('change');
-            jQuery('#{{ admin.uniqId }}_idResultadoSuciedad').triggerHandler('change');
-            jQuery('#{{ admin.uniqId }}_idResultadoColor').triggerHandler('change');
+            {#jQuery('#{{ admin.uniqId }}_idResultadoEmbalaje').triggerHandler('change');#}
+            {#jQuery('#{{ admin.uniqId }}_idResultadoSuciedad').triggerHandler('change');#}
+            {#jQuery('#{{ admin.uniqId }}_idResultadoColor').triggerHandler('change');#}
+            window.alert('Se necesita que se haga triggerHandler de change.\nSe necesita que .select2(\'val\', 4) no sea 4, sino su valor value="{ form[field_name].vars.value }');
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
 
