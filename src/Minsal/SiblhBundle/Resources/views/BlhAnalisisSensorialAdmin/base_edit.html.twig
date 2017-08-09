@@ -59,7 +59,7 @@ file that was distributed with this source code.
             jQuery('#{{ admin.uniqId }}_idResultadoEmbalaje').on('change', function (e) {
                 // console.log(this.value, parseInt(this.value), parseInt(this.value) === 1);
                 if (parseInt(this.value) === 1) {
-                    jQuery('#{{ admin.uniqId }}_idResultadoSuciedad'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery('#{{ admin.uniqId }}_idResultadoSuciedad'){% if admin.id(object) is null %}.select2('val', {{ form.idResultadoSuciedad.vars.value }}){% endif %}.select2('enable', parseInt(this.value) === 1);
                     jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[idResultadoSuciedad]');
                 }
                 else {
@@ -70,7 +70,7 @@ file that was distributed with this source code.
                         .formValidation('removeField', '{{ admin.uniqId }}[idResultadoColor]')
                         .formValidation('resetField', '{{ admin.uniqId }}[idResultadoFlavor]')
                         .formValidation('removeField', '{{ admin.uniqId }}[idResultadoFlavor]');
-                    jQuery('#{{ admin.uniqId }}_idResultadoSuciedad'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
+                    jQuery('#{{ admin.uniqId }}_idResultadoSuciedad'){% if admin.id(object) is null %}.select2('val', {{ form.idResultadoSuciedad.vars.value }}){% endif %}.select2('enable', parseInt(this.value) === 1);
                     jQuery('#{{ admin.uniqId }}_idResultadoColor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
                     jQuery('#{{ admin.uniqId }}_idResultadoFlavor'){% if admin.id(object) is null %}.select2('val', 4){% endif %}.select2('enable', parseInt(this.value) === 1);
                 }
