@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MntCargoempleados
  *
- * @ORM\Table(name="mnt_cargoempleados", indexes={@ORM\Index(name="IDX_5AECE799695EA351", columns={"id_atencion"})})
+ * @ORM\Table(name="mnt_cargoempleados")
  * @ORM\Entity
  */
 class MntCargoempleados
@@ -28,16 +28,6 @@ class MntCargoempleados
      * @ORM\Column(name="cargo", type="string", length=50, nullable=true)
      */
     private $cargo;
-
-    /**
-     * @var \CtlAtencion
-     *
-     * @ORM\ManyToOne(targetEntity="CtlAtencion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_atencion", referencedColumnName="id")
-     * })
-     */
-    private $idAtencion;
 
     /**
      * ToString
@@ -79,30 +69,6 @@ class MntCargoempleados
     public function getCargo()
     {
         return $this->cargo;
-    }
-
-    /**
-     * Set idAtencion
-     *
-     * @param \Minsal\SiapsBundle\Entity\CtlAtencion $idAtencion
-     *
-     * @return MntCargoempleados
-     */
-    public function setIdAtencion(\Minsal\SiapsBundle\Entity\CtlAtencion $idAtencion = null)
-    {
-        $this->idAtencion = $idAtencion;
-
-        return $this;
-    }
-
-    /**
-     * Get idAtencion
-     *
-     * @return \Minsal\SiapsBundle\Entity\CtlAtencion
-     */
-    public function getIdAtencion()
-    {
-        return $this->idAtencion;
     }
 
 }

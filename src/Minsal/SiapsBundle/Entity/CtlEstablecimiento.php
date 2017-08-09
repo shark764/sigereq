@@ -44,27 +44,6 @@ class CtlEstablecimiento
     private $telefono;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="fax", type="string", length=15, nullable=true)
-     */
-    private $fax;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="latitud", type="decimal", precision=10, scale=4, nullable=true)
-     */
-    private $latitud;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="longitud", type="decimal", precision=10, scale=4, nullable=true)
-     */
-    private $longitud;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id_nivel_minsal", type="integer", nullable=true)
@@ -227,78 +206,6 @@ class CtlEstablecimiento
     public function getTelefono()
     {
         return $this->telefono;
-    }
-
-    /**
-     * Set fax
-     *
-     * @param string $fax
-     *
-     * @return CtlEstablecimiento
-     */
-    public function setFax($fax)
-    {
-        $this->fax = $fax;
-
-        return $this;
-    }
-
-    /**
-     * Get fax
-     *
-     * @return string
-     */
-    public function getFax()
-    {
-        return $this->fax;
-    }
-
-    /**
-     * Set latitud
-     *
-     * @param string $latitud
-     *
-     * @return CtlEstablecimiento
-     */
-    public function setLatitud($latitud)
-    {
-        $this->latitud = $latitud;
-
-        return $this;
-    }
-
-    /**
-     * Get latitud
-     *
-     * @return string
-     */
-    public function getLatitud()
-    {
-        return $this->latitud;
-    }
-
-    /**
-     * Set longitud
-     *
-     * @param string $longitud
-     *
-     * @return CtlEstablecimiento
-     */
-    public function setLongitud($longitud)
-    {
-        $this->longitud = $longitud;
-
-        return $this;
-    }
-
-    /**
-     * Get longitud
-     *
-     * @return string
-     */
-    public function getLongitud()
-    {
-        return $this->longitud;
     }
 
     /**

@@ -10,10 +10,5 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="idAtencion" type="integer" column="id_atencion" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
   </entity>
 </doctrine-mapping>

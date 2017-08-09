@@ -5,12 +5,12 @@ namespace Minsal\SiapsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CtlCreacionExpediente
+ * CtlAreaCotizante
  *
- * @ORM\Table(name="ctl_creacion_expediente")
+ * @ORM\Table(name="ctl_area_cotizante")
  * @ORM\Entity
  */
-class CtlCreacionExpediente
+class CtlAreaCotizante
 {
     /**
      * @var integer
@@ -18,23 +18,20 @@ class CtlCreacionExpediente
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="ctl_creacion_expediente_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="ctl_area_cotizante_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="area", type="string", length=25, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=300, nullable=false)
      */
-    private $area;
-
-    /**
-     * ToString
-     */
+    private $nombre;
+    
     public function __toString()
     {
-        return (string) $this->area ? : '';
+        return $this->nombre ? : '';
     }
 
     /**
@@ -48,27 +45,27 @@ class CtlCreacionExpediente
     }
 
     /**
-     * Set area
+     * Set nombre
      *
-     * @param string $area
+     * @param string $nombre
      *
-     * @return CtlCreacionExpediente
+     * @return CtlAreaCotizante
      */
-    public function setArea($area)
+    public function setNombre($nombre)
     {
-        $this->area = $area;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get area
+     * Get nombre
      *
      * @return string
      */
-    public function getArea()
+    public function getNombre()
     {
-        return $this->area;
+        return $this->nombre;
     }
 
 }

@@ -37,13 +37,6 @@ class MntTipoEmpleado
     private $tipo;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="prescribe_medicamento", type="boolean", nullable=false)
-     */
-    private $prescribeMedicamento = false;
-
-    /**
      * ToString
      */
     public function __toString()
@@ -107,30 +100,6 @@ class MntTipoEmpleado
     public function getTipo()
     {
         return $this->tipo;
-    }
-
-    /**
-     * Set prescribeMedicamento
-     *
-     * @param boolean $prescribeMedicamento
-     *
-     * @return MntTipoEmpleado
-     */
-    public function setPrescribeMedicamento($prescribeMedicamento)
-    {
-        $this->prescribeMedicamento = $prescribeMedicamento;
-
-        return $this;
-    }
-
-    /**
-     * Get prescribeMedicamento
-     *
-     * @return boolean
-     */
-    public function getPrescribeMedicamento()
-    {
-        return $this->prescribeMedicamento;
     }
 
 }

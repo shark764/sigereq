@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * MntEmpleado
  *
  * @ORM\Table(name="mnt_empleado", indexes={@ORM\Index(name="IDX_2138DDC94F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_2138DDC97DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_2138DDC9DA799B26", columns={"id_establecimiento_externo"}), @ORM\Index(name="IDX_2138DDC9B13434FE", columns={"id_tipo_empleado"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiapsBundle\Repository\MntEmpleadoRepository")
  */
 class MntEmpleado
 {
@@ -88,37 +88,37 @@ class MntEmpleado
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_user_reg", type="smallint", nullable=true)
+     * @ORM\Column(name="idusuarioreg", type="smallint", nullable=true)
      */
-    private $idUserReg;
+    private $idusuarioreg;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_hora_reg", type="datetime", nullable=true)
+     * @ORM\Column(name="fechahorareg", type="datetime", nullable=true)
      */
-    private $fechaHoraReg;
+    private $fechahorareg;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_user_mod", type="smallint", nullable=true)
+     * @ORM\Column(name="idusuariomod", type="smallint", nullable=true)
      */
-    private $idUserMod;
+    private $idusuariomod;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_hora_mod", type="datetime", nullable=true)
+     * @ORM\Column(name="fechahoramod", type="datetime", nullable=true)
      */
-    private $fechaHoraMod;
+    private $fechahoramod;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_empleado", type="string", length=200, nullable=true)
+     * @ORM\Column(name="nombreempleado", type="string", length=200, nullable=true)
      */
-    private $nombreEmpleado;
+    private $nombreempleado;
 
     /**
      * @var boolean
@@ -140,6 +140,13 @@ class MntEmpleado
      * @ORM\Column(name="id_nuevo_empleado", type="integer", nullable=true)
      */
     private $idNuevoEmpleado;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_registro_siap", type="bigint", nullable=true)
+     */
+    private $idRegistroSiap;
 
     /**
      * @var \MntCargoempleados
@@ -416,123 +423,123 @@ class MntEmpleado
     }
 
     /**
-     * Set idUserReg
+     * Set idusuarioreg
      *
-     * @param integer $idUserReg
+     * @param integer $idusuarioreg
      *
      * @return MntEmpleado
      */
-    public function setIdUserReg($idUserReg)
+    public function setIdusuarioreg($idusuarioreg)
     {
-        $this->idUserReg = $idUserReg;
+        $this->idusuarioreg = $idusuarioreg;
 
         return $this;
     }
 
     /**
-     * Get idUserReg
+     * Get idusuarioreg
      *
      * @return integer
      */
-    public function getIdUserReg()
+    public function getIdusuarioreg()
     {
-        return $this->idUserReg;
+        return $this->idusuarioreg;
     }
 
     /**
-     * Set fechaHoraReg
+     * Set fechahorareg
      *
-     * @param \DateTime $fechaHoraReg
+     * @param \DateTime $fechahorareg
      *
      * @return MntEmpleado
      */
-    public function setFechaHoraReg($fechaHoraReg)
+    public function setFechahorareg($fechahorareg)
     {
-        $this->fechaHoraReg = $fechaHoraReg;
+        $this->fechahorareg = $fechahorareg;
 
         return $this;
     }
 
     /**
-     * Get fechaHoraReg
+     * Get fechahorareg
      *
      * @return \DateTime
      */
-    public function getFechaHoraReg()
+    public function getFechahorareg()
     {
-        return $this->fechaHoraReg;
+        return $this->fechahorareg;
     }
 
     /**
-     * Set idUserMod
+     * Set idusuariomod
      *
-     * @param integer $idUserMod
+     * @param integer $idusuariomod
      *
      * @return MntEmpleado
      */
-    public function setIdUserMod($idUserMod)
+    public function setIdusuariomod($idusuariomod)
     {
-        $this->idUserMod = $idUserMod;
+        $this->idusuariomod = $idusuariomod;
 
         return $this;
     }
 
     /**
-     * Get idUserMod
+     * Get idusuariomod
      *
      * @return integer
      */
-    public function getIdUserMod()
+    public function getIdusuariomod()
     {
-        return $this->idUserMod;
+        return $this->idusuariomod;
     }
 
     /**
-     * Set fechaHoraMod
+     * Set fechahoramod
      *
-     * @param \DateTime $fechaHoraMod
+     * @param \DateTime $fechahoramod
      *
      * @return MntEmpleado
      */
-    public function setFechaHoraMod($fechaHoraMod)
+    public function setFechahoramod($fechahoramod)
     {
-        $this->fechaHoraMod = $fechaHoraMod;
+        $this->fechahoramod = $fechahoramod;
 
         return $this;
     }
 
     /**
-     * Get fechaHoraMod
+     * Get fechahoramod
      *
      * @return \DateTime
      */
-    public function getFechaHoraMod()
+    public function getFechahoramod()
     {
-        return $this->fechaHoraMod;
+        return $this->fechahoramod;
     }
 
     /**
-     * Set nombreEmpleado
+     * Set nombreempleado
      *
-     * @param string $nombreEmpleado
+     * @param string $nombreempleado
      *
      * @return MntEmpleado
      */
-    public function setNombreEmpleado($nombreEmpleado)
+    public function setNombreempleado($nombreempleado)
     {
-        $this->nombreEmpleado = $nombreEmpleado;
+        $this->nombreempleado = $nombreempleado;
 
         return $this;
     }
 
     /**
-     * Get nombreEmpleado
+     * Get nombreempleado
      *
      * @return string
      */
-    public function getNombreEmpleado()
+    public function getNombreempleado()
     {
-        return $this->nombreEmpleado;
+        return $this->nombreempleado;
     }
 
     /**
@@ -605,6 +612,30 @@ class MntEmpleado
     public function getIdNuevoEmpleado()
     {
         return $this->idNuevoEmpleado;
+    }
+
+    /**
+     * Set idRegistroSiap
+     *
+     * @param integer $idRegistroSiap
+     *
+     * @return MntEmpleado
+     */
+    public function setIdRegistroSiap($idRegistroSiap)
+    {
+        $this->idRegistroSiap = $idRegistroSiap;
+
+        return $this;
+    }
+
+    /**
+     * Get idRegistroSiap
+     *
+     * @return integer
+     */
+    public function getIdRegistroSiap()
+    {
+        return $this->idRegistroSiap;
     }
 
     /**
