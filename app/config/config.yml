@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: services.xml }
+    # - { resource: services.xml }
     - { resource: bundles/fos_user.yml }
     - { resource: bundles/sonata_admin.yml }
     - { resource: bundles/sonata_block.yml }
@@ -9,6 +9,7 @@ imports:
     - { resource: bundles/sonata_core.yml }
     - { resource: bundles/sonata_formatter.yml }
     - { resource: bundles/sonata_user.yml }
+    - { resource: '@ApplicationSonataUserBundle/Resources/config/services.yml' }
     # - { resource: @SanRafaelRequerimientosBundle/Resources/config/services.yml }
     - { resource: @MinsalSiapsBundle/Resources/config/services.yml }
     - { resource: @MinsalSiblhBundle/Resources/config/services.yml }
