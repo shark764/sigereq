@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    # - { resource: services.xml }
+    - { resource: services.xml }
     - { resource: bundles/fos_user.yml }
     - { resource: bundles/sonata_admin.yml }
     - { resource: bundles/sonata_block.yml }
