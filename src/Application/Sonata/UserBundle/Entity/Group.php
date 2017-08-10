@@ -36,12 +36,6 @@ class Group extends BaseGroup
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-    /**
-     * @var string
-     * @Assert\Regex(pattern="/^[a-zA-ZaÑñáéíóúÁÉÍÓÚ ]+$/",match=true)
-     * @ORM\Column(name="name")
-     */
 
     /**
      * Get id
@@ -52,4 +46,5 @@ class Group extends BaseGroup
     {
         return $this->id;
     }
+
 }
