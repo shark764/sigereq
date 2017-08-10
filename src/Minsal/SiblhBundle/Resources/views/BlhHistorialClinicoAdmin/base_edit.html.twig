@@ -14,6 +14,9 @@ file that was distributed with this source code.
 
 {% block stylesheets %}
     {{ parent() }}
+    
+    {# Bootstrap-calendar #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
 
     {# bootstrap-table #}
     <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
@@ -38,6 +41,10 @@ file that was distributed with this source code.
 
 {% block javascripts %}
     {{ parent() }}
+
+    {# Bootstrap-calendar #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/moment-develop/min/moment-with-locales.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}" ></script>
 
     {# bootstrap-table #}
     <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
@@ -72,11 +79,11 @@ file that was distributed with this source code.
         jQuery(document).ready(function() {
             //////////////////////////////////////////////////////////////////////////////////////////////
             jQuery('input[name="{{ admin.uniqId }}[controlPrenatalEmbarazo]"]').on('ifChecked', function(e) {
-                jQuery('#{{ admin.uniqId }}_lugarControl').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
-                jQuery('label[for="{{ admin.uniqId }}_lugarControl"]').toggle(this.value === 'T');
-                jQuery('#{{ admin.uniqId }}_numeroControl').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
-                jQuery('label[for="{{ admin.uniqId }}_numeroControl"]').toggle(this.value === 'T');
-                if (this.value === 'T') {
+                jQuery('#{{ admin.uniqId }}_lugarControl').val('').closest('.sonata-ba-field').toggle(parseInt(this.value) === 1);
+                jQuery('label[for="{{ admin.uniqId }}_lugarControl"]').toggle(parseInt(this.value) === 1);
+                jQuery('#{{ admin.uniqId }}_numeroControl').val('').closest('.sonata-ba-field').toggle(parseInt(this.value) === 1);
+                jQuery('label[for="{{ admin.uniqId }}_numeroControl"]').toggle(parseInt(this.value) === 1);
+                if (parseInt(this.value) === 1) {
                     jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[controlPrenatalEmbarazo]');
                 }
                 else if (this.value === 'F') {
@@ -103,10 +110,21 @@ file that was distributed with this source code.
                     jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDpatologiaEmbarazo]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDpatologiaEmbarazo]');
                 }
             });
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDpartoAnterior]"]').on('ifChecked', function(e) {
+                jQuery('#{{ admin.uniqId }}_fechaPartoAnterior').val('').closest('.sonata-ba-field').toggle(this.value === 'T');
+                jQuery('label[for="{{ admin.uniqId }}_fechaPartoAnterior"]').toggle(this.value === 'T');
+                if (this.value === 'T') {
+                    jQuery(this).closest('form').formValidation('addField', '{{ admin.uniqId }}[NOTMAPPEDpartoAnterior]');
+                }
+                else if (this.value === 'F') {
+                    jQuery(this).closest('form').formValidation('resetField', '{{ admin.uniqId }}[NOTMAPPEDpartoAnterior]').formValidation('removeField', '{{ admin.uniqId }}[NOTMAPPEDpartoAnterior]');
+                }
+            });
 
             jQuery('input[name="{{ admin.uniqId }}[controlPrenatalEmbarazo]"]').triggerHandler('ifChecked');
             jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDpartoEnHospital]"]').triggerHandler('ifChecked');
             jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDpatologiaEmbarazo]"]').triggerHandler('ifChecked');
+            jQuery('input[name="{{ admin.uniqId }}[NOTMAPPEDpartoAnterior]"]').triggerHandler('ifChecked');
             //////////////////////////////////////////////////////////////////////////////////////////////
 
             //////////////////////////////////////////////////////////////////////////////////////////////
