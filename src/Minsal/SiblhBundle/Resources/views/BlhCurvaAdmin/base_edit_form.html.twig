@@ -39,7 +39,6 @@
                 {% block simagd_apply_custom_firstbox %} {% endblock %}
 
                 {% block sonata_tab_content %}
-                                                {{ 'LOCALE: ' ~ app.user.getIdEstablecimiento() ~ '    ' ~ app.user.getUpperName() }}
                     {% for name, form_group in admin.formgroups %}
                         <div class="{{ form_group.class|default('col-md-12') }}">
                             <div class="box box-drop-outside-shadow box-primary-v4">
