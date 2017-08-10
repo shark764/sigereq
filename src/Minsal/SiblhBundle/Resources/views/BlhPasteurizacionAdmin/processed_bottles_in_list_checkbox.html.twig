@@ -13,12 +13,12 @@ file that was distributed with this source code.
     <div class="alert alert-warning alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
         <span>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el lote no puede crearse por deficit, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>.
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si no pueden agregarse frascos, consulte frascos condicionados en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_frasco_procesado_create') }}">Consultar frascos procesados</a>.
         </span>
     </div>
 {% endif %}
 
-<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable"
+<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_processed_bottle_target_bstable" name="blh_processed_bottle_target_bstable"
         data-id-field="id"
         data-cache="false"
         data-show-columns="true"
@@ -27,7 +27,7 @@ file that was distributed with this source code.
         data-pagination-h-align="left"
         data-pagination-detail-h-align="right"
         data-page-list="[15, 25, 30]"
-        data-page-size="15"
+        data-page-size="15" {#{{ curva.numeroFrascos }}#}
         data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
         data-buttons-class="xray-awesome-blue"
         data-search-align="left"
@@ -35,7 +35,7 @@ file that was distributed with this source code.
         data-toolbar-align="right">
     <thead>
         <tr>
-            <th style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_loteAnalisisFrascoRecolectado_all" name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][all]"></th>
+            <th style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_pasteurizacionFrascoProcesado_all" name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"></th>
             <th>Paciente</th>
             <th>Reg.</th>
             <th>Téc. / Lic. / Rdlg.</th>
@@ -44,7 +44,7 @@ file that was distributed with this source code.
     <tbody>
         {% for i in 1..26 %}
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_loteAnalisisFrascoRecolectado_{{ i }}" name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]" value="{{ i }}"></td>
+                <td style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_pasteurizacionFrascoProcesado_{{ i }}" name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]" value="{{ i }}"></td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
@@ -88,16 +88,16 @@ file that was distributed with this source code.
 {#
         {% if choices is defined and choices|length >= 15 %}
 #}
-            var $table = jQuery('#blh_collected_bottle_target_bstable');
+            var $table = jQuery('#blh_processed_bottle_target_bstable');
             // $table.bootstrapTable('refreshOptions', {
             //     pageSize: 15,
             // });
             selections.length = 0;
             console.log('selections', selections, selections.length);
-            jQuery('input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][all]"]').iCheck('uncheck');
-            $table.find('tbody > tr > td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('uncheck');
+            jQuery('input[name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]').iCheck('uncheck');
+            $table.find('tbody > tr > td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]"]').iCheck('uncheck');
             // if (selections.length !== 15) {}
-            $table.find('tbody > tr').slice(0, 15).find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
+            $table.find('tbody > tr').slice(0, 15).find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]"]').iCheck('check');
             console.log('selections checked', selections, selections.length, $table.find('tbody > tr').length);
 {#
         {% endif %}
@@ -106,9 +106,9 @@ file that was distributed with this source code.
 
     jQuery(document).ready(function() {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////// collected bottles table
+        //////// processed bottles table
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        var $table = jQuery('#blh_collected_bottle_target_bstable');
+        var $table = jQuery('#blh_processed_bottle_target_bstable');
 
         $table.find('thead tr th input[type=checkbox], tbody tr td input[type=checkbox]').iCheck('destroy').iCheck({
             checkboxClass: 'icheckbox_minimal',
@@ -123,14 +123,14 @@ file that was distributed with this source code.
             });
             $table.find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
 
-            jQuery('input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][all]"]').iCheck('uncheck');
+            jQuery('input[name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]').iCheck('uncheck');
             
             for (var i = 0, len = selections.length; i < len; ++i) {
                 $table.find('tbody tr td input[type=checkbox][value="' + selections[i] + '"]').iCheck('check');
             }
         });
         $table.on('dbl-click-row.bs.table', function (e, row, $element, field) {
-            $element.find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck('check');
+            $element.find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]"]').iCheck('check');
             // $element.addClass('checked-row-bstable').siblings('tr').removeClass('checked-row-bstable');
         });
 
@@ -138,14 +138,14 @@ file that was distributed with this source code.
         //////// get selections
         //////////////////////////////////////////////////////////////////////////////////////////////
         // var selections = [];
-        jQuery(document).on('ifClicked', 'input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][all]"]', function(e) {
+        jQuery(document).on('ifClicked', 'input[name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]', function(e) {
             var checked = this.checked !== false ? 'uncheck' : 'check'; // it was checked/unchecked before user clicked
             if (this.checked !== false) {
                 selections.length = 0;
             }
-            $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]').iCheck(checked);
+            $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]"]').iCheck(checked);
         });
-        jQuery(document).on('ifChanged', 'input[name="{{ sonata_admin.admin.uniqId }}[loteAnalisisFrascoRecolectado][]"]', function(e) {
+        jQuery(document).on('ifChanged', 'input[name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]"]', function(e) {
             if (this.checked === false) {
                 // push or splice the selections if you want to save all data selections
                 selections.splice(selections.indexOf(this.value), 1);
@@ -162,12 +162,12 @@ file that was distributed with this source code.
 
         {% if choices is defined and choices|length == 0 %}
             //////////////////////////////////////////////////////////////////////////////////////////////
-            //////// there is not any collected bottle
+            //////// there is not any processed bottle
             //////////////////////////////////////////////////////////////////////////////////////////////
             swal({
                 html:true,
                 title: "La consulta no devolvió ningún registro",
-                text: "Consulte frascos para análisis en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
+                text: "Consulte frascos condicionados para pasteurización en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_frasco_procesado_create') }}\">Consultar frascos condicionados</a>",
                 type: "warning",
                 showCancelButton: true,
                 cancelButtonClass: "btn-sm btn-default",

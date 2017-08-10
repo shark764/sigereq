@@ -13,12 +13,12 @@ file that was distributed with this source code.
     <div class="alert alert-dark-success-lighter-medicine alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
         <span>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el frasco no se encuentra en el listado, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>.
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el frasco no se encuentra en el listado, debe crear nuevos frascos pasteurizados en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_pasteurizacion_create') }}">Registrar pasteurización</a>.
         </span>
     </div>
 {% endif %}
 
-<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable"
+<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_processed_bottle_target_bstable" name="blh_processed_bottle_target_bstable"
         data-id-field="id"
         data-cache="false"
         data-show-columns="true"
@@ -44,7 +44,7 @@ file that was distributed with this source code.
     <tbody>
         {% for i in 1..15 %}
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><input type="radio" id="{{ sonata_admin.admin.uniqId }}_idFrascoRecolectado_{{ loop.index - 1 }}" name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]" value="{{ i }}"></td>
+                <td style="vertical-align: middle; text-align: center;"><input type="radio" id="{{ sonata_admin.admin.uniqId }}_idFrascoProcesado_{{ loop.index - 1 }}" name="{{ sonata_admin.admin.uniqId }}[idFrascoProcesado]" value="{{ i }}"></td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
@@ -79,7 +79,7 @@ file that was distributed with this source code.
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //////// collected bottles table
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            var $table = jQuery('#blh_collected_bottle_target_bstable');
+            var $table = jQuery('#blh_processed_bottle_target_bstable');
 
             $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
                 checkboxClass: 'icheckbox_minimal',
@@ -93,17 +93,17 @@ file that was distributed with this source code.
                     radioClass: 'iradio_minimal'
                 });
                 $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
-                $table.find('tbody tr td input[type=radio][name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]"][value="' + selections[0] + '"]').iCheck('check');
+                $table.find('tbody tr td input[type=radio][name="{{ sonata_admin.admin.uniqId }}[idFrascoProcesado]"][value="' + selections[0] + '"]').iCheck('check');
             });
             $table.on('dbl-click-row.bs.table', function (e, row, $element, field) {
-                $element.find('td input[type=radio][name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]"]').iCheck('check');
+                $element.find('td input[type=radio][name="{{ sonata_admin.admin.uniqId }}[idFrascoProcesado]"]').iCheck('check');
             });
 
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// get selections
             //////////////////////////////////////////////////////////////////////////////////////////////
             var selections = [];
-            jQuery(document).on('ifChecked', 'input[name="{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado]"]', function(e) {
+            jQuery(document).on('ifChecked', 'input[name="{{ sonata_admin.admin.uniqId }}[idFrascoProcesado]"]', function(e) {
                 jQuery(this).closest('tr').addClass('checked-row-bstable').siblings('tr').removeClass('checked-row-bstable');
                 // save your data, here just save the current page
                 // selections = getIdSelections();
@@ -119,7 +119,7 @@ file that was distributed with this source code.
             swal({
                 html:true,
                 title: "La consulta no devolvió ningún registro",
-                text: "Consulte frascos para análisis en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
+                text: "Registre frascos procesados en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_pasteurizacion_create') }}\">Registrar pasteurización</a>",
                 type: "warning",
                 showCancelButton: true,
                 cancelButtonClass: "btn-sm btn-default",

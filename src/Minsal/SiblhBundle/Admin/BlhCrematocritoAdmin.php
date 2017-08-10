@@ -371,6 +371,15 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('fechaHoraReg')
         ;
     }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            // array('MinsalSiblhBundle:BlhCrematocritoAdmin:doctrine_orm_form_admin_fields.html.twig'),
+            array('MinsalSiblhBundle:BlhCrematocritoAdmin:form_admin_fields.html.twig')
+       );
+    }
     
     public function getTemplate($name)
     {

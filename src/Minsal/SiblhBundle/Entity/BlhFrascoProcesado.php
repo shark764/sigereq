@@ -161,7 +161,6 @@ class BlhFrascoProcesado implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_pasteurizacion", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idPasteurizacion;
 
