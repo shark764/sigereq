@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Application\Sonata\UserBundle\Entity\User" table="fos_user_user">
+  <entity name="FosUserUser" table="fos_user_user">
     <indexes>
       <index name="IDX_C560D761890253C7" columns="id_empleado"/>
       <index name="IDX_C560D7617DFA12F6" columns="id_establecimiento"/>
@@ -11,12 +11,12 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="fos_user_user_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <!-- <field name="username" type="string" column="username" length="255" nullable="false">
+    <field name="username" type="string" column="username" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
-    </field> -->
-    <!-- <field name="usernameCanonical" type="string" column="username_canonical" length="255" nullable="true">
+    </field>
+    <field name="usernameCanonical" type="string" column="username_canonical" length="255" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -156,33 +156,33 @@
       <options>
         <option name="fixed"/>
       </options>
-    </field> -->
-    <!-- <field name="conectado" type="string" column="conectado" length="1" nullable="true">
+    </field>
+    <field name="conectado" type="string" column="conectado" length="1" nullable="true">
       <options>
         <option name="fixed">1</option>
       </options>
-    </field> -->
-    <many-to-one field="idEmpleado" target-entity="Minsal\SiapsBundle\Entity\MntEmpleado" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_empleado" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idEstablecimiento" target-entity="Minsal\SiapsBundle\Entity\CtlEstablecimiento" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_establecimiento" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idBancoDeLeche" target-entity="Minsal\SiblhBundle\Entity\BlhBancoDeLeche" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idCentroRecoleccion" target-entity="Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion" fetch="LAZY">
+    </field>
+    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
       <join-columns>
         <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <!-- <many-to-many field="group" target-entity="FosUserGroup" inversed-by="user" fetch="LAZY">
+    <many-to-one field="idEmpleado" target-entity="MntEmpleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_empleado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="group" target-entity="FosUserGroup" inversed-by="user" fetch="LAZY">
       <join-table name="fos_user_user_group">
         <join-columns>
           <join-column name="user_id" referenced-column-name="id"/>
@@ -191,6 +191,6 @@
           <join-column name="group_id" referenced-column-name="id"/>
         </inverse-join-columns>
       </join-table>
-    </many-to-many> -->
+    </many-to-many>
   </entity>
 </doctrine-mapping>
