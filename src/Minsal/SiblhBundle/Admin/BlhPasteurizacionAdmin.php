@@ -259,23 +259,58 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
 
         $formMapper
             ->with('Selección de frascos pasteurizados')
-                ->add('pasteurizacionFrascoProcesado', 'sonata_type_collection', array(
+                // ->add('pasteurizacionFrascoProcesado', 'sonata_type_collection', array(
+                //                 'label' => false,
+                //                 'label_attr' => array('class' => 'label_form_sm'),
+                //                 'btn_add' => 'Agregar frasco',  // --| Prevents the "Add" option from being displayed
+                //                 // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
+                //                 'attr' => array(
+                //                         'class' => 'form-control input-sm',
+                //                         'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                //                 ),
+                //                 'cascade_validation' => true,
+                //                 'type_options' => array(
+                //                     // 'btn_add' => false, // --| Prevents the "Add" option from being displayed
+                //                     // 'btn_delete' => false,  // --| Prevents the "Delete" option from being displayed
+                //                 )
+                //         ),
+                //         array('edit' => 'inline', 'inline' => 'table')
+                // )
+                ->add('pasteurizacionFrascoProcesado', 'entity', array(
                                 'label' => false,
-                                'label_attr' => array('class' => 'label_form_sm'),
-                                'btn_add' => 'Agregar frasco',  // --| Prevents the "Add" option from being displayed
-                                // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                                'required' => true,
+                                'expanded' => true,
+                                'multiple' => true,
+                                'class' => 'MinsalSiblhBundle:BlhFrascoProcesado',
+                                // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $__XRAY_CLINICAL_SERVICE_ID__, $filter_modality_) {
+                                //                         return $er->createQueryBuilder('pryn')
+                                //                                     ->innerJoin('MinsalSiblhBundle:RyxCtlProyeccionEstablecimiento', 'prynhptl',
+                                //                                             \Doctrine\ORM\Query\Expr\Join::WITH,
+                                //                                             'pryn.id = prynhptl.idProyeccion')
+                                //                                     ->innerJoin('prynhptl.idAreaExamenEstab', 'mmxstd')
+                                //                                     ->innerJoin('mmxstd.idAreaServicioDiagnostico', 'mdld')
+                                //                                     ->where('mdld.idAtencion = :id_atn')
+                                //                                     ->setParameter('id_atn', $__XRAY_CLINICAL_SERVICE_ID__)  // --| 97 (Imagenología)
+                                //                                     ->andWhere('mmxstd.idEstablecimiento = :id_std')
+                                //                                     ->setParameter('id_std', $session_USER_LOCATION->getId())  // --| 97 (Hospital Local)
+                                //                                     ->andWhere('mmxstd.idAreaServicioDiagnostico = :id_mdld')
+                                //                                     ->setParameter('id_mdld', $filter_modality_)  // --| 97 (Modalidad filtro)
+                                //                                     ->andWhere('mmxstd.activo = TRUE')
+                                //                                     ->andWhere('prynhptl.habilitado = TRUE')
+                                //                                     ->orderBy('pryn.codigo')
+                                //                                     ->addOrderBy('pryn.nombre')
+                                //                                     ->distinct();
+                                //                     },
+                                'group_by' => 'idPasteurizacion',
+                                'help' => '<span class="text-primary-v4">Agregue frascos que fueron pasteurizados</span>',
                                 'attr' => array(
-                                        'class' => 'form-control input-sm',
+                                        'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,
                                         'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
-                                ),
-                                'cascade_validation' => true,
-                                'type_options' => array(
-                                    // 'btn_add' => false, // --| Prevents the "Add" option from being displayed
-                                    // 'btn_delete' => false,  // --| Prevents the "Delete" option from being displayed
+                                        'data-sonata-select2-escape-markup' => 'true',
+                                        // 'style' => 'max-height: 500px; overflow-y: auto;'
                                 )
-                        ),
-                        array('edit' => 'inline', 'inline' => 'table')
-                )
+                ))
             ->end()
         ;
 
@@ -362,6 +397,39 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
             default:
                 return parent::getTemplate($name);
                 break;
+        }
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            // array('MinsalSiblhBundle:BlhPasteurizacionAdmin:doctrine_orm_form_admin_fields.html.twig'),
+            array('MinsalSiblhBundle:BlhPasteurizacionAdmin:form_admin_fields.html.twig')
+       );
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+
+        foreach ($entity->getPasteurizacionFrascoProcesado() as $frP)
+        {
+            $frP->setIdPasteurizacion($entity);
+        }
+    }
+
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        parent::preUpdate($entity);
+        ////////
+
+        foreach ($entity->getPasteurizacionFrascoProcesado() as $frP)
+        {
+            $frP->setIdPasteurizacion($entity);
         }
     }
     

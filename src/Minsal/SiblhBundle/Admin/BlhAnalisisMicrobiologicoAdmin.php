@@ -63,7 +63,23 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('idFrascoProcesado', 'sonata_type_model_hidden')
+            // ->add('idFrascoProcesado', 'sonata_type_model_hidden')
+            ->add('idFrascoProcesado', null, array(
+                            'label' => false,
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => true,
+                            'expanded' => true,
+                            'multiple' => false,
+                            'class' => 'MinsalSiblhBundle:BlhFrascoProcesado',
+                            // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $resultId, $patientId, $rType) {
+                            //                         return $er->pendingStudies($session_USER_LOCATION->getId(), $resultId, $patientId, null, $rType);
+                            //                     },
+                            'group_by' => 'idPasteurizacion',
+                            'attr' => array(
+                                    'class' => /*'form-control input-sm'*/ /*'list-inline*/' formstyle-radio-list-inline input-sm',
+                                    'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                            )
+            ))
             // ->add('idFrascoProcesado', null, array(
             //                 'label' => 'Frasco procesado',
             //                 'label_attr' => array('class' => 'label_form_sm'),
@@ -178,6 +194,15 @@ class BlhAnalisisMicrobiologicoAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            // array('MinsalSiblhBundle:BlhAnalisisMicrobiologicoAdmin:doctrine_orm_form_admin_fields.html.twig'),
+            array('MinsalSiblhBundle:BlhAnalisisMicrobiologicoAdmin:form_admin_fields.html.twig')
+       );
     }
     
     public function getTemplate($name)

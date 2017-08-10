@@ -92,7 +92,7 @@ file that was distributed with this source code.
             {% endfor %}
             </ul>
         {% else %}
-            {% include 'MinsalSiblhBundle:BlhCrematocritoAdmin:conditioned_bottles_in_list_checkbox.html.twig' ignore missing with {attr: block('widget_container_attributes_choice_widget'), form: form, choices: choices} %}
+            {% include 'MinsalSiblhBundle:BlhAnalisisMicrobiologicoAdmin:processed_bottles_in_list_checkbox.html.twig' ignore missing with {attr: block('widget_container_attributes_choice_widget'), form: form, choices: choices} %}
         {% endif%}
     {% else %}
     {% if sonata_admin.admin and not sonata_admin.admin.getConfigurationPool().getOption('use_select2') %}

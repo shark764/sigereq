@@ -169,7 +169,7 @@ class User extends BaseUser
      *
      * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
      *
-     * @return BlhDonante
+     * @return User
      */
     public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
     {
@@ -193,7 +193,7 @@ class User extends BaseUser
      *
      * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion
      *
-     * @return BlhDonante
+     * @return User
      */
     public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion = null)
     {

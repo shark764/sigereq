@@ -18,7 +18,7 @@
         <option name="fixed">1</option>
       </options>
     </field>
-    <field name="rango" type="string" column="rango" length="25" nullable="true">
+    <field name="rango" type="string" column="rango" length="35" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

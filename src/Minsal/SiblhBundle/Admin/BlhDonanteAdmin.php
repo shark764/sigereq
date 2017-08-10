@@ -609,6 +609,7 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                             'label' => 'Tipo de colecta',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => false,
+                            'property' => 'presentacionEntidad',
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     // 'data-form-inline-group' => 'start',

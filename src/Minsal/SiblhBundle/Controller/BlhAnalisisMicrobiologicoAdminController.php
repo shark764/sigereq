@@ -88,13 +88,13 @@ class BlhAnalisisMicrobiologicoAdminController extends MinsalSiblhBundleGeneralA
         // set the theme for the current Admin Form
         $this->get('twig')->getExtension('form')->renderer->setTheme($view, $this->admin->getFormTheme());
 
-        $processed_bottles_for_analysis = array();
+        // $processed_bottles_for_analysis = array();
 
         return $this->render($this->admin->getTemplate($templateKey), array(
             'action' => 'create',
             'form'   => $view,
             'object' => $object,
-            'PROCESSED_BOTTLES_FOR_ANALYSIS' => $processed_bottles_for_analysis,
+            // 'PROCESSED_BOTTLES_FOR_ANALYSIS' => $processed_bottles_for_analysis,
         ));
     }
 

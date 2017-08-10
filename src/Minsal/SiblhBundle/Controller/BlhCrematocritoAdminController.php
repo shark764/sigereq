@@ -88,13 +88,13 @@ class BlhCrematocritoAdminController extends MinsalSiblhBundleGeneralAdminContro
         // set the theme for the current Admin Form
         $this->get('twig')->getExtension('form')->renderer->setTheme($view, $this->admin->getFormTheme());
 
-        $conditioned_bottles_for_analysis = array();
+        // $conditioned_bottles_for_analysis = array();
 
         return $this->render($this->admin->getTemplate($templateKey), array(
             'action' => 'create',
             'form'   => $view,
             'object' => $object,
-            'CONDITIONED_BOTTLES_FOR_ANALYSIS' => $conditioned_bottles_for_analysis,
+            // 'CONDITIONED_BOTTLES_FOR_ANALYSIS' => $conditioned_bottles_for_analysis,
         ));
     }
 

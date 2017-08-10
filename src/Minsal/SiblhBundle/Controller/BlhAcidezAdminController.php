@@ -103,14 +103,14 @@ class BlhAcidezAdminController extends MinsalSiblhBundleGeneralAdminController
         // $options = $ENTITY_LIST_VIEW_GENERATOR_->getTable();
         //////////////////////////////////////////////////////////////////////////////////////////////
 
-        $collected_bottles_for_analysis = array();
+        // $collected_bottles_for_analysis = array();
 
         return $this->render($this->admin->getTemplate($templateKey), array(
             'action' => 'create',
             'form'   => $view,
             'object' => $object,
             // 'DEFAULT_TABLE_OPTIONS' => $options,
-            'COLLECTED_BOTTLES_FOR_ANALYSIS' => $collected_bottles_for_analysis,
+            // 'COLLECTED_BOTTLES_FOR_ANALYSIS' => $collected_bottles_for_analysis,
         ));
     }
 
