@@ -88,8 +88,6 @@ class BlhCurvaAdminController extends MinsalSiblhBundleGeneralAdminController
         // set the theme for the current Admin Form
         $this->get('twig')->getExtension('form')->renderer->setTheme($view, $this->admin->getFormTheme());
 
-        var_dump($this->admin->getSessionSystemUserLoggedLocation());
-
         return $this->render($this->admin->getTemplate($templateKey), array(
             'action' => 'create',
             'form'   => $view,
