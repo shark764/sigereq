@@ -50,59 +50,28 @@
                         <div class="box box-drop-outside-shadow box-success-v3">
                             <div class="box-header">
                                 <h4 class="box-title">
-                                    <span class="text-black-thrash">Frascos para análisis</span>
+                                    <span class="text-black-thrash">Frascos combinados para análisis</span>
                                 </h4>
                             </div>
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="alert alert-dark-success-lighter-medicine alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
-                                        <span>
-                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el frasco no se encuentra en el listado, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>.
-                                        </span>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <center>
+                                                <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
+                                                    <div class="btn-group" role="group" aria-label="...">
+                                                        <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_pasteurizacion_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Registrar pasteurización</a>
+                                                    </div>
+                                                    <div class="btn-group" role="group" aria-label="...">
+                                                        <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_frasco_procesado_create') }}"><span class="glyphicon glyphicon-list-alt"></span> Combinar frascos</a>
+                                                    </div>
+                                                </div>
+                                            </center>
+                                        </div>
                                     </div>
-
-                                    <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_conditioned_bottle_target_bstable" name="blh_conditioned_bottle_target_bstable"
-                                            data-id-field="id"
-                                            data-cache="false"
-                                            data-show-columns="true"
-                                            data-search="true"
-                                            data-pagination="true"
-                                            data-pagination-h-align="left"
-                                            data-pagination-detail-h-align="right"
-                                            data-page-list="[5, 10, 15]"
-                                            data-page-size="5"
-                                            data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
-                                            data-buttons-class="xray-awesome-blue"
-                                            data-search-align="left"
-                                            data-buttons-align="left"
-                                            data-toolbar-align="right">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Paciente</th>
-                                                <th>Reg.</th>
-                                                <th>Téc. / Lic. / Rdlg.</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for i in 1..15 %}
-                                                <tr>
-                                                    <td style="vertical-align: middle; text-align: center;"><input type="radio" id="RLIST_{{ admin.uniqId }}_conditioned_bottles_for_analysis_{{ loop.index - 1 }}" name="RLIST_{{ admin.uniqId }}[conditioned_bottles_for_analysis][]" value="{{ i }}"></td>
-                                                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                                                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                                                    <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
-                                                </tr>
-                                            {% endfor %}
-
-                                            {% for cb in CONDITIONED_BOTTLES_FOR_ANALYSIS %}
-                                                <tr>
-                                                    <td style="vertical-align: middle; text-align: center;"><input type="radio" id="RLIST_{{ admin.uniqId }}_conditioned_bottles_for_analysis_{{ loop.index - 1 }}" name="RLIST_{{ admin.uniqId }}[conditioned_bottles_for_analysis][]" value="{{ cb.getId() }}"></td>
-                                                </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-
+                                    {{ form_label(form.idFrascoProcesado) }}
+                                    {{ form_errors(form.idFrascoProcesado) }}
+                                    {{ form_widget(form.idFrascoProcesado) }}
                                 </div>
                             </div>
                         </div>
