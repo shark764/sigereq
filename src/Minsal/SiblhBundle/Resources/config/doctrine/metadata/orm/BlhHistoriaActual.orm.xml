@@ -3,8 +3,8 @@
   <entity name="BlhHistoriaActual" table="blh_historia_actual">
     <indexes>
       <index name="fki_blh_his_fk_hab_tox" columns="habito_toxico"/>
-      <index name="fki_blh_his_fk_pat" columns="patologia"/>
       <index name="fki_blh_his_hab" columns="habito_toxico"/>
+      <index name="fki_blh_his_fk_pat" columns="patologia"/>
       <index name="IDX_F93902A254F03532" columns="id_donante"/>
       <index name="IDX_F93902A22DF9F9B6" columns="id_banco_de_leche"/>
       <index name="IDX_F93902A28653A7AF" columns="id_centro_recoleccion"/>
@@ -44,9 +44,9 @@
         <option name="default"/>
       </options>
     </field>
-    <many-to-one field="idMotivoDonacion" target-entity="BlhCtlMotivoDonacion" fetch="LAZY">
+    <many-to-one field="patologia" target-entity="CtlPatologia" fetch="LAZY">
       <join-columns>
-        <join-column name="id_motivo_donacion" referenced-column-name="id"/>
+        <join-column name="patologia" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
@@ -54,14 +54,14 @@
         <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="idMotivoDonacion" target-entity="BlhCtlMotivoDonacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_motivo_donacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
       <join-columns>
         <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="habitoToxico" target-entity="BlhCtlHabitoToxico" fetch="LAZY">
-      <join-columns>
-        <join-column name="habito_toxico" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
@@ -69,9 +69,9 @@
         <join-column name="id_banco_de_leche" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="patologia" target-entity="CtlPatologia" fetch="LAZY">
+    <many-to-one field="habitoToxico" target-entity="BlhCtlHabitoToxico" fetch="LAZY">
       <join-columns>
-        <join-column name="patologia" referenced-column-name="id"/>
+        <join-column name="habito_toxico" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idDonante" target-entity="BlhDonante" fetch="LAZY">

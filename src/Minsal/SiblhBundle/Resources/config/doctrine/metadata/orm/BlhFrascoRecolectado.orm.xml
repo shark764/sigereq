@@ -4,8 +4,8 @@
     <indexes>
       <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
       <index name="fk_donacion_frasco_recolectado" columns="id_donacion"/>
-      <index name="fk_estado_frasco_recolectado" columns="id_estado"/>
       <index name="fk_frasco_recolectado_lote_anal" columns="id_lote_analisis"/>
+      <index name="fk_estado_frasco_recolectado" columns="id_estado"/>
       <index name="IDX_37ABF7A62DF9F9B6" columns="id_banco_de_leche"/>
       <index name="IDX_37ABF7A68653A7AF" columns="id_centro_recoleccion"/>
       <index name="IDX_37ABF7A67DA00A52" columns="id_forma_extraccion"/>
