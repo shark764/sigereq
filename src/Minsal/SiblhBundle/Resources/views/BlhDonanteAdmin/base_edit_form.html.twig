@@ -49,9 +49,39 @@
                                                 <div class="row">
                                                     <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
                                                         <div class="form-group">
+                                                            <label class="col-xs-4 col-lg-4 col-md-4 col-sm-4 control-label input-sm">¿El donante posee expediente en este Establecimiento?</label>
+                                                            <div class="col-xs-8 col-lg-8 col-md-8 col-sm-8">
+                                                                <ul class="list-unstyled list-inline formstyle-radio-list-inline input-sm col-lg-12 col-md-12 col-sm-12" id="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type]">
+                                                                    <li>
+                                                                        <label class="">
+                                                                            <input type="radio" checked="checked" value="F" name="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type]" id="DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_type_0">
+                                                                            <span style="margin-left: 5px;">No</span>
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label class="">
+                                                                            <input type="radio" value="T" name="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type]" id="DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_type_1">
+                                                                            <span style="margin-left: 5px;">Si</span>
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group" style="display: none;"{# #}>
                                                             <label class="col-xs-4 col-lg-4 col-md-4 col-sm-4 control-label input-sm">EXPEDIENTE</label>
                                                             <div class="col-xs-8 col-lg-8 col-md-8 col-sm-8">
-                                                                <input type="hidden" id="DONOR_SEARCHDONOR_search_patient" name="DONOR_SEARCHDONOR_search_patient" class="form-control input-sm" />
+                                                                <input type="hidden" id="DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient" name="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_patient]" class="form-control input-sm" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group" style="display: none;"{# #}>
+                                                            <div class="col-xs-8 col-lg-8 col-md-8 col-sm-8 col-xs-offset-4">
+                                                                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                                                    {% if is_granted('ROLE_MINSAL_SIAPS_ADMIN_MNT_EXPEDIENTE_CREATE') or is_granted('ROLE_ADMIN') %}
+                                                                        <div class="btn-group" role="group" aria-label="...">
+                                                                            <a class="btn btn-sm btn-xray-awesome-blue" href="javascript:void(0)" onclick="searchPatientInSiap(this); return false;" id="DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_in_siap" name="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_donor_in_siap]" disabled="disabled"{# #}><span class="glyphicon glyphicon-cloud"></span>{# #}&nbsp; Buscar en SIAP</a>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

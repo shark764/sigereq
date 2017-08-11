@@ -54,6 +54,12 @@ file that was distributed with this source code.
 
     <script type="text/javascript">
         //////////////////////////////////////////////////////////////////////////////////////////////
+        var searchPatientInSiap = function(el) {
+            return el.full_name;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
         var patientFormatResult = function(el) {
             var markup = '<div class="row-fluid">' +
                                 '<div class="span10">' +
@@ -77,8 +83,9 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// initialize with custom options
             //////////////////////////////////////////////////////////////////////////////////////////////
-            var DONOR_SEARCHDONOR_search_patient_select = jQuery('#DONOR_SEARCHDONOR_search_patient');
-            DONOR_SEARCHDONOR_search_patient_select.select2({
+            var DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_in_siap_btn = jQuery('#DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_in_siap');
+            var DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient_select = jQuery('#DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient');
+            DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient_select.select2({
                 width: 'resolve',
                 minimumResultsForSearch: 10,
                 dropdownAutoWidth : true,
@@ -100,6 +107,7 @@ file that was distributed with this source code.
                         };
                     },
                     results: function (data, page) { // parse the results into the format expected by Select2.
+                        DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient_select.trigger('blh.evt.select2-loaded', [data, page]);
                         // since we are using custom formatting functions we do not need to alter the remote JSON data
                         return { results: data.items };
                     },
@@ -124,9 +132,9 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// patient record change event
             //////////////////////////////////////////////////////////////////////////////////////////////
-            DONOR_SEARCHDONOR_search_patient_select.on('change', function (e) {
+            DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient_select.on('change', function (e) {
                 var rvalue = this.value;
-
+console.log('aja');
                 if (!rvalue) {
                     jQuery('#DONOR_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html('');
                     jQuery('#DONOR_SEARCHDONOR_{{ admin.uniqId }}_info_container').html('');
@@ -150,6 +158,22 @@ file that was distributed with this source code.
                     });
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
+
+            jQuery('input[name="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type]"]').on('ifChecked', function(e) {
+                var bl_ = this.value === 'T';
+                DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient_select.closest('.form-group').toggle(bl_).end().select2('val', '').triggerHandler('change');
+                DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_in_siap_btn.attr('disabled', bl_).closest('.form-group').toggle(!bl_);  // button
+                // if (bl_)
+            });
+
+            DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_patient_select.on('blh.evt.select2-loaded', function (e, data, page) {
+                {% if is_granted('ROLE_MINSAL_SIAPS_ADMIN_MNT_EXPEDIENTE_CREATE') or is_granted('ROLE_ADMIN') %}
+                    var bl_ = page === 1 && data.items.length === 0;
+                    //////// enable / disable search in siap
+                    DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_in_siap_btn.attr('disabled', !bl_).closest('.form-group').toggle(bl_);  // button
+                    console.log('!bl_', page === 1 && data.items.length !== 0, 'bl_', bl_);
+                {% endif %}
+            });
         });
 
     </script>
