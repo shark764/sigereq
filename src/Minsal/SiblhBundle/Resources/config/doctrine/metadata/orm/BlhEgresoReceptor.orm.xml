@@ -3,9 +3,9 @@
   <entity name="BlhEgresoReceptor" table="blh_egreso_receptor">
     <indexes>
       <index name="fk_receptor_egreso_receptor" columns="id_receptor"/>
+      <index name="IDX_7993CDC67DFA12F6" columns="id_establecimiento"/>
       <index name="IDX_7993CDC62DF9F9B6" columns="id_banco_de_leche"/>
       <index name="IDX_7993CDC6197798D8" columns="id_tipo_egreso"/>
-      <index name="IDX_7993CDC67DFA12F6" columns="id_establecimiento"/>
       <index name="IDX_7993CDC6D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
@@ -79,11 +79,6 @@
         <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_establecimiento" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idTipoEgreso" target-entity="BlhCtlTipoEgreso" fetch="LAZY">
       <join-columns>
         <join-column name="id_tipo_egreso" referenced-column-name="id"/>
@@ -97,6 +92,11 @@
     <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
       <join-columns>
         <join-column name="id_banco_de_leche" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

@@ -2,10 +2,10 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="BlhFrascoRecolectado" table="blh_frasco_recolectado">
     <indexes>
-      <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
       <index name="fk_donacion_frasco_recolectado" columns="id_donacion"/>
-      <index name="fk_frasco_recolectado_lote_anal" columns="id_lote_analisis"/>
       <index name="fk_estado_frasco_recolectado" columns="id_estado"/>
+      <index name="fk_frasco_recolectado_lote_anal" columns="id_lote_analisis"/>
+      <index name="fk_donante_frasco_recolectado" columns="id_donante"/>
       <index name="IDX_37ABF7A62DF9F9B6" columns="id_banco_de_leche"/>
       <index name="IDX_37ABF7A68653A7AF" columns="id_centro_recoleccion"/>
       <index name="IDX_37ABF7A67DA00A52" columns="id_forma_extraccion"/>
