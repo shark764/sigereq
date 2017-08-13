@@ -66,7 +66,7 @@ class BlhGrupoSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                                         'placeholder' => 'código...',
                                         'class' => 'form-control input-sm',
                                         'readonly' => 'readonly',
-                                        'data-form-inline-group' => 'start',
+                                        // 'data-form-inline-group' => 'start',
                                         'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                         'data-add-input-addon' => 'true',
