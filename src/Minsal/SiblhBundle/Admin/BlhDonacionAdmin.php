@@ -243,7 +243,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ->add('donacionFrascoRecolectadoMezcla', 'sonata_type_collection', array(
                                 'label' => false,
                                 'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
-                                'btn_add' => 'Mezclar frasco',  // --| Prevents the "Add" option from being displayed
+                                'btn_add' => 'Mezclar con frasco',  // --| Prevents the "Add" option from being displayed
                                 // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
                                 'attr' => array(
                                         'class' => 'form-control input-sm',

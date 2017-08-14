@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhBancoDeLeche
  *
  * @ORM\Table(name="blh_banco_de_leche", indexes={@ORM\Index(name="fk_establecimiento_banco_de_lec", columns={"id_establecimiento"}), @ORM\Index(name="IDX_329E5BD1D8A5832B", columns={"id_user_reg"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhBancoDeLecheRepository")
  */
 class BlhBancoDeLeche implements EntityInterface
 {
@@ -141,7 +141,7 @@ class BlhBancoDeLeche implements EntityInterface
      */
     public function __toString()
     {
-        return (string) $this->idEstablecimiento . ' - ' . $this->codigoBancoDeLeche;
+        return $this->nombre ? strtoupper(trim($this->codigoBancoDeLeche)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
     
     /**
@@ -149,6 +149,7 @@ class BlhBancoDeLeche implements EntityInterface
      */
     public function getPresentacionEntidad()
     {
+        return $this->nombre ? mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
     
     /**

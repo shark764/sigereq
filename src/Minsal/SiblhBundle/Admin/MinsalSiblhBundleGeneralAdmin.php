@@ -95,6 +95,26 @@ class MinsalSiblhBundleGeneralAdmin extends Admin
     }
 
     /**
+     * Get ___session_system_USER_LOGGED_MILK_BANK___
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche 
+     */
+    public function getSessionSystemUserLoggedMilkBank()
+    {
+        return $this->___session_system_USER_LOGGED_MILK_BANK___;
+    }
+
+    /**
+     * Get ___session_system_USER_LOGGED_COLLECTION_CENTER___
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion 
+     */
+    public function getSessionSystemUserLoggedCollectionCenter()
+    {
+        return $this->___session_system_USER_LOGGED_COLLECTION_CENTER___;
+    }
+
+    /**
      * @param string $code
      * @param string $class
      * @param string $baseControllerName
@@ -114,6 +134,8 @@ class MinsalSiblhBundleGeneralAdmin extends Admin
             $this->___session_system_USER_LOGGED___             = $session_USER;    //////// --| user logged
             $this->___session_system_USER_LOGGED_EMPLOYEE___    = $session_USER->getIdEmpleado();   //////// --| employee asociated
             $this->___session_system_USER_LOGGED_LOCATION___    = $session_USER->getIdEstablecimiento();    //////// --| location asociated
+            $this->___session_system_USER_LOGGED_MILK_BANK___   = $session_USER->getIdBancoDeLeche();    //////// --| blh asociated
+            $this->___session_system_USER_LOGGED_COLLECTION_CENTER___   = $session_USER->getIdCentroRecoleccion();    //////// --| collection center asociated
 
             if ($this->___session_system_USER_LOGGED_EMPLOYEE___ !== null)
             {

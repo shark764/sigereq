@@ -246,20 +246,6 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
-            ->add('idMunicipio', null, array(
-                            'label' => 'Procedencia',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'start',
-                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                            )
-            ))
             ->add('nacionalidad', null, array(
                             'label' => 'Nacionalidad',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -272,6 +258,20 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-globe',
+                            )
+            ))
+            ->add('idMunicipio', null, array(
+                            'label' => 'Procedencia',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'start',
+                                    // 'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
                             )
             ))
             ->add('fechaNacimiento', 'datetime', array(
@@ -311,7 +311,7 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'edad...',
-                                    'readonly' => 'readonly',
+                                    // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
@@ -731,6 +731,30 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                 return parent::getTemplate($name);
                 break;
         }
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
+    }
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        $instance->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);
+        
+        return $instance;
     }
 
 }

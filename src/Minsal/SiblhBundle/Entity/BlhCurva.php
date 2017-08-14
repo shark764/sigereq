@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhCurva
  *
  * @ORM\Table(name="blh_curva", indexes={@ORM\Index(name="IDX_C08FDE6BD8A5832B", columns={"id_user_reg"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhCurvaRepository")
  */
 class BlhCurva implements EntityInterface
 {

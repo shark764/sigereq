@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhHistorialClinico
  *
  * @ORM\Table(name="blh_historial_clinico", indexes={@ORM\Index(name="IDX_33FD85BC54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_33FD85BC7DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_33FD85BCD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_33FD85BCBC3F8658", columns={"id_patologia_embarazo"}), @ORM\Index(name="IDX_33FD85BC8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_33FD85BC2DF9F9B6", columns={"id_banco_de_leche"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhHistorialClinicoRepository")
  */
 class BlhHistorialClinico implements EntityInterface
 {

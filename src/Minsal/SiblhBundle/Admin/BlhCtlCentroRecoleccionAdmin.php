@@ -57,6 +57,41 @@ class BlhCtlCentroRecoleccionAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idEstablecimiento', null, array(
+                            'label' => 'Establecimiento',
+                            'required' => true,
+                            // 'query_builder' => function(EntityRepository $er) {
+                            //                         return $er->createQueryBuilder('std')
+                            //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
+                            //                                         ->where('tipo.codigo IN (:code_hospital_type)')
+                            //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
+                            //                                         ->orderBy('std.nombre', 'asc')
+                            //                                         ->distinct();
+                            //                     },
+                            'group_by' => 'idTipoEstablecimiento',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    // 'data-form-inline-group' => 'stop',
+                                    // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
+
+                                    'data-add-input-addon' => 'true',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
+            ->add('idBancoDeLeche', null, array(
+                            'label' => 'Banco de Leche al que suministra',
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            // 'required' => true,
+                            // 'group_by' => 'idEstablecimiento',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
+                            )
+            ))
             ->add('nombre', null, array(
                             'label' => 'Nombre',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -118,41 +153,6 @@ class BlhCtlCentroRecoleccionAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-regexp-message' => 'Texto contiene caracteres no permitidos',
                             )
             ))
-            ->add('idEstablecimiento', null, array(
-                            'label' => 'Establecimiento',
-                            'required' => true,
-                            // 'query_builder' => function(EntityRepository $er) {
-                            //                         return $er->createQueryBuilder('std')
-                            //                                         ->innerJoin('std.idTipoEstablecimiento', 'tipo')
-                            //                                         ->where('tipo.codigo IN (:code_hospital_type)')
-                            //                                         ->setParameter('code_hospital_type', array('HBSN', 'HDSN', 'HRSN', 'CERN'))
-                            //                                         ->orderBy('std.nombre', 'asc')
-                            //                                         ->distinct();
-                            //                     },
-                            'group_by' => 'idTipoEstablecimiento',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    // 'data-form-inline-group' => 'stop',
-                                    // 'data-add-form-group-col-class' => 'col-lg-7 col-md-7 col-sm-7',
-
-                                    'data-add-input-addon' => 'true',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                            )
-            ))
-            ->add('idBancoDeLeche', null, array(
-                            'label' => 'Banco de Leche',
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            // 'required' => true,
-                            // 'group_by' => 'idEstablecimiento',
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-home',
-                            )
-            ))
             // ->add('fechaHoraReg')
         ;
     }
@@ -168,6 +168,34 @@ class BlhCtlCentroRecoleccionAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('telefono')
             // ->add('fechaHoraReg')
         ;
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+
+        $container = $this->getConfigurationPool()->getContainer();
+        $doctrine = $container->get('doctrine');
+
+        $code_ = $doctrine->getRepository($this->getClass())->generateCode();
+        $entity->setCodigo('CTR-' . $code_['code']);
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
+
+        if ($entity->getCodigo() === null) {
+            $container = $this->getConfigurationPool()->getContainer();
+            $doctrine = $container->get('doctrine');
+
+            $code_ = $doctrine->getRepository($this->getClass())->generateCode();
+            $entity->setCodigo('CTR-' . $code_['code']);
+        }
     }
 
 }

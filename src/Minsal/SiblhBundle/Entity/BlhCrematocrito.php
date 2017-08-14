@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhCrematocrito
  *
  * @ORM\Table(name="blh_crematocrito", indexes={@ORM\Index(name="IDX_94B73C6C59B17EFE", columns={"id_frasco_procesado"}), @ORM\Index(name="IDX_94B73C6CEC124187", columns={"id_frasco_recolectado"}), @ORM\Index(name="IDX_94B73C6CD8A5832B", columns={"id_user_reg"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhCrematocritoRepository")
  */
 class BlhCrematocrito implements EntityInterface
 {

@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhSolicitud
  *
  * @ORM\Table(name="blh_solicitud", indexes={@ORM\Index(name="fk_grupo_solicitud_solicitud", columns={"id_grupo_solicitud"}), @ORM\Index(name="IDX_9E50CAC8B91944F2", columns={"id_receptor"}), @ORM\Index(name="IDX_9E50CAC8D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_9E50CAC8BA23BAD6", columns={"id_responsable_solicitud"}), @ORM\Index(name="IDX_9E50CAC8C9232A1C", columns={"id_acidez_necesaria"}), @ORM\Index(name="IDX_9E50CAC8AE5F7773", columns={"id_calorias_necesarias"}), @ORM\Index(name="IDX_9E50CAC82DF9F9B6", columns={"id_banco_de_leche"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhSolicitudRepository")
  */
 class BlhSolicitud implements EntityInterface
 {

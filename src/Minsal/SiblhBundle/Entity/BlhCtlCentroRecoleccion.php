@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhCtlCentroRecoleccion
  *
  * @ORM\Table(name="blh_ctl_centro_recoleccion", indexes={@ORM\Index(name="IDX_97B3664ED8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_97B3664E7DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_97B3664E2DF9F9B6", columns={"id_banco_de_leche"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhCtlCentroRecoleccionRepository")
  */
 class BlhCtlCentroRecoleccion implements EntityInterface
 {
@@ -46,8 +46,7 @@ class BlhCtlCentroRecoleccion implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="telefono", type="string", length=15, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="telefono", type="string", length=15, nullable=true)
      * @Assert\Regex(
      *     pattern="/[a-zA-Z0-9]/",
      *     match=true,
@@ -152,7 +151,7 @@ class BlhCtlCentroRecoleccion implements EntityInterface
      */
     public function __toString()
     {
-        return (string) $this->nombre;
+        return $this->nombre ? strtoupper(trim($this->codigo)) . ' - ' . mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
     
     /**
@@ -160,6 +159,7 @@ class BlhCtlCentroRecoleccion implements EntityInterface
      */
     public function getPresentacionEntidad()
     {
+        return $this->nombre ? mb_strtoupper(trim($this->nombre), 'utf-8') : '';
     }
     
     /**

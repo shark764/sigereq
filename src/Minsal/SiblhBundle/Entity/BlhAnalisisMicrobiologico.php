@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhAnalisisMicrobiologico
  *
  * @ORM\Table(name="blh_analisis_microbiologico", indexes={@ORM\Index(name="fk_frasco_procesado_analisis_mi", columns={"id_frasco_procesado"}), @ORM\Index(name="IDX_709DCB00D8A5832B", columns={"id_user_reg"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhAnalisisMicrobiologicoRepository")
  */
 class BlhAnalisisMicrobiologico implements EntityInterface
 {

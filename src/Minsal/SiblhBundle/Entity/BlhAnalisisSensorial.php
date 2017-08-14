@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhAnalisisSensorial
  *
  * @ORM\Table(name="blh_analisis_sensorial", indexes={@ORM\Index(name="IDX_880123DFEC124187", columns={"id_frasco_recolectado"}), @ORM\Index(name="IDX_880123DFD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_880123DF6708CAF6", columns={"id_resultado_embalaje"}), @ORM\Index(name="IDX_880123DF9DF1DCAB", columns={"id_resultado_suciedad"}), @ORM\Index(name="IDX_880123DFB9798FD9", columns={"id_resultado_color"}), @ORM\Index(name="IDX_880123DF9A232B3F", columns={"id_resultado_flavor"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhAnalisisSensorialRepository")
  */
 class BlhAnalisisSensorial implements EntityInterface
 {

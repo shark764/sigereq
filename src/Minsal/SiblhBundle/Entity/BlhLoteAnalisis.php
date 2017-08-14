@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhLoteAnalisis
  *
  * @ORM\Table(name="blh_lote_analisis", indexes={@ORM\Index(name="IDX_232421CCD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_232421CC78720D11", columns={"id_responsable_analisis"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhLoteAnalisisRepository")
  */
 class BlhLoteAnalisis implements EntityInterface
 {

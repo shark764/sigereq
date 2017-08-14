@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhPasteurizacion
  *
  * @ORM\Table(name="blh_pasteurizacion", indexes={@ORM\Index(name="fk_curva_pasteurizacion", columns={"id_curva"}), @ORM\Index(name="IDX_822F9117D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_822F9117919F2FC7", columns={"id_responsable_pasteurizacion"}), @ORM\Index(name="IDX_822F91172DF9F9B6", columns={"id_banco_de_leche"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhPasteurizacionRepository")
  */
 class BlhPasteurizacion implements EntityInterface
 {
