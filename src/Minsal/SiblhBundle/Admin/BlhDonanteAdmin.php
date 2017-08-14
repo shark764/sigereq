@@ -288,7 +288,7 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-input-transform' => 'datetimepicker',
                                     'data-datetimepicker-type' => 'date',
                                     'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -304,27 +304,86 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-date-message' => 'No es una fecha válida',
                             )
             ))
-            ->add('edad', null, array(
+            ->add('edad', 'hidden')
+            ->add('edadY', 'integer', array(
                             'label' => false/*'Edad'*/,
                             'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'mapped' => false,
                             // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
                             'attr' => array(
                                     'class' => 'form-control input-sm',
-                                    'placeholder' => 'edad...',
+                                    'placeholder' => 'año(s)...',
                                     // 'readonly' => 'readonly',
-                                    'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    
+                                    'data-fv-icon' => 'false',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
 
                                     'data-fv-integer' => 'true',
                                     'data-fv-integer-message' => 'El valor no es un entero',
 
-                                    'min' => '0',
-                                    'max' => '32767',
-                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                                    'min' => '12',
+                                    'max' => '50',
+                                    'data-fv-between-message' => 'Número debe estar entre 10 y 50',
+                            )
+            ))
+            ->add('edadM', 'integer', array(
+                            'label' => false/*'Edad'*/,
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'mapped' => false,
+                            // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'placeholder' => 'mes(es)...',
+                                    // 'readonly' => 'readonly',
+                                    'data-form-inline-group' => 'continue',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    
+                                    'data-fv-icon' => 'false',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+                                    'data-fv-integer' => 'true',
+                                    'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '1',
+                                    'max' => '12',
+                                    'data-fv-between-message' => 'Número debe estar entre 1 y 12',
+                            )
+            ))
+            ->add('edadD', 'integer', array(
+                            'label' => false/*'Edad'*/,
+                            'label_attr' => array('class' => 'label_form_sm'),
+                            'required' => false,
+                            'mapped' => false,
+                            // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
+                            'attr' => array(
+                                    'class' => 'form-control input-sm',
+                                    'placeholder' => 'día(s)...',
+                                    // 'readonly' => 'readonly',
+                                    'data-form-inline-group' => 'stop',
+                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    
+                                    'data-fv-icon' => 'false',
+
+                                    'data-add-input-addon' => 'true',
+                                    // 'data-add-input-addon-class' => 'primary-v4',
+                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+                                    'data-fv-integer' => 'true',
+                                    'data-fv-integer-message' => 'El valor no es un entero',
+
+                                    'min' => '1',
+                                    'max' => '31',
+                                    'data-fv-between-message' => 'Número debe estar entre 1 y 31',
                             )
             ))
             // ->add('fechaRegistroDonanteBlh')
