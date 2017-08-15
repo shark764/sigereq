@@ -300,6 +300,14 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
         }
     }
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('MinsalSiblhBundle:BlhDonacionAdmin:doctrine_orm_form_admin_fields.html.twig')
+       );
+    }
+
     public function prePersist($entity)
     {
         //////// --| parent behavior
@@ -309,6 +317,8 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
         foreach ($entity->getDonacionFrascoRecolectado() as $fR)
         {
             $fR->setIdDonante($entity->getIdDonante());
+            $fR->setIdBancoDeLeche($entity->getIdBancoDeLeche());
+            $fR->setIdCentroRecoleccion($entity->getIdCentroRecoleccion());
             $fR->setIdDonacion($entity);
         }
         foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)
@@ -326,6 +336,8 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
         foreach ($entity->getDonacionFrascoRecolectado() as $fR)
         {
             $fR->setIdDonante($entity->getIdDonante());
+            $fR->setIdBancoDeLeche($entity->getIdBancoDeLeche());
+            $fR->setIdCentroRecoleccion($entity->getIdCentroRecoleccion());
             $fR->setIdDonacion($entity);
         }
         foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)

@@ -10,4 +10,82 @@ namespace Minsal\SiblhBundle\Repository;
  */
 class BlhFrascoRecolectadoRepository extends \Doctrine\ORM\EntityRepository
 {
+    /////////////////////////////////////////////////////////////////////////////////////
+    //////// SEARCH METHOD
+    /////////////////////////////////////////////////////////////////////////////////////
+    public function search($localeId, $t, $q)
+    {
+        ////////////////////////////////////////
+        //////// collected_bottle is local
+        ////////////////////////////////////////
+        $query = $this->getEntityManager()
+                    ->createQueryBuilder('t01')
+                            ->select('t01')
+                            // ->addSelect('t02')
+                            ->addSelect('t01.id AS id, t01.codigoFrascoRecolectado as full_code, CONCAT(t01.codigoFrascoRecolectado, \' - \', t01.volumenRecolectado, \' ml \') AS full_name')
+                            // ->addSelect('UPPER(CONCAT(t01.primerApellido, \' \', COALESCE(t01.segundoApellido, \'\'), \', \', t01.primerNombre, \' \', COALESCE(t01.segundoNombre, \'\'), \' -- | -- ( \', t01.codigoFrascoRecolectado, \' )\')) AS full_code')
+                            ->from('MinsalSiblhBundle:BlhFrascoRecolectado', 't01')
+                            // ->innerJoin('t01.idPaciente', 't02')
+                            // ->where('t01.idEstablecimiento = :id_est')
+                            // ->setParameter('id_est', $localeId)
+                            ->orderBy('t01.volumenRecolectado', 'DESC')
+                            ->addOrderBy('full_code')
+                            ->distinct()
+                            ->setMaxResults(25);
+
+        if ($t === 'blh') {
+        	$query->andWhere('t01.idBancoDeLeche = :id_est')
+                            ->setParameter('id_est', $localeId);
+        }
+        elseif ($t === 'ctr') {
+        	$query->andWhere('t01.idCentroRecoleccion = :id_est')
+                            ->setParameter('id_est', $localeId);
+        }
+
+        // if (is_numeric(str_replace(array('-', 'D'), '', $q))) {
+            $query->andWhere($query->expr()->like('LOWER(t01.codigoFrascoRecolectado)', ':collected_bottle_code'))
+                                ->setParameter('collected_bottle_code', '%' . strtolower($q) . '%');
+        // } else {
+        //     $query->andWhere($query->expr()->like('LOWER(CONCAT(t01.primerApellido, COALESCE(t01.segundoApellido, \'\'), t01.primerNombre, COALESCE(t01.segundoNombre, \'\')))', ':collected_bottle_code'))
+        //                         ->setParameter('collected_bottle_code', '%' . strtolower(str_replace(' ', '', $q)) . '%');
+        // }
+
+        return $query->getQuery()->getScalarResult();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    //////// SEARCH BY ID METHOD
+    /////////////////////////////////////////////////////////////////////////////////////
+    public function searchById($localeId, $t, $id)
+    {
+        ////////////////////////////////////////
+        //////// collected_bottle is local
+        ////////////////////////////////////////
+        $query = $this->getEntityManager()
+                    ->createQueryBuilder('t01')
+                            ->select('t01')
+                            // ->addSelect('t02', 't03')
+                            ->addSelect('t01.id AS id, t01.codigoFrascoRecolectado as full_code, CONCAT(t01.codigoFrascoRecolectado, \' - \', t01.volumenRecolectado, \' ml \') AS full_name')
+                            // ->addSelect('UPPER(CONCAT(t01.primerApellido, \' \', COALESCE(t01.segundoApellido, \'\'), \', \', t01.primerNombre, \' \', COALESCE(t01.segundoNombre, \'\'), \' -- | -- ( \', t01.codigoFrascoRecolectado, \' )\')) AS full_code')
+                            // ->addSelect('UPPER(CONCAT(t01.primerApellido, \' \', COALESCE(t01.segundoApellido, \'\'), \', \', t01.primerNombre, \' \', COALESCE(t01.segundoNombre, \'\'))) AS whole_name')
+                            ->from('MinsalSiblhBundle:BlhFrascoRecolectado', 't01')
+                            // ->innerJoin('t01.idPaciente', 't02')
+                            // ->innerJoin('t02.idSexo', 't03')
+                            // ->where('t01.idEstablecimiento = :id_est')
+                            // ->setParameter('id_est', $localeId)
+                            ->andWhere('t01.id = :id')
+                            ->setParameter('id', $id);
+
+        if ($t === 'blh') {
+        	$query->andWhere('t01.idBancoDeLeche = :id_est')
+                            ->setParameter('id_est', $localeId);
+        }
+        elseif ($t === 'ctr') {
+        	$query->andWhere('t01.idCentroRecoleccion = :id_est')
+                            ->setParameter('id_est', $localeId);
+        }
+
+        return $query->getQuery()->getScalarResult();
+    }
+
 }

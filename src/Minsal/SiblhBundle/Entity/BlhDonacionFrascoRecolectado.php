@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhDonacionFrascoRecolectado
  *
- * @ORM\Table(name="blh_donacion_frasco_recolectado", uniqueConstraints={@ORM\UniqueConstraint(name="idx_blh_donacion_frasco_recolectado", columns={"id_donacion", "id_frasco_recolectado"})}, indexes={@ORM\Index(name="IDX_E98D43ACF00213", columns={"id_donacion"}), @ORM\Index(name="IDX_E98D43EC124187", columns={"id_frasco_recolectado"})})
+ * @ORM\Table(name="blh_donacion_frasco_recolectado", indexes={@ORM\Index(name="IDX_E98D43ACF00213", columns={"id_donacion"}), @ORM\Index(name="IDX_E98D43EC124187", columns={"id_frasco_recolectado"})})
  * @ORM\Entity
  */
 class BlhDonacionFrascoRecolectado implements EntityInterface

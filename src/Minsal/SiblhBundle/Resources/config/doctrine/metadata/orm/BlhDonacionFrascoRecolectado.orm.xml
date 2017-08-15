@@ -5,9 +5,6 @@
       <index name="IDX_E98D43ACF00213" columns="id_donacion"/>
       <index name="IDX_E98D43EC124187" columns="id_frasco_recolectado"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="idx_blh_donacion_frasco_recolectado" columns="id_donacion,id_frasco_recolectado"/>
-    </unique-constraints>
     <id name="id" type="bigint" column="id">
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="blh_donacion_frasco_recolectado_id_seq" allocation-size="1" initial-value="1"/>

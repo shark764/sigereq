@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhFrascoRecolectado
  *
- * @ORM\Table(name="blh_frasco_recolectado", indexes={@ORM\Index(name="fk_frasco_recolectado_lote_anal", columns={"id_lote_analisis"}), @ORM\Index(name="fk_estado_frasco_recolectado", columns={"id_estado"}), @ORM\Index(name="fk_donante_frasco_recolectado", columns={"id_donante"}), @ORM\Index(name="fk_donacion_frasco_recolectado", columns={"id_donacion"}), @ORM\Index(name="IDX_37ABF7A6D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_37ABF7A67DA00A52", columns={"id_forma_extraccion"})})
+ * @ORM\Table(name="blh_frasco_recolectado", indexes={@ORM\Index(name="fk_frasco_recolectado_lote_anal", columns={"id_lote_analisis"}), @ORM\Index(name="fk_estado_frasco_recolectado", columns={"id_estado"}), @ORM\Index(name="fk_donante_frasco_recolectado", columns={"id_donante"}), @ORM\Index(name="fk_donacion_frasco_recolectado", columns={"id_donacion"}), @ORM\Index(name="IDX_37ABF7A6D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_37ABF7A67DA00A52", columns={"id_forma_extraccion"}), @ORM\Index(name="IDX_37ABF7A62DF9F9B6", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_37ABF7A68653A7AF", columns={"id_centro_recoleccion"})})
  * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhFrascoRecolectadoRepository")
  */
 class BlhFrascoRecolectado implements EntityInterface
@@ -229,6 +229,26 @@ class BlhFrascoRecolectado implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idFormaExtraccion;
+
+    /**
+     * @var \BlhCtlCentroRecoleccion
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCtlCentroRecoleccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
+     * })
+     */
+    private $idCentroRecoleccion;
+
+    /**
+     * @var \BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     */
+    private $idBancoDeLeche;
 
     /**
      * @ORM\OneToMany(targetEntity="BlhAcidez", mappedBy="idFrascoRecolectado", cascade={"all"}, orphanRemoval=true)
@@ -699,6 +719,54 @@ class BlhFrascoRecolectado implements EntityInterface
     public function getIdFormaExtraccion()
     {
         return $this->idFormaExtraccion;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
+    }
+
+    /**
+     * Set idCentroRecoleccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion
+     *
+     * @return BlhFrascoRecolectado
+     */
+    public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion = null)
+    {
+        $this->idCentroRecoleccion = $idCentroRecoleccion;
+
+        return $this;
+    }
+
+    /**
+     * Get idCentroRecoleccion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
+     */
+    public function getIdCentroRecoleccion()
+    {
+        return $this->idCentroRecoleccion;
     }
 
     /**
