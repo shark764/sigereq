@@ -152,7 +152,9 @@ file that was distributed with this source code.
                         l: l, // location
                     })
                     .done(function(data) {
-                        jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+{#
+                        // jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+#}
                     })
                     .fail(function(jqxhr, textStatus, error) {
                         //////// patient jumbotron
@@ -242,6 +244,7 @@ file that was distributed with this source code.
                 }
                 var vOz = v * 0.033814;
                 jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_onzRecolectado"]').val(vOz.toFixed(4));
+                jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_volumenReal"]').val(v);
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
             jQuery(document).on('keyup change blur', '[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_volumenAgregado"]', function(e) {
