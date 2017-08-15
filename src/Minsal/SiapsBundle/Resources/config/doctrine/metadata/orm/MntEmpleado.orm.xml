@@ -8,6 +8,7 @@
       <index name="IDX_2138DDC9B13434FE" columns="id_tipo_empleado"/>
       <index name="IDX_2138DDC92DF9F9B6" columns="id_banco_de_leche"/>
       <index name="IDX_2138DDC98653A7AF" columns="id_centro_recoleccion"/>
+      <index name="IDX_2138DDC9D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -91,14 +92,19 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
       <join-columns>
         <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idTipoEmpleado" target-entity="MntTipoEmpleado" fetch="LAZY">
@@ -106,14 +112,14 @@
         <join-column name="id_tipo_empleado" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idEstablecimientoExterno" target-entity="CtlEstablecimiento" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_establecimiento_externo" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento" fetch="LAZY">
       <join-columns>
         <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimientoExterno" target-entity="CtlEstablecimiento" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_establecimiento_externo" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idCargoEmpleado" target-entity="MntCargoempleados" fetch="LAZY">

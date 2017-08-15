@@ -12,6 +12,9 @@ use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Route\RouteCollection;
 
+use Minsal\SiapsBundle\Entity\MntEmpleado;
+use Application\Sonata\UserBundle\Entity\User;
+
 class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
 {
     protected $baseRouteName    = 'siblh_personal';
@@ -125,7 +128,7 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('apellido', null, array(
                             'label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Apellido'/*Primer apellido'*/,
-                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
                                     'placeholder' => 'primer apellido...',
@@ -289,8 +292,8 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-user',
                             )
             ))
-            ->add('habilitado', null, array(
-                            'label' => '¿Habilitado?',
+            ->add('residente', null, array(
+                            'label' => '¿Residente?',
                             'label_attr' => array('class' => 'label_form_sm label_check col-lg-12 col-md-12 col-sm-12'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
@@ -298,8 +301,8 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
                                     // 'data-add-form-group-col-class' => 'col-lg-1 col-md-1 col-sm-1',
                             )
             ))
-            ->add('residente', null, array(
-                            'label' => '¿Residente?',
+            ->add('habilitado', null, array(
+                            'label' => '¿Habilitado?',
                             'label_attr' => array('class' => 'label_form_sm label_check col-lg-12 col-md-12 col-sm-12'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
@@ -364,14 +367,21 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
     
     public function prePersist($entity)
     {
+        //////// --| parent behavior
         // parent::prePersist($entity);
+        ////////
 
         $entity->setNombreempleado($entity->getNombre() . ' ' . $entity->getApellido());
+
+        $u_ = new User();
+        $entity->addEmpleadoUsuario($u_);
     }
     
     public function preUpdate($entity)
     {
+        //////// --| parent behavior
         // parent::preUpdate($entity);
+        ////////
 
         $entity->setNombreempleado($entity->getNombre() . ' ' . $entity->getApellido());
     }
@@ -390,6 +400,7 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
         $object->setIdEstablecimiento($this->___session_system_USER_LOGGED_LOCATION___);
         $object->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
         $object->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);
+        $object->setIdTipoEmpleado($this->getModelManager()->findOneBy('MinsalSiapsBundle:MntTipoEmpleado', array('codigo' => 'MED')));
 
         return $object;
     }

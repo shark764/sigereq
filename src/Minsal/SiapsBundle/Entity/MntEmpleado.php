@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * MntEmpleado
  *
- * @ORM\Table(name="mnt_empleado", indexes={@ORM\Index(name="IDX_2138DDC94F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_2138DDC97DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_2138DDC9DA799B26", columns={"id_establecimiento_externo"}), @ORM\Index(name="IDX_2138DDC9B13434FE", columns={"id_tipo_empleado"}), @ORM\Index(name="IDX_2138DDC92DF9F9B6", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_2138DDC98653A7AF", columns={"id_centro_recoleccion"})})
+ * @ORM\Table(name="mnt_empleado", indexes={@ORM\Index(name="IDX_2138DDC94F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_2138DDC97DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_2138DDC9DA799B26", columns={"id_establecimiento_externo"}), @ORM\Index(name="IDX_2138DDC9B13434FE", columns={"id_tipo_empleado"}), @ORM\Index(name="IDX_2138DDC92DF9F9B6", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_2138DDC98653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_2138DDC9D8A5832B", columns={"id_user_reg"})})
  * @ORM\Entity(repositoryClass="Minsal\SiapsBundle\Repository\MntEmpleadoRepository")
  */
 class MntEmpleado
@@ -328,9 +328,20 @@ class MntEmpleado
     private $idCentroRecoleccion;
 
     /**
+     * @var \Application\Sonata\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user_reg", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idUserReg;
+
+    /**
      * @ORM\OneToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="idEmpleado", cascade={"all"}, orphanRemoval=true)
      * @Assert\Count(
-     *      min = 1,
+     *      min = 0,
      *      max = 1,
      *      minMessage = "Debe poseer al menos {{ limit }} usuario(s)",
      *      maxMessage = "No puede poseer más de {{ limit }} usuario(s)"
@@ -353,7 +364,7 @@ class MntEmpleado
      */
     public function __toString()
     {
-        return (string) $this->nombreEmpleado ? ucwords(strtolower($this->nombreEmpleado)) : '';
+        return (string) $this->nombreempleado ? ucwords(strtolower($this->nombreempleado)) : '';
     }
 
     /**
@@ -940,6 +951,30 @@ class MntEmpleado
     public function getIdCentroRecoleccion()
     {
         return $this->idCentroRecoleccion;
+    }
+
+    /**
+     * Set idUserReg
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $idUserReg
+     *
+     * @return MntEmpleado
+     */
+    public function setIdUserReg(\Application\Sonata\UserBundle\Entity\User $idUserReg = null)
+    {
+        $this->idUserReg = $idUserReg;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserReg
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getIdUserReg()
+    {
+        return $this->idUserReg;
     }
 
     /**
