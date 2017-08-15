@@ -55,6 +55,16 @@ class MinsalSiblhBundleGeneralAdmin extends Admin
     protected $___session_system_USER_LOGGED_LOCATION___;
 
     /**
+     * @var \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    protected $___session_system_USER_LOGGED_MILK_BANK___;
+
+    /**
+     * @var \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
+     */
+    protected $___session_system_USER_LOGGED_COLLECTION_CENTER___;
+
+    /**
      * Get ___session_system_USER_LOGGED___
      *
      * @return \UserInterface 

@@ -308,6 +308,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
 
         foreach ($entity->getDonacionFrascoRecolectado() as $fR)
         {
+            $fR->setIdDonante($entity->getIdDonante());
             $fR->setIdDonacion($entity);
         }
         foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)
@@ -319,17 +320,31 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
     public function preUpdate($entity)
     {
         //////// --| parent behavior
-        parent::preUpdate($entity);
+        // parent::preUpdate($entity);
         ////////
 
         foreach ($entity->getDonacionFrascoRecolectado() as $fR)
         {
+            $fR->setIdDonante($entity->getIdDonante());
             $fR->setIdDonacion($entity);
         }
         foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)
         {
             $fR->setIdDonacion($entity);
         }
+    }
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        $instance->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);
+        $instance->setIdResponsableDonacion($this->___session_system_USER_LOGGED_EMPLOYEE___);
+        $instance->setIdTipoColecta($this->getModelManager()->findOneBy('MinsalSiblhBundle:BlhCtlTipoColecta', array('codigo' => 'BLH')));
+        $instance->setIdTipoLecheMaterna($this->getModelManager()->findOneBy('MinsalSiblhBundle:BlhCtlTipoLecheMaterna', array('codigo' => 'LCL')));
+        
+        return $instance;
     }
 
 }
