@@ -215,7 +215,7 @@ class UserAdmin extends BaseUserAdmin
             ))
             // ->add('usernameCanonical')
             ->add('email', null, array(
-                            'label' => 'Código',
+                            'label' => 'E-Mail',
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'attr' => array(

@@ -41,7 +41,7 @@ class User extends BaseUser
     /**
      * @var \Minsal\SiapsBundle\Entity\MntEmpleado
      *
-     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntEmpleado")
+     * @ORM\ManyToOne(targetEntity="Minsal\SiapsBundle\Entity\MntEmpleado", inversedBy="empleadoUsuario")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * })
