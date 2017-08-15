@@ -3,6 +3,8 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * CtlDepartamento
@@ -26,6 +28,17 @@ class CtlDepartamento
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 150,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombre;
 
@@ -33,6 +46,17 @@ class CtlDepartamento
      * @var string
      *
      * @ORM\Column(name="codigo_cnr", type="string", length=5, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 5,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $codigoCnr;
 
@@ -40,6 +64,17 @@ class CtlDepartamento
      * @var string
      *
      * @ORM\Column(name="abreviatura", type="string", length=5, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 5,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $abreviatura;
 
@@ -47,6 +82,17 @@ class CtlDepartamento
      * @var string
      *
      * @ORM\Column(name="iso31662", type="string", length=5, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 5,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $iso31662;
 
@@ -63,12 +109,25 @@ class CtlDepartamento
     /**
      * @var \CtlPais
      *
-     * @ORM\ManyToOne(targetEntity="CtlPais")
+     * @ORM\ManyToOne(targetEntity="CtlPais", inversedBy="paisDepartamento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_pais", referencedColumnName="id")
      * })
      */
     private $idPais;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CtlMunicipio", mappedBy="idDepartamento", cascade={"all"}, orphanRemoval=true)
+     */
+    private $departamentoMunicipio;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->departamentoMunicipio = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * ToString
@@ -230,6 +289,40 @@ class CtlDepartamento
     public function getIdPais()
     {
         return $this->idPais;
+    }
+
+    /**
+     * Add departamentoMunicipio
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlMunicipio $departamentoMunicipio
+     *
+     * @return CtlDepartamento
+     */
+    public function addDepartamentoMunicipio(\Minsal\SiapsBundle\Entity\CtlMunicipio $departamentoMunicipio)
+    {
+        $this->departamentoMunicipio[] = $departamentoMunicipio;
+
+        return $this;
+    }
+
+    /**
+     * Remove departamentoMunicipio
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlMunicipio $departamentoMunicipio
+     */
+    public function removeDepartamentoMunicipio(\Minsal\SiapsBundle\Entity\CtlMunicipio $departamentoMunicipio)
+    {
+        $this->departamentoMunicipio->removeElement($departamentoMunicipio);
+    }
+
+    /**
+     * Get departamentoMunicipio
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDepartamentoMunicipio()
+    {
+        return $this->departamentoMunicipio;
     }
 
 }

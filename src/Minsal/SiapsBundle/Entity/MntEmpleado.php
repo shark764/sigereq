@@ -3,11 +3,13 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * MntEmpleado
  *
- * @ORM\Table(name="mnt_empleado", indexes={@ORM\Index(name="IDX_2138DDC94F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_2138DDC97DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_2138DDC9DA799B26", columns={"id_establecimiento_externo"}), @ORM\Index(name="IDX_2138DDC9B13434FE", columns={"id_tipo_empleado"})})
+ * @ORM\Table(name="mnt_empleado", indexes={@ORM\Index(name="IDX_2138DDC94F664059", columns={"id_cargo_empleado"}), @ORM\Index(name="IDX_2138DDC97DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_2138DDC9DA799B26", columns={"id_establecimiento_externo"}), @ORM\Index(name="IDX_2138DDC9B13434FE", columns={"id_tipo_empleado"}), @ORM\Index(name="IDX_2138DDC92DF9F9B6", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_2138DDC98653A7AF", columns={"id_centro_recoleccion"})})
  * @ORM\Entity(repositoryClass="Minsal\SiapsBundle\Repository\MntEmpleadoRepository")
  */
 class MntEmpleado
@@ -26,6 +28,17 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=100, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 100,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombre;
 
@@ -33,6 +46,17 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="apellido", type="string", length=100, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 100,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $apellido;
 
@@ -40,6 +64,7 @@ class MntEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_nacimiento", type="date", nullable=true)
+     * @Assert\Date()
      */
     private $fechaNacimiento;
 
@@ -47,6 +72,17 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="dui", type="string", length=12, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 12,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $dui;
 
@@ -54,6 +90,17 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="numero_junta_vigilancia", type="string", length=20, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 20,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $numeroJuntaVigilancia;
 
@@ -61,6 +108,17 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="numero_celular", type="string", length=10, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 10,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $numeroCelular;
 
@@ -68,6 +126,17 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="correo_electronico", type="string", length=50, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 50,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $correoElectronico;
 
@@ -75,6 +144,12 @@ class MntEmpleado
      * @var integer
      *
      * @ORM\Column(name="correlativo", type="smallint", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 32767,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $correlativo;
 
@@ -82,6 +157,11 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="firma_digital", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $firmaDigital;
 
@@ -89,6 +169,12 @@ class MntEmpleado
      * @var integer
      *
      * @ORM\Column(name="idusuarioreg", type="smallint", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 32767,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $idusuarioreg;
 
@@ -96,6 +182,7 @@ class MntEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fechahorareg", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechahorareg;
 
@@ -103,6 +190,12 @@ class MntEmpleado
      * @var integer
      *
      * @ORM\Column(name="idusuariomod", type="smallint", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 32767,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $idusuariomod;
 
@@ -110,6 +203,7 @@ class MntEmpleado
      * @var \DateTime
      *
      * @ORM\Column(name="fechahoramod", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechahoramod;
 
@@ -117,6 +211,17 @@ class MntEmpleado
      * @var string
      *
      * @ORM\Column(name="nombreempleado", type="string", length=200, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 200,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombreempleado;
 
@@ -138,6 +243,12 @@ class MntEmpleado
      * @var integer
      *
      * @ORM\Column(name="id_nuevo_empleado", type="integer", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 2147483647,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $idNuevoEmpleado;
 
@@ -145,6 +256,12 @@ class MntEmpleado
      * @var integer
      *
      * @ORM\Column(name="id_registro_siap", type="bigint", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 9223372036854775807,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $idRegistroSiap;
 
@@ -165,6 +282,7 @@ class MntEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_establecimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEstablecimiento;
 
@@ -185,8 +303,50 @@ class MntEmpleado
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_tipo_empleado", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idTipoEmpleado;
+
+    /**
+     * @var \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiblhBundle\Entity\BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     */
+    private $idBancoDeLeche;
+
+    /**
+     * @var \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
+     * })
+     */
+    private $idCentroRecoleccion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="idEmpleado", cascade={"all"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = 1,
+     *      max = 1,
+     *      minMessage = "Debe poseer al menos {{ limit }} usuario(s)",
+     *      maxMessage = "No puede poseer más de {{ limit }} usuario(s)"
+     * )
+     */
+    private $empleadoUsuario;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fechahorareg = new \DateTime('now');
+        
+        $this->empleadoUsuario = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * ToString
@@ -732,6 +892,88 @@ class MntEmpleado
     public function getIdTipoEmpleado()
     {
         return $this->idTipoEmpleado;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return MntEmpleado
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
+    }
+
+    /**
+     * Set idCentroRecoleccion
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion
+     *
+     * @return MntEmpleado
+     */
+    public function setIdCentroRecoleccion(\Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion $idCentroRecoleccion = null)
+    {
+        $this->idCentroRecoleccion = $idCentroRecoleccion;
+
+        return $this;
+    }
+
+    /**
+     * Get idCentroRecoleccion
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion
+     */
+    public function getIdCentroRecoleccion()
+    {
+        return $this->idCentroRecoleccion;
+    }
+
+    /**
+     * Add empleadoUsuario
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $empleadoUsuario
+     *
+     * @return MntEmpleado
+     */
+    public function addEmpleadoUsuario(\Application\Sonata\UserBundle\Entity\User $empleadoUsuario)
+    {
+        $this->empleadoUsuario[] = $empleadoUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Remove empleadoUsuario
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $empleadoUsuario
+     */
+    public function removeEmpleadoUsuario(\Application\Sonata\UserBundle\Entity\User $empleadoUsuario)
+    {
+        $this->empleadoUsuario->removeElement($empleadoUsuario);
+    }
+
+    /**
+     * Get empleadoUsuario
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmpleadoUsuario()
+    {
+        return $this->empleadoUsuario;
     }
 
 }

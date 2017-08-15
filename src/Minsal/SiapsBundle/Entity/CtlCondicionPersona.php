@@ -3,6 +3,8 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * CtlCondicionPersona
@@ -26,6 +28,12 @@ class CtlCondicionPersona
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $nombre;
 
@@ -33,6 +41,11 @@ class CtlCondicionPersona
      * @var string
      *
      * @ORM\Column(name="descripcion", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $descripcion;
 
@@ -40,6 +53,17 @@ class CtlCondicionPersona
      * @var string
      *
      * @ORM\Column(name="abreviatura", type="string", length=5, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 5,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $abreviatura;
 

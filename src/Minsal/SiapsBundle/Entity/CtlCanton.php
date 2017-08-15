@@ -3,6 +3,8 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * CtlCanton
@@ -26,6 +28,17 @@ class CtlCanton
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 150,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombre;
 
@@ -33,13 +46,24 @@ class CtlCanton
      * @var string
      *
      * @ORM\Column(name="codigo_digestyc", type="string", length=5, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 5,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $codigoDigestyc;
 
     /**
      * @var \CtlMunicipio
      *
-     * @ORM\ManyToOne(targetEntity="CtlMunicipio")
+     * @ORM\ManyToOne(targetEntity="CtlMunicipio", inversedBy="municipioCanton")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_municipio", referencedColumnName="id")
      * })

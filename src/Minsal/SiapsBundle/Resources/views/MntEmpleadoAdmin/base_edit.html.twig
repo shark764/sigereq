@@ -1,0 +1,241 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{#{% extends base_template %}#}
+{% extends 'MinsalSiblhBundle:CRUD:base_edit.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {# Bootstrap-calendar #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+
+    {# bootstrap-table #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
+    
+    {# bootstrap-modal #}
+
+    {# bootstrap sweetalert #}
+    <link href="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/minsalsiblh/css/sweetalert.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% use 'MinsalSiapsBundle:MntEmpleadoAdmin:base_edit_form.html.twig' with form as parentForm %}
+
+{% block form %}
+
+    {{ block('parentForm') }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {# Bootstrap-calendar #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/moment-develop/min/moment-with-locales.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}" ></script>
+
+    {# bootstrap-table #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/bootstrap-table.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-table-master/dist/locale/bootstrap-table-es-CR.min.js') }}" ></script>
+    
+    {# bootstrap-modal #}
+
+    {# bootstrap sweetalert #}
+    <script type="text/javascript" src="{{ asset('bundles/minsalsiblh/plugin/bootstrap-sweetalert-master/dist/sweetalert.min.js') }}" ></script>
+
+    <script type="text/javascript">
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var searchEmployeeInSiap = function(el) {
+            return el.full_name;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var employeeFormatResult = function(el) {
+            var markup = '<div class="row-fluid">' +
+                                '<div class="span10">' +
+                                '<div class="row-fluid">' +
+                                '<div class="span6">' + el.full_name + '</div>' +
+                            '</div>';
+
+            markup += '</div></div>';
+
+            return markup;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var employeeFormatSelection = function(el) {
+            return el.full_name;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        jQuery(document).ready(function() {
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// initialize with custom options
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            var EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_in_siap_btn = jQuery('#EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_in_siap');
+            var EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_select = jQuery('#EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee');
+            EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_select.select2({
+                width: 'resolve',
+                minimumResultsForSearch: 10,
+                dropdownAutoWidth : true,
+                allowClear: true,
+                placeholder: 'click para seleccionar expediente...',
+                minimumInputLength: 3,
+                maximumSelectionSize: 1,
+                // multiple: true,
+                escapeMarkup: function(markup) {
+                    return markup;
+                },
+                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                    url: Routing.generate('siblh_expediente_search'),
+                    dataType: 'json',
+                    quietMillis: 250,
+                    data: function (term, page) {
+                        return {
+                            q: term, // search term
+                        };
+                    },
+                    results: function (data, page) { // parse the results into the format expected by Select2.
+                        EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_select.trigger('blh.evt.select2-loaded', [data, page]);
+                        // since we are using custom formatting functions we do not need to alter the remote JSON data
+                        return { results: data.items };
+                    },
+                    cache: true
+                },
+                initSelection: function(element, callback) {
+                    // the input tag has a value attribute preloaded that points to a preselected repository's id
+                    // this function resolves that id attribute to an object that select2 can render
+                    // using its formatResult renderer - that way the repository name is shown preselected
+                    var id = $(element).val();
+                    if (id !== "") {
+                        $.ajax(Routing.generate('siblh_expediente_search', {id: id}), {
+                            dataType: "json"
+                        }).done(function(data) { callback(data.item); });
+                    }
+                },
+                formatResult: employeeFormatResult,  // display employee information
+                formatSelection: employeeFormatSelection,    // selection
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// employee record change event
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_select.on('change', function (e) {
+                var rvalue = this.value;
+
+                if (!rvalue) {
+                    jQuery('#EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_short_info_container').html('');
+                    jQuery('#EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_info_container').html('');
+                    jQuery('#{{ admin.uniqId }}_idExpediente').val('');
+                    return;
+                }
+
+                jQuery('#{{ admin.uniqId }}_idExpediente').val(rvalue);
+
+                $.getJSON(Routing.generate('siblh_expediente_search'), {
+                        id : rvalue,
+                    })
+                    .done(function(data) {
+                        jQuery('#EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+                    })
+                    .fail(function(jqxhr, textStatus, error) {
+                        //////// employee jumbotron
+                        jQuery('#EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_short_info_container').html('');
+                        jQuery('#EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_info_container').html('');
+                        window.console.log(error, textStatus);
+                    });
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            jQuery('input[name="EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}[search_employee_type]"]').on('ifChecked', function(e) {
+                var bl_ = this.value === 'T';
+                EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_select.closest('.form-group').toggle(bl_).end().select2('val', '').triggerHandler('change');
+                EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_in_siap_btn.attr('disabled', bl_).closest('.form-group').toggle(!bl_);  // button
+                // if (bl_)
+            });
+
+            EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_select.on('blh.evt.select2-loaded', function (e, data, page) {
+                {% if is_granted('ROLE_MINSAL_SIAPS_ADMIN_MNT_EMPLEADO_CREATE') or is_granted('ROLE_ADMIN') %}
+                    var bl_ = page === 1 && data.items.length === 0;
+                    //////// enable / disable search in siap
+                    EMPLOYEE_SEARCHEMPLOYEE_{{ admin.uniqId }}_search_employee_in_siap_btn.attr('disabled', !bl_).closest('.form-group').toggle(bl_);  // button
+                    console.log('!bl_', page === 1 && data.items.length !== 0, 'bl_', bl_);
+                {% endif %}
+            });
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// donor age calcule
+            //////////////////////////////////////////////////////////////////////////////////////////////
+{#
+            // jQuery('#{{ admin.uniqId }}_edadY').on('keyup change blur', function (e) {
+            //     moment.locale('es');
+            //     var years = parseInt(this.value);
+
+            //     var years = moment().diff('1981-01-01', 'years');
+
+            //     var $dt_proximaConsulta = moment().subtract(0, 'y');
+            //     jQuery('input[id="formPrcEmergencyRequestFechaProximaConsulta"]').val($dt_proximaConsulta.format('DD/MM/YYYY'));
+            //     jQuery('input[id="formPrcEmergencyRequestFechaProximaConsulta"]').data('DateTimePicker').date($dt_proximaConsulta);
+
+            //     jQuery('#{{ admin.uniqId }}_mediaAcidez').val(mediaAcidez.toFixed(2));
+            // });
+#}
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('#{{ admin.uniqId }}_fechaNacimiento').data('DateTimePicker').options({
+                minDate: moment().subtract(50, 'years').startOf('day'),
+                maxDate: moment().endOf('day'),
+                viewMode: 'years'
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('#{{ admin.uniqId }}_fechaNacimiento').on('dp.change dp.show dp.hide' /*dp.update'*/, function(e) {
+                if (typeof e.date === 'undefined' || e.date === null || e.date === false) {
+{#
+                    // jQuery('#{{ admin.uniqId }}_edadY').val('');
+                    // jQuery('#{{ admin.uniqId }}_edadM').val('');
+                    // jQuery('#{{ admin.uniqId }}_edadD').val('');
+#}
+                    jQuery('#{{ admin.uniqId }}_edad').val(0);
+                    return;
+                }
+
+                moment.locale('es');
+
+                var now     = moment();
+                var dt      = e.date;
+                now.set({ 'hour': 0, 'minute': 0, 'seconds': 0, 'milliseconds': 0 });
+                dt.set({ 'hour': 0, 'minute': 0, 'seconds': 0, 'milliseconds': 0 });
+                var years   = now.diff(dt, 'year');
+                dt.add(years, 'years');
+                var months  = now.diff(dt, 'months');
+                dt.add(months, 'months');
+                var days    = now.diff(dt, 'days');
+{#
+                // jQuery('#{{ admin.uniqId }}_edadY').val(years);
+                // jQuery('#{{ admin.uniqId }}_edadM').val(months);
+                // jQuery('#{{ admin.uniqId }}_edadD').val(days);
+#}
+
+                jQuery('#{{ admin.uniqId }}_edad').val(years);
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            // window.alert('FALTA CÁLCULO DE EDAD DESDE INPUT --> UTILIZAR LAB CLÍNICO\nFALTA REINICIAR FORMVALIDATION EN CAMPOS FECHA');
+        });
+
+    </script>
+{% endblock %}

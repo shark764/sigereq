@@ -3,6 +3,8 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * CtlPais
@@ -26,6 +28,17 @@ class CtlPais
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 150,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombre;
 
@@ -35,6 +48,19 @@ class CtlPais
      * @ORM\Column(name="activo", type="boolean", nullable=true)
      */
     private $activo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CtlDepartamento", mappedBy="idPais", cascade={"all"}, orphanRemoval=true)
+     */
+    private $paisDepartamento;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->paisDepartamento = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * ToString
@@ -100,6 +126,40 @@ class CtlPais
     public function getActivo()
     {
         return $this->activo;
+    }
+
+    /**
+     * Add paisDepartamento
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlDepartamento $paisDepartamento
+     *
+     * @return CtlPais
+     */
+    public function addPaisDepartamento(\Minsal\SiapsBundle\Entity\CtlDepartamento $paisDepartamento)
+    {
+        $this->paisDepartamento[] = $paisDepartamento;
+
+        return $this;
+    }
+
+    /**
+     * Remove paisDepartamento
+     *
+     * @param \Minsal\SiapsBundle\Entity\CtlDepartamento $paisDepartamento
+     */
+    public function removePaisDepartamento(\Minsal\SiapsBundle\Entity\CtlDepartamento $paisDepartamento)
+    {
+        $this->paisDepartamento->removeElement($paisDepartamento);
+    }
+
+    /**
+     * Get paisDepartamento
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaisDepartamento()
+    {
+        return $this->paisDepartamento;
     }
 
 }
