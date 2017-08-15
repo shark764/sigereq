@@ -90,7 +90,7 @@ file that was distributed with this source code.
                 minimumResultsForSearch: 10,
                 dropdownAutoWidth : true,
                 allowClear: true,
-                placeholder: 'click para filtrar por expediente...',
+                placeholder: 'click para seleccionar expediente...',
                 minimumInputLength: 3,
                 maximumSelectionSize: 1,
                 // multiple: true,
@@ -180,18 +180,18 @@ file that was distributed with this source code.
             //////// donor age calcule
             //////////////////////////////////////////////////////////////////////////////////////////////
 {#
-            jQuery('#{{ admin.uniqId }}_edadY').on('keyup change blur', function (e) {
-                moment.locale('es');
-                var years = parseInt(this.value);
+            // jQuery('#{{ admin.uniqId }}_edadY').on('keyup change blur', function (e) {
+            //     moment.locale('es');
+            //     var years = parseInt(this.value);
 
-                var years = moment().diff('1981-01-01', 'years');
+            //     var years = moment().diff('1981-01-01', 'years');
 
-                var $dt_proximaConsulta = moment().subtract(0, 'y');
-                jQuery('input[id="formPrcEmergencyRequestFechaProximaConsulta"]').val($dt_proximaConsulta.format('DD/MM/YYYY'));
-                jQuery('input[id="formPrcEmergencyRequestFechaProximaConsulta"]').data('DateTimePicker').date($dt_proximaConsulta);
+            //     var $dt_proximaConsulta = moment().subtract(0, 'y');
+            //     jQuery('input[id="formPrcEmergencyRequestFechaProximaConsulta"]').val($dt_proximaConsulta.format('DD/MM/YYYY'));
+            //     jQuery('input[id="formPrcEmergencyRequestFechaProximaConsulta"]').data('DateTimePicker').date($dt_proximaConsulta);
 
-                jQuery('#{{ admin.uniqId }}_mediaAcidez').val(mediaAcidez.toFixed(2));
-            });
+            //     jQuery('#{{ admin.uniqId }}_mediaAcidez').val(mediaAcidez.toFixed(2));
+            // });
 #}
 
             //////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,9 +205,12 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             jQuery('#{{ admin.uniqId }}_fechaNacimiento').on('dp.change dp.show dp.hide' /*dp.update'*/, function(e) {
                 if (typeof e.date === 'undefined' || e.date === null || e.date === false) {
-                    jQuery('#{{ admin.uniqId }}_edadY').val('');
-                    jQuery('#{{ admin.uniqId }}_edadM').val('');
-                    jQuery('#{{ admin.uniqId }}_edadD').val('');
+{#
+                    // jQuery('#{{ admin.uniqId }}_edadY').val('');
+                    // jQuery('#{{ admin.uniqId }}_edadM').val('');
+                    // jQuery('#{{ admin.uniqId }}_edadD').val('');
+#}
+                    jQuery('#{{ admin.uniqId }}_edad').val(0);
                     return;
                 }
 
@@ -222,14 +225,16 @@ file that was distributed with this source code.
                 var months  = now.diff(dt, 'months');
                 dt.add(months, 'months');
                 var days    = now.diff(dt, 'days');
-                jQuery('#{{ admin.uniqId }}_edadY').val(years);
-                jQuery('#{{ admin.uniqId }}_edadM').val(months);
-                jQuery('#{{ admin.uniqId }}_edadD').val(days);
+{#
+                // jQuery('#{{ admin.uniqId }}_edadY').val(years);
+                // jQuery('#{{ admin.uniqId }}_edadM').val(months);
+                // jQuery('#{{ admin.uniqId }}_edadD').val(days);
+#}
 
                 jQuery('#{{ admin.uniqId }}_edad').val(years);
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
-            window.alert('FALTA CÁLCULO DE EDAD DESDE INPUT --> UTILIZAR LAB CLÍNICO\nFALTA REINICIAR FORMVALIDATION EN CAMPOS FECHA');
+            // window.alert('FALTA CÁLCULO DE EDAD DESDE INPUT --> UTILIZAR LAB CLÍNICO\nFALTA REINICIAR FORMVALIDATION EN CAMPOS FECHA');
         });
 
     </script>

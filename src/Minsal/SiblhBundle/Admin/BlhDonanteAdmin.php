@@ -288,7 +288,7 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-input-transform' => 'datetimepicker',
                                     'data-datetimepicker-type' => 'date',
                                     'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -304,73 +304,18 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-fv-date-message' => 'No es una fecha válida',
                             )
             ))
-            ->add('edad', 'hidden')
-            ->add('edadY', 'integer', array(
-                            'label' => false/*'Edad'*/,
-                            'label_attr' => array('class' => 'label_form_sm'),
+            ->add('edad', null, array(
+                            'label' => 'Edad (años)',
+                            'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => false,
-                            'mapped' => false,
+                            // 'mapped' => false,
                             // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
                             'attr' => array(
                                     'class' => 'form-control input-sm',
-                                    'placeholder' => 'año(s)...',
-                                    // 'readonly' => 'readonly',
-                                    'data-form-inline-group' => 'continue',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
-                                    
-                                    'data-fv-icon' => 'false',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
-
-                                    'data-fv-integer' => 'true',
-                                    'data-fv-integer-message' => 'El valor no es un entero',
-
-                                    'min' => '12',
-                                    'max' => '50',
-                                    'data-fv-between-message' => 'Número debe estar entre 10 y 50',
-                            )
-            ))
-            ->add('edadM', 'integer', array(
-                            'label' => false/*'Edad'*/,
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'mapped' => false,
-                            // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    'placeholder' => 'mes(es)...',
-                                    // 'readonly' => 'readonly',
-                                    'data-form-inline-group' => 'continue',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
-                                    
-                                    'data-fv-icon' => 'false',
-
-                                    'data-add-input-addon' => 'true',
-                                    // 'data-add-input-addon-class' => 'primary-v4',
-                                    'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
-
-                                    'data-fv-integer' => 'true',
-                                    'data-fv-integer-message' => 'El valor no es un entero',
-
-                                    'min' => '1',
-                                    'max' => '12',
-                                    'data-fv-between-message' => 'Número debe estar entre 1 y 12',
-                            )
-            ))
-            ->add('edadD', 'integer', array(
-                            'label' => false/*'Edad'*/,
-                            'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => false,
-                            'mapped' => false,
-                            // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
-                            'attr' => array(
-                                    'class' => 'form-control input-sm',
-                                    'placeholder' => 'día(s)...',
-                                    // 'readonly' => 'readonly',
+                                    'placeholder' => 'edad...',
+                                    'readonly' => 'readonly',
                                     'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
                                     
                                     'data-fv-icon' => 'false',
 
@@ -378,14 +323,95 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
                                     // 'data-add-input-addon-class' => 'primary-v4',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
 
-                                    'data-fv-integer' => 'true',
-                                    'data-fv-integer-message' => 'El valor no es un entero',
+                                    // 'data-fv-integer' => 'true',
+                                    // 'data-fv-integer-message' => 'El valor no es un entero',
 
-                                    'min' => '1',
-                                    'max' => '31',
-                                    'data-fv-between-message' => 'Número debe estar entre 1 y 31',
+                                    // 'min' => '12',
+                                    // 'max' => '50',
+                                    // 'data-fv-between-message' => 'Número debe estar entre 10 y 50',
                             )
             ))
+            // ->add('edadY', 'text', array(
+            //                 'label' => false/*'Edad'*/,
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'mapped' => false,
+            //                 // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         'placeholder' => 'año(s)...',
+            //                         'readonly' => 'readonly',
+            //                         'data-form-inline-group' => 'continue',
+            //                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    
+            //                         'data-fv-icon' => 'false',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+            //                         'data-fv-integer' => 'true',
+            //                         'data-fv-integer-message' => 'El valor no es un entero',
+
+            //                         'min' => '12',
+            //                         'max' => '50',
+            //                         'data-fv-between-message' => 'Número debe estar entre 10 y 50',
+            //                 )
+            // ))
+            // ->add('edadM', 'text', array(
+            //                 'label' => false/*'Edad'*/,
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'mapped' => false,
+            //                 // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         'placeholder' => 'mes(es)...',
+            //                         'readonly' => 'readonly',
+            //                         'data-form-inline-group' => 'continue',
+            //                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    
+            //                         'data-fv-icon' => 'false',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+            //                         'data-fv-integer' => 'true',
+            //                         'data-fv-integer-message' => 'El valor no es un entero',
+
+            //                         'min' => '1',
+            //                         'max' => '12',
+            //                         'data-fv-between-message' => 'Número debe estar entre 1 y 12',
+            //                 )
+            // ))
+            // ->add('edadD', 'text', array(
+            //                 'label' => false/*'Edad'*/,
+            //                 'label_attr' => array('class' => 'label_form_sm'),
+            //                 'required' => false,
+            //                 'mapped' => false,
+            //                 // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
+            //                 'attr' => array(
+            //                         'class' => 'form-control input-sm',
+            //                         'placeholder' => 'día(s)...',
+            //                         'readonly' => 'readonly',
+            //                         'data-form-inline-group' => 'stop',
+            //                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    
+            //                         'data-fv-icon' => 'false',
+
+            //                         'data-add-input-addon' => 'true',
+            //                         // 'data-add-input-addon-class' => 'primary-v4',
+            //                         'data-add-input-addon-addon' => 'glyphicon glyphicon-time',
+
+            //                         'data-fv-integer' => 'true',
+            //                         'data-fv-integer-message' => 'El valor no es un entero',
+
+            //                         'min' => '1',
+            //                         'max' => '31',
+            //                         'data-fv-between-message' => 'Número debe estar entre 1 y 31',
+            //                 )
+            // ))
             // ->add('fechaRegistroDonanteBlh')
             ->add('telefonoFijo', null, array(
                             'label' => 'Teléfono',
@@ -812,6 +838,13 @@ class BlhDonanteAdmin extends MinsalSiblhBundleGeneralAdmin
 
         $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
         $instance->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);
+        $instance->setIdTipoColecta($this->getModelManager()->findOneBy('MinsalSiblhBundle:BlhCtlTipoColecta', array('codigo' => 'BLH')));
+        $instance->setIdEscolaridad($this->getModelManager()->findOneBy('MinsalSiblhBundle:BlhCtlEscolaridad', array('codigo' => 'BCH')));
+
+        $em = $this->getModelManager()->getEntityManager('Minsal\SiapsBundle\Entity\CtlEstadoCivil');
+        $instance->setIdEstadoCivil($em->getReference('Minsal\SiapsBundle\Entity\CtlEstadoCivil', 2));
+        $em = $this->getModelManager()->getEntityManager('Minsal\SiapsBundle\Entity\CtlDocumentoIdentidad');
+        $instance->setIdDoceDonante($em->getReference('Minsal\SiapsBundle\Entity\CtlDocumentoIdentidad', 1));
         
         return $instance;
     }

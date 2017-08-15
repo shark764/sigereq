@@ -163,7 +163,8 @@ services:
         class: Minsal\SiblhBundle\Admin\BlhPersonalAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhPersonal, MinsalSiblhBundle:BlhPersonalAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Registrar Personal}
+            # - {name: sonata.admin, manager_type: orm, group: Administración, label: Registrar Personal}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_receptor:
         class: Minsal\SiblhBundle\Admin\BlhReceptorAdmin

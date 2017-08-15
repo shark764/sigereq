@@ -263,13 +263,13 @@ class BlhDonante implements EntityInterface
      *
      * @ORM\Column(name="edad", type="integer", nullable=true)
      * @Assert\Range(
-     *      min = 0,
-     *      max = 2147483647,
+     *      min = 10,
+     *      max = 50,
      *      minMessage = "Número no puede ser inferior a {{ limit }}",
      *      maxMessage = "Número no puede ser superior a {{ limit }}"
      * )
      */
-    private $edad;
+    private $edad = 0;
 
     /**
      * @var string
