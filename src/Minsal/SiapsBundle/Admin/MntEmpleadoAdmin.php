@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Route\RouteCollection;
 
+use Minsal\SiblhBundle\Method\BundleMethod;
+
 use Minsal\SiapsBundle\Entity\MntEmpleado;
 use Application\Sonata\UserBundle\Entity\User;
 
@@ -373,8 +375,41 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
 
         $entity->setNombreempleado($entity->getNombre() . ' ' . $entity->getApellido());
 
-        $u_ = new User();
-        $entity->addEmpleadoUsuario($u_);
+        // $entity->addEmpleadoUsuario($u_);
+    }
+    
+    public function postPersist($entity)
+    {
+        //////// --| parent behavior
+        // parent::postPersist($entity);
+        ////////
+
+        $method_ = new BundleMethod();
+
+        // $u_ = new User();
+        $userManager = $this->getConfigurationPool()->getContainer()->get('fos_user.user_manager');
+        $u_ = $userManager->createUser();
+        $u_->setFirstname($entity->getNombre());
+        $u_->setLastname($entity->getApellido());
+        $u_->setUsername($method_->obtenerUsername(
+            $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager(),
+            $u_->getFirstname(),
+            $u_->getLastname()
+        ));
+        $u_->setEmail($entity->getCorreoElectronico());
+        if (trim($u_->getEmail()) === null || trim($u_->getEmail()) === "") {
+            $u_->setEmail($u_->getUsername() . '@salud.gob.sv');
+        }
+        $u_->setEmailCanonical($u_->getEmail());
+        $u_->setPlainPassword('siblh'); // this method will encrypt the password with the default settings
+        $u_->setIdEstablecimiento($this->___session_system_USER_LOGGED_LOCATION___);
+        $u_->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        $u_->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);
+        $u_->setIdEmpleado($entity);
+        $u_->setLocked(false); // don't lock the user
+        $u_->setEnabled(true); // enable the user or enable it later with a confirmation token in the email
+        $userManager->updateUser($u_);
+        // $entity->addEmpleadoUsuario($u_);
     }
     
     public function preUpdate($entity)
@@ -384,6 +419,43 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
         ////////
 
         $entity->setNombreempleado($entity->getNombre() . ' ' . $entity->getApellido());
+    }
+    
+    public function postUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::postUpdate($entity);
+        ////////
+
+        if ($entity->getEmpleadoUsuario()->count() === 0)
+        {
+            $method_ = new BundleMethod();
+
+            // $u_ = new User();
+            $userManager = $this->getConfigurationPool()->getContainer()->get('fos_user.user_manager');
+            $u_ = $userManager->createUser();
+            $u_->setFirstname($entity->getNombre());
+            $u_->setLastname($entity->getApellido());
+            $u_->setUsername($method_->obtenerUsername(
+                $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager(),
+                $u_->getFirstname(),
+                $u_->getLastname()
+            ));
+            $u_->setEmail($entity->getCorreoElectronico());
+            if (trim($u_->getEmail()) === null || trim($u_->getEmail()) === "") {
+                $u_->setEmail($u_->getUsername() . '@salud.gob.sv');
+            }
+            $u_->setEmailCanonical($u_->getEmail());
+            $u_->setPlainPassword('siblh'); // this method will encrypt the password with the default settings
+            $u_->setIdEstablecimiento($this->___session_system_USER_LOGGED_LOCATION___);
+            $u_->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+            $u_->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);
+            $u_->setIdEmpleado($entity);
+            $u_->setLocked(false); // don't lock the user
+            $u_->setEnabled(true); // enable the user or enable it later with a confirmation token in the email
+            $userManager->updateUser($u_);
+            // $entity->addEmpleadoUsuario($u_);
+        }
     }
 
     /**
@@ -397,6 +469,7 @@ class MntEmpleadoAdmin extends MinsalSiblhBundleGeneralAdmin
             $extension->alterNewInstance($this, $object);
         }
 
+        $object->setIdUserReg($this->___session_system_USER_LOGGED___);
         $object->setIdEstablecimiento($this->___session_system_USER_LOGGED_LOCATION___);
         $object->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
         $object->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);

@@ -45,7 +45,6 @@ class User extends BaseUser
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEmpleado;
 
@@ -56,7 +55,6 @@ class User extends BaseUser
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_establecimiento", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEstablecimiento;
 
@@ -67,7 +65,6 @@ class User extends BaseUser
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idBancoDeLeche;
 
@@ -78,7 +75,6 @@ class User extends BaseUser
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_centro_recoleccion", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idCentroRecoleccion;
 
