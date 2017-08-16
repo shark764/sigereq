@@ -71,7 +71,18 @@ file that was distributed with this source code.
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //////////////////////////////////////////////////////////////////////////////////////////////
-            jQuery('form').formValidation('resetField', '{{ admin.uniqId }}[idFrascoRecolectado]').formValidation('removeField', '{{ admin.uniqId }}[idFrascoRecolectado]');
+{#
+            // jQuery('form').formValidation('resetField', '{{ admin.uniqId }}[idFrascoRecolectado]').formValidation('removeField', '{{ admin.uniqId }}[idFrascoRecolectado]');
+            
+            // Called when the radios/checkboxes are changed
+            // jQuery('input[type=radio][name="{{ admin.uniqId }}[idFrascoRecolectado]"]').on('ifChanged', function(e) {
+            //     // Get the field name
+            //     var field = $(this).attr('name');
+            //     console.log('field', field);
+            //     jQuery('form').formValidation('revalidateField', '{{ admin.uniqId }}[idFrascoRecolectado]');
+            // })
+            // .end();
+#}
             //////////////////////////////////////////////////////////////////////////////////////////////
         });
 

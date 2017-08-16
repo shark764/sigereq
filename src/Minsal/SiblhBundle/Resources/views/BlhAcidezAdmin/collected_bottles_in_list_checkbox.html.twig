@@ -13,7 +13,7 @@ file that was distributed with this source code.
     <div class="alert alert-dark-success-lighter-medicine alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
         <span>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el frasco no se encuentra en el listado, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>.
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el frasco no se encuentra en el listado, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>
         </span>
     </div>
 {% endif %}
@@ -59,7 +59,7 @@ file that was distributed with this source code.
         {% endfor %} -->
 #}
 
-        {% for child in form %}
+        {% for child in form if choices[child.vars.value].data is defined %}
         	{% set s = choices[child.vars.value].data %}
             {% set form_widget_content %}
                 {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
