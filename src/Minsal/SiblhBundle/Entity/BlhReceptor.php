@@ -308,7 +308,6 @@ class BlhReceptor implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_paciente", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idPaciente;
 
@@ -330,7 +329,6 @@ class BlhReceptor implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_expediente", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idExpediente;
 
