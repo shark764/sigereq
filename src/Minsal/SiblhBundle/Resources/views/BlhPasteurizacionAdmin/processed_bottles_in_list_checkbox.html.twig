@@ -35,7 +35,7 @@ file that was distributed with this source code.
         data-toolbar-align="right">
     <thead>
         <tr>
-            <th style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_pasteurizacionFrascoProcesado_all" name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"></th>
+            <th style="vertical-align: middle; text-align: center;"><input type="checkbox" id="BATCH_{{ sonata_admin.admin.uniqId }}_pasteurizacionFrascoProcesado_all" name="BATCH_{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"></th>
             <th>Código (Frasco)</th>
             <th>Volumen (ml)</th>
             <th>Volumen (oz)</th>
@@ -121,7 +121,7 @@ file that was distributed with this source code.
             // });
             selections.length = 0;
             console.log('selections', selections, selections.length);
-            jQuery('input[name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]').iCheck('uncheck');
+            jQuery('input[name="BATCH_{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]').iCheck('uncheck');
             $table.find('tbody > tr > td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]"]').iCheck('uncheck');
             // if (selections.length !== 15) {}
             $table.find('tbody > tr').slice(0, 15).find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][]"]').iCheck('check');
@@ -150,7 +150,7 @@ file that was distributed with this source code.
             });
             $table.find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
 
-            jQuery('input[name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]').iCheck('uncheck');
+            jQuery('input[name="BATCH_{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]').iCheck('uncheck');
             
             for (var i = 0, len = selections.length; i < len; ++i) {
                 $table.find('tbody tr td input[type=checkbox][value="' + selections[i] + '"]').iCheck('check');
@@ -165,7 +165,7 @@ file that was distributed with this source code.
         //////// get selections
         //////////////////////////////////////////////////////////////////////////////////////////////
         // var selections = [];
-        jQuery(document).on('ifClicked', 'input[name="{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]', function(e) {
+        jQuery(document).on('ifClicked', 'input[name="BATCH_{{ sonata_admin.admin.uniqId }}[pasteurizacionFrascoProcesado][all]"]', function(e) {
             var checked = this.checked !== false ? 'uncheck' : 'check'; // it was checked/unchecked before user clicked
             if (this.checked !== false) {
                 selections.length = 0;
