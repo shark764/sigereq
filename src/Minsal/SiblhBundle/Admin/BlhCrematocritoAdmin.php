@@ -103,7 +103,7 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
                             // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $resultId, $patientId, $rType) {
                             //                         return $er->pendingStudies($session_USER_LOCATION->getId(), $resultId, $patientId, null, $rType);
                             //                     },
-                            'group_by' => 'idLoteAnalisis',
+                            // 'group_by' => 'idLoteAnalisis',
                             'attr' => array(
                                     'class' => /*'form-control input-sm'*/ /*'list-inline*/' formstyle-radio-list-inline input-sm',
                                     'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
