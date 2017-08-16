@@ -150,7 +150,7 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                                 //                                     ->addOrderBy('pryn.nombre')
                                 //                                     ->distinct();
                                 //                     },
-                                'group_by' => 'idDonacion',
+                                // 'group_by' => 'idDonacion',
                                 'help' => '<span class="text-primary-v4">Complete el lote para iniciar el análisis</span>',
                                 'attr' => array(
                                         'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,

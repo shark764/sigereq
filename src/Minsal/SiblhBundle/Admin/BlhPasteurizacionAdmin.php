@@ -303,7 +303,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                 //                                     ->addOrderBy('pryn.nombre')
                                 //                                     ->distinct();
                                 //                     },
-                                'group_by' => 'idPasteurizacion',
+                                // 'group_by' => 'idPasteurizacion',
                                 'help' => '<span class="text-primary-v4">Agregue frascos que fueron pasteurizados</span>',
                                 'attr' => array(
                                         'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,

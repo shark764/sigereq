@@ -102,7 +102,7 @@ class BlhGrupoSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                                 //                                     ->addOrderBy('pryn.nombre')
                                 //                                     ->distinct();
                                 //                     },
-                                'group_by' => 'idAcidezNecesaria',
+                                // 'group_by' => 'idAcidezNecesaria',
                                 'help' => '<span class="text-primary-v4">Solicitudes deben agruparse para realizar despacho</span>',
                                 'attr' => array(
                                         'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,
