@@ -17,7 +17,7 @@ file that was distributed with this source code.
         </span>
     </div>
 {% endif %}
-
+<span class="text-primary-v4">{{ choices|length }}</span>
 <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable"
         data-id-field="id"
         data-cache="false"
@@ -59,7 +59,10 @@ file that was distributed with this source code.
         {% endfor %} -->
 #}
 
+{#
         {% for child in form if choices[child.vars.value].data is defined %}
+#}
+        {% for child in form %}
             {% set s = choices[child.vars.value].data %}
             {% set form_widget_content %}
                 {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}

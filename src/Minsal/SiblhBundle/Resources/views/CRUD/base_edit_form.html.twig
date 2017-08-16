@@ -88,10 +88,10 @@
                                         </button>
                                     {% endif %}
                                     {% if admin.id(object) is not null %}
-                                        <button type="submit" class="btn btn-sm btn-success-v6" name="btn_update_and_edit"><span class="glyphicon glyphicon-{#ok-sign#}send"></span> Enviar</button>
+                                        <button type="submit" class="btn btn-sm btn-success-v3" name="btn_update_and_edit"><span class="glyphicon glyphicon-{#ok-sign#}send"></span> Enviar</button>
 
                                         {#{% if admin.hasroute('list') %}
-                                            <button type="submit" class="btn btn-sm btn-success-v6" name="btn_update_and_list"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-list-alt"></span> Enviar</button>
+                                            <button type="submit" class="btn btn-sm btn-success-v3" name="btn_update_and_list"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-list-alt"></span> Enviar</button>
                                         {% endif %}#}
 
                                         {% if admin.hasroute('delete') and admin.isGranted('DELETE', object) %}
