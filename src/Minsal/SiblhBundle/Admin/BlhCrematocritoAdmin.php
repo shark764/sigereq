@@ -95,7 +95,8 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('idFrascoProcesado', null, array(
                             'label' => false,
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
+                            // 'required' => true,
+                            'required' => false,
                             'expanded' => true,
                             'multiple' => false,
                             'class' => 'MinsalSiblhBundle:BlhFrascoProcesado',
@@ -106,6 +107,9 @@ class BlhCrematocritoAdmin extends MinsalSiblhBundleGeneralAdmin
                             'attr' => array(
                                     'class' => /*'form-control input-sm'*/ /*'list-inline*/' formstyle-radio-list-inline input-sm',
                                     'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+
+                                    'data-fv-notempty' => 'true',
+                                    'data-fv-notempty-message' => 'Seleccione un elemento',
                             )
             ))
             // ->add('idFrascoProcesado', null, array(

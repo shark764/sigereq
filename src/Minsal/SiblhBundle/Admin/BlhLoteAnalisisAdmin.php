@@ -126,7 +126,8 @@ class BlhLoteAnalisisAdmin extends MinsalSiblhBundleGeneralAdmin
                 ->add('loteAnalisisFrascoRecolectado', 'entity', array(
                                 'label' => false,
                                 'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
-                                'required' => true,
+                                // 'required' => true,
+                                'required' => false,
                                 'expanded' => true,
                                 'multiple' => true,
                                 'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',

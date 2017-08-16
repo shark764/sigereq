@@ -71,8 +71,8 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('idFrascoRecolectado', null, array(
                             'label' => false,
                             'label_attr' => array('class' => 'label_form_sm'),
-                            'required' => true,
-                            // 'required' => false,
+                            // 'required' => true,
+                            'required' => false,
                             'expanded' => true,
                             'multiple' => false,
                             'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
@@ -83,6 +83,9 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
                             'attr' => array(
                                     'class' => /*'form-control input-sm'*/ /*'list-inline*/' formstyle-radio-list-inline input-sm',
                                     'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+
+                                    'data-fv-notempty' => 'true',
+                                    'data-fv-notempty-message' => 'Seleccione un elemento',
                             )
             ))
             ->add('acidez1', null, array(
@@ -270,6 +273,13 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
                 return parent::getTemplate($name);
                 break;
         }
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
     }
 
 }
