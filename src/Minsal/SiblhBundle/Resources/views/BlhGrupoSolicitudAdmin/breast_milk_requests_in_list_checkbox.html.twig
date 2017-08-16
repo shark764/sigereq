@@ -9,14 +9,15 @@ file that was distributed with this source code.
 
 #}
 
-{#
-    <div class="alert alert-dark-success-lighter-medicine alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
+{% if choices is defined and choices|length < 1 %}
+    <div class="alert alert-warning alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
         <span>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el lote no puede crearse por deficit, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>.
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el grupo no puede crearse por deficit, puede crear una solicitud de leche humana en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_solicitud_create') }}">Crear solicitud</a>.
         </span>
     </div>
-#}
+{% endif %}
+
 <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_breast_milk_requests_target_bstable" name="blh_breast_milk_requests_target_bstable"
         data-id-field="id"
         data-cache="false"
@@ -41,7 +42,7 @@ file that was distributed with this source code.
         </tr>
     </thead>
     <tbody>
-        {% for i in 1..15 %}
+        {% for i in 1..26 %}
             <tr>
                 <td style="vertical-align: middle; text-align: center;"><input type="checkbox" id="{{ sonata_admin.admin.uniqId }}_grupoSolicitudes_{{ i }}" name="{{ sonata_admin.admin.uniqId }}[grupoSolicitudes][]" value="{{ i }}"></td>
                 <td>LOPEZ RAMIREZ, PRIMER NOMBRE298900 SEGUNDO NOMBRE298900</td>
@@ -51,7 +52,7 @@ file that was distributed with this source code.
         {% endfor %}
 
         {% for child in form %}
-        	{% set s = choices[child.vars.value].data %}
+            {% set s = choices[child.vars.value].data %}
             {% set form_widget_content %}
                 {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
             {% endset %}
@@ -73,6 +74,35 @@ file that was distributed with this source code.
 </table>
 
 <script type="text/javascript">
+
+    (function ($) {
+        /*
+         *
+         * @type type
+         * Global variables for plugin
+         */
+        window.selections = [];   // --| build selections
+    }(jQuery));
+
+    var generateAutomaticBatchOfBottles = function(el) {
+{#
+        {% if choices is defined and choices|length >= 15 %}
+#}
+            var $table = jQuery('#blh_breast_milk_requests_target_bstable');
+            // $table.bootstrapTable('refreshOptions', {
+            //     pageSize: 15,
+            // });
+            selections.length = 0;
+            console.log('selections', selections, selections.length);
+            jQuery('input[name="{{ sonata_admin.admin.uniqId }}[grupoSolicitudes][all]"]').iCheck('uncheck');
+            $table.find('tbody > tr > td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[grupoSolicitudes][]"]').iCheck('uncheck');
+            // if (selections.length !== 15) {}
+            $table.find('tbody > tr').slice(0, 15).find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[grupoSolicitudes][]"]').iCheck('check');
+            console.log('selections checked', selections, selections.length, $table.find('tbody > tr').length);
+{#
+        {% endif %}
+#}
+    };
 
     jQuery(document).ready(function() {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +137,7 @@ file that was distributed with this source code.
         //////////////////////////////////////////////////////////////////////////////////////////////
         //////// get selections
         //////////////////////////////////////////////////////////////////////////////////////////////
-        var selections = [];
+        // var selections = [];
         jQuery(document).on('ifClicked', 'input[name="{{ sonata_admin.admin.uniqId }}[grupoSolicitudes][all]"]', function(e) {
             var checked = this.checked !== false ? 'uncheck' : 'check'; // it was checked/unchecked before user clicked
             if (this.checked !== false) {

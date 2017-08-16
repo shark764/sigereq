@@ -2,17 +2,17 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="BlhDonante" table="blh_donante">
     <indexes>
-      <index name="fki_blh_dona_fk_nacionalidad_blh" columns="nacionalidad"/>
-      <index name="fk_banco_de_leche_donante" columns="id_banco_de_leche"/>
       <index name="fki_blh_dona_fk_naciona_blh" columns="nacionalidad"/>
+      <index name="fk_banco_de_leche_donante" columns="id_banco_de_leche"/>
+      <index name="fki_blh_dona_fk_nacionalidad_blh" columns="nacionalidad"/>
       <index name="fk_municipio_donante" columns="id_municipio"/>
       <index name="IDX_D458FB018653A7AF" columns="id_centro_recoleccion"/>
-      <index name="IDX_D458FB0110281A9F" columns="id_escolaridad"/>
-      <index name="IDX_D458FB0185E56563" columns="id_tipo_colecta"/>
       <index name="IDX_D458FB01AF36C2D7" columns="id_doc_ide_donante"/>
+      <index name="IDX_D458FB0110281A9F" columns="id_escolaridad"/>
       <index name="IDX_D458FB01D7E358F6" columns="id_estado_civil"/>
-      <index name="IDX_D458FB018C587E61" columns="id_ocupacion"/>
       <index name="IDX_D458FB01701624C4" columns="id_expediente"/>
+      <index name="IDX_D458FB018C587E61" columns="id_ocupacion"/>
+      <index name="IDX_D458FB0185E56563" columns="id_tipo_colecta"/>
       <index name="IDX_D458FB01D8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
@@ -127,9 +127,9 @@
         <option name="default"/>
       </options>
     </field>
-    <many-to-one field="nacionalidad" target-entity="CtlNacionalidad" fetch="LAZY">
+    <many-to-one field="idExpediente" target-entity="MntExpediente" fetch="LAZY">
       <join-columns>
-        <join-column name="nacionalidad" referenced-column-name="id"/>
+        <join-column name="id_expediente" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idOcupacion" target-entity="CtlOcupacion" fetch="LAZY">
@@ -137,9 +137,9 @@
         <join-column name="id_ocupacion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idExpediente" target-entity="MntExpediente" fetch="LAZY">
+    <many-to-one field="idTipoColecta" target-entity="BlhCtlTipoColecta" fetch="LAZY">
       <join-columns>
-        <join-column name="id_expediente" referenced-column-name="id"/>
+        <join-column name="id_tipo_colecta" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
@@ -147,19 +147,9 @@
         <join-column name="id_user_reg" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idMunicipio" target-entity="CtlMunicipio" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_municipio" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idEstadoCivil" target-entity="CtlEstadoCivil" fetch="LAZY">
       <join-columns>
         <join-column name="id_estado_civil" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idEscolaridad" target-entity="BlhCtlEscolaridad" fetch="LAZY">
@@ -167,9 +157,19 @@
         <join-column name="id_escolaridad" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idTipoColecta" target-entity="BlhCtlTipoColecta" fetch="LAZY">
+    <many-to-one field="idMunicipio" target-entity="CtlMunicipio" fetch="LAZY">
       <join-columns>
-        <join-column name="id_tipo_colecta" referenced-column-name="id"/>
+        <join-column name="id_municipio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="nacionalidad" target-entity="CtlNacionalidad" fetch="LAZY">
+      <join-columns>
+        <join-column name="nacionalidad" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCentroRecoleccion" target-entity="BlhCtlCentroRecoleccion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_centro_recoleccion" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idDoceDonante" target-entity="CtlDocumentoIdentidad" fetch="LAZY">

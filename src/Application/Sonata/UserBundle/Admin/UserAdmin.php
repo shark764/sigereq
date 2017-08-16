@@ -155,7 +155,7 @@ class UserAdmin extends BaseUserAdmin
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'primer nombre...',
+                                    'placeholder' => 'nombre...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
@@ -179,7 +179,7 @@ class UserAdmin extends BaseUserAdmin
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'primer apellido...',
+                                    'placeholder' => 'apellido...',
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
@@ -203,7 +203,7 @@ class UserAdmin extends BaseUserAdmin
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'attr' => array(
-                                    'placeholder' => 'código...',
+                                    'placeholder' => 'usuario...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
                                     // 'data-form-inline-group' => 'start',
@@ -215,11 +215,11 @@ class UserAdmin extends BaseUserAdmin
             ))
             // ->add('usernameCanonical')
             ->add('email', null, array(
-                            'label' => 'E-Mail',
+                            'label' => 'Correo electrónico',
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'attr' => array(
-                                    'placeholder' => 'código...',
+                                    'placeholder' => 'correo electrónico...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     // 'data-form-inline-group' => 'start',
