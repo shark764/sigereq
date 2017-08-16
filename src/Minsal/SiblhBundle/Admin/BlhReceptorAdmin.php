@@ -265,11 +265,11 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('pesoReceptor', null, array(
-                            'label' => 'Peso (kg)',
+                            'label' => 'Peso (g)',
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'peso (kg)...',
+                                    'placeholder' => 'peso (g)...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'start',
@@ -289,11 +289,11 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('tallaIngreso', null, array(
-                            'label' => 'Talla (m)',
+                            'label' => 'Talla (cm)',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'talla (m)...',
+                                    'placeholder' => 'talla (cm)...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'stop',
