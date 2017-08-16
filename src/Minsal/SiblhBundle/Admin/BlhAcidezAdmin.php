@@ -72,6 +72,7 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
                             'label' => false,
                             'label_attr' => array('class' => 'label_form_sm'),
                             'required' => true,
+                            // 'required' => false,
                             'expanded' => true,
                             'multiple' => false,
                             'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
@@ -161,14 +162,14 @@ class BlhAcidezAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
 
-                                    'data-fv-numeric' => 'true',
-                                    'data-fv-numeric-message' => 'El valor no es un número válido',
-                                    'data-fv-numeric-thousandsSeparator' => '',
-                                    'data-fv-numeric-decimalSeparator' => '.',
+                                    // 'data-fv-numeric' => 'true',
+                                    // 'data-fv-numeric-message' => 'El valor no es un número válido',
+                                    // 'data-fv-numeric-thousandsSeparator' => '',
+                                    // 'data-fv-numeric-decimalSeparator' => '.',
 
-                                    'min' => '0',
-                                    'max' => '32767',
-                                    'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
+                                    // 'min' => '0',
+                                    // 'max' => '32767',
+                                    // 'data-fv-between-message' => 'Número debe estar entre 0 y 32767',
                             )
             ))
             ->add('factor', null, array(
