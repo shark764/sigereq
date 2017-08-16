@@ -294,7 +294,7 @@ class BlhFrascoRecolectado implements EntityInterface
      */
     public function __toString()
     {
-        return (string) $this->idDonante . ' - ' . $this->idLoteAnalisis;
+        return (string) $this->idDonante . ' - ' . $this->idLoteAnalisis . ' - ' . $this->volumenRecolectado;
     }
     
     /**
