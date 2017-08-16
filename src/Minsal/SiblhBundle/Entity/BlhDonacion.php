@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhDonacion
  *
  * @ORM\Table(name="blh_donacion", indexes={@ORM\Index(name="fk_banco_de_leche_donacion", columns={"id_banco_de_leche"}), @ORM\Index(name="IDX_13A0CBCB8653A7AF", columns={"id_centro_recoleccion"}), @ORM\Index(name="IDX_13A0CBCB54F03532", columns={"id_donante"}), @ORM\Index(name="IDX_13A0CBCBD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_13A0CBCBD4737338", columns={"id_responsable_donacion"}), @ORM\Index(name="IDX_13A0CBCB85E56563", columns={"id_tipo_colecta"}), @ORM\Index(name="IDX_13A0CBCB867455CF", columns={"id_tipo_leche_materna"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhDonacionRepository")
  */
 class BlhDonacion implements EntityInterface
 {

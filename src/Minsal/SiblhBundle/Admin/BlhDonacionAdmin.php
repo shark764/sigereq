@@ -243,7 +243,7 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
                 ->add('donacionFrascoRecolectadoMezcla', 'sonata_type_collection', array(
                                 'label' => false,
                                 'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
-                                'btn_add' => 'Mezclar frasco',  // --| Prevents the "Add" option from being displayed
+                                'btn_add' => 'Mezclar con frasco',  // --| Prevents the "Add" option from being displayed
                                 // 'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
@@ -300,6 +300,14 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
         }
     }
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('MinsalSiblhBundle:BlhDonacionAdmin:doctrine_orm_form_admin_fields.html.twig')
+       );
+    }
+
     public function prePersist($entity)
     {
         //////// --| parent behavior
@@ -308,6 +316,9 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
 
         foreach ($entity->getDonacionFrascoRecolectado() as $fR)
         {
+            $fR->setIdDonante($entity->getIdDonante());
+            $fR->setIdBancoDeLeche($entity->getIdBancoDeLeche());
+            $fR->setIdCentroRecoleccion($entity->getIdCentroRecoleccion());
             $fR->setIdDonacion($entity);
         }
         foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)
@@ -319,17 +330,33 @@ class BlhDonacionAdmin extends MinsalSiblhBundleGeneralAdmin/*Admin*/
     public function preUpdate($entity)
     {
         //////// --| parent behavior
-        parent::preUpdate($entity);
+        // parent::preUpdate($entity);
         ////////
 
         foreach ($entity->getDonacionFrascoRecolectado() as $fR)
         {
+            $fR->setIdDonante($entity->getIdDonante());
+            $fR->setIdBancoDeLeche($entity->getIdBancoDeLeche());
+            $fR->setIdCentroRecoleccion($entity->getIdCentroRecoleccion());
             $fR->setIdDonacion($entity);
         }
         foreach ($entity->getDonacionFrascoRecolectadoMezcla() as $fR)
         {
             $fR->setIdDonacion($entity);
         }
+    }
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        $instance->setIdCentroRecoleccion($this->___session_system_USER_LOGGED_COLLECTION_CENTER___);
+        $instance->setIdResponsableDonacion($this->___session_system_USER_LOGGED_EMPLOYEE___);
+        $instance->setIdTipoColecta($this->getModelManager()->findOneBy('MinsalSiblhBundle:BlhCtlTipoColecta', array('codigo' => 'BLH')));
+        $instance->setIdTipoLecheMaterna($this->getModelManager()->findOneBy('MinsalSiblhBundle:BlhCtlTipoLecheMaterna', array('codigo' => 'LCL')));
+        
+        return $instance;
     }
 
 }

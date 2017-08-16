@@ -3,6 +3,8 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * MntPaciente
@@ -26,6 +28,18 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="primer_nombre", type="string", length=25, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 25,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $primerNombre;
 
@@ -33,6 +47,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="segundo_nombre", type="string", length=25, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 25,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $segundoNombre;
 
@@ -40,6 +65,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="tercer_nombre", type="string", length=25, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 25,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $tercerNombre;
 
@@ -47,6 +83,18 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="primer_apellido", type="string", length=25, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 25,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $primerApellido;
 
@@ -54,6 +102,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="segundo_apellido", type="string", length=25, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 25,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $segundoApellido;
 
@@ -61,6 +120,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="apellido_casada", type="string", length=25, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 25,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $apellidoCasada;
 
@@ -68,6 +138,7 @@ class MntPaciente
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_nacimiento", type="date", nullable=true)
+     * @Assert\Date()
      */
     private $fechaNacimiento;
 
@@ -75,6 +146,7 @@ class MntPaciente
      * @var \DateTime
      *
      * @ORM\Column(name="hora_nacimiento", type="time", nullable=true)
+     * @Assert\Time()
      */
     private $horaNacimiento;
 
@@ -82,6 +154,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="numero_doc_ide_paciente", type="string", length=20, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 20,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $numeroDocIdePaciente;
 
@@ -89,6 +172,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="direccion", type="string", length=200, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 200,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $direccion;
 
@@ -96,6 +190,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="telefono_casa", type="string", length=10, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 10,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $telefonoCasa;
 
@@ -103,6 +208,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="lugar_trabajo", type="string", length=50, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 50,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $lugarTrabajo;
 
@@ -110,6 +226,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="telefono_trabajo", type="string", length=10, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 10,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $telefonoTrabajo;
 
@@ -124,6 +251,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="numero_afiliacion", type="string", length=12, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 12,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $numeroAfiliacion;
 
@@ -131,6 +269,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="nombre_padre", type="string", length=80, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 80,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombrePadre;
 
@@ -138,6 +287,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="nombre_madre", type="string", length=80, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 80,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombreMadre;
 
@@ -145,6 +305,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="nombre_conyuge", type="string", length=80, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 80,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombreConyuge;
 
@@ -152,6 +323,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="nombre_responsable", type="string", length=80, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 80,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombreResponsable;
 
@@ -159,6 +341,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="direccion_responsable", type="string", length=200, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 200,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $direccionResponsable;
 
@@ -166,6 +359,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="telefono_responsable", type="string", length=10, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 10,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $telefonoResponsable;
 
@@ -173,6 +377,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="numero_doc_ide_responsable", type="string", length=20, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 20,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $numeroDocIdeResponsable;
 
@@ -180,6 +395,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="nombre_proporciono_datos", type="string", length=80, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 80,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombreProporcionoDatos;
 
@@ -187,6 +413,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="numero_doc_ide_propor_datos", type="string", length=20, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 20,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $numeroDocIdeProporDatos;
 
@@ -194,6 +431,11 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="observacion", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $observacion;
 
@@ -201,6 +443,17 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="conocido_por", type="string", length=70, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 70,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $conocidoPor;
 
@@ -208,6 +461,7 @@ class MntPaciente
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_registro", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaRegistro;
 
@@ -215,6 +469,7 @@ class MntPaciente
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_mod", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $fechaMod;
 
@@ -229,6 +484,11 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="nombre_completo_fonetico", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $nombreCompletoFonetico;
 
@@ -236,6 +496,11 @@ class MntPaciente
      * @var string
      *
      * @ORM\Column(name="apellido_completo_fonetico", type="text", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
      */
     private $apellidoCompletoFonetico;
 
@@ -243,6 +508,12 @@ class MntPaciente
      * @var integer
      *
      * @ORM\Column(name="id_registro_siap", type="bigint", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 9223372036854775807,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $idRegistroSiap;
 
@@ -449,6 +720,12 @@ class MntPaciente
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ORM\OneToMany(targetEntity="MntExpediente", mappedBy="idPaciente", cascade={"all"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = 1,
+     *      max = 1,
+     *      minMessage = "Debe poseer al menos {{ limit }} expediente(s)",
+     *      maxMessage = "No puede poseer más de {{ limit }} expediente(s)"
+     * )
      */
     private $expedientes;
 

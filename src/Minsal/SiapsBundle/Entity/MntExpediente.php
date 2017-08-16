@@ -3,11 +3,13 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * MntExpediente
  *
- * @ORM\Table(name="mnt_expediente", uniqueConstraints={@ORM\UniqueConstraint(name="idx_id_id_paciente", columns={"id", "id_paciente"}), @ORM\UniqueConstraint(name="idx_numero_expediente", columns={"numero"})}, indexes={@ORM\Index(name="IDX_E4950F577DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_E4950F57961045CB", columns={"id_paciente"})})
+ * @ORM\Table(name="mnt_expediente", uniqueConstraints={@ORM\UniqueConstraint(name="idx_id_id_paciente", columns={"id", "id_paciente"}), @ORM\UniqueConstraint(name="idx_numero_expediente", columns={"numero"})}, indexes={@ORM\Index(name="IDX_E4950F577DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_E4950F57961045CB", columns={"id_paciente"}), @ORM\Index(name="IDX_E4950F572DF9F9B6", columns={"id_banco_de_leche"})})
  * @ORM\Entity(repositoryClass="Minsal\SiapsBundle\Repository\MntExpedienteRepository")
  */
 class MntExpediente
@@ -26,6 +28,18 @@ class MntExpediente
      * @var string
      *
      * @ORM\Column(name="numero", type="string", length=12, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 12,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $numero;
 
@@ -40,6 +54,7 @@ class MntExpediente
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_creacion", type="date", nullable=true)
+     * @Assert\Date()
      */
     private $fechaCreacion;
 
@@ -47,6 +62,7 @@ class MntExpediente
      * @var \DateTime
      *
      * @ORM\Column(name="hora_creacion", type="time", nullable=true)
+     * @Assert\Time()
      */
     private $horaCreacion;
 
@@ -75,6 +91,12 @@ class MntExpediente
      * @var integer
      *
      * @ORM\Column(name="id_registro_siap", type="bigint", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 9223372036854775807,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $idRegistroSiap;
 
@@ -85,6 +107,7 @@ class MntExpediente
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_establecimiento", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEstablecimiento;
 
@@ -95,8 +118,19 @@ class MntExpediente
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_paciente", referencedColumnName="id")
      * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idPaciente;
+
+    /**
+     * @var \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\SiblhBundle\Entity\BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     */
+    private $idBancoDeLeche;
 
     /**
      * Constructor
@@ -363,6 +397,30 @@ class MntExpediente
     public function getIdPaciente()
     {
         return $this->idPaciente;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return MntExpediente
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
     }
 
 }

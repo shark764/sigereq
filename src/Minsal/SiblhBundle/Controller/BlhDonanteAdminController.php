@@ -24,7 +24,7 @@ class BlhDonanteAdminController extends MinsalSiblhBundleGeneralAdminController
 
         $REQUEST_q__    = $this->get('request')->query->get('q', null);
         $REQUEST_id__   = $this->get('request')->query->get('id', null);
-        $REQUEST_t__    = $this->get('request')->query->get('t', 0);
+        $REQUEST_t__    = $this->get('request')->query->get('t', 'blh');
         $REQUEST_l__    = $this->get('request')->query->get('l', null);
 
         $em = $this->getDoctrine()->getManager();
@@ -34,19 +34,24 @@ class BlhDonanteAdminController extends MinsalSiblhBundleGeneralAdminController
         ////////
 
         if (!$REQUEST_l__) {
-            $REQUEST_l__ = $this->admin->getSessionSystemUserLoggedLocation()->getId();
+            if ($this->admin->getSessionSystemUserLoggedMilkBank() !== null) {
+                $REQUEST_l__ = $this->admin->getSessionSystemUserLoggedMilkBank()->getId();
+                $REQUEST_t__ = 'blh';
+            }
+            elseif ($this->admin->getSessionSystemUserLoggedCollectionCenter() !== null) {
+                $REQUEST_l__ = $this->admin->getSessionSystemUserLoggedCollectionCenter()->getId();
+                $REQUEST_t__ = 'ctr';
+            }
         }
-        $REQUEST_t__ = intval(intval($REQUEST_l__) !== $this->admin->getSessionSystemUserLoggedLocation()->getId());
 
         if (!$REQUEST_id__) {
             //////// --| search patients
             $results = $em->getRepository('MinsalSiblhBundle:BlhDonante')
                 ->search(
-                    $this->admin->getSessionSystemUserLoggedLocation()->getId(),    // --| locale
-                    $REQUEST_q__,   // --| query
+                    // $this->admin->getSessionSystemUserLoggedLocation()->getId(),    // --| locale
                     intval($REQUEST_l__),   // --| location
                     $REQUEST_t__,   // --| type
-                    $REQUEST_id__   // --| id
+                    $REQUEST_q__    // query
                 );
             //////// --|
 
@@ -60,17 +65,17 @@ class BlhDonanteAdminController extends MinsalSiblhBundleGeneralAdminController
         //////// --| search patients
         $result = $em->getRepository('MinsalSiblhBundle:BlhDonante')
             ->searchById(
-                $this->admin->getSessionSystemUserLoggedLocation()->getId(),    // --| locale
-                $REQUEST_t__,   // --| type
+                // $this->admin->getSessionSystemUserLoggedLocation()->getId(),    // --| locale
                 intval($REQUEST_l__),   // --| location
+                $REQUEST_t__,   // --| type
                 $REQUEST_id__   // --| id
             );
         //////// --|
         
         $patient_age = null;
         try {
-            if ($result[0]['t02_fechaNacimiento'] !== null) {
-                $patient_age = $result[0]['t02_fechaNacimiento']->diff(new \DateTime('now'));
+            if ($result[0]['t01_fechaNacimiento'] !== null) {
+                $patient_age = $result[0]['t01_fechaNacimiento']->diff(new \DateTime('now'));
             }
         } catch (Exception $e) {
         }
@@ -152,7 +157,7 @@ class BlhDonanteAdminController extends MinsalSiblhBundleGeneralAdminController
             }
             else {
                 //////// --| builder table
-                $ENTITY_LIST_VIEW_GENERATOR_ = new BlhDonanteListViewGenerator(
+                $ENTITY_LIST_VIEW_GENERATOR_ = new MntExpedienteReferidoListViewGenerator(
                         $this->container,
                         $this->admin->getRouteGenerator(),
                         $this->admin->getClass()
@@ -200,6 +205,7 @@ class BlhDonanteAdminController extends MinsalSiblhBundleGeneralAdminController
 
         $REQUEST_q__    = $this->get('request')->query->get('q');
         $REQUEST_id__   = $this->get('request')->query->get('id');
+        $REQUEST_t__    = $this->get('request')->query->get('t', 'blh');
 
         $em = $this->getDoctrine()->getManager();
 
@@ -207,9 +213,14 @@ class BlhDonanteAdminController extends MinsalSiblhBundleGeneralAdminController
         // $this->admin->prepareAdminInstance();
         // ////////
 
+        $class_t_ = 'MinsalSiblhBundle:BlhBancoDeLeche';
+        if ($REQUEST_t__ === 'ctr') {
+            $class_t_ = 'MinsalSiblhBundle:BlhCtlCentroRecoleccion';
+        }
+
         if (!$REQUEST_id__) {
             //////// --| search locations
-            $results = $em->getRepository('MinsalSiapsBundle:CtlEstablecimiento')
+            $results = $em->getRepository($class_t_)
                 ->searchLocation(
                     $REQUEST_q__   // --| query
                 );
@@ -222,7 +233,7 @@ class BlhDonanteAdminController extends MinsalSiblhBundleGeneralAdminController
         }
 
         //////// --| search locations
-        $result = $em->getRepository('MinsalSiapsBundle:CtlEstablecimiento')
+        $result = $em->getRepository($class_t_)
             ->searchLocationById(
                 $REQUEST_id__   // --| id
             );

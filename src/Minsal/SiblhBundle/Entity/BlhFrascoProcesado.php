@@ -10,7 +10,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
  * BlhFrascoProcesado
  *
  * @ORM\Table(name="blh_frasco_procesado", indexes={@ORM\Index(name="fk_pasteurizacion_frasco_proces", columns={"id_pasteurizacion"}), @ORM\Index(name="IDX_4BD55E3D6A540E", columns={"id_estado"}), @ORM\Index(name="IDX_4BD55E3DD8A5832B", columns={"id_user_reg"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhFrascoProcesadoRepository")
  */
 class BlhFrascoProcesado implements EntityInterface
 {

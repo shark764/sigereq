@@ -1,0 +1,18 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'MinsalSiblhBundle:Form:doctrine_orm_form_admin_fields.html.twig' %}
+
+
+{# Custom Sonata Admin Extension #}
+{% block sonata_admin_orm_one_to_many_widget %}
+    {% include 'MinsalSiblhBundle:BlhDonacionAdmin:edit_orm_one_to_many.html.twig' %}
+{% endblock %}

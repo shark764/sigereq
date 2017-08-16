@@ -77,13 +77,13 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// initialize with custom options
             //////////////////////////////////////////////////////////////////////////////////////////////
-            var DONATION_SEARCHDONOR_search_donor_select = jQuery('#DONATION_SEARCHDONOR_search_donor');
-            DONATION_SEARCHDONOR_search_donor_select.select2({
+            var DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_select = jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor');
+            DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_select.select2({
                 width: 'resolve',
                 minimumResultsForSearch: 10,
                 dropdownAutoWidth : true,
                 allowClear: true,
-                placeholder: 'click para filtrar por donante...',
+                placeholder: 'click para seleccionar donante...',
                 minimumInputLength: 3,
                 maximumSelectionSize: 1,
                 // multiple: true,
@@ -95,12 +95,12 @@ file that was distributed with this source code.
                     dataType: 'json',
                     quietMillis: 250,
                     data: function (term, page) {
-                        var l = DONATION_SEARCHDONOR_search_donor_location_select.val();
-                        // var $type = jQuery('input[name=_search_type]:checked');
+                        var l = DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location_select.val();
+                        var t = jQuery('input[name="DONATION_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type_location]"]:checked').val();
                         // var $val = $type.val();
                         return {
                             q: term, // search term
-                            // t: $val, // patient type
+                            t: t, // locale type
                             l: l, // location
                         };
                     },
@@ -116,9 +116,9 @@ file that was distributed with this source code.
                     // using its formatResult renderer - that way the repository name is shown preselected
                     var id = $(element).val();
                     if (id !== "") {
-                        var $type = jQuery('input[name=_search_type]:checked');
-                        var tp = $type.val();
-                        $.ajax(Routing.generate('siblh_donante_search', {id: id, t: tp}), {
+                        var l = DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location_select.val();
+                        var t = jQuery('input[name="DONATION_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type_location]"]:checked').val();
+                        $.ajax(Routing.generate('siblh_donante_search', {id: id, t: t, l: l}), {
                             dataType: "json"
                         }).done(function(data) { callback(data.item); });
                     }
@@ -131,7 +131,7 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// patient record change event
             //////////////////////////////////////////////////////////////////////////////////////////////
-            DONATION_SEARCHDONOR_search_donor_select.on('change', function (e) {
+            DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_select.on('change', function (e) {
                 var rvalue = this.value;
 
                 if (!rvalue) {
@@ -143,16 +143,18 @@ file that was distributed with this source code.
 
                 jQuery('#{{ admin.uniqId }}_idDonante').val(rvalue);
 
-                var l = DONATION_SEARCHDONOR_search_donor_location_select.val();
-                var tp = {% if app.user.getIdEstablecimiento() is not null %}parseInt(l, 10) !== parseInt({{ app.user.getIdEstablecimiento().getId()|e('js') }}, 10) ? 1 : 0{% else %}0{% endif %};
+                var l = DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location_select.val();
+                var t = jQuery('input[name="DONATION_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type_location]"]:checked').val();
 
                 $.getJSON(Routing.generate('siblh_donante_search'), {
                         id : rvalue,
-                        t: tp,   // patient type
+                        t: t,   // locale type
                         l: l, // location
                     })
                     .done(function(data) {
-                        jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+{#
+                        // jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_short_info_container').html(displayPreviewSelection(data));
+#}
                     })
                     .fail(function(jqxhr, textStatus, error) {
                         //////// patient jumbotron
@@ -166,13 +168,13 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// initialize with custom options - LOCATION
             //////////////////////////////////////////////////////////////////////////////////////////////
-            var DONATION_SEARCHDONOR_search_donor_location_select = jQuery('#DONATION_SEARCHDONOR_search_donor_location');
-            DONATION_SEARCHDONOR_search_donor_location_select.select2({
+            var DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location_select = jQuery('#DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location');
+            DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location_select.select2({
                 width: 'resolve',
                 minimumResultsForSearch: 10,
                 dropdownAutoWidth : true,
                 allowClear: true,
-                placeholder: 'click para filtrar por establecimiento...',
+                placeholder: 'click para seleccionar establecimiento...',
                 minimumInputLength: 3,
                 maximumSelectionSize: 1,
                 // multiple: true,
@@ -184,8 +186,10 @@ file that was distributed with this source code.
                     dataType: 'json',
                     quietMillis: 250,
                     data: function (term, page) {
+                        var t = jQuery('input[name="DONATION_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type_location]"]:checked').val();
                         return {
                             q: term, // search term
+                            t: t, // locale type
                         };
                     },
                     results: function (data, page) { // parse the results into the format expected by Select2.
@@ -194,20 +198,19 @@ file that was distributed with this source code.
                     },
                     cache: true
                 },
-                {% if app.user.getIdEstablecimiento() is not null %}
+                {% if app.user.getIdBancoDeLeche() is not null %}
                     initSelection: function(element, callback) {
                         // // the input tag has a value attribute preloaded that points to a preselected repository's id
                         // // this function resolves that id attribute to an object that select2 can render
                         // // using its formatResult renderer - that way the repository name is shown preselected
-                        // var id = $(element).val();
-                        // if (id !== "") {
-                        //     var $type = jQuery('input[name=_search_type]:checked');
-                        //     var tp = $type.val();
-                        //     $.ajax(Routing.generate('siblh_donante_search', {id: id, t: tp}), {
-                        //         dataType: "json"
-                        //     }).done(function(data) { callback(data.item); });
-                        // }
-                        callback({'id': {{ app.user.getIdEstablecimiento().getId()|e('js') }}, 'full_name': '{{ app.user.getIdEstablecimiento().getNombre() }}'});
+                        callback({'id': {{ app.user.getIdBancoDeLeche().getId()|e('js') }}, 'full_name': '{{ app.user.getIdBancoDeLeche().getNombre() }}'});
+                    },
+                {% elseif app.user.getIdCentroRecoleccion() is not null %}
+                    initSelection: function(element, callback) {
+                        // // the input tag has a value attribute preloaded that points to a preselected repository's id
+                        // // this function resolves that id attribute to an object that select2 can render
+                        // // using its formatResult renderer - that way the repository name is shown preselected
+                        callback({'id': {{ app.user.getIdCentroRecoleccion().getId()|e('js') }}, 'full_name': '{{ app.user.getIdCentroRecoleccion().getNombre() }}'});
                     },
                 {% endif %}
                 formatResult: donorFormatResult,  // display patient information
@@ -218,8 +221,14 @@ file that was distributed with this source code.
             //////////////////////////////////////////////////////////////////////////////////////////////
             //////// patient record change event
             //////////////////////////////////////////////////////////////////////////////////////////////
-            DONATION_SEARCHDONOR_search_donor_location_select.on('change', function (e) {
-                DONATION_SEARCHDONOR_search_donor_select.select2('val', '').triggerHandler('change');
+            DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location_select.on('change', function (e) {
+                DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_select.select2('val', '').triggerHandler('change');
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            jQuery('input[name="DONATION_SEARCHDONOR_{{ admin.uniqId }}[search_donor_type_location]"]').on('ifChecked', function(e) {
+                DONATION_SEARCHDONOR_{{ admin.uniqId }}_search_donor_location_select.select2('val', '').triggerHandler('change');
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -235,6 +244,7 @@ file that was distributed with this source code.
                 }
                 var vOz = v * 0.033814;
                 jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_onzRecolectado"]').val(vOz.toFixed(4));
+                jQuery(this).parents('tr').find('[id^="{{ admin.uniqId }}_donacionFrascoRecolectado_"][id$="_volumenReal"]').val(v);
             });
             //////////////////////////////////////////////////////////////////////////////////////////////
             jQuery(document).on('keyup change blur', '[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_volumenAgregado"]', function(e) {
@@ -268,7 +278,7 @@ file that was distributed with this source code.
         //////////////////////////////////////////////////////////////////////////////////////////////
         jQuery(document).on('sonata.add_element', '#field_container_{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla', function(e) {
             var subject = jQuery(this);
-            console.log(subject.attr('id'), subject.attr('name'));
+            window.console.log('add mixed bottle', subject.attr('id'), subject.attr('name'));
             jQuery('[id^="{{ admin.uniqId }}_donacionFrascoRecolectadoMezcla_"][id$="_idFrascoRecolectado"]', subject).each(function() {
                 var select = jQuery(this);
                 select.select2({
@@ -284,7 +294,7 @@ file that was distributed with this source code.
                         return markup;
                     },
                     ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-                        url: Routing.generate('siblh_frasco_recolectado_generateTable'),
+                        url: Routing.generate('siblh_frasco_recolectado_search'),
                         dataType: 'json',
                         quietMillis: 250,
                         data: function (term, page) {
@@ -301,16 +311,35 @@ file that was distributed with this source code.
                     // initSelection: function(element, callback) {
                     //     callback({'id': , 'full_name': ''});
                     // },
-                    // formatResult: donorFormatResult,  // display patient information
-                    // formatSelection: donorFormatSelection,    // selection
+                    formatResult: collectedBottleFormatResult,  // display patient information
+                    formatSelection: collectedBottleFormatSelection,    // selection
                 });
-                console.log(select.attr('id'), select.attr('name'));
+                window.console.log('add mixed bottle select', select.attr('id'), select.attr('name'));
 
                 // select.on('change', function (e) {
                 // });
             });
         });
         {# #}
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var collectedBottleFormatResult = function(el) {
+            var markup = '<div class="row-fluid">' +
+                                '<div class="span10">' +
+                                '<div class="row-fluid">' +
+                                '<div class="span6">' + el.full_name + '</div>' +
+                            '</div>';
+
+            markup += '</div></div>';
+
+            return markup;
+        };
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        var collectedBottleFormatSelection = function(el) {
+            return el.full_name;
+        };
         //////////////////////////////////////////////////////////////////////////////////////////////
 
     </script>

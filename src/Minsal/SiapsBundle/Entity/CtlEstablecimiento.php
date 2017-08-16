@@ -3,12 +3,14 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * CtlEstablecimiento
  *
  * @ORM\Table(name="ctl_establecimiento", indexes={@ORM\Index(name="IDX_332BD42CEF433A34", columns={"id_institucion"}), @ORM\Index(name="IDX_332BD42C3544B551", columns={"id_establecimiento_padre"}), @ORM\Index(name="IDX_332BD42C7EAD49C7", columns={"id_municipio"}), @ORM\Index(name="IDX_332BD42C4E0E50FD", columns={"id_tipo_establecimiento"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Minsal\SiapsBundle\Repository\CtlEstablecimientoRepository")
  */
 class CtlEstablecimiento
 {
@@ -26,6 +28,18 @@ class CtlEstablecimiento
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 150,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $nombre;
 
@@ -33,6 +47,17 @@ class CtlEstablecimiento
      * @var string
      *
      * @ORM\Column(name="direccion", type="string", length=250, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 250,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $direccion;
 
@@ -40,6 +65,17 @@ class CtlEstablecimiento
      * @var string
      *
      * @ORM\Column(name="telefono", type="string", length=15, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 15,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $telefono;
 
@@ -47,6 +83,12 @@ class CtlEstablecimiento
      * @var integer
      *
      * @ORM\Column(name="id_nivel_minsal", type="integer", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 2147483647,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $idNivelMinsal;
 
@@ -54,6 +96,12 @@ class CtlEstablecimiento
      * @var integer
      *
      * @ORM\Column(name="cod_ucsf", type="integer", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 2147483647,
+     *      minMessage = "Número no puede ser inferior a {{ limit }}",
+     *      maxMessage = "Número no puede ser superior a {{ limit }}"
+     * )
      */
     private $codUcsf;
 
@@ -68,6 +116,17 @@ class CtlEstablecimiento
      * @var string
      *
      * @ORM\Column(name="tipo_expediente", type="string", length=1, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 1,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $tipoExpediente;
 

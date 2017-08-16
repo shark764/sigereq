@@ -141,4 +141,32 @@ class BlhBancoDeLecheAdmin extends MinsalSiblhBundleGeneralAdmin
         ;
     }
 
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+
+        $container = $this->getConfigurationPool()->getContainer();
+        $doctrine = $container->get('doctrine');
+
+        $code_ = $doctrine->getRepository($this->getClass())->generateCode();
+        $entity->setCodigoBancoDeLeche('BLH-' . $code_['code']);
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
+
+        if ($entity->getCodigoBancoDeLeche() === null) {
+            $container = $this->getConfigurationPool()->getContainer();
+            $doctrine = $container->get('doctrine');
+
+            $code_ = $doctrine->getRepository($this->getClass())->generateCode();
+            $entity->setCodigoBancoDeLeche('BLH-' . $code_['code']);
+        }
+    }
+
 }

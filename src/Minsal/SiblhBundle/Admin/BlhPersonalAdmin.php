@@ -14,8 +14,8 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class BlhPersonalAdmin extends MinsalSiblhBundleGeneralAdmin
 {
-    protected $baseRouteName    = 'siblh_personal';
-    protected $baseRoutePattern = 'blh/personal';
+    protected $baseRouteName    = 'siblh_personal_empleado';
+    protected $baseRoutePattern = 'blh/personal-empleado';
 
     /**
      * @param DatagridMapper $datagridMapper

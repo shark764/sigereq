@@ -3,6 +3,8 @@
 namespace Minsal\SiapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use Minsal\SiblhBundle\Entity\EntityInterface;
 
 /**
  * MntTipoEmpleado
@@ -26,6 +28,18 @@ class MntTipoEmpleado
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=3, nullable=false)
+     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 3,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $codigo;
 
@@ -33,6 +47,17 @@ class MntTipoEmpleado
      * @var string
      *
      * @ORM\Column(name="tipo", type="string", length=50, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z0-9]/",
+     *     match=true,
+     *     message="regex.match.true"
+     * )
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 50,
+     *      minMessage = "Debe digitar al menos {{ limit }} caracteres",
+     *      maxMessage = "Este campo no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $tipo;
 
