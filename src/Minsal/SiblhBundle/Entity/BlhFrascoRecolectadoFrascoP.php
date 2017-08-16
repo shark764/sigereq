@@ -62,7 +62,7 @@ class BlhFrascoRecolectadoFrascoP implements EntityInterface
     /**
      * @var \BlhFrascoProcesado
      *
-     * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado", inversedBy="frascoProcesadoFrascoRecolectadoCombinado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_procesado", referencedColumnName="id")
      * })
@@ -73,7 +73,7 @@ class BlhFrascoRecolectadoFrascoP implements EntityInterface
     /**
      * @var \BlhFrascoRecolectado
      *
-     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado", inversedBy="frascoRecolectadoFrascoProcesadoCombinado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_frasco_recolectado", referencedColumnName="id")
      * })

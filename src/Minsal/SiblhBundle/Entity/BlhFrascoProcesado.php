@@ -186,6 +186,11 @@ class BlhFrascoProcesado implements EntityInterface
     private $frascoProcesadoCrematocrito;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlhFrascoRecolectadoFrascoP", mappedBy="idFrascoProcesado", cascade={"all"}, orphanRemoval=true)
+     */
+    private $frascoProcesadoFrascoRecolectadoCombinado;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -194,6 +199,7 @@ class BlhFrascoProcesado implements EntityInterface
         
         $this->frascoProcesadoAnalisisMicrobiologico = new \Doctrine\Common\Collections\ArrayCollection();
         $this->frascoProcesadoCrematocrito = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->frascoProcesadoFrascoRecolectadoCombinado = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -581,6 +587,40 @@ class BlhFrascoProcesado implements EntityInterface
     public function getFrascoProcesadoCrematocrito()
     {
         return $this->frascoProcesadoCrematocrito;
+    }
+
+    /**
+     * Add frascoProcesadoFrascoRecolectadoCombinado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP $frascoProcesadoFrascoRecolectadoCombinado
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function addFrascoProcesadoFrascoRecolectadoCombinado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP $frascoProcesadoFrascoRecolectadoCombinado)
+    {
+        $this->frascoProcesadoFrascoRecolectadoCombinado[] = $frascoProcesadoFrascoRecolectadoCombinado;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoProcesadoFrascoRecolectadoCombinado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP $frascoProcesadoFrascoRecolectadoCombinado
+     */
+    public function removeFrascoProcesadoFrascoRecolectadoCombinado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP $frascoProcesadoFrascoRecolectadoCombinado)
+    {
+        $this->frascoProcesadoFrascoRecolectadoCombinado->removeElement($frascoProcesadoFrascoRecolectadoCombinado);
+    }
+
+    /**
+     * Get frascoProcesadoFrascoRecolectadoCombinado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFrascoProcesadoFrascoRecolectadoCombinado()
+    {
+        return $this->frascoProcesadoFrascoRecolectadoCombinado;
     }
 
 }
