@@ -71,7 +71,10 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
                         $frRP->setIdFrascoRecolectado($collected_bottle_to_mixed_bottle_);
                         $frRP->setIdFrascoProcesado($object);
                         $frRP->setVolumenAgregado($request_collected_bottle_to_mixed_bottle_['volumenAgregado'][$collected_bottle_to_mixed_bottle_->getId()]);
+                        $frRP->setIdUserReg($this->admin->getSessionSystemUserLogged());
                         $object->addFrascoProcesadoFrascoRecolectadoCombinado($frRP);
+
+                        $object->removeFrascoRecolectadoFrascoProcesadoVolumenAgregado($collected_bottle_to_mixed_bottle_);
 
                         // var_dump($request_collected_bottle_to_mixed_bottle_);
                         // echo "<br/>";
@@ -108,6 +111,7 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
 
                     // throw new \RuntimeException(sprintf('A %s method must be created', $object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado()->count()));
                     ////////
+                    
                     $this->admin->create($object);
 
                     if ($this->isXmlHttpRequest()) {
@@ -197,6 +201,19 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
             // persist if the form was valid and if in preview mode the preview was approved
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
                 try {
+                    $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
+                    foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $collected_bottle_to_mixed_bottle_)
+                    {
+                        $frRP = new BlhFrascoRecolectadoFrascoP();
+                        $frRP->setIdFrascoRecolectado($collected_bottle_to_mixed_bottle_);
+                        $frRP->setIdFrascoProcesado($object);
+                        $frRP->setVolumenAgregado($request_collected_bottle_to_mixed_bottle_['volumenAgregado'][$collected_bottle_to_mixed_bottle_->getId()]);
+                        $frRP->setIdUserReg($this->admin->getSessionSystemUserLogged());
+                        $object->addFrascoProcesadoFrascoRecolectadoCombinado($frRP);
+
+                        $object->removeFrascoRecolectadoFrascoProcesadoVolumenAgregado($collected_bottle_to_mixed_bottle_);
+                    }
+
                     $this->admin->update($object);
 
                     if ($this->isXmlHttpRequest()) {
