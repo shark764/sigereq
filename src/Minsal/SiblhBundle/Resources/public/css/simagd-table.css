@@ -81,15 +81,18 @@ table td a.detail-icon {
  * *****************************************************************************
  */
 .bootstrap-table .fixed-table-container .fixed-table-body .checked-row-bstable {
-    background-color: rgba(255, 218, 204, 0.64);
+    /*background-color: rgba(255, 218, 204, 0.64);*/
+    background-color: rgba(210, 233, 232, 1);
 }
 .table-striped > tbody > tr.checked-row-bstable:nth-child(odd) > td,
 .table-striped > tbody > tr.checked-row-bstable:nth-child(odd) > th {
-    background-color: rgba(255, 218, 204, 0.64);
+    /*background-color: rgba(255, 218, 204, 0.64);*/
+    background-color: rgba(210, 233, 232, 1);
 }
 .table-hover>tbody>tr.checked-row-bstable:hover>td,
 .table-hover>tbody>tr.checked-row-bstable:hover>th {
-    background-color: rgba(255, 218, 204, 0.64);
+    /*background-color: rgba(255, 218, 204, 0.64);*/
+    background-color: rgba(210, 233, 232, 1);
 }
 
 

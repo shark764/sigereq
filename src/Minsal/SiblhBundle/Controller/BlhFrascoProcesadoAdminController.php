@@ -9,6 +9,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use Minsal\SiblhBundle\Entity\BlhFrascoRecolectado;
+use Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP;
+
 class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminController
 {
     /**
@@ -54,30 +57,56 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
                     ////////
                     // Mixed Bottles
                     ////////
+                    // // foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $collected_bottle_to_mixed_bottle_)
+                    // echo "/********************** FIRST COUNT **********************/ <br/><br/>";
+                    // // var_dump($object->getFrascoProcesadoAnalisisMicrobiologico()->count());
+                    // // var_dump($object->getFrascoProcesadoCrematocrito()->count());
+                    // var_dump($object->getFrascoProcesadoFrascoRecolectadoCombinado()->count());
+                    // var_dump($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado()->count());
+                    // echo "<br/><br/>";
+                    $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
                     foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $collected_bottle_to_mixed_bottle_)
                     {
-                        $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get($this->getRequest()->query->get('uniqid'), null);
-                        var_dump($request_collected_bottle_to_mixed_bottle_);
-                        echo "<br/><br/>";
-                        $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
-                        var_dump($request_collected_bottle_to_mixed_bottle_);
-                        echo "<br/><br/>";
-                        // if ($request_collected_bottle_to_mixed_bottle_ !== null)
-                        // {
-                            // foreach ($request_collected_bottle_to_mixed_bottle_['solicitudEstudioSintomatologiaMama'][0] as $key => $value)
-                            // {
-                            //     if ($key === 'idSolicitudEstudio' || $key === 'idSolicitudEstudioMamografia') {
-                            //         continue;
-                            //     }
-                            //     $method_name_ = 'set' . ucfirst(str_replace('NOTMAPPED', '', $key));
-                            //     if (count($value) > 1) {
-                            //         $collected_bottle_to_mixed_bottle_->$method_name_('A');
-                            //         continue;
-                            //     }
-                            //     $collected_bottle_to_mixed_bottle_->$method_name_($value[0]);
-                            // }
-                        // }
+                        $frRP = new BlhFrascoRecolectadoFrascoP();
+                        $frRP->setIdFrascoRecolectado($collected_bottle_to_mixed_bottle_);
+                        $frRP->setIdFrascoProcesado($object);
+                        $frRP->setVolumenAgregado($request_collected_bottle_to_mixed_bottle_['volumenAgregado'][$collected_bottle_to_mixed_bottle_->getId()]);
+                        $object->addFrascoProcesadoFrascoRecolectadoCombinado($frRP);
+
+                        // var_dump($request_collected_bottle_to_mixed_bottle_);
+                        // echo "<br/>";
+                        // var_dump($request_collected_bottle_to_mixed_bottle_['volumenAgregado']);
+                        // echo "<br/>";
+                        // var_dump($request_collected_bottle_to_mixed_bottle_['volumenAgregado'][$collected_bottle_to_mixed_bottle_->getId()]);
+                        // echo "<br/><br/>";
+                        // // $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
+                        // // var_dump($request_collected_bottle_to_mixed_bottle_);
+                        // // echo "<br/><br/>";
+                        // // var_dump($request_collected_bottle_to_mixed_bottle_);
+                        // echo "<br/><br/>";
+                        // // if ($request_collected_bottle_to_mixed_bottle_ !== null)
+                        // // {
+                        //     // foreach ($request_collected_bottle_to_mixed_bottle_['solicitudEstudioSintomatologiaMama'][0] as $key => $value)
+                        //     // {
+                        //     //     if ($key === 'idSolicitudEstudio' || $key === 'idSolicitudEstudioMamografia') {
+                        //     //         continue;
+                        //     //     }
+                        //     //     $method_name_ = 'set' . ucfirst(str_replace('NOTMAPPED', '', $key));
+                        //     //     if (count($value) > 1) {
+                        //     //         $collected_bottle_to_mixed_bottle_->$method_name_('A');
+                        //     //         continue;
+                        //     //     }
+                        //     //     $collected_bottle_to_mixed_bottle_->$method_name_($value[0]);
+                        //     // }
+                        // // }
                     }
+                    // echo "/********************** SECOND COUNT **********************/ <br/><br/>";
+                    // // var_dump($object->getFrascoProcesadoAnalisisMicrobiologico()->count());
+                    // // var_dump($object->getFrascoProcesadoCrematocrito()->count());
+                    // var_dump($object->getFrascoProcesadoFrascoRecolectadoCombinado()->count());
+                    // var_dump($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado()->count());
+
+                    // throw new \RuntimeException(sprintf('A %s method must be created', $object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado()->count()));
                     ////////
                     $this->admin->create($object);
 

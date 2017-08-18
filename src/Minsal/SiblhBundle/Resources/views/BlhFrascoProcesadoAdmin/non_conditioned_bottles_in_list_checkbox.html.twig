@@ -9,6 +9,8 @@ file that was distributed with this source code.
 
 #}
 
+{% set COLLECTION_NON_CONDITIONED_BOTTLES_ = [] %}
+
 {% if choices is defined and choices|length < 1 %}
     <div class="alert alert-warning alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
@@ -25,12 +27,27 @@ file that was distributed with this source code.
     </div>
 {% endif %}
 
+<div class="panel panel-default">
+    <div class="panel-body">
+        <center>
+            <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-xray-awesome-blue" href="javascript:void(0)" onclick="generateAutomaticBatchOfBottles(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" {#disabled="disabled"#}><span class="glyphicon glyphicon-list-alt"></span> Lote automático</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_donacion_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Registrar donación</a>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+
 <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_non_conditioned_bottle_target_bstable" name="blh_non_conditioned_bottle_target_bstable"
         data-id-field="id"
         data-cache="false"
         data-show-columns="true"
         data-search="true"
-        data-pagination="true"
+        data-pagination="false"
         data-pagination-h-align="left"
         data-pagination-detail-h-align="right"
         data-page-list="[15, 25, 30]"
@@ -50,7 +67,6 @@ file that was distributed with this source code.
             <th>Volumen (ml)</th>
             <th>Volumen (oz)</th>
             <th>Extracción</th>
-            <th>Mezclas</th>
             <th>Fecha Reg.</th>
             <th>Vol. combinar</th>
             <th>Vol. real</th>
@@ -86,34 +102,12 @@ file that was distributed with this source code.
                 <td>{{ s.getVolumenRecolectado() }}</td>
                 <td>{{ s.getOnzRecolectado() }}</td>
                 <td>{{ s.getIdFormaExtraccion().getPresentacionEntidad() }}</td>
-{#
-  <!--               <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getIdReferido() }}</span>{% else %}{{ s.getIdExpediente().getIdPaciente() }}{% endif %}</td>
-                <td>{% if s.getIdExpedienteReferido() is not null %}<span class="text-dark-emergency">{{ s.getIdExpedienteReferido().getNumero() }}</span>{% else %}{{ s.getIdExpediente().getNumero() }}{% endif %}</td> -->
-#}
-                <td>
-                    <ul class="bs-list-styled">
-                        {% for mz in s.getFrascoRecolectadoDonacionMezcla() %}
-                            <li>
-{#
-                                <!-- <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <span class="col-lg-4 col-md-4 col-sm-4">Donante:</span><span class="col-lg-8 col-md-8 col-sm-8">{{ mz.getIdFrascoRecolectado().getIdDonante() }}</span> -->
-#}
-                                    <strong>Vol. agregado:</strong> {{ mz.getVolumenAgregado() }} ml
-{#
-                                <!-- </div> -->
-#}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </td>
-{#
-                <!-- <td>{{ s.getFechaHoraReg()|format_date('EEEE, MMMM d, yyyy', 'es_ES') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td> -->
-#}
                 <td>{{ s.getFechaHoraReg()|date('d/m/Y', 'America/El_Salvador') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
-                <td><input type="text" id="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenAgregado" name="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenAgregado][]" placeholder="vol. combinar (ml)..." class="form-control input-sm" min="0" max="{{ s.getVolumenDisponibleFr() }}" ></td>
+                <td><input type="text" id="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenAgregado_{{ s.getId() }}" name="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenAgregado][{{ s.getId() }}]" placeholder="vol. combinar (ml)..." class="form-control input-sm" min="0" max="{{ s.getVolumenDisponibleFr() }}" data-fv-numeric="true" data-fv-numeric-message="El valor no es un número válido" data-fv-numeric-thousandsSeparator="" data-fv-numeric-decimalSeparator="." ></td>
                 <td></td>
                 <td></td>
             </tr>
+            {% set COLLECTION_NON_CONDITIONED_BOTTLES_ = COLLECTION_NON_CONDITIONED_BOTTLES_|merge([s.getId()]) %}
         {% endfor %}
     </tbody>
 </table>
@@ -160,6 +154,8 @@ file that was distributed with this source code.
             radioClass: 'iradio_minimal'
         });
         $table.find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
+
+        {% for mix_bottle_ in COLLECTION_NON_CONDITIONED_BOTTLES_ %} jQuery('form').formValidation('addField', 'MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenAgregado][{{ mix_bottle_ }}]'); {% endfor %}
 
         $table.on('page-change.bs.table', function (e, number, size) {
             $table.find('tbody tr td input[type=checkbox]').iCheck('destroy').iCheck({

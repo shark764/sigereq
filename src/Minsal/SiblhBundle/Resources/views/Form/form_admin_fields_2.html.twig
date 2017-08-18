@@ -61,19 +61,6 @@ file that was distributed with this source code.
 {% endspaceless %}
 {% endblock form_label %}
 
-{% block choice_widget_expanded %}
-{% spaceless %}
-    <ul {{ block('widget_container_attributes') }}>
-        {% for child in form %}
-            <li>
-                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
-                {{ form_label(child) }}
-            </li>
-        {% endfor %}
-    </ul>
-{% endspaceless %}
-{% endblock choice_widget_expanded %}
-
 {% block choice_widget %}
 {% spaceless %}
     {% if compound %}
@@ -189,30 +176,6 @@ file that was distributed with this source code.
 	{% endif %}
     {% endif %}
 {% endblock form_row %}
-
-{% block sonata_type_immutable_array_widget_row %}
-    {% spaceless %}
-        <div class="form-group{% if errors|length > 0%} error{%endif%}" id="sonata-ba-field-container-{{ id }}-{{ key }}">
-
-            {{ form_label(child) }}
-
-            {% set div_class = "col-sm-9 col-md-9" %}
-            {#{% if sonata_admin.admin and sonata_admin.admin.getConfigurationPool().getOption('form_type') == 'horizontal' %}
-                {% set div_class = "col-sm-9 col-md-9" %}
-            {% endif%}#}
-
-            <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %}">
-                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
-            </div>
-
-            {% if errors|length > 0 %}
-                <div class="help-block sonata-ba-field-error-messages">
-                    {{ form_errors(child) }}
-                </div>
-            {% endif %}
-        </div>
-    {% endspaceless %}
-{% endblock %}
 
 {% block repeated_row %}
     {% set label_class = " control-label col-lg-4 col-md-4 col-sm-4 " %}

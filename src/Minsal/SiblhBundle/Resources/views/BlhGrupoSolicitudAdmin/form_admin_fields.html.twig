@@ -11,69 +11,6 @@ file that was distributed with this source code.
 
 {% extends 'MinsalSiblhBundle:Form:form_admin_fields.html.twig' %}
 
-{# Labels #}
-{% block form_label %}
-{% spaceless %}
-
-    {% set label_class = " control-label col-lg-4 col-md-4 col-sm-4 " %}
-    {#{% if sonata_admin.admin and sonata_admin.admin.getConfigurationPool().getOption('form_type') == 'horizontal' %}
-        {% set label_class = " control-label col-sm-3" %}
-    {% else %}
-        {% set label_class = " control-label" %}
-    {% endif%}#}
-
-    {#{{ sonata_admin.admin.getConfigurationPool().getOption('form_type') }}#}
-    {% if label is not sameas(false) %}
-        {% set label_attr = label_attr|merge({'class': label_attr.class|default('col-lg-4 col-md-4 col-sm-4') ~ label_class }) %}
-
-        {% if not compound %}
-            {% set label_attr = label_attr|merge({'for': id}) %}
-        {% endif %}
-        {% if required %}
-            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('col-lg-4 col-md-4 col-sm-4') ~ ' required')|trim}) %}
-        {% endif %}
-
-        {% if label is empty %}
-            {% set label = name|humanize %}
-        {% endif %}
-
-        {% if in_list_checkbox is defined and in_list_checkbox and widget is defined %}
-            <label{% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>
-                {{ widget|raw }}
-                <span class="in_list_checkbox_labelwidget" style="margin-left: 5px;">
-                    {% if not sonata_admin.admin %}
-                        {{- label|trans({}, translation_domain)|default(null)|raw -}}
-                    {% else %}
-                        {{- label|trans({}, sonata_admin.field_description.translationDomain)|default(null)|raw -}}
-                    {% endif%}
-                </span>
-            </label>
-        {% else %}
-            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-                {% if not sonata_admin.admin%}
-                    {{- label|trans({}, translation_domain)|default(null)|raw -}}
-                {% else %}
-                    {{ sonata_admin.admin.trans(label, {}, sonata_admin.field_description.translationDomain)|default(null)|raw }}
-                {% endif %}
-            </label>
-        {% endif %}
-    {% endif %}
-{% endspaceless %}
-{% endblock form_label %}
-
-{% block choice_widget_expanded %}
-{% spaceless %}
-    <ul {{ block('widget_container_attributes') }}>
-        {% for child in form %}
-            <li>
-                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
-                {{ form_label(child) }}
-            </li>
-        {% endfor %}
-    </ul>
-{% endspaceless %}
-{% endblock choice_widget_expanded %}
-
 {% block choice_widget %}
 {% spaceless %}
     {% if compound %}
@@ -197,30 +134,6 @@ file that was distributed with this source code.
     {% endif %}
     {% endif %}
 {% endblock form_row %}
-
-{% block sonata_type_immutable_array_widget_row %}
-    {% spaceless %}
-        <div class="form-group{% if errors|length > 0%} error{%endif%}" id="sonata-ba-field-container-{{ id }}-{{ key }}">
-
-            {{ form_label(child) }}
-
-            {% set div_class = "col-sm-9 col-md-9" %}
-            {#{% if sonata_admin.admin and sonata_admin.admin.getConfigurationPool().getOption('form_type') == 'horizontal' %}
-                {% set div_class = "col-sm-9 col-md-9" %}
-            {% endif%}#}
-
-            <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %}">
-                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
-            </div>
-
-            {% if errors|length > 0 %}
-                <div class="help-block sonata-ba-field-error-messages">
-                    {{ form_errors(child) }}
-                </div>
-            {% endif %}
-        </div>
-    {% endspaceless %}
-{% endblock %}
 
 {% block repeated_row %}
     {% set label_class = " control-label col-lg-4 col-md-4 col-sm-4 " %}
