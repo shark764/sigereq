@@ -1,70 +1,30 @@
 services:
-    minsal_siblh.admin.blh_acidez:
-        class: Minsal\SiblhBundle\Admin\BlhAcidezAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhAcidez, MinsalSiblhBundle:BlhAcidezAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Acidez Dornic}
-
-    minsal_siblh.admin.blh_analisis_microbiologico:
-        class: Minsal\SiblhBundle\Admin\BlhAnalisisMicrobiologicoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhAnalisisMicrobiologico, MinsalSiblhBundle:BlhAnalisisMicrobiologicoAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Microbiológico}
-
-    minsal_siblh.admin.blh_analisis_sensorial:
-        class: Minsal\SiblhBundle\Admin\BlhAnalisisSensorialAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhAnalisisSensorial, MinsalSiblhBundle:BlhAnalisisSensorialAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Sensorial}
-
-    minsal_siblh.admin.blh_banco_de_leche:
-        class: Minsal\SiblhBundle\Admin\BlhBancoDeLecheAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhBancoDeLeche, MinsalSiblhBundle:BlhBancoDeLecheAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Bancos de Leche}
-
-    minsal_siblh.admin.blh_bitacora:
-        class: Minsal\SiblhBundle\Admin\BlhBitacoraAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhBitacora, MinsalSiblhBundle:BlhBitacoraAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhBitacora}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
-
-    minsal_siblh.admin.blh_crematocrito:
-        class: Minsal\SiblhBundle\Admin\BlhCrematocritoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhCrematocrito, MinsalSiblhBundle:BlhCrematocritoAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Crematocrito}
-
-    minsal_siblh.admin.blh_curva:
-        class: Minsal\SiblhBundle\Admin\BlhCurvaAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhCurva, MinsalSiblhBundle:BlhCurvaAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Curva Pasteurización}
-
-    minsal_siblh.admin.blh_donacion:
-        class: Minsal\SiblhBundle\Admin\BlhDonacionAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhDonacion, MinsalSiblhBundle:BlhDonacionAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Donante, label: Registro Donación}
-
+    # ###################################################
+    # donante
+    # ###################################################
     minsal_siblh.admin.blh_donante:
         class: Minsal\SiblhBundle\Admin\BlhDonanteAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhDonante, MinsalSiblhBundle:BlhDonanteAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Donante, label: Registro Donante}
 
-    minsal_siblh.admin.blh_egreso_receptor:
-        class: Minsal\SiblhBundle\Admin\BlhEgresoReceptorAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhEgresoReceptor, MinsalSiblhBundle:BlhEgresoReceptorAdmin]
+    minsal_siblh.admin.blh_historial_clinico:
+        class: Minsal\SiblhBundle\Admin\BlhHistorialClinicoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhHistorialClinico, MinsalSiblhBundle:BlhHistorialClinicoAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Receptor, label: Egreso Receptor}
+            - {name: sonata.admin, manager_type: orm, group: Donante, label: Registro Historial Clínico}
 
-    minsal_siblh.admin.blh_estado:
-        class: Minsal\SiblhBundle\Admin\BlhEstadoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhEstado, MinsalSiblhBundle:BlhEstadoAdmin]
+    minsal_siblh.admin.blh_historia_actual:
+        class: Minsal\SiblhBundle\Admin\BlhHistoriaActualAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhHistoriaActual, MinsalSiblhBundle:BlhHistoriaActualAdmin]
         tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhEstado}
+            - {name: sonata.admin, manager_type: orm, group: Donante, label: Registro Historia Actual}
+
+    minsal_siblh.admin.blh_examen:
+        class: Minsal\SiblhBundle\Admin\BlhExamenAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhExamen, MinsalSiblhBundle:BlhExamenAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhExamen}
             - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_examen_donante:
@@ -74,32 +34,11 @@ services:
             # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhExamenDonante}
             - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
-    minsal_siblh.admin.blh_examen:
-        class: Minsal\SiblhBundle\Admin\BlhExamenAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhExamen, MinsalSiblhBundle:BlhExamenAdmin]
+    minsal_siblh.admin.blh_donacion:
+        class: Minsal\SiblhBundle\Admin\BlhDonacionAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhDonacion, MinsalSiblhBundle:BlhDonacionAdmin]
         tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhExamen}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
-
-    minsal_siblh.admin.blh_frasco_procesado:
-        class: Minsal\SiblhBundle\Admin\BlhFrascoProcesadoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoProcesado, MinsalSiblhBundle:BlhFrascoProcesadoAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Frascos procesados}
-
-    minsal_siblh.admin.blh_frasco_procesado_solicitud:
-        class: Minsal\SiblhBundle\Admin\BlhFrascoProcesadoSolicitudAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoProcesadoSolicitud, MinsalSiblhBundle:BlhFrascoProcesadoSolicitudAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoProcesadoSolicitud}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
-
-    minsal_siblh.admin.blh_frasco_recolectado_frasco_p:
-        class: Minsal\SiblhBundle\Admin\BlhFrascoRecolectadoFrascoPAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP, MinsalSiblhBundle:BlhFrascoRecolectadoFrascoPAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoRecolectadoFrascoP}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: Donante, label: Registrar Donación}
 
     minsal_siblh.admin.blh_frasco_recolectado:
         class: Minsal\SiblhBundle\Admin\BlhFrascoRecolectadoAdmin
@@ -108,23 +47,166 @@ services:
             # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoRecolectado}
             - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
+    minsal_siblh.admin.blh_donacion_frasco_recolectado:
+        class: Minsal\SiblhBundle\Admin\BlhDonacionFrascoRecolectadoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado, MinsalSiblhBundle:BlhDonacionFrascoRecolectadoAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhDonacionFrascoRecolectado}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+
+    # ###################################################
+    # laboratorio
+    # ###################################################
+    minsal_siblh.admin.blh_lote_analisis:
+        class: Minsal\SiblhBundle\Admin\BlhLoteAnalisisAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhLoteAnalisis, MinsalSiblhBundle:BlhLoteAnalisisAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Nuevo Lote para Análisis}
+
+    minsal_siblh.admin.blh_acidez:
+        class: Minsal\SiblhBundle\Admin\BlhAcidezAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhAcidez, MinsalSiblhBundle:BlhAcidezAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Acidez Dornic}
+
+    minsal_siblh.admin.blh_analisis_sensorial:
+        class: Minsal\SiblhBundle\Admin\BlhAnalisisSensorialAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhAnalisisSensorial, MinsalSiblhBundle:BlhAnalisisSensorialAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Sensorial}
+
+    minsal_siblh.admin.blh_crematocrito:
+        class: Minsal\SiblhBundle\Admin\BlhCrematocritoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhCrematocrito, MinsalSiblhBundle:BlhCrematocritoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Crematocrito}
+
+    minsal_siblh.admin.blh_analisis_microbiologico:
+        class: Minsal\SiblhBundle\Admin\BlhAnalisisMicrobiologicoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhAnalisisMicrobiologico, MinsalSiblhBundle:BlhAnalisisMicrobiologicoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Análisis Microbiológico}
+
+    # ###################################################
+    # pasteurización
+    # ###################################################
+    minsal_siblh.admin.blh_curva:
+        class: Minsal\SiblhBundle\Admin\BlhCurvaAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhCurva, MinsalSiblhBundle:BlhCurvaAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Curva Pasteurización}
+
+    minsal_siblh.admin.blh_pasteurizacion:
+        class: Minsal\SiblhBundle\Admin\BlhPasteurizacionAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhPasteurizacion, MinsalSiblhBundle:BlhPasteurizacionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Pasteurización}
+
+    minsal_siblh.admin.blh_frasco_procesado:
+        class: Minsal\SiblhBundle\Admin\BlhFrascoProcesadoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoProcesado, MinsalSiblhBundle:BlhFrascoProcesadoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Combinación de frascos}
+
+    minsal_siblh.admin.blh_frasco_recolectado_frasco_p:
+        class: Minsal\SiblhBundle\Admin\BlhFrascoRecolectadoFrascoPAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP, MinsalSiblhBundle:BlhFrascoRecolectadoFrascoPAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoRecolectadoFrascoP}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+
+    minsal_siblh.admin.blh_temperatura_pasteurizacion:
+        class: Minsal\SiblhBundle\Admin\BlhTemperaturaPasteurizacionAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhTemperaturaPasteurizacion, MinsalSiblhBundle:BlhTemperaturaPasteurizacionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Temperatura Pasteurización}
+
+    minsal_siblh.admin.blh_temperatura_enfriamiento:
+        class: Minsal\SiblhBundle\Admin\BlhTemperaturaEnfriamientoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhTemperaturaEnfriamiento, MinsalSiblhBundle:BlhTemperaturaEnfriamientoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Temperatura Enfriamiento}
+
+    # ###################################################
+    # receptor
+    # ###################################################
+    minsal_siblh.admin.blh_receptor:
+        class: Minsal\SiblhBundle\Admin\BlhReceptorAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhReceptor, MinsalSiblhBundle:BlhReceptorAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Receptor, label: Ingreso Receptor}
+
+    minsal_siblh.admin.blh_seguimiento_receptor:
+        class: Minsal\SiblhBundle\Admin\BlhSeguimientoReceptorAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhSeguimientoReceptor, MinsalSiblhBundle:BlhSeguimientoReceptorAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Receptor, label: Seguimiento Receptor}
+
+    minsal_siblh.admin.blh_egreso_receptor:
+        class: Minsal\SiblhBundle\Admin\BlhEgresoReceptorAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhEgresoReceptor, MinsalSiblhBundle:BlhEgresoReceptorAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Receptor, label: Egreso Receptor}
+
+    # ###################################################
+    # solicitud
+    # ###################################################
+    minsal_siblh.admin.blh_solicitud:
+        class: Minsal\SiblhBundle\Admin\BlhSolicitudAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhSolicitud, MinsalSiblhBundle:BlhSolicitudAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Solicitudes, label: Solicitudes}
+
     minsal_siblh.admin.blh_grupo_solicitud:
         class: Minsal\SiblhBundle\Admin\BlhGrupoSolicitudAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhGrupoSolicitud, MinsalSiblhBundle:BlhGrupoSolicitudAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Solicitudes, label: Agrupar Solicitudes}
 
-    minsal_siblh.admin.blh_historia_actual:
-        class: Minsal\SiblhBundle\Admin\BlhHistoriaActualAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhHistoriaActual, MinsalSiblhBundle:BlhHistoriaActualAdmin]
+    minsal_siblh.admin.blh_frasco_procesado_solicitud:
+        class: Minsal\SiblhBundle\Admin\BlhFrascoProcesadoSolicitudAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoProcesadoSolicitud, MinsalSiblhBundle:BlhFrascoProcesadoSolicitudAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Donante, label: Registro Historia Actual}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhFrascoProcesadoSolicitud}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
-    minsal_siblh.admin.blh_historial_clinico:
-        class: Minsal\SiblhBundle\Admin\BlhHistorialClinicoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhHistorialClinico, MinsalSiblhBundle:BlhHistorialClinicoAdmin]
+    # ###################################################
+    # administración
+    # ###################################################
+    minsal_siblh.admin.blh_banco_de_leche:
+        class: Minsal\SiblhBundle\Admin\BlhBancoDeLecheAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhBancoDeLeche, MinsalSiblhBundle:BlhBancoDeLecheAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Donante, label: Registro Historial Clínico}
+            - {name: sonata.admin, manager_type: orm, group: Administración, label: Bancos de Leche}
+
+    minsal_siblh.admin.blh_ctl_centro_recoleccion:
+        class: Minsal\SiblhBundle\Admin\BlhCtlCentroRecoleccionAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion, MinsalSiblhBundle:BlhCtlCentroRecoleccionAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhCtlCentroRecoleccion}
+            - {name: sonata.admin, manager_type: orm, group: Administración, label: Centros de Recolección}
+
+    minsal_siblh.admin.blh_ctl_habito_toxico:
+        class: Minsal\SiblhBundle\Admin\BlhCtlHabitoToxicoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhCtlHabitoToxico, MinsalSiblhBundle:BlhCtlHabitoToxicoAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhCtlHabitoToxico}
+            # - {name: sonata.admin, manager_type: orm, group: Administración, label: Hábitos Tóxicos}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+
+    minsal_siblh.admin.blh_bitacora:
+        class: Minsal\SiblhBundle\Admin\BlhBitacoraAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhBitacora, MinsalSiblhBundle:BlhBitacoraAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhBitacora}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+
+    minsal_siblh.admin.blh_estado:
+        class: Minsal\SiblhBundle\Admin\BlhEstadoAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhEstado, MinsalSiblhBundle:BlhEstadoAdmin]
+        tags:
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhEstado}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_informacion_publica:
         class: Minsal\SiblhBundle\Admin\BlhInformacionPublicaAdmin
@@ -133,11 +215,12 @@ services:
             # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhInformacionPublica}
             - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
-    minsal_siblh.admin.blh_lote_analisis:
-        class: Minsal\SiblhBundle\Admin\BlhLoteAnalisisAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhLoteAnalisis, MinsalSiblhBundle:BlhLoteAnalisisAdmin]
+    minsal_siblh.admin.blh_personal:
+        class: Minsal\SiblhBundle\Admin\BlhPersonalAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhPersonal, MinsalSiblhBundle:BlhPersonalAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Laboratorio, label: Nuevo Lote para Análisis}
+            # - {name: sonata.admin, manager_type: orm, group: Administración, label: Registrar Personal}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     minsal_siblh.admin.blh_menu:
         class: Minsal\SiblhBundle\Admin\BlhMenuAdmin
@@ -153,32 +236,6 @@ services:
             # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhOpcionMenu}
             - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
-    minsal_siblh.admin.blh_pasteurizacion:
-        class: Minsal\SiblhBundle\Admin\BlhPasteurizacionAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhPasteurizacion, MinsalSiblhBundle:BlhPasteurizacionAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Pasteurización}
-
-    minsal_siblh.admin.blh_personal:
-        class: Minsal\SiblhBundle\Admin\BlhPersonalAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhPersonal, MinsalSiblhBundle:BlhPersonalAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: Administración, label: Registrar Personal}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
-
-    minsal_siblh.admin.blh_receptor:
-        class: Minsal\SiblhBundle\Admin\BlhReceptorAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhReceptor, MinsalSiblhBundle:BlhReceptorAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Receptor, label: Ingreso Receptor}
-
-    minsal_siblh.admin.blh_rol_menu:
-        class: Minsal\SiblhBundle\Admin\BlhRolMenuAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhRolMenu, MinsalSiblhBundle:BlhRolMenuAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhRolMenu}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
-
     minsal_siblh.admin.blh_rol:
         class: Minsal\SiblhBundle\Admin\BlhRolAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhRol, MinsalSiblhBundle:BlhRolAdmin]
@@ -186,29 +243,12 @@ services:
             # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhRol}
             - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
-    minsal_siblh.admin.blh_seguimiento_receptor:
-        class: Minsal\SiblhBundle\Admin\BlhSeguimientoReceptorAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhSeguimientoReceptor, MinsalSiblhBundle:BlhSeguimientoReceptorAdmin]
+    minsal_siblh.admin.blh_rol_menu:
+        class: Minsal\SiblhBundle\Admin\BlhRolMenuAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhRolMenu, MinsalSiblhBundle:BlhRolMenuAdmin]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: Receptor, label: Seguimiento Receptor}
-
-    minsal_siblh.admin.blh_solicitud:
-        class: Minsal\SiblhBundle\Admin\BlhSolicitudAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhSolicitud, MinsalSiblhBundle:BlhSolicitudAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Solicitudes, label: Solicitudes}
-
-    minsal_siblh.admin.blh_temperatura_enfriamiento:
-        class: Minsal\SiblhBundle\Admin\BlhTemperaturaEnfriamientoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhTemperaturaEnfriamiento, MinsalSiblhBundle:BlhTemperaturaEnfriamientoAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Temperatura Enfriamiento}
-
-    minsal_siblh.admin.blh_temperatura_pasteurizacion:
-        class: Minsal\SiblhBundle\Admin\BlhTemperaturaPasteurizacionAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhTemperaturaPasteurizacion, MinsalSiblhBundle:BlhTemperaturaPasteurizacionAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Temperatura Pasteurización}
+            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhRolMenu}
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
 
     # minsal_siblh.admin.ctl_centro_recoleccion:
     #     class: Minsal\SiblhBundle\Admin\CtlCentroRecoleccionAdmin
@@ -221,24 +261,3 @@ services:
     #     arguments: [~, Minsal\SiblhBundle\Entity\CtlHabitoToxico, MinsalSiblhBundle:CtlHabitoToxicoAdmin]
     #     tags:
     #         - {name: sonata.admin, manager_type: orm, group: Administración, label: Hábitos Tóxicos}
-
-    minsal_siblh.admin.blh_ctl_centro_recoleccion:
-        class: Minsal\SiblhBundle\Admin\BlhCtlCentroRecoleccionAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhCtlCentroRecoleccion, MinsalSiblhBundle:BlhCtlCentroRecoleccionAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhCtlCentroRecoleccion}
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Centros de Recolección}
-
-    minsal_siblh.admin.blh_ctl_habito_toxico:
-        class: Minsal\SiblhBundle\Admin\BlhCtlHabitoToxicoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhCtlHabitoToxico, MinsalSiblhBundle:BlhCtlHabitoToxicoAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhCtlHabitoToxico}
-            - {name: sonata.admin, manager_type: orm, group: Administración, label: Hábitos Tóxicos}
-
-    minsal_siblh.admin.blh_donacion_frasco_recolectado:
-        class: Minsal\SiblhBundle\Admin\BlhDonacionFrascoRecolectadoAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhDonacionFrascoRecolectado, MinsalSiblhBundle:BlhDonacionFrascoRecolectadoAdmin]
-        tags:
-            # - {name: sonata.admin, manager_type: orm, group: admin, label: BlhDonacionFrascoRecolectado}
-            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
