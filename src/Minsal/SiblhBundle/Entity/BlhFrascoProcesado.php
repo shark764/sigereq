@@ -150,7 +150,6 @@ class BlhFrascoProcesado implements EntityInterface
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_estado", referencedColumnName="id")
      * })
-     * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idEstado;
 
@@ -191,6 +190,21 @@ class BlhFrascoProcesado implements EntityInterface
     private $frascoProcesadoFrascoRecolectadoCombinado;
 
     /**
+     * @ORM\ManyToMany(targetEntity="BlhFrascoRecolectado")
+     * @ORM\JoinTable(name="blh_frasco_recolectado_frasco_p",
+     *      joinColumns={@ORM\JoinColumn(name="id_frasco_procesado", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="id_frasco_recolectado", referencedColumnName="id")}
+     * )
+     * @Assert\Count(
+     *      min = 1,
+     *      max = 3,
+     *      minMessage = "Debe seleccionar al menos {{ limit }} frasco(s)",
+     *      maxMessage = "No puede seleccionar más de {{ limit }} frasco(s)"
+     * )
+     */
+    private $frascoRecolectadoFrascoProcesadoVolumenAgregado;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -200,6 +214,7 @@ class BlhFrascoProcesado implements EntityInterface
         $this->frascoProcesadoAnalisisMicrobiologico = new \Doctrine\Common\Collections\ArrayCollection();
         $this->frascoProcesadoCrematocrito = new \Doctrine\Common\Collections\ArrayCollection();
         $this->frascoProcesadoFrascoRecolectadoCombinado = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->frascoRecolectadoFrascoProcesadoVolumenAgregado = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -621,6 +636,39 @@ class BlhFrascoProcesado implements EntityInterface
     public function getFrascoProcesadoFrascoRecolectadoCombinado()
     {
         return $this->frascoProcesadoFrascoRecolectadoCombinado;
+    }
+
+    /**
+     * Add frascoRecolectadoFrascoProcesadoVolumenAgregado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $frascoRecolectadoFrascoProcesadoVolumenAgregado
+     * @return BlhFrascoProcesado
+     */
+    public function addFrascoRecolectadoFrascoProcesadoVolumenAgregado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $frascoRecolectadoFrascoProcesadoVolumenAgregado)
+    {
+        $this->frascoRecolectadoFrascoProcesadoVolumenAgregado[] = $frascoRecolectadoFrascoProcesadoVolumenAgregado;
+
+        return $this;
+    }
+
+    /**
+     * Remove frascoRecolectadoFrascoProcesadoVolumenAgregado
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $frascoRecolectadoFrascoProcesadoVolumenAgregado
+     */
+    public function removeFrascoRecolectadoFrascoProcesadoVolumenAgregado(\Minsal\SiblhBundle\Entity\BlhFrascoRecolectado $frascoRecolectadoFrascoProcesadoVolumenAgregado)
+    {
+        $this->frascoRecolectadoFrascoProcesadoVolumenAgregado->removeElement($frascoRecolectadoFrascoProcesadoVolumenAgregado);
+    }
+
+    /**
+     * Get frascoRecolectadoFrascoProcesadoVolumenAgregado
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFrascoRecolectadoFrascoProcesadoVolumenAgregado()
+    {
+        return $this->frascoRecolectadoFrascoProcesadoVolumenAgregado;
     }
 
 }
