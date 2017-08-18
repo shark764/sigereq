@@ -335,9 +335,9 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         switch ($name)
         {
-            // case 'edit':
-            //     return 'MinsalSiblhBundle:BlhFrascoProcesadoAdmin:base_edit.html.twig';
-            //     break;
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhFrascoProcesadoAdmin:base_edit.html.twig';
+                break;
             // case 'list':
             //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
             //     break;
