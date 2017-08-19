@@ -54,64 +54,23 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
                 }
 
                 try {
-                    ////////
-                    // Mixed Bottles
-                    ////////
-                    // // foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $collected_bottle_to_mixed_bottle_)
-                    // echo "/********************** FIRST COUNT **********************/ <br/><br/>";
-                    // // var_dump($object->getFrascoProcesadoAnalisisMicrobiologico()->count());
-                    // // var_dump($object->getFrascoProcesadoCrematocrito()->count());
-                    // var_dump($object->getFrascoProcesadoFrascoRecolectadoCombinado()->count());
-                    // var_dump($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado()->count());
-                    // echo "<br/><br/>";
-                    $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
-                    foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $collected_bottle_to_mixed_bottle_)
+                    ////////////////////////////////////////////////////////////////////////////////////////
+                    //////// Mixed Bottles
+                    ////////////////////////////////////////////////////////////////////////////////////////
+                    $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
+                    foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $COLLECTED_BOTTLE_TO_MIXED_BOTTLE_)
                     {
                         $frRP = new BlhFrascoRecolectadoFrascoP();
-                        $frRP->setIdFrascoRecolectado($collected_bottle_to_mixed_bottle_);
+                        $frRP->setIdFrascoRecolectado($COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
                         $frRP->setIdFrascoProcesado($object);
-                        $frRP->setVolumenAgregado($request_collected_bottle_to_mixed_bottle_['volumenAgregado'][$collected_bottle_to_mixed_bottle_->getId()]);
+                        $frRP->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenAgregado'][$COLLECTED_BOTTLE_TO_MIXED_BOTTLE_->getId()]);
                         $frRP->setIdUserReg($this->admin->getSessionSystemUserLogged());
                         $object->addFrascoProcesadoFrascoRecolectadoCombinado($frRP);
 
-                        $object->removeFrascoRecolectadoFrascoProcesadoVolumenAgregado($collected_bottle_to_mixed_bottle_);
-
-                        // var_dump($request_collected_bottle_to_mixed_bottle_);
-                        // echo "<br/>";
-                        // var_dump($request_collected_bottle_to_mixed_bottle_['volumenAgregado']);
-                        // echo "<br/>";
-                        // var_dump($request_collected_bottle_to_mixed_bottle_['volumenAgregado'][$collected_bottle_to_mixed_bottle_->getId()]);
-                        // echo "<br/><br/>";
-                        // // $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
-                        // // var_dump($request_collected_bottle_to_mixed_bottle_);
-                        // // echo "<br/><br/>";
-                        // // var_dump($request_collected_bottle_to_mixed_bottle_);
-                        // echo "<br/><br/>";
-                        // // if ($request_collected_bottle_to_mixed_bottle_ !== null)
-                        // // {
-                        //     // foreach ($request_collected_bottle_to_mixed_bottle_['solicitudEstudioSintomatologiaMama'][0] as $key => $value)
-                        //     // {
-                        //     //     if ($key === 'idSolicitudEstudio' || $key === 'idSolicitudEstudioMamografia') {
-                        //     //         continue;
-                        //     //     }
-                        //     //     $method_name_ = 'set' . ucfirst(str_replace('NOTMAPPED', '', $key));
-                        //     //     if (count($value) > 1) {
-                        //     //         $collected_bottle_to_mixed_bottle_->$method_name_('A');
-                        //     //         continue;
-                        //     //     }
-                        //     //     $collected_bottle_to_mixed_bottle_->$method_name_($value[0]);
-                        //     // }
-                        // // }
+                        $object->removeFrascoRecolectadoFrascoProcesadoVolumenAgregado($COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
                     }
-                    // echo "/********************** SECOND COUNT **********************/ <br/><br/>";
-                    // // var_dump($object->getFrascoProcesadoAnalisisMicrobiologico()->count());
-                    // // var_dump($object->getFrascoProcesadoCrematocrito()->count());
-                    // var_dump($object->getFrascoProcesadoFrascoRecolectadoCombinado()->count());
-                    // var_dump($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado()->count());
+                    ////////////////////////////////////////////////////////////////////////////////////////
 
-                    // throw new \RuntimeException(sprintf('A %s method must be created', $object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado()->count()));
-                    ////////
-                    
                     $this->admin->create($object);
 
                     if ($this->isXmlHttpRequest()) {
@@ -201,19 +160,34 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
             // persist if the form was valid and if in preview mode the preview was approved
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
                 try {
-                    $request_collected_bottle_to_mixed_bottle_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
-                    foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $collected_bottle_to_mixed_bottle_)
+                    ////////////////////////////////////////////////////////////////////////////////////////
+                    //////// Mixed Bottles
+                    ////////////////////////////////////////////////////////////////////////////////////////
+                    $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
+                    // foreach ($object->getFrascoProcesadoFrascoRecolectadoCombinado() as $MIXED_BOTTLE_)
+                    // {
+                    //     $MIXED_BOTTLE_->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenAgregado'][$MIXED_BOTTLE_->getIdFrascoRecolectado()->getId()]);
+                    // }
+                    foreach ($object->getFrascoRecolectadoFrascoProcesadoVolumenAgregado() as $COLLECTED_BOTTLE_TO_MIXED_BOTTLE_)
                     {
+                        foreach ($object->getFrascoProcesadoFrascoRecolectadoCombinado() as $MIXED_BOTTLE_)
+                        {
+                            if ($COLLECTED_BOTTLE_TO_MIXED_BOTTLE_->getId() === $MIXED_BOTTLE_->getIdFrascoRecolectado()->getId()) {
+                                $MIXED_BOTTLE_->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenAgregado'][$MIXED_BOTTLE_->getIdFrascoRecolectado()->getId()]);
+                                continue 2;
+                            }
+                        }
                         $frRP = new BlhFrascoRecolectadoFrascoP();
-                        $frRP->setIdFrascoRecolectado($collected_bottle_to_mixed_bottle_);
+                        $frRP->setIdFrascoRecolectado($COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
                         $frRP->setIdFrascoProcesado($object);
-                        $frRP->setVolumenAgregado($request_collected_bottle_to_mixed_bottle_['volumenAgregado'][$collected_bottle_to_mixed_bottle_->getId()]);
+                        $frRP->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenAgregado'][$COLLECTED_BOTTLE_TO_MIXED_BOTTLE_->getId()]);
                         $frRP->setIdUserReg($this->admin->getSessionSystemUserLogged());
                         $object->addFrascoProcesadoFrascoRecolectadoCombinado($frRP);
 
-                        $object->removeFrascoRecolectadoFrascoProcesadoVolumenAgregado($collected_bottle_to_mixed_bottle_);
+                        $object->removeFrascoRecolectadoFrascoProcesadoVolumenAgregado($COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
                     }
-
+                    ////////////////////////////////////////////////////////////////////////////////////////
+                    
                     $this->admin->update($object);
 
                     if ($this->isXmlHttpRequest()) {

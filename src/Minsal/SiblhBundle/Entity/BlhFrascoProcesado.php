@@ -186,6 +186,12 @@ class BlhFrascoProcesado implements EntityInterface
 
     /**
      * @ORM\OneToMany(targetEntity="BlhFrascoRecolectadoFrascoP", mappedBy="idFrascoProcesado", cascade={"all"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = 0,
+     *      max = 3,
+     *      minMessage = "Debe seleccionar al menos {{ limit }} frasco(s)",
+     *      maxMessage = "No puede seleccionar más de {{ limit }} frasco(s)"
+     * )
      */
     private $frascoProcesadoFrascoRecolectadoCombinado;
 

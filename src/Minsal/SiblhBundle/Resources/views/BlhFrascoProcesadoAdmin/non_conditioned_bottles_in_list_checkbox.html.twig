@@ -11,6 +11,14 @@ file that was distributed with this source code.
 
 {% set COLLECTION_NON_CONDITIONED_BOTTLES_ = [] %}
 
+{% set COLLECTION_MIXED_BOTTLES_ = [] %}
+{% for frMxd in sonata_admin.admin.subject.getFrascoProcesadoFrascoRecolectadoCombinado() %}
+    {% set i = '_' ~ frMxd.getIdFrascoRecolectado().getId() %}
+    {% if i not in COLLECTION_MIXED_BOTTLES_|keys %}
+        {% set COLLECTION_MIXED_BOTTLES_ = COLLECTION_MIXED_BOTTLES_|merge({ (i): frMxd.getVolumenAgregado() }) %}
+    {% endif %}
+{% endfor %}
+
 {% if choices is defined and choices|length < 1 %}
     <div class="alert alert-warning alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
@@ -103,7 +111,7 @@ file that was distributed with this source code.
                 <td>{{ s.getOnzRecolectado() }}</td>
                 <td>{{ s.getIdFormaExtraccion().getPresentacionEntidad() }}</td>
                 <td>{{ s.getFechaHoraReg()|date('d/m/Y', 'America/El_Salvador') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
-                <td><input type="text" id="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenAgregado_{{ s.getId() }}" name="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenAgregado][{{ s.getId() }}]" placeholder="vol. combinar (ml)..." class="form-control input-sm" min="0" max="{{ s.getVolumenDisponibleFr() }}" data-fv-numeric="true" data-fv-numeric-message="El valor no es un número válido" data-fv-numeric-thousandsSeparator="" data-fv-numeric-decimalSeparator="." ></td>
+                <td><input type="text" id="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenAgregado_{{ s.getId() }}" name="MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenAgregado][{{ s.getId() }}]" placeholder="vol. combinar (ml)..." class="form-control input-sm" min="0" max="{{ s.getVolumenDisponibleFr() }}" data-fv-numeric="true" data-fv-numeric-message="El valor no es un número válido" data-fv-numeric-thousandsSeparator="" data-fv-numeric-decimalSeparator="." {% if COLLECTION_MIXED_BOTTLES_['_' ~ s.getId()] is defined %}value="{{ COLLECTION_MIXED_BOTTLES_['_' ~ s.getId()] }}"{% endif %} ></td>
                 <td></td>
                 <td></td>
             </tr>
