@@ -53,8 +53,10 @@
                                             {% if form_group.description != false %}
                                                 <p>{{ form_group.description|raw }}</p>
                                             {% endif %}
-
-                                            {% for field_name in form_group.fields if field_name != 'pasteurizacionFrascoProcesado' %}
+{#
+                                            <!-- {% for field_name in form_group.fields if field_name != 'pasteurizacionFrascoProcesado' %} -->
+#}
+                                            {% for field_name in form_group.fields %}
                                                 {% if admin.formfielddescriptions[field_name] is defined %}
                                                     {{ form_row(form[field_name])}}
                                                 {% endif %}
@@ -66,13 +68,14 @@
                         </div>
                     {% endfor %}
 
+{#
                     <!--
                     //////////////////////////////////////////////////////////////
                     //////// TABLE
                     //////////////////////////////////////////////////////////////
                      -->
                     <!-- table for any result -->
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="box box-drop-outside-shadow box-success-v3">
                             <div class="box-header">
                                 <h4 class="box-title">
@@ -81,30 +84,13 @@
                             </div>
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <center>
-                                                <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
-                                                    <div class="btn-group" role="group" aria-label="...">
-                                                        <a class="btn btn-sm btn-xray-awesome-blue" href="javascript:void(0)" onclick="generateAutomaticBatchOfBottles(this); return false;" name="BATCH_{{ admin.uniqid }}_generate_automatic_batch_of_bottles" id="BATCH_{{ admin.uniqid }}_generate_automatic_batch_of_bottles" {#disabled="disabled"#}><span class="glyphicon glyphicon-list-alt"></span> Lote automático</a>
-                                                    </div>
-                                                    <div class="btn-group" role="group" aria-label="...">
-                                                        <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_frasco_procesado_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Combinar frascos</a>
-                                                    </div>
-                                                    <div class="btn-group" role="group" aria-label="...">
-                                                        <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_crematocrito_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Crematocrito</a>
-                                                    </div>
-                                                </div>
-                                            </center>
-                                        </div>
-                                    </div>
                                     {{ form_label(form.pasteurizacionFrascoProcesado) }}
                                     {{ form_errors(form.pasteurizacionFrascoProcesado) }}
                                     {{ form_widget(form.pasteurizacionFrascoProcesado) }}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- end table -->
 
 
@@ -113,6 +99,7 @@
                     //////// END --| TABLE
                     //////////////////////////////////////////////////////////////
                      -->
+#}
 
                 {% endblock %}
 

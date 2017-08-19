@@ -87,13 +87,14 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                 // ))
                 ->add('codigoPasteurizacion', null, array(
                                 'label' => 'Código',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-3 col-md-3 col-sm-3'),
                                 'required' => false,
                                 'attr' => array(
                                         'placeholder' => 'código...',
                                         'class' => 'form-control input-sm',
                                         'readonly' => 'readonly',
-                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                        'data-form-inline-group' => 'start',
+                                        'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                         'data-add-input-addon' => 'true',
                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-barcode',
@@ -101,7 +102,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                 ))
                 ->add('fechaPasteurizacion', 'datetime', array(
                                 'label' => 'Fecha de pasteurización',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                 'required' => false,
                                 'widget' => 'single_text',
                                 'format' => 'dd/MM/yyyy',
@@ -111,7 +112,8 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                         'class' => 'form-control input-sm',
                                         'data-input-transform' => 'datetimepicker',
                                         'data-datetimepicker-type' => 'date',
-                                        'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                        'data-form-inline-group' => 'stop',
+                                        'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                         'data-add-input-addon' => 'true',
                                         // 'data-add-input-addon-class' => 'primary-v4',
@@ -129,7 +131,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                 ))
                 ->add('idResponsablePasteurizacion', null, array(
                                 'label' => 'Responsable de pasteurización',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-3 col-md-3 col-sm-3'),
                                 'required' => true,
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
@@ -163,7 +165,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                 // ))
                 ->add('numCiclo', null, array(
                                 'label' => 'Número de ciclo',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-3 col-md-3 col-sm-3'),
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
                                         'placeholder' => 'número de ciclo...',
@@ -185,7 +187,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                 ))
                 ->add('volumenPasteurizado', null, array(
                                 'label' => 'Vol. pasteurizado',
-                                'label_attr' => array('class' => 'label_form_sm'),
+                                'label_attr' => array('class' => 'label_form_sm col-lg-3 col-md-3 col-sm-3'),
                                 'required' => true,
                                 'attr' => array(
                                         'placeholder' => 'vol. pasteurizado...',
@@ -208,11 +210,11 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                 )
                 ))
                 ->add('numFrascosPasteurizados', null, array(
-                                'label' => 'Frascos pasteurizados',
+                                'label' => 'fcos. pasteurizados',
                                 'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                                 'attr' => array(
                                         'class' => 'form-control input-sm',
-                                        'placeholder' => 'número de frascos pasteurizados...',
+                                        'placeholder' => 'fcos. pasteurizados...',
                                         'data-form-inline-group' => 'continue',
                                         'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
 
@@ -254,11 +256,11 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                 ))
                 // ->add('usuario')
                 // ->add('fechaHoraReg')
-            ->end()
-        ;
+        //     ->end()
+        // ;
 
-        $formMapper
-            ->with('Selección de frascos pasteurizados')
+        // $formMapper
+        //     ->with('Selección de frascos pasteurizados')
                 // ->add('pasteurizacionFrascoProcesado', 'sonata_type_collection', array(
                 //                 'label' => false,
                 //                 'label_attr' => array('class' => 'label_form_sm'),
@@ -278,7 +280,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                 // )
                 ->add('pasteurizacionFrascoProcesado', 'entity', array(
                                 'label' => false,
-                                'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                                'label_attr' => array('class' => 'label_form_sm'),
                                 // 'required' => true,
                                 'required' => false,
                                 'expanded' => true,

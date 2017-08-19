@@ -36,12 +36,12 @@ file that was distributed with this source code.
     <thead>
         <tr>
             <th></th>
-            <th>Código (Frasco)</th>
-            <th>Volumen (ml)</th>
-            <th>Volumen (oz)</th>
+            <th class="bstable-column-highlighted">Cód. (fco.)</th>
+            <th class="bstable-column-highlighted">Vol. (ml)</th>
+            <th>Vol. (oz)</th>
             <th>Acidez</th>
             <th>Kcalorías</th>
-            <th>Vol. Disponible</th>
+            <th class="bstable-column-highlighted">Vol. Disponible (ml)</th>
             <th>Combinación</th>
             <th>Fecha Reg.</th>
         </tr>
@@ -114,7 +114,7 @@ file that was distributed with this source code.
             });
             $table.find('tbody tr td .iCheck-helper').css('position', 'relative');
 
-            $table.on('page-change.bs.table', function (e, number, size) {
+            $table.on('page-change.bs.table sort.bs.table column-switch.bs.table search.bs.table column-search.bs.table', function (e, p1, p2) {
                 $table.find('tbody tr td input:radio').iCheck('destroy').iCheck({
                     checkboxClass: 'icheckbox_minimal',
                     radioClass: 'iradio_minimal'
