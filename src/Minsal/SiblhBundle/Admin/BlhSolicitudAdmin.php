@@ -94,12 +94,13 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('codigoSolicitud', null, array(
                             'label' => 'Código',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'attr' => array(
                                     'placeholder' => 'código...',
                                     'class' => 'form-control input-sm',
                                     'readonly' => 'readonly',
+                                    'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
@@ -108,7 +109,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('fechaSolicitud', 'datetime', array(
                             'label' => 'Fecha de solicitud',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'widget' => 'single_text',
                             'format' => 'dd/MM/yyyy',
@@ -118,6 +119,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     'data-input-transform' => 'datetimepicker',
                                     'data-datetimepicker-type' => 'date',
+                                    'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
@@ -136,13 +138,14 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('cuna', null, array(
                             'label' => 'Cuna',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'cuna...',
                                     // 'readonly' => 'readonly',
                                     // 'data-form-inline-group' => 'stop',
+                                    'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
@@ -159,13 +162,14 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('pesoDia', null, array(
                             'label' => 'Peso del receptor (g)',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'peso del receptor (g)...',
+                                    'placeholder' => 'peso receptor (g)...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     // 'data-form-inline-group' => 'stop',
+                                    'data-form-inline-group' => 'stop',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
@@ -183,14 +187,14 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('volumenPorToma', null, array(
                             'label' => 'Vol. por toma (ml)',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'vol. por toma...',
+                                    'placeholder' => 'vol. / toma...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
@@ -211,7 +215,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                             // 'help' => '<span class="text-primary-v4">Se calculará automáticamente.</span>',
                             'attr' => array(
                                     'class' => 'form-control input-sm',
-                                    'placeholder' => 'tomas por día...',
+                                    'placeholder' => 'tomas / día...',
                                     // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'continue',
                                     'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
@@ -229,15 +233,15 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                             )
             ))
             ->add('volumenPorDia', null, array(
-                            'label' => 'Vol. total por día (ml)',
+                            'label' => 'Vol. total / día (ml)',
                             'label_attr' => array('class' => 'label_form_sm col-lg-1 col-md-1 col-sm-1'),
                             'required' => true,
                             'attr' => array(
-                                    'placeholder' => 'vol. total por día (ml)...',
+                                    'placeholder' => 'vol. total / día (ml)...',
                                     'class' => 'form-control input-sm',
                                     // 'readonly' => 'readonly',
                                     'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-2 col-md-2 col-sm-2',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     'data-add-input-addon-addon' => 'glyphicon glyphicon-tint',
@@ -274,12 +278,12 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('idCaloriasNecesarias', null, array(
                             'label' => 'Calorías necesarias',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -313,7 +317,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'data-form-inline-group' => 'stop',
-                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
+                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -322,7 +326,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             ))
             ->add('estado', null, array(
                             'label' => 'Estado',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => false,
                             'attr' => array(
                                     // 'rows' => '2',
@@ -360,7 +364,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('idResponsableSolicitud', null, array(
                             'label' => 'Responsable de solicitud',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'required' => true,
                             'attr' => array(
                                     'class' => 'form-control input-sm',

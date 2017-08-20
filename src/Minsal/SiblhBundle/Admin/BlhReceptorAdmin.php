@@ -459,6 +459,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('duracionVentilacion', null, array(
                             'label' => 'Duración de ventilación',
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => false,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'duración de ventilación...',
@@ -503,6 +504,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('duracionCpap', null, array(
                             'label' => 'Duración CPAP nasal',
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => false,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'duración CPAP nasal...',
@@ -539,6 +541,8 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                                     // 'data-sonata-select2-escape-markup' => 'true',
                                     'data-form-inline-group' => 'start',
 
+                                    'data-fv-notempty' => 'false',
+
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
                                     'data-add-input-addon-skipicon' => 'true',
@@ -547,6 +551,7 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             ->add('duracionNpt', null, array(
                             'label' => 'Duración NPT',
                             'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'required' => false,
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'duración NPT...',
@@ -638,6 +643,29 @@ class BlhReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                 return parent::getTemplate($name);
                 break;
         }
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
+    }
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        
+        return $instance;
     }
 
 }

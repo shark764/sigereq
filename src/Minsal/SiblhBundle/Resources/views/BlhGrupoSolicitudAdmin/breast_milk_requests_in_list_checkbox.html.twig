@@ -18,6 +18,21 @@ file that was distributed with this source code.
     </div>
 {% endif %}
 
+<div class="panel panel-default">
+    <div class="panel-body">
+        <center>
+            <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="generateAutomaticBatchOfBottles(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles btn-bigger-glyphicon-icon" {#disabled="disabled"#}><span class="glyphicon glyphicon-list-alt"></span> Lote automático</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_solicitud_create') }}"><span class="glyphicon glyphicon-box"></span> Registrar solicitud</a>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+
 <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_breast_milk_requests_target_bstable" name="blh_breast_milk_requests_target_bstable"
         data-id-field="id"
         data-cache="false"
@@ -37,7 +52,7 @@ file that was distributed with this source code.
         <tr>
             <th style="vertical-align: middle; text-align: center;"><input type="checkbox" id="BATCH_{{ sonata_admin.admin.uniqId }}_grupoSolicitudes_all" name="BATCH_{{ sonata_admin.admin.uniqId }}[grupoSolicitudes][all]"></th>
             <th>Receptor</th>
-            <th>Código (Solicitud)</th>
+            <th>Cód. (Solicitud)</th>
             <th>Peso (kg)</th>
             <th>Acidez necesaria</th>
             <th>Calorías necesarias</th>

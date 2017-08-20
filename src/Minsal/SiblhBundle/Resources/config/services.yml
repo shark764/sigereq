@@ -96,17 +96,17 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Curva Pasteurización}
 
-    minsal_siblh.admin.blh_pasteurizacion:
-        class: Minsal\SiblhBundle\Admin\BlhPasteurizacionAdmin
-        arguments: [~, Minsal\SiblhBundle\Entity\BlhPasteurizacion, MinsalSiblhBundle:BlhPasteurizacionAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Pasteurización}
-
     minsal_siblh.admin.blh_frasco_procesado:
         class: Minsal\SiblhBundle\Admin\BlhFrascoProcesadoAdmin
         arguments: [~, Minsal\SiblhBundle\Entity\BlhFrascoProcesado, MinsalSiblhBundle:BlhFrascoProcesadoAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Combinación de frascos}
+
+    minsal_siblh.admin.blh_pasteurizacion:
+        class: Minsal\SiblhBundle\Admin\BlhPasteurizacionAdmin
+        arguments: [~, Minsal\SiblhBundle\Entity\BlhPasteurizacion, MinsalSiblhBundle:BlhPasteurizacionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Pasteurización, label: Pasteurización}
 
     minsal_siblh.admin.blh_frasco_recolectado_frasco_p:
         class: Minsal\SiblhBundle\Admin\BlhFrascoRecolectadoFrascoPAdmin

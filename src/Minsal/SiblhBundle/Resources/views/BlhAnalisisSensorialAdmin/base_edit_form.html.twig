@@ -39,52 +39,6 @@
                 {% block simagd_apply_custom_firstbox %} {% endblock %}
 
                 {% block sonata_tab_content %}
-
-                    <!--
-                    //////////////////////////////////////////////////////////////
-                    //////// TABLE
-                    //////////////////////////////////////////////////////////////
-                     -->
-                    <!-- table for any result -->
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="box box-drop-outside-shadow box-success-v3">
-                            <div class="box-header">
-                                <h4 class="box-title">
-                                    <span class="text-black-thrash">Lote de frascos recolectados para análisis</span>
-                                </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <center>
-                                                <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
-                                                    <div class="btn-group" role="group" aria-label="...">
-                                                        <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_donacion_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Registrar donación</a>
-                                                    </div>
-                                                    <div class="btn-group" role="group" aria-label="...">
-                                                        <a class="btn btn-sm btn-success-v3" href="{{ path('siblh_lote_analisis_create') }}"><span class="glyphicon glyphicon-list-alt"></span> Nuevo lote para análisis</a>
-                                                    </div>
-                                                </div>
-                                            </center>
-                                        </div>
-                                    </div>
-                                    {{ form_label(form.idFrascoRecolectado) }}
-                                    {{ form_errors(form.idFrascoRecolectado) }}
-                                    {{ form_widget(form.idFrascoRecolectado) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end table -->
-
-
-                    <!--
-                    //////////////////////////////////////////////////////////////
-                    //////// END --| TABLE
-                    //////////////////////////////////////////////////////////////
-                     -->
-
                     {% for name, form_group in admin.formgroups %}
                         <div class="{{ form_group.class|default('col-md-12') }}">
                             <div class="box box-drop-outside-shadow box-primary-v4">
