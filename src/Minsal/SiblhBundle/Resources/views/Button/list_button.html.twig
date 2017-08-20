@@ -11,8 +11,7 @@ file that was distributed with this source code.
 
 {% if admin.hasroute('list') and admin.isGranted('LIST')%}
     <div class="btn-group" role="group" aria-label="...">
-	    <a class="btn btn-sm btn-xray-awesome-blue" href="{{ admin.generateUrl('list') }}">
-	        <span class="glyphicon glyphicon-list"></span>
-	        Ver listado</a>
+	    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="{{ admin.generateUrl('list') }}">
+	        <span class="glyphicon glyphicon-list"></span>&nbsp; Ver listado</a>
     </div>
 {% endif %}

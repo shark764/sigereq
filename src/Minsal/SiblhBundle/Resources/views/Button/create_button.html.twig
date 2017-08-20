@@ -12,9 +12,8 @@ file that was distributed with this source code.
 {% if admin.hasRoute('create') and admin.isGranted('CREATE')%}
     {% if admin.subClasses is empty %}
         <div class="btn-group" role="group" aria-label="...">
-            <a class="btn btn-sm btn-xray-awesome-blue" href="{{ admin.generateUrl('create') }}">
-                <span class=" glyphicon glyphicon-plus-sign"></span>
-                Crear nuevo</a>
+            <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="{{ admin.generateUrl('create') }}">
+                <span class=" glyphicon glyphicon-plus-sign"></span>&nbsp; Nuevo</a>
         </div>
     {% else %}
         <li class="divider" role="presentation"></li>

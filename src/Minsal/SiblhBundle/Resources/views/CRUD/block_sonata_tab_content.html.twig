@@ -1,0 +1,26 @@
+{% for name, form_group in admin.formgroups %}
+    <div class="{{ form_group.class|default('col-md-12') }}">
+        <div class="box box-drop-outside-shadow box-primary-v4">
+            <div class="box-header">
+                <h4 class="box-title">
+                    <span class="text-black-thrash">{{ admin.trans(name, {}, form_group.translation_domain) }}</span>
+                </h4>
+            </div>
+            {#<div class="box{% if loop.first %} in{% endif %}" id="{{ admin.uniqid }}_{{ loop.index }}">#}
+                <div class="box-body">
+                    <div class="sonata-ba-collapsed-fields">
+                        {% if form_group.description != false %}
+                            <p>{{ form_group.description|raw }}</p>
+                        {% endif %}
+
+                        {% for field_name in form_group.fields %}
+                            {% if admin.formfielddescriptions[field_name] is defined %}
+                                {{ form_row(form[field_name])}}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {#</div>#}
+        </div>
+    </div>
+{% endfor %}

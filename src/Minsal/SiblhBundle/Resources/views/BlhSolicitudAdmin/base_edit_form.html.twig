@@ -72,86 +72,9 @@
                     {% endif %}
                 {% endblock %}
 
-                {% block sonata_tab_content %}
-                    {% for name, form_group in admin.formgroups %}
-                        <div class="{{ form_group.class|default('col-md-12') }}">
-                            <div class="box box-drop-outside-shadow box-primary-v4">
-                                <div class="box-header">
-                                    <h4 class="box-title">
-                                        <span class="text-black-thrash">{{ admin.trans(name, {}, form_group.translation_domain) }}</span>
-                                    </h4>
-                                </div>
-                                {#<div class="box{% if loop.first %} in{% endif %}" id="{{ admin.uniqid }}_{{ loop.index }}">#}
-                                    <div class="box-body">
-                                        <div class="sonata-ba-collapsed-fields">
-                                            {% if form_group.description != false %}
-                                                <p>{{ form_group.description|raw }}</p>
-                                            {% endif %}
+                {% block sonata_tab_content %} {% include 'MinsalSiblhBundle:CRUD:block_sonata_tab_content.html.twig' %} {% endblock %}
 
-                                            {% for field_name in form_group.fields %}
-                                                {% if admin.formfielddescriptions[field_name] is defined %}
-                                                    {{ form_row(form[field_name])}}
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                {#</div>#}
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% endblock %}
-
-                {% block formactions %}
-                    {#<div class="well well-small form-actions">#}
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="box box-drop-outside-shadow box-primary-v4{#danger#} form-actions">
-                            <div class="box-body">
-                                {% if app.request.isxmlhttprequest %}
-                                    {% if admin.id(object) is not null %}
-                                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-xray-awesome-blue"><i class="fa fa-times"></i> No, Cerrar</button>
-                                        <button type="submit" class="btn btn-sm btn-xray-awesome-blue" name="btn_update"><i class="fa fa-save"></i> Editar</button>
-                                    {% else %}
-                                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-xray-awesome-blue"><i class="fa fa-times"></i> No, Cerrar</button>
-                                        <button type="submit" class="btn btn-sm btn-xray-awesome-blue" name="btn_create"><i class="fa fa-plus-circle"></i> Enviar</button>
-                                    {% endif %}
-                                {% else %}
-                                    {% if admin.supportsPreviewMode %}
-                                        <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
-                                            <i class="fa fa-eye"></i>
-                                            {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
-                                        </button>
-                                    {% endif %}
-                                    {% if admin.id(object) is not null %}
-                                        <button type="submit" class="btn btn-sm btn-success-v3" name="btn_update_and_edit"><span class="glyphicon glyphicon-{#ok-sign#}send"></span> Enviar</button>
-
-                                        {#{% if admin.hasroute('list') %}
-                                            <button type="submit" class="btn btn-sm btn-success-v3" name="btn_update_and_list"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-list-alt"></span> Enviar</button>
-                                        {% endif %}#}
-
-                                        {% if admin.hasroute('delete') and admin.isGranted('DELETE', object) %}
-                                            {{ 'delete_or'|trans({}, 'SonataAdminBundle') }}
-                                            <a class="btn btn-sm btn-emergency" href="{{ admin.generateObjectUrl('delete', object) }}"><span class="glyphicon glyphicon-trash"></span> {{ 'link_delete'|trans({}, 'SonataAdminBundle') }}</a>
-                                        {% endif %}
-
-                                        {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
-                                            <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
-                                        {% endif %}
-                                        <a class="btn btn-sm btn-default" href="javascript:void(0)" onclick="clearForm(this); return false;"><span class="glyphicon glyphicon-trash"></span> Limpiar</a>
-                                    {% else %}
-                                        {% if admin.hasroute('edit') %}
-                                            <button class="btn btn-sm btn-xray-awesome-blue" type="submit" name="btn_create_and_edit"><span class="glyphicon glyphicon-{#ok-sign#}send"></span> Enviar</button>
-                                        {% endif %}
-                                        {#{% if admin.hasroute('list') %}
-                                            <button type="submit" class="btn btn-sm btn-xray-awesome-blue" name="btn_create_and_list"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-list-alt"></span> Enviar</button>
-                                        {% endif %}#}
-                                        {#<button class="btn btn-sm btn-xray-awesome-blue" type="submit" name="btn_create_and_create"><span class="glyphicon glyphicon-ok-sign"></span> <span class="glyphicon glyphicon-repeat"></span> Enviar</button>#}
-                                        <a class="btn btn-sm btn-default" href="javascript:void(0)" onclick="clearForm(this); return false;"><span class="glyphicon glyphicon-trash"></span> Limpiar</a>
-                                    {% endif %}
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                {% endblock formactions %}
+                {% block formactions %} {% include 'MinsalSiblhBundle:CRUD:block_formactions.html.twig' %} {% endblock formactions %}
             
             </div> <!-- end form block -->
 

@@ -187,40 +187,6 @@ file that was distributed with this source code.
         <aside class="right-side">
             {% block sonata_page_content %}
                 <section class="content-header">
-                    {% block sonata_page_content_header %}
-                        {% block sonata_page_content_nav %}
-                            {% if _tab_menu is not empty or _actions is not empty %}
-                                <nav class="navbar navbar-default" role="navigation">
-                                    {% block tab_menu_navbar_header %}
-                                        {% if _navbar_title is not empty %}
-                                            <div class="navbar-header">
-                                                <span class="navbar-brand">{{ _navbar_title|raw }}</span>
-                                            </div>
-                                        {% endif %}
-                                    {% endblock %}
-                                    <div class="container-fluid">
-                                        <div class="navbar-left">
-                                            {% if _tab_menu is not empty %}
-                                                {{ _tab_menu|raw }}
-                                            {% endif %}
-                                        </div>
-
-                                        {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
-                                            <ul class="nav navbar-nav navbar-right">
-                                                <li class="dropdown sonata-actions">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'link_actions'|trans({}, 'SonataAdminBundle') }} <b class="caret"></b></a>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        {{ _actions|raw }}
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        {% endif %}
-                                    </div>
-                                </nav>
-                            {% endif %}
-                        {% endblock sonata_page_content_nav %}
-
-                    {% endblock sonata_page_content_header %}
                 </section>
 
                 <section class="content">
@@ -229,6 +195,40 @@ file that was distributed with this source code.
                         {% block notice %}
                             {% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
                         {% endblock notice %}
+
+                        {% block sonata_page_content_header %}
+                            {% block sonata_page_content_nav %}
+                                {% if _tab_menu is not empty or _actions is not empty %}
+                                    <nav class="navbar navbar-default" role="navigation">
+                                        {% block tab_menu_navbar_header %}
+                                            {% if _navbar_title is not empty %}
+                                                <div class="navbar-header">
+                                                    <span class="navbar-brand">{{ _navbar_title|raw }}</span>
+                                                </div>
+                                            {% endif %}
+                                        {% endblock %}
+                                        <div class="container-fluid">
+                                            <div class="navbar-left">
+                                                {% if _tab_menu is not empty %}
+                                                    {{ _tab_menu|raw }}
+                                                {% endif %}
+                                            </div>
+
+                                            {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
+                                                <ul class="nav navbar-nav navbar-right">
+                                                    <li class="dropdown sonata-actions">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'link_actions'|trans({}, 'SonataAdminBundle') }} <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            {{ _actions|raw }}
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                    </nav>
+                                {% endif %}
+                            {% endblock sonata_page_content_nav %}
+                        {% endblock sonata_page_content_header %}
 
                         {% if _preview is not empty %}
                             <div class="sonata-ba-preview">{{ _preview|raw }}</div>

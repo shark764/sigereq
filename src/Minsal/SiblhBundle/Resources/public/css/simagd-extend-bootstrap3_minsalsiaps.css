@@ -28,6 +28,11 @@ and open the template in the editor.
     margin-top: 2px;
 }
 
+.btn-bigger-glyphicon-icon .glyphicon {
+    font-size: 30px;
+    vertical-align: middle;
+}
+
 
 
 

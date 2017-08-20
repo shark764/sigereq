@@ -11,8 +11,7 @@ file that was distributed with this source code.
 
 {% if admin.hasroute('show') and admin.id(object) and admin.isGranted('VIEW', object) and admin.show|length > 0 %}
     <div class="btn-group" role="group" aria-label="...">
-	    <a class="btn btn-sm btn-xray-awesome-blue" href="{{ admin.generateObjectUrl('show', object) }}">
-	        <span class="glyphicon glyphicon-eye-open"></span>
-	        Consultar</a>
+	    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="{{ admin.generateObjectUrl('show', object) }}">
+	        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; Consultar</a>
     </div>
 {% endif %}
