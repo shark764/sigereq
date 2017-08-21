@@ -66,7 +66,8 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Selección de Curva de Pasteurización')
+            // ->with('Selección de Curva de Pasteurización')
+            ->with('Combinación de frascos')
                 // ->add('id')
                 ->add('idCurva', 'entity', array(
                                 'label' => 'Curva de pasteurización',
@@ -92,8 +93,8 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
                                         'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
                                 )
                 ))
-            ->end()
-            ->with('Combinación de frascos')
+            // ->end()
+            // ->with('Combinación de frascos')
                 ->add('idPasteurizacion', 'sonata_type_model_hidden')
                 // ->add('idPasteurizacion', null, array(
                 //                 'label' => 'Pasteurización',

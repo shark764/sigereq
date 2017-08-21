@@ -50,6 +50,20 @@ file that was distributed with this source code.
     </div>
 </div>
 
+<script type="text/javascript">
+
+    (function ($) {
+        /*
+         *
+         * @type type
+         * Global variables for plugin
+         */
+        window.selections = [];   // --| build selections
+        window.bottles = {};   // --| build selections
+    }(jQuery));
+
+</script>
+
 <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_non_conditioned_bottle_target_bstable" name="blh_non_conditioned_bottle_target_bstable"
         data-id-field="id"
         data-cache="false"
@@ -103,7 +117,7 @@ file that was distributed with this source code.
                 {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
             {% endset %}
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><a class="btn-link btn-link-primary-v4" href="javascript:void(0)" onclick="BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link(this, 'split'); return false;" id="BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle" name="BATCH_{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][splitBottle]" ><span class="glyphicon glyphicon-indent-left"></span> dividir</a></td>
+                <td style="vertical-align: middle; text-align: center;"><a class="btn-link btn-link-primary-v4" href="javascript:void(0)" onclick="BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link(this, 'split', {{ s.getId() }}); return false;" id="BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle" name="BATCH_{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][splitBottle]" ><span class="glyphicon glyphicon-indent-left"></span> dividir</a></td>
                 <td style="vertical-align: middle; text-align: center;">{{ form_widget_content|raw }}</td>
                 <td>{{ s.getIdDonante() }}</td>
                 <td>{{ s.getIdDonante().getCodigoDonante() }}</td>
@@ -127,23 +141,24 @@ file that was distributed with this source code.
                 <td></td>
             </tr>
             {% set COLLECTION_NON_CONDITIONED_BOTTLES_ = COLLECTION_NON_CONDITIONED_BOTTLES_|merge([s.getId()]) %}
+            <script type="text/javascript">
+                bottles['_{{ s.getId() }}'] = {
+                    id: {{ s.getId() }},
+                    vl: {{ s.getVolumenRecolectado() }},
+                };
+            </script>
         {% endfor %}
     </tbody>
 </table>
 
 <script type="text/javascript">
 
-    (function ($) {
-        /*
-         *
-         * @type type
-         * Global variables for plugin
-         */
-        window.selections = [];   // --| build selections
-    }(jQuery));
+    var BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link = function(el, ds, id) {
+        jQuery('.mix-one-bottle').hide();
+        jQuery('.mix-batch-bottles').show();
 
-    var BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link = function(el, ds) {
-
+        var bt = window.bottles['_' + id];
+        // window.alert(JSON.stringify(bt));
     };
 
     var generateAutomaticBatchOfBottles = function(el) {

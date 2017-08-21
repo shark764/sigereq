@@ -9,48 +9,65 @@ file that was distributed with this source code.
 
 #}
 
-<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable" name="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable"
-        data-id-field="id"
-        data-cache="false"
-        data-show-columns="true"
-        data-search="true"
-        data-pagination="false"
-        data-pagination-h-align="left"
-        data-pagination-detail-h-align="right"
-        data-page-list="[15, 25, 30]"
-        data-page-size="15"
-        data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
-        data-buttons-class="xray-awesome-blue"
-        data-search-align="left"
-        data-buttons-align="left"
-        data-toolbar-align="right">
-    <thead>
-        <tr>
-            <th>Donante</th>
-            <th>Cód. (Donante)</th>
-            <th>Cód. (Donación)</th>
-            <th class="bstable-column-highlighted">Cód. (fco.)</th>
-            <th class="bstable-column-highlighted">Vol. (ml)</th>
-            <th>Vol. (oz)</th>
-            <th>Extracción</th>
-            <th>Fecha Reg.</th>
-            <th>Vol. combinar (ml)</th>
-            <th>Vol. real (ml)</th>
-            <th>Vol. residual (ml)</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <!-- <center> -->
+            <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="BATCH_{{ admin.uniqId }}_back_to_form_link(this); return false;" name="BATCH_{{ admin.uniqId }}_back_to_form" id="BATCH_{{ admin.uniqId }}[back_to_form]" ><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+                </div>
+            </div>
+        <!-- </center> -->
+    </div>
+</div>
+
+    <table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable" name="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable"
+            data-id-field="id"
+            data-cache="false"
+            data-show-columns="false"
+            data-search="false"
+            data-pagination="false"
+            data-pagination-h-align="left"
+            data-pagination-detail-h-align="right"
+            data-page-list="[15, 25, 30]"
+            data-page-size="15"
+            data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
+            data-buttons-class="xray-awesome-blue"
+            data-search-align="left"
+            data-buttons-align="left"
+            data-toolbar-align="right">
+        <thead>
+            <tr>
+                <th>Donante</th>
+                <th>Cód. (Donante)</th>
+                <th>Cód. (Donación)</th>
+                <th class="bstable-column-highlighted">Cód. (fco.)</th>
+                <th class="bstable-column-highlighted">Vol. (ml)</th>
+                <th>Vol. (oz)</th>
+                <th>Extracción</th>
+                <th>Fecha Reg.</th>
+                <th>Vol. combinar (ml)</th>
+                <th>Vol. real (ml)</th>
+                <th>Vol. residual (ml)</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
 <script type="text/javascript">
 
-    jQuery(document).ready(function() {
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////// collected bottles table
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var BATCH_{{ admin.uniqId }}_back_to_form_link = function(el) {
+        jQuery('.mix-one-bottle').show();
+        jQuery('.mix-batch-bottles').hide();
+    };
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    });
+    // jQuery(document).ready(function() {
+    //     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //     //////// collected bottles table
+    //     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // });
 
 </script>
