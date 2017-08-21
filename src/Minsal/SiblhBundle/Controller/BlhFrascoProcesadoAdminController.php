@@ -257,10 +257,29 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
             }
 
             try {
+                $em = $this->getDoctrine()->getManager();
+
                 ////////////////////////////////////////////////////////////////////////////////////////
                 //////// Mixed Bottles
                 ////////////////////////////////////////////////////////////////////////////////////////
-                $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
+                $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ = $this->get('request')->request->get('BATCH_MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
+                var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
+
+
+
+                foreach ($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado'] as $k => $r) {
+                    echo "<br/>";
+                    var_dump($k);
+                    echo "<br/>";
+                    $object = $this->admin->getNewInstance();
+                    // $object->setIdFrascoRecolectado($em->getRepository('MinsalSiblhBundle:BlhFrascoRecolectado')->find($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado']));
+                    // $this->admin->create($object);
+                }
+
+
+
+
+                throw new \RuntimeException(sprintf('The `%s` batch action is not defined', $this->getRequest()->query->get('uniqid')));
                 // $frRP->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenAgregado'][$COLLECTED_BOTTLE_TO_MIXED_BOTTLE_->getId()]);
                 ////////////////////////////////////////////////////////////////////////////////////////
 

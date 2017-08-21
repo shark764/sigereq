@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhFrascoProcesado
  *
- * @ORM\Table(name="blh_frasco_procesado", indexes={@ORM\Index(name="fk_pasteurizacion_frasco_proces", columns={"id_pasteurizacion"}), @ORM\Index(name="IDX_4BD55E3D6A540E", columns={"id_estado"}), @ORM\Index(name="IDX_4BD55E3DD8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_frasco_procesado", indexes={@ORM\Index(name="fk_pasteurizacion_frasco_proces", columns={"id_pasteurizacion"}), @ORM\Index(name="IDX_4BD55E3D6A540E", columns={"id_estado"}), @ORM\Index(name="IDX_4BD55E3DD8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_4BD55E3DBE71D89E", columns={"id_curva"})})
  * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhFrascoProcesadoRepository")
  */
 class BlhFrascoProcesado implements EntityInterface
@@ -173,6 +173,16 @@ class BlhFrascoProcesado implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \BlhCurva
+     *
+     * @ORM\ManyToOne(targetEntity="BlhCurva")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curva", referencedColumnName="id")
+     * })
+     */
+    private $idCurva;
 
     /**
      * @ORM\OneToMany(targetEntity="BlhAnalisisMicrobiologico", mappedBy="idFrascoProcesado", cascade={"all"}, orphanRemoval=true)
@@ -540,6 +550,30 @@ class BlhFrascoProcesado implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idCurva
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhCurva $idCurva
+     *
+     * @return BlhFrascoProcesado
+     */
+    public function setIdCurva(\Minsal\SiblhBundle\Entity\BlhCurva $idCurva = null)
+    {
+        $this->idCurva = $idCurva;
+
+        return $this;
+    }
+
+    /**
+     * Get idCurva
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhCurva
+     */
+    public function getIdCurva()
+    {
+        return $this->idCurva;
     }
 
     /**

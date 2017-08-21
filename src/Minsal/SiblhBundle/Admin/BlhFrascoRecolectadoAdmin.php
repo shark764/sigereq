@@ -24,6 +24,7 @@ class BlhFrascoRecolectadoAdmin extends MinsalSiblhBundleGeneralAdmin
         $collection->add('getForSensoryAnalysis', 'analisis-sensorial', [], [], ['expose' => true]);
         $collection->add('search', 'buscar', [], [], ['expose' => true]);
         $collection->add('searchBy', 'buscar-mas', [], [], ['expose' => true]);
+        $collection->add('searchSome', 'buscar-mas', [], [], ['expose' => true]);
     }
 
     /**

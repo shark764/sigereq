@@ -21,24 +21,15 @@ file that was distributed with this source code.
     </div>
 </div>
 
-<form class="form-horizontal" role="form" action="{{ admin.generateUrl('splitBottle', {}) }}" method="POST" novalidate="novalidate" id="BATCH_{{ admin.uniqId }}_split_bottle_form" name="BATCH_{{ admin.uniqId }}[split_bottle_form]" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" action="{{ admin.generateUrl('splitBottle', {'uniqid': admin.uniqId}) }}" method="POST" novalidate="novalidate" id="BATCH_{{ admin.uniqId }}_split_bottle_form" name="BATCH_{{ admin.uniqId }}[split_bottle_form]" enctype="multipart/form-data">
     <div class="row"> <!-- row block -->
         <div class="col-lg-12 col-md-12 col-sm-12"> <!-- form block -->
             <table {#data-toggle="table" #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable" name="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable"
-                    data-id-field="id"
-                    data-cache="false"
                     data-show-columns="false"
                     data-search="false"
                     data-pagination="false"
-                    data-pagination-h-align="left"
-                    data-pagination-detail-h-align="right"
-                    data-page-list="[15, 25, 30]"
-                    data-page-size="15"
                     data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
-                    data-buttons-class="xray-awesome-blue"
-                    data-search-align="left"
-                    data-buttons-align="left"
-                    data-toolbar-align="right">
+                    data-buttons-class="xray-awesome-blue">
                 <thead>
                     <tr>
                         <th data-align="center" data-halign="center" data-valign="middle"></th>
@@ -56,6 +47,7 @@ file that was distributed with this source code.
                     <tr><td></td></tr>
                 </tbody>
             </table>
+            <input type="hidden" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_idCurva" name="BATCH_MIX_BOTTLES_{{ admin.uniqId }}[idCurva]" >
         </div>
 
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -83,12 +75,12 @@ file that was distributed with this source code.
         jQuery('#BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable tbody').html('');
     };
 
-    // jQuery(document).ready(function() {
-    //     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //     //////// collected bottles table
-    //     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // });
+    jQuery(document).ready(function() {
+        var FORM_{{ admin.uniqId }}_idCurva_select = jQuery('#{{ admin.uniqId }}_idCurva');
+        FORM_{{ admin.uniqId }}_idCurva_select.on('change', function (e) {
+            // console.log('idCurva', this.value);
+            jQuery('#BATCH_MIX_BOTTLES_{{ admin.uniqId }}_idCurva').val(this.value);
+        });
+    });
 
 </script>

@@ -88,4 +88,22 @@ class BlhFrascoRecolectadoRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getScalarResult();
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////
+    //////// SEARCH SOME BY ID METHOD
+    /////////////////////////////////////////////////////////////////////////////////////
+    public function searchSome($ids = array())
+    {
+        $query = $this->getEntityManager()
+                    ->createQueryBuilder('t01')
+                            ->select('t01', 't02')
+                            ->from('MinsalSiblhBundle:BlhFrascoRecolectado', 't01')
+                            ->leftJoin('MinsalSiblhBundle:BlhAcidez', 't02',
+                                    \Doctrine\ORM\Query\Expr\Join::WITH,
+                                    't01.id = t02.idFrascoRecolectado')
+                            ->where('t01.id IN (:collected_bottles_splitted)')
+                            ->setParameter('collected_bottles_splitted', $ids);
+
+        return $query->getQuery()->getScalarResult();
+    }
+
 }

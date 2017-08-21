@@ -97,4 +97,23 @@ class BlhFrascoRecolectadoAdminController extends MinsalSiblhBundleGeneralAdminC
         return $this->renderJson($results);
     }
 
+    public function searchSomeAction(Request $request)
+    {
+        $request->isXmlHttpRequest();
+
+        $ids = $request->request->get('ids', array());
+        $id_decode = json_decode($id, true);
+        // $id = $this->get('request')->request->get('id', null);
+        // var_dump($id);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $result = $em->getRepository('MinsalSiblhBundle:BlhFrascoRecolectado')->searchSome($ids);
+
+        return $this->renderJson(array(
+            'result'    => 'ok',
+            'objects'    => $result,
+        ));
+    }
+
 }
