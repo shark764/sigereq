@@ -201,6 +201,7 @@ file that was distributed with this source code.
                 for (var i = 0; i < cfcos; i++) {
                     tbdy += '<tr>';
                         tbdy += '<td></td>';
+                        {#// tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idCurva" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idCurva][]" value="' + bt.id + '"></td>';#}
                         tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idFrascoRecolectado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado][]" value="' + bt.id + '"></td>';
                         tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenFrascoPasteurizado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenFrascoPasteurizado][]" value="' + cvPz.t01_volumenPorFrasco + '">' + parseFloat(cvPz.t01_volumenPorFrasco) + '</td>';
                         tbdy += '<td>' + (parseFloat(cvPz.t01_volumenPorFrasco) * 0.033814).toFixed(4) + '</td>';
@@ -212,6 +213,7 @@ file that was distributed with this source code.
                     tbdy += '</tr>';
                 }
 
+                jQuery('#BATCH_MIX_BOTTLES_CONF_{{ sonata_admin.admin.uniqId }}_frascos').val(cfcos);
                 jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable tbody').html(tbdy);
                 jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').bootstrapTable();{# #}
 

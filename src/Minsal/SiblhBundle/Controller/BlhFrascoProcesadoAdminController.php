@@ -262,17 +262,27 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
                 ////////////////////////////////////////////////////////////////////////////////////////
                 //////// Mixed Bottles
                 ////////////////////////////////////////////////////////////////////////////////////////
+                $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_CONF_ = $this->get('request')->request->get('BATCH_MIX_BOTTLES_CONF_' . $this->getRequest()->query->get('uniqid'), 0);
+                var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_CONF_);
+                echo "<br/>";
                 $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ = $this->get('request')->request->get('BATCH_MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
-                var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
+                // var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
 
 
-
-                foreach ($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado'] as $k => $r) {
+                // foreach ($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ as $k => $r) {
+                for ($i = 0; $i < $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_CONF_['frascos']; $i++)
+                {
+                    echo "REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_<br/>";
+                    // echo "<br/>";
+                    var_dump($i);
                     echo "<br/>";
-                    var_dump($k);
+                    var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenFrascoPasteurizado'][$i]);
                     echo "<br/>";
+                    var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['observacionFrascoProcesado'][$i]);
+                    echo "<br/><br/>";
                     $object = $this->admin->getNewInstance();
-                    // $object->setIdFrascoRecolectado($em->getRepository('MinsalSiblhBundle:BlhFrascoRecolectado')->find($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado']));
+
+                    // $object->setIdFrascoRecolectado($em->getRepository('MinsalSiblhBundle:BlhFrascoRecolectado')->find($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado'][$i]));
                     // $this->admin->create($object);
                 }
 

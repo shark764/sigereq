@@ -47,7 +47,8 @@ file that was distributed with this source code.
                     <tr><td></td></tr>
                 </tbody>
             </table>
-            <input type="hidden" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_idCurva" name="BATCH_MIX_BOTTLES_{{ admin.uniqId }}[idCurva]" >
+            <input type="hidden" id="BATCH_MIX_BOTTLES_CONF_{{ admin.uniqId }}_idCurva" name="BATCH_MIX_BOTTLES_CONF_{{ admin.uniqId }}[idCurva]" >
+            <input type="hidden" id="BATCH_MIX_BOTTLES_CONF_{{ admin.uniqId }}_frascos" name="BATCH_MIX_BOTTLES_CONF_{{ admin.uniqId }}[frascos]" >
         </div>
 
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -79,7 +80,7 @@ file that was distributed with this source code.
         var FORM_{{ admin.uniqId }}_idCurva_select = jQuery('#{{ admin.uniqId }}_idCurva');
         FORM_{{ admin.uniqId }}_idCurva_select.on('change', function (e) {
             // console.log('idCurva', this.value);
-            jQuery('#BATCH_MIX_BOTTLES_{{ admin.uniqId }}_idCurva').val(this.value);
+            jQuery('#BATCH_MIX_BOTTLES_CONF_{{ admin.uniqId }}_idCurva').val(this.value);
         });
     });
 
