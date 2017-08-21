@@ -25,11 +25,29 @@ file that was distributed with this source code.
     <link href="{{ asset('bundles/minsalsiblh/css/sweetalert.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
-{% use 'MinsalSiblhBundle:CRUD:base_edit_form.html.twig' with form as parentForm %}
+{% use 'MinsalSiblhBundle:BlhFrascoProcesadoAdmin:base_edit_form.html.twig' with form as parentForm %}
 
 {% block form %}
 
-    {{ block('parentForm') }}
+    <div class="mix-one-bottle">
+        {{ block('parentForm') }}
+    </div>
+    <div class="mix-multiple-bottles">
+        <div class="col-lg-12 col-md-12 col-sm-12"> <!-- form block -->
+            {#<div class="col-lg-12 col-md-12 col-sm-12">#}
+                <div class="box box-drop-outside-shadow box-success-v4">
+                    <div class="box-header">
+                        <h4 class="box-title">
+                            <span class="text-black-thrash">Distribuir frasco recolectado según curva de pasteurización</span>
+                        </h4>
+                    </div>
+                    <div class="box-body">
+                        {% include 'MinsalSiblhBundle:BlhFrascoProcesadoAdmin:form_mix_batch_bottles.html.twig' %}
+                    </div>
+                </div>
+            {#</div>#}
+        </div>
+    </div>
 
 {% endblock %}
 

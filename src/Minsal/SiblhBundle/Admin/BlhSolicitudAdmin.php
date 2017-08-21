@@ -77,6 +77,7 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idBancoDeLeche', 'sonata_type_model_hidden')
             ->add('idReceptor', 'sonata_type_model_hidden')
             // ->add('idReceptor', null, array(
             //                 'label' => 'Receptor',
@@ -424,6 +425,29 @@ class BlhSolicitudAdmin extends MinsalSiblhBundleGeneralAdmin
                 return parent::getTemplate($name);
                 break;
         }
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
+    }
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        
+        return $instance;
     }
 
 }

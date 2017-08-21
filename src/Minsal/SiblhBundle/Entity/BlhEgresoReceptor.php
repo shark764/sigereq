@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhEgresoReceptor
  *
- * @ORM\Table(name="blh_egreso_receptor", indexes={@ORM\Index(name="fk_receptor_egreso_receptor", columns={"id_receptor"}), @ORM\Index(name="IDX_7993CDC67DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_tipo_egreso"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_banco_de_leche"})})
+ * @ORM\Table(name="blh_egreso_receptor", indexes={@ORM\Index(name="fk_receptor_egreso_receptor", columns={"id_receptor"}), @ORM\Index(name="IDX_7993CDC67DFA12F6", columns={"id_establecimiento"}), @ORM\Index(name="IDX_7993CDC6D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_7993CDC6197798D8", columns={"id_tipo_egreso"}), @ORM\Index(name="IDX_7993CDC62DF9F9B6", columns={"id_banco_de_leche"})})
  * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhEgresoReceptorRepository")
  */
 class BlhEgresoReceptor implements EntityInterface

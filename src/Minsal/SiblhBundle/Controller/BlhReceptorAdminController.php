@@ -124,8 +124,8 @@ class BlhReceptorAdminController extends MinsalSiblhBundleGeneralAdminController
 
         $REQUEST_q__    = $this->get('request')->query->get('q', null);
         $REQUEST_id__   = $this->get('request')->query->get('id', null);
-        $REQUEST_t__    = $this->get('request')->query->get('t', 'blh');
-        $REQUEST_l__    = $this->get('request')->query->get('l', null);
+        // $REQUEST_t__    = $this->get('request')->query->get('t', 'blh');
+        // $REQUEST_l__    = $this->get('request')->query->get('l', null);
 
         $em = $this->getDoctrine()->getManager();
 
@@ -133,16 +133,18 @@ class BlhReceptorAdminController extends MinsalSiblhBundleGeneralAdminController
         $this->admin->prepareAdminInstance();
         ////////
 
-        if (!$REQUEST_l__) {
-            if ($this->admin->getSessionSystemUserLoggedMilkBank() !== null) {
-                $REQUEST_l__ = $this->admin->getSessionSystemUserLoggedMilkBank()->getId();
-                $REQUEST_t__ = 'blh';
-            }
-            elseif ($this->admin->getSessionSystemUserLoggedCollectionCenter() !== null) {
-                $REQUEST_l__ = $this->admin->getSessionSystemUserLoggedCollectionCenter()->getId();
-                $REQUEST_t__ = 'ctr';
-            }
+        // if (!$REQUEST_l__) {
+        $REQUEST_l__ = null;
+        $REQUEST_t__ = 'blh';
+        if ($this->admin->getSessionSystemUserLoggedMilkBank() !== null) {
+            $REQUEST_l__ = $this->admin->getSessionSystemUserLoggedMilkBank()->getId();
+            // $REQUEST_t__ = 'blh';
         }
+        elseif ($this->admin->getSessionSystemUserLoggedCollectionCenter() !== null) {
+            $REQUEST_l__ = $this->admin->getSessionSystemUserLoggedCollectionCenter()->getId();
+            $REQUEST_t__ = 'ctr';
+        }
+        // }
 
         if (!$REQUEST_id__) {
             //////// --| search patients
@@ -172,10 +174,10 @@ class BlhReceptorAdminController extends MinsalSiblhBundleGeneralAdminController
             );
         //////// --|
         
-        $patient_age = null;
+        $receiver_age = null;
         try {
             if ($result[0]['t03_fechaNacimiento'] !== null) {
-                $patient_age = $result[0]['t03_fechaNacimiento']->diff(new \DateTime('now'));
+                $receiver_age = $result[0]['t03_fechaNacimiento']->diff(new \DateTime('now'));
             }
         } catch (Exception $e) {
         }
@@ -183,7 +185,7 @@ class BlhReceptorAdminController extends MinsalSiblhBundleGeneralAdminController
         return $this->renderJson(array(
             'result'    => 'ok',
             'item'      => $result[0],
-            'PATIENT_AGE'   => $patient_age,
+            'RECEIVER_AGE'   => $receiver_age,
             't'         => $REQUEST_t__
         ));
     }

@@ -21,9 +21,10 @@ class BlhReceptorRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->getEntityManager()
                     ->createQueryBuilder('t01')
                             ->select('t01')
-                            // ->addSelect('t02')
+                            ->addSelect('t02', 't03')
                             ->addSelect('t01.id AS id, t01.codigoReceptor as codigo_receptor')
                             ->addSelect('UPPER(CONCAT(t03.primerApellido, \' \', COALESCE(t03.segundoApellido, \'\'), \', \', t03.primerNombre, \' \', COALESCE(t03.segundoNombre, \'\'), \' -- | -- ( \', t01.codigoReceptor, \' )\')) AS full_name')
+                            ->addSelect('UPPER(CONCAT(t03.primerApellido, \' \', COALESCE(t03.segundoApellido, \'\'), \', \', t03.primerNombre, \' \', COALESCE(t03.segundoNombre, \'\'))) AS whole_name')
                             ->from('MinsalSiblhBundle:BlhReceptor', 't01')
                             ->leftJoin('t01.idExpediente', 't02')
                             ->leftJoin('t02.idPaciente', 't03')
@@ -44,8 +45,12 @@ class BlhReceptorRepository extends \Doctrine\ORM\EntityRepository
         }
 
         if (is_numeric(str_replace(array('-', 'R'), '', $q))) {
-            $query->andWhere($query->expr()->like('LOWER(t01.codigoReceptor)', ':receiver_code'))
-                                ->setParameter('receiver_code', /*'%' .*/ strtolower($q) . '%');
+            $query->andWhere($query->expr()->orx(
+                                $query->expr()->like('LOWER(t01.codigoReceptor)', ':receiver_code'),
+                                $query->expr()->like('LOWER(t02.numero)', ':num_exp')
+                            ))
+                                ->setParameter('receiver_code', /*'%' .*/ strtolower($q) . '%')
+                                ->setParameter('num_exp', /*'%' .*/ strtolower($q) . '%');
         } else {
             $query->andWhere($query->expr()->like('LOWER(CONCAT(t03.primerApellido, COALESCE(t03.segundoApellido, \'\'), t03.primerNombre, COALESCE(t03.segundoNombre, \'\')))', ':receiver_code'))
                                 ->setParameter('receiver_code', '%' . strtolower(str_replace(' ', '', $q)) . '%');
@@ -65,7 +70,7 @@ class BlhReceptorRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->getEntityManager()
                     ->createQueryBuilder('t01')
                             ->select('t01')
-                            // ->addSelect('t02', 't03')
+                            ->addSelect('t02', 't03')
                             ->addSelect('t01.id AS id, t01.codigoReceptor as codigo_receptor')
                             ->addSelect('UPPER(CONCAT(t03.primerApellido, \' \', COALESCE(t03.segundoApellido, \'\'), \', \', t03.primerNombre, \' \', COALESCE(t03.segundoNombre, \'\'), \' -- | -- ( \', t01.codigoReceptor, \' )\')) AS full_name')
                             ->addSelect('UPPER(CONCAT(t03.primerApellido, \' \', COALESCE(t03.segundoApellido, \'\'), \', \', t03.primerNombre, \' \', COALESCE(t03.segundoNombre, \'\'))) AS whole_name')

@@ -75,6 +75,7 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idBancoDeLeche', 'sonata_type_model_hidden')
             ->add('idReceptor', 'sonata_type_model_hidden')
             // ->add('idReceptor', null, array(
             //                 'label' => 'Receptor',
@@ -171,12 +172,12 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             // ))
             ->add('idTipoEgreso', null, array(
                             'label' => 'Tipo de egreso',
-                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
+                            'label_attr' => array('class' => 'label_form_sm'),
                             'required' => true,
                             'property' => 'presentacionEntidad',
                             'attr' => array(
                                     'class' => 'form-control input-sm',
-                                    'data-form-inline-group' => 'start',
+                                    // 'data-form-inline-group' => 'start',
                                     'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
 
                                     'data-add-input-addon' => 'true',
@@ -301,7 +302,7 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'estancia hospitalaria...',
                                     // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -318,12 +319,12 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             ->add('diasPermanencia', null, array(
                             'label' => 'Permanencia (días)',
-                            'label_attr' => array('class' => 'label_form_sm'),
+                            'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                             'attr' => array(
                                     'class' => 'form-control input-sm',
                                     'placeholder' => 'permanencia (días)...',
                                     // 'data-form-inline-group' => 'start',
-                                    'data-add-form-group-col-class' => 'col-lg-4 col-md-4 col-sm-4',
+                                    'data-add-form-group-col-class' => 'col-lg-3 col-md-3 col-sm-3',
 
                                     'data-add-input-addon' => 'true',
                                     // 'data-add-input-addon-class' => 'primary-v4',
@@ -383,6 +384,29 @@ class BlhEgresoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
                 return parent::getTemplate($name);
                 break;
         }
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
+    }
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        
+        return $instance;
     }
 
 }

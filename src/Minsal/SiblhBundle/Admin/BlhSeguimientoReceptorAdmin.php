@@ -77,6 +77,8 @@ class BlhSeguimientoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('idBancoDeLeche', 'sonata_type_model_hidden')
+            ->add('idReceptor', 'sonata_type_model_hidden')
             ->add('fechaSeguimiento', 'datetime', array(
                             'label' => 'Fecha de seguimiento',
                             'label_attr' => array('class' => 'label_form_sm'),
@@ -361,6 +363,51 @@ class BlhSeguimientoReceptorAdmin extends MinsalSiblhBundleGeneralAdmin
             // ->add('usuario')
             // ->add('fechaHoraReg')
         ;
+    }
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'edit':
+                return 'MinsalSiblhBundle:BlhSeguimientoReceptorAdmin:base_edit.html.twig';
+                break;
+            // case 'list':
+            //     return 'MinsalSiblhBundle:CRUD:base_list.html.twig';
+            //     break;
+            // case 'show':
+            //     return 'MinsalSiblhBundle:CRUD:base_show.html.twig';
+            //     break;
+            // case 'delete':
+            //     return 'MinsalSiblhBundle:CRUD:delete.html.twig';
+            //     break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+
+    public function prePersist($entity)
+    {
+        //////// --| parent behavior
+        parent::prePersist($entity);
+        ////////
+    }
+    
+    public function preUpdate($entity)
+    {
+        //////// --| parent behavior
+        // parent::preUpdate($entity);
+        ////////
+    }
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+
+        $instance->setIdBancoDeLeche($this->___session_system_USER_LOGGED_MILK_BANK___);
+        
+        return $instance;
     }
 
 }

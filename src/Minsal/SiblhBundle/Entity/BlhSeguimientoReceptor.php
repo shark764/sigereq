@@ -9,7 +9,7 @@ use Minsal\SiblhBundle\Entity\EntityInterface;
 /**
  * BlhSeguimientoReceptor
  *
- * @ORM\Table(name="blh_seguimiento_receptor", indexes={@ORM\Index(name="IDX_EB08C6D4B91944F2", columns={"id_receptor"}), @ORM\Index(name="IDX_EB08C6D4D8A5832B", columns={"id_user_reg"})})
+ * @ORM\Table(name="blh_seguimiento_receptor", indexes={@ORM\Index(name="IDX_EB08C6D4B91944F2", columns={"id_receptor"}), @ORM\Index(name="IDX_EB08C6D4D8A5832B", columns={"id_user_reg"}), @ORM\Index(name="IDX_EB08C6D42DF9F9B6", columns={"id_banco_de_leche"})})
  * @ORM\Entity(repositoryClass="Minsal\SiblhBundle\Repository\BlhSeguimientoReceptorRepository")
  */
 class BlhSeguimientoReceptor implements EntityInterface
@@ -222,6 +222,17 @@ class BlhSeguimientoReceptor implements EntityInterface
      * @Assert\NotNull(message = "foreign.default.not_null")
      */
     private $idUserReg;
+
+    /**
+     * @var \BlhBancoDeLeche
+     *
+     * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
+     * })
+     * @Assert\NotNull(message = "foreign.default.not_null")
+     */
+    private $idBancoDeLeche;
 
     /**
      * Constructor
@@ -622,6 +633,30 @@ class BlhSeguimientoReceptor implements EntityInterface
     public function getIdUserReg()
     {
         return $this->idUserReg;
+    }
+
+    /**
+     * Set idBancoDeLeche
+     *
+     * @param \Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
+     *
+     * @return BlhSeguimientoReceptor
+     */
+    public function setIdBancoDeLeche(\Minsal\SiblhBundle\Entity\BlhBancoDeLeche $idBancoDeLeche = null)
+    {
+        $this->idBancoDeLeche = $idBancoDeLeche;
+
+        return $this;
+    }
+
+    /**
+     * Get idBancoDeLeche
+     *
+     * @return \Minsal\SiblhBundle\Entity\BlhBancoDeLeche
+     */
+    public function getIdBancoDeLeche()
+    {
+        return $this->idBancoDeLeche;
     }
 
 }
