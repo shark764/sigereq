@@ -281,10 +281,13 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
                     var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['observacionFrascoProcesado'][$i]);
                     echo "<br/><br/>";
                     $object = $this->admin->getNewInstance();
+                    $em->persist($object);
 
                     // $object->setIdFrascoRecolectado($em->getRepository('MinsalSiblhBundle:BlhFrascoRecolectado')->find($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado'][$i]));
                     // $this->admin->create($object);
                 }
+                // $em->persist($task);
+                $em->flush();
 
 
 
