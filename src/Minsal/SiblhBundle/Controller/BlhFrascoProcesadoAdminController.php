@@ -232,4 +232,55 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
         ));
     }
 
+    /**
+     * return the Response object associated to the create action
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @return Response
+     */
+    public function splitBottleAction()
+    {
+        // the key used to lookup the template
+        $templateKey = 'edit';
+
+        if (false === $this->admin->isGranted('CREATE')) {
+            return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
+        }
+
+        //////// --| << prepare >>
+        $this->admin->prepareAdminInstance();
+        ////////
+
+        if ($this->getRestMethod() == 'POST') {
+            if (false === $this->admin->isGranted('CREATE')) {
+                return new RedirectResponse($this->generateUrl('siblh_solicitud_accessDenied'));
+            }
+
+            try {
+                ////////////////////////////////////////////////////////////////////////////////////////
+                //////// Mixed Bottles
+                ////////////////////////////////////////////////////////////////////////////////////////
+                $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ = $this->get('request')->request->get('MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
+                // $frRP->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenAgregado'][$COLLECTED_BOTTLE_TO_MIXED_BOTTLE_->getId()]);
+                ////////////////////////////////////////////////////////////////////////////////////////
+
+                // $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
+
+            } catch (ModelManagerException $e) {
+                // $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
+            } catch (Exception $e) {
+                // $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
+            }
+        }
+
+        $params = array();
+        if ($this->admin->hasActiveSubClass()) {
+            $params['subclass'] = $this->get('request')->get('subclass');
+        }
+        $url = $this->admin->generateUrl('create', $params);
+        
+        // redirect to edit mode
+        return new RedirectResponse($url);
+    }
+
 }

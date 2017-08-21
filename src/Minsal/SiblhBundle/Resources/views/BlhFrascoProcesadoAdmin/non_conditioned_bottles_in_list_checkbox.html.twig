@@ -154,11 +154,61 @@ file that was distributed with this source code.
 <script type="text/javascript">
 
     var BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link = function(el, ds, id) {
-        jQuery('.mix-one-bottle').hide();
-        jQuery('.mix-batch-bottles').show();
+        var curvaId = jQuery('#{{ sonata_admin.admin.uniqId }}_idCurva').val();
+        if (typeof curvaId === 'undefined' || curvaId === null || curvaId === "") {
+            return;
+        }
+        var cvPz = null;
 
-        var bt = window.bottles['_' + id];
-        // window.alert(JSON.stringify(bt));
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: Routing.generate('siblh_curva_searchById'),
+            data: {
+                _xml_http_request: true,
+                id: curvaId,
+            },
+            success: function(response) {
+                cvPz = response.object;
+
+                if (typeof cvPz === 'undefined' || cvPz === null || cvPz === "") {
+                    return;
+                }
+                var bt              = window.bottles['_' + id]; // frasco seleccionado
+                var cfcos           = Math.floor(bt.vl / parseFloat(cvPz.t01_volumenPorFrasco));    // máximos frascos posibles
+                var vltotal         = cfcos * parseFloat(cvPz.t01_volumenPorFrasco);    // volumen total de frascos logrados
+                var missing         = parseFloat(cvPz.t01_volumenTotal) - vltotal;  // volumen faltante
+                var fcmissing       = parseInt(cvPz.t01_cantidadFrascos) - cfcos;    // frascos faltantes
+                var fcmissing_real  = Math.floor(missing / parseFloat(cvPz.t01_volumenPorFrasco));    // frascos faltantes reales
+                var waste           = bt.vl - vltotal;  // volumen de desecho
+                
+                window.console.log('cvPz', cvPz, 'bt', bt,
+                    '\n frasco seleccionado', JSON.stringify(bt),
+                    '\n curva', JSON.stringify(cvPz),
+                    '\n cvPz.t01_volumenPorFrasco', cvPz.t01_volumenPorFrasco,
+                    '\n cvPz.t01_volumenTotal', cvPz.t01_volumenTotal,
+                    '\n cvPz.t01_cantidadFrascos', cvPz.t01_cantidadFrascos,
+                    '\n máximos frascos posibles', cfcos,
+                    '\n volumen total de frascos logrados', vltotal,
+                    '\n volumen faltante', missing,
+                    '\n frascos faltantes', fcmissing,
+                    '\n frascos faltantes real', fcmissing_real,
+                    '\n volumen de desecho', waste
+                );
+
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').bootstrapTable();{# #}
+
+                jQuery('.mix-one-bottle').hide();
+                jQuery('.mix-batch-bottles').show();
+            },
+            error: function(err) {
+                window.console.log('//////////////////////////////////////////////////////////////\n//////////////////////////////////////////////////////////////');
+                window.console.log('%c' + err.error, 'background: #f5f2d4; color: #ff0000');
+                window.console.log('//////////////////////////////////////////////////////////////');
+                window.console.log('%c' + err.responseText, 'background: #f5f2d4; color: #151e23');
+                window.console.log('//////////////////////////////////////////////////////////////\n//////////////////////////////////////////////////////////////');
+            }
+        });
     };
 
     var generateAutomaticBatchOfBottles = function(el) {

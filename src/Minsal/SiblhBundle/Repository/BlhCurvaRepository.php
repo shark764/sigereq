@@ -10,4 +10,19 @@ namespace Minsal\SiblhBundle\Repository;
  */
 class BlhCurvaRepository extends \Doctrine\ORM\EntityRepository
 {
+    /////////////////////////////////////////////////////////////////////////////////////
+    //////// SEARCH BY ID METHOD
+    /////////////////////////////////////////////////////////////////////////////////////
+    public function searchById($id)
+    {
+        $query = $this->getEntityManager()
+                    ->createQueryBuilder('t01')
+                            ->select('t01')
+                            ->from('MinsalSiblhBundle:BlhCurva', 't01')
+                            ->andWhere('t01.id = :id')
+                            ->setParameter('id', $id);
+
+        return $query->getQuery()->getScalarResult();
+    }
+
 }

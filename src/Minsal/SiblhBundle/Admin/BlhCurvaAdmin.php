@@ -17,6 +17,13 @@ class BlhCurvaAdmin extends MinsalSiblhBundleGeneralAdmin
     protected $baseRouteName    = 'siblh_curva';
     protected $baseRoutePattern = 'blh/curva';
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->add('searchById', 'buscar-curva', [], [], ['expose' => true]);
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */

@@ -95,4 +95,22 @@ class BlhCurvaAdminController extends MinsalSiblhBundleGeneralAdminController
         ));
     }
 
+    public function searchByIdAction(Request $request)
+    {
+        $request->isXmlHttpRequest();
+
+        $id = $request->request->get('id', null);
+        // $id = $this->get('request')->request->get('id', null);
+        // var_dump($id);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $result = $em->getRepository('MinsalSiblhBundle:BlhCurva')->searchById($id);
+
+        return $this->renderJson(array(
+            'result'    => 'ok',
+            'object'    => $result[0],
+        ));
+    }
+
 }

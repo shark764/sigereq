@@ -17,6 +17,15 @@ class BlhFrascoProcesadoAdmin extends MinsalSiblhBundleGeneralAdmin
     protected $baseRouteName    = 'siblh_frasco_procesado';
     protected $baseRoutePattern = 'blh/frasco-procesado';
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        
+        $collection->add('splitBottle', 'dividir-frasco', [], [], ['expose' => true]);
+        $collection->add('search', 'buscar', [], [], ['expose' => true]);
+        $collection->add('searchBy', 'buscar-mas', [], [], ['expose' => true]);
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
