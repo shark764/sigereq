@@ -4,8 +4,8 @@
     <indexes>
       <index name="fk_pasteurizacion_frasco_proces" columns="id_pasteurizacion"/>
       <index name="IDX_4BD55E3D6A540E" columns="id_estado"/>
-      <index name="IDX_4BD55E3DD8A5832B" columns="id_user_reg"/>
       <index name="IDX_4BD55E3DBE71D89E" columns="id_curva"/>
+      <index name="IDX_4BD55E3DD8A5832B" columns="id_user_reg"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -17,8 +17,8 @@
       </options>
     </field>
     <field name="volumenFrascoPasteurizado" type="decimal" column="volumen_frasco_pasteurizado" precision="7" scale="4" nullable="false"/>
-    <field name="acidezTotal" type="decimal" column="acidez_total" precision="7" scale="4" nullable="false"/>
-    <field name="kcaloriasTotales" type="decimal" column="kcalorias_totales" precision="7" scale="4" nullable="false"/>
+    <field name="acidezTotal" type="decimal" column="acidez_total" precision="7" scale="4" nullable="true"/>
+    <field name="kcaloriasTotales" type="decimal" column="kcalorias_totales" precision="7" scale="4" nullable="true"/>
     <field name="observacionFrascoProcesado" type="string" column="observacion_frasco_procesado" length="150" nullable="true">
       <options>
         <option name="fixed"/>
@@ -36,14 +36,14 @@
         <option name="default"/>
       </options>
     </field>
-    <many-to-one field="idCurva" target-entity="BlhCurva" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_curva" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idUserReg" target-entity="FosUserUser" fetch="LAZY">
       <join-columns>
         <join-column name="id_user_reg" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCurva" target-entity="BlhCurva" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_curva" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idPasteurizacion" target-entity="BlhPasteurizacion" fetch="LAZY">

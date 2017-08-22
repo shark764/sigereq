@@ -258,50 +258,45 @@ class BlhFrascoProcesadoAdminController extends MinsalSiblhBundleGeneralAdminCon
 
             try {
                 $em = $this->getDoctrine()->getManager();
-
                 ////////////////////////////////////////////////////////////////////////////////////////
                 //////// Mixed Bottles
                 ////////////////////////////////////////////////////////////////////////////////////////
                 $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_CONF_ = $this->get('request')->request->get('BATCH_MIX_BOTTLES_CONF_' . $this->getRequest()->query->get('uniqid'), 0);
-                var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_CONF_);
-                echo "<br/>";
                 $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ = $this->get('request')->request->get('BATCH_MIX_BOTTLES_' . $this->getRequest()->query->get('uniqid'), null);
-                // var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_);
 
-
-                // foreach ($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_ as $k => $r) {
                 for ($i = 0; $i < $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_CONF_['frascos']; $i++)
                 {
-                    echo "REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_<br/>";
-                    // echo "<br/>";
-                    var_dump($i);
-                    echo "<br/>";
-                    var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenFrascoPasteurizado'][$i]);
-                    echo "<br/>";
-                    var_dump($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['observacionFrascoProcesado'][$i]);
-                    echo "<br/><br/>";
                     $object = $this->admin->getNewInstance();
+                    $object->setVolumenFrascoPasteurizado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenFrascoPasteurizado'][$i]);
+                    $object->setObservacionFrascoProcesado(trim($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['observacionFrascoProcesado'][$i]));
+                    $object->setAcidezTotal($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['acidezTotal'][$i]);
+                    $object->setVolumenDisponibleFp($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenDisponibleFp'][$i]);
+                    $object->setIdCurva($em->getReference('Minsal\SiblhBundle\Entity\BlhCurva', $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_CONF_['idCurva']));
+
+                    $frRP = new BlhFrascoRecolectadoFrascoP();
+                    $frRP->setIdFrascoRecolectado($em->getReference('Minsal\SiblhBundle\Entity\BlhFrascoRecolectado', $REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado'][$i]));
+                    $frRP->setIdFrascoProcesado($object);
+                    $frRP->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenFrascoPasteurizado'][$i]);
+                    $frRP->setIdUserReg($this->admin->getSessionSystemUserLogged());
+                    $object->addFrascoProcesadoFrascoRecolectadoCombinado($frRP);
+
                     $em->persist($object);
 
                     // $object->setIdFrascoRecolectado($em->getRepository('MinsalSiblhBundle:BlhFrascoRecolectado')->find($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['idFrascoRecolectado'][$i]));
                     // $this->admin->create($object);
                 }
-                // $em->persist($task);
-                $em->flush();
+                $em->flush(); //Persist objects that did not make up an entire batch
+                $em->clear();
 
-
-
-
-                throw new \RuntimeException(sprintf('The `%s` batch action is not defined', $this->getRequest()->query->get('uniqid')));
-                // $frRP->setVolumenAgregado($REQUEST_COLLECTED_BOTTLE_TO_MIXED_BOTTLE_['volumenAgregado'][$COLLECTED_BOTTLE_TO_MIXED_BOTTLE_->getId()]);
+                $this->addFlash('sonata_flash_success', 'Frascos fueron creados satisfactoriamente.');
                 ////////////////////////////////////////////////////////////////////////////////////////
 
                 // $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
 
             } catch (ModelManagerException $e) {
-                // $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
+                $this->addFlash('sonata_flash_error', 'Ocurrió un error durante la creación de frascos combinados');
             } catch (Exception $e) {
-                // $this->addFlash('sonata_flash_success', $this->admin->trans('flash_create_success', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
+                $this->addFlash('sonata_flash_error', 'Ocurrió un error durante la creación de frascos combinados');
             }
         }
 
