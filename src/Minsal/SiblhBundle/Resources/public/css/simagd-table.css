@@ -95,6 +95,87 @@ table td a.detail-icon {
     background-color: rgba(210, 233, 232, 1);
 }
 
+/*
+ * *****************************************************************************
+ * --| BSTABLE CHECKED-ROW-BSTABLE-C1
+ * *****************************************************************************
+ */
+.bootstrap-table .fixed-table-container .fixed-table-body .checked-row-bstable-c1 {
+    background-color: rgba(225, 216, 232, 0.67);
+}
+.table-striped > tbody > tr.checked-row-bstable-c1:nth-child(odd) > td,
+.table-striped > tbody > tr.checked-row-bstable-c1:nth-child(odd) > th {
+    background-color: rgba(225, 216, 232, 0.67);
+}
+.table-hover>tbody>tr.checked-row-bstable-c1:hover>td,
+.table-hover>tbody>tr.checked-row-bstable-c1:hover>th {
+    background-color: rgba(225, 216, 232, 0.67);
+}
+/*
+ * *****************************************************************************
+ * --| BSTABLE CHECKED-ROW-BSTABLE-C2
+ * *****************************************************************************
+ */
+.bootstrap-table .fixed-table-container .fixed-table-body .checked-row-bstable-c2 {
+    background-color: rgba(211, 238, 225, 0.67);
+}
+.table-striped > tbody > tr.checked-row-bstable-c2:nth-child(odd) > td,
+.table-striped > tbody > tr.checked-row-bstable-c2:nth-child(odd) > th {
+    background-color: rgba(211, 238, 225, 0.67);
+}
+.table-hover>tbody>tr.checked-row-bstable-c2:hover>td,
+.table-hover>tbody>tr.checked-row-bstable-c2:hover>th {
+    background-color: rgba(211, 238, 225, 0.67);
+}
+/*
+ * *****************************************************************************
+ * --| BSTABLE CHECKED-ROW-BSTABLE-C3
+ * *****************************************************************************
+ */
+.bootstrap-table .fixed-table-container .fixed-table-body .checked-row-bstable-c3 {
+    background-color: rgba(234, 238, 211, 0.67);
+}
+.table-striped > tbody > tr.checked-row-bstable-c3:nth-child(odd) > td,
+.table-striped > tbody > tr.checked-row-bstable-c3:nth-child(odd) > th {
+    background-color: rgba(234, 238, 211, 0.67);
+}
+.table-hover>tbody>tr.checked-row-bstable-c3:hover>td,
+.table-hover>tbody>tr.checked-row-bstable-c3:hover>th {
+    background-color: rgba(234, 238, 211, 0.67);
+}
+/*
+ * *****************************************************************************
+ * --| BSTABLE CHECKED-ROW-BSTABLE-C4
+ * *****************************************************************************
+ */
+.bootstrap-table .fixed-table-container .fixed-table-body .checked-row-bstable-c4 {
+    background-color: rgba(197, 222, 232, 0.67);
+}
+.table-striped > tbody > tr.checked-row-bstable-c4:nth-child(odd) > td,
+.table-striped > tbody > tr.checked-row-bstable-c4:nth-child(odd) > th {
+    background-color: rgba(197, 222, 232, 0.67);
+}
+.table-hover>tbody>tr.checked-row-bstable-c4:hover>td,
+.table-hover>tbody>tr.checked-row-bstable-c4:hover>th {
+    background-color: rgba(197, 222, 232, 0.67);
+}
+/*
+ * *****************************************************************************
+ * --| BSTABLE CHECKED-ROW-BSTABLE-C5
+ * *****************************************************************************
+ */
+.bootstrap-table .fixed-table-container .fixed-table-body .checked-row-bstable-c5 {
+    background-color: rgba(255, 209, 217, 0.67);
+}
+.table-striped > tbody > tr.checked-row-bstable-c5:nth-child(odd) > td,
+.table-striped > tbody > tr.checked-row-bstable-c5:nth-child(odd) > th {
+    background-color: rgba(255, 209, 217, 0.67);
+}
+.table-hover>tbody>tr.checked-row-bstable-c5:hover>td,
+.table-hover>tbody>tr.checked-row-bstable-c5:hover>th {
+    background-color: rgba(255, 209, 217, 0.67);
+}
+
 
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
