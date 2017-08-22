@@ -34,7 +34,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
         parent::configureRoutes($collection);
         
         $collection->add('splitBottle', 'dividir-frasco', [], [], ['expose' => true]);
-        $collection->add('splitBatchBottles', 'dividir-frascos', [], [], ['expose' => true]);
+        $collection->add('splitBatchBottles', 'combinar-frascos', [], [], ['expose' => true]);
     }
 
     /**
@@ -87,7 +87,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        if (false !== $this->isOnMenuMode()) {
+        if (false !== $this->isOnSplitBatchBottlesMode()) {
             $formMapper
                 ->with('Combinación de frascos')
                     ->add('idCurva', 'entity', array(
@@ -114,14 +114,51 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                             'data-add-input-addon-addon' => 'glyphicon glyphicon-pushpin',
                                     )
                     ))
-                    ->add('pasteurizacionFrascoProcesado', 'entity', array(
+                    // ->add('pasteurizacionFrascoProcesado', 'entity', array(
+                    //                 'label' => false,
+                    //                 'label_attr' => array('class' => 'label_form_sm'),
+                    //                 // 'required' => true,
+                    //                 'required' => false,
+                    //                 'expanded' => true,
+                    //                 'multiple' => true,
+                    //                 'class' => 'MinsalSiblhBundle:BlhFrascoProcesado',
+                    //                 // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $__XRAY_CLINICAL_SERVICE_ID__, $filter_modality_) {
+                    //                 //                         return $er->createQueryBuilder('pryn')
+                    //                 //                                     ->innerJoin('MinsalSiblhBundle:RyxCtlProyeccionEstablecimiento', 'prynhptl',
+                    //                 //                                             \Doctrine\ORM\Query\Expr\Join::WITH,
+                    //                 //                                             'pryn.id = prynhptl.idProyeccion')
+                    //                 //                                     ->innerJoin('prynhptl.idAreaExamenEstab', 'mmxstd')
+                    //                 //                                     ->innerJoin('mmxstd.idAreaServicioDiagnostico', 'mdld')
+                    //                 //                                     ->where('mdld.idAtencion = :id_atn')
+                    //                 //                                     ->setParameter('id_atn', $__XRAY_CLINICAL_SERVICE_ID__)  // --| 97 (Imagenología)
+                    //                 //                                     ->andWhere('mmxstd.idEstablecimiento = :id_std')
+                    //                 //                                     ->setParameter('id_std', $session_USER_LOCATION->getId())  // --| 97 (Hospital Local)
+                    //                 //                                     ->andWhere('mmxstd.idAreaServicioDiagnostico = :id_mdld')
+                    //                 //                                     ->setParameter('id_mdld', $filter_modality_)  // --| 97 (Modalidad filtro)
+                    //                 //                                     ->andWhere('mmxstd.activo = TRUE')
+                    //                 //                                     ->andWhere('prynhptl.habilitado = TRUE')
+                    //                 //                                     ->orderBy('pryn.codigo')
+                    //                 //                                     ->addOrderBy('pryn.nombre')
+                    //                 //                                     ->distinct();
+                    //                 //                     },
+                    //                 // 'group_by' => 'idPasteurizacion',
+                    //                 'help' => '<span class="text-primary-v4">Frascos a combinar para formar nuevo frasco para pasteurización</span>',
+                    //                 'attr' => array(
+                    //                         'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,
+                    //                         'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                    //                         'data-sonata-select2-escape-markup' => 'true',
+                    //                         // 'style' => 'max-height: 500px; overflow-y: auto;'
+                    //                 )
+                    // ))
+                    ->add('frascoRecolectadoFrascoProcesadoVolumenAgregado', 'entity', array(
                                     'label' => false,
-                                    'label_attr' => array('class' => 'label_form_sm'),
+                                    'label_attr' => array('class' => 'label_form_sm col-lg-2 col-md-2 col-sm-2'),
                                     // 'required' => true,
+                                    'mapped' => false,
                                     'required' => false,
                                     'expanded' => true,
                                     'multiple' => true,
-                                    'class' => 'MinsalSiblhBundle:BlhFrascoProcesado',
+                                    'class' => 'MinsalSiblhBundle:BlhFrascoRecolectado',
                                     // 'query_builder' => function(EntityRepository $er) use ($session_USER_LOCATION, $__XRAY_CLINICAL_SERVICE_ID__, $filter_modality_) {
                                     //                         return $er->createQueryBuilder('pryn')
                                     //                                     ->innerJoin('MinsalSiblhBundle:RyxCtlProyeccionEstablecimiento', 'prynhptl',
@@ -141,7 +178,7 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                     //                                     ->addOrderBy('pryn.nombre')
                                     //                                     ->distinct();
                                     //                     },
-                                    // 'group_by' => 'idPasteurizacion',
+                                    // 'group_by' => 'idDonacion',
                                     'help' => '<span class="text-primary-v4">Frascos a combinar para formar nuevo frasco para pasteurización</span>',
                                     'attr' => array(
                                             'class' => /*'form-control input-sm'*/ 'list-inline formstyle-radio-list-inline input-sm'/* ul-splitted-list'*/,
@@ -150,6 +187,27 @@ class BlhPasteurizacionAdmin extends MinsalSiblhBundleGeneralAdmin
                                             // 'style' => 'max-height: 500px; overflow-y: auto;'
                                     )
                     ))
+                    ->add('pasteurizacionFrascoProcesado', 'sonata_type_collection', array(
+                                    'label' => false,
+                                    'label_attr' => array('class' => 'label_form_sm'),
+                                    'required' => false,
+                                    'btn_add' => false,  // --| Prevents the "Add" option from being displayed
+                                    'btn_catalogue' => false,  // --| Prevents the "Catalogue" option from being displayed
+                                    // 'class' => 'MinsalSiblhBundle:BlhFrascoProcesado',
+                                    'attr' => array(
+                                            'class' => 'form-control input-sm',
+                                            'data-add-form-group-col-class' => 'col-lg-12 col-md-12 col-sm-12',
+                                            'data-sonata-select2-escape-markup' => 'true',
+                                    ),
+                                    'help' => '<span class="text-primary-v4">Frascos resultantes para análisis y pasteurización</span>',
+                                    'cascade_validation' => true,
+                                    'type_options' => array(
+                                        'btn_add' => false, // --| Prevents the "Add" option from being displayed
+                                        'btn_delete' => false,  // --| Prevents the "Delete" option from being displayed
+                                    )
+                            ),
+                            array('edit' => 'inline', 'inline' => 'table')
+                    )
                 ->end()
             ;
 

@@ -9,6 +9,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use Minsal\SiblhBundle\Entity\BlhFrascoRecolectado;
+use Minsal\SiblhBundle\Entity\BlhFrascoRecolectadoFrascoP;
+use Minsal\SiblhBundle\Entity\BlhFrascoProcesado;
+
 class BlhPasteurizacionAdminController extends MinsalSiblhBundleGeneralAdminController
 {
     /**
@@ -117,6 +121,24 @@ class BlhPasteurizacionAdminController extends MinsalSiblhBundleGeneralAdminCont
         $this->admin->setSplitBatchBottlesMode(true);
 
         $object = $this->admin->getNewInstance();
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        $em = $this->getDoctrine()->getManager();
+
+        ////// --| Material by default
+        // $codes = array('10402001', '10402002', '10402003');
+        // foreach ($codes as $CODE_MATERIAL__)
+        // {
+            $new_bottle = new BlhFrascoProcesado();
+            $new_bottle->setIdPasteurizacion($object);
+            // $new_bottle->setIdMaterial($em->getRepository('MinsalSimagdBundle:RyxCtlMaterial')->findOneBy(array('codigo' => $CODE_MATERIAL__)));
+            $object->addPasteurizacionFrascoProcesado($new_bottle);
+        // }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
 
         $this->admin->setSubject($object);
 

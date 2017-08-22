@@ -1,0 +1,476 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% if choices is defined and choices|length < 1 %}
+    <div class="alert alert-warning alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
+        <span>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el lote no puede crearse por deficit, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>
+        </span>
+    </div>
+{% else %}
+    <div class="alert alert-dark-success-lighter-medicine alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
+        <span>
+            <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Leche restante en frasco utilizado será descartada.
+        </span>
+    </div>
+{% endif %}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <center>
+            <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles_link(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles" disabled="disabled"><span class="glyphicon glyphicon-list-alt"></span> Dividir frascos</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="generateAutomaticBatchOfBottles(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" {#disabled="disabled"#}><span class="glyphicon glyphicon-list-alt"></span> Lote automático</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-success-v3 btn-bigger-glyphicon-icon" href="{{ path('siblh_donacion_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Registrar donación</a>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    (function ($) {
+        /*
+         *
+         * @type type
+         * Global variables for plugin
+         */
+        window.selections = [];   // --| build selections
+        window.bottles = {};   // --| build selections
+        window.bottles_batch = [];   // --| build selections
+    }(jQuery));
+
+</script>
+
+<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_non_conditioned_bottle_target_bstable" name="blh_non_conditioned_bottle_target_bstable"
+        data-id-field="id"
+        data-cache="false"
+        data-show-columns="true"
+        data-search="true"
+        data-pagination="false"
+        data-pagination-h-align="left"
+        data-pagination-detail-h-align="right"
+        data-page-list="[15, 25, 30]"
+        data-page-size="15"
+        data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
+        data-buttons-class="xray-awesome-blue"
+        data-search-align="left"
+        data-buttons-align="left"
+        data-toolbar-align="right">
+    <thead>
+        <tr>
+            <th data-align="center" data-halign="center" data-valign="middle"></th>
+            <th data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_all" name="BATCH_{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][all]"></th>
+            <th>Donante</th>
+            <th>Cód. (Donante)</th>
+            <th>Cód. (Donación)</th>
+            <th class="bstable-column-highlighted">Cód. (fco.)</th>
+            <th class="bstable-column-highlighted">Vol. (ml)</th>
+            <th>Vol. (oz)</th>
+            <th>Extracción</th>
+            <th>Mezclas</th>
+            <th>Fecha Reg.</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for child in form %}
+            {% set s = choices[child.vars.value].data %}
+            {% set form_widget_content %}
+                {{ form_widget(child, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+            {% endset %}
+            <tr>
+                <td style="vertical-align: middle; text-align: center;"><a class="btn-link btn-link-primary-v4" href="javascript:void(0)" onclick="BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link(this, 'split', {{ s.getId() }}); return false;" id="BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle" name="BATCH_{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][splitBottle]" ><span class="glyphicon glyphicon-indent-left"></span> dividir</a></td>
+                <td style="vertical-align: middle; text-align: center;">{{ form_widget_content|raw }}</td>
+                <td>{{ s.getIdDonante() }}</td>
+                <td>{{ s.getIdDonante().getCodigoDonante() }}</td>
+                <td>{{ s.getIdDonacion().getCodigo() }}</td>
+                <td>{{ s.getCodigoFrascoRecolectado() }}</td>
+                <td>{{ s.getVolumenRecolectado() }}</td>
+                <td>{{ s.getOnzRecolectado() }}</td>
+                <td>{{ s.getIdFormaExtraccion().getPresentacionEntidad() }}</td>
+                <td>
+                    <ul class="bs-list-styled">
+                        {% for mz in s.getFrascoRecolectadoDonacionMezcla() %}
+                            <li>
+                                <strong>Vol. agregado:</strong> {{ mz.getVolumenAgregado() }} ml
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ s.getFechaHoraReg()|date('d/m/Y', 'America/El_Salvador') ~ ' ' ~ s.getFechaHoraReg|date('H:i:s A') }}</td>
+            </tr>
+
+            <script type="text/javascript">
+                bottles['_{{ s.getId() }}'] = {
+                    id: {{ s.getId() }},
+                    vl: {{ s.getVolumenRecolectado() }},
+                    dnr: '{{ s.getIdDonante() }}',
+                    cdnr: '{{ s.getIdDonante().getCodigoDonante() }}',
+                    cod: '{{ s.getCodigoFrascoRecolectado() }}',
+                    acz: {% if s.getFrascoRecolectadoAcidez()|length >= 1 %}{{ s.getFrascoRecolectadoAcidez()|first.getResultado() }}{% else %}null{% endif %}
+                };
+            </script>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+    var BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles_link = function(el) {
+        var curvaId = jQuery('#{{ sonata_admin.admin.uniqId }}_idCurva').val();
+        if (typeof curvaId === 'undefined' || curvaId === null || curvaId === "") {
+            swal({
+                html:true,
+                title: "Curva de pasteurización",
+                text: "Para poder fragmentar un frasco, debe seleccionar primero la curva de pasteurización a utilizar.",
+                type: "warning",
+                // showCancelButton: true,
+                // cancelButtonClass: "btn-sm btn-default",
+                confirmButtonClass: "btn-sm btn-primary-v4",
+                confirmButtonText: "Aceptar",
+                // cancelButtonText: "Cancelar",
+                // closeOnConfirm: false,
+                // closeOnCancel: false,
+                animation: false,
+            // },
+            // function(isConfirm) {
+            //     if (isConfirm) {
+            //     }
+            });
+
+            bottles_batch.length = 0;
+            return;
+        }
+
+        for (var i = 0, len = selections.length; i < len; ++i) {
+            window.bottles_batch.push(window.bottles['_' + selections[i]]); // frascos seleccionado);
+        }
+        window.console.log('window.bottles_batch', window.bottles_batch);
+
+        var cvPz = null;
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: Routing.generate('siblh_curva_searchById'),
+            data: {
+                _xml_http_request: true,
+                id: curvaId,
+            },
+            success: function(response) {
+                cvPz = response.object;
+
+                if (typeof cvPz === 'undefined' || cvPz === null || cvPz === "") {
+                    return;
+                }
+
+                var tbdy = '';
+                var tcfcos = 0;
+                var bt = null;
+                var cfcos = null;
+                var vltotal = null;
+                var missing = null;
+                var fcmissing = null;
+                var fcmissing_real = null;
+                var waste = null;
+                for (var ix = 0, len = bottles_batch.length; ix < len; ++ix)
+                {
+                    bt              = window.bottles['_' + bottles_batch[ix].id]; // frasco seleccionado
+                    cfcos           = Math.floor(bt.vl / parseFloat(cvPz.t01_volumenPorFrasco));    // máximos frascos posibles
+                    vltotal         = cfcos * parseFloat(cvPz.t01_volumenPorFrasco);    // volumen total de frascos logrados
+                    missing         = parseFloat(cvPz.t01_volumenTotal) - vltotal;  // volumen faltante
+                    fcmissing       = parseInt(cvPz.t01_cantidadFrascos) - cfcos;    // frascos faltantes
+                    fcmissing_real  = Math.floor(missing / parseFloat(cvPz.t01_volumenPorFrasco));    // frascos faltantes reales
+                    waste           = bt.vl - vltotal;  // volumen de desecho
+
+                    tcfcos += cfcos;    // total frascos
+                    
+                    window.console.log('cvPz', cvPz, 'bt', bt,
+                        '\n frasco seleccionado', JSON.stringify(bt),
+                        '\n curva', JSON.stringify(cvPz),
+                        '\n cvPz.t01_volumenPorFrasco', cvPz.t01_volumenPorFrasco,
+                        '\n cvPz.t01_volumenTotal', cvPz.t01_volumenTotal,
+                        '\n cvPz.t01_cantidadFrascos', cvPz.t01_cantidadFrascos,
+                        '\n máximos frascos posibles', cfcos,
+                        '\n volumen total de frascos logrados', vltotal,
+                        '\n volumen faltante', missing,
+                        '\n frascos faltantes', fcmissing,
+                        '\n frascos faltantes real', fcmissing_real,
+                        '\n volumen de desecho', waste
+                    );
+
+                    
+                    for (var i = 0; i < cfcos; i++) {
+                        tbdy += '<tr class="checked-row-bstable-c' + (ix + 1) + '">';
+                            tbdy += '<td><input type="checkbox" checked="checked" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_confirmBottle_' + bt.id + '" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[confirmBottle][]" value="' + bt.id + '"></td>';
+                            tbdy += '<td>' + bt.dnr + '</td>';
+                            tbdy += '<td>' + bt.cdnr + '</td>';
+                            {#// tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idCurva" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idCurva][]" value="' + bt.id + '"></td>';#}
+                            tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idFrascoRecolectado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado][]" value="' + bt.id + '">' + bt.cod + '</td>';
+                            tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenFrascoPasteurizado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenFrascoPasteurizado][]" value="' + cvPz.t01_volumenPorFrasco + '">' + parseFloat(cvPz.t01_volumenPorFrasco) + '</td>';
+                            tbdy += '<td>' + (parseFloat(cvPz.t01_volumenPorFrasco) * 0.033814).toFixed(4) + '</td>';
+                            tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_acidezTotal" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[acidezTotal][]" value="' + bt.acz + '">' + parseFloat(bt.acz) + '</td>';
+                            tbdy += '<td></td>';
+                            tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenDisponibleFp" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenDisponibleFp][]" value="' + cvPz.t01_volumenPorFrasco + '">' + parseFloat(cvPz.t01_volumenPorFrasco) + '</td>';
+                            tbdy += '<td></td>';
+                            tbdy += '<td><textarea id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_observacionFrascoProcesado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[observacionFrascoProcesado][]" rows="1" style="resize:none" placeholder="comentarios..." class="form-control input-sm form-control" data-fv-stringlength="true" data-fv-stringlength-min="5" data-fv-stringlength-message="5 caracteres mínimo"></textarea></td>';
+                        tbdy += '</tr>';
+                    }
+                }
+
+                window.console.log('tcfcos', tcfcos, 'tvltotal', tcfcos * parseFloat(cvPz.t01_volumenPorFrasco));
+
+                jQuery('#BATCH_MIX_BOTTLES_CONF_{{ sonata_admin.admin.uniqId }}_frascos').val(tcfcos);
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable tbody').html(tbdy);
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').bootstrapTable('destroy').bootstrapTable();{# #}
+
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').find('tbody tr td input[type=checkbox]').iCheck('destroy').iCheck({
+                    checkboxClass: 'icheckbox_minimal',
+                    radioClass: 'iradio_minimal'
+                });
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
+
+                jQuery('.mix-one-bottle').hide();
+                jQuery('.mix-batch-bottles').show();
+
+                bottles_batch.length = 0;
+            },
+            error: function(err) {
+                bottles_batch.length = 0;
+
+                window.console.log('//////////////////////////////////////////////////////////////\n//////////////////////////////////////////////////////////////');
+                window.console.log('%c' + err.error, 'background: #f5f2d4; color: #ff0000');
+                window.console.log('//////////////////////////////////////////////////////////////');
+                window.console.log('%c' + err.responseText, 'background: #f5f2d4; color: #151e23');
+                window.console.log('//////////////////////////////////////////////////////////////\n//////////////////////////////////////////////////////////////');
+            }
+        });
+
+    };
+
+    var BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link = function(el, ds, id) {
+        var curvaId = jQuery('#{{ sonata_admin.admin.uniqId }}_idCurva').val();
+        if (typeof curvaId === 'undefined' || curvaId === null || curvaId === "") {
+            swal({
+                html:true,
+                title: "Curva de pasteurización",
+                text: "Para poder fragmentar un frasco, debe seleccionar primero la curva de pasteurización a utilizar.",
+                type: "warning",
+                // showCancelButton: true,
+                // cancelButtonClass: "btn-sm btn-default",
+                confirmButtonClass: "btn-sm btn-primary-v4",
+                confirmButtonText: "Aceptar",
+                // cancelButtonText: "Cancelar",
+                // closeOnConfirm: false,
+                // closeOnCancel: false,
+                animation: false,
+            // },
+            // function(isConfirm) {
+            //     if (isConfirm) {
+            //     }
+            });
+            return;
+        }
+        var cvPz = null;
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: Routing.generate('siblh_curva_searchById'),
+            data: {
+                _xml_http_request: true,
+                id: curvaId,
+            },
+            success: function(response) {
+                cvPz = response.object;
+
+                if (typeof cvPz === 'undefined' || cvPz === null || cvPz === "") {
+                    return;
+                }
+                var bt              = window.bottles['_' + id]; // frasco seleccionado
+                var cfcos           = Math.floor(bt.vl / parseFloat(cvPz.t01_volumenPorFrasco));    // máximos frascos posibles
+                var vltotal         = cfcos * parseFloat(cvPz.t01_volumenPorFrasco);    // volumen total de frascos logrados
+                var missing         = parseFloat(cvPz.t01_volumenTotal) - vltotal;  // volumen faltante
+                var fcmissing       = parseInt(cvPz.t01_cantidadFrascos) - cfcos;    // frascos faltantes
+                var fcmissing_real  = Math.floor(missing / parseFloat(cvPz.t01_volumenPorFrasco));    // frascos faltantes reales
+                var waste           = bt.vl - vltotal;  // volumen de desecho
+                
+                window.console.log('cvPz', cvPz, 'bt', bt,
+                    '\n frasco seleccionado', JSON.stringify(bt),
+                    '\n curva', JSON.stringify(cvPz),
+                    '\n cvPz.t01_volumenPorFrasco', cvPz.t01_volumenPorFrasco,
+                    '\n cvPz.t01_volumenTotal', cvPz.t01_volumenTotal,
+                    '\n cvPz.t01_cantidadFrascos', cvPz.t01_cantidadFrascos,
+                    '\n máximos frascos posibles', cfcos,
+                    '\n volumen total de frascos logrados', vltotal,
+                    '\n volumen faltante', missing,
+                    '\n frascos faltantes', fcmissing,
+                    '\n frascos faltantes real', fcmissing_real,
+                    '\n volumen de desecho', waste
+                );
+
+                var tbdy = '';
+                for (var i = 0; i < cfcos; i++) {
+                    tbdy += '<tr>';
+                        tbdy += '<td><input type="checkbox" checked="checked" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_confirmBottle_' + bt.id + '" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[confirmBottle][]" value="' + bt.id + '"></td>';
+                        tbdy += '<td>' + bt.dnr + '</td>';
+                        tbdy += '<td>' + bt.cdnr + '</td>';
+                        {#// tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idCurva" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idCurva][]" value="' + bt.id + '"></td>';#}
+                        tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idFrascoRecolectado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado][]" value="' + bt.id + '">' + bt.cod + '</td>';
+                        tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenFrascoPasteurizado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenFrascoPasteurizado][]" value="' + cvPz.t01_volumenPorFrasco + '">' + parseFloat(cvPz.t01_volumenPorFrasco) + '</td>';
+                        tbdy += '<td>' + (parseFloat(cvPz.t01_volumenPorFrasco) * 0.033814).toFixed(4) + '</td>';
+                        tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_acidezTotal" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[acidezTotal][]" value="' + bt.acz + '">' + parseFloat(bt.acz) + '</td>';
+                        tbdy += '<td></td>';
+                        tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenDisponibleFp" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenDisponibleFp][]" value="' + cvPz.t01_volumenPorFrasco + '">' + parseFloat(cvPz.t01_volumenPorFrasco) + '</td>';
+                        tbdy += '<td></td>';
+                        tbdy += '<td><textarea id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_observacionFrascoProcesado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[observacionFrascoProcesado][]" rows="1" style="resize:none" placeholder="comentarios..." class="form-control input-sm form-control" data-fv-stringlength="true" data-fv-stringlength-min="5" data-fv-stringlength-message="5 caracteres mínimo"></textarea></td>';
+                    tbdy += '</tr>';
+                }
+
+                jQuery('#BATCH_MIX_BOTTLES_CONF_{{ sonata_admin.admin.uniqId }}_frascos').val(cfcos);
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable tbody').html(tbdy);
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').bootstrapTable('destroy').bootstrapTable();{# #}
+
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').find('tbody tr td input[type=checkbox]').iCheck('destroy').iCheck({
+                    checkboxClass: 'icheckbox_minimal',
+                    radioClass: 'iradio_minimal'
+                });
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
+
+                jQuery('.mix-one-bottle').hide();
+                jQuery('.mix-batch-bottles').show();
+            },
+            error: function(err) {
+                window.console.log('//////////////////////////////////////////////////////////////\n//////////////////////////////////////////////////////////////');
+                window.console.log('%c' + err.error, 'background: #f5f2d4; color: #ff0000');
+                window.console.log('//////////////////////////////////////////////////////////////');
+                window.console.log('%c' + err.responseText, 'background: #f5f2d4; color: #151e23');
+                window.console.log('//////////////////////////////////////////////////////////////\n//////////////////////////////////////////////////////////////');
+            }
+        });
+    };
+
+    var generateAutomaticBatchOfBottles = function(el) {
+{#
+        {% if choices is defined and choices|length >= 15 %}
+#}
+            var $table = jQuery('#blh_non_conditioned_bottle_target_bstable');
+            // $table.bootstrapTable('refreshOptions', {
+            //     pageSize: 15,
+            // });
+            selections.length = 0;
+            console.log('selections', selections, selections.length);
+            jQuery('input[name="BATCH_{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][all]"]').iCheck('uncheck');
+            $table.find('tbody > tr > td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][]"]').iCheck('uncheck');
+            // if (selections.length !== 15) {}
+            $table.find('tbody > tr').slice(0, 15).find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][]"]').iCheck('check');
+            console.log('selections checked', selections, selections.length, $table.find('tbody > tr').length);
+{#
+        {% endif %}
+#}
+    };
+
+    jQuery(document).ready(function() {
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////// collected bottles table
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        var $table = jQuery('#blh_non_conditioned_bottle_target_bstable');
+
+        $table.find('thead tr th input[type=checkbox], tbody tr td input[type=checkbox]').iCheck('destroy').iCheck({
+            checkboxClass: 'icheckbox_minimal',
+            radioClass: 'iradio_minimal'
+        });
+        $table.find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
+
+        $table.on('page-change.bs.table sort.bs.table column-switch.bs.table search.bs.table column-search.bs.table', function (e, p1, p2) {
+            $table.find('tbody tr td input[type=checkbox]').iCheck('destroy').iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal'
+            });
+            $table.find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
+
+            jQuery('input[name="BATCH_{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][all]"]').iCheck('uncheck');
+            
+            for (var i = 0, len = selections.length; i < len; ++i) {
+                $table.find('tbody tr td input[type=checkbox][value="' + selections[i] + '"]').iCheck('check');
+            }
+        });
+        $table.on('dbl-click-row.bs.table', function (e, row, $element, field) {
+            $element.find('td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][]"]').iCheck('check');
+            // $element.addClass('checked-row-bstable').siblings('tr').removeClass('checked-row-bstable');
+        });
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //////// get selections
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        // var selections = [];
+        jQuery(document).on('ifClicked', 'input[name="BATCH_{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][all]"]', function(e) {
+            var checked = this.checked !== false ? 'uncheck' : 'check'; // it was checked/unchecked before user clicked
+            if (this.checked !== false) {
+                selections.length = 0;
+            }
+            $table.find('tbody tr td input[type=checkbox][name="{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][]"]').iCheck(checked);
+        });
+        jQuery(document).on('ifChanged', 'input[name="{{ sonata_admin.admin.uniqId }}[frascoRecolectadoFrascoProcesadoVolumenAgregado][]"]', function(e) {
+            if (this.checked === false) {
+                // push or splice the selections if you want to save all data selections
+                selections.splice(selections.indexOf(this.value), 1);
+                jQuery(this).closest('tr').removeClass('checked-row-bstable');
+            }
+            else {
+                // save your data, here just save the current page
+                if(jQuery.inArray(this.value, selections) === -1) {
+                    selections.push(this.value);
+                }
+                jQuery(this).closest('tr').addClass('checked-row-bstable');
+            }
+            
+            jQuery('#BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles').attr('disabled', !(selections.length > 0));
+            
+        });
+
+        {% if choices is defined and choices|length == 0 %}
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            //////// there is not any collected bottle
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            swal({
+                html:true,
+                title: "La consulta no devolvió ningún registro",
+                text: "Consulte frascos para análisis en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonClass: "btn-sm btn-default",
+                confirmButtonClass: "btn-sm btn-primary-v4",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancelar",
+                // closeOnConfirm: false,
+                // closeOnCancel: false,
+                animation: false,
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    var url = Routing.generate('siblh_donacion_create', {mode: 'standard', interaction: false});
+                    window.location.href = url; // simulate link click
+                }
+            });
+        {% endif %}
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    });
+
+</script>

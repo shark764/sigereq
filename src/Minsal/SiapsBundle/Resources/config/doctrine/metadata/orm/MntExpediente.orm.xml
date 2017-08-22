@@ -7,8 +7,8 @@
       <index name="IDX_E4950F57961045CB" columns="id_paciente"/>
     </indexes>
     <unique-constraints>
-      <unique-constraint name="idx_numero_expediente" columns="numero"/>
       <unique-constraint name="idx_id_id_paciente" columns="id,id_paciente"/>
+      <unique-constraint name="idx_numero_expediente" columns="numero"/>
     </unique-constraints>
     <id name="id" type="bigint" column="id">
       <generator strategy="SEQUENCE"/>

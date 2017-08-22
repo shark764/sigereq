@@ -14,7 +14,11 @@ file that was distributed with this source code.
 {% block choice_widget %}
 {% spaceless %}
     {% if compound %}
-        {% if (sonata_admin.admin.uniqId ~ '_pasteurizacionFrascoProcesado') is not sameas(id) %}
+        {% if (sonata_admin.admin.uniqId ~ '_pasteurizacionFrascoProcesado') is sameas(id) %}
+            {% include 'MinsalSiblhBundle:BlhPasteurizacionAdmin:processed_bottles_in_list_checkbox.html.twig' ignore missing with {attr: block('widget_container_attributes_choice_widget'), form: form, choices: choices} %}
+        {% elseif (sonata_admin.admin.uniqId ~ '_frascoRecolectadoFrascoProcesadoVolumenAgregado') is sameas(id) %}
+            {% include 'MinsalSiblhBundle:BlhPasteurizacionAdmin:non_conditioned_bottles_in_list_checkbox.html.twig' ignore missing with {attr: block('widget_container_attributes_choice_widget'), form: form, choices: choices} %}
+        {% else %}
             {% if attr['data-radio-display-form'] is defined and attr['data-radio-display-form'] == 'inline' %}
                 {% set attr = attr|merge({'class': (attr.class|default('') ~ ' list-inline')|trim}) %}  {# inline radiobutton display mode #}
             {% endif%}
@@ -28,8 +32,6 @@ file that was distributed with this source code.
                 </li>
             {% endfor %}
             </ul>
-        {% else %}
-            {% include 'MinsalSiblhBundle:BlhPasteurizacionAdmin:processed_bottles_in_list_checkbox.html.twig' ignore missing with {attr: block('widget_container_attributes_choice_widget'), form: form, choices: choices} %}
         {% endif%}
     {% else %}
     {% if sonata_admin.admin and not sonata_admin.admin.getConfigurationPool().getOption('use_select2') %}
