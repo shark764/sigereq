@@ -2,8 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="BlhReceptor" table="blh_receptor">
     <indexes>
-      <index name="fk_paciente_receptor" columns="id_paciente"/>
       <index name="fk_banco_de_leche_receptor" columns="id_banco_de_leche"/>
+      <index name="fk_paciente_receptor" columns="id_paciente"/>
       <index name="IDX_6498D2A73181F7D" columns="id_curva_lubchenco"/>
       <index name="IDX_6498D2A701624C4" columns="id_expediente"/>
       <index name="IDX_6498D2AD436DB02" columns="id_madre_donante"/>

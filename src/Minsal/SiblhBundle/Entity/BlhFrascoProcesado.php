@@ -59,8 +59,7 @@ class BlhFrascoProcesado implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="acidez_total", type="decimal", precision=7, scale=4, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="acidez_total", type="decimal", precision=7, scale=4, nullable=true)
      * @Assert\Range(
      *      min = 0,
      *      max = 2147483647,
@@ -73,8 +72,7 @@ class BlhFrascoProcesado implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="kcalorias_totales", type="decimal", precision=7, scale=4, nullable=false)
-     * @Assert\NotBlank(message = "foreign.default.not_blank")
+     * @ORM\Column(name="kcalorias_totales", type="decimal", precision=7, scale=4, nullable=true)
      * @Assert\Range(
      *      min = 0,
      *      max = 2147483647,

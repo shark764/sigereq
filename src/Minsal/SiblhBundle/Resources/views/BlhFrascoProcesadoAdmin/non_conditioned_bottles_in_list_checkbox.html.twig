@@ -40,6 +40,9 @@ file that was distributed with this source code.
         <center>
             <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
                 <div class="btn-group" role="group" aria-label="...">
+                    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles_link(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles" disabled="disabled"><span class="glyphicon glyphicon-list-alt"></span> Dividir frascos</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="...">
                     <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="generateAutomaticBatchOfBottles(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" {#disabled="disabled"#}><span class="glyphicon glyphicon-list-alt"></span> Lote automático</a>
                 </div>
                 <div class="btn-group" role="group" aria-label="...">
@@ -60,6 +63,7 @@ file that was distributed with this source code.
          */
         window.selections = [];   // --| build selections
         window.bottles = {};   // --| build selections
+        window.bottles_batch = [];   // --| build selections
     }(jQuery));
 
 </script>
@@ -145,6 +149,9 @@ file that was distributed with this source code.
                 bottles['_{{ s.getId() }}'] = {
                     id: {{ s.getId() }},
                     vl: {{ s.getVolumenRecolectado() }},
+                    dnr: '{{ s.getIdDonante() }}',
+                    cdnr: '{{ s.getIdDonante().getCodigoDonante() }}',
+                    cod: '{{ s.getCodigoFrascoRecolectado() }}',
                     acz: {% if s.getFrascoRecolectadoAcidez()|length >= 1 %}{{ s.getFrascoRecolectadoAcidez()|first.getResultado() }}{% else %}null{% endif %}
                 };
             </script>
@@ -154,9 +161,35 @@ file that was distributed with this source code.
 
 <script type="text/javascript">
 
+    var BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles_link = function(el) {
+        // if (selections.length)
+        for (var i = 0, len = selections.length; i < len; ++i) {
+            window.bottles_batch.push(window.bottles['_' + selections[i]]); // frascos seleccionado);
+        }
+        window.console.log('window.bottles_batch', window.bottles_batch);
+    };
+
     var BATCH_{{ sonata_admin.admin.uniqId }}_frascoRecolectadoFrascoProcesadoVolumenAgregado_splitBottle_link = function(el, ds, id) {
         var curvaId = jQuery('#{{ sonata_admin.admin.uniqId }}_idCurva').val();
         if (typeof curvaId === 'undefined' || curvaId === null || curvaId === "") {
+            swal({
+                html:true,
+                title: "Curva de pasteurización",
+                text: "Para poder fragmentar un frasco, debe seleccionar primero la curva de pasteurización a utilizar.",
+                type: "warning",
+                // showCancelButton: true,
+                // cancelButtonClass: "btn-sm btn-default",
+                confirmButtonClass: "btn-sm btn-primary-v4",
+                confirmButtonText: "Aceptar",
+                // cancelButtonText: "Cancelar",
+                // closeOnConfirm: false,
+                // closeOnCancel: false,
+                animation: false,
+            // },
+            // function(isConfirm) {
+            //     if (isConfirm) {
+            //     }
+            });
             return;
         }
         var cvPz = null;
@@ -200,9 +233,11 @@ file that was distributed with this source code.
                 var tbdy = '';
                 for (var i = 0; i < cfcos; i++) {
                     tbdy += '<tr>';
-                        tbdy += '<td></td>';
+                        tbdy += '<td><input type="checkbox" checked="checked" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_confirmBottle_' + bt.id + '" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[confirmBottle][]" value="' + bt.id + '"></td>';
+                        tbdy += '<td>' + bt.dnr + '</td>';
+                        tbdy += '<td>' + bt.cdnr + '</td>';
                         {#// tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idCurva" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idCurva][]" value="' + bt.id + '"></td>';#}
-                        tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idFrascoRecolectado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado][]" value="' + bt.id + '"></td>';
+                        tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_idFrascoRecolectado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[idFrascoRecolectado][]" value="' + bt.id + '">' + bt.cod + '</td>';
                         tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_volumenFrascoPasteurizado" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[volumenFrascoPasteurizado][]" value="' + cvPz.t01_volumenPorFrasco + '">' + parseFloat(cvPz.t01_volumenPorFrasco) + '</td>';
                         tbdy += '<td>' + (parseFloat(cvPz.t01_volumenPorFrasco) * 0.033814).toFixed(4) + '</td>';
                         tbdy += '<td><input type="hidden" id="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_acidezTotal" name="BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}[acidezTotal][]" value="' + bt.acz + '">' + parseFloat(bt.acz) + '</td>';
@@ -216,6 +251,12 @@ file that was distributed with this source code.
                 jQuery('#BATCH_MIX_BOTTLES_CONF_{{ sonata_admin.admin.uniqId }}_frascos').val(cfcos);
                 jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable tbody').html(tbdy);
                 jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').bootstrapTable();{# #}
+
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').find('tbody tr td input[type=checkbox]').iCheck('destroy').iCheck({
+                    checkboxClass: 'icheckbox_minimal',
+                    radioClass: 'iradio_minimal'
+                });
+                jQuery('#BATCH_MIX_BOTTLES_{{ sonata_admin.admin.uniqId }}_blh_mixed_bottle_target_bstable').find('thead tr th .iCheck-helper, tbody tr td .iCheck-helper').css('position', 'relative');
 
                 jQuery('.mix-one-bottle').hide();
                 jQuery('.mix-batch-bottles').show();
@@ -308,6 +349,9 @@ file that was distributed with this source code.
                 }
                 jQuery(this).closest('tr').addClass('checked-row-bstable');
             }
+            
+            jQuery('#BATCH_{{ sonata_admin.admin.uniqId }}_split_batch_of_bottles').attr('disabled', !(selections.length > 0));
+            
         });
 
         {% if choices is defined and choices|length == 0 %}

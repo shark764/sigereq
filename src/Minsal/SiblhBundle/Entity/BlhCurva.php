@@ -196,6 +196,33 @@ class BlhCurva implements EntityInterface
      */
     public function getFormatoPresentacionEntidad()
     {
+        // $text_ = $this->nombrearea ? strtoupper($this->idarea) . ' - ' . mb_strtoupper($this->nombrearea, 'utf-8') : '';
+        // return '<div class="media" style="display: inline-flex; margin-left: 15px; overflow: visible;" >' .
+        //     '<img style="width: 64px; height: 64px;" data-holder-rendered="true" data-idarea="' .  $this->idarea . '.jpg" alt="64x64" data-src="..." class="media-object">' .
+        //     '<div class="media-body media-description-justify ">' .
+        //         '<h5 class="media-heading">' . $text_ . '</h5>' .
+        //         $this->descripcion .
+        //     '</div>' .
+        // '</div>';
+        // return '';
+        // $markup = '<div class="row-fluid">' .
+        //                 '<div class="span10">' .
+        //                     '<div class="row-fluid">' .
+        //                         '<div class="span6">' . el.full_name . '</div>' .
+        //                     '</div>';
+
+        // $markup .= '</div></div>';
+
+        // return $markup;
+
+        $text_ = '<div class="row">' .
+                    '<div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">No. de frascos</div><div class="col-lg-9 col-md-9 col-sm-9">' . $this->cantidadFrascos . '</div>' .
+                    '<div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">Vol. / frascos</div><div class="col-lg-9 col-md-9 col-sm-9">' . $this->volumenPorFrasco . '</div>' .
+                    '<div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">Vol. total</div><div class="col-lg-9 col-md-9 col-sm-9">' . $this->volumenTotal . '</div>' .
+                    '<div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">Valor</div><div class="col-lg-9 col-md-9 col-sm-9">' . $this->valorCurva . '</div>' .
+                '</div>';
+
+        return $text_;
     }
 
     /**
