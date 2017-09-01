@@ -102,7 +102,7 @@ class BlhFrascoRecolectadoAdminController extends MinsalSiblhBundleGeneralAdminC
         $request->isXmlHttpRequest();
 
         $ids = $request->request->get('ids', array());
-        $id_decode = json_decode($id, true);
+        $id_decode = json_decode($ids, true);
         // $id = $this->get('request')->request->get('id', null);
         // var_dump($id);
 
