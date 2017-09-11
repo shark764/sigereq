@@ -13,3 +13,7 @@ php app/console assets:install
 
 php app/console doctrine:mapping:import MinsalSimagdBundle annotation --filter="Img" --filter="Ryx" --filter="CtlAreaServicioDiagnostico" --filter="CtlExamenServicioDiagnostico" --filter="CtlEstadoServicioDiagnostico" --filter="MntAreaExamenEstablecimiento" --filter="SecDetallesolicitudestudios" --filter="SecSolicitudestudios" --filter="MntDatoReferencia" --filter="MntExpedienteReferido" --filter="MntPacienteReferido"
 
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/onspeechend
+https://groups.google.com/a/chromium.org/forum/#!topic/chromium-html5/s2XhT-Y5qAc
