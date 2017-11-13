@@ -13,7 +13,7 @@ file that was distributed with this source code.
     <div class="alert alert-warning alert-dismissible help-alert-radiology-result-status no-diagnosis-request" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"> Cerrar </span></button>
         <span>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el lote no puede crearse por deficit, consulte frascos para análisis en el menú <a class="btn-link btn-link-primary-v4" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp; Si el lote no puede crearse por deficit, consulte frascos para análisis en el menú <a class="btn-link" href="{{ path('siblh_donacion_create') }}">Consultar donaciones</a>
         </span>
     </div>
 {% endif %}
@@ -23,17 +23,17 @@ file that was distributed with this source code.
         <center>
             <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
                 <div class="btn-group" role="group" aria-label="...">
-                    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="generateAutomaticBatchOfBottles(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" {#disabled="disabled"#}><span class="glyphicon glyphicon-list-alt"></span> Lote automático</a>
+                    <a class="btn btn-sm btn-primary btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="generateAutomaticBatchOfBottles(this); return false;" name="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" id="BATCH_{{ sonata_admin.admin.uniqId }}_generate_automatic_batch_of_bottles" {#disabled="disabled"#}><span class="glyphicon glyphicon-list-alt"></span> Lote automático</a>
                 </div>
                 <div class="btn-group" role="group" aria-label="...">
-                    <a class="btn btn-sm btn-success-v3 btn-bigger-glyphicon-icon" href="{{ path('siblh_donacion_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Registrar donación</a>
+                    <a class="btn btn-sm btn-success btn-bigger-glyphicon-icon" href="{{ path('siblh_donacion_create') }}"><span class="glyphicon glyphicon-pushpin"></span> Registrar donación</a>
                 </div>
             </div>
         </center>
     </div>
 </div>
 
-<table data-toggle="table"{# #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable"
+<table data-toggle="table"{# #} class="table table-condensed table-hover table-primary blh-bsfixedtable" id="blh_collected_bottle_target_bstable" name="blh_collected_bottle_target_bstable"
         data-id-field="id"
         data-cache="false"
         data-show-columns="true"
@@ -43,8 +43,8 @@ file that was distributed with this source code.
         data-pagination-detail-h-align="right"
         data-page-list="[15, 25, 30]"
         data-page-size="15"
-        data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
-        data-buttons-class="xray-awesome-blue"
+        data-classes="table table-condensed table-hover table-primary blh-bsfixedtable"
+        data-buttons-class="primary"
         data-search-align="left"
         data-buttons-align="left"
         data-toolbar-align="right">
@@ -214,7 +214,7 @@ file that was distributed with this source code.
             swal({
                 html:true,
                 title: "La consulta no devolvió ningún registro",
-                text: "Consulte frascos para análisis en el menú <a class=\"btn-link btn-link-primary-v4\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
+                text: "Consulte frascos para análisis en el menú <a class=\"btn-link\" href=\"{{ path('siblh_donacion_create') }}\">Consultar donaciones</a>",
                 type: "warning",
                 showCancelButton: true,
                 cancelButtonClass: "btn-sm btn-default",

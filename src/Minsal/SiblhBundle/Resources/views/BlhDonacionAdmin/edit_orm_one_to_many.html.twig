@@ -19,7 +19,7 @@ file that was distributed with this source code.
             {% if sonata_admin.edit == 'inline' %}
                 {% if sonata_admin.inline == 'table' %}
                     {% if form.children|length > 0 %}
-                        <table class="table table-no-bordered table-condensed table-hover table-responsive table-striped table-xray-supreme-head">
+                        <table class="table table-no-bordered table-condensed table-hover table-responsive table-striped table-primary">
                             <thead>
                                 <tr>
                                     {% for field_name, nested_field in form.children|first.children if field_name != '_delete' %}
@@ -30,7 +30,7 @@ file that was distributed with this source code.
                                     {% endfor %}
                                     {% for field_name, nested_field in form.children|first.children if field_name == '_delete' %}
                                         <th>
-                                            <div style="text-align: center;"><a href="javascript:void(0)" onclick="removeAllRows(this); return false;" class="btn-link btn-link-emergency" style="color: #{#a73f0b#}fff;"><span class="glyphicon glyphicon-{#trash#}remove" aria-hidden="true"></span></a></div>
+                                            <div style="text-align: center;"><a href="javascript:void(0)" onclick="removeAllRows(this); return false;" class="btn-link btn-link-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></div>
                                         </th>
                                     {% endfor %}
                                 </tr>
@@ -61,7 +61,7 @@ file that was distributed with this source code.
 
                                                     {% set dummy = nested_group_field.setrendered %}
                                                 {% else %}
-                                                    <div style="text-align: center;"><a href="javascript:void(0)" onclick="removeRow(this); return false;" class="btn-link btn-link-{#emergency#}{#primary-v4#}black-thrash"><span class="glyphicon glyphicon-{#trash#}remove" aria-hidden="true"></span></a></div>
+                                                    <div style="text-align: center;"><a href="javascript:void(0)" onclick="removeRow(this); return false;" class="btn-link btn-link-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></div>
                                                 {% endif %}
                                                 {% if nested_field.vars.errors|length > 0 %}
                                                     <div class="help-inline sonata-ba-field-error-messages">
@@ -186,7 +186,7 @@ file that was distributed with this source code.
                     <a
                         href="{{ sonata_admin.field_description.associationadmin.generateUrl('create', sonata_admin.field_description.getOption('link_parameters', {})) }}"
                         onclick="return start_field_retrieve_{{ id }}(this);"
-                        class="{{ sonata_admin.admin.root.uniqid }}_btn_add btn-link btn-link-xray-awesome-blue sonata-ba-action"
+                        class="{{ sonata_admin.admin.root.uniqid }}_btn_add btn-link sonata-ba-action"
                         title="{{ btn_add|trans({}, btn_catalogue) }}"
                         >
                         <i class="fa fa-plus-circle"></i>
@@ -239,7 +239,7 @@ file that was distributed with this source code.
                     <a
                         href="{{ sonata_admin.field_description.associationadmin.generateUrl('create', sonata_admin.field_description.getOption('link_parameters', {})) }}"
                         onclick="return start_field_dialog_form_add_{{ id }}(this);"
-                        class="{{ sonata_admin.admin.root.uniqid }}_btn_add btn-link btn-link-xray-awesome-blue sonata-ba-action"
+                        class="{{ sonata_admin.admin.root.uniqid }}_btn_add btn-link sonata-ba-action"
                         title="{{ btn_add|trans({}, btn_catalogue) }}"
                         >
                         <i class="fa fa-plus-circle"></i>

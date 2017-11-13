@@ -12,7 +12,7 @@ file that was distributed with this source code.
 {% if admin.hasroute('delete') and admin.isGranted('DELETE', object) and admin.id(object) is not null %}
     <div class="btn-group" role="group" aria-label="...">
     	{#{{ 'delete_or'|trans({}, 'SonataAdminBundle') }}#}
-	    <a class="btn btn-sm btn-emergency btn-bigger-glyphicon-icon" href="{{ admin.generateObjectUrl('delete', object) }}">
+	    <a class="btn btn-sm btn-danger btn-bigger-glyphicon-icon" href="{{ admin.generateObjectUrl('delete', object) }}">
 	        <span class="glyphicon glyphicon-trash"></span>&nbsp; {{ 'link_delete'|trans({}, 'SonataAdminBundle') }}</a>
     </div>
 {% endif %}

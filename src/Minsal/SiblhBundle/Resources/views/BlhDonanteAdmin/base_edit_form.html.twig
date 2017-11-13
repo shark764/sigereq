@@ -39,7 +39,7 @@
                 {% block simagd_apply_custom_firstbox %}
                     {% if object.getIdExpediente() is null %}
                         <div class="{#col-lg-10 col-md-10 col-sm-10 col-xs-offset-1#} col-lg-12 col-md-12 col-sm-12">
-                            <div class="box box-drop-outside-shadow box-primary-v4">
+                            <div class="box box-primary">
                                 <div class="box-body">
                                     <div class="row">
 
@@ -78,7 +78,7 @@
                                                                 <div class="btn-toolbar" role="toolbar" aria-label="...">
                                                                     {% if is_granted('ROLE_MINSAL_SIAPS_ADMIN_MNT_EXPEDIENTE_CREATE') or is_granted('ROLE_ADMIN') %}
                                                                         <div class="btn-group" role="group" aria-label="...">
-                                                                            <a class="btn btn-sm btn-xray-awesome-blue" href="javascript:void(0)" onclick="searchPatientInSiap(this); return false;" id="DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_in_siap" name="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_donor_in_siap]" disabled="disabled"{# #}><span class="glyphicon glyphicon-cloud"></span>{# #}&nbsp; Buscar en SIAP</a>
+                                                                            <a class="btn btn-sm btn-primary" href="javascript:void(0)" onclick="searchPatientInSiap(this); return false;" id="DONOR_SEARCHDONOR_{{ admin.uniqId }}_search_donor_in_siap" name="DONOR_SEARCHDONOR_{{ admin.uniqId }}[search_donor_in_siap]" disabled="disabled"{# #}><span class="glyphicon glyphicon-cloud"></span>{# #}&nbsp; Buscar en SIAP</a>
                                                                         </div>
                                                                     {% endif %}
                                                                 </div>

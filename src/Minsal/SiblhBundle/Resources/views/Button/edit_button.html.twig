@@ -11,7 +11,7 @@ file that was distributed with this source code.
 
 {% if admin.hasRoute('edit') and admin.id(object) and admin.isGranted('EDIT', object)%}
     <div class="btn-group" role="group" aria-label="...">
-	    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="{{ admin.generateObjectUrl('edit', object) }}">
+	    <a class="btn btn-sm btn-primary btn-bigger-glyphicon-icon" href="{{ admin.generateObjectUrl('edit', object) }}">
 	        <span class="glyphicon glyphicon-edit"></span>&nbsp; Editar</a>
     </div>
 {% endif %}

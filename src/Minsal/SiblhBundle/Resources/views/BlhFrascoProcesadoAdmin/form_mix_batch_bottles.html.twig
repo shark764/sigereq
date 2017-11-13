@@ -14,7 +14,7 @@ file that was distributed with this source code.
         <!-- <center> -->
             <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
                 <div class="btn-group" role="group" aria-label="...">
-                    <a class="btn btn-sm btn-xray-awesome-blue btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="BATCH_{{ admin.uniqId }}_back_to_form_link(this); return false;" name="BATCH_{{ admin.uniqId }}_back_to_form" id="BATCH_{{ admin.uniqId }}[back_to_form]" ><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+                    <a class="btn btn-sm btn-primary btn-bigger-glyphicon-icon" href="javascript:void(0)" onclick="BATCH_{{ admin.uniqId }}_back_to_form_link(this); return false;" name="BATCH_{{ admin.uniqId }}_back_to_form" id="BATCH_{{ admin.uniqId }}[back_to_form]" ><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
                 </div>
             </div>
         <!-- </center> -->
@@ -24,12 +24,12 @@ file that was distributed with this source code.
 <form class="form-horizontal" role="form" action="{{ admin.generateUrl('splitBottle', {'uniqid': admin.uniqId}) }}" method="POST" novalidate="novalidate" id="BATCH_{{ admin.uniqId }}_split_bottle_form" name="BATCH_{{ admin.uniqId }}[split_bottle_form]" enctype="multipart/form-data">
     <div class="row"> <!-- row block -->
         <div class="col-lg-12 col-md-12 col-sm-12"> <!-- form block -->
-            <table {#data-toggle="table" #} class="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable" name="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable"
+            <table {#data-toggle="table" #} class="table table-condensed table-hover table-primary blh-bsfixedtable" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable" name="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_blh_mixed_bottle_target_bstable"
                     data-show-columns="false"
                     data-search="false"
                     data-pagination="false"
-                    data-classes="table table-condensed table-hover table-xray-supreme-head blh-bsfixedtable"
-                    data-buttons-class="xray-awesome-blue">
+                    data-classes="table table-condensed table-hover table-primary blh-bsfixedtable"
+                    data-buttons-class="primary">
                 <thead>
                     <tr>
                         <th data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="BATCH_MIX_BOTTLES_{{ admin.uniqId }}_confirmBottle_all" name="BATCH_{{ admin.uniqId }}[confirmBottle][all]"></th>
@@ -59,7 +59,7 @@ file that was distributed with this source code.
                     <!-- <center> -->
                         <div class="btn-toolbar" role="toolbar" aria-label="..." style="display: table;">
                             <div class="btn-group" role="group" aria-label="...">
-                                <button class="btn btn-sm btn-xray-awesome-blue" type="submit" name="btn_split_bottles"><span class="glyphicon glyphicon-send"></span> Enviar</button>
+                                <button class="btn btn-sm btn-primary" type="submit" name="btn_split_bottles"><span class="glyphicon glyphicon-send"></span> Enviar</button>
                             </div>
                         </div>
                     <!-- </center> -->

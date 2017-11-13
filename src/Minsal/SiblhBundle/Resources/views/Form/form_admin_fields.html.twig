@@ -159,7 +159,7 @@ file that was distributed with this source code.
         {% if attr['data-add-input-addon'] is defined and attr['data-add-input-addon-skipicon'] is not defined %}
             <div class="has-left-addinputaddon">
                 <i class="form-control-feedback feedback-leftside {{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}" style=""></i>
-    		    {#<div class="input-group {{ attr['data-add-input-addon-class']|default('xray-awesome-blue') }} background-opacity">#}
+    		    {#<div class="input-group {{ attr['data-add-input-addon-class']|default('primary') }} background-opacity">#}
     			{#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-question-sign') }}"></i></span>#}
                 {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}"></i></span>#}
     			{{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
@@ -168,7 +168,7 @@ file that was distributed with this source code.
 		{% elseif attr['data-add-input-btn'] is defined and (attr['data-add-input-btn'] == true or attr['data-add-input-btn'] == 'true') %}
 		    <div class="input-group ">
 			<span class="input-group-btn {{ attr['data-add-input-btn-class']|default('') }}">
-			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-xray-awesome-blue') }}" >
+			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-primary') }}" >
 				<i class="{{ attr['data-add-input-btn-addon']|default('glyphicon glyphicon-ok-circle') }}"></i>
 			    </button>
 			</span>
@@ -250,7 +250,7 @@ file that was distributed with this source code.
 		{% if attr['data-add-input-addon'] is defined and (attr['data-add-input-addon'] == true or attr['data-add-input-addon'] == 'true') %}
             <div class="has-left-addinputaddon">
                 <i class="form-control-feedback feedback-leftside {{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}" style=""></i>
-                {#<div class="input-group {{ attr['data-add-input-addon-class']|default('xray-awesome-blue') }} background-opacity">#}
+                {#<div class="input-group {{ attr['data-add-input-addon-class']|default('primary') }} background-opacity">#}
                 {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-question-sign') }}"></i></span>#}
                 {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}"></i></span>#}
                 {{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
@@ -259,7 +259,7 @@ file that was distributed with this source code.
         {% elseif attr['data-add-input-btn'] is defined and (attr['data-add-input-btn'] == true or attr['data-add-input-btn'] == 'true') %}
 		    <div class="input-group ">
 			<span class="input-group-btn {{ attr['data-add-input-btn-class']|default('') }}">
-			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-xray-awesome-blue') }}" >
+			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-primary') }}" >
 				<i class="{{ attr['data-add-input-btn-addon']|default('glyphicon glyphicon-ok-circle') }}"></i>
 			    </button>
 			</span>
@@ -291,7 +291,7 @@ file that was distributed with this source code.
 		{% if attr['data-add-input-addon'] is defined and (attr['data-add-input-addon'] == true or attr['data-add-input-addon'] == 'true') %}
             <div class="has-left-addinputaddon">
                 <i class="form-control-feedback feedback-leftside {{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}" style=""></i>
-                {#<div class="input-group {{ attr['data-add-input-addon-class']|default('xray-awesome-blue') }} background-opacity">#}
+                {#<div class="input-group {{ attr['data-add-input-addon-class']|default('primary') }} background-opacity">#}
                 {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-question-sign') }}"></i></span>#}
                 {#<span class="input-group-addon"><i class="{{ attr['data-add-input-addon-addon']|default('glyphicon glyphicon-edit') }}"></i></span>#}
                 {{ form_widget(form, {'horizontal': true, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': true, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
@@ -300,7 +300,7 @@ file that was distributed with this source code.
         {% elseif attr['data-add-input-btn'] is defined and (attr['data-add-input-btn'] == true or attr['data-add-input-btn'] == 'true') %}
 		    <div class="input-group ">
 			<span class="input-group-btn {{ attr['data-add-input-btn-class']|default('') }}">
-			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-xray-awesome-blue') }}" >
+			    <button type="button" class="btn btn-large {{ attr['data-add-input-btn-btn-class']|default('btn-primary') }}" >
 				<i class="{{ attr['data-add-input-btn-addon']|default('glyphicon glyphicon-ok-circle') }}"></i>
 			    </button>
 			</span>

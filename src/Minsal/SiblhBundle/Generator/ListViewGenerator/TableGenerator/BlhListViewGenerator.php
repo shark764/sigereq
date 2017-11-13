@@ -77,7 +77,7 @@ class BlhListViewGenerator /*implements ListViewGeneratorInterface*/
         'sortName'      => 'id',
         'sortOrder'     => 'desc',
         'classes'       => 'table table-hover table-condensed table-no-bordered table-black-head'/*table-striped*/,
-        'buttonsClass'  => 'xray-awesome-blue',
+        'buttonsClass'  => 'primary',
         // 'buttonsClass'  => 'black-thrash',
         'icons'         => array(
             'paginationSwitchDown'  => 'glyphicon-collapse-down icon-chevron-down',
